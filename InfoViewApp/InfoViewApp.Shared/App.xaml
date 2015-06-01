@@ -1,0 +1,11 @@
+﻿<Application
+    x:Class="InfoViewApp.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InfoViewApp">
+    <Application.Resources>
+        <SolidColorBrush x:Key="AccentBrush" Color="#FF3CD3CC"/>
+        <Color x:Key="Accent">#FF3CD3CC</Color>
+    </Application.Resources>
+
+</Application>

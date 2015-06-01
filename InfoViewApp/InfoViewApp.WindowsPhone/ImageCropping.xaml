@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="InfoViewApp.ImageCropping"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InfoViewApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ScrollViewer ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="canvas" ManipulationMode="All">
+            <!--Original Image-->
+            <Image Stretch="UniformToFill" Name="OriginalImage" Source="/Assets/Nature1.jpg" PointerPressed="OriginalImage_PointerPressed" PointerMoved="OriginalImage_PointerMoved" PointerReleased="OriginalImage_PointerReleased"/>
+            <!--Rectangle to be used for Crop Original Image-->
+        </ScrollViewer>
+        <!--Cropped Image-->
+        <Button Name="SaveBtn" Background="{StaticResource AccentBrush}" Visibility="Visible" Content="That's it!" Click="SaveBtn_Click" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <Rectangle StrokeThickness="2" Stroke="{StaticResource AccentBrush}"></Rectangle>
+        <StackPanel Margin="0,30,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+        	<Image Source="Assets/one_finger.png" Stretch="Fill" Margin="0,14,0,0" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        	<TextBox HorizontalAlignment="Left" TextWrapping="Wrap" Text="Swipe around to pick a best view. &#xD;&#xA;When done, click 'That's it!'" VerticalAlignment="Top" IsReadOnly="True" BorderBrush="{x:Null}" Foreground="{StaticResource AccentBrush}" Background="{x:Null}" BorderThickness="1" Margin="0"/>
+        </StackPanel>
+    </Grid>
+</Page>
