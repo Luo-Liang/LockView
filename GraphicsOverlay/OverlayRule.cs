@@ -26,7 +26,7 @@ namespace GraphicsOverlay
         public Point Origin { get; set; }
         public int TargetHeight { get; set; }
         public int TargetWidth { get; set; }
-        public int ParagraphSpacingHeight { get; set; }
+        public int ParagraphSpacing { get; set; }
     }
 
     public class OverlayContext

@@ -54,7 +54,7 @@ namespace CompositorTest
                 {
                     AutoExpand = true,
                     Origin = new System.Drawing.Point() { X = 10, Y = 10 },
-                    ParagraphSpacingHeight = 10,
+                    ParagraphSpacing = 10,
                     TargetHeight = 300,
                     TargetWidth = 400
                 }, new OverlayContext()
