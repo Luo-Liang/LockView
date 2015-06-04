@@ -14,34 +14,42 @@ namespace InfoView
     {
 
         [OperationContract]
-        string GetData(int value);
-
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        ImageCompositionResponse GetDataUsingDataContract(ImageCompositionRequest request);
 
         // TODO: Add your service operations here
     }
 
+    [DataContract]
+    public enum CompositionResult
+    {
+        None,
+        Changed,
+        Unchanged,
+        Failed
+    }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
-    public class CompositeType
+    public class ImageCompositionResponse
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
+        [DataMember]
+        public byte[] Image { get; set; }
 
         [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
+        public CompositionResult Result { get; set; } 
+    }
 
+    [DataContract]
+    public class ImageCompositionRequest
+    {
         [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        public string InterestId { get; set; }
+        [DataMember]
+        public byte[] RawImage { get; set; }
+        [DataMember]
+        public long UserId { get; set; } //may be used for persistence in future
+        [DataMember]
+        public long RequestId { get; set; }
+
     }
 }
