@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InfoView.DataContract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -14,7 +15,7 @@ namespace InfoView
     {
 
         [OperationContract]
-        ImageCompositionResponse GetDataUsingDataContract(ImageCompositionRequest request);
+        ImageCompositionResponse Compose(ImageCompositionRequest request);
 
         // TODO: Add your service operations here
     }
@@ -50,6 +51,11 @@ namespace InfoView
         public long UserId { get; set; } //may be used for persistence in future
         [DataMember]
         public long RequestId { get; set; }
-
+        [DataMember]
+        public OverlayFormattingContract FormattingContract { get; set; }
+        [DataMember]
+        public OverlayLayoutContract LayoutContract { get; set; }
+        [DataMember]
+        public OverlayContextContract ContextContract { get; set; }
     }
 }

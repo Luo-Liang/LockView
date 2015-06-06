@@ -37,6 +37,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Service References\CloudComposition\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +101,22 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\CloudComposition\CompositorTest.CloudComposition.ImageCompositionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CloudComposition\ImageComposition.wsdl" />
+    <None Include="Service References\CloudComposition\ImageComposition.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CloudComposition\ImageComposition1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CloudComposition\ImageComposition2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CloudComposition\ImageComposition3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -103,6 +126,27 @@
       <Project>{9cfe7ce1-1d46-45d2-a764-833f2dd99bc3}</Project>
       <Name>GraphicsOverlay</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CloudComposition\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CloudComposition\ImageComposition.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CloudComposition\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CloudComposition\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CloudComposition\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

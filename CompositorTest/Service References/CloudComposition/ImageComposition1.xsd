@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InfoView" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InfoView" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49791/ImageComposition.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/InfoView.DataContract" />
+  <xs:import schemaLocation="http://localhost:49791/ImageComposition.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ImageCompositionRequest">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/InfoView.DataContract" minOccurs="0" name="ContextContract" type="q1:OverlayContextContract" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/InfoView.DataContract" minOccurs="0" name="FormattingContract" type="q2:OverlayFormattingContract" />
+      <xs:element minOccurs="0" name="InterestId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/InfoView.DataContract" minOccurs="0" name="LayoutContract" type="q3:OverlayLayoutContract" />
+      <xs:element minOccurs="0" name="RawImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="RequestId" type="xs:long" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageCompositionRequest" nillable="true" type="tns:ImageCompositionRequest" />
+  <xs:complexType name="Point">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="X" type="xs:int" />
+      <xs:element minOccurs="0" name="Y" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Point" nillable="true" type="tns:Point" />
+  <xs:complexType name="ImageCompositionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Result" type="tns:CompositionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageCompositionResponse" nillable="true" type="tns:ImageCompositionResponse" />
+  <xs:simpleType name="CompositionResult">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:element name="CompositionResult" nillable="true" type="tns:CompositionResult" />
+</xs:schema>

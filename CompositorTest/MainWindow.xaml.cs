@@ -50,19 +50,21 @@ namespace CompositorTest
                   wb.BackBuffer);
 
                 Graphics g = System.Drawing.Graphics.FromImage(bmp); //                // ...and finally:
-                g.Apply(new OverlayLayout()
+                var layout = new OverlayLayout()
                 {
                     AutoExpand = true,
                     Origin = new System.Drawing.Point() { X = 10, Y = 10 },
                     ParagraphSpacing = 10,
                     TargetHeight = 300,
                     TargetWidth = 400
-                }, new OverlayContext()
+                };
+                var context = new OverlayContext()
                 {
                     FirstLine = "Test First Line Is Here",
                     SecondLine = "Detailed Content Line Goes Here",
                     Title = "Title Goes Here"
-                }, new OverlayFormatting()
+                };
+                var formatting = new OverlayFormatting()
                 {
                     FirstLineFont = new Font("Segoe UI", 12),
                     SecondLineFont = new Font("Segoe UI", 10),
@@ -70,7 +72,14 @@ namespace CompositorTest
                     ForegroundFirstLine = new SolidBrush(System.Drawing.Color.Black),
                     ForegroundSecondLine = new SolidBrush(System.Drawing.Color.Black),
                     ForegroundTitle = new SolidBrush(System.Drawing.Color.Black),
-                });
+                };
+
+                //CloudComposition.ImageCompositionServiceClient client= new CloudComposition.ImageCompositionServiceClient():
+                //client.Compose(new CloudComposition.ImageCompositionRequest(){
+                //    ContextContract = context,
+                //    
+                //});
+
                 g.Dispose();
                 bmp.Dispose();
                 wb.AddDirtyRect(new Int32Rect(0, 0, wb.PixelWidth, wb.PixelHeight));

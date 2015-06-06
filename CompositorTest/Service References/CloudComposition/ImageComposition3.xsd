@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InfoView.DataContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InfoView.DataContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49791/ImageComposition.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:49791/ImageComposition.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/InfoView" />
+  <xs:complexType name="OverlayContextContract">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstLine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondLine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OverlayContextContract" nillable="true" type="tns:OverlayContextContract" />
+  <xs:complexType name="OverlayFormattingContract">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BackgroundFirstLine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BackgroundSecondLine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BackgroundTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstLineFont" type="tns:FontContract" />
+      <xs:element minOccurs="0" name="ForegroundFirstLine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForegroundSecondLine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForegroundTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecondLineFont" type="tns:FontContract" />
+      <xs:element minOccurs="0" name="TitleFont" type="tns:FontContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OverlayFormattingContract" nillable="true" type="tns:OverlayFormattingContract" />
+  <xs:complexType name="FontContract">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FontFamily" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FontSize" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FontContract" nillable="true" type="tns:FontContract" />
+  <xs:complexType name="OverlayLayoutContract">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AutoExpand" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/InfoView" minOccurs="0" name="Origin" type="q1:Point" />
+      <xs:element minOccurs="0" name="ParagraphSpacing" type="xs:int" />
+      <xs:element minOccurs="0" name="TargetHeight" type="xs:int" />
+      <xs:element minOccurs="0" name="TargetWidth" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OverlayLayoutContract" nillable="true" type="tns:OverlayLayoutContract" />
+</xs:schema>

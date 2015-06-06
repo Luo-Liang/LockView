@@ -21,6 +21,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsOverlay", "GraphicsOverlay\GraphicsOverlay.csproj", "{9CFE7CE1-1D46-45D2-A764-833F2DD99BC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositorTest", "CompositorTest\CompositorTest.csproj", "{4A06AC54-3C8F-4598-86C5-B85E651CF981}"
+	ProjectSection(ProjectDependencies) = postProject
+		{900E1CCE-6313-4CF4-B607-C1685569C19B} = {900E1CCE-6313-4CF4-B607-C1685569C19B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
