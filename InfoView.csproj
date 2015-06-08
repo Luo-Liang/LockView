@@ -101,7 +101,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OverlayContracts.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="ImageComposition.svc.cs">
       <DependentUpon>ImageComposition.svc</DependentUpon>

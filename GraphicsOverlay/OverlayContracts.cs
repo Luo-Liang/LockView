@@ -13,9 +13,16 @@ namespace InfoView.DataContract
     public struct OverlayFormattingContract
     {
         static Dictionary<string, Color> Colors;
+        static Dictionary<Color, string> ColorNames;
         static OverlayFormattingContract()
         {
-            Colors = typeof(Color).GetProperties(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).Select<PropertyInfo, Color>(pi => (Color)pi.GetValue(null)).ToDictionary<Color, string>(p => p.Name);
+            var systemColors = typeof(Color).GetProperties(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).Select<PropertyInfo, Color>(pi => (Color)pi.GetValue(null));
+            Colors = systemColors.ToDictionary<Color, string>(p => p.Name);
+            ColorNames = new Dictionary<Color, string>();
+            foreach (var color in systemColors)
+            {
+                ColorNames[color] = color.Name;
+            }
         }
         [DataMember]
         public FontContract TitleFont { get; set; }
@@ -45,11 +52,33 @@ namespace InfoView.DataContract
                 ForegroundTitle = new SolidBrush(Colors[this.ForegroundTitle]),
                 BackgroundSecondLine = new SolidBrush(Colors[this.BackgroundSecondLine]),
                 ForegroundSecondLine = new SolidBrush(Colors[this.ForegroundSecondLine]),
-
                 TitleFont = new Font(this.TitleFont.FontFamily, this.TitleFont.FontSize),
                 FirstLineFont = new Font(this.FirstLineFont.FontFamily, this.FirstLineFont.FontSize),
                 SecondLineFont = new Font(this.SecondLineFont.FontFamily, this.SecondLineFont.FontSize)
             };
+        }
+        public static OverlayFormattingContract FromOverlayFormatting(OverlayFormatting formatting)
+        {
+            OverlayFormattingContract contract = new OverlayFormattingContract();
+            if (formatting.BackgroundFirstLine != null)
+                contract.BackgroundFirstLine = ColorNames[((SolidBrush)formatting.BackgroundFirstLine).Color];
+            if (formatting.BackgroundSecondLine != null)
+                contract.BackgroundSecondLine = ColorNames[((SolidBrush)formatting.BackgroundSecondLine).Color];
+            if (formatting.BackgroundTitle != null)
+                contract.BackgroundTitle = ColorNames[((SolidBrush)formatting.BackgroundTitle).Color];
+            if (formatting.FirstLineFont != null)
+                contract.FirstLineFont = new FontContract() { FontFamily = formatting.FirstLineFont.Name, FontSize = (int)formatting.FirstLineFont.Size };
+            if (formatting.SecondLineFont != null)
+                contract.SecondLineFont = new FontContract() { FontFamily = formatting.SecondLineFont.Name, FontSize = (int)formatting.SecondLineFont.Size };
+            if (formatting.TitleFont != null)
+                contract.TitleFont = new FontContract() { FontFamily = formatting.TitleFont.Name, FontSize = (int)formatting.TitleFont.Size };
+            if (formatting.ForegroundFirstLine != null)
+                contract.ForegroundFirstLine = ColorNames[((SolidBrush)formatting.ForegroundFirstLine).Color];
+            if (formatting.ForegroundSecondLine != null)
+                contract.ForegroundSecondLine = ColorNames[((SolidBrush)formatting.ForegroundSecondLine).Color];
+            if (formatting.ForegroundTitle != null)
+                contract.ForegroundTitle = ColorNames[((SolidBrush)formatting.ForegroundTitle).Color];
+            return contract;
         }
     }
 
@@ -60,7 +89,7 @@ namespace InfoView.DataContract
         public string Title { get; set; }
         [DataMember]
         public string FirstLine { get; set; }
-        [DataMember] 
+        [DataMember]
         public string SecondLine { get; set; }
         public OverlayContext ToOverlayContext()
         {
@@ -70,6 +99,14 @@ namespace InfoView.DataContract
                 SecondLine = this.SecondLine,
                 Title = this.Title
             };
+        }
+        public static OverlayContextContract FromOverlayContext(OverlayContext context)
+        {
+            OverlayContextContract contract = new OverlayContextContract();
+            contract.Title = context.Title;
+            contract.FirstLine = context.FirstLine;
+            contract.SecondLine = context.SecondLine;
+            return contract;
         }
     }
     [DataContract]
@@ -90,11 +127,21 @@ namespace InfoView.DataContract
             return new OverlayLayout()
             {
                 AutoExpand = this.AutoExpand,
-                Origin = new System.Drawing.Point(this.Origin.X,this.Origin.Y),
+                Origin = new System.Drawing.Point(this.Origin.X, this.Origin.Y),
                 ParagraphSpacing = this.ParagraphSpacing,
                 TargetHeight = this.TargetHeight,
                 TargetWidth = this.TargetWidth
             };
+        }
+        public static OverlayLayoutContract FromOverlayLayout(OverlayLayout layout)
+        {
+            OverlayLayoutContract contract = new OverlayLayoutContract();
+            contract.AutoExpand = layout.AutoExpand;
+            contract.Origin = new Point() { X = layout.Origin.X, Y = layout.Origin.Y };
+            contract.ParagraphSpacing = layout.ParagraphSpacing;
+            contract.TargetHeight = layout.TargetHeight;
+            contract.TargetWidth = layout.TargetWidth;
+            return contract;
         }
     }
 

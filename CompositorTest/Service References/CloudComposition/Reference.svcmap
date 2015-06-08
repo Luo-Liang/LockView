@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4ba933fe-3e2a-46de-a5a8-255082fa1105" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d536fa18-b41f-48bb-89a9-379fed1b6b2b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,12 +22,13 @@
     <MetadataSource Address="http://localhost:49791/ImageComposition.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ImageComposition.xsd" MetadataType="Schema" ID="2eb2a816-7f7b-48a5-9a54-34886df0632e" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?xsd=xsd1" />
-    <MetadataFile FileName="ImageComposition.disco" MetadataType="Disco" ID="9486ddc1-b8af-4d1b-bd4a-5abce6373667" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?disco" />
-    <MetadataFile FileName="ImageComposition1.xsd" MetadataType="Schema" ID="794755e7-f6f0-47f1-8b08-353feb774ea9" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?xsd=xsd2" />
-    <MetadataFile FileName="ImageComposition2.xsd" MetadataType="Schema" ID="a685f25a-6a72-4d56-8486-4bf33e8c2956" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?xsd=xsd0" />
-    <MetadataFile FileName="ImageComposition.wsdl" MetadataType="Wsdl" ID="710dde7c-9425-4bbf-bbad-a5366db14bc7" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?wsdl" />
-    <MetadataFile FileName="ImageComposition3.xsd" MetadataType="Schema" ID="5ab0d127-c6ad-4de0-864f-00f7c06cd3b1" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?xsd=xsd3" />
+    <MetadataFile FileName="ImageComposition4.xsd" MetadataType="Schema" ID="a0358a0d-5b60-4f87-95a3-346657c995bb" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?xsd=xsd4" />
+    <MetadataFile FileName="ImageComposition.xsd" MetadataType="Schema" ID="692379be-515a-466a-892f-ad2abc413b3e" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?xsd=xsd1" />
+    <MetadataFile FileName="ImageComposition.disco" MetadataType="Disco" ID="31796a4c-592b-48ce-9122-3f1359ab4f59" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?disco" />
+    <MetadataFile FileName="ImageComposition1.xsd" MetadataType="Schema" ID="bdd8d707-ca3f-446b-bcac-3e73a2e67020" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?xsd=xsd2" />
+    <MetadataFile FileName="ImageComposition2.xsd" MetadataType="Schema" ID="c6c42a42-f128-4656-879c-67fadfa3911a" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?xsd=xsd0" />
+    <MetadataFile FileName="ImageComposition.wsdl" MetadataType="Wsdl" ID="6d99fa43-cf3a-4c6a-8e88-dfe481856045" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?wsdl" />
+    <MetadataFile FileName="ImageComposition3.xsd" MetadataType="Schema" ID="e3132f3e-061c-4357-bdd1-e49c71c382cd" SourceId="1" SourceUrl="http://localhost:49791/ImageComposition.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

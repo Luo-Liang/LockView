@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GraphicsOverlay;
 using System.IO;
+using CompositorTest.CloudComposition;
+using InfoView.DataContract;
 
 namespace CompositorTest
 {
@@ -43,13 +45,6 @@ namespace CompositorTest
                 {
                     wb = wb.FromStream(stream);
                 };
-                wb.Lock();
-                var bmp = new System.Drawing.Bitmap(wb.PixelWidth, wb.PixelHeight,
-                  wb.BackBufferStride,
-                  System.Drawing.Imaging.PixelFormat.Format32bppPArgb,
-                  wb.BackBuffer);
-
-                Graphics g = System.Drawing.Graphics.FromImage(bmp); //                // ...and finally:
                 var layout = new OverlayLayout()
                 {
                     AutoExpand = true,
@@ -74,17 +69,18 @@ namespace CompositorTest
                     ForegroundTitle = new SolidBrush(System.Drawing.Color.Black),
                 };
 
-                //CloudComposition.ImageCompositionServiceClient client= new CloudComposition.ImageCompositionServiceClient():
-                //client.Compose(new CloudComposition.ImageCompositionRequest(){
-                //    ContextContract = context,
-                //    
-                //});
-
-                g.Dispose();
-                bmp.Dispose();
-                wb.AddDirtyRect(new Int32Rect(0, 0, wb.PixelWidth, wb.PixelHeight));
-                wb.Unlock();
-                targetImg.Source = wb;
+                ImageCompositionServiceClient client = new ImageCompositionServiceClient();
+                OverlayLayoutContract c;
+                var response = client.Compose(new ImageCompositionRequest(){
+                    ContextContract = OverlayContextContract.FromOverlayContext(context),
+                    FormattingContract =  OverlayFormattingContract.FromOverlayFormatting(formatting),
+                    LayoutContract = OverlayLayoutContract.FromOverlayLayout(layout),
+                    RawImage = wb.ToByteArray(),
+                    RequestId = 1,
+                    UserId = 2,
+                    InterestId = "Microsoft"
+                });
+                targetImg.Source = wb.FromByteArray(response.Image);
             }
         }
     }

@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:49791/ImageComposition.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:49791/ImageComposition.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/InfoView" />
       <xsd:import schemaLocation="http://localhost:49791/ImageComposition.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/InfoView.DataContract" />
+      <xsd:import schemaLocation="http://localhost:49791/ImageComposition.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IImageCompositionService_Compose_InputMessage">
