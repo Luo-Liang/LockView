@@ -20,7 +20,7 @@ namespace InfoView
         public ImageCompositionResponse Compose(ImageCompositionRequest request)
         {
             var img = request.RawImage;
-            WriteableBitmap wb = new WriteableBitmap(1, 1, 1, 1, PixelFormats.Default, BitmapPalettes.Halftone256Transparent);
+            WriteableBitmap wb = new WriteableBitmap(1, 1, 1, 1, PixelFormats.BlackWhite, BitmapPalettes.BlackAndWhite);
             wb.FromByteArray(img);
             wb.Lock();
             var bmp = new Bitmap(

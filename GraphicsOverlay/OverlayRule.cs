@@ -18,6 +18,10 @@ namespace GraphicsOverlay
         public Font SecondLineFont { get; set; }
         public Brush ForegroundSecondLine { get; set; }
         public Brush BackgroundSecondLine { get; set; }
+        public OverlayFormatting()
+        {
+            BackgroundTitle = BackgroundFirstLine = BackgroundSecondLine = new SolidBrush(Color.Transparent);
+        }
     }
 
     public class OverlayLayout

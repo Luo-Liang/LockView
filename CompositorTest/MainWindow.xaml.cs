@@ -71,11 +71,12 @@ namespace CompositorTest
 
                 ImageCompositionServiceClient client = new ImageCompositionServiceClient();
                 OverlayLayoutContract c;
+                var imgBytes = wb.ToByteArray();
                 var response = client.Compose(new ImageCompositionRequest(){
                     ContextContract = OverlayContextContract.FromOverlayContext(context),
                     FormattingContract =  OverlayFormattingContract.FromOverlayFormatting(formatting),
                     LayoutContract = OverlayLayoutContract.FromOverlayLayout(layout),
-                    RawImage = wb.ToByteArray(),
+                    RawImage = imgBytes,
                     RequestId = 1,
                     UserId = 2,
                     InterestId = "Microsoft"
