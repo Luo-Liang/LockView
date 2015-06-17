@@ -167,7 +167,7 @@ namespace CompositorTest.CloudComposition {
         private byte[] ImageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResultField;
+        private CompositorTest.CloudComposition.CompositionResult ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -192,13 +192,13 @@ namespace CompositorTest.CloudComposition {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Result {
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CompositorTest.CloudComposition.CompositionResult Result {
             get {
                 return this.ResultField;
             }
             set {
-                if ((object.ReferenceEquals(this.ResultField, value) != true)) {
+                if ((this.ResultField.Equals(value) != true)) {
                     this.ResultField = value;
                     this.RaisePropertyChanged("Result");
                 }
@@ -213,6 +213,23 @@ namespace CompositorTest.CloudComposition {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompositionResult", Namespace="http://schemas.datacontract.org/2004/07/InfoView")]
+    public enum CompositionResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Changed = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Unchanged = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Failed = 3,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

@@ -17,14 +17,54 @@ using GraphicsOverlay;
 using System.IO;
 using CompositorTest.CloudComposition;
 using InfoView.DataContract;
+using System.IO.Compression;
 
 namespace CompositorTest
 {
+    public static class ByteArrayCompressionUtility
+    {
+
+        public static byte[] Compress(byte[] inputData)
+        {
+            if (inputData == null)
+                throw new ArgumentNullException("inputData must be non-null");
+
+            using (var compressIntoMs = new MemoryStream())
+            {
+                using (var gzs = new GZipStream(compressIntoMs,
+                 CompressionMode.Compress))
+                {
+                    gzs.Write(inputData, 0, inputData.Length);
+                }
+                return compressIntoMs.ToArray();
+            }
+        }
+
+        public static byte[] Decompress(byte[] inputData)
+        {
+            if (inputData == null)
+                throw new ArgumentNullException("inputData must be non-null");
+
+            using (var compressedMs = new MemoryStream(inputData))
+            {
+                using (var decompressedMs = new MemoryStream())
+                {
+                    using (var gzs = (new GZipStream(compressedMs,
+                     CompressionMode.Decompress)))
+                    {
+                        gzs.CopyTo(decompressedMs);
+                    }
+                    return decompressedMs.ToArray();
+                }
+            }
+        }
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -69,13 +109,13 @@ namespace CompositorTest
                     ForegroundTitle = new SolidBrush(System.Drawing.Color.Black),
 
                 };
-
-                ImageCompositionServiceClient client = new ImageCompositionServiceClient();
+                var imgBytes = ByteArrayCompressionUtility.Compress(wb.ToByteArray());
                 OverlayLayoutContract c;
-                var imgBytes = wb.ToByteArray();
-                var response = client.Compose(new ImageCompositionRequest(){
+                CloudComposition.ImageCompositionServiceClient client = new ImageCompositionServiceClient();
+                var response = client.Compose(new ImageCompositionRequest()
+                {
                     ContextContract = OverlayContextContract.FromOverlayContext(context),
-                    FormattingContract =  OverlayFormattingContract.FromOverlayFormatting(formatting),
+                    FormattingContract = OverlayFormattingContract.FromOverlayFormatting(formatting),
                     LayoutContract = OverlayLayoutContract.FromOverlayLayout(layout),
                     RawImage = imgBytes,
                     RequestId = 1,
