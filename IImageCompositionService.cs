@@ -24,9 +24,13 @@ namespace InfoView
     [DataContract]
     public enum CompositionResult
     {
+        [EnumMember]
         None,
+        [EnumMember]
         Changed,
+        [EnumMember]
         Unchanged,
+        [EnumMember]
         Failed
     }
 
@@ -38,7 +42,7 @@ namespace InfoView
         public byte[] Image { get; set; }
 
         [DataMember]
-        public CompositionResult Result { get; set; } 
+        public CompositionResult Result { get; set; }
     }
 
     [DataContract]

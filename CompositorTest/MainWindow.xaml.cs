@@ -67,6 +67,7 @@ namespace CompositorTest
                     ForegroundFirstLine = new SolidBrush(System.Drawing.Color.Black),
                     ForegroundSecondLine = new SolidBrush(System.Drawing.Color.Black),
                     ForegroundTitle = new SolidBrush(System.Drawing.Color.Black),
+
                 };
 
                 ImageCompositionServiceClient client = new ImageCompositionServiceClient();

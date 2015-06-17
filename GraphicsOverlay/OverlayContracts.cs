@@ -12,6 +12,8 @@ namespace InfoView.DataContract
     [DataContract]
     public struct OverlayFormattingContract
     {
+        static FontContract DefaultFont;
+        static SolidBrush DefaultBrush;
         static Dictionary<string, Color> Colors;
         static Dictionary<Color, string> ColorNames;
         static OverlayFormattingContract()
@@ -23,6 +25,8 @@ namespace InfoView.DataContract
             {
                 ColorNames[color] = color.Name;
             }
+            DefaultFont = new FontContract() { FontFamily = "Segoe UI", FontSize = 16 };
+            DefaultBrush = new SolidBrush(Color.Transparent);
         }
         [DataMember]
         public FontContract TitleFont { get; set; }
@@ -44,6 +48,10 @@ namespace InfoView.DataContract
         public string BackgroundSecondLine { get; set; }
         public OverlayFormatting ToOverlayFormatting()
         {
+            
+            TitleFont = FirstLineFont = SecondLineFont = DefaultFont;
+            BackgroundFirstLine = BackgroundSecondLine = BackgroundTitle =
+                ForegroundFirstLine = ForegroundSecondLine = ForegroundTitle = DefaultBrush.Color.Name;
             return new OverlayFormatting()
             {
                 BackgroundFirstLine = new SolidBrush(Colors[this.BackgroundFirstLine]),
