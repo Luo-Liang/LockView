@@ -48,10 +48,14 @@ namespace InfoView.DataContract
         public string BackgroundSecondLine { get; set; }
         public OverlayFormatting ToOverlayFormatting()
         {
-            
+
             TitleFont = FirstLineFont = SecondLineFont = DefaultFont;
-            BackgroundFirstLine = BackgroundSecondLine = BackgroundTitle =
-                ForegroundFirstLine = ForegroundSecondLine = ForegroundTitle = DefaultBrush.Color.Name;
+            if (BackgroundFirstLine == null) BackgroundFirstLine = DefaultBrush.Color.Name;
+            if (BackgroundSecondLine == null) BackgroundSecondLine = DefaultBrush.Color.Name;
+            if (BackgroundTitle == null) BackgroundTitle = DefaultBrush.Color.Name;
+            if (ForegroundFirstLine == null) ForegroundFirstLine = DefaultBrush.Color.Name;
+            if (ForegroundSecondLine == null) ForegroundSecondLine = DefaultBrush.Color.Name;
+            if (ForegroundTitle == null) ForegroundTitle = DefaultBrush.Color.Name;
             return new OverlayFormatting()
             {
                 BackgroundFirstLine = new SolidBrush(Colors[this.BackgroundFirstLine]),

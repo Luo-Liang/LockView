@@ -10,6 +10,8 @@ using System.Windows.Media.Imaging;
 using GraphicsOverlay;
 using System.Windows;
 using System.Windows.Media;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace InfoView
 {
@@ -19,28 +21,25 @@ namespace InfoView
     {
         public ImageCompositionResponse Compose(ImageCompositionRequest request)
         {
-            var img = request.RawImage;
-            WriteableBitmap wb = new WriteableBitmap(1, 1, 1, 1, PixelFormats.BlackWhite, BitmapPalettes.BlackAndWhite);
-            wb.FromByteArray(img);
-            wb.Lock();
-            var bmp = new Bitmap(
-              wb.PixelWidth, wb.PixelHeight,
-              wb.BackBufferStride,
-              System.Drawing.Imaging.PixelFormat.Format32bppPArgb,
-              wb.BackBuffer);
-            Graphics g = System.Drawing.Graphics.FromImage(bmp); //                // ...and finally:
+            MemoryStream memStream = new MemoryStream(request.RawImage);
+            memStream.Seek(0, SeekOrigin.Begin);
+            var img = Image.FromStream(memStream);
+            Graphics g = Graphics.FromImage(img);
             g.Apply(request.LayoutContract.ToOverlayLayout(),
                 request.ContextContract.ToOverlayContext(),
                 request.FormattingContract.ToOverlayFormatting());
+            g.Save();
             g.Dispose();
-            bmp.Dispose();
-            wb.AddDirtyRect(new Int32Rect(0, 0, wb.PixelWidth, wb.PixelHeight));
-            wb.Unlock();
-            return new ImageCompositionResponse()
-            {
-                Image = wb.ToByteArray(),
-                Result = CompositionResult.Changed
-            };
+            MemoryStream imgStream = new MemoryStream();
+            img.Save(imgStream, ImageFormat.Jpeg);
+            img.Save(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\abc.jpg",ImageFormat.Jpeg);
+            var response =  new ImageCompositionResponse();
+            response.Result = CompositionResult.Changed;
+            response.Image = new byte[imgStream.Length];
+            imgStream.Read(response.Image, 0, response.Image.Length);
+            imgStream.Close();
+            memStream.Close();
+            return response;
         }
     }
 }

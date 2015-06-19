@@ -80,10 +80,11 @@ namespace CompositorTest
                 // Assuming you have one file that you care about, pass it off to whatever
                 // handling code you have defined.
                 var fn = files[0];
-                WriteableBitmap wb = new WriteableBitmap(1, 1, 1, 1, PixelFormats.Gray32Float, BitmapPalettes.BlackAndWhite);
+                byte[] imgBytes;
                 using (var stream = File.Open(fn, FileMode.Open))
                 {
-                    wb = wb.FromStream(stream);
+                    imgBytes = new byte[stream.Length];
+                    stream.Read(imgBytes, 0, (int)stream.Length);
                 };
                 var layout = new OverlayLayout()
                 {
@@ -109,8 +110,6 @@ namespace CompositorTest
                     ForegroundTitle = new SolidBrush(System.Drawing.Color.Black),
 
                 };
-                var imgBytes = ByteArrayCompressionUtility.Compress(wb.ToByteArray());
-                OverlayLayoutContract c;
                 CloudComposition.ImageCompositionServiceClient client = new ImageCompositionServiceClient();
                 var response = client.Compose(new ImageCompositionRequest()
                 {
@@ -122,7 +121,12 @@ namespace CompositorTest
                     UserId = 2,
                     InterestId = "Microsoft"
                 });
-                targetImg.Source = wb.FromByteArray(response.Image);
+                using (MemoryStream memoryStream = new MemoryStream(response.Image))
+                {
+                    memoryStream.Seek(0, SeekOrigin.Begin);
+                    JpegBitmapDecoder decoder = new JpegBitmapDecoder(memoryStream, BitmapCreateOptions.None, BitmapCacheOption.Default);
+                    targetImg.Source = decoder.Preview;
+                }      
             }
         }
     }
