@@ -16,6 +16,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ListBoxContentVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LockViewApplicationState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ResolutionProvider.cs" />
   </ItemGroup>
 </Project>

@@ -18,6 +18,8 @@ using System.IO;
 using CompositorTest.CloudComposition;
 using InfoView.DataContract;
 using System.IO.Compression;
+using Newtonsoft.Json;
+using System.Net;
 
 namespace CompositorTest
 {
@@ -110,8 +112,7 @@ namespace CompositorTest
                     ForegroundTitle = new SolidBrush(System.Drawing.Color.Black),
 
                 };
-                CloudComposition.ImageCompositionServiceClient client = new ImageCompositionServiceClient();
-                var response = client.Compose(new ImageCompositionRequest()
+                var request = new ImageCompositionRequest()
                 {
                     ContextContract = OverlayContextContract.FromOverlayContext(context),
                     FormattingContract = OverlayFormattingContract.FromOverlayFormatting(formatting),
@@ -120,14 +121,8 @@ namespace CompositorTest
                     RequestId = 1,
                     UserId = 2,
                     InterestId = "Microsoft"
-                });
-                using (MemoryStream memoryStream = new MemoryStream(response.Image))
-                {
-                    memoryStream.Seek(0, SeekOrigin.Begin);
-                    var bi = new BitmapImage();
-                    bi.StreamSource= memoryStream;
-                    targetImg.Source = bi;
-                }      
+                };
+                var jRequest = JsonConvert.SerializeObject(request);
             }
         }
     }

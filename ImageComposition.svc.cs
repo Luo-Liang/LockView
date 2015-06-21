@@ -42,5 +42,11 @@ namespace InfoView
             memStream.Close();
             return response;
         }
+
+
+        public string ComposeLegacy(string request)
+        {
+            return request;
+        }
     }
 }

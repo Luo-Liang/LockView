@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
@@ -70,6 +71,8 @@ namespace InfoViewApp
                 WB_CroppedImage = WB_CapturedImage.Crop(actualWidth, 0, (int)(WB_CapturedImage.PixelHeight / screenRatio), WB_CapturedImage.PixelHeight);
             }
             OriginalImage.Source = WB_CroppedImage;
+            //this is a jpeg stream now.
+            WB_CroppedImage.ToStream(LockViewApplicationState.Instance.AccessStream,BitmapEncoder.JpegEncoderId);
         }
 
         private void OriginalImage_PointerPressed(object sender, PointerRoutedEventArgs e)

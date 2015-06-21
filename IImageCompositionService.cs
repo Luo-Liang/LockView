@@ -14,11 +14,18 @@ namespace InfoView
     [ServiceContract]
     public interface IImageCompositionService
     {
-
         [OperationContract]
+        [WebInvoke(UriTemplate = "/Compose",
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, Method = "POST")]
         ImageCompositionResponse Compose(ImageCompositionRequest request);
 
-        // TODO: Add your service operations here
+        [Obsolete]
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/ComposeLegacy",
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        string ComposeLegacy(string request);
     }
 
     [DataContract]
