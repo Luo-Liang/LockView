@@ -54,8 +54,9 @@ namespace InfoViewApp
             var hO = canvas.HorizontalOffset;
             var vO = canvas.VerticalOffset;
             //height larger than width.
-            double screenRatio = 1.0 * WB_CapturedImage.PixelHeight / WB_CapturedImage.PixelWidth;
-            if (screenRatio > 1)
+            double imgRatio = 1.0 * WB_CapturedImage.PixelHeight / WB_CapturedImage.PixelWidth;
+            double screenRatio = ResolutionProvider.GetScreenHeightWidthRatio();
+            if (imgRatio > 1)
             {
                 //user swipes up and down.
                 double heightExtent = vO / canvas.ExtentWidth;

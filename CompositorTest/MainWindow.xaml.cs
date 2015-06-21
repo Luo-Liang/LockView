@@ -124,8 +124,9 @@ namespace CompositorTest
                 using (MemoryStream memoryStream = new MemoryStream(response.Image))
                 {
                     memoryStream.Seek(0, SeekOrigin.Begin);
-                    JpegBitmapDecoder decoder = new JpegBitmapDecoder(memoryStream, BitmapCreateOptions.None, BitmapCacheOption.Default);
-                    targetImg.Source = decoder.Preview;
+                    var bi = new BitmapImage();
+                    bi.StreamSource= memoryStream;
+                    targetImg.Source = bi;
                 }      
             }
         }

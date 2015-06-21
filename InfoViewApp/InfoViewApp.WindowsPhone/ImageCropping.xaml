@@ -15,11 +15,18 @@
             <!--Rectangle to be used for Crop Original Image-->
         </ScrollViewer>
         <!--Cropped Image-->
-        <Button Name="SaveBtn" Background="{StaticResource AccentBrush}" Visibility="Visible" Content="That's it!" Click="SaveBtn_Click" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <Button Name="SaveBtn" Visibility="Visible" Content="That's it!" Click="SaveBtn_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10">
+        	<Button.Background>
+        		<SolidColorBrush Color="{StaticResource AccentColor}"/>
+        	</Button.Background>
+        </Button>
         <Rectangle StrokeThickness="2" Stroke="{StaticResource AccentBrush}"></Rectangle>
-        <StackPanel Margin="0,30,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-        	<Image Source="Assets/one_finger.png" Stretch="Fill" Margin="0,14,0,0" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        	<TextBox HorizontalAlignment="Left" TextWrapping="Wrap" Text="Swipe around to pick a best view. &#xD;&#xA;When done, click 'That's it!'" VerticalAlignment="Top" IsReadOnly="True" BorderBrush="{x:Null}" Foreground="{StaticResource AccentBrush}" Background="{x:Null}" BorderThickness="1" Margin="0"/>
+        <StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+        	<TextBox TextWrapping="Wrap" Text="Swipe around to pick a best view. When done, click 'That's it!'" VerticalAlignment="Stretch" IsReadOnly="True" BorderBrush="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" SelectionHighlightColor="{x:Null}" Background="{x:Null}">
+        		<TextBox.Foreground>
+        			<SolidColorBrush Color="White"/>
+        		</TextBox.Foreground>
+        	</TextBox>
         </StackPanel>
     </Grid>
 </Page>

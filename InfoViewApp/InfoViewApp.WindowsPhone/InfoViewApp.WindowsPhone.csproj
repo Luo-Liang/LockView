@@ -84,6 +84,9 @@
     <Compile Include="ImageCropping.xaml.cs">
       <DependentUpon>ImageCropping.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interest.xaml.cs">
+      <DependentUpon>Interest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="ImageCropping.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

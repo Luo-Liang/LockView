@@ -4,8 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InfoViewApp">
     <Application.Resources>
-        <SolidColorBrush x:Key="AccentBrush" Color="#FF3CD3CC"/>
-        <Color x:Key="Accent">#FF3CD3CC</Color>
+        <Color x:Key="AccentColor">#FF562E8F</Color>
+        <Color x:Key="LightAccentColor">#FF6F54A3</Color>
+        <Color x:Key="Gray">#FF888888</Color>
+        <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+        <SolidColorBrush x:Key="LightAccentBrush" Color="{StaticResource LightAccentColor}"/>
+        <SolidColorBrush x:Key="GrayBrush" Color="{StaticResource Gray}"/>
     </Application.Resources>
 
 </Application>
