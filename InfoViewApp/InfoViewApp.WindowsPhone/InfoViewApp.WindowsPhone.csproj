@@ -81,6 +81,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FontCAS.xaml.cs">
+      <DependentUpon>FontCAS.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageCropping.xaml.cs">
       <DependentUpon>ImageCropping.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
     <Content Include="Assets\WideLogo.scale-240.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="FontCAS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ImageCropping.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -20,5 +20,6 @@ namespace InfoViewApp
         }
         Stream BackgroundPreview { get; set; }
         public IRandomAccessStream AccessStream { get; set; }
+        public InterestGathering.IInterestGatherer SelectedProvider{ get; set; }
     }
 }

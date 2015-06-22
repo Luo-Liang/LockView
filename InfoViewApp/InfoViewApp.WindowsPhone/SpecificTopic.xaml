@@ -11,7 +11,7 @@
     <Grid>
         <Image x:Name="previewImg"/>
         <StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-            <TextBox TextWrapping="Wrap" Text="Tell us about a specific topic. We'll gather all news about it for you." VerticalAlignment="Stretch" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" Foreground="White" FontFamily="Global User Interface"/>
+            <TextBox TextWrapping="Wrap" Text="Tell us about a specific topic. We'll gather all news about it for you." VerticalAlignment="Stretch" IsHitTestVisible="False" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" Foreground="White" FontFamily="Global User Interface" IsReadOnly="True"/>
         </StackPanel>
         <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Show me!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,12" FontFamily="Global User Interface">
             <Button.Background>
