@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InfoViewApp.InterestGathering;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,6 +35,39 @@ namespace InfoViewApp
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+        }
+
+        private async void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (SaveBtn.Content.ToString() == "Show me!")
+            {
+                SaveBtn.Content = "Preview";
+                progressRing.IsActive = true;
+                GoogleSpecificInterestGatherer gatherer = new GoogleSpecificInterestGatherer();
+                SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                previewStack.DataContext = await gatherer.RequestContent(new InterestRequest()
+                    {
+                        InterestString = specificTopicBox.Text,
+                        PreviousInterestContentIdentifier = 0
+                    });
+                SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                progressRing.IsActive = false;
+            }
+            else
+            {
+                SaveBtn.Content = "Show me!";
+                //Navigate to customization page.
+            }
+        }
+
+        private void specificTopicBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SaveBtn.IsEnabled = true;
+            if(specificTopicBox.Text.Length==0)
+            {
+                SaveBtn.Content = "Show me!";
+                SaveBtn.IsEnabled = false;
+            }
         }
     }
 }

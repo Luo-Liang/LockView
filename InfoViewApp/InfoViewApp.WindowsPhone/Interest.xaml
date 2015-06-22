@@ -131,7 +131,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,145.5,10">
+        <Button x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,145.5,10" FontFamily="Global User Interface">
     		<Button.Background>
     			<SolidColorBrush Color="{StaticResource AccentColor}"/>
     		</Button.Background>
