@@ -11,7 +11,12 @@ namespace InfoViewApp
     }
 
     //Generic solution for all platforms. 
-    class ListBoxContentVMCollection:List<ListBoxContentVM>
+    class ListBoxContentVMCollection : List<ListBoxContentVM>
+    {
+
+    }
+
+    class IntegerCollection : List<int>
     {
 
     }

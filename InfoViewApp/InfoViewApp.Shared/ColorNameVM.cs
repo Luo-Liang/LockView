@@ -5,11 +5,11 @@ using Windows.UI;
 
 namespace InfoViewApp
 {
-    class ColorNameVM
+    public class ColorNameVM
     {
         public Color Color { get; set; }
         public string ColorName { get; set; }
     }
 
-    class ColorNameVMCollection : List<ColorNameVM> { }
+    public class ColorNameVMCollection : List<ColorNameVM> { }
 }

@@ -10,6 +10,150 @@
         <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
         <SolidColorBrush x:Key="LightAccentBrush" Color="{StaticResource LightAccentColor}"/>
         <SolidColorBrush x:Key="GrayBrush" Color="{StaticResource Gray}"/>
+        <local:ColorNameVMCollection x:Key="colorCollection">
+            <local:ColorNameVM Color="AliceBlue" ColorName="Alice Blue" />
+            <local:ColorNameVM Color="AntiqueWhite" ColorName="Antique White" />
+            <local:ColorNameVM Color="Aqua" ColorName="Aqua" />
+            <local:ColorNameVM Color="Aquamarine" ColorName="Aquamarine" />
+            <local:ColorNameVM Color="Azure" ColorName="Azure" />
+            <local:ColorNameVM Color="Beige" ColorName="Beige" />
+            <local:ColorNameVM Color="Bisque" ColorName="Bisque" />
+            <local:ColorNameVM Color="Black" ColorName="Black" />
+            <local:ColorNameVM Color="BlanchedAlmond" ColorName="Blanched Almond" />
+            <local:ColorNameVM Color="Blue" ColorName="Blue" />
+            <local:ColorNameVM Color="BlueViolet" ColorName="Blue Violet" />
+            <local:ColorNameVM Color="Brown" ColorName="Brown" />
+            <local:ColorNameVM Color="BurlyWood" ColorName="Burly Wood" />
+            <local:ColorNameVM Color="CadetBlue" ColorName="Cadet Blue" />
+            <local:ColorNameVM Color="Chartreuse" ColorName="Chartreuse" />
+            <local:ColorNameVM Color="Chocolate" ColorName="Chocolate" />
+            <local:ColorNameVM Color="Coral" ColorName="Coral" />
+            <local:ColorNameVM Color="CornflowerBlue" ColorName="Cornflower Blue" />
+            <local:ColorNameVM Color="Cornsilk" ColorName="Cornsilk" />
+            <local:ColorNameVM Color="Crimson" ColorName="Crimson" />
+            <local:ColorNameVM Color="Cyan" ColorName="Cyan" />
+            <local:ColorNameVM Color="DarkBlue" ColorName="Dark Blue" />
+            <local:ColorNameVM Color="DarkCyan" ColorName="Dark Cyan" />
+            <local:ColorNameVM Color="DarkGoldenrod" ColorName="Dark Goldenrod" />
+            <local:ColorNameVM Color="DarkGray" ColorName="Dark Gray" />
+            <local:ColorNameVM Color="DarkGreen" ColorName="Dark Green" />
+            <local:ColorNameVM Color="DarkKhaki" ColorName="Dark Khaki" />
+            <local:ColorNameVM Color="DarkMagenta" ColorName="Dark Magenta" />
+            <local:ColorNameVM Color="DarkOliveGreen" ColorName="Dark Olive Green" />
+            <local:ColorNameVM Color="DarkOrange" ColorName="Dark Orange" />
+            <local:ColorNameVM Color="DarkOrchid" ColorName="Dark Orchid" />
+            <local:ColorNameVM Color="DarkRed" ColorName="Dark Red" />
+            <local:ColorNameVM Color="DarkSalmon" ColorName="Dark Salmon" />
+            <local:ColorNameVM Color="DarkSeaGreen" ColorName="Dark Sea Green" />
+            <local:ColorNameVM Color="DarkSlateBlue" ColorName="Dark Slate Blue" />
+            <local:ColorNameVM Color="DarkSlateGray" ColorName="Dark Slate Gray" />
+            <local:ColorNameVM Color="DarkTurquoise" ColorName="Dark Turquoise" />
+            <local:ColorNameVM Color="DarkViolet" ColorName="Dark Violet" />
+            <local:ColorNameVM Color="DeepPink" ColorName="Deep Pink" />
+            <local:ColorNameVM Color="DeepSkyBlue" ColorName="Deep Sky Blue" />
+            <local:ColorNameVM Color="DimGray" ColorName="Dim Gray" />
+            <local:ColorNameVM Color="DodgerBlue" ColorName="Dodger Blue" />
+            <local:ColorNameVM Color="Firebrick" ColorName="Firebrick" />
+            <local:ColorNameVM Color="FloralWhite" ColorName="Floral White" />
+            <local:ColorNameVM Color="ForestGreen" ColorName="Forest Green" />
+            <local:ColorNameVM Color="Fuchsia" ColorName="Fuchsia" />
+            <local:ColorNameVM Color="Gainsboro" ColorName="Gainsboro" />
+            <local:ColorNameVM Color="GhostWhite" ColorName="Ghost White" />
+            <local:ColorNameVM Color="Gold" ColorName="Gold" />
+            <local:ColorNameVM Color="Goldenrod" ColorName="Goldenrod" />
+            <local:ColorNameVM Color="Gray" ColorName="Gray" />
+            <local:ColorNameVM Color="Green" ColorName="Green" />
+            <local:ColorNameVM Color="GreenYellow" ColorName="Green Yellow" />
+            <local:ColorNameVM Color="Honeydew" ColorName="Honeydew" />
+            <local:ColorNameVM Color="HotPink" ColorName="Hot Pink" />
+            <local:ColorNameVM Color="IndianRed" ColorName="Indian Red" />
+            <local:ColorNameVM Color="Indigo" ColorName="Indigo" />
+            <local:ColorNameVM Color="Ivory" ColorName="Ivory" />
+            <local:ColorNameVM Color="Khaki" ColorName="Khaki" />
+            <local:ColorNameVM Color="Lavender" ColorName="Lavender" />
+            <local:ColorNameVM Color="LavenderBlush" ColorName="Lavender Blush" />
+            <local:ColorNameVM Color="LawnGreen" ColorName="Lawn Green" />
+            <local:ColorNameVM Color="LemonChiffon" ColorName="Lemon Chiffon" />
+            <local:ColorNameVM Color="LightBlue" ColorName="Light Blue" />
+            <local:ColorNameVM Color="LightCoral" ColorName="Light Coral" />
+            <local:ColorNameVM Color="LightCyan" ColorName="Light Cyan" />
+            <local:ColorNameVM Color="LightGoldenrodYellow" ColorName="Light Goldenrod Yellow" />
+            <local:ColorNameVM Color="LightGray" ColorName="Light Gray" />
+            <local:ColorNameVM Color="LightGreen" ColorName="Light Green" />
+            <local:ColorNameVM Color="LightPink" ColorName="Light Pink" />
+            <local:ColorNameVM Color="LightSalmon" ColorName="Light Salmon" />
+            <local:ColorNameVM Color="LightSeaGreen" ColorName="Light Sea Green" />
+            <local:ColorNameVM Color="LightSkyBlue" ColorName="Light Sky Blue" />
+            <local:ColorNameVM Color="LightSlateGray" ColorName="Light Slate Gray" />
+            <local:ColorNameVM Color="LightSteelBlue" ColorName="Light Steel Blue" />
+            <local:ColorNameVM Color="LightYellow" ColorName="Light Yellow" />
+            <local:ColorNameVM Color="Lime" ColorName="Lime" />
+            <local:ColorNameVM Color="LimeGreen" ColorName="Lime Green" />
+            <local:ColorNameVM Color="Linen" ColorName="Linen" />
+            <local:ColorNameVM Color="Magenta" ColorName="Magenta" />
+            <local:ColorNameVM Color="Maroon" ColorName="Maroon" />
+            <local:ColorNameVM Color="MediumAquamarine" ColorName="Medium Aquamarine" />
+            <local:ColorNameVM Color="MediumBlue" ColorName="Medium Blue" />
+            <local:ColorNameVM Color="MediumOrchid" ColorName="Medium Orchid" />
+            <local:ColorNameVM Color="MediumPurple" ColorName="Medium Purple" />
+            <local:ColorNameVM Color="MediumSeaGreen" ColorName="Medium Sea Green" />
+            <local:ColorNameVM Color="MediumSlateBlue" ColorName="Medium Slate Blue" />
+            <local:ColorNameVM Color="MediumSpringGreen" ColorName="Medium Spring Green" />
+            <local:ColorNameVM Color="MediumTurquoise" ColorName="Medium Turquoise" />
+            <local:ColorNameVM Color="MediumVioletRed" ColorName="Medium Violet Red" />
+            <local:ColorNameVM Color="MidnightBlue" ColorName="Midnight Blue" />
+            <local:ColorNameVM Color="MintCream" ColorName="Mint Cream" />
+            <local:ColorNameVM Color="MistyRose" ColorName="Misty Rose" />
+            <local:ColorNameVM Color="Moccasin" ColorName="Moccasin" />
+            <local:ColorNameVM Color="NavajoWhite" ColorName="Navajo White" />
+            <local:ColorNameVM Color="Navy" ColorName="Navy" />
+            <local:ColorNameVM Color="OldLace" ColorName="Old Lace" />
+            <local:ColorNameVM Color="Olive" ColorName="Olive" />
+            <local:ColorNameVM Color="OliveDrab" ColorName="Olive Drab" />
+            <local:ColorNameVM Color="Orange" ColorName="Orange" />
+            <local:ColorNameVM Color="OrangeRed" ColorName="Orange Red" />
+            <local:ColorNameVM Color="Orchid" ColorName="Orchid" />
+            <local:ColorNameVM Color="PaleGoldenrod" ColorName="Pale Goldenrod" />
+            <local:ColorNameVM Color="PaleGreen" ColorName="Pale Green" />
+            <local:ColorNameVM Color="PaleTurquoise" ColorName="Pale Turquoise" />
+            <local:ColorNameVM Color="PaleVioletRed" ColorName="Pale Violet Red" />
+            <local:ColorNameVM Color="PapayaWhip" ColorName="Papaya Whip" />
+            <local:ColorNameVM Color="PeachPuff" ColorName="Peach Puff" />
+            <local:ColorNameVM Color="Peru" ColorName="Peru" />
+            <local:ColorNameVM Color="Pink" ColorName="Pink" />
+            <local:ColorNameVM Color="Plum" ColorName="Plum" />
+            <local:ColorNameVM Color="PowderBlue" ColorName="Powder Blue" />
+            <local:ColorNameVM Color="Purple" ColorName="Purple" />
+            <local:ColorNameVM Color="Red" ColorName="Red" />
+            <local:ColorNameVM Color="RosyBrown" ColorName="Rosy Brown" />
+            <local:ColorNameVM Color="RoyalBlue" ColorName="Royal Blue" />
+            <local:ColorNameVM Color="SaddleBrown" ColorName="Saddle Brown" />
+            <local:ColorNameVM Color="Salmon" ColorName="Salmon" />
+            <local:ColorNameVM Color="SandyBrown" ColorName="Sandy Brown" />
+            <local:ColorNameVM Color="SeaGreen" ColorName="Sea Green" />
+            <local:ColorNameVM Color="SeaShell" ColorName="Sea Shell" />
+            <local:ColorNameVM Color="Sienna" ColorName="Sienna" />
+            <local:ColorNameVM Color="Silver" ColorName="Silver" />
+            <local:ColorNameVM Color="SkyBlue" ColorName="Sky Blue" />
+            <local:ColorNameVM Color="SlateBlue" ColorName="Slate Blue" />
+            <local:ColorNameVM Color="SlateGray" ColorName="Slate Gray" />
+            <local:ColorNameVM Color="Snow" ColorName="Snow" />
+            <local:ColorNameVM Color="SpringGreen" ColorName="Spring Green" />
+            <local:ColorNameVM Color="SteelBlue" ColorName="Steel Blue" />
+            <local:ColorNameVM Color="Tan" ColorName="Tan" />
+            <local:ColorNameVM Color="Teal" ColorName="Teal" />
+            <local:ColorNameVM Color="Thistle" ColorName="Thistle" />
+            <local:ColorNameVM Color="Tomato" ColorName="Tomato" />
+            <local:ColorNameVM Color="Turquoise" ColorName="Turquoise" />
+            <local:ColorNameVM Color="Violet" ColorName="Violet" />
+            <local:ColorNameVM Color="Wheat" ColorName="Wheat" />
+            <local:ColorNameVM Color="White" ColorName="White" />
+            <local:ColorNameVM Color="WhiteSmoke" ColorName="White Smoke" />
+            <local:ColorNameVM Color="Yellow" ColorName="Yellow" />
+            <local:ColorNameVM Color="YellowGreen" ColorName="Yellow Green" />
+            <local:ColorNameVM Color="Transparent" ColorName="Transparent"/>
+        </local:ColorNameVMCollection>
+
     </Application.Resources>
 
 </Application>

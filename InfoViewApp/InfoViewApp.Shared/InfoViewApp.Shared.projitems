@@ -15,7 +15,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CloudCompositionLocalContract.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ColorNameVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InterestGathering\HtmlDecodingUtility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InterestGathering\InterestGathering.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InterestGathering\SpecificInterestGatherer.cs" />

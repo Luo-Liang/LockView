@@ -25,6 +25,9 @@ namespace InfoViewApp
         public FontCAS()
         {
             this.InitializeComponent();
+            var overlayFormattingContract = LockViewApplicationState.Instance.PreviewFormattingContract;
+            settingsGrid.DataContext = overlayFormattingContract;
+
         }
 
         /// <summary>

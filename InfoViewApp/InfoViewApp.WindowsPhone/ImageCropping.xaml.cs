@@ -31,7 +31,7 @@ namespace InfoViewApp
         WriteableBitmap WB_CapturedImage;//for original image
         WriteableBitmap WB_CroppedImage;//for cropped image
         //Variables for the crop feature
-        Point Point1, Point2;
+        Windows.Foundation.Point Point1, Point2;
         Stream origStream;
         public ImageCropping()
         {
