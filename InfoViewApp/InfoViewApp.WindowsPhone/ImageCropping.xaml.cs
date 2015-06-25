@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -50,7 +52,7 @@ namespace InfoViewApp
             openPicker.PickSingleFileAndContinue();
             //Set WriteableBitmap with OrgianlImage
         }
-        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        private async void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             var hO = canvas.HorizontalOffset;
             var vO = canvas.VerticalOffset;
@@ -72,7 +74,25 @@ namespace InfoViewApp
             }
             OriginalImage.Source = WB_CroppedImage;
             //this is a jpeg stream now.
-            WB_CroppedImage.ToStream(LockViewApplicationState.Instance.AccessStream,BitmapEncoder.JpegEncoderId);
+            double widthPixel,heightPixel;
+            ResolutionProvider.GetScreenSizeInPixels(out heightPixel,out widthPixel);
+            WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel,WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+            await SaveBitmapAsJpeg(LockViewApplicationState.Instance.PersistFileName, WB_CapturedImage);
+            Frame.Navigate(typeof(Interest));
+        }
+
+        async Task SaveBitmapAsJpeg(string fileName, WriteableBitmap bitmap)
+        {
+            try
+            {
+                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(fileName);
+                using (var fs = await file.OpenStreamForWriteAsync())
+                    await bitmap.ToStreamAsJpeg(fs.AsRandomAccessStream());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception during save as Jpeg: " + ex.Message);
+            }
         }
 
         private void OriginalImage_PointerPressed(object sender, PointerRoutedEventArgs e)

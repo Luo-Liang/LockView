@@ -47,7 +47,7 @@ namespace InfoViewApp
 
         private void goToCropping_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(InfoViewApp.Interest));
+            this.Frame.Navigate(typeof(InfoViewApp.ImageCropping));
         }
     }
 }

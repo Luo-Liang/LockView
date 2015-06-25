@@ -119,7 +119,7 @@
            
         </Grid.Resources>
     	<StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-    		<TextBox TextWrapping="Wrap" Text="What would you like to read in your lock screen? Select a category from below." VerticalAlignment="Stretch" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" Foreground="White" FontFamily="Global User Interface"/>
+    		<TextBox IsHitTestVisible="False" TextWrapping="Wrap" Text="What would you like to read in your lock screen? Select a category from below." VerticalAlignment="Stretch" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" Foreground="White" FontFamily="Global User Interface"/>
     	</StackPanel>
         <ListBox x:Name="categorySelector" Margin="8,124,8,78" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemTemplate}" FontFamily="Global User Interface">
             <ListBox.ItemTemplate>
@@ -131,7 +131,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,145.5,10" FontFamily="Global User Interface">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,145.5,10" FontFamily="Global User Interface">
     		<Button.Background>
     			<SolidColorBrush Color="{StaticResource AccentColor}"/>
     		</Button.Background>

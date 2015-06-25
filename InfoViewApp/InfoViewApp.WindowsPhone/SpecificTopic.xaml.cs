@@ -45,17 +45,22 @@ namespace InfoViewApp
                 progressRing.IsActive = true;
                 GoogleSpecificInterestGatherer gatherer = new GoogleSpecificInterestGatherer();
                 SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                previewStack.DataContext = await gatherer.RequestContent(new InterestRequest()
+                var interest = await gatherer.RequestContent(new InterestRequest()
                     {
                         InterestString = specificTopicBox.Text,
                         PreviousInterestContentIdentifier = 0
                     });
                 SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 progressRing.IsActive = false;
+                LockViewApplicationState.Instance.PreviewContextContract.Title = interest.Title;
+                LockViewApplicationState.Instance.PreviewContextContract.FirstLine = interest.Content;
+                LockViewApplicationState.Instance.PreviewContextContract.SecondLine = interest.Publisher;
+                previewStack.DataContext = interest;
             }
             else
             {
                 SaveBtn.Content = "Show me!";
+                Frame.Navigate(typeof(Preview));
                 //Navigate to customization page.
             }
         }
@@ -63,7 +68,7 @@ namespace InfoViewApp
         private void specificTopicBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             SaveBtn.IsEnabled = true;
-            if(specificTopicBox.Text.Length==0)
+            if (specificTopicBox.Text.Length == 0)
             {
                 SaveBtn.Content = "Show me!";
                 SaveBtn.IsEnabled = false;

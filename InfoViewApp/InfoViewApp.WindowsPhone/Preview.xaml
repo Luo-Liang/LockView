@@ -2,6 +2,7 @@
     x:Class="InfoViewApp.Preview"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:con="using:InfoViewApp.Converter"
     xmlns:local="using:InfoViewApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,28 +10,37 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-    	<Image Margin="0,0,-400,0" Source="Assets/seattle_skyline.jpg" Stretch="Fill"/>
+        <Grid.Resources>
+            <con:Str2ColorConverter x:Key="str2clr"/>
+        </Grid.Resources>
+        <Image x:Name="previewImage" Margin="0,0,-400,0" Source="Assets/seattle_skyline.jpg" Stretch="Fill"/>
 
-    	<Button x:Name="SaveBtn" Visibility="Visible" Content="Great!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10">
-    		<Button.Background>
-    			<SolidColorBrush Color="{StaticResource AccentColor}"/>
-    		</Button.Background>
-    	</Button>
-    	<StackPanel Margin="19,24,10,0" Orientation="Vertical" Height="372" VerticalAlignment="Top">
-    		<TextBlock Margin="0,0,-0.167,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" FontSize="37.333"/>
-    		<TextBlock Margin="0,0,-1.167,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24">
-    			<Run Text="Content Content Content Content "/>
-    			<Run Text="Content Content Content Content Content Content Content Content"/>
-    		</TextBlock>
-    		<TextBlock Margin="0,0,-2.167,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
-    			<TextBlock.Foreground>
-    				<SolidColorBrush Color="#FFC3C3C3"/>
-    			</TextBlock.Foreground>
-    			<Run Text="©"/>
-    			<Run Text=" Copyright Information"/>
-    		</TextBlock>
+        <Button x:Name="SaveBtn" Visibility="Visible" Content="Great!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource AccentColor}"/>
+            </Button.Background>
+        </Button>
+        <StackPanel PointerPressed="previewStack_PointerPressed" x:Name="previewStack" Margin="19,24,10,0" Orientation="Vertical" VerticalAlignment="Top">
+            <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" Text="{Binding PreviewContextContract.Title}" VerticalAlignment="Top" BorderThickness="0" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize}">
+                <TextBox.Background>
+                    <SolidColorBrush Color="{Binding PreviewFormattingContract.BackgroundTitle,Converter={StaticResource str2clr}}"/>
+                </TextBox.Background>
+                <TextBox.Foreground>
+                    <SolidColorBrush Color="{Binding PreviewFormattingContract.ForegroundTitle,Converter={StaticResource str2clr}}"/>
+                </TextBox.Foreground>
+            </TextBox>
+            <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding PreviewContextContract.FirstLine}" BorderThickness="0" FontSize="{Binding TitleFont.FontSize}">
+                <TextBox.Background>
+                    <SolidColorBrush Color="{Binding PreviewFormattingContract.BackgroundTitle,Converter={StaticResource str2clr}}"/>
+                </TextBox.Background>
+                <TextBox.Foreground>
+                    <SolidColorBrush Color="{Binding PreviewFormattingContract.ForegroundTitle,Converter={StaticResource str2clr}}"/>
+                </TextBox.Foreground>
+            </TextBox>
+            <TextBox Text="{Binding PreviewContextContract.SecondLine}" IsReadOnly="True" AcceptsReturn="True" BorderThickness="0" Background="Transparent" Foreground="Gray"  Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+            </TextBox>
 
-    	</StackPanel>
+        </StackPanel>
 
     </Grid>
 </Page>

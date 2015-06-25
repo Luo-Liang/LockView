@@ -7,13 +7,13 @@ namespace InfoViewApp
     /// <summary>
     /// Always link this with CloudCompositionContracts.
     /// </summary>
-    public struct FontContract
+    public class FontContract
     {
         public string FontFamily { get; set; }
         public int FontSize { get; set; }
     }
 
-    struct OverlayFormattingContract
+    class OverlayFormattingContract
     {
         public FontContract TitleFont { get; set; }
         public string ForegroundTitle { get; set; }
@@ -26,7 +26,7 @@ namespace InfoViewApp
         public string BackgroundSecondLine { get; set; }
     }
 
-    public struct OverlayLayoutContract
+    public class OverlayLayoutContract
     {
         public bool AutoExpand { get; set; }
         public Point Origin { get; set; }
@@ -35,7 +35,7 @@ namespace InfoViewApp
         public int TargetHeight { get; set; }
     }
 
-    public struct OverlayContextContract
+    public class OverlayContextContract
     {
         public string Title { get; set; }
         public string FirstLine { get; set; }
@@ -43,7 +43,7 @@ namespace InfoViewApp
     }
 
 
-    public struct Point
+    public class Point
     {
         public int X { get; set; }
         public int Y { get; set; }

@@ -35,5 +35,21 @@ namespace InfoViewApp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            switch (categorySelector.SelectedIndex)
+            {
+                case -1:
+                    return;
+                case 0:
+                case 1:
+                case 2:
+                    Frame.Navigate(typeof(SpecificTopic));
+                    break;
+                default:
+                    return;
+            }
+        }
     }
 }

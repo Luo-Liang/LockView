@@ -9,7 +9,7 @@ using Windows.Data.Json;
 namespace InfoViewApp.InterestGathering
 {
     class GoogleSpecificInterestGatherer : InterestGatherer
-    {
+    {       
         public GoogleSpecificInterestGatherer()
         {
             BaseRequestUrlTemplate = "https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}";
