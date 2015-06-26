@@ -18,7 +18,7 @@
             </Button.Background>
         </Button>
         <TextBox TextChanged="specificTopicBox_TextChanged" x:Name="specificTopicBox" Height="27" Margin="19,202,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="361" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="1"/>
-        <TextBox TextWrapping="Wrap" Text="Type in a specific topic. e.g. Apple, UW, Google, Microsoft, Seahawk." VerticalAlignment="Stretch" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="14,121,6,462" AcceptsReturn="True" Foreground="{StaticResource GrayBrush}" FontFamily="Global User Interface"/>
+        <TextBox IsHitTestVisible="False" TextWrapping="Wrap" Text="Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk." VerticalAlignment="Top" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="14,121,6,0" AcceptsReturn="True" Foreground="{StaticResource GrayBrush}" FontFamily="Global User Interface" Height="57"/>
         <TextBlock x:Name="Notice" FontWeight="Light" HorizontalAlignment="Left" Height="50" Margin="22,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="358" Foreground="{StaticResource GrayBrush}" FontSize="18.667">
     		<Run Text="LockView is not a news provider. All related news is culled from Internet."/>
     		<LineBreak/>

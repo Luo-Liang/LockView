@@ -22,6 +22,7 @@ namespace InfoViewApp
     /// </summary>
     public sealed partial class Interest : Page
     {
+       
         public Interest()
         {
             this.InitializeComponent();
@@ -43,9 +44,10 @@ namespace InfoViewApp
                 case -1:
                     return;
                 case 0:
+                    Frame.Navigate(typeof(SpecificTopic));
+                    break;
                 case 1:
                 case 2:
-                    Frame.Navigate(typeof(SpecificTopic));
                     break;
                 default:
                     return;

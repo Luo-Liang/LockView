@@ -52,10 +52,17 @@ namespace InfoViewApp
                     });
                 SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 progressRing.IsActive = false;
-                LockViewApplicationState.Instance.PreviewContextContract.Title = interest.Title;
-                LockViewApplicationState.Instance.PreviewContextContract.FirstLine = interest.Content;
-                LockViewApplicationState.Instance.PreviewContextContract.SecondLine = interest.Publisher;
-                previewStack.DataContext = interest;
+                if (interest != null)
+                {
+                    LockViewApplicationState.Instance.PreviewContextContract.Title = interest.Title;
+                    LockViewApplicationState.Instance.PreviewContextContract.FirstLine = interest.Content;
+                    LockViewApplicationState.Instance.PreviewContextContract.SecondLine = interest.Publisher;
+                    previewStack.DataContext = interest;
+                }
+                else
+                {
+                    previewStack.DataContext = InterestContent.DefaultInterest;
+                }
             }
             else
             {

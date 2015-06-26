@@ -11,7 +11,7 @@
 
     <Grid>
         <Grid.Resources>
-            <con:Str2ColorConverter x:Key="str2clr"/>
+            <con:Str2BrushConverter x:Key="str2clr"/>
         </Grid.Resources>
         <Image x:Name="previewImage" Margin="0,0,-400,0" Source="Assets/seattle_skyline.jpg" Stretch="Fill"/>
 
@@ -21,22 +21,9 @@
             </Button.Background>
         </Button>
         <StackPanel PointerPressed="previewStack_PointerPressed" x:Name="previewStack" Margin="19,24,10,0" Orientation="Vertical" VerticalAlignment="Top">
-            <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" Text="{Binding PreviewContextContract.Title}" VerticalAlignment="Top" BorderThickness="0" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize}">
-                <TextBox.Background>
-                    <SolidColorBrush Color="{Binding PreviewFormattingContract.BackgroundTitle,Converter={StaticResource str2clr}}"/>
-                </TextBox.Background>
-                <TextBox.Foreground>
-                    <SolidColorBrush Color="{Binding PreviewFormattingContract.ForegroundTitle,Converter={StaticResource str2clr}}"/>
-                </TextBox.Foreground>
-            </TextBox>
-            <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding PreviewContextContract.FirstLine}" BorderThickness="0" FontSize="{Binding TitleFont.FontSize}">
-                <TextBox.Background>
-                    <SolidColorBrush Color="{Binding PreviewFormattingContract.BackgroundTitle,Converter={StaticResource str2clr}}"/>
-                </TextBox.Background>
-                <TextBox.Foreground>
-                    <SolidColorBrush Color="{Binding PreviewFormattingContract.ForegroundTitle,Converter={StaticResource str2clr}}"/>
-                </TextBox.Foreground>
-            </TextBox>
+            <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" Text="{Binding PreviewContextContract.Title}" VerticalAlignment="Top" BorderThickness="0" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle,Converter={StaticResource str2clr}}" Background="{Binding PreviewFormattingContract.BackgroundTitle,Converter={StaticResource str2clr}}"/>
+
+            <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding PreviewContextContract.FirstLine}" BorderThickness="0" FontSize="{Binding TitleFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine,Converter={StaticResource str2clr}}" Background="{Binding PreviewFormattingContract.BackgroundFirstLine,Converter={StaticResource str2clr}}"/>
             <TextBox Text="{Binding PreviewContextContract.SecondLine}" IsReadOnly="True" AcceptsReturn="True" BorderThickness="0" Background="Transparent" Foreground="Gray"  Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
             </TextBox>
 

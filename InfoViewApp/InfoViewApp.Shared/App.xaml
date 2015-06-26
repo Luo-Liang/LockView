@@ -7,9 +7,11 @@
         <Color x:Key="AccentColor">#FF562E8F</Color>
         <Color x:Key="LightAccentColor">#FF6F54A3</Color>
         <Color x:Key="Gray">#FF888888</Color>
+        <Color x:Key="DarkAccentColor">#FF3C2063</Color>
         <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
         <SolidColorBrush x:Key="LightAccentBrush" Color="{StaticResource LightAccentColor}"/>
         <SolidColorBrush x:Key="GrayBrush" Color="{StaticResource Gray}"/>
+        <SolidColorBrush x:Key="DarkAccent" Color="{StaticResource DarkAccentColor}"/>
         <local:ColorNameVMCollection x:Key="colorCollection">
             <local:ColorNameVM Color="AliceBlue" ColorName="Alice Blue" />
             <local:ColorNameVM Color="AntiqueWhite" ColorName="Antique White" />
@@ -153,7 +155,6 @@
             <local:ColorNameVM Color="YellowGreen" ColorName="Yellow Green" />
             <local:ColorNameVM Color="Transparent" ColorName="Transparent"/>
         </local:ColorNameVMCollection>
-
     </Application.Resources>
 
 </Application>

@@ -6,6 +6,12 @@ namespace InfoViewApp.InterestGathering
 {
     public class InterestContent
     {
+        public static readonly InterestContent DefaultInterest = new InterestContent()
+        {
+            Title = "No result",
+            Content = "This interest is not available right now. Check that your internet is working, or change a phrase and try again.",
+            Publisher = "Invalid Request"
+        };
         public string Title { get; set; }
         public string Content { get; set; }
         public string Publisher { get; set; }
