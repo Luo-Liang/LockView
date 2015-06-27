@@ -43,7 +43,7 @@
         			<GradientStop Color="#006F54A3" Offset="0.077"/>
         		</LinearGradientBrush>
         	</StackPanel.Background>
-        	<TextBlock TextWrapping="Wrap" Text="bye bye," VerticalAlignment="Stretch" IsHitTestVisible="False"  Margin="10" Foreground="White" FontSize="53.333"/>
+        	<TextBlock TextWrapping="Wrap" Text="bye bye," VerticalAlignment="Stretch" IsHitTestVisible="False"  Margin="55,22,10,10" Foreground="White" FontSize="53.333"/>
         </StackPanel>
         <Path x:Name="path" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" UseLayoutRounding="False" d:LayoutRounding="Auto" StrokeThickness="0" Data="M11.6385,0 L772.367,0 L772.367,62.1059 L779.875,62.6583 L773.299,152.029 L769.231,151.729 L761.723,224.463 L763.497,224.818 L745.877,312.681 L0,163.098 L6.77328,129.324 L11.6385,82.1957 z" Height="134.957" Margin="-112.122,219.647,-223.253,0" RenderTransformOrigin="0.502648,0.143296" Stretch="Fill" Width="735.375" Opacity="0.8">
         	<Path.Fill>
@@ -69,7 +69,7 @@
         		<CompositeTransform Rotation="212.772"/>
         	</Path.RenderTransform>
         </Path>
-        <Button x:Name="SaveBtn" Visibility="Visible" Content="Jump in!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10" FontFamily="Global User Interface">
+        <Button Click="goToCropping_Click" x:Name="SaveBtn" Visibility="Visible" Content="Jump in!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10" FontFamily="Global User Interface">
         	<Button.Background>
         		<SolidColorBrush Color="{StaticResource AccentColor}"/>
         	</Button.Background>

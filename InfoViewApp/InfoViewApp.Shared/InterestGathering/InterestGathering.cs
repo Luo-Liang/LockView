@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace InfoViewApp.InterestGathering
 {
@@ -31,15 +32,15 @@ namespace InfoViewApp.InterestGathering
 
     interface IInterestGatherer
     {
-        InterestContent RequestContent(InterestRequest request);
+        Task<InterestContent> RequestContent(InterestRequest request);
     }
 
     class InterestGatherer : IInterestGatherer
     {
         public string BaseRequestUrlTemplate = "INVALID";
-        public InterestContent RequestContent(InterestRequest request)
+        public async Task<InterestContent> RequestContent(InterestRequest request)
         {
-            return null;
+            return InterestContent.DefaultInterest;
         }
     }
 }

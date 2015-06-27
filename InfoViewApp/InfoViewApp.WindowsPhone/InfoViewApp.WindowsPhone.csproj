@@ -81,6 +81,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BroadInterestPage.xaml.cs">
+      <DependentUpon>BroadInterestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FontCAS.xaml.cs">
       <DependentUpon>FontCAS.xaml</DependentUpon>
     </Compile>
@@ -121,6 +124,10 @@
     <Content Include="Assets\WideLogo.scale-240.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="BroadInterestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FontCAS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

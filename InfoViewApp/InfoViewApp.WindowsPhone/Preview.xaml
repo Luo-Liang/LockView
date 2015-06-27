@@ -15,7 +15,7 @@
         </Grid.Resources>
         <Image x:Name="previewImage" Margin="0,0,-400,0" Source="Assets/seattle_skyline.jpg" Stretch="Fill"/>
 
-        <Button x:Name="SaveBtn" Visibility="Visible" Content="Great!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10">
+        <Button x:Name="SaveBtn" Visibility="Visible" Content="Great!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

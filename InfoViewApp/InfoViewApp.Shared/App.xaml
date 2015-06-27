@@ -1,6 +1,7 @@
 ﻿<Application
     x:Class="InfoViewApp.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:newsFeed="using:InfoViewApp.InterestGathering.NewsFeed"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:InfoViewApp">
     <Application.Resources>
@@ -155,6 +156,9 @@
             <local:ColorNameVM Color="YellowGreen" ColorName="Yellow Green" />
             <local:ColorNameVM Color="Transparent" ColorName="Transparent"/>
         </local:ColorNameVMCollection>
+        <newsFeed:NewsFeedSources x:Key="definedNewsFeedSources">
+            
+        </newsFeed:NewsFeedSources>
     </Application.Resources>
 
 </Application>
