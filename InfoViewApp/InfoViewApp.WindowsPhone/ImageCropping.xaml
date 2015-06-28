@@ -22,7 +22,7 @@
         </Button>
         <Rectangle StrokeThickness="2" Stroke="{StaticResource AccentBrush}"></Rectangle>
         <StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-        	<TextBox TextWrapping="Wrap" Text="Swipe around to pick a best view. When done, click 'That's it!'" VerticalAlignment="Stretch" IsReadOnly="True" BorderBrush="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" SelectionHighlightColor="{x:Null}" Background="{x:Null}">
+        	<TextBox TextWrapping="Wrap" Text="Swipe around to pick a best view. When done, click 'That's it!'" VerticalAlignment="Stretch" IsHitTestVisible="False" IsReadOnly="True" BorderBrush="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" SelectionHighlightColor="{x:Null}" Background="{x:Null}">
         		<TextBox.Foreground>
         			<SolidColorBrush Color="White"/>
         		</TextBox.Foreground>

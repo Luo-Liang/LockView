@@ -63,6 +63,7 @@ namespace InfoViewApp
                 {
                     previewStack.DataContext = InterestContent.DefaultInterest;
                 }
+                LockViewApplicationState.Instance.SelectedProvider = gatherer;
             }
             else
             {

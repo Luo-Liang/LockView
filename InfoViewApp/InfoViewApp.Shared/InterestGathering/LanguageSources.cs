@@ -31,7 +31,7 @@ namespace InfoViewApp.InterestGathering
 
         public override string ToString()
         {
-            return Name;
+            return SourceName;
         }
 
         static string FixString(string value)
@@ -82,7 +82,7 @@ namespace InfoViewApp.InterestGathering
             return fixedString;
         }
 
-        public string Name
+        public string SourceName
         {
             get;
             set;
@@ -111,7 +111,7 @@ namespace InfoViewApp.InterestGathering
                 {
                     Title = FixString(node.InnerText),
                     Content = FixString(node.InnerText),
-                    Publisher = Name
+                    Publisher = SourceName
                 };
             }
             catch

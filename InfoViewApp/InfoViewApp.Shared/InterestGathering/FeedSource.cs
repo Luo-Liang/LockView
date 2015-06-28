@@ -28,7 +28,7 @@ namespace InfoViewApp.InterestGathering.NewsFeed
 
     public class NewsFeedCategory : IInterestGatherer
     {
-        public string FeedSourceName { get; set; }
+        public string SourceName { get; set; }
         public CategoryTopic Topic { get; set; }
         public string XmlSource { get; set; }
         public NewsFeedCategory() { }
@@ -47,7 +47,7 @@ namespace InfoViewApp.InterestGathering.NewsFeed
                 var items = feed.Items;
                 var content = items[0].Summary.Text;
                 var title = items[0].Title.Text;
-                var publisher = FeedSourceName;
+                var publisher = SourceName;
                 return new InterestContent()
                 {
                     Content = content,
@@ -62,25 +62,21 @@ namespace InfoViewApp.InterestGathering.NewsFeed
         }
     }
 
-    public class NewsFeedSource
+    public class CustomizedFeedSource : FeedSource { }
+
+    public class FeedSource
     {
         public override string ToString()
         {
             return Name;
         }
         public string Name { get; set; }
-        public IList<NewsFeedCategory> FeedCategories { get; set; }
-        public NewsFeedSource()
+        public IList<IInterestGatherer> FeedContentProviders { get; set; }
+        public FeedSource()
         {
-            FeedCategories = new List<NewsFeedCategory>();
-        }
-        public override bool Equals(object obj)
-        {
-            var value = obj as NewsFeedSource;
-            if (value != null && value.Name == this.Name) return true;
-            return base.Equals(obj);
+            FeedContentProviders = new List<IInterestGatherer>();
         }
     }
 
-    public class NewsFeedSources : List<NewsFeedSource> { }
+    public class FeedSources : List<FeedSource> { }
 }

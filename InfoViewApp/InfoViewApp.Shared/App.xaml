@@ -3,8 +3,16 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:newsFeed="using:InfoViewApp.InterestGathering.NewsFeed"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="using:InfoViewApp.Converter"
     xmlns:local="using:InfoViewApp">
     <Application.Resources>
+        <converter:enum2LocalizedStrConverter x:Key="enumLocConn"/>
+        <converter:int2FontConverter x:Key="i2fConn"/>
+        <converter:Str2BrushConverter x:Key="str2BrushConn"/>
+        <converter:Str2ColorConverter x:Key="str2ClrConn"/>
+        <converter:newsSource2Visibility x:Key="src2VisibilityConn"/>
+        <converter:logicalNeg2Visibility x:Key="logicalNeg2VisibilityConn"/>
+        <converter:logical2Visibility x:Key="logical2VisibilityConn"/>
         <Color x:Key="AccentColor">#FF562E8F</Color>
         <Color x:Key="LightAccentColor">#FF6F54A3</Color>
         <Color x:Key="Gray">#FF888888</Color>
@@ -156,9 +164,24 @@
             <local:ColorNameVM Color="YellowGreen" ColorName="Yellow Green" />
             <local:ColorNameVM Color="Transparent" ColorName="Transparent"/>
         </local:ColorNameVMCollection>
-        <newsFeed:NewsFeedSources x:Key="definedNewsFeedSources">
-            
-        </newsFeed:NewsFeedSources>
+        <newsFeed:FeedSources x:Key="definedNewsFeedSources">
+            <newsFeed:CustomizedFeedSource Name="Customized Source"/>
+            <newsFeed:FeedSource Name="CNN">
+                <newsFeed:FeedSource.FeedContentProviders>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN Stories" Topic="Stories" XmlSource="http://rss.cnn.com/rss/cnn_topstories.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN World" Topic="World" XmlSource="http://rss.cnn.com/rss/cnn_world.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN USA" Topic="USA" XmlSource="http://rss.cnn.com/rss/cnn_us.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN Business" Topic="Business" XmlSource="http://rss.cnn.com/rss/money_latest.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN Politics" Topic="Politics" XmlSource="http://rss.cnn.com/rss/cnn_allpolitics.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN Technology" Topic="Technology" XmlSource="http://rss.cnn.com/rss/cnn_tech.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN Health" Topic="Health" XmlSource="http://rss.cnn.com/rss/cnn_health.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN Entertainment" Topic="Entertainment" XmlSource="http://rss.cnn.com/rss/cnn_showbiz.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN Travel" Topic="Travel" XmlSource="http://rss.cnn.com/rss/cnn_travel.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN Living" Topic="Living" XmlSource="http://rss.cnn.com/rss/cnn_living.rss"/>
+                    <newsFeed:NewsFeedCategory SourceName ="CNN Video" Topic="Video" XmlSource="http://rss.cnn.com/rss/cnn_freevideo.rss"/>
+                </newsFeed:FeedSource.FeedContentProviders>
+            </newsFeed:FeedSource>
+        </newsFeed:FeedSources>
     </Application.Resources>
 
 </Application>

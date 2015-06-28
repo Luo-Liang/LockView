@@ -15,7 +15,7 @@ namespace InfoViewApp.InterestGathering
         public BingSource()
         {
             RefreshTimeInMinutes = 86400;
-            Name = "Bing (CHN) word of the day";
+            SourceName = "Bing (CHN) word of the day";
             this.RequestString = "http://cn.bing.com/dict/?mkt=zh-CN&setlang=ZH";
             HeadlineSelectionPath = "//*[@id=\"sw_content\"]/div[2]/div/div[1]/div/div[2]/div[1]/div[1]/a";
             SecondaryLineSelectionPath = "//*[@id=\"sw_content\"]/div[2]/div/div[1]/div/div[2]/div[1]/div[4]";
@@ -28,7 +28,7 @@ namespace InfoViewApp.InterestGathering
         public ICIBASource()
         {
             RefreshTimeInMinutes = 86400;
-            Name = "ICIBA sentence of the day";
+            SourceName = "ICIBA sentence of the day";
             this.RequestString = "http://news.iciba.com/dailysentence";
             HeadlineSelectionPath = "//*[@id=\"dailyEcont\"]/div[2]/h5[1]/a[1]";
             SecondaryLineSelectionPath = "//*[@id=\"dailyEcont\"]/div[2]/h5[2]";
@@ -41,7 +41,7 @@ namespace InfoViewApp.InterestGathering
         public MerriamWebsterSource()
         {
             RefreshTimeInMinutes = 86400;
-            Name = "merriam webster word of the day";
+            SourceName = "merriam webster word of the day";
             this.RequestString = "http://www.merriam-webster.com/word-of-the-day/";
             HeadlineSelectionPath = "//strong[@class=\"main_entry_word\"]";
             SecondaryLineSelectionPath = "//span[@class=\"ssens\"]";
@@ -68,7 +68,7 @@ namespace InfoViewApp.InterestGathering
                     {
                         contract.Title = data.Split(' ')[0];
                         contract.Content = data.Substring(contract.Title.Length);
-                        contract.Publisher = Name;
+                        contract.Publisher = SourceName;
                     }
                 }
             }
@@ -80,7 +80,7 @@ namespace InfoViewApp.InterestGathering
     {
         public CET46Collection()
         {
-            Name = "CET 4/6 Collection";
+            SourceName = "CET 4/6 Collection";
             //  this.RequestString = "";
             Content = LanguageSourceBase.ContentType.Word;
             SourcePath = "wl.txt";
@@ -92,7 +92,7 @@ namespace InfoViewApp.InterestGathering
     {
         public TOEFLCollection()
         {
-            Name = "TOEFL Collection";
+            SourceName = "TOEFL Collection";
             Content = ContentType.Word;
             SourcePath = "toefltxt.txt";
             LineCount = 2792;
@@ -103,7 +103,7 @@ namespace InfoViewApp.InterestGathering
     {
         public GRECollection()
         {
-            Name = "GRE Collection";
+            SourceName = "GRE Collection";
             Content = ContentType.Word;
             SourcePath = "gretxt.txt";
             LineCount = 7154;

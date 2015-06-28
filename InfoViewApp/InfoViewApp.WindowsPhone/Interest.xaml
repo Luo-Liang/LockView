@@ -126,7 +126,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
                         <TextBlock FontSize="20" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
-                        <TextBlock FontWeight="Light" FontSize="20" TextWrapping="Wrap"   Text="{Binding SecondLine}"/>
+                        <TextBlock FontWeight="Light" FontSize="16" TextWrapping="Wrap"   Text="{Binding SecondLine}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

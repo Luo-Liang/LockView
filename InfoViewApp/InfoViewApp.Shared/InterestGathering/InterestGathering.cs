@@ -30,14 +30,16 @@ namespace InfoViewApp.InterestGathering
         public int PreviousInterestContentIdentifier { get; set; }
     }
 
-    interface IInterestGatherer
+    public interface IInterestGatherer
     {
         Task<InterestContent> RequestContent(InterestRequest request);
+        string SourceName { get; }
     }
 
     class InterestGatherer : IInterestGatherer
     {
         public string BaseRequestUrlTemplate = "INVALID";
+        public string SourceName { get; set; }
         public async Task<InterestContent> RequestContent(InterestRequest request)
         {
             return InterestContent.DefaultInterest;
