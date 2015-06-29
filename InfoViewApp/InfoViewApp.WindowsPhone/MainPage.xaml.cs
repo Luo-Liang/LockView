@@ -27,6 +27,13 @@ namespace InfoViewApp
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
+            this.Loaded += MainPage_Loaded;
+        }
+
+        void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+//            throw new NotImplementedException();
+            load.Begin();
         }
 
         /// <summary>
@@ -37,7 +44,7 @@ namespace InfoViewApp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
-            load.Begin();
+            //load.Begin();
             // TODO: If your application contains multiple pages, ensure that you are
             // handling the hardware Back button by registering for the
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.

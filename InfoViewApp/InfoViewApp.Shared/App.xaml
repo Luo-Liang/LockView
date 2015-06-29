@@ -4,6 +4,7 @@
     xmlns:newsFeed="using:InfoViewApp.InterestGathering.NewsFeed"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converter="using:InfoViewApp.Converter"
+    xmlns:language="using:InfoViewApp.InterestGathering.LanguageLearning"
     xmlns:local="using:InfoViewApp">
     <Application.Resources>
         <converter:enum2LocalizedStrConverter x:Key="enumLocConn"/>
@@ -13,6 +14,7 @@
         <converter:newsSource2Visibility x:Key="src2VisibilityConn"/>
         <converter:logicalNeg2Visibility x:Key="logicalNeg2VisibilityConn"/>
         <converter:logical2Visibility x:Key="logical2VisibilityConn"/>
+        <converter:str2LocStr x:Key="str2LocStrConn"/>
         <Color x:Key="AccentColor">#FF562E8F</Color>
         <Color x:Key="LightAccentColor">#FF6F54A3</Color>
         <Color x:Key="Gray">#FF888888</Color>
@@ -165,7 +167,11 @@
             <local:ColorNameVM Color="Transparent" ColorName="Transparent"/>
         </local:ColorNameVMCollection>
         <newsFeed:FeedSources x:Key="definedNewsFeedSources">
-            <newsFeed:CustomizedFeedSource Name="Customized Source"/>
+            <newsFeed:CustomizedFeedSource Name="Customized Source">
+                <newsFeed:CustomizedFeedSource.FeedContentProviders>
+                    <newsFeed:NewsFeedCategory Topic="Customized"/>
+                </newsFeed:CustomizedFeedSource.FeedContentProviders>
+            </newsFeed:CustomizedFeedSource>
             <newsFeed:FeedSource Name="CNN">
                 <newsFeed:FeedSource.FeedContentProviders>
                     <newsFeed:NewsFeedCategory SourceName ="CNN Stories" Topic="Stories" XmlSource="http://rss.cnn.com/rss/cnn_topstories.rss"/>
@@ -182,6 +188,14 @@
                 </newsFeed:FeedSource.FeedContentProviders>
             </newsFeed:FeedSource>
         </newsFeed:FeedSources>
+        <language:LanguegeSources x:Key="definedLanguageSources">
+            <language:BingSource/>
+            <language:CET46Collection/>
+            <language:GRECollection/>
+            <language:ICIBASource/>
+            <language:MerriamWebsterSource/>
+            <language:TOEFLCollection/>
+        </language:LanguegeSources>
     </Application.Resources>
 
 </Application>

@@ -8,18 +8,20 @@ using System.Windows;
 using InfoViewApp;
 using Windows.Storage;
 
-namespace InfoViewApp.InterestGathering
+namespace InfoViewApp.InterestGathering.LanguageLearning
 {
     public class BingSource : LanguageSourceBase
     {
         public BingSource()
         {
             RefreshTimeInMinutes = 86400;
-            SourceName = "Bing (CHN) word of the day";
+            SourceName = "Bing";
             this.RequestString = "http://cn.bing.com/dict/?mkt=zh-CN&setlang=ZH";
             HeadlineSelectionPath = "//*[@id=\"sw_content\"]/div[2]/div/div[1]/div/div[2]/div[1]/div[1]/a";
             SecondaryLineSelectionPath = "//*[@id=\"sw_content\"]/div[2]/div/div[1]/div/div[2]/div[1]/div[4]";
             Content = ContentType.Word;
+            Language = LanguageType.EnUs;
+            TranslationLanguage = LanguageType.ZhCn;
         }
     }
 
@@ -28,11 +30,13 @@ namespace InfoViewApp.InterestGathering
         public ICIBASource()
         {
             RefreshTimeInMinutes = 86400;
-            SourceName = "ICIBA sentence of the day";
+            SourceName = "ICIBA";
             this.RequestString = "http://news.iciba.com/dailysentence";
             HeadlineSelectionPath = "//*[@id=\"dailyEcont\"]/div[2]/h5[1]/a[1]";
             SecondaryLineSelectionPath = "//*[@id=\"dailyEcont\"]/div[2]/h5[2]";
             Content = LanguageSourceBase.ContentType.Sentence;
+            Language = LanguageType.EnUs;
+            TranslationLanguage = LanguageType.ZhCn;
         }
     }
 
@@ -41,11 +45,13 @@ namespace InfoViewApp.InterestGathering
         public MerriamWebsterSource()
         {
             RefreshTimeInMinutes = 86400;
-            SourceName = "merriam webster word of the day";
+            SourceName = "Merriam Webster";
             this.RequestString = "http://www.merriam-webster.com/word-of-the-day/";
             HeadlineSelectionPath = "//strong[@class=\"main_entry_word\"]";
             SecondaryLineSelectionPath = "//span[@class=\"ssens\"]";
             Content = LanguageSourceBase.ContentType.Word;
+            Language = LanguageType.EnUs;
+            TranslationLanguage = LanguageType.EnUs;
         }
     }
 
@@ -85,6 +91,8 @@ namespace InfoViewApp.InterestGathering
             Content = LanguageSourceBase.ContentType.Word;
             SourcePath = "wl.txt";
             LineCount = 699;
+            Language = LanguageType.EnUs;
+            TranslationLanguage = LanguageType.ZhCn;
         }
     }
 
@@ -96,6 +104,8 @@ namespace InfoViewApp.InterestGathering
             Content = ContentType.Word;
             SourcePath = "toefltxt.txt";
             LineCount = 2792;
+            Language = LanguageType.EnUs;
+            TranslationLanguage = LanguageType.ZhCn;
         }
     }
 
@@ -107,6 +117,8 @@ namespace InfoViewApp.InterestGathering
             Content = ContentType.Word;
             SourcePath = "gretxt.txt";
             LineCount = 7154;
+            Language = LanguageType.EnUs;
+            TranslationLanguage = LanguageType.ZhCn;
         }
     }
 }

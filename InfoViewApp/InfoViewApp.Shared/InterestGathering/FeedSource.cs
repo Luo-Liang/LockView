@@ -23,7 +23,8 @@ namespace InfoViewApp.InterestGathering.NewsFeed
         Travel,
         Living,
         Video,
-        Student
+        Student,
+        Customized
     }
 
     public class NewsFeedCategory : IInterestGatherer
@@ -45,7 +46,7 @@ namespace InfoViewApp.InterestGathering.NewsFeed
                 var feed = new SyndicationFeed();
                 feed.Load(await client.GetStringAsync(XmlSource));
                 var items = feed.Items;
-                var content = items[0].Summary.Text;
+                var content = HtmlDecodingUtility.HtmlDecode(items[0].Summary.Text);
                 var title = items[0].Title.Text;
                 var publisher = SourceName;
                 return new InterestContent()
@@ -62,7 +63,13 @@ namespace InfoViewApp.InterestGathering.NewsFeed
         }
     }
 
-    public class CustomizedFeedSource : FeedSource { }
+    public class CustomizedFeedSource : FeedSource 
+    {
+        public CustomizedFeedSource():base()
+        {
+            FeedContentProviders = new List<IInterestGatherer>();
+        }
+    }
 
     public class FeedSource
     {

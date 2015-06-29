@@ -21,9 +21,9 @@ namespace InfoViewApp
                 BackgroundSecondLine = "Transparent",
                 BackgroundFirstLine = "Transparent",
                 BackgroundTitle = "Transparent",
-                FirstLineFont = new FontContract() { FontSize = 37, FontFamily = "Segoe UI" },
-                SecondLineFont = new FontContract() { FontSize = 24, FontFamily = "Segoe UI" },
-                TitleFont = new FontContract() { FontSize = 20, FontFamily = "Segoe UI" },
+                FirstLineFont = new FontContract() { FontSize = 18, FontFamily = "Segoe UI" },
+                SecondLineFont = new FontContract() { FontSize = 14, FontFamily = "Segoe UI" },
+                TitleFont = new FontContract() { FontSize = 24, FontFamily = "Segoe UI" },
                 ForegroundFirstLine = "White",
                 ForegroundSecondLine = "Gray",
                 ForegroundTitle = "White"

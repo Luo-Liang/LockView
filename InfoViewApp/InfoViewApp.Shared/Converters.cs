@@ -10,7 +10,7 @@ using Windows.UI.Xaml;
 
 namespace InfoViewApp.Converter
 {
-    class Str2BrushConverter : IValueConverter
+    public class Str2BrushConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -27,7 +27,7 @@ namespace InfoViewApp.Converter
             return clrNameRetrieval;
         }
     }
-    class Str2ColorConverter : IValueConverter
+    public class Str2ColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -43,8 +43,7 @@ namespace InfoViewApp.Converter
             return clrObj.ColorName.Replace(" ", "");
         }
     }
-
-    class int2FontConverter : IValueConverter
+    public class int2FontConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -61,8 +60,7 @@ namespace InfoViewApp.Converter
             };
         }
     }
-
-    class enum2LocalizedStrConverter : IValueConverter
+    public class enum2LocalizedStrConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -74,7 +72,6 @@ namespace InfoViewApp.Converter
             return Enum.Parse(targetType, value.ToString());
         }
     }
-
     public class newsSource2Visibility : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
@@ -89,7 +86,6 @@ namespace InfoViewApp.Converter
             throw new NotImplementedException();
         }
     }
-
     //accepts a boolean (and negates that) or a visibility value
     public class logicalNeg2Visibility:IValueConverter
     {
@@ -107,7 +103,6 @@ namespace InfoViewApp.Converter
             throw new NotImplementedException();
         }
     }
-
     //accepts a boolean or a visibility value
     public class logical2Visibility : IValueConverter
     {
@@ -118,6 +113,19 @@ namespace InfoViewApp.Converter
                 (bool)value :
                 (Visibility)value == Visibility.Visible;
             return isVisible ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class str2LocStr : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
