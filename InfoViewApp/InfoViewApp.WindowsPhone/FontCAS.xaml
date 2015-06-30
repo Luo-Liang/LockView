@@ -10,9 +10,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-            <TextBox TextWrapping="Wrap" Text="Customize the portion of the text you chose with new color and size." VerticalAlignment="Stretch" IsHitTestVisible="False" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" Foreground="White" FontFamily="Global User Interface" IsReadOnly="True"/>
-        </StackPanel>
+        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+    		<TextBlock TextWrapping="Wrap" Text="Customize the portion of the text you chose with new color and size." VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="20"/>
+    	</Grid>
         <ScrollViewer Margin="20,130,20,24" >
             <ScrollViewer.Resources>
                 <converter:int2FontConverter x:Key="intCon"/>
@@ -49,27 +49,27 @@
             <StackPanel x:Name="settingsGrid" Orientation="Vertical">
                 <StackPanel  Orientation="Vertical" VerticalAlignment="Top">
                     <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Title Foreground" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding ForegroundTitle, Mode=TwoWay,Converter={StaticResource strCon}}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <ComboBox SelectedItem="{Binding ForegroundTitle, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
                     <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Content Foreground" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding ForegroundFirstLine,Mode=TwoWay,Converter={StaticResource strCon}}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <ComboBox SelectedItem="{Binding ForegroundFirstLine, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
                     <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Title Background" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding BackgroundTitle,Mode=TwoWay,Converter={StaticResource strCon}}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <ComboBox SelectedItem="{Binding BackgroundTitle, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
                     <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Content Background" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding BackgroundFirstLine,Mode=TwoWay,Converter={StaticResource strCon}}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <ComboBox SelectedItem="{Binding BackgroundFirstLine, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
                     <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Title Fontsize" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding TitleFont,Mode=TwoWay,Converter={StaticResource intCon}}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <ComboBox SelectedItem="{Binding TitleFont, Converter={StaticResource intCon}, Mode=TwoWay}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
                     <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Content Fontsize" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding FirstLineFont,Mode=TwoWay,Converter={StaticResource intCon}}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <ComboBox SelectedItem="{Binding FirstLineFont, Converter={StaticResource intCon}, Mode=TwoWay}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
                 </StackPanel>
 
             </StackPanel>

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -34,24 +37,50 @@ namespace InfoViewApp
         WriteableBitmap WB_CroppedImage;//for cropped image
         //Variables for the crop feature
         Windows.Foundation.Point Point1, Point2;
-        Stream origStream;
         public ImageCropping()
         {
             InitializeComponent();
             //fire when render frame
-            this.Loaded += ImageCropping_Loaded;
         }
-        private void ImageCropping_Loaded(object sender, RoutedEventArgs e)
+        const string Locator = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt={0}";
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            FileOpenPicker openPicker = new FileOpenPicker();
-            openPicker.ViewMode = PickerViewMode.Thumbnail;
-            openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-            openPicker.FileTypeFilter.Add(".jpg");
-            openPicker.FileTypeFilter.Add(".jpeg");
-            openPicker.FileTypeFilter.Add(".png");
-            openPicker.PickSingleFileAndContinue();
-            //Set WriteableBitmap with OrgianlImage
+            base.OnNavigatedTo(e);
+            var parameter = e.Parameter;
+            var retrieveSource = parameter.ToString().Split(':')[1];
+            if (retrieveSource == "library")
+            {
+                FileOpenPicker openPicker = new FileOpenPicker();
+                openPicker.ViewMode = PickerViewMode.Thumbnail;
+                openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+                openPicker.FileTypeFilter.Add(".jpg");
+                openPicker.FileTypeFilter.Add(".jpeg");
+                openPicker.FileTypeFilter.Add(".png");
+                openPicker.PickSingleFileAndContinue();
+            }
+            else if (retrieveSource == "bing")
+            {
+                var lang = Language;
+                var reqString = string.Format(Locator, lang);
+                HttpClient client = new HttpClient();
+                progressRing.Visibility = Visibility.Visible;
+                SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                try
+                {
+                    var json = await client.GetStringAsync(reqString);
+                    var jObj = JsonObject.Parse(json);
+                    var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
+                    var response = await client.GetAsync(string.Format("http://www.bing.com{0}", imgRequestUrl));
+                    WB_CapturedImage = new WriteableBitmap(1, 1);
+                    WB_CapturedImage = await WB_CapturedImage.FromStream(await response.Content.ReadAsStreamAsync());
+                    OriginalImage.Source = WB_CapturedImage;
+                }
+                catch { }
+                progressRing.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
         }
+
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             var hO = canvas.HorizontalOffset;

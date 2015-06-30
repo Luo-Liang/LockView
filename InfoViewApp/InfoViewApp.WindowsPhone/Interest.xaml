@@ -7,108 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-	<Page.Resources>
-		<Style x:Key="ListBoxItemTemplate" TargetType="ListBoxItem">
-			<Setter Property="Background" Value="Transparent"/>
-			<Setter Property="TabNavigation" Value="Local"/>
-			<Setter Property="Padding" Value="6.5,8"/>
-			<Setter Property="HorizontalContentAlignment" Value="Left"/>
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="ListBoxItem">
-						<Border x:Name="LayoutRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-							<VisualStateManager.VisualStateGroups>
-								<VisualStateGroup x:Name="CommonStates">
-									<VisualStateGroup.Transitions>
-										<VisualTransition From="Pressed" To="Normal">
-											<Storyboard>
-												<PointerUpThemeAnimation Storyboard.TargetName="InnerGrid"/>
-											</Storyboard>
-										</VisualTransition>
-									</VisualStateGroup.Transitions>
-									<VisualState x:Name="Normal"/>
-									<VisualState x:Name="PointerOver"/>
-									<VisualState x:Name="Disabled">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="LayoutRoot">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
-											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ListBoxItemDisabledForegroundThemeBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-									<VisualState x:Name="Pressed">
-										<Storyboard>
-											<PointerDownThemeAnimation Storyboard.TargetName="InnerGrid"/>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-								</VisualStateGroup>
-								<VisualStateGroup x:Name="SelectionStates">
-									<VisualState x:Name="Unselected">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentPresenter.Foreground)" Storyboard.TargetName="ContentPresenter">
-												<DiscreteObjectKeyFrame KeyTime="0">
-													<DiscreteObjectKeyFrame.Value>
-														<SolidColorBrush Color="{StaticResource Gray}"/>
-													</DiscreteObjectKeyFrame.Value>
-												</DiscreteObjectKeyFrame>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-									<VisualState x:Name="Selected">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-									<VisualState x:Name="SelectedUnfocused">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-									<VisualState x:Name="SelectedDisabled">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="InnerGrid">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ListBoxItemSelectedDisabledBackgroundThemeBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ListBoxItemSelectedDisabledForegroundThemeBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-									<VisualState x:Name="SelectedPointerOver">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-									<VisualState x:Name="SelectedPressed">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-								</VisualStateGroup>
-							</VisualStateManager.VisualStateGroups>
-							<Grid x:Name="InnerGrid" Background="Transparent">
-								<ContentPresenter x:Name="ContentPresenter" Foreground="{StaticResource GrayBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-							</Grid>
-						</Border>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-	</Page.Resources>
-
     <Grid>
         <Grid.Resources>
             <local:ListBoxContentVMCollection x:Key="categories">
@@ -118,9 +16,9 @@
             </local:ListBoxContentVMCollection>
            
         </Grid.Resources>
-    	<StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-    		<TextBox IsHitTestVisible="False" TextWrapping="Wrap" Text="What would you like to read in your lock screen? Select a category from below." VerticalAlignment="Stretch" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" Foreground="White" FontFamily="Global User Interface"/>
-    	</StackPanel>
+        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+    		<TextBlock TextWrapping="Wrap" Text="What would you like to read in your lock screen? Select a category from below." VerticalAlignment="Stretch" Foreground="White" FontSize="20" Margin="20,10,14,10"/>
+    	</Grid>
         <ListBox x:Name="categorySelector" Margin="8,124,8,78" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemTemplate}" FontFamily="Global User Interface">
             <ListBox.ItemTemplate>
                 <DataTemplate>

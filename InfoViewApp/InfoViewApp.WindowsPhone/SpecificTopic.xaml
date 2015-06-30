@@ -9,16 +9,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-            <TextBox TextWrapping="Wrap" Text="Tell us about a specific topic. We'll gather all news about it for you." VerticalAlignment="Stretch" IsHitTestVisible="False" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" Foreground="White" FontFamily="Global User Interface" IsReadOnly="True"/>
-        </StackPanel>
+        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+    		<TextBlock TextWrapping="Wrap" Text="Tell us about a specific topic. We'll gather all news about it for you." VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="20" Margin="20,14,14,14"/>
+    	</Grid>
         <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Show me!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,12" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
         <TextBox TextChanged="specificTopicBox_TextChanged" x:Name="specificTopicBox" Height="27" Margin="19,202,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="361" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="1"/>
-        <TextBox IsHitTestVisible="False" TextWrapping="Wrap" Text="Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk." VerticalAlignment="Top" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="14,121,6,0" AcceptsReturn="True" Foreground="{StaticResource GrayBrush}" FontFamily="Global User Interface"/>
+        <TextBox IsHitTestVisible="False" TextWrapping="Wrap" Text="Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk." VerticalAlignment="Top" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1" Margin="14,121,14,0" AcceptsReturn="True" Foreground="{StaticResource GrayBrush}" FontFamily="Global User Interface"/>
         <TextBlock x:Name="Notice" FontWeight="Light" HorizontalAlignment="Left" Height="50" Margin="22,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="358" Foreground="{StaticResource GrayBrush}" FontSize="18.667">
     		<Run Text="LockView is not a news provider. All related news is culled from Internet."/>
     		<LineBreak/>

@@ -21,12 +21,9 @@
         	</Button.Background>
         </Button>
         <Rectangle StrokeThickness="2" Stroke="{StaticResource AccentBrush}"></Rectangle>
-        <StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-        	<TextBox TextWrapping="Wrap" Text="Swipe around to pick a best view. When done, click 'That's it!'" VerticalAlignment="Stretch" IsHitTestVisible="False" IsReadOnly="True" BorderBrush="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" SelectionHighlightColor="{x:Null}" Background="{x:Null}">
-        		<TextBox.Foreground>
-        			<SolidColorBrush Color="White"/>
-        		</TextBox.Foreground>
-        	</TextBox>
-        </StackPanel>
+        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+        	<TextBlock TextWrapping="Wrap" Text="Swipe around to pick a best view. When done, click 'That's it!'" VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="20"/>
+        </Grid>
+        <ProgressRing x:Name="progressRing" Margin="22,0,0,22" VerticalAlignment="Bottom" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" HorizontalAlignment="Left" IsActive="True" Visibility="Collapsed"/>
     </Grid>
 </Page>

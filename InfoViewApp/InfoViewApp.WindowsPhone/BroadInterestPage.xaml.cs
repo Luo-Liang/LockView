@@ -44,8 +44,9 @@ namespace InfoViewApp
 
             if (SaveBtn.Content as string == "Show me!")
             {
-                SaveBtn.Content = "Preview";
                 InterestContent interestContent = InterestContent.DefaultInterest;
+                SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                progressRing.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 //show me needs to get info.
                 if (newsSources.SelectedItem.GetType() == typeof(CustomizedFeedSource))
                 {
@@ -60,12 +61,14 @@ namespace InfoViewApp
                 LockViewApplicationState.Instance.PreviewContextContract.Title = interestContent.Title;
                 LockViewApplicationState.Instance.PreviewContextContract.FirstLine = interestContent.Content;
                 LockViewApplicationState.Instance.PreviewContextContract.SecondLine = interestContent.Publisher;
+                SaveBtn.Content = "Preview";
+                SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                progressRing.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
             else
             {
 
                 SaveBtn.Content = "Show me!";
-
                 Frame.Navigate(typeof(Preview));
             }
         }

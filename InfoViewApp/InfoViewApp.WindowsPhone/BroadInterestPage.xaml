@@ -92,9 +92,9 @@
 	</Page.Resources>
 
 	<Grid>
-		<StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-			<TextBox IsHitTestVisible="False" TextWrapping="Wrap" Text="Pick a news source, then select a category to continue." VerticalAlignment="Stretch" IsReadOnly="True" BorderBrush="{x:Null}" BorderThickness="1" Margin="10" AcceptsReturn="True" Width="380" SelectionHighlightColor="{x:Null}" Background="{x:Null}" Foreground="White" Style="{StaticResource TextBoxAsTextBlock}" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False"/>
-		</StackPanel>
+		<Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+			<TextBlock IsHitTestVisible="False" TextWrapping="Wrap" Text="Pick a news source, then select a category to continue." VerticalAlignment="Stretch" FontSize="20" Margin="20,10,14,10" />
+		</Grid>
 		<ScrollViewer Margin="20,130,20,82" >
 			<StackPanel x:Name="settingsGrid" Orientation="Vertical">
 				<StackPanel  Orientation="Vertical" VerticalAlignment="Top">
@@ -102,22 +102,22 @@
                     <ComboBox x:Name="newsSources" SelectionChanged="newsSources_SelectionChanged" ItemsSource="{StaticResource definedNewsFeedSources}"   VerticalAlignment="Top" FontFamily="Global User Interface">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=Name,Mode=OneWay}"/>
+                                <TextBlock Text="{Binding Name, Mode=OneWay}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 				</StackPanel>
-                <StackPanel Visibility="{Binding ElementName=customizedSourceStack, Path=Visibility, Converter={StaticResource logicalNeg2VisibilityConn}}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
+                <StackPanel Visibility="{Binding Visibility, Converter={StaticResource logicalNeg2VisibilityConn}, ElementName=customizedSourceStack}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
 					<TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Topic" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox x:Name="newsTopic" SelectionChanged="newsTopic_SelectionChanged" ItemsSource="{Binding ElementName=newsSources, Path=SelectedItem.FeedContentProviders,Mode=OneWay}"  VerticalAlignment="Top" FontFamily="Global User Interface" >
+                    <ComboBox x:Name="newsTopic" SelectionChanged="newsTopic_SelectionChanged" ItemsSource="{Binding SelectedItem.FeedContentProviders, ElementName=newsSources, Mode=OneWay}"  VerticalAlignment="Top" FontFamily="Global User Interface" >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=Topic,Mode=OneWay,Converter={StaticResource enumLocConn}}"/>
+                                <TextBlock Text="{Binding Topic, Converter={StaticResource enumLocConn}, Mode=OneWay}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 				</StackPanel>
-				<StackPanel x:Name="customizedSourceStack" Visibility="{Binding ElementName=newsSources,Path=SelectedItem,Converter={StaticResource src2VisibilityConn}}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
+				<StackPanel x:Name="customizedSourceStack" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
 					<TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="RSS/Atom Address" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
 					<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="You've chosen to use RSS/Atom source of your choice, please specify the address here." VerticalAlignment="Top" Width="362" FontSize="16" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0"/>
 					<TextBox TextChanged="RssField_TextChanged" x:Name="rssField" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="1" Margin="0,10,0,0"/>
@@ -135,6 +135,7 @@
 				<SolidColorBrush Color="{StaticResource AccentColor}"/>
 			</Button.Background>
 		</Button>
+		<ProgressRing x:Name="progressRing" Margin="22,0,0,22" VerticalAlignment="Bottom" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" HorizontalAlignment="Left" IsActive="True" Visibility="Collapsed"/>
 
 	</Grid>
 </Page>
