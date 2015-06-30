@@ -73,11 +73,29 @@ namespace InfoViewApp
                     var response = await client.GetAsync(string.Format("http://www.bing.com{0}", imgRequestUrl));
                     WB_CapturedImage = new WriteableBitmap(1, 1);
                     WB_CapturedImage = await WB_CapturedImage.FromStream(await response.Content.ReadAsStreamAsync());
-                    OriginalImage.Source = WB_CapturedImage;
+                    OriginalImage.Source = LoadScaledImage(WB_CapturedImage);
                 }
                 catch { }
                 progressRing.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+        }
+
+        private WriteableBitmap LoadScaledImage(WriteableBitmap WB_CapturedImage)
+        {
+            var imgHeight = WB_CapturedImage.PixelHeight;
+            var imgWidth = WB_CapturedImage.PixelWidth;
+            double widthPixel, heightPixel;
+            ResolutionProvider.GetScreenSizeInPixels(out heightPixel, out widthPixel);
+            if (widthPixel / heightPixel > imgWidth / imgHeight)
+            {
+                //swipe up and down
+                return WB_CapturedImage.Resize((int)widthPixel, (int)((widthPixel / imgWidth) * imgHeight), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+            }
+            else
+            {
+                //swipe left and right.
+                return WB_CapturedImage.Resize((int)(imgWidth * (heightPixel / imgHeight)), (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
         }
 
@@ -103,11 +121,11 @@ namespace InfoViewApp
             }
             OriginalImage.Source = WB_CroppedImage;
             //this is a jpeg stream now.
-            double widthPixel,heightPixel;
-            ResolutionProvider.GetScreenSizeInPixels(out heightPixel,out widthPixel);
-            WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel,WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+            double widthPixel, heightPixel;
+            ResolutionProvider.GetScreenSizeInPixels(out heightPixel, out widthPixel);
+            WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             await SaveBitmapAsJpeg(LockViewApplicationState.Instance.PersistFileName, WB_CapturedImage);
-            Frame.Navigate(typeof(Interest));
+            //Frame.Navigate(typeof(Interest));
         }
 
         async Task SaveBitmapAsJpeg(string fileName, WriteableBitmap bitmap)
@@ -148,7 +166,7 @@ namespace InfoViewApp
                 var storageFile = args.Files[0];
                 WB_CapturedImage = new WriteableBitmap(1, 1);
                 WB_CapturedImage = await WB_CapturedImage.FromStream(await storageFile.OpenStreamForReadAsync());
-                OriginalImage.Source = WB_CapturedImage;
+                OriginalImage.Source = LoadScaledImage(WB_CapturedImage);
                 //OriginalImage.Height = WB_CapturedImage.PixelHeight;
                 //OriginalImage.Width = WB_CapturedImage.PixelWidth;
             }
