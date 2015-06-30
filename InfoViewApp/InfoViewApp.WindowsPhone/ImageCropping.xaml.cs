@@ -73,7 +73,7 @@ namespace InfoViewApp
                     var response = await client.GetAsync(string.Format("http://www.bing.com{0}", imgRequestUrl));
                     WB_CapturedImage = new WriteableBitmap(1, 1);
                     WB_CapturedImage = await WB_CapturedImage.FromStream(await response.Content.ReadAsStreamAsync());
-                    OriginalImage.Source = LoadScaledImage(WB_CapturedImage);
+                    OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
                 }
                 catch { }
                 progressRing.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
@@ -166,7 +166,7 @@ namespace InfoViewApp
                 var storageFile = args.Files[0];
                 WB_CapturedImage = new WriteableBitmap(1, 1);
                 WB_CapturedImage = await WB_CapturedImage.FromStream(await storageFile.OpenStreamForReadAsync());
-                OriginalImage.Source = LoadScaledImage(WB_CapturedImage);
+                OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
                 //OriginalImage.Height = WB_CapturedImage.PixelHeight;
                 //OriginalImage.Width = WB_CapturedImage.PixelWidth;
             }
