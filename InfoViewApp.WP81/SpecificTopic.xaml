@@ -1,0 +1,38 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="InfoViewApp.SpecificTopic"
+        xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InfoViewApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+            <TextBlock TextWrapping="Wrap" Text="Tell us about a specific topic. We'll gather all news about it for you." VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="20" Margin="20,14,14,14"/>
+        </Grid>
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Show me!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,12" FontFamily="Global User Interface">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource AccentColor}"/>
+            </Button.Background>
+        </Button>
+        <TextBox TextChanged="specificTopicBox_TextChanged" x:Name="specificTopicBox" Margin="19,202,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="1"/>
+        <TextBlock  IsHitTestVisible="False" TextWrapping="Wrap" Text="Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk." VerticalAlignment="Top"  Margin="14,121,14,0" Foreground="{StaticResource GrayBrush}" FontFamily="Global User Interface"/>
+        <TextBlock x:Name="Notice" FontWeight="Light" HorizontalAlignment="Left" Height="50" Margin="22,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="358" Foreground="{StaticResource GrayBrush}" FontSize="18.667">
+    		<Run Text="LockView is not a news provider. All related news is culled from Internet."/>
+    		<LineBreak/>
+    		<LineBreak/>
+    		<Run/>
+        </TextBlock>
+        <ProgressBar x:Name="progressRing" Margin="22,0,0,22" VerticalAlignment="Bottom" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" HorizontalAlignment="Left"/>
+        <ScrollViewer Margin="22,335,22,84">
+            <StackPanel x:Name="previewStack" Orientation="Vertical">
+                <TextBlock TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Top" FontSize="24" />
+                <TextBlock Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Content}" VerticalAlignment="Top" FontSize="20"/>
+                <TextBlock Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Publisher}" VerticalAlignment="Top" FontSize="16"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</phone:PhoneApplicationPage>

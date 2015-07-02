@@ -1,0 +1,40 @@
+﻿<phone:PhoneApplicationPage
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    x:Class="InfoViewApp.Interest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InfoViewApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Resources>
+            <local:ListBoxContentVMCollection x:Key="categories">
+                <local:ListBoxContentVM SecondLine="This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news." FirstLine="SPECIFIC TOPIC OF YOUR CHOICE"/>
+                <local:ListBoxContentVM SecondLine="Love News, Sports or Finance? We got you covered. Choose this option if you would like to see a broader news topic." FirstLine="GENERIC NEWS TOPIC"/>
+                <local:ListBoxContentVM SecondLine="Transform your phone to a best language learning tool. Learn a new word from a language of your choice right from the lock screen!" FirstLine="LANGUAGE LEARNING"/>
+            </local:ListBoxContentVMCollection>
+
+        </Grid.Resources>
+        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+            <TextBlock TextWrapping="Wrap" Text="What would you like to read in your lock screen? Select a category from below." VerticalAlignment="Stretch" Foreground="White" FontSize="20" Margin="20,10,14,10"/>
+        </Grid>
+        <ListBox x:Name="categorySelector" Margin="8,124,8,78" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemTemplate}" FontFamily="Global User Interface">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontSize="20" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
+                        <TextBlock FontWeight="Light" FontSize="16" TextWrapping="Wrap"   Text="{Binding SecondLine}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,145.5,10" FontFamily="Global User Interface">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource AccentColor}"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</phone:PhoneApplicationPage>
