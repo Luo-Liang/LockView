@@ -1,0 +1,80 @@
+﻿<Page
+    x:Class="InfoViewApp.WP81FontCAS"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InfoViewApp.WP81"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:converter="using:InfoViewApp.WP81Converter"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+    		<TextBlock TextWrapping="Wrap" Text="Customize the portion of the text you chose with new color and size." VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="20"/>
+    	</Grid>
+        <ScrollViewer Margin="20,130,20,24" >
+            <ScrollViewer.Resources>
+                <converter:int2FontConverter x:Key="intCon"/>
+                <converter:Str2ColorConverter x:Key="strCon"/>
+                <local:IntegerCollection x:Key="intCollection">
+                    <x:Int32>10</x:Int32>
+                    <x:Int32>11</x:Int32>
+                    <x:Int32>12</x:Int32>
+                    <x:Int32>13</x:Int32>
+                    <x:Int32>14</x:Int32>
+                    <x:Int32>15</x:Int32>
+                    <x:Int32>16</x:Int32>
+                    <x:Int32>17</x:Int32>
+                    <x:Int32>18</x:Int32>
+                    <x:Int32>19</x:Int32>
+                    <x:Int32>20</x:Int32>
+                    <x:Int32>21</x:Int32>
+                    <x:Int32>22</x:Int32>
+                    <x:Int32>23</x:Int32>
+                    <x:Int32>24</x:Int32>
+                    <x:Int32>25</x:Int32>
+                </local:IntegerCollection>
+                <DataTemplate x:Key="colorTemplate">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Height="20" Width="20" StrokeThickness="0">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="{Binding Color}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock Margin="15,0,0,0" Text="{Binding ColorName}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ScrollViewer.Resources>
+            <StackPanel x:Name="settingsGrid" Orientation="Vertical">
+                <StackPanel  Orientation="Vertical" VerticalAlignment="Top">
+                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Title Foreground" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
+                    <ComboBox SelectedItem="{Binding ForegroundTitle, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
+                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Content Foreground" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
+                    <ComboBox SelectedItem="{Binding ForegroundFirstLine, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
+                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Title Background" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
+                    <ComboBox SelectedItem="{Binding BackgroundTitle, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
+                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Content Background" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
+                    <ComboBox SelectedItem="{Binding BackgroundFirstLine, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
+                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Title Fontsize" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
+                    <ComboBox SelectedItem="{Binding TitleFont, Converter={StaticResource intCon}, Mode=TwoWay}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
+                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Content Fontsize" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
+                    <ComboBox SelectedItem="{Binding FirstLineFont, Converter={StaticResource intCon}, Mode=TwoWay}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+    </Grid>
+</Page>

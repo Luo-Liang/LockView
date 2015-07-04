@@ -16,17 +16,25 @@
         </Grid.Resources>
         <Image x:Name="previewImage" Margin="0,0,-400,0" Source="Assets/seattle_skyline.jpg" Stretch="Fill"/>
 
-        <Button x:Name="SaveBtn" Visibility="Visible" Content="Great!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10" FontFamily="Global User Interface">
+        <Button x:Name="SaveBtn" Visibility="Visible" Content="Great!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface" Width="140" Height="72">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <StackPanel MouseLeftButtonDown="previewStack_MouseLeftButtonDown" x:Name="previewStack" Margin="19,24,10,0" Orientation="Vertical" VerticalAlignment="Top">
-            <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" Text="{Binding PreviewContextContract.Title}" VerticalAlignment="Top" BorderThickness="0" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle,Converter={StaticResource str2clr}}" Background="{Binding PreviewFormattingContract.BackgroundTitle,Converter={StaticResource str2clr}}"/>
-            <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding PreviewContextContract.FirstLine}" BorderThickness="0" FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine,Converter={StaticResource str2clr}}" Background="{Binding PreviewFormattingContract.BackgroundFirstLine,Converter={StaticResource str2clr}}"/>
-            <TextBox Text="{Binding PreviewContextContract.SecondLine}" IsReadOnly="True" AcceptsReturn="True" BorderThickness="0" Background="Transparent" Foreground="Gray"  Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
-            </TextBox>
-
+        <StackPanel MouseLeftButtonDown="previewStack_MouseLeftButtonDown" x:Name="previewStack" Margin="30,30,30,0" Orientation="Vertical" VerticalAlignment="Top">
+            <Grid Background="{Binding PreviewFormattingContract.BackgroundTitle, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" Text="{Binding PreviewContextContract.Title}" VerticalAlignment="Top" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle,Mode=TwoWay,Converter={StaticResource str2clr}}"  FontFamily="Portable User Interface"  />
+            </Grid>
+            <Grid Background="{Binding PreviewFormattingContract.BackgroundFirstLine, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding PreviewContextContract.FirstLine}"  FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine,Mode=TwoWay,Converter={StaticResource str2clr}}" />
+            </Grid>
+            <Grid Margin="0,0,0,5">
+                <TextBlock Text="{Binding PreviewContextContract.SecondLine}"   Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource Gray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </Grid>
         </StackPanel>
 
     </Grid>

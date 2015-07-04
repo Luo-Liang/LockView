@@ -1,9 +1,18 @@
 ﻿using InfoViewApp.WP81.InterestGathering;
-using Microsoft.Phone.Controls;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Navigation;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -12,7 +21,7 @@ namespace InfoViewApp.WP81
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SpecificTopic : PhoneApplicationPage
+    public sealed partial class SpecificTopic : Page
     {
         public SpecificTopic()
         {
@@ -33,16 +42,16 @@ namespace InfoViewApp.WP81
             if (SaveBtn.Content.ToString() == "Show me!")
             {
                 SaveBtn.Content = "Preview";
-                progressRing.Visibility = Visibility.Visible;
+                progressRing.IsActive = true;
                 GoogleSpecificInterestGatherer gatherer = new GoogleSpecificInterestGatherer();
-                SaveBtn.Visibility = Visibility.Collapsed;
+                SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 var interest = await gatherer.RequestContent(new InterestRequest()
                     {
                         InterestString = specificTopicBox.Text,
                         PreviousInterestContentIdentifier = 0
                     });
-                SaveBtn.Visibility = Visibility.Visible;
-                progressRing.Visibility = Visibility.Collapsed;
+                SaveBtn.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                progressRing.IsActive = false;
                 if (interest != null)
                 {
                     LockViewApplicationState.Instance.PreviewContextContract.Title = interest.Title;
@@ -59,7 +68,7 @@ namespace InfoViewApp.WP81
             else
             {
                 SaveBtn.Content = "Show me!";
-                NavigationService.Navigate(new System.Uri("/Preview.xaml", System.UriKind.Relative));
+                Frame.Navigate(typeof(Preview));
                 //Navigate to customization page.
             }
         }
@@ -71,15 +80,6 @@ namespace InfoViewApp.WP81
             {
                 SaveBtn.Content = "Show me!";
                 SaveBtn.IsEnabled = false;
-            }
-        }
-
-        private void specificTopicBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                this.Focus(); // dismiss the keyboard
-                              // Call the submit method here
             }
         }
     }

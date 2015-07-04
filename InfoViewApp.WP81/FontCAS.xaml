@@ -9,36 +9,56 @@
     xmlns:clr="clr-namespace:System;assembly=mscorlib"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:converter="clr-namespace:InfoViewApp.WP81.Converter"
-    Background="{StaticResource PhoneBackgroundBrush}">
-
+    Background="{StaticResource PhoneBackgroundBrush}"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
     <Grid>
         <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-    		<TextBlock TextWrapping="Wrap" Text="Customize the portion of the text you chose with new color and size." VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="20"/>
-    	</Grid>
+            <TextBlock TextWrapping="Wrap" Text="Customize the portion of the text you chose with new color and size." VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="24"/>
+        </Grid>
         <ScrollViewer Margin="20,130,20,24" >
             <ScrollViewer.Resources>
                 <converter:int2FontConverter x:Key="intCon"/>
                 <converter:Str2ColorConverter x:Key="strCon"/>
                 <local:IntegerCollection x:Key="intCollection">
-                    <clr:Int32>10</clr:Int32>
-                    <clr:Int32>11</clr:Int32>
                     <clr:Int32>12</clr:Int32>
-                    <clr:Int32>13</clr:Int32>
                     <clr:Int32>14</clr:Int32>
-                    <clr:Int32>15</clr:Int32>
                     <clr:Int32>16</clr:Int32>
-                    <clr:Int32>17</clr:Int32>
                     <clr:Int32>18</clr:Int32>
-                    <clr:Int32>19</clr:Int32>
                     <clr:Int32>20</clr:Int32>
-                    <clr:Int32>21</clr:Int32>
                     <clr:Int32>22</clr:Int32>
-                    <clr:Int32>23</clr:Int32>
                     <clr:Int32>24</clr:Int32>
-                    <clr:Int32>25</clr:Int32>
+                    <clr:Int32>26</clr:Int32>
+                    <clr:Int32>28</clr:Int32>
+                    <clr:Int32>30</clr:Int32>
+                    <clr:Int32>32</clr:Int32>
+                    <clr:Int32>34</clr:Int32>
+                    <clr:Int32>36</clr:Int32>
+                    <clr:Int32>38</clr:Int32>
+                    <clr:Int32>40</clr:Int32>
+                    <clr:Int32>42</clr:Int32>
                 </local:IntegerCollection>
                 <DataTemplate x:Key="colorTemplate">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
                         <Rectangle Height="20" Width="20" StrokeThickness="0">
                             <Rectangle.Fill>
                                 <SolidColorBrush Color="{Binding Color}"/>
@@ -47,31 +67,46 @@
                         <TextBlock Margin="15,0,0,0" Text="{Binding ColorName}"/>
                     </StackPanel>
                 </DataTemplate>
+                <DataTemplate x:Key="colorTemplateFull">
+                    <StackPanel Margin="10" Orientation="Horizontal">
+                        <Rectangle Height="25" Width="25" StrokeThickness="0">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="{Binding Color}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock FontSize="32" Margin="15,0,0,0" Text="{Binding ColorName}"/>
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate x:Key="colorTemplateFullInteger">
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal">
+                        <TextBlock FontSize="32" Margin="0,0,0,0" Text="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
             </ScrollViewer.Resources>
             <StackPanel x:Name="settingsGrid" Orientation="Vertical">
                 <StackPanel  Orientation="Vertical" VerticalAlignment="Top">
-                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Title Foreground" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding ForegroundTitle, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Title Foreground" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <toolkit:ListPicker SelectedItem="{Binding ForegroundTitle, Converter={StaticResource strCon}, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFull}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
-                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Content Foreground" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding ForegroundFirstLine, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Content Foreground" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <toolkit:ListPicker SelectedItem="{Binding ForegroundFirstLine, Converter={StaticResource strCon}, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFull}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
-                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Title Background" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding BackgroundTitle, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Title Background" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <toolkit:ListPicker SelectedItem="{Binding BackgroundTitle, Converter={StaticResource strCon}, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFull}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
-                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Content Background" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding BackgroundFirstLine, Converter={StaticResource strCon}, Mode=TwoWay}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Content Background" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <toolkit:ListPicker SelectedItem="{Binding BackgroundFirstLine, Converter={StaticResource strCon}, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFull}" ItemsSource="{StaticResource colorCollection}" ItemTemplate="{StaticResource colorTemplate}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
-                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Title Fontsize" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding TitleFont, Converter={StaticResource intCon}, Mode=TwoWay}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Title Fontsize" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <toolkit:ListPicker SelectedItem="{Binding TitleFont, Converter={StaticResource intCon}, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFullInteger}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
-                    <TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Content Fontsize" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
-                    <ComboBox SelectedItem="{Binding FirstLineFont, Converter={StaticResource intCon}, Mode=TwoWay}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Content Fontsize" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <toolkit:ListPicker SelectedItem="{Binding FirstLineFont, Converter={StaticResource intCon}, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFullInteger}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
                 </StackPanel>
 
             </StackPanel>

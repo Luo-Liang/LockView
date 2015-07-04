@@ -52,7 +52,7 @@ namespace InfoViewApp.WP81.InterestGathering
                 fixedString = fixedString.Substring(0, fixedString.LastIndexOf(" "));
             }
 
-            fixedString = fixedString.Trim() + "...";
+            fixedString += "...";
 
             return fixedString;
         }

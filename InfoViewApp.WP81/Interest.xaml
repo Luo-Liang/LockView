@@ -45,19 +45,19 @@
 
         </Grid.Resources>
         <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-            <TextBlock TextWrapping="Wrap" Text="What would you like to read in your lock screen? Select a category from below." VerticalAlignment="Stretch" Foreground="White" FontSize="20" Margin="20,10,14,10"/>
+            <TextBlock TextWrapping="Wrap" Text="What would you like to read in your lock screen? Select a category from below." VerticalAlignment="Stretch" Foreground="White" FontSize="24" Margin="20,10,14,10" FontFamily="Portable User Interface"/>
         </Grid>
-        <ListBox x:Name="categorySelector" Margin="8,124,8,78" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Global User Interface">
+        <ListBox x:Name="categorySelector" Margin="20,146,14,78" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Global User Interface">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock FontSize="20" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
-                        <TextBlock FontWeight="Light" FontSize="16" TextWrapping="Wrap"   Text="{Binding SecondLine}"/>
+                        <TextBlock FontSize="24" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
+                        <TextBlock FontFamily="Segoe UI Light" FontWeight="Light" FontSize="21.333" TextWrapping="Wrap"   Text="{Binding SecondLine}" Margin="0,0,0,10"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,145.5,10" FontFamily="Global User Interface">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,145.5,10" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

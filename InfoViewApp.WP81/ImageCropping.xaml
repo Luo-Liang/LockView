@@ -43,15 +43,15 @@
             <!--Rectangle to be used for Crop Original Image-->
         </ScrollViewer>
         <!--Cropped Image-->
-        <Button Name="SaveBtn" Visibility="Visible" Content="That's it!" Click="go_Select"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10">
+        <Rectangle StrokeThickness="2" Stroke="{StaticResource AccentBrush}"></Rectangle>
+        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+            <TextBlock TextWrapping="Wrap" Text="Swipe around to pick a best view. When done, click 'That's it!'" VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="24"/>
+        </Grid>
+        <ProgressBar x:Name="progressRing" Margin="0" VerticalAlignment="Top" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" IsIndeterminate="True" Visibility="Collapsed"/>
+        <Button x:Name="SaveBtn" Visibility="Visible" Content="That's it!" Click="go_Select"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,10" Width="140" FontFamily="Portable User Interface" Height="72">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <Rectangle StrokeThickness="2" Stroke="{StaticResource AccentBrush}"></Rectangle>
-        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-            <TextBlock TextWrapping="Wrap" Text="Swipe around to pick a best view. When done, click 'That's it!'" VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="20"/>
-        </Grid>
-        <ProgressBar x:Name="progressRing" Margin="22,0,0,22" VerticalAlignment="Bottom" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" HorizontalAlignment="Left"  Visibility="Collapsed"/>
     </Grid>
 </phone:PhoneApplicationPage>

@@ -1,0 +1,86 @@
+﻿<Page
+    x:Class="InfoViewApp.WP81LanguageSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InfoViewApp.WP81"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+	<Page.Resources>
+		<x:Double x:Key="TextControlThemeMinWidth">51</x:Double>
+		<x:Double x:Key="TextControlThemeMinHeight">34</x:Double>
+		<Thickness x:Key="TextControlBorderThemeThickness">2.5</Thickness>
+		<FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
+		<x:Double x:Key="ContentControlFontSize">20.26</x:Double>
+		<Thickness x:Key="TextControlThemePadding">7,0.8,8,0</Thickness>
+		<Thickness x:Key="TextControlMarginThemeThickness">0,9.5,0,9.5</Thickness>
+		<Thickness x:Key="TextControlHeaderMarginThemeThickness">0,0,0,4.8</Thickness>
+	</Page.Resources>
+
+    <Grid>
+    	<StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+    		<TextBlock IsHitTestVisible="False" TextWrapping="Wrap" Text="What do you want to learn today?" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Left" Margin="20,10,14,10"/>
+    	</StackPanel>
+    	<ScrollViewer Margin="20,100,20,82" >
+    		<StackPanel x:Name="settingsGrid" Orientation="Vertical">
+    			<StackPanel  Orientation="Vertical" VerticalAlignment="Top">
+    				<TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Language" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}" FontFamily="Global User Interface"/>
+    				<ComboBox x:Name="newsSources" SelectionChanged="newsSources_SelectionChanged" ItemsSource="{StaticResource definedLanguageSources}"   VerticalAlignment="Top" FontFamily="Global User Interface">
+    					<ComboBox.ItemTemplate>
+    						<DataTemplate>
+    							<TextBlock Text="{Binding Mode=OneWay,Converter={StaticResource enumLocConn}}"/>
+    						</DataTemplate>
+    					</ComboBox.ItemTemplate>
+    				</ComboBox>
+    			</StackPanel>
+    			<StackPanel Visibility="{Binding Visibility, Converter={StaticResource logicalNeg2VisibilityConn}, ElementName=customizedSourceStack}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
+    				<TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Translation Language" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
+    				<ComboBox x:Name="newsTopic" SelectionChanged="newsTopic_SelectionChanged" ItemsSource="{StaticResource definedLanguageSources}"  VerticalAlignment="Top" FontFamily="Global User Interface" >
+    					<ComboBox.ItemTemplate>
+    						<DataTemplate>
+    							<TextBlock Text="{Binding Converter={StaticResource enumLocConn}, Mode=OneWay}"/>
+    						</DataTemplate>
+    					</ComboBox.ItemTemplate>
+    				</ComboBox>
+    			</StackPanel>
+    			<StackPanel Visibility="{Binding Visibility, Converter={StaticResource logicalNeg2VisibilityConn}, ElementName=customizedSourceStack}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
+    				<TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Type" VerticalAlignment="Top" Width="362" FontSize="20" Foreground="{StaticResource LightAccentBrush}"/>
+                    <ComboBox x:Name="languageType" SelectionChanged="languageType_SelectionChanged" ItemsSource="{StaticResource definedLanguageSources}"  VerticalAlignment="Top" FontFamily="Global User Interface" >
+    					<ComboBox.ItemTemplate>
+    						<DataTemplate>
+    							<TextBlock Text="{Binding Converter={StaticResource enumLocConn}, Mode=OneWay}"/>
+    						</DataTemplate>
+    					</ComboBox.ItemTemplate>
+    				</ComboBox>
+    			</StackPanel>
+    			<StackPanel Visibility="{Binding Visibility, Converter={StaticResource logicalNeg2VisibilityConn}, ElementName=customizedSourceStack}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0" Background="Black">
+    				<TextBlock HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="Suggested Source" VerticalAlignment="Top" FontSize="20" FontWeight="Light" Foreground="White" TextAlignment="Center"/>
+    				<ComboBox x:Name="languegeSource" SelectionChanged="languageSource_SelectionChanged" ItemsSource="{StaticResource definedLanguageSources}"  VerticalAlignment="Top" FontFamily="Global User Interface" >
+    					<ComboBox.Background>
+    						<SolidColorBrush Color="{StaticResource AccentColor}"/>
+    					</ComboBox.Background>
+    					<ComboBox.ItemTemplate>
+    						<DataTemplate>
+    							<TextBlock Text="{Binding SourceName, Converter={StaticResource str2LocStrConn}, Mode=OneWay}"/>
+    						</DataTemplate>
+    					</ComboBox.ItemTemplate>
+    				</ComboBox>
+    			</StackPanel>
+    			<StackPanel x:Name="previewStack" Orientation="Vertical" Margin="0,10,0,0">
+    				<TextBlock TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Top" FontSize="24" />
+    				<TextBlock Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Content}" VerticalAlignment="Top" FontSize="20"/>
+    				<TextBlock Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Publisher}" VerticalAlignment="Top" FontSize="16"/>
+    			</StackPanel>
+    		</StackPanel>
+
+    	</ScrollViewer>
+    	<Button Visibility="Collapsed" Click="SaveBtn_Click" x:Name="SaveBtn" Content="Show me!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,12" FontFamily="Global User Interface">
+    		<Button.Background>
+    			<SolidColorBrush Color="{StaticResource AccentColor}"/>
+    		</Button.Background>
+    	</Button>
+    	<ProgressRing x:Name="progressRing" Margin="22,0,0,22" VerticalAlignment="Bottom" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" HorizontalAlignment="Left" IsActive="True" Visibility="Collapsed"/>
+
+    </Grid>
+</Page>

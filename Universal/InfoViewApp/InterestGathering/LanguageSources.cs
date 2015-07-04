@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Text.RegularExpressions;
+using System.Net;
+using System.Xml;
 using Windows.Data.Xml.Dom;
-using Windows.Web.Http;
 
 namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
 {
@@ -17,13 +22,11 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             Word,
             Sentence
         }
-
         public enum LanguageType
         {
             ZhCn,
             EnUs
         }
-       
         public int RefreshTimeInMinutes
         {
             get;
@@ -60,7 +63,7 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
         public virtual async Task<InterestContent> RequestContent(InterestRequest request)
         {
             HttpClient client = new HttpClient();
-            var response = await client.GetStringAsync(new System.Uri(RequestString));
+            var response = await client.GetStringAsync(RequestString);
             XmlDocument document = new XmlDocument();
             document.LoadXml(response);
             IXmlNode node = null;
