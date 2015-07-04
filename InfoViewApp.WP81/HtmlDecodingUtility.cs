@@ -4,7 +4,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace InfoViewApp.InterestGathering
+namespace InfoViewApp.WP81.InterestGathering
 {
     static class HtmlDecodingUtility
     {

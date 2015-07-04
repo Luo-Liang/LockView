@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Web.Http;
 
-namespace InfoViewApp.InterestGathering
+namespace InfoViewApp.WP81.InterestGathering
 {
     class GoogleSpecificInterestGatherer : InterestGatherer
     {

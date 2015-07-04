@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using Windows.Storage.Streams;
 
-namespace InfoViewApp
+namespace InfoViewApp.WP81
 {
     class LockViewApplicationState
     {

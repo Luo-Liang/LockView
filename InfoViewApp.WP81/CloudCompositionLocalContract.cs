@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InfoViewApp
+namespace InfoViewApp.WP81
 {
     /// <summary>
     /// Always link this with CloudCompositionContracts.

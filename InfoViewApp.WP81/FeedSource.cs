@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Windows.Web.Http;
 using Windows.Web.Syndication;
-using System.Threading.Tasks;
+using System;
 
-namespace InfoViewApp.InterestGathering.NewsFeed
+namespace InfoViewApp.WP81.InterestGathering.NewsFeed
 {
     public enum CategoryTopic
     {
@@ -41,7 +41,7 @@ namespace InfoViewApp.InterestGathering.NewsFeed
             {
                 HttpClient client = new HttpClient();
                 var feed = new SyndicationFeed();
-                feed.Load(await client.GetStringAsync(new System.Uri(XmlSource)).AsAsynchronousOperation());
+                feed.Load(await client.GetStringAsync(new System.Uri(XmlSource)));
                 var items = feed.Items;
                 var content = HtmlDecodingUtility.HtmlDecode(items[0].Summary.Text);
                 var title = items[0].Title.Text;
@@ -72,10 +72,10 @@ namespace InfoViewApp.InterestGathering.NewsFeed
     {
         public override string ToString()
         {
-            return Name;
+            return SourceName;
         }
-        public string Name { get; set; }
-        public IList<IInterestGatherer> FeedContentProviders { get; set; }
+        public string SourceName { get; set; }
+        public List<IInterestGatherer> FeedContentProviders { get; set; }
         public FeedSource()
         {
             FeedContentProviders = new List<IInterestGatherer>();

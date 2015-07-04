@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InfoViewApp.InterestGathering
+namespace InfoViewApp.WP81.InterestGathering
 {
     public class InterestContent
     {

@@ -2,7 +2,7 @@
 
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
   <DefaultLanguage xmlns="" code="en-US"/>
-  <App xmlns="" ProductID="{0e308840-079b-4a17-af80-5765b451c998}" Title="InfoViewApp.WP81" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="InfoViewApp.WP81 author" Description="Sample description" SDOptOut ="false" BackUpOptOut ="false" Publisher="InfoViewApp.WP81" PublisherID="{ce5eaf25-4cc3-4383-9ed0-2b5d5847a348}">
+  <App xmlns="" ProductID="{0e308840-079b-4a17-af80-5765b451c998}" Title="InfoViewApp.WP81WP81" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="InfoViewApp.WP81WP81 author" Description="Sample description" SDOptOut ="false" BackUpOptOut ="false" Publisher="InfoViewApp.WP81WP81" PublisherID="{ce5eaf25-4cc3-4383-9ed0-2b5d5847a348}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING"/>
@@ -15,12 +15,12 @@
       <DefaultTask Name ="_default" NavigationPage="MainPage.xaml" ActivationPolicy="Resume"/>
     </Tasks>
     <Tokens>
-      <PrimaryToken TokenID="InfoViewApp.WP81Token" TaskName="_default">
+      <PrimaryToken TokenID="InfoViewApp.WP81WP81Token" TaskName="_default">
         <TemplateFlip>
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>InfoViewApp.WP81</Title>
+          <Title>InfoViewApp.WP81WP81</Title>
           <BackContent></BackContent>
           <BackBackgroundImageURI></BackBackgroundImageURI>
           <BackTitle></BackTitle>

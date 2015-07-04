@@ -10,7 +10,7 @@ using Windows.Foundation.Collections;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace InfoViewApp
+namespace InfoViewApp.WP81
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

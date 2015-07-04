@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace InfoViewApp
+namespace InfoViewApp.WP81
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -26,6 +26,7 @@ namespace InfoViewApp
         WriteableBitmap WB_CroppedImage;//for cropped image
         //Variables for the crop feature
         System.Windows.Point Point1, Point2;
+        bool PickInProcess = false;
         public ImageCropping()
         {
             InitializeComponent();
@@ -36,8 +37,7 @@ namespace InfoViewApp
         {
             base.OnNavigatedTo(e);
             var parameter = NavigationContext.QueryString["ImgSrc"];
-            var retrieveSource = parameter.ToString().Split(':')[1];
-            if (retrieveSource == "library")
+            if (parameter == "library" && !PickInProcess)
             {
                 FileOpenPicker openPicker = new FileOpenPicker();
                 openPicker.ViewMode = PickerViewMode.Thumbnail;
@@ -46,8 +46,9 @@ namespace InfoViewApp
                 openPicker.FileTypeFilter.Add(".jpeg");
                 openPicker.FileTypeFilter.Add(".png");
                 openPicker.PickSingleFileAndContinue();
+                PickInProcess = true;
             }
-            else if (retrieveSource == "bing")
+            else if (parameter == "bing")
             {
                 var lang = Language;
                 var reqString = string.Format(Locator, lang);
@@ -114,7 +115,7 @@ namespace InfoViewApp
             ResolutionProvider.GetScreenSizeInPixels(out heightPixel, out widthPixel);
             WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             await SaveBitmapAsJpeg(LockViewApplicationState.Instance.PersistFileName, WB_CapturedImage);
-            //Frame.Navigate(typeof(Interest));
+            NavigationService.Navigate(new Uri("/Interest.xaml", UriKind.Relative));
         }
 
         async Task SaveBitmapAsJpeg(string fileName, WriteableBitmap bitmap)
@@ -146,6 +147,11 @@ namespace InfoViewApp
         private void OriginalImage_PointerReleased(object sender, MouseEventArgs e)
         {
             Point2 = e.GetPosition(OriginalImage);
+        }
+
+        private void go_Select(object sender, RoutedEventArgs e)
+        {
+            SaveBtn_Click(null, null);
         }
 
         public async void ContinueFileOpenPicker(Windows.ApplicationModel.Activation.FileOpenPickerContinuationEventArgs args)

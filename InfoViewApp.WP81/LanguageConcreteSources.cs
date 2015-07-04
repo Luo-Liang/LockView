@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows;
-using InfoViewApp;
+using InfoViewApp.WP81;
 using Windows.Storage;
 
-namespace InfoViewApp.InterestGathering.LanguageLearning
+namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
 {
     public class BingSource : LanguageSourceBase
     {

@@ -12,7 +12,7 @@ using System.Windows.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace InfoViewApp
+namespace InfoViewApp.WP81
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -58,9 +58,10 @@ namespace InfoViewApp
             previewStack.DataContext = LockViewApplicationState.Instance;
         }
 
-        private void previewStack_PointerPressed(object sender, MouseEventArgs e)
+        private void previewStack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new Uri("/FontCAS.xaml", UriKind.Relative));
+
         }
     }
 }

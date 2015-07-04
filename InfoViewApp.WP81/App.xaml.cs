@@ -68,6 +68,11 @@ namespace InfoViewApp.WP81
         // with the picked file or other return values
         private void Application_ContractActivated(object sender, Windows.ApplicationModel.Activation.IActivatedEventArgs e)
         {
+            var croppingPaage = RootFrame.Content as ImageCropping;
+            if (croppingPaage != null && e is Windows.ApplicationModel.Activation.FileOpenPickerContinuationEventArgs)
+            {
+              croppingPaage.ContinueFileOpenPicker(e as Windows.ApplicationModel.Activation.FileOpenPickerContinuationEventArgs);
+            }
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -78,8 +83,10 @@ namespace InfoViewApp.WP81
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
-        private void Application_Activated(object sender, ActivatedEventArgs e)
+        private void Application_Activated(object sender, ActivatedEventArgs args)
         {
+
+           
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -127,7 +134,7 @@ namespace InfoViewApp.WP81
 
             // Create the frame but don't set it as RootVisual yet; this allows the splash
             // screen to remain active until the application is ready to render.
-            RootFrame = new PhoneApplicationFrame();
+            RootFrame = new TransitionFrame();
             RootFrame.Navigated += CompleteInitializePhoneApplication;
 
             // Handle navigation failures

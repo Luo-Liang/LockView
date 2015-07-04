@@ -1,15 +1,15 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="InfoViewApp.FontCAS"
+    x:Class="InfoViewApp.WP81.FontCAS"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:InfoViewApp"
+    xmlns:local="clr-namespace:InfoViewApp.WP81"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:clr="clr-namespace:System;assembly=mscorlib"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:converter="using:InfoViewApp.Converter"
-    Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:converter="clr-namespace:InfoViewApp.WP81.Converter"
+    Background="{StaticResource PhoneBackgroundBrush}">
 
     <Grid>
         <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">

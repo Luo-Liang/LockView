@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="InfoViewApp.ImageSourceSelection"
+    x:Class="InfoViewApp.WP81.ImageSourceSelection"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -10,34 +10,55 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    xmlns:local="clr-namespace:InfoViewApp"
+    xmlns:local="clr-namespace:InfoViewApp.WP81"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
     <phone:PhoneApplicationPage.Resources>
-		<local:ListBoxContentVMCollection x:Key="categories">
-			<local:ListBoxContentVM SecondLine="Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library." FirstLine="USE MY OWN IMAGE"/>
-			<local:ListBoxContentVM SecondLine="Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="BING"/>
-		</local:ListBoxContentVMCollection>
-	</phone:PhoneApplicationPage.Resources>
+        <local:ListBoxContentVMCollection x:Key="categories">
+            <local:ListBoxContentVM SecondLine="Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library." FirstLine="USE MY OWN IMAGE"/>
+            <local:ListBoxContentVM SecondLine="Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="BING"/>
+        </local:ListBoxContentVMCollection>
+    </phone:PhoneApplicationPage.Resources>
     <Grid>
-    	<Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-    		<TextBlock TextWrapping="Wrap" Text="Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing." VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="20"/>
-    	</Grid>
-    	<ListBox x:Name="categorySelector" Margin="8,136,8,78" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemTemplate}" FontFamily="Global User Interface">
-    		<ListBox.ItemTemplate>
-    			<DataTemplate>
-    				<StackPanel Orientation="Vertical">
-    					<TextBlock FontSize="20" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
-    					<TextBlock FontWeight="Light" FontSize="16" TextWrapping="Wrap"   Text="{Binding SecondLine}"/>
-    				</StackPanel>
-    			</DataTemplate>
-    		</ListBox.ItemTemplate>
-    	</ListBox>
-    	<Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10" FontFamily="Global User Interface">
-    		<Button.Background>
-    			<SolidColorBrush Color="{StaticResource AccentColor}"/>
-    		</Button.Background>
-    	</Button>
+        <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
+            <TextBlock TextWrapping="Wrap" Text="Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing." VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="24"/>
+        </Grid>
+        <ListBox x:Name="categorySelector" Margin="20,173,14,78" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Portable User Interface">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontSize="26.667" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
+                        <TextBlock FontWeight="Light" FontSize="21.333" TextWrapping="Wrap"   Text="{Binding SecondLine}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,10" FontFamily="Global User Interface">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource AccentColor}"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </phone:PhoneApplicationPage>

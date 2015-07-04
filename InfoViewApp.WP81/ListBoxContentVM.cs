@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InfoViewApp
+namespace InfoViewApp.WP81
 {
-    class ListBoxContentVM
+    public class ListBoxContentVM
     {
         public string FirstLine { get; set; }
         public string SecondLine { get; set; }
+        public ListBoxContentVM()
+        { }
     }
 
     //Generic solution for all platforms. 
-    class ListBoxContentVMCollection : List<ListBoxContentVM>
+    public class ListBoxContentVMCollection : List<ListBoxContentVM>
     {
-
+        public ListBoxContentVMCollection() { }
     }
 
-    class IntegerCollection : List<int>
+    public class IntegerCollection : List<int>
     {
     }
 }

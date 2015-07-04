@@ -1,14 +1,14 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="InfoViewApp.Preview"
+    x:Class="InfoViewApp.WP81.Preview"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:con="using:InfoViewApp.Converter"
-    xmlns:local="using:InfoViewApp"
+    xmlns:con="clr-namespace:InfoViewApp.WP81.Converter"
+    xmlns:local="clr-namespace:InfoViewApp.WP81"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    Background="{StaticResource PhoneBackgroundBrush}">
 
     <Grid>
         <Grid.Resources>
@@ -21,9 +21,8 @@
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <StackPanel MouseLeftButtonDown="" x:Name="previewStack" Margin="19,24,10,0" Orientation="Vertical" VerticalAlignment="Top">
+        <StackPanel MouseLeftButtonDown="previewStack_MouseLeftButtonDown" x:Name="previewStack" Margin="19,24,10,0" Orientation="Vertical" VerticalAlignment="Top">
             <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" Text="{Binding PreviewContextContract.Title}" VerticalAlignment="Top" BorderThickness="0" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle,Converter={StaticResource str2clr}}" Background="{Binding PreviewFormattingContract.BackgroundTitle,Converter={StaticResource str2clr}}"/>
-
             <TextBox AcceptsReturn="True" IsReadOnly="True" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding PreviewContextContract.FirstLine}" BorderThickness="0" FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine,Converter={StaticResource str2clr}}" Background="{Binding PreviewFormattingContract.BackgroundFirstLine,Converter={StaticResource str2clr}}"/>
             <TextBox Text="{Binding PreviewContextContract.SecondLine}" IsReadOnly="True" AcceptsReturn="True" BorderThickness="0" Background="Transparent" Foreground="Gray"  Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
             </TextBox>

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Windows.Data.Xml.Dom;
 using Windows.Web.Http;
 
-namespace InfoViewApp.InterestGathering.LanguageLearning
+namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
 {
     public class LanguegeSources : List<LanguageSourceBase>
     {

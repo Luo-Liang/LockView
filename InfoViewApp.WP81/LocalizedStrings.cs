@@ -1,6 +1,5 @@
-﻿using InfoViewApp.WP81.Resources;
-
-namespace InfoViewApp.WP81
+﻿
+namespace InfoViewApp.WP81.Resources
 {
     /// <summary>
     /// Provides access to string resources.

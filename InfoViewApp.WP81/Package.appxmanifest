@@ -12,7 +12,7 @@
                     PhonePublisherId="ce5eaf25-4cc3-4383-9ed0-2b5d5847a348"/>
 
   <Properties>
-    <DisplayName>InfoViewApp.WP81</DisplayName>
+    <DisplayName>InfoViewApp.WP81WP81</DisplayName>
     <PublisherDisplayName>liang</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -31,10 +31,10 @@
                  Executable="AGHost.exe"
                  EntryPoint="MainPage.xaml">
       <m3:VisualElements
-          DisplayName="InfoViewApp.WP81"
+          DisplayName="InfoViewApp.WP81WP81"
           Square150x150Logo="Assets\SquareTile150x150.png"
           Square44x44Logo="Assets\Logo.png"
-          Description="InfoViewApp.WP81"
+          Description="InfoViewApp.WP81WP81"
           ForegroundText="light"
           BackgroundColor="#464646">
         <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png"/>

@@ -1,4 +1,4 @@
-﻿using InfoViewApp.InterestGathering.NewsFeed;
+﻿using InfoViewApp.WP81.InterestGathering.NewsFeed;
 using InfoViewApp.WP81;
 using System;
 using System.Linq;
@@ -7,13 +7,13 @@ using System.Windows.Media;
 using System.Globalization;
 using System.Windows;
 
-namespace InfoViewApp.Converter
+namespace InfoViewApp.WP81.Converter
 {
     public class Str2BrushConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var clrCollection = App.Current.Resources["colorCollection"] as ColorNameVMCollection;
+            var clrCollection = WP81.App.Current.Resources["colorCollection"] as ColorNameVMCollection;
             var color = clrCollection.FirstOrDefault<ColorNameVM>(clr => clr.ColorName.Replace(" ", "") == value.ToString());
             return new SolidColorBrush(color.Color);
         }
@@ -30,7 +30,7 @@ namespace InfoViewApp.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var clrCollection = App.Current.Resources["colorCollection"] as ColorNameVMCollection;
+            var clrCollection = WP81.App.Current.Resources["colorCollection"] as ColorNameVMCollection;
             var color = clrCollection.FirstOrDefault<ColorNameVM>(clr => clr.ColorName == value.ToString());
             return color;
         }

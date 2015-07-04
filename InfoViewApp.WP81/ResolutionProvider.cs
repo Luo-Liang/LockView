@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using Windows.Graphics.Display;
 using Windows.UI.Core;
-namespace InfoViewApp
+namespace InfoViewApp.WP81
 {
     class ResolutionProvider
     {
