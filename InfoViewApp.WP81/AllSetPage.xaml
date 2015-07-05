@@ -16,7 +16,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
 
-        <Image x:Name="image" Margin="0" Opacity="0.5"/>
+        <Image x:Name="image" Margin="0"/>
 
         <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" d:LayoutOverrides="Height, TopPosition, BottomPosition" VerticalAlignment="Top">
             <TextBlock TextWrapping="Wrap" Text="Here're the final tweaks..." VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>

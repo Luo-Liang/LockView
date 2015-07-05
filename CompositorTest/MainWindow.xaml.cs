@@ -13,14 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using GraphicsOverlay;
 using System.IO;
-using CompositorTest.CloudComposition;
-using InfoView.DataContract;
 using System.IO.Compression;
 using Newtonsoft.Json;
 using System.Net;
-
+using InfoViewApp.WP81;
 namespace CompositorTest
 {
     public static class ByteArrayCompressionUtility
@@ -88,36 +85,36 @@ namespace CompositorTest
                     imgBytes = new byte[stream.Length];
                     stream.Read(imgBytes, 0, (int)stream.Length);
                 };
-                var layout = new OverlayLayout()
+                var layout = new  InfoViewApp.WP81.OverlayLayoutContract()
                 {
                     AutoExpand = true,
-                    Origin = new System.Drawing.Point() { X = 10, Y = 10 },
+                    Origin = new InfoViewApp.WP81.Point() { X = 10, Y = 10 },
                     ParagraphSpacing = 10,
                     TargetHeight = 300,
                     TargetWidth = 400
                 };
-                var context = new OverlayContext()
+                var context = new InfoViewApp.WP81.OverlayContextContract()
                 {
                     FirstLine = "Test First Line Is Here",
                     SecondLine = "Detailed Content Line Goes Here",
                     Title = "Title Goes Here"
                 };
-                var formatting = new OverlayFormatting()
+                var formatting = new InfoViewApp.WP81.OverlayFormattingContract()
                 {
-                    FirstLineFont = new Font("Segoe UI", 12),
-                    SecondLineFont = new Font("Segoe UI", 10),
-                    TitleFont = new Font("Segoe UI", 16),
-                    ForegroundFirstLine = new SolidBrush(System.Drawing.Color.Black),
-                    ForegroundSecondLine = new SolidBrush(System.Drawing.Color.Black),
-                    ForegroundTitle = new SolidBrush(System.Drawing.Color.Black),
+                    FirstLineFont = new InfoViewApp.WP81.FontContract() { FontFamily = "Segoe UI", FontSize = 12 },
+                    SecondLineFont = new InfoViewApp.WP81.FontContract() { FontFamily = "Segoe UI", FontSize = 12 },
+                    TitleFont = new InfoViewApp.WP81.FontContract() { FontFamily = "Segoe UI", FontSize = 12 },
+                    ForegroundFirstLine = "White",
+                    ForegroundSecondLine = "White",
+                    ForegroundTitle = "White",
 
                 };
                 var request = new ImageCompositionRequest()
                 {
-                    ContextContract = OverlayContextContract.FromOverlayContext(context),
-                    FormattingContract = OverlayFormattingContract.FromOverlayFormatting(formatting),
-                    LayoutContract = OverlayLayoutContract.FromOverlayLayout(layout),
-                    RawImage = imgBytes,
+                    ContextContract = context,
+                    FormattingContract = formatting,
+                    LayoutContract = layout,
+                    RawImage = Convert.ToBase64String(imgBytes),
                     RequestId = 1,
                     UserId = 2,
                     InterestId = "Microsoft"
@@ -125,10 +122,36 @@ namespace CompositorTest
                 var jRequest = JsonConvert.SerializeObject(request);
                 WebClient client = new WebClient();
                 client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                var returnBytes = client.UploadData("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/Compose", Encoding.UTF8.GetBytes(jRequest));
+                var returnBytes = client.UploadString("http://localhost:49791/ImageComposition.svc/Compose", jRequest);
+                var result = JsonConvert.DeserializeObject<ImageCompositionResponse>(returnBytes);
+                var width = 432;
+                var height = 432;
+                var dpiX = 96d;
+                var dpiY = 96d;
+                var pixelFormat = PixelFormats.Pbgra32;
+                var bytesPerPixel = (pixelFormat.BitsPerPixel + 7) / 8;
+                var stride = bytesPerPixel * width;
+                var bitmap = BitmapImage.Create(width, height, dpiX, dpiY, pixelFormat, null, Convert.FromBase64String(result.Image), stride);
+                targetImg.Source  = new WriteableBitmap(BitmapFactory.ConvertToPbgra32Format(bitmap));
+
                 //https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}
 
             }
         }
+    }
+    public class ImageCompositionRequest
+    {
+        public string InterestId { get; set; }
+        public string RawImage { get; set; }
+        public long UserId { get; set; } //may be used for persistence in future
+        public long RequestId { get; set; }
+        public OverlayFormattingContract FormattingContract { get; set; }
+        public OverlayLayoutContract LayoutContract { get; set; }
+        public OverlayContextContract ContextContract { get; set; }
+    }
+    public class ImageCompositionResponse
+    {
+        public string Image { get; set; }
+        public string ResultString { get; set; }
     }
 }

@@ -9,6 +9,10 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Windows.Phone.System.UserProfile;
 using System.Windows.Media.Imaging;
+using Windows.Storage;
+using System.Threading.Tasks;
+using System.IO;
+using System.Diagnostics;
 
 namespace InfoViewApp.WP81
 {
@@ -42,7 +46,24 @@ namespace InfoViewApp.WP81
             var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
             PinFrontStory.Visibility = isPinned ? Visibility.Collapsed : Visibility.Visible;
         }
+        async Task<WriteableBitmap> OpenBitmapFromFile(string fileName, int width, int height)
+        {
+            try
+            {
+                WriteableBitmap bitmap = new WriteableBitmap(width, height);
 
+                var file = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
+                using (var fs = await file.OpenStreamForReadAsync())
+                    bitmap.SetSource(fs);
+
+                return bitmap;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception during file opening: " + ex.Message);
+                return null;
+            }
+        }
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             while (NavigationService.CanGoBack)
@@ -60,8 +81,12 @@ namespace InfoViewApp.WP81
                 LockViewApplicationState.Instance.PersistFileName);
             double height, width;
             ResolutionProvider.GetScreenSizeInPixels(out height,out width);
-            WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
-            image.Source = bitmap.FromByteArray(Convert.FromBase64String(response.Image));
+            //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
+            var jpegBytes = Convert.FromBase64String(response.Image);
+            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("wall.jpeg", CreationCollisionOption.ReplaceExisting);
+            using (var fs = await file.OpenStreamForWriteAsync())
+                await Task.Run(() => fs.WriteAsync(jpegBytes, 0, jpegBytes.Length));
+            image.Source =await OpenBitmapFromFile("wall.jpeg", (int)width, (int)height);
             progressRing.Visibility = Visibility.Collapsed;
             SaveBtn.Visibility = Visibility.Visible;
         }
