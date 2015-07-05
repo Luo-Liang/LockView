@@ -33,7 +33,7 @@ namespace InfoView
             MemoryStream imgStream = new MemoryStream();
             img.Save(imgStream, ImageFormat.Jpeg);
             imgStream.Seek(0, SeekOrigin.Begin);
-            img.Save(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\abc.jpg",ImageFormat.Jpeg);
+            //img.Save(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\abc.jpg",ImageFormat.Jpeg);
             var response =  new ImageCompositionResponse();
             response.ResultString = "Okay";
             byte[] ImageBytes = new byte[imgStream.Length];

@@ -102,8 +102,8 @@ namespace CompositorTest
                 var formatting = new InfoViewApp.WP81.OverlayFormattingContract()
                 {
                     FirstLineFont = new InfoViewApp.WP81.FontContract() { FontFamily = "Segoe UI", FontSize = 12 },
-                    SecondLineFont = new InfoViewApp.WP81.FontContract() { FontFamily = "Segoe UI", FontSize = 12 },
-                    TitleFont = new InfoViewApp.WP81.FontContract() { FontFamily = "Segoe UI", FontSize = 12 },
+                    SecondLineFont = new InfoViewApp.WP81.FontContract() { FontFamily = "Segoe UI", FontSize = 18 },
+                    TitleFont = new InfoViewApp.WP81.FontContract() { FontFamily = "Segoe UI", FontSize = 24 },
                     ForegroundFirstLine = "White",
                     ForegroundSecondLine = "White",
                     ForegroundTitle = "White",

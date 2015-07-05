@@ -49,7 +49,6 @@ namespace InfoView.DataContract
         public OverlayFormatting ToOverlayFormatting()
         {
 
-            TitleFont = FirstLineFont = SecondLineFont = DefaultFont;
             if (BackgroundFirstLine == null) BackgroundFirstLine = DefaultBrush.Color.Name;
             if (BackgroundSecondLine == null) BackgroundSecondLine = DefaultBrush.Color.Name;
             if (BackgroundTitle == null) BackgroundTitle = DefaultBrush.Color.Name;
@@ -64,8 +63,8 @@ namespace InfoView.DataContract
                 ForegroundTitle = new SolidBrush(Colors[this.ForegroundTitle]),
                 BackgroundSecondLine = new SolidBrush(Colors[this.BackgroundSecondLine]),
                 ForegroundSecondLine = new SolidBrush(Colors[this.ForegroundSecondLine]),
-                TitleFont = new Font(this.TitleFont.FontFamily, this.TitleFont.FontSize),
-                FirstLineFont = new Font(this.FirstLineFont.FontFamily, this.FirstLineFont.FontSize),
+                TitleFont = new Font(this.TitleFont.FontFamily, this.TitleFont.FontSize,FontStyle.Bold),
+                FirstLineFont = new Font(this.FirstLineFont.FontFamily, this.FirstLineFont.FontSize, FontStyle.Bold),
                 SecondLineFont = new Font(this.SecondLineFont.FontFamily, this.SecondLineFont.FontSize)
             };
         }

@@ -14,7 +14,7 @@
         <Grid.Resources>
             <con:Str2BrushConverter x:Key="str2clr"/>
         </Grid.Resources>
-        <Image x:Name="previewImage" Margin="0,0,-400,0" Source="Assets/seattle_skyline.jpg" Stretch="Fill"/>
+        <Image x:Name="previewImage" Margin="0" Source="Assets/seattle_skyline.jpg" Stretch="Fill"/>
 
         <Button x:Name="SaveBtn" Click="SaveBtn_Click" Visibility="Visible" Content="Great!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface" Width="140" Height="72">
             <Button.Background>

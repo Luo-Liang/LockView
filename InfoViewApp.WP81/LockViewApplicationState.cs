@@ -42,7 +42,7 @@ namespace InfoViewApp.WP81
                     BackgroundTitle = "Transparent",
                     FirstLineFont = new FontContract() { FontSize = 18, FontFamily = "Segoe UI" },
                     SecondLineFont = new FontContract() { FontSize = 14, FontFamily = "Segoe UI" },
-                    TitleFont = new FontContract() { FontSize = 24, FontFamily = "Segoe UI" },
+                    TitleFont = new FontContract() { FontSize = 22, FontFamily = "Segoe UI" },
                     ForegroundFirstLine = "White",
                     ForegroundSecondLine = "Gray",
                     ForegroundTitle = "White"

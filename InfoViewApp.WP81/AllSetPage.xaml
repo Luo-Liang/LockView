@@ -10,15 +10,35 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+     mc:Ignorable="d"
+    xmlns:clr="clr-namespace:System;assembly=mscorlib"
+    Background="{StaticResource PhoneBackgroundBrush}" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
 
-        <Image x:Name="image" Margin="0"/>
-
-        <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" d:LayoutOverrides="Height, TopPosition, BottomPosition" VerticalAlignment="Top" Visibility="Collapsed">
+        <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" d:LayoutOverrides="Height, TopPosition, BottomPosition" VerticalAlignment="Top">
             <TextBlock TextWrapping="Wrap" Text="Here're the final tweaks..." VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
         </Grid>
         <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="All Done" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface" Grid.Row="1">
@@ -26,7 +46,7 @@
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <StackPanel Margin="19,117,19,0" Orientation="Vertical" VerticalAlignment="Top" Visibility="Collapsed">
+        <StackPanel Margin="19,117,19,0" Orientation="Vertical" VerticalAlignment="Top">
             <StackPanel x:Name="setAsLockScreenProvider" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width">
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Set as lock screen provider" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Windows Phone requires us to obtain your consent before we can change your lock screen." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0"/>

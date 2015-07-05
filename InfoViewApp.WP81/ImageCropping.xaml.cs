@@ -12,6 +12,7 @@ using System.Windows;
 using Windows.Web.Http;
 using Windows.Storage.Streams;
 using System.Windows.Input;
+using System.IO.IsolatedStorage;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -91,6 +92,8 @@ namespace InfoViewApp.WP81
 
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            SaveBtn.Visibility = Visibility.Collapsed;
+            progressRing.Visibility = Visibility.Visible;
             var hO = canvas.HorizontalOffset;
             var vO = canvas.VerticalOffset;
             //height larger than width.
@@ -116,21 +119,25 @@ namespace InfoViewApp.WP81
             //WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             WB_CapturedImage = LoadScaledImage(WB_CroppedImage);
             await SaveBitmapAsJpeg(LockViewApplicationState.Instance.PersistFileName, WB_CapturedImage);
-
+            this.OriginalImage.Source = WB_CapturedImage;
+            SaveBtn.Visibility = Visibility.Visible;
+            progressRing.Visibility = Visibility.Collapsed;
             NavigationService.Navigate(new Uri("/Interest.xaml", UriKind.Relative));
         }
 
         async Task SaveBitmapAsJpeg(string fileName, WriteableBitmap bitmap)
         {
-            try
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
-                using (var fs = await file.OpenStreamForWriteAsync())
+                if (myIsolatedStorage.FileExists(fileName))
+                {
+                    myIsolatedStorage.DeleteFile(fileName);
+                }
+                var file = myIsolatedStorage.CreateFile(fileName);
+                using (var fs = file)
+                {
                     await Task.Run(() => bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, 100));
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Exception during save as Jpeg: " + ex.Message);
+                }
             }
         }
 

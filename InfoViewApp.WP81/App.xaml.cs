@@ -28,7 +28,7 @@ namespace InfoViewApp.WP81
         /// </summary>
         public App()
         {
-            TelemetryClient = new Microsoft.ApplicationInsights.TelemetryClient();
+            //TelemetryClient = new Microsoft.ApplicationInsights.TelemetryClient();
 
             // Global handler for uncaught exceptions.
             UnhandledException += Application_UnhandledException;

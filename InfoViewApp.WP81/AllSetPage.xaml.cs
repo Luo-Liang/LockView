@@ -13,6 +13,7 @@ using Windows.Storage;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using System.IO.IsolatedStorage;
 
 namespace InfoViewApp.WP81
 {
@@ -32,7 +33,6 @@ namespace InfoViewApp.WP81
             button.IsEnabled = !LockScreenManager.IsProvidedByCurrentApplication;
             double height, width;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
-            image.Source = await OpenBitmapFromFile(LockViewApplicationState.Instance.PersistFileName, (int)width, (int)height);
 
         }
 
@@ -85,12 +85,29 @@ namespace InfoViewApp.WP81
             ResolutionProvider.GetScreenSizeInPixels(out height,out width);
             //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
             var jpegBytes = Convert.FromBase64String(response.Image);
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("wall.jpeg", CreationCollisionOption.ReplaceExisting);
-            using (var fs = await file.OpenStreamForWriteAsync())
-                await Task.Run(() => fs.WriteAsync(jpegBytes, 0, jpegBytes.Length));
-            image.Source =await OpenBitmapFromFile("wall.jpeg", (int)width, (int)height);
+            var fileName = "wall.jpeg";
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                if (myIsolatedStorage.FileExists(fileName))
+                {
+                    myIsolatedStorage.DeleteFile(fileName);
+                }
+                var file = myIsolatedStorage.CreateFile(fileName);
+                using (var fs = file)
+                {
+                    await Task.Run(() => fs.Write(jpegBytes, 0, jpegBytes.Length));
+                }
+            }
             progressRing.Visibility = Visibility.Collapsed;
             SaveBtn.Visibility = Visibility.Visible;
+            try
+            {
+                LockScreen.SetImageUri(new Uri("ms-appx:///LockView.png", UriKind.Absolute));
+            }
+            catch(Exception ex)
+            {
+            }
+            LockScreen.SetImageUri(new Uri("ms-appdata:///local/wall.jpeg",UriKind.Absolute));
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Windows.Navigation;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
+using System.IO.IsolatedStorage;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -29,11 +30,17 @@ namespace InfoViewApp.WP81
             try
             {
                 WriteableBitmap bitmap = new WriteableBitmap(width, height);
-
-                var file = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
-                using (var fs = await file.OpenStreamForReadAsync())
-                    bitmap.SetSource(fs);
-
+                using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    if (myIsolatedStorage.FileExists(fileName))
+                    {
+                        using (var fs = myIsolatedStorage.OpenFile(fileName,FileMode.Open))
+                        {
+                            bitmap.SetSource(fs);
+                        }
+                    }
+                   
+                }
                 return bitmap;
             }
             catch (Exception ex)
