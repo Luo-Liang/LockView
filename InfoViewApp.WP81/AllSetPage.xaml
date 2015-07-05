@@ -18,7 +18,7 @@
 
         <Image x:Name="image" Margin="0"/>
 
-        <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" d:LayoutOverrides="Height, TopPosition, BottomPosition" VerticalAlignment="Top">
+        <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" d:LayoutOverrides="Height, TopPosition, BottomPosition" VerticalAlignment="Top" Visibility="Collapsed">
             <TextBlock TextWrapping="Wrap" Text="Here're the final tweaks..." VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
         </Grid>
         <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="All Done" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface" Grid.Row="1">
@@ -26,7 +26,7 @@
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <StackPanel Margin="19,117,19,0" Orientation="Vertical" VerticalAlignment="Top">
+        <StackPanel Margin="19,117,19,0" Orientation="Vertical" VerticalAlignment="Top" Visibility="Collapsed">
             <StackPanel x:Name="setAsLockScreenProvider" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width">
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Set as lock screen provider" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Windows Phone requires us to obtain your consent before we can change your lock screen." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0"/>

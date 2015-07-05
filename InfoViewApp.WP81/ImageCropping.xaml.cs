@@ -114,7 +114,7 @@ namespace InfoViewApp.WP81
             double widthPixel, heightPixel;
             ResolutionProvider.GetScreenSizeInPixels(out heightPixel, out widthPixel);
             //WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-            WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
+            WB_CapturedImage = LoadScaledImage(WB_CroppedImage);
             await SaveBitmapAsJpeg(LockViewApplicationState.Instance.PersistFileName, WB_CapturedImage);
 
             NavigationService.Navigate(new Uri("/Interest.xaml", UriKind.Relative));

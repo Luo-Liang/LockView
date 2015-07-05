@@ -22,15 +22,17 @@ namespace InfoViewApp.WP81
         public AllSetPage()
         {
             InitializeComponent();
-
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication ? Visibility.Collapsed : Visibility.Visible;
             var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
             PinFrontStory.Visibility = isPinned ? Visibility.Collapsed : Visibility.Visible;
             button.IsEnabled = !LockScreenManager.IsProvidedByCurrentApplication;
+            double height, width;
+            ResolutionProvider.GetScreenSizeInPixels(out height, out width);
+            image.Source = await OpenBitmapFromFile(LockViewApplicationState.Instance.PersistFileName, (int)width, (int)height);
 
         }
 
