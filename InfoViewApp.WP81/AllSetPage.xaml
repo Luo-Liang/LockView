@@ -1,0 +1,50 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="InfoViewApp.WP81.AllSetPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <Image x:Name="image" Margin="0" Opacity="0.5"/>
+
+        <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" d:LayoutOverrides="Height, TopPosition, BottomPosition" VerticalAlignment="Top">
+            <TextBlock TextWrapping="Wrap" Text="Here're the final tweaks..." VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
+        </Grid>
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="All Done" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface" Grid.Row="1">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource AccentColor}"/>
+            </Button.Background>
+        </Button>
+        <StackPanel Margin="19,117,19,0" Orientation="Vertical" VerticalAlignment="Top">
+            <StackPanel x:Name="setAsLockScreenProvider" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width">
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Set as lock screen provider" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Windows Phone requires us to obtain your consent before we can change your lock screen." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0"/>
+                <Button Click="button_Click" x:Name="button" Content="go to settings" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
+            </StackPanel>
+            <StackPanel x:Name="PinFrontStory" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width" Margin="0,10,0,0">
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Pin a shortcut to the lock screen soron Start Page" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="You can also pin a short cut tile on the start screen so you can jump to the story real quick." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface"/>
+                <Button Click="shortcutButton_Click" x:Name="shortcutButton" Content="pin shortcut" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="... and at last, thanks for your patience." VerticalAlignment="Top" Width="442" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface" Margin="0,20,0,0"/>
+
+        </StackPanel>
+        <ProgressBar x:Name="progressRing" Height="10" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="Black" Foreground="{StaticResource DarkAccent}" Visibility="Collapsed"/>
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--ContentPanel - place additional content here-->
+    </Grid>
+
+</phone:PhoneApplicationPage>

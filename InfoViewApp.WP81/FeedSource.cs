@@ -24,7 +24,7 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
         Customized
     }
 
-    public class NewsFeedCategory : IInterestGatherer
+    public class NewsFeedCategory : InterestGatherer
     {
         public string SourceName { get; set; }
         public CategoryTopic Topic { get; set; }
@@ -35,7 +35,7 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
             Topic = topic;
             XmlSource = xmlAddr;
         }
-        public async Task<InterestContent> RequestContent(InterestRequest request)
+        public override async Task<InterestContent> RequestContent(InterestRequest request)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
     {
         public CustomizedFeedSource():base()
         {
-            FeedContentProviders = new List<IInterestGatherer>();
+            FeedContentProviders = new List<InterestGatherer>();
         }
     }
 
@@ -75,10 +75,10 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
             return SourceName;
         }
         public string SourceName { get; set; }
-        public List<IInterestGatherer> FeedContentProviders { get; set; }
+        public List<InterestGatherer> FeedContentProviders { get; set; }
         public FeedSource()
         {
-            FeedContentProviders = new List<IInterestGatherer>();
+            FeedContentProviders = new List<InterestGatherer>();
         }
     }
 

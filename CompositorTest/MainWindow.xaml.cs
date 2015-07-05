@@ -123,6 +123,11 @@ namespace CompositorTest
                     InterestId = "Microsoft"
                 };
                 var jRequest = JsonConvert.SerializeObject(request);
+                WebClient client = new WebClient();
+                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                var returnBytes = client.UploadData("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/Compose", Encoding.UTF8.GetBytes(jRequest));
+                //https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}
+
             }
         }
     }

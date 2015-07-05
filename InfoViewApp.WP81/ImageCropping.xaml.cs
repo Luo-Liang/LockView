@@ -113,8 +113,10 @@ namespace InfoViewApp.WP81
             //this is a jpeg stream now.
             double widthPixel, heightPixel;
             ResolutionProvider.GetScreenSizeInPixels(out heightPixel, out widthPixel);
-            WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+            //WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+            WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
             await SaveBitmapAsJpeg(LockViewApplicationState.Instance.PersistFileName, WB_CapturedImage);
+
             NavigationService.Navigate(new Uri("/Interest.xaml", UriKind.Relative));
         }
 
@@ -122,9 +124,9 @@ namespace InfoViewApp.WP81
         {
             try
             {
-                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(fileName);
+                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
                 using (var fs = await file.OpenStreamForWriteAsync())
-                    bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, 100);
+                    await Task.Run(() => bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, 100));
             }
             catch (Exception ex)
             {

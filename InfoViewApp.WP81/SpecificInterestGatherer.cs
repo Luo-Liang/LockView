@@ -8,13 +8,13 @@ using Windows.Web.Http;
 
 namespace InfoViewApp.WP81.InterestGathering
 {
-    class GoogleSpecificInterestGatherer : InterestGatherer
+    public class GoogleSpecificInterestGatherer : InterestGatherer
     {
         public GoogleSpecificInterestGatherer()
         {
             BaseRequestUrlTemplate = "https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}";
         }
-        public async Task<InterestContent> RequestContent(InterestRequest request)
+        public override async Task<InterestContent> RequestContent(InterestRequest request)
         {
             var requestClient = new HttpClient();
             string response = null;

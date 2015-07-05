@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <NuGetPackageImportStamp>3c4211ed</NuGetPackageImportStamp>
     <ApplicationInsightsResourceId>/subscriptions/0d745498-c9d9-4ef8-a9b0-f42a708c3b91/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/InfoView</ApplicationInsightsResourceId>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -100,7 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ImageComposition.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Point.cs" />
@@ -116,6 +119,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config" />
+    <None Include="Properties\PublishProfiles\CloudImageComposition.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

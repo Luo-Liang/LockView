@@ -21,7 +21,7 @@ namespace InfoView
     {
         public ImageCompositionResponse Compose(ImageCompositionRequest request)
         {
-            MemoryStream memStream = new MemoryStream(request.RawImage);
+            MemoryStream memStream = new MemoryStream(Convert.FromBase64String(request.RawImage));
             memStream.Seek(0, SeekOrigin.Begin);
             var img = Image.FromStream(memStream);
             Graphics g = Graphics.FromImage(img);
@@ -35,11 +35,12 @@ namespace InfoView
             imgStream.Seek(0, SeekOrigin.Begin);
             //img.Save(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\abc.jpg",ImageFormat.Jpeg);
             var response =  new ImageCompositionResponse();
-            response.Result = CompositionResult.Changed;
-            response.Image = new byte[imgStream.Length];
-            imgStream.Read(response.Image, 0, response.Image.Length);
+            response.ResultString = "Okay";
+            byte[] ImageBytes = new byte[imgStream.Length];
+            imgStream.Read(ImageBytes, 0, ImageBytes.Length);
             imgStream.Close();
             memStream.Close();
+            response.Image = Convert.ToBase64String(ImageBytes);
             return response;
         }
 

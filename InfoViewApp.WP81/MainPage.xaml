@@ -92,7 +92,7 @@
                 <CompositeTransform Rotation="212.772"/>
             </Path.RenderTransform>
         </Path>
-        <Button Click="goToCropping_Click" x:Name="SaveBtn" Visibility="Visible" Content="Jump in!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19,0,0,10" FontFamily="Global User Interface">
+        <Button Click="goToCropping_Click" x:Name="SaveBtn" Visibility="Visible" Content="Jump in!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

@@ -28,28 +28,15 @@ namespace InfoView
         string ComposeLegacy(string request);
     }
 
-    [DataContract]
-    public enum CompositionResult
-    {
-        [EnumMember]
-        None,
-        [EnumMember]
-        Changed,
-        [EnumMember]
-        Unchanged,
-        [EnumMember]
-        Failed
-    }
-
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
     public class ImageCompositionResponse
     {
         [DataMember]
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
         [DataMember]
-        public CompositionResult Result { get; set; }
+        public string ResultString { get; set; }
     }
 
     [DataContract]
@@ -58,7 +45,7 @@ namespace InfoView
         [DataMember]
         public string InterestId { get; set; }
         [DataMember]
-        public byte[] RawImage { get; set; }
+        public string RawImage { get; set; }
         [DataMember]
         public long UserId { get; set; } //may be used for persistence in future
         [DataMember]

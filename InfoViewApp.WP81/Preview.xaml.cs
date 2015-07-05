@@ -63,5 +63,11 @@ namespace InfoViewApp.WP81
             NavigationService.Navigate(new Uri("/FontCAS.xaml", UriKind.Relative));
 
         }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AllSetPage.xaml", UriKind.Relative));
+
+        }
     }
 }

@@ -36,13 +36,10 @@ namespace InfoViewApp.WP81.InterestGathering
         string SourceName { get; }
     }
 
-    class InterestGatherer : IInterestGatherer
+    public abstract class InterestGatherer : IInterestGatherer
     {
         public string BaseRequestUrlTemplate = "INVALID";
         public string SourceName { get; set; }
-        public async Task<InterestContent> RequestContent(InterestRequest request)
-        {
-            return InterestContent.DefaultInterest;
-        }
+        public abstract Task<InterestContent> RequestContent(InterestRequest request);
     }
 }
