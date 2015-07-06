@@ -48,6 +48,7 @@ namespace InfoViewApp.WP81
 
     public class OverlayContextContract
     {
+        public string ExtendedUri { get; set; }
         public string FirstLine { get; set; }
         public string SecondLine { get; set; }
         public string Title { get; set; }

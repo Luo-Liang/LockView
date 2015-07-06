@@ -48,6 +48,9 @@ namespace InfoViewApp.WP81
                     LockViewApplicationState.Instance.PreviewContextContract.Title = interest.Title;
                     LockViewApplicationState.Instance.PreviewContextContract.FirstLine = interest.Content;
                     LockViewApplicationState.Instance.PreviewContextContract.SecondLine = interest.Publisher;
+                    if (interest.ContentExtensionUri != null)
+
+                        LockViewApplicationState.Instance.PreviewContextContract.ExtendedUri = interest.ContentExtensionUri.ToString();
                     previewStack.DataContext = interest;
                 }
                 else

@@ -26,7 +26,7 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
 
     public class NewsFeedCategory : InterestGatherer
     {
-        public string SourceName { get; set; }
+        //public string SourceName { get; set; }
         public CategoryTopic Topic { get; set; }
         public string XmlSource { get; set; }
         public NewsFeedCategory() { }
@@ -45,12 +45,14 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
                 var items = feed.Items;
                 var content = HtmlDecodingUtility.HtmlDecode(items[0].Summary.Text);
                 var title = items[0].Title.Text;
-                var publisher = SourceName;
+                var publisher = SourceName; 
+                var img=feed.ImageUri;
                 return new InterestContent()
                 {
                     Content = content,
                     Title = title,
-                    Publisher = publisher
+                    Publisher = publisher,
+                    ContentExtensionUri = new Uri(ExtendedContentUrl)
                 };
             }
             catch

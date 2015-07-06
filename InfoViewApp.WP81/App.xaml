@@ -228,17 +228,17 @@
             </newsFeed:CustomizedFeedSource>
             <newsFeed:FeedSource SourceName="CNN">
                 <newsFeed:FeedSource.FeedContentProviders>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN Stories" Topic="Stories" XmlSource="http://rss.cnn.com/rss/cnn_topstories.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN World" Topic="World" XmlSource="http://rss.cnn.com/rss/cnn_world.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN USA" Topic="USA" XmlSource="http://rss.cnn.com/rss/cnn_us.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN Business" Topic="Business" XmlSource="http://rss.cnn.com/rss/money_latest.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN Politics" Topic="Politics" XmlSource="http://rss.cnn.com/rss/cnn_allpolitics.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN Technology" Topic="Technology" XmlSource="http://rss.cnn.com/rss/cnn_tech.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN Health" Topic="Health" XmlSource="http://rss.cnn.com/rss/cnn_health.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN Entertainment" Topic="Entertainment" XmlSource="http://rss.cnn.com/rss/cnn_showbiz.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN Travel" Topic="Travel" XmlSource="http://rss.cnn.com/rss/cnn_travel.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN Living" Topic="Living" XmlSource="http://rss.cnn.com/rss/cnn_living.rss"/>
-                    <newsFeed:NewsFeedCategory SourceName ="CNN Video" Topic="Video" XmlSource="http://rss.cnn.com/rss/cnn_freevideo.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Stories" Topic="Stories" XmlSource="http://rss.cnn.com/rss/cnn_topstories.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN World" Topic="World" XmlSource="http://rss.cnn.com/rss/cnn_world.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN USA" Topic="USA" XmlSource="http://rss.cnn.com/rss/cnn_us.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Business" Topic="Business" XmlSource="http://rss.cnn.com/rss/money_latest.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Politics" Topic="Politics" XmlSource="http://rss.cnn.com/rss/cnn_allpolitics.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Technology" Topic="Technology" XmlSource="http://rss.cnn.com/rss/cnn_tech.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Health" Topic="Health" XmlSource="http://rss.cnn.com/rss/cnn_health.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Entertainment" Topic="Entertainment" XmlSource="http://rss.cnn.com/rss/cnn_showbiz.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Travel" Topic="Travel" XmlSource="http://rss.cnn.com/rss/cnn_travel.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Living" Topic="Living" XmlSource="http://rss.cnn.com/rss/cnn_living.rss"/>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Video" Topic="Video" XmlSource="http://rss.cnn.com/rss/cnn_freevideo.rss"/>
                 </newsFeed:FeedSource.FeedContentProviders>
             </newsFeed:FeedSource>
         </newsFeed:FeedSources>

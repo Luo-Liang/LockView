@@ -108,6 +108,19 @@ namespace InfoViewApp.WP81
             {
             }
             LockScreen.SetImageUri(new Uri("ms-appdata:///local/wall.jpeg",UriKind.Absolute));
+            var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
+            if(isPinned)
+            {
+                var tile = ShellTile.ActiveTiles.First<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
+                var context = LockViewApplicationState.Instance.PreviewContextContract;
+                var standardTile = new StandardTileData() {Title="LockView", BackTitle = context.Title, BackContent = context.FirstLine };
+                if(context.ExtendedUri!=null)
+                {
+                    standardTile.BackgroundImage = new Uri(context.ExtendedUri,UriKind.Absolute);
+                }
+                tile.Update(standardTile);
+
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ namespace InfoViewApp.WP81.InterestGathering
         public string Title { get; set; }
         public string Content { get; set; }
         public string Publisher { get; set; }
+        public Uri ContentExtensionUri { get; set; }
         public override int GetHashCode()
         {
             return Title.GetHashCode() ^ Content.GetHashCode() ^ Publisher.GetHashCode();
@@ -39,6 +40,7 @@ namespace InfoViewApp.WP81.InterestGathering
     public abstract class InterestGatherer : IInterestGatherer
     {
         public string BaseRequestUrlTemplate = "INVALID";
+        public string ExtendedContentUrl { get; set; }
         public string SourceName { get; set; }
         public abstract Task<InterestContent> RequestContent(InterestRequest request);
     }
