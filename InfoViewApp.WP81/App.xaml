@@ -221,11 +221,12 @@
             <local:ColorNameVM Color="Transparent" ColorName="Transparent"/>
         </local:ColorNameVMCollection>
         <newsFeed:FeedSources x:Key="definedNewsFeedSources">
-            <newsFeed:CustomizedFeedSource SourceName="Customized Source">
-                <newsFeed:CustomizedFeedSource.FeedContentProviders>
-                    <newsFeed:NewsFeedCategory Topic="Customized"/>
-                </newsFeed:CustomizedFeedSource.FeedContentProviders>
-            </newsFeed:CustomizedFeedSource>
+            <newsFeed:FeedSource SourceName="MSNBC">
+                <newsFeed:FeedSource.FeedContentProviders>
+                    <newsFeed:NewsFeedCategory ExtendedContentUrl="http://static.tvtropes.org/pmwiki/pub/images/new-msnbc-logo-781050.gif" SourceName="MSNBC Latest" Topic="Stories" XmlSource="http://www.msnbc.com/feeds/latest" />
+
+                </newsFeed:FeedSource.FeedContentProviders>
+            </newsFeed:FeedSource>
             <newsFeed:FeedSource SourceName="CNN">
                 <newsFeed:FeedSource.FeedContentProviders>
                     <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Stories" Topic="Stories" XmlSource="http://rss.cnn.com/rss/cnn_topstories.rss"/>
@@ -241,6 +242,11 @@
                     <newsFeed:NewsFeedCategory ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Video" Topic="Video" XmlSource="http://rss.cnn.com/rss/cnn_freevideo.rss"/>
                 </newsFeed:FeedSource.FeedContentProviders>
             </newsFeed:FeedSource>
+            <newsFeed:CustomizedFeedSource SourceName="Customized Source">
+                <newsFeed:CustomizedFeedSource.FeedContentProviders>
+                    <newsFeed:NewsFeedCategory Topic="Customized"/>
+                </newsFeed:CustomizedFeedSource.FeedContentProviders>
+            </newsFeed:CustomizedFeedSource>
         </newsFeed:FeedSources>
         <language:LanguegeSources x:Key="definedLanguageSources">
             <language:BingSource/>

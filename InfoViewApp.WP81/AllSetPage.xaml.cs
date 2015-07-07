@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
 using System.IO.IsolatedStorage;
+using System.Windows.Media;
 
 namespace InfoViewApp.WP81
 {
@@ -33,7 +34,7 @@ namespace InfoViewApp.WP81
             button.IsEnabled = !LockScreenManager.IsProvidedByCurrentApplication;
             double height, width;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
-
+            remainingQuota.Text = LockViewApplicationState.Instance.RequestMetadata.UserQuotaInDays.ToString();
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)
@@ -121,6 +122,20 @@ namespace InfoViewApp.WP81
                 tile.Update(standardTile);
 
             }
+        }
+
+        private void priceCalculationLink_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void quotaRunOut_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("If your Quota runs out, you will still receive updates, but at a significantly lowered rate.", "WHAT IF QUOTA RUNS OUT...", MessageBoxButton.OK);
+        }
+
+        private void quotaPurchase_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

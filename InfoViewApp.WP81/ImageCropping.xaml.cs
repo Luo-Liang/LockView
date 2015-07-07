@@ -33,6 +33,7 @@ namespace InfoViewApp.WP81
             InitializeComponent();
             //fire when render frame
         }
+
         const string Locator = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt={0}";
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -81,11 +82,13 @@ namespace InfoViewApp.WP81
             if (widthPixel / heightPixel > imgWidth / imgHeight)
             {
                 //swipe up and down
+                OriginalImage.Width = widthPixel / ResolutionProvider.GetScaleFactor();
                 return WB_CapturedImage.Resize((int)widthPixel, (int)((widthPixel / imgWidth) * imgHeight), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
             else
             {
                 //swipe left and right.
+                OriginalImage.Height = heightPixel / ResolutionProvider.GetScaleFactor();
                 return WB_CapturedImage.Resize((int)(imgWidth * (heightPixel / imgHeight)), (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
         }
@@ -137,6 +140,7 @@ namespace InfoViewApp.WP81
                 using (var fs = file)
                 {
                     await Task.Run(() => bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, 100));
+                    LockViewApplicationState.Instance.RequestMetadata.BytesPerRequest = (int) fs.Length;
                 }
             }
         }

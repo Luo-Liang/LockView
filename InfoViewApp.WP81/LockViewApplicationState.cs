@@ -13,9 +13,16 @@ using Windows.Storage.Streams;
 
 namespace InfoViewApp.WP81
 {
+    public class LockViewRequestMetadata
+    {
+        public int UserQuotaInDays = 30;
+        public int BytesPerRequest = 1024;
+    }
+
     public class LockViewApplicationState
     {
         const string SettingInstance = "Settings.xml";
+        public LockViewRequestMetadata RequestMetadata { get; set; }
         public static LockViewApplicationState Instance { get; private set; }
         static LockViewApplicationState()
         {
@@ -50,6 +57,7 @@ namespace InfoViewApp.WP81
 
                 PreviewContextContract = new OverlayContextContract();
                 PreviewLayoutContract = new OverlayLayoutContract();
+                RequestMetadata = new LockViewRequestMetadata();
             }
         }
         Stream BackgroundPreview { get; set; }
@@ -63,7 +71,7 @@ namespace InfoViewApp.WP81
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SettingInstance, CreationCollisionOption.ReplaceExisting);
             using (var fs = await file.OpenStreamForWriteAsync())
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState),new[] {typeof(InterestGatherer)});
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(InterestGatherer) });
                 xmlSerializer.Serialize(fs, this);
             }
         }

@@ -25,7 +25,7 @@ namespace InfoViewApp.WP81
 
         public static double GetScreenHeightWidthRatio()
         {
-            double height,width;
+            double height, width;
             GetScreenSizeInPixels(out height, out width);
             return height / width;
         }
@@ -34,7 +34,7 @@ namespace InfoViewApp.WP81
         {
             try
             {
-               return 0.01* double.Parse(DisplayProperties.ResolutionScale.ToString().Replace("Scale", "").Replace("Percent", ""));
+                return (double)Application.Current.Host.Content.ScaleFactor / 100;
             }
             catch
             {

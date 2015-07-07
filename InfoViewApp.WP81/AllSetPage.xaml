@@ -49,18 +49,90 @@
         <StackPanel Margin="19,117,19,0" Orientation="Vertical" VerticalAlignment="Top">
             <StackPanel x:Name="setAsLockScreenProvider" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width">
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Set as lock screen provider" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Windows Phone requires us to obtain your consent before we can change your lock screen." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0"/>
-                <Button Click="button_Click" x:Name="button" Content="go to settings" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" Text="Windows Phone requires us to obtain your consent before we can change your lock screen." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0"/>
+                <Button Click="button_Click" x:Name="button" Content="say yes" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
             </StackPanel>
             <StackPanel x:Name="PinFrontStory" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width" Margin="0,10,0,0">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Pin a shortcut to the lock screen soron Start Page" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="You can also pin a short cut tile on the start screen so you can jump to the story real quick." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Pin a shortcut to the story" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
+                <TextBlock TextWrapping="Wrap" Text="You can also pin a short cut tile on the start screen so you can jump to the story real quick." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface"/>
                 <Button Click="shortcutButton_Click" x:Name="shortcutButton" Content="pin shortcut" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
             </StackPanel>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="... and at last, thanks for your patience." VerticalAlignment="Top" Width="442" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface" Margin="0,20,0,0"/>
+            <StackPanel x:Name="quotaStack" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,10,0,0" d:LayoutOverrides="Width">
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface">
+                    <Run Text="Your remaining quota: "/>
+                    <Run x:Name="remainingQuota" Text="30"/>
+                    <Run Text=" days."/>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface">
+                    <Run Text="LockView uses a web service to compose your image. LockView maintains this service by kindly ask you to purchase your quota for $"/>
+                    <Run x:Name="price" Text="0.99"/>
+                    <Run Text="/"/>
+                    <Run Text="60" x:Name="days"/>
+                    <Run Text=" days."/>
+                </TextBlock>
+                <HyperlinkButton x:Name="priceCalculationLink" Content="How is my price calculated?" Margin="-10,0,0,0" Click="priceCalculationLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
+                <HyperlinkButton x:Name="quotaRunOut" Content="What happens if my quota runs out?" Margin="-10,0,0,0" Click="quotaRunOut_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
+                <Button Click="quotaPurchase_Click" x:Name="quotaPurchase" Content="purchase more quota" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
+            </StackPanel>
 
         </StackPanel>
         <ProgressBar x:Name="progressRing" Height="10" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="Black" Foreground="{StaticResource DarkAccent}" Visibility="Collapsed"/>
+        <toolkit:CustomMessageBox x:Name="priceCalcMsgBx" Caption="DETERMINING YOUR PRICE"  >
+            <StackPanel Margin="0" Orientation="Vertical">
+                <StackPanel Margin="0" Orientation="Horizontal">
+                    <TextBlock Text="Azure Traffic Price:" FontSize="24" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="$0.181/GB" FontSize="24" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="White"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </StackPanel>
+                <TextBlock Text="This is what our service provider charges us. If our service provider lowers their traffic price, we'll lower ours too!" FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource Gray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Size per request:" FontSize="21.333" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="255KB" FontSize="21.333" Margin="15,0,0,0" Foreground="White"/>
+                </StackPanel>
+                <TextBlock Text="This is based on the size of the cropped image you just selected, plus some metadata." FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource Gray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Average updates/day:" FontSize="21.333" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="15" FontSize="21.333" Margin="15,0,0,0" Foreground="White"/>
+                </StackPanel>
+                <TextBlock Text="This is on average the number of updates you will receive per day." FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource Gray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Calculated days per $0.99 lasts:" FontSize="21.333" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="60" FontSize="21.333" Margin="15,0,0,0" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+
+        </toolkit:CustomMessageBox>
 
         <!--TitlePanel contains the name of the application and page title-->
 
