@@ -36,6 +36,73 @@
     </toolkit:TransitionService.NavigationOutTransition>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
+    <phone:PhoneApplicationPage.Resources>
+        <toolkit:CustomMessageBox x:Key="priceCalcMsgBx" Caption="DETERMINING YOUR PRICE" LeftButtonContent="Ok" IsLeftButtonEnabled="True">
+            <StackPanel Margin="0,0,15,0" Orientation="Vertical">
+                <StackPanel Margin="0" Orientation="Horizontal">
+                    <TextBlock Text="Compute Price:" FontSize="24" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock x:Name="computePriceRun" Text="$0.4/hr" FontSize="24" Margin="15,0,0,0" Foreground="White"/>
+                </StackPanel>
+                <TextBlock Text="This is what our service provider charges us for computing. If our service provider lowers their traffic price, we'll lower ours too!" FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource Gray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <StackPanel Margin="0" Orientation="Horizontal">
+                    <TextBlock Text="Traffic Price:" FontSize="24" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock x:Name="trafficPriceRun" Text="$0.181/GB" FontSize="24" Margin="15,0,0,0" Foreground="White"/>
+                </StackPanel>
+                <TextBlock Text="This is what our service provider charges us for network traffic. If our service provider lowers their traffic price, we'll lower ours too!" FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource Gray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Size per request:" FontSize="21.333" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock x:Name="sizePerRequestRun" Text="255KB" FontSize="21.333" Margin="15,0,0,0" Foreground="White"/>
+                </StackPanel>
+                <TextBlock Text="This is based on the size of the cropped image you just selected, plus some metadata. This may vary a bit if you use automatic image update." FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource Gray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Average updates/day:" FontSize="21.333" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock x:Name="requestPerDayRun" Text="15" FontSize="21.333" Margin="15,0,0,0" Foreground="White"/>
+                </StackPanel>
+                <TextBlock Text="This is on average the number of updates you will receive per day." FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource Gray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Calculated days per $0.99 lasts:" FontSize="21.333" Margin="15,0,0,0">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock x:Name="_099PriceDaysRun" Text="60" FontSize="21.333" Margin="15,0,0,0" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+
+        </toolkit:CustomMessageBox>
+    </phone:PhoneApplicationPage.Resources>
     <Grid x:Name="LayoutRoot" Background="Transparent">
 
         <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" d:LayoutOverrides="Height, TopPosition, BottomPosition" VerticalAlignment="Top">
@@ -58,8 +125,8 @@
                 <Button Click="shortcutButton_Click" x:Name="shortcutButton" Content="pin shortcut" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
             </StackPanel>
             <StackPanel x:Name="quotaStack" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,10,0,0" d:LayoutOverrides="Width">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface">
-                    <Run Text="Your remaining quota: "/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Width="442" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface">
+                    <Run Text="Your remaining balance lasts: "/>
                     <Run x:Name="remainingQuota" Text="30"/>
                     <Run Text=" days."/>
                 </TextBlock>
@@ -72,67 +139,12 @@
                 </TextBlock>
                 <HyperlinkButton x:Name="priceCalculationLink" Content="How is my price calculated?" Margin="-10,0,0,0" Click="priceCalculationLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
                 <HyperlinkButton x:Name="quotaRunOut" Content="What happens if my quota runs out?" Margin="-10,0,0,0" Click="quotaRunOut_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
-                <Button Click="quotaPurchase_Click" x:Name="quotaPurchase" Content="purchase more quota" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
+                <Button Click="quotaPurchase_Click" x:Name="quotaPurchase" Content="purchase more balance" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
             </StackPanel>
 
         </StackPanel>
         <ProgressBar x:Name="progressRing" Height="10" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="Black" Foreground="{StaticResource DarkAccent}" Visibility="Collapsed"/>
-        <toolkit:CustomMessageBox x:Name="priceCalcMsgBx" Caption="DETERMINING YOUR PRICE"  >
-            <StackPanel Margin="0" Orientation="Vertical">
-                <StackPanel Margin="0" Orientation="Horizontal">
-                    <TextBlock Text="Azure Traffic Price:" FontSize="24" Margin="15,0,0,0">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                    <TextBlock Text="$0.181/GB" FontSize="24" Margin="15,0,0,0">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="White"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                </StackPanel>
-                <TextBlock Text="This is what our service provider charges us. If our service provider lowers their traffic price, we'll lower ours too!" FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
-                    <TextBlock.Foreground>
-                        <SolidColorBrush Color="{StaticResource Gray}"/>
-                    </TextBlock.Foreground>
-                </TextBlock>
-                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
-                    <TextBlock Text="Size per request:" FontSize="21.333" Margin="15,0,0,0">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                    <TextBlock Text="255KB" FontSize="21.333" Margin="15,0,0,0" Foreground="White"/>
-                </StackPanel>
-                <TextBlock Text="This is based on the size of the cropped image you just selected, plus some metadata." FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
-                    <TextBlock.Foreground>
-                        <SolidColorBrush Color="{StaticResource Gray}"/>
-                    </TextBlock.Foreground>
-                </TextBlock>
-                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
-                    <TextBlock Text="Average updates/day:" FontSize="21.333" Margin="15,0,0,0">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                    <TextBlock Text="15" FontSize="21.333" Margin="15,0,0,0" Foreground="White"/>
-                </StackPanel>
-                <TextBlock Text="This is on average the number of updates you will receive per day." FontSize="21.333" Margin="15,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" d:LayoutOverrides="LeftMargin, RightMargin">
-                    <TextBlock.Foreground>
-                        <SolidColorBrush Color="{StaticResource Gray}"/>
-                    </TextBlock.Foreground>
-                </TextBlock>
-                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
-                    <TextBlock Text="Calculated days per $0.99 lasts:" FontSize="21.333" Margin="15,0,0,0">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                    <TextBlock Text="60" FontSize="21.333" Margin="15,0,0,0" Foreground="White"/>
-                </StackPanel>
-            </StackPanel>
-
-        </toolkit:CustomMessageBox>
+        
 
         <!--TitlePanel contains the name of the application and page title-->
 

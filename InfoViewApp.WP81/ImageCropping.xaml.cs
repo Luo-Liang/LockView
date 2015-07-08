@@ -140,7 +140,7 @@ namespace InfoViewApp.WP81
                 using (var fs = file)
                 {
                     await Task.Run(() => bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, 100));
-                    LockViewApplicationState.Instance.RequestMetadata.BytesPerRequest = (int) fs.Length;
+                    LockViewApplicationState.Instance.RequestMetadata.ImageBytesPerRequest = (int) fs.Length;
                 }
             }
         }

@@ -15,13 +15,15 @@ namespace InfoViewApp.WP81
 {
     public class LockViewRequestMetadata
     {
-        public int UserQuotaInDays = 30;
-        public int BytesPerRequest = 1024;
+        public int ImageBytesPerRequest = 1024;
+
+        public double DrainPerRequest { get; internal set; }
     }
 
     public class LockViewApplicationState
     {
         const string SettingInstance = "Settings.xml";
+        public double UserQuotaInDollars { get; set; }
         public LockViewRequestMetadata RequestMetadata { get; set; }
         public static LockViewApplicationState Instance { get; private set; }
         static LockViewApplicationState()
@@ -58,6 +60,7 @@ namespace InfoViewApp.WP81
                 PreviewContextContract = new OverlayContextContract();
                 PreviewLayoutContract = new OverlayLayoutContract();
                 RequestMetadata = new LockViewRequestMetadata();
+                UserQuotaInDollars = 0.19;
             }
         }
         Stream BackgroundPreview { get; set; }

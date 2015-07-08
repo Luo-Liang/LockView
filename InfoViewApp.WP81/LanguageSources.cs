@@ -82,6 +82,13 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             }
         }
 
-
+        public virtual RequestMetaData GetMetaData()
+        {
+            return new RequestMetaData()
+            {
+                 BytePerRequest = 512,
+                 UpdatePerDay = 1
+            };
+        }
     }
 }

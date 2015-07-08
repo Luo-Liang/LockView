@@ -14,6 +14,16 @@ namespace InfoViewApp.WP81.InterestGathering
         {
             BaseRequestUrlTemplate = "https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}";
         }
+
+        public override RequestMetaData GetMetaData()
+        {
+            return new RequestMetaData()
+            {
+                UpdatePerDay = 15,
+                BytePerRequest = 1024,
+            };
+        }
+
         public override async Task<InterestContent> RequestContent(InterestRequest request)
         {
             var requestClient = new HttpClient();

@@ -60,6 +60,15 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
                 return InterestContent.DefaultInterest;
             }
         }
+
+        public override RequestMetaData GetMetaData()
+        {
+            return new RequestMetaData()
+            {
+                BytePerRequest = 1024,
+                UpdatePerDay = 15
+            };
+        }
     }
 
     public class CustomizedFeedSource : FeedSource 

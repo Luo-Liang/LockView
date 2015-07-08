@@ -135,6 +135,7 @@
     <Compile Include="Preview.xaml.cs">
       <DependentUpon>Preview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pricing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResolutionProvider.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">

@@ -80,6 +80,14 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             }
             return contract;
         }
+        public override RequestMetaData GetMetaData()
+        {
+            return new RequestMetaData()
+            {
+                UpdatePerDay = 15,
+                BytePerRequest = 0
+            };
+        }
     }
 
     public class CET46Collection : OfflineSource

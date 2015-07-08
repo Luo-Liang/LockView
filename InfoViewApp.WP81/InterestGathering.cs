@@ -25,6 +25,7 @@ namespace InfoViewApp.WP81.InterestGathering
 
 
 
+
     public class InterestRequest
     {
         public string InterestString { get; set; }
@@ -35,6 +36,18 @@ namespace InfoViewApp.WP81.InterestGathering
     {
         Task<InterestContent> RequestContent(InterestRequest request);
         string SourceName { get; }
+        RequestMetaData GetMetaData();
+    }
+
+    public class RequestMetaData
+    {
+        public int BytePerRequest { get; set; }
+        public int UpdatePerDay { get; set; }
+        public int TypicalComputationInSec { get; set; }
+        public RequestMetaData()
+        {
+            TypicalComputationInSec = 5;
+        }
     }
 
     public abstract class InterestGatherer : IInterestGatherer
@@ -43,5 +56,6 @@ namespace InfoViewApp.WP81.InterestGathering
         public string ExtendedContentUrl { get; set; }
         public string SourceName { get; set; }
         public abstract Task<InterestContent> RequestContent(InterestRequest request);
+        public abstract RequestMetaData GetMetaData();
     }
 }

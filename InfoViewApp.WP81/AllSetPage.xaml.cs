@@ -24,6 +24,20 @@ namespace InfoViewApp.WP81
         public AllSetPage()
         {
             InitializeComponent();
+            var metaData = LockViewApplicationState.Instance.RequestMetadata;
+            var providerMetaData = LockViewApplicationState.Instance.SelectedProvider.GetMetaData();
+            computePriceRun.Text = "$" + Pricing.ComputationPricePerHour + "/hr";
+            trafficPriceRun.Text = "$" + Pricing.TrafficPricePerGB + "/GB";
+            sizePerRequestRun.Text = (metaData.ImageBytesPerRequest + providerMetaData.BytePerRequest) / 1024 + "KB";
+            requestPerDayRun.Text = providerMetaData.UpdatePerDay + " (Estimated)";
+            metaData.DrainPerRequest = (((metaData.ImageBytesPerRequest + providerMetaData.BytePerRequest) / (1024.0 * 1024 * 1024)) * Pricing.TrafficPricePerGB +
+            (providerMetaData.TypicalComputationInSec / 3600.0) * Pricing.ComputationPricePerHour);
+            _099PriceDaysRun.Text = Math.Ceiling(0.99 / (metaData.DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
+            priceCalcMsgBx = Resources["priceCalcMsgBx"] as CustomMessageBox;
+            Resources.Remove("priceCalcMsgBx");
+            days.Text = _099PriceDaysRun.Text;
+            quotaPurchase.Content = "purchase " + days.Text + " days for $0.99";
+            remainingQuota.Text = Math.Ceiling(LockViewApplicationState.Instance.UserQuotaInDollars / (metaData.DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
         }
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -34,7 +48,6 @@ namespace InfoViewApp.WP81
             button.IsEnabled = !LockScreenManager.IsProvidedByCurrentApplication;
             double height, width;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
-            remainingQuota.Text = LockViewApplicationState.Instance.RequestMetadata.UserQuotaInDays.ToString();
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)
@@ -83,7 +96,7 @@ namespace InfoViewApp.WP81
                 LockViewApplicationState.Instance.PreviewLayoutContract,
                 LockViewApplicationState.Instance.PersistFileName);
             double height, width;
-            ResolutionProvider.GetScreenSizeInPixels(out height,out width);
+            ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
             var jpegBytes = Convert.FromBase64String(response.Image);
             var fileName = "wall.jpeg";
@@ -105,27 +118,28 @@ namespace InfoViewApp.WP81
             {
                 LockScreen.SetImageUri(new Uri("ms-appx:///LockView.png", UriKind.Absolute));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
             }
-            LockScreen.SetImageUri(new Uri("ms-appdata:///local/wall.jpeg",UriKind.Absolute));
+            LockScreen.SetImageUri(new Uri("ms-appdata:///local/wall.jpeg", UriKind.Absolute));
             var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
-            if(isPinned)
+            if (isPinned)
             {
                 var tile = ShellTile.ActiveTiles.First<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
                 var context = LockViewApplicationState.Instance.PreviewContextContract;
-                var standardTile = new StandardTileData() {Title="LockView", BackTitle = context.Title, BackContent = context.FirstLine };
-                if(context.ExtendedUri!=null)
+                var standardTile = new StandardTileData() { Title = "LockView", BackTitle = context.Title, BackContent = context.FirstLine };
+                if (context.ExtendedUri != null)
                 {
-                    standardTile.BackgroundImage = new Uri(context.ExtendedUri,UriKind.Absolute);
+                    standardTile.BackgroundImage = new Uri(context.ExtendedUri, UriKind.Absolute);
                 }
                 tile.Update(standardTile);
 
             }
         }
-
-        private void priceCalculationLink_Click(object sender, RoutedEventArgs e)
+        CustomMessageBox priceCalcMsgBx;
+        private void priceCalculationLink_Click(object se1nder, RoutedEventArgs e)
         {
+            priceCalcMsgBx.Show();
         }
 
         private void quotaRunOut_Click(object sender, RoutedEventArgs e)
