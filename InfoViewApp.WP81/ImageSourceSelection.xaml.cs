@@ -25,8 +25,16 @@ namespace InfoViewApp.WP81
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             if (categorySelector.SelectedItem == null) return;
-            if (categorySelector.SelectedIndex == 0) NavigationService.Navigate(new Uri("/ImageCropping.xaml?ImgSrc=library", UriKind.Relative));
-            else NavigationService.Navigate(new Uri("/ImageCropping.xaml?ImgSrc=bing", UriKind.Relative));
+            if (categorySelector.SelectedIndex == 0)
+            {
+                NavigationService.Navigate(new Uri("/ImageCropping.xaml?ImgSrc=library", UriKind.Relative));
+                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Local;
+            }
+            else
+            {
+                NavigationService.Navigate(new Uri("/ImageCropping.xaml?ImgSrc=bing", UriKind.Relative));
+                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Bing;
+            }
         }
     }
 }

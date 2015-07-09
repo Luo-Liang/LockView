@@ -138,13 +138,14 @@
                     <Run Text=" days."/>
                 </TextBlock>
                 <HyperlinkButton x:Name="priceCalculationLink" Content="How is my price calculated?" Margin="-10,0,0,0" Click="priceCalculationLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
-                <HyperlinkButton x:Name="quotaRunOut" Content="What happens if my quota runs out?" Margin="-10,0,0,0" Click="quotaRunOut_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
+                <HyperlinkButton x:Name="quotaRunOut" Content="What happens if my balance runs out?" Margin="-10,0,0,0" Click="quotaRunOut_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
+                <HyperlinkButton x:Name="dontwattopayLink" Content="What if I don't want to pay?" Margin="-10,0,0,0" Click="dontwattopayLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
                 <Button Click="quotaPurchase_Click" x:Name="quotaPurchase" Content="purchase more balance" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
             </StackPanel>
 
         </StackPanel>
         <ProgressBar x:Name="progressRing" Height="10" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="Black" Foreground="{StaticResource DarkAccent}" Visibility="Collapsed"/>
-        
+
 
         <!--TitlePanel contains the name of the application and page title-->
 

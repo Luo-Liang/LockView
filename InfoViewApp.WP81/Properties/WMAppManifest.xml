@@ -15,6 +15,9 @@
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" ActivationPolicy="Resume" />
+        <ExtendedTask Name="BackgroundTask">
+          <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="updateTask" Source="LockViewApp.WP81.BackgroundAgent" Type="LockViewApp.WP81.BackgroundAgent.ScheduledAgent" />
+        </ExtendedTask>
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="InfoViewApp.WP81WP81Token" TaskName="_default">

@@ -90,13 +90,23 @@ namespace InfoViewApp.WP81
             progressRing.Visibility = Visibility.Visible;
             SaveBtn.Visibility = Visibility.Collapsed;
             await LockViewApplicationState.Instance.SaveState();
+            var scale = ResolutionProvider.GetScaleFactor();
+            var instance = LockViewApplicationState.Instance;
+            instance.PreviewFormattingContract.FirstLineFont.FontSize = (int)(instance.PreviewFormattingContract.FirstLineFont.FontSize * scale);
+            instance.PreviewFormattingContract.SecondLineFont.FontSize = (int)(instance.PreviewFormattingContract.SecondLineFont.FontSize * scale);
+            instance.PreviewFormattingContract.TitleFont.FontSize = (int)(instance.PreviewFormattingContract.TitleFont.FontSize * scale);
+            instance.PreviewLayoutContract.Origin = new Point() { X = (int)(20 * scale), Y = (int)(20 * scale) };
+            instance.PreviewLayoutContract.AutoExpand = true;
+            instance.PreviewLayoutContract.ParagraphSpacing = (int)(10 * scale);
+            double height, width;
+            ResolutionProvider.GetScreenSizeInPixels(out height, out width);
+            instance.PreviewLayoutContract.TargetHeight = (int)height;
+            instance.PreviewLayoutContract.TargetWidth = (int)width;
             Tasks.CloudImageCompositorClient client = new Tasks.CloudImageCompositorClient();
             var response = await client.Compose(LockViewApplicationState.Instance.PreviewContextContract,
                 LockViewApplicationState.Instance.PreviewFormattingContract,
                 LockViewApplicationState.Instance.PreviewLayoutContract,
                 LockViewApplicationState.Instance.PersistFileName);
-            double height, width;
-            ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
             var jpegBytes = Convert.FromBase64String(response.Image);
             var fileName = "wall.jpeg";
@@ -140,16 +150,22 @@ namespace InfoViewApp.WP81
         private void priceCalculationLink_Click(object se1nder, RoutedEventArgs e)
         {
             priceCalcMsgBx.Show();
+            priceCalculationLink.Visibility = Visibility.Collapsed;
         }
 
         private void quotaRunOut_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("If your Quota runs out, you will still receive updates, but at a significantly lowered rate.", "WHAT IF QUOTA RUNS OUT...", MessageBoxButton.OK);
+            MessageBox.Show("If your balance runs out, you will still receive updates, but at a significantly lowered rate. We'll remind you if you're out of balance soon.", "WHAT IF QUOTA RUNS OUT...", MessageBoxButton.OK);
         }
 
         private void quotaPurchase_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void dontwattopayLink_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days.", "I'M NOT A FAN OF PAID APP...", MessageBoxButton.OK);
         }
     }
 }

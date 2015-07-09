@@ -6,8 +6,8 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:local="clr-namespace:InfoViewApp.WP81"
     xmlns:converter="clr-namespace:InfoViewApp.WP81.Converter"
-    xmlns:newsFeed="clr-namespace:InfoViewApp.WP81.InterestGathering.NewsFeed"
-    xmlns:language="clr-namespace:InfoViewApp.WP81.InterestGathering.LanguageLearning"
+    xmlns:newsFeed="clr-namespace:InfoViewApp.WP81.InterestGathering.NewsFeed;assembly=LockViewApp.WP81.Contracts"
+    xmlns:language="clr-namespace:InfoViewApp.WP81.InterestGathering.LanguageLearning;assembly=LockViewApp.WP81.Contracts"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 

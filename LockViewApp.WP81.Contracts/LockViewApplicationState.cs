@@ -15,14 +15,18 @@ namespace InfoViewApp.WP81
 {
     public class LockViewRequestMetadata
     {
+        public string RequestLanguage = "En-Us";
         public int ImageBytesPerRequest = 1024;
 
-        public double DrainPerRequest { get; internal set; }
+        public double DrainPerRequest { get; set; }
     }
+
+
 
     public class LockViewApplicationState
     {
         const string SettingInstance = "Settings.xml";
+        public ImageSource SelectedImageSource { get; set; }
         public double UserQuotaInDollars { get; set; }
         public LockViewRequestMetadata RequestMetadata { get; set; }
         public static LockViewApplicationState Instance { get; private set; }

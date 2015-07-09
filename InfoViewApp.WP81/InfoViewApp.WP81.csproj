@@ -103,14 +103,11 @@
     <Compile Include="BroadInterestPage.xaml.cs">
       <DependentUpon>BroadInterestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CloudCompositionLocalContract.cs" />
     <Compile Include="ColorNameVM.cs" />
     <Compile Include="Converters.cs" />
-    <Compile Include="FeedSource.cs" />
     <Compile Include="FontCAS.xaml.cs">
       <DependentUpon>FontCAS.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HtmlDecodingUtility.cs" />
     <Compile Include="ImageCropping.xaml.cs">
       <DependentUpon>ImageCropping.xaml</DependentUpon>
     </Compile>
@@ -120,22 +117,17 @@
     <Compile Include="Interest.xaml.cs">
       <DependentUpon>Interest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InterestGathering.cs" />
-    <Compile Include="LanguageConcreteSources.cs" />
     <Compile Include="LanguageSetting.xaml.cs">
       <DependentUpon>LanguageSetting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LanguageSources.cs" />
     <Compile Include="ListBoxContentVM.cs" />
     <Compile Include="LocalizedStrings.cs" />
-    <Compile Include="LockViewApplicationState.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Preview.xaml.cs">
       <DependentUpon>Preview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pricing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResolutionProvider.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
@@ -143,12 +135,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SpecificInterestGatherer.cs" />
     <Compile Include="SpecificTopic.xaml.cs">
       <DependentUpon>SpecificTopic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tasks\BackgroundTask.cs" />
-    <Compile Include="Tasks\CloudImageCompositorClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -296,6 +285,12 @@
       <HintPath>..\packages\WriteableBitmapEx.1.5.0.0\lib\WindowsPhone8\WriteableBitmapExWinPhoneXnaDependant.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LockViewApp.WP81.Contracts\LockViewApp.WP81.Contracts.csproj">
+      <Project>{d8a24836-91c1-4edc-9608-cb05583503dd}</Project>
+      <Name>LockViewApp.WP81.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

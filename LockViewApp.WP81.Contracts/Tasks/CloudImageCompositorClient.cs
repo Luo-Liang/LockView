@@ -11,7 +11,7 @@ using Windows.Web.Http;
 
 namespace InfoViewApp.WP81.Tasks
 {
-    class CloudImageCompositorClient
+    public class CloudImageCompositorClient
     {
         public async Task<ImageCompositionResponse> Compose(OverlayContextContract PreviewContextContract,
                                   OverlayFormattingContract PreviewFormattingContract,
@@ -20,20 +20,7 @@ namespace InfoViewApp.WP81.Tasks
         {
             HttpClient client = new HttpClient();
             var localRequest = new ImageCompositionRequest();
-            var scale = ResolutionProvider.GetScaleFactor();
-            localRequest.ContextContract = PreviewContextContract;
-            localRequest.FormattingContract = PreviewFormattingContract;
-            localRequest.FormattingContract.FirstLineFont.FontSize = (int)(localRequest.FormattingContract.FirstLineFont.FontSize*scale);
-            localRequest.FormattingContract.SecondLineFont.FontSize = (int)(localRequest.FormattingContract.SecondLineFont.FontSize * scale);
-            localRequest.FormattingContract.TitleFont.FontSize = (int)(localRequest.FormattingContract.TitleFont.FontSize * scale);
-            localRequest.LayoutContract = PreviewLayoutContract;
-            localRequest.LayoutContract.Origin = new Point() { X = (int)(20* scale), Y = (int)(20* scale) };
-            localRequest.LayoutContract.AutoExpand = true;
-            localRequest.LayoutContract.ParagraphSpacing = (int)(10* scale);
-            double height, width;
-            ResolutionProvider.GetScreenSizeInPixels(out height, out width);
-            localRequest.LayoutContract.TargetHeight = (int)height;
-            localRequest.LayoutContract.TargetWidth = (int)width; 
+
             var file = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
             byte[] imgBytes;//= new byte[5];
             using (var stream = await file.OpenReadAsync())

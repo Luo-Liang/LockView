@@ -13,6 +13,7 @@ using Windows.Web.Http;
 using Windows.Storage.Streams;
 using System.Windows.Input;
 using System.IO.IsolatedStorage;
+using System.Globalization;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -52,7 +53,7 @@ namespace InfoViewApp.WP81
             }
             else if (parameter == "bing")
             {
-                var lang = Language;
+                var lang = LockViewApplicationState.Instance.RequestMetadata.RequestLanguage = CultureInfo.CurrentCulture.ToString();
                 var reqString = string.Format(Locator, lang);
                 HttpClient client = new HttpClient();
                 progressRing.Visibility = Visibility.Visible;
@@ -62,6 +63,10 @@ namespace InfoViewApp.WP81
                     var json = await client.GetStringAsync(new Uri(reqString));
                     var jObj = JsonObject.Parse(json);
                     var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
+                    imgRequestUrl = imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_'));
+                    double width, height;
+                    ResolutionProvider.GetScreenSizeInPixels(out height,out width);
+                    imgRequestUrl += string.Format("_{0}x{1}.jpg", (int)width, (int)height);
                     var response = await client.GetAsync(new Uri(string.Format("http://www.bing.com{0}", imgRequestUrl)));
                     WB_CapturedImage = new WriteableBitmap(1, 1);
                     WB_CapturedImage = WB_CapturedImage.FromStream((await response.Content.ReadAsInputStreamAsync()).AsStreamForRead());
@@ -140,7 +145,7 @@ namespace InfoViewApp.WP81
                 using (var fs = file)
                 {
                     await Task.Run(() => bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, 100));
-                    LockViewApplicationState.Instance.RequestMetadata.ImageBytesPerRequest = (int) fs.Length;
+                    LockViewApplicationState.Instance.RequestMetadata.ImageBytesPerRequest = (int)fs.Length;
                 }
             }
         }
