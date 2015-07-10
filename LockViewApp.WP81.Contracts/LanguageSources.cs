@@ -69,12 +69,14 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             {
                 node = document.SelectSingleNode(HeadlineSelectionPath);
                 secondaryNode = document.SelectSingleNode(SecondaryLineSelectionPath);
-                return new InterestContent()
+                var response1 = new InterestContent()
                 {
                     Title = HtmlDecodingUtility.HtmlDecode(node.InnerText),
                     Content = HtmlDecodingUtility.HtmlDecode(node.InnerText),
                     Publisher = SourceName
                 };
+                request.PreviousInterestContentIdentifier = response1.GetHashCode();
+                return response1;
             }
             catch
             {

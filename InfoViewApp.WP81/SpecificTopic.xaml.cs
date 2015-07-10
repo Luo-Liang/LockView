@@ -36,11 +36,9 @@ namespace InfoViewApp.WP81
                 progressRing.Visibility = Visibility.Visible;
                 GoogleSpecificInterestGatherer gatherer = new GoogleSpecificInterestGatherer();
                 SaveBtn.Visibility = Visibility.Collapsed;
-                var interest = await gatherer.RequestContent(new InterestRequest()
-                    {
-                        InterestString = specificTopicBox.Text,
-                        PreviousInterestContentIdentifier = 0
-                    });
+                LockViewApplicationState.Instance.SelectedInterest.InterestString = specificTopicBox.Text;
+                LockViewApplicationState.Instance.SelectedInterest.PreviousInterestContentIdentifier = 0;
+                var interest = await gatherer.RequestContent(LockViewApplicationState.Instance.SelectedInterest);
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;
                 if (interest != null)
@@ -49,7 +47,6 @@ namespace InfoViewApp.WP81
                     LockViewApplicationState.Instance.PreviewContextContract.FirstLine = interest.Content;
                     LockViewApplicationState.Instance.PreviewContextContract.SecondLine = interest.Publisher;
                     if (interest.ContentExtensionUri != null)
-
                         LockViewApplicationState.Instance.PreviewContextContract.ExtendedUri = interest.ContentExtensionUri.ToString();
                     previewStack.DataContext = interest;
                 }

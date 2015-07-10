@@ -30,14 +30,13 @@ namespace InfoViewApp.WP81
             trafficPriceRun.Text = "$" + Pricing.TrafficPricePerGB + "/GB";
             sizePerRequestRun.Text = (metaData.ImageBytesPerRequest + providerMetaData.BytePerRequest) / 1024 + "KB";
             requestPerDayRun.Text = providerMetaData.UpdatePerDay + " (Estimated)";
-            metaData.DrainPerRequest = (((metaData.ImageBytesPerRequest + providerMetaData.BytePerRequest) / (1024.0 * 1024 * 1024)) * Pricing.TrafficPricePerGB +
-            (providerMetaData.TypicalComputationInSec / 3600.0) * Pricing.ComputationPricePerHour);
-            _099PriceDaysRun.Text = Math.Ceiling(0.99 / (metaData.DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
+            var DrainPerRequest = Pricing.CalculateDrainPerRequest(LockViewApplicationState.Instance.RequestMetadata, LockViewApplicationState.Instance.SelectedProvider.GetMetaData());
+            _099PriceDaysRun.Text = Math.Ceiling(0.99 / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
             priceCalcMsgBx = Resources["priceCalcMsgBx"] as CustomMessageBox;
             Resources.Remove("priceCalcMsgBx");
             days.Text = _099PriceDaysRun.Text;
             quotaPurchase.Content = "purchase " + days.Text + " days for $0.99";
-            remainingQuota.Text = Math.Ceiling(LockViewApplicationState.Instance.UserQuotaInDollars / (metaData.DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
+            remainingQuota.Text = Math.Ceiling(LockViewApplicationState.Instance.UserQuotaInDollars / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
         }
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -143,7 +142,6 @@ namespace InfoViewApp.WP81
                     standardTile.BackgroundImage = new Uri(context.ExtendedUri, UriKind.Absolute);
                 }
                 tile.Update(standardTile);
-
             }
         }
         CustomMessageBox priceCalcMsgBx;

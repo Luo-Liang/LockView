@@ -17,10 +17,7 @@ namespace InfoViewApp.WP81
     {
         public string RequestLanguage = "En-Us";
         public int ImageBytesPerRequest = 1024;
-
-        public double DrainPerRequest { get; set; }
     }
-
 
 
     public class LockViewApplicationState
@@ -38,10 +35,9 @@ namespace InfoViewApp.WP81
         {
             try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(LanguageSourceBase), typeof(NewsFeedCategory), typeof(InterestGatherer) });
                 using (var fs = ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(SettingInstance).Result)
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(InterestGatherer) });
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(LanguageSourceBase), typeof(NewsFeedCategory), typeof(InterestGatherer) });
                     Instance = (LockViewApplicationState)xmlSerializer.Deserialize(fs);
                 }
             }
@@ -65,10 +61,12 @@ namespace InfoViewApp.WP81
                 PreviewLayoutContract = new OverlayLayoutContract();
                 RequestMetadata = new LockViewRequestMetadata();
                 UserQuotaInDollars = 0.19;
+                SelectedInterest = new InterestRequest();
             }
         }
         Stream BackgroundPreview { get; set; }
         public string PersistFileName { get; set; }
+        public InterestRequest SelectedInterest { get; set; }
         public InterestGathering.InterestGatherer SelectedProvider { get; set; }
         public OverlayContextContract PreviewContextContract { get; set; }
         public OverlayFormattingContract PreviewFormattingContract { get; set; }
@@ -78,7 +76,7 @@ namespace InfoViewApp.WP81
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SettingInstance, CreationCollisionOption.ReplaceExisting);
             using (var fs = await file.OpenStreamForWriteAsync())
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(InterestGatherer) });
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(InterestGatherer),typeof(NewsFeedCategory) });
                 xmlSerializer.Serialize(fs, this);
             }
         }

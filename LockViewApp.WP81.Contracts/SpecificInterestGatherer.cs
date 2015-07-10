@@ -58,6 +58,7 @@ namespace InfoViewApp.WP81.InterestGathering
                                     };
                                     if (candidateContent.GetHashCode() != request.PreviousInterestContentIdentifier)
                                     {
+                                        request.PreviousInterestContentIdentifier = candidateContent.GetHashCode();
                                         return candidateContent;
                                     }
                                 }
