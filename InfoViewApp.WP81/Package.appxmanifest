@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="5b3e6b42-5728-4cca-8793-2b504d300b23" Publisher="CN=liang" Version="1.0.0.0" />
+  <Identity Name="63066intelligentsystems.LockViewBeta" Publisher="CN=F6788970-F6F7-4B5A-B520-A4EF3E7B1AC4" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="0e308840-079b-4a17-af80-5765b451c998" PhonePublisherId="ce5eaf25-4cc3-4383-9ed0-2b5d5847a348" />
   <Properties>
     <DisplayName>InfoViewApp.WP81WP81</DisplayName>
-    <PublisherDisplayName>liang</PublisherDisplayName>
+    <PublisherDisplayName>intelligent systems</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>

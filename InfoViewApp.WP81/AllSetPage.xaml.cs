@@ -18,6 +18,12 @@ using System.Windows.Media;
 using InfoViewApp.WP81.Tasks;
 using Windows.ApplicationModel.Background;
 using Microsoft.Phone.Scheduler;
+#if DEBUG
+using MockIAPLib;
+using Store = MockIAPLib;
+#else
+using Windows.ApplicationModel.Store;
+#endif
 
 namespace InfoViewApp.WP81
 {
@@ -26,6 +32,14 @@ namespace InfoViewApp.WP81
         public AllSetPage()
         {
             InitializeComponent();
+            priceCalcMsgBx = Resources["priceCalcMsgBx"] as CustomMessageBox;
+            Resources.Remove("priceCalcMsgBx");
+            UpdateBalanceInfo();
+            SetupMockIAP();
+        }
+
+        private void UpdateBalanceInfo()
+        {
             var metaData = LockViewApplicationState.Instance.RequestMetadata;
             var providerMetaData = LockViewApplicationState.Instance.SelectedProvider.GetMetaData();
             computePriceRun.Text = "$" + Pricing.ComputationPricePerHour + "/hr";
@@ -34,12 +48,11 @@ namespace InfoViewApp.WP81
             requestPerDayRun.Text = providerMetaData.UpdatePerDay + " (Estimated)";
             var DrainPerRequest = Pricing.CalculateDrainPerRequest(LockViewApplicationState.Instance.RequestMetadata, LockViewApplicationState.Instance.SelectedProvider.GetMetaData());
             _099PriceDaysRun.Text = Math.Ceiling(0.99 / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
-            priceCalcMsgBx = Resources["priceCalcMsgBx"] as CustomMessageBox;
-            Resources.Remove("priceCalcMsgBx");
             days.Text = _099PriceDaysRun.Text;
             quotaPurchase.Content = "purchase " + days.Text + " days for $0.99";
             remainingQuota.Text = Math.Ceiling(LockViewApplicationState.Instance.UserQuotaInDollars / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
         }
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -49,8 +62,6 @@ namespace InfoViewApp.WP81
             var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(BackgroundTaskHelper.PinnedHeadlineNavId, UriKind.Relative));
             PinFrontStory.Visibility = isPinned ? Visibility.Collapsed : Visibility.Visible;
             button.IsEnabled = !LockScreenManager.IsProvidedByCurrentApplication;
-            double height, width;
-            ResolutionProvider.GetScreenSizeInPixels(out height, out width);
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)
@@ -144,9 +155,66 @@ namespace InfoViewApp.WP81
             MessageBox.Show("If your balance runs out, you will still receive updates, but at a significantly lowered rate. We'll remind you if you're out of balance soon.", "WHAT IF QUOTA RUNS OUT...", MessageBoxButton.OK);
         }
 
-        private void quotaPurchase_Click(object sender, RoutedEventArgs e)
+        private void SetupMockIAP()
         {
+#if DEBUG
+            try
+            {
+                MockIAP.Init();
+                MockIAP.RunInMockMode(true);
+                MockIAP.SetListingInformation(1, "en-us", "A description", "1", "LockView");
 
+                // Add some more items manually.
+                var p = new ProductListing()
+                {
+                    Name = "FAKE NAME",
+                    ImageUri = new Uri("ms-appx:///LockViewInApp.png", UriKind.Absolute),
+                    ProductId = "cloudCompMobiQuota",
+                    ProductType = Windows.ApplicationModel.Store.ProductType.Consumable,
+                    Keywords = new string[] { "FAKE" },
+                    Description = "FAKE",
+                    FormattedPrice = "1.0",
+                    Tag = string.Empty
+                };
+                MockIAP.AddProductListing("FAKE", p);
+            }
+            catch { }
+#endif
+        }
+
+
+        private async void quotaPurchase_Click(object sender, RoutedEventArgs e)
+        {
+            var listing = await CurrentApp.LoadListingInformationAsync();
+            var n99Cents =
+              listing.ProductListings.FirstOrDefault(
+              p => p.Value.ProductId == "cloudCompMobiQuota" && p.Value.ProductType == Windows.ApplicationModel.Store.ProductType.Consumable);
+
+            try
+            {
+#if DEBUG
+                var receipt = await CurrentApp.RequestProductPurchaseAsync(n99Cents.Value.ProductId, true);
+#else
+                 var receipt = await CurrentApp.RequestProductPurchaseAsync(n99Cents.Value.ProductId);
+#endif
+
+                if (CurrentApp.LicenseInformation.ProductLicenses[n99Cents.Value.ProductId].IsActive)
+                {
+#if DEBUG
+                    CurrentApp.ReportProductFulfillment(n99Cents.Value.ProductId);
+#else
+                    await CurrentApp.ReportConsumableFulfillmentAsync(fiftypoints.Value.ProductId, receipt.TransactionId);
+#endif
+                    LockViewApplicationState.Instance.UserQuotaInDollars += 0.99;
+                    await LockViewApplicationState.Instance.SaveState();
+                    UpdateBalanceInfo();
+                    //"Bought 50 Points " + i++ + " times for a total of " + m_pointCount + "!";
+                }
+            }
+            catch (Exception ex)
+            {
+               
+            }
         }
 
         private void dontwattopayLink_Click(object sender, RoutedEventArgs e)
