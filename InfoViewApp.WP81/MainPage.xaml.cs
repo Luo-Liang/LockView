@@ -17,6 +17,7 @@ namespace InfoViewApp.WP81
 
             //this.NavigationCacheMode = NavigationCacheMode.Required;
             this.Loaded += MainPage_Loaded1;
+            LockViewApplicationState.Instance.RequestMetadata.ScaleFactor = ResolutionProvider.GetScaleFactor();
         }
 
         private void MainPage_Loaded1(object sender, System.Windows.RoutedEventArgs e)

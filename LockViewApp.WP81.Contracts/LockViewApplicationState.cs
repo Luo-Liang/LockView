@@ -17,8 +17,8 @@ namespace InfoViewApp.WP81
     {
         public string RequestLanguage = "En-Us";
         public int ImageBytesPerRequest = 1024;
+        public double ScaleFactor;
     }
-
 
     public class LockViewApplicationState
     {
@@ -26,12 +26,8 @@ namespace InfoViewApp.WP81
         public ImageSource SelectedImageSource { get; set; }
         public double UserQuotaInDollars { get; set; }
         public LockViewRequestMetadata RequestMetadata { get; set; }
-        public static LockViewApplicationState Instance { get; private set; }
+        public static LockViewApplicationState Instance { get; set; }
         static LockViewApplicationState()
-        {
-            Instance = new LockViewApplicationState();
-        }
-        private LockViewApplicationState()
         {
             try
             {
@@ -41,10 +37,11 @@ namespace InfoViewApp.WP81
                     Instance = (LockViewApplicationState)xmlSerializer.Deserialize(fs);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                PersistFileName = "MyBg.jpeg";
-                PreviewFormattingContract = new OverlayFormattingContract()
+                Instance = new LockViewApplicationState();
+                Instance. PersistFileName = "MyBg.jpeg";
+                Instance.PreviewFormattingContract = new OverlayFormattingContract()
                 {
                     BackgroundSecondLine = "Transparent",
                     BackgroundFirstLine = "Transparent",
@@ -57,14 +54,15 @@ namespace InfoViewApp.WP81
                     ForegroundTitle = "White"
                 };
 
-                PreviewContextContract = new OverlayContextContract();
-                PreviewLayoutContract = new OverlayLayoutContract();
-                RequestMetadata = new LockViewRequestMetadata();
-                UserQuotaInDollars = 0.19;
-                SelectedInterest = new InterestRequest();
+                Instance.PreviewContextContract = new OverlayContextContract();
+                Instance.PreviewLayoutContract = new OverlayLayoutContract();
+                Instance.RequestMetadata = new LockViewRequestMetadata();
+                Instance.UserQuotaInDollars = 0.19;
+                Instance.SelectedInterest = new InterestRequest();
             }
         }
-        Stream BackgroundPreview { get; set; }
+        //expose for XML Serializer
+        public LockViewApplicationState() { }
         public string PersistFileName { get; set; }
         public InterestRequest SelectedInterest { get; set; }
         public InterestGathering.InterestGatherer SelectedProvider { get; set; }

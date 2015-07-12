@@ -113,18 +113,18 @@
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <StackPanel Margin="19,117,19,0" Orientation="Vertical" VerticalAlignment="Top">
+        <StackPanel Margin="19,95,19,79" Orientation="Vertical" d:LayoutOverrides="TopPosition, BottomPosition">
             <StackPanel x:Name="setAsLockScreenProvider" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Set as lock screen provider" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
+                <TextBlock TextWrapping="Wrap" Text="Set as lock screen provider and allow background update" VerticalAlignment="Top" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
                 <TextBlock TextWrapping="Wrap" Text="Windows Phone requires us to obtain your consent before we can change your lock screen." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0"/>
                 <Button Click="button_Click" x:Name="button" Content="say yes" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
             </StackPanel>
-            <StackPanel x:Name="PinFrontStory" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width" Margin="0,10,0,0">
+            <StackPanel x:Name="PinFrontStory" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width" Margin="0,5,0,0">
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Pin a shortcut to the story" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
                 <TextBlock TextWrapping="Wrap" Text="You can also pin a short cut tile on the start screen so you can jump to the story real quick." VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface"/>
                 <Button Click="shortcutButton_Click" x:Name="shortcutButton" Content="pin shortcut" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
             </StackPanel>
-            <StackPanel x:Name="quotaStack" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,10,0,0" d:LayoutOverrides="Width">
+            <StackPanel x:Name="quotaStack" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,5,0,0" d:LayoutOverrides="Width">
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Width="442" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface">
                     <Run Text="Your remaining balance lasts: "/>
                     <Run x:Name="remainingQuota" Text="30"/>
@@ -137,9 +137,9 @@
                     <Run Text="60" x:Name="days"/>
                     <Run Text=" days."/>
                 </TextBlock>
-                <HyperlinkButton x:Name="priceCalculationLink" Content="How is my price calculated?" Margin="-10,0,0,0" Click="priceCalculationLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
-                <HyperlinkButton x:Name="quotaRunOut" Content="What happens if my balance runs out?" Margin="-10,0,0,0" Click="quotaRunOut_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
-                <HyperlinkButton x:Name="dontwattopayLink" Content="What if I don't want to pay?" Margin="-10,0,0,0" Click="dontwattopayLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
+                <HyperlinkButton x:Name="priceCalculationLink" Content="How is my price calculated?" Margin="-10,0,0,0" Click="priceCalculationLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
+                <HyperlinkButton x:Name="quotaRunOut" Content="What happens if my balance runs out?" Margin="-10,0,0,0" Click="quotaRunOut_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
+                <HyperlinkButton x:Name="dontwattopayLink" Content="What if I don't want to pay?" Margin="-10,0,0,0" Click="dontwattopayLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
                 <Button Click="quotaPurchase_Click" x:Name="quotaPurchase" Content="purchase more balance" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
             </StackPanel>
 

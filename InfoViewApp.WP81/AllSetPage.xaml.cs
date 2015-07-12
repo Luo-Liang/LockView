@@ -15,12 +15,14 @@ using System.IO;
 using System.Diagnostics;
 using System.IO.IsolatedStorage;
 using System.Windows.Media;
+using InfoViewApp.WP81.Tasks;
+using Windows.ApplicationModel.Background;
+using Microsoft.Phone.Scheduler;
 
 namespace InfoViewApp.WP81
 {
     public partial class AllSetPage : PhoneApplicationPage
     {
-        const string PinnedHeadlineNavId = "/MainPage.xaml?NavId=headLine";
         public AllSetPage()
         {
             InitializeComponent();
@@ -41,8 +43,10 @@ namespace InfoViewApp.WP81
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication ? Visibility.Collapsed : Visibility.Visible;
-            var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
+            var requestStatus = BackgroundExecutionManager.GetAccessStatus();
+            var allowedBg = requestStatus == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity || requestStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity;
+            setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication && allowedBg ? Visibility.Collapsed : Visibility.Visible;
+            var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(BackgroundTaskHelper.PinnedHeadlineNavId, UriKind.Relative));
             PinFrontStory.Visibility = isPinned ? Visibility.Collapsed : Visibility.Visible;
             button.IsEnabled = !LockScreenManager.IsProvidedByCurrentApplication;
             double height, width;
@@ -52,13 +56,16 @@ namespace InfoViewApp.WP81
         private async void button_Click(object sender, RoutedEventArgs e)
         {
             await LockScreenManager.RequestAccessAsync();
-            setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication ? Visibility.Collapsed : Visibility.Visible;
+            await BackgroundExecutionManager.RequestAccessAsync();
+            var requestStatus = BackgroundExecutionManager.GetAccessStatus();
+            var allowedBg = requestStatus == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity || requestStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity;
+            setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication && allowedBg ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void shortcutButton_Click(object sender, RoutedEventArgs e)
         {
-            ShellTile.Create(new Uri(PinnedHeadlineNavId, UriKind.Relative), new StandardTileData() { }, false);
-            var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
+            ShellTile.Create(new Uri(BackgroundTaskHelper.PinnedHeadlineNavId, UriKind.Relative), new StandardTileData() { }, false);
+            var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(BackgroundTaskHelper.PinnedHeadlineNavId, UriKind.Relative));
             PinFrontStory.Visibility = isPinned ? Visibility.Collapsed : Visibility.Visible;
         }
         async Task<WriteableBitmap> OpenBitmapFromFile(string fileName, int width, int height)
@@ -91,9 +98,7 @@ namespace InfoViewApp.WP81
             await LockViewApplicationState.Instance.SaveState();
             var scale = ResolutionProvider.GetScaleFactor();
             var instance = LockViewApplicationState.Instance;
-            instance.PreviewFormattingContract.FirstLineFont.FontSize = (int)(instance.PreviewFormattingContract.FirstLineFont.FontSize * scale);
-            instance.PreviewFormattingContract.SecondLineFont.FontSize = (int)(instance.PreviewFormattingContract.SecondLineFont.FontSize * scale);
-            instance.PreviewFormattingContract.TitleFont.FontSize = (int)(instance.PreviewFormattingContract.TitleFont.FontSize * scale);
+            BackgroundTaskHelper.PrepareFormattingContractForScaling();
             instance.PreviewLayoutContract.Origin = new Point() { X = (int)(20 * scale), Y = (int)(20 * scale) };
             instance.PreviewLayoutContract.AutoExpand = true;
             instance.PreviewLayoutContract.ParagraphSpacing = (int)(10 * scale);
@@ -106,43 +111,26 @@ namespace InfoViewApp.WP81
                 LockViewApplicationState.Instance.PreviewFormattingContract,
                 LockViewApplicationState.Instance.PreviewLayoutContract,
                 LockViewApplicationState.Instance.PersistFileName);
+            //restore fontSize
+            BackgroundTaskHelper.RestoreFormattingContractForSerialization();
+            progressRing.Visibility = Visibility.Collapsed;
+            SaveBtn.Visibility = Visibility.Visible;
             //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
             var jpegBytes = Convert.FromBase64String(response.Image);
             var fileName = "wall.jpeg";
-            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            await BackgroundTaskHelper.SaveComposedImage(jpegBytes, fileName);
+            BackgroundTaskHelper.TrySetLockScreenImage();
+            BackgroundTaskHelper.TryUpdateTiles();
+            //schedule the background task.
+            var periodicTask = ScheduledActionService.Find("BackgroundTask");
+            if (periodicTask != null)
             {
-                if (myIsolatedStorage.FileExists(fileName))
-                {
-                    myIsolatedStorage.DeleteFile(fileName);
-                }
-                var file = myIsolatedStorage.CreateFile(fileName);
-                using (var fs = file)
-                {
-                    await Task.Run(() => fs.Write(jpegBytes, 0, jpegBytes.Length));
-                }
+                ScheduledActionService.Remove("BackgroundTask");
             }
-            progressRing.Visibility = Visibility.Collapsed;
-            SaveBtn.Visibility = Visibility.Visible;
-            try
-            {
-                LockScreen.SetImageUri(new Uri("ms-appx:///LockView.png", UriKind.Absolute));
-            }
-            catch (Exception ex)
-            {
-            }
-            LockScreen.SetImageUri(new Uri("ms-appdata:///local/wall.jpeg", UriKind.Absolute));
-            var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
-            if (isPinned)
-            {
-                var tile = ShellTile.ActiveTiles.First<ShellTile>(st => st.NavigationUri == new Uri(PinnedHeadlineNavId, UriKind.Relative));
-                var context = LockViewApplicationState.Instance.PreviewContextContract;
-                var standardTile = new StandardTileData() { Title = "LockView", BackTitle = context.Title, BackContent = context.FirstLine };
-                if (context.ExtendedUri != null)
-                {
-                    standardTile.BackgroundImage = new Uri(context.ExtendedUri, UriKind.Absolute);
-                }
-                tile.Update(standardTile);
-            }
+            periodicTask = new PeriodicTask("BackgroundTask");
+            (periodicTask as ScheduledTask).Description = "Updates Lock Screen when new content is available.";
+            ScheduledActionService.Add(periodicTask);
+            ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
         }
         CustomMessageBox priceCalcMsgBx;
         private void priceCalculationLink_Click(object se1nder, RoutedEventArgs e)

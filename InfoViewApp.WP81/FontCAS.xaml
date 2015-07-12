@@ -41,21 +41,46 @@
                 <converter:Str2ColorConverter x:Key="strCon"/>
                 <local:IntegerCollection x:Key="intCollection">
                     <clr:Int32>12</clr:Int32>
+                    <clr:Int32>13</clr:Int32>
                     <clr:Int32>14</clr:Int32>
+                    <clr:Int32>15</clr:Int32>
                     <clr:Int32>16</clr:Int32>
+                    <clr:Int32>17</clr:Int32>
                     <clr:Int32>18</clr:Int32>
+                    <clr:Int32>19</clr:Int32>
                     <clr:Int32>20</clr:Int32>
+                    <clr:Int32>21</clr:Int32>
                     <clr:Int32>22</clr:Int32>
+                    <clr:Int32>23</clr:Int32>
                     <clr:Int32>24</clr:Int32>
+                    <clr:Int32>25</clr:Int32>
                     <clr:Int32>26</clr:Int32>
+                    <clr:Int32>27</clr:Int32>
                     <clr:Int32>28</clr:Int32>
+                    <clr:Int32>29</clr:Int32>
                     <clr:Int32>30</clr:Int32>
+                    <clr:Int32>31</clr:Int32>
                     <clr:Int32>32</clr:Int32>
+                    <clr:Int32>33</clr:Int32>
                     <clr:Int32>34</clr:Int32>
+                    <clr:Int32>35</clr:Int32>
                     <clr:Int32>36</clr:Int32>
+                    <clr:Int32>37</clr:Int32>
                     <clr:Int32>38</clr:Int32>
+                    <clr:Int32>39</clr:Int32>
                     <clr:Int32>40</clr:Int32>
+                    <clr:Int32>41</clr:Int32>
                     <clr:Int32>42</clr:Int32>
+                    <clr:Int32>43</clr:Int32>
+                    <clr:Int32>44</clr:Int32>
+                    <clr:Int32>45</clr:Int32>
+                    <clr:Int32>46</clr:Int32>
+                    <clr:Int32>47</clr:Int32>
+                    <clr:Int32>48</clr:Int32>
+                    <clr:Int32>49</clr:Int32>
+                    <clr:Int32>50</clr:Int32>
+                    <clr:Int32>51</clr:Int32>
+                    <clr:Int32>52</clr:Int32>
                 </local:IntegerCollection>
                 <DataTemplate x:Key="colorTemplate">
                     <StackPanel Margin="0,0,0,0" Orientation="Horizontal">

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Windows.Data.Json;
 using Windows.Storage;
 using Windows.Web.Http;
@@ -20,7 +21,9 @@ namespace InfoViewApp.WP81.Tasks
         {
             HttpClient client = new HttpClient();
             var localRequest = new ImageCompositionRequest();
-
+            localRequest.ContextContract = PreviewContextContract;
+            localRequest.FormattingContract = PreviewFormattingContract;
+            localRequest.LayoutContract = PreviewLayoutContract;
             var file = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
             byte[] imgBytes;//= new byte[5];
             using (var stream = await file.OpenReadAsync())
