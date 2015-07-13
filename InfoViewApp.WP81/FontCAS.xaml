@@ -40,8 +40,6 @@
                 <converter:int2FontConverter x:Key="intCon"/>
                 <converter:Str2ColorConverter x:Key="strCon"/>
                 <local:IntegerCollection x:Key="intCollection">
-                    <clr:Int32>12</clr:Int32>
-                    <clr:Int32>13</clr:Int32>
                     <clr:Int32>14</clr:Int32>
                     <clr:Int32>15</clr:Int32>
                     <clr:Int32>16</clr:Int32>

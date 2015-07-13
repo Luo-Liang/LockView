@@ -43,11 +43,7 @@ namespace InfoViewApp.WP81
                 progressRing.Visibility = Visibility.Collapsed;
                 if (interest != null)
                 {
-                    LockViewApplicationState.Instance.PreviewContextContract.Title = interest.Title;
-                    LockViewApplicationState.Instance.PreviewContextContract.FirstLine = interest.Content;
-                    LockViewApplicationState.Instance.PreviewContextContract.SecondLine = interest.Publisher;
-                    if (interest.ContentExtensionUri != null)
-                        LockViewApplicationState.Instance.PreviewContextContract.ExtendedUri = interest.ContentExtensionUri.ToString();
+                    LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(interest);
                     previewStack.DataContext = interest;
                 }
                 else

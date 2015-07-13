@@ -109,7 +109,6 @@ namespace InfoViewApp.WP81
             await LockViewApplicationState.Instance.SaveState();
             var scale = ResolutionProvider.GetScaleFactor();
             var instance = LockViewApplicationState.Instance;
-            BackgroundTaskHelper.PrepareFormattingContractForScaling();
             instance.PreviewLayoutContract.Origin = new Point() { X = (int)(20 * scale), Y = (int)(20 * scale) };
             instance.PreviewLayoutContract.AutoExpand = true;
             instance.PreviewLayoutContract.ParagraphSpacing = (int)(10 * scale);
@@ -123,14 +122,13 @@ namespace InfoViewApp.WP81
                 LockViewApplicationState.Instance.PreviewLayoutContract,
                 LockViewApplicationState.Instance.PersistFileName);
             //restore fontSize
-            BackgroundTaskHelper.RestoreFormattingContractForSerialization();
             progressRing.Visibility = Visibility.Collapsed;
             SaveBtn.Visibility = Visibility.Visible;
             //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
             var jpegBytes = Convert.FromBase64String(response.Image);
-            var fileName = "wall.jpeg";
-            await BackgroundTaskHelper.SaveComposedImage(jpegBytes, fileName);
-            BackgroundTaskHelper.TrySetLockScreenImage();
+            var fileName = DateTime.Now.ToBinary().ToString() + ".jpg";
+            BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
+            BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             BackgroundTaskHelper.TryUpdateTiles();
             //schedule the background task.
             var periodicTask = ScheduledActionService.Find("BackgroundTask");

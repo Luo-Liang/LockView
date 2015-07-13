@@ -1,43 +1,59 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest"
+         xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest"
+         xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest"
+         xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+
   <Identity Name="482cc23a-934b-4f82-b12c-1d6a02aa5653"
             Publisher="CN=liang"
             Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="5bda3499-658b-443e-972d-4d6b16d5186e"
                     PhonePublisherId="7958a0f1-0a57-4cd1-a954-d539d3344e31"/>
+
   <Properties>
-    <DisplayName>InfoViewApp.WP81WP81</DisplayName>
-    <PublisherDisplayName>intelligent systems</PublisherDisplayName>
+    <DisplayName>TemplatingProject</DisplayName>
+    <PublisherDisplayName>liang</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
+
   <Prerequisites>
     <OSMinVersion>6.3.1</OSMinVersion>
     <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
   </Prerequisites>
+
   <Resources>
-    <Resource Language="x-generate" />
+    <Resource Language="x-generate"/>
   </Resources>
+
   <Applications>
-    <Application Id="App" Executable="AGHost.exe" EntryPoint="MainPage.xaml">
-      <m3:VisualElements DisplayName="InfoViewApp.WP81WP81" Square150x150Logo="Assets\SquareTile150x150.png" Square44x44Logo="Assets\Logo.png" Description="InfoViewApp.WP81WP81" ForegroundText="light" BackgroundColor="#464646">
-        <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png">
-        </m3:DefaultTile>
+    <Application Id="App"
+                 Executable="AGHost.exe"
+                 EntryPoint="MainPage.xaml">
+      <m3:VisualElements
+          DisplayName="TemplatingProject"
+          Square150x150Logo="Assets\SquareTile150x150.png"
+          Square44x44Logo="Assets\Logo.png"
+          Description="TemplatingProject"
+          ForegroundText="light"
+          BackgroundColor="#464646">
+        <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png"/>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
       </m3:VisualElements>
+
       <Extensions>
         <Extension Category="windows.backgroundTasks" EntryPoint="AgHost.BackgroundTask">
           <BackgroundTasks>
-            <Task Type="timer" />
+          <Task Type="systemEvent" />
           </BackgroundTasks>
         </Extension>
       </Extensions>
+
     </Application>
   </Applications>
   <Capabilities>
-    <Capability Name="internetClientServer" />
-    <Capability Name="picturesLibrary" />
   </Capabilities>
+
   <Extensions>
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
@@ -46,4 +62,5 @@
       </InProcessServer>
     </Extension>
   </Extensions>
+
 </Package>

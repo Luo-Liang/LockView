@@ -54,7 +54,8 @@ namespace InfoViewApp.WP81.InterestGathering
                                     {
                                         Content = HtmlDecodingUtility.HtmlDecode(item.GetObject().GetNamedString("content", string.Empty)),
                                         Publisher = HtmlDecodingUtility.HtmlDecode(item.GetObject().GetNamedString("publisher", string.Empty)),
-                                        Title = HtmlDecodingUtility.HtmlDecode(item.GetObject().GetNamedString("titleNoFormatting"))
+                                        Title = HtmlDecodingUtility.HtmlDecode(item.GetObject().GetNamedString("titleNoFormatting")),
+                                        ContentUri = new Uri(item.GetObject().GetNamedString("unescapedUrl"))
                                     };
                                     if (candidateContent.GetHashCode() != request.PreviousInterestContentIdentifier)
                                     {

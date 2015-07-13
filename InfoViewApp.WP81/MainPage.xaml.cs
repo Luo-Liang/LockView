@@ -1,6 +1,9 @@
-﻿using Microsoft.Phone.Controls;
+﻿using InfoViewApp.WP81.Tasks;
+using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
 using System;
 using System.Windows.Media.Animation;
+using System.Windows.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,6 +26,20 @@ namespace InfoViewApp.WP81
         private void MainPage_Loaded1(object sender, System.Windows.RoutedEventArgs e)
         {
             (this.Resources["load"] as Storyboard).Begin();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Uri.ToString() == BackgroundTaskHelper.PinnedHeadlineNavId)
+            {
+                if (LockViewApplicationState.Instance.PreviewContextContract.JumpUri != null)
+                {
+                    WebBrowserTask task = new WebBrowserTask();
+                    task.Uri = new Uri(LockViewApplicationState.Instance.PreviewContextContract.JumpUri);
+                    task.Show();
+                }
+            }
         }
 
         private void goToCropping_Click(object sender, System.Windows.RoutedEventArgs e)

@@ -73,7 +73,8 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
                 {
                     Title = HtmlDecodingUtility.HtmlDecode(node.InnerText),
                     Content = HtmlDecodingUtility.HtmlDecode(node.InnerText),
-                    Publisher = SourceName
+                    Publisher = SourceName,
+                    ContentUri = new Uri(RequestString)
                 };
                 request.PreviousInterestContentIdentifier = response1.GetHashCode();
                 return response1;

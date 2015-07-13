@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -48,7 +49,10 @@ namespace InfoViewApp.WP81
 
     public class OverlayContextContract
     {
+        [JsonIgnore]
         public string ExtendedUri { get; set; }
+        [JsonIgnore]
+        public string JumpUri { get; set; }
         public string FirstLine { get; set; }
         public string SecondLine { get; set; }
         public string Title { get; set; }

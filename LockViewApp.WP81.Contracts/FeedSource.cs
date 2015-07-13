@@ -47,12 +47,14 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
                 var title = items[0].Title.Text;
                 var publisher = SourceName; 
                 var img=feed.ImageUri;
-                var response= new InterestContent()
+                var response = new InterestContent()
                 {
                     Content = content,
                     Title = title,
                     Publisher = publisher,
-                    ContentExtensionUri = new Uri(ExtendedContentUrl)
+                    ExtensionUri = new Uri(ExtendedContentUrl),
+                    ContentUri = new Uri(items[0].Id)
+                    
                 };
                 request.PreviousInterestContentIdentifier = response.GetHashCode();
                 return response;
