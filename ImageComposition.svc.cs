@@ -15,16 +15,17 @@ using System.Drawing.Imaging;
 
 namespace InfoView
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the public class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class ImageComposition : IImageCompositionService
     {
         public ImageCompositionResponse Compose(ImageCompositionRequest request)
         {
-            MemoryStream memStream = new MemoryStream(Convert.FromBase64String(request.RawImage));
+            MemoryStream memStream = new MemoryStream(request.RawImage);
             memStream.Seek(0, SeekOrigin.Begin);
             var img = Image.FromStream(memStream);
             Graphics g = Graphics.FromImage(img);
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             g.Apply(request.LayoutContract.ToOverlayLayout(),
                 request.ContextContract.ToOverlayContext(),
                 request.FormattingContract.ToOverlayFormatting());
@@ -40,7 +41,7 @@ namespace InfoView
             imgStream.Read(ImageBytes, 0, ImageBytes.Length);
             imgStream.Close();
             memStream.Close();
-            response.Image = Convert.ToBase64String(ImageBytes);
+            response.Image = ImageBytes;
             return response;
         }
 

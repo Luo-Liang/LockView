@@ -60,7 +60,7 @@ namespace InfoViewApp.WP81
             var img = previewImage as Image;
             double width, height;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
-            img.Source = await OpenBitmapFromFile(LockViewApplicationState.Instance.PersistFileName, (int)width, (int)height);
+            img.Source = await OpenBitmapFromFile(LockViewApplicationState.Instance.RequestMetadata.PersistFileName, (int)width, (int)height);
             previewStack.DataContext = null;//force rebind.
             previewStack.DataContext = LockViewApplicationState.Instance;
         }

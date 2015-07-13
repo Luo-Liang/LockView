@@ -9,7 +9,7 @@ using System.Web;
 
 namespace InfoView.DataContract
 {
-    [DataContract]
+    [DataContract, Newtonsoft.Json.JsonObject(MemberSerialization = Newtonsoft.Json.MemberSerialization.OptIn)]
     public struct OverlayFormattingContract
     {
         static FontContract DefaultFont;
@@ -93,7 +93,7 @@ namespace InfoView.DataContract
         }
     }
 
-    [DataContract]
+    [DataContract, Newtonsoft.Json.JsonObject(MemberSerialization = Newtonsoft.Json.MemberSerialization.OptIn)]
     public struct OverlayContextContract
     {
         [DataMember]
@@ -121,7 +121,7 @@ namespace InfoView.DataContract
         }
     }
 
-    [DataContract]
+    [DataContract, Newtonsoft.Json.JsonObject(MemberSerialization = Newtonsoft.Json.MemberSerialization.OptIn)]
     public class Point
     {
         [DataMember]
@@ -130,7 +130,7 @@ namespace InfoView.DataContract
         public int Y { get; set; }
     }
 
-    [DataContract]
+    [DataContract, Newtonsoft.Json.JsonObject(MemberSerialization = Newtonsoft.Json.MemberSerialization.OptIn)]
     public struct OverlayLayoutContract
     {
         [DataMember]
@@ -166,7 +166,7 @@ namespace InfoView.DataContract
         }
     }
 
-    [DataContract]
+    [DataContract, Newtonsoft.Json.JsonObject(MemberSerialization = Newtonsoft.Json.MemberSerialization.OptIn)]
     public struct FontContract
     {
         [DataMember]

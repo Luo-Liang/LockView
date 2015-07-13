@@ -15,14 +15,14 @@ namespace InfoView
     public interface IImageCompositionService
     {
         [OperationContract]
-        [WebInvoke(UriTemplate = "/Compose",
+        [WebInvoke(
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, Method = "POST")]
         ImageCompositionResponse Compose(ImageCompositionRequest request);
 
         [Obsolete]
         [OperationContract]
-        [WebInvoke(UriTemplate = "/ComposeLegacy",
+        [WebInvoke(
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, Method = "POST")]
         string ComposeLegacy(string request);
@@ -33,7 +33,7 @@ namespace InfoView
     public class ImageCompositionResponse
     {
         [DataMember]
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
 
         [DataMember]
         public string ResultString { get; set; }
@@ -45,7 +45,7 @@ namespace InfoView
         [DataMember]
         public string InterestId { get; set; }
         [DataMember]
-        public string RawImage { get; set; }
+        public byte[] RawImage { get; set; }
         [DataMember]
         public long UserId { get; set; } //may be used for persistence in future
         [DataMember]

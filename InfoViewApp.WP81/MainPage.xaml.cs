@@ -35,9 +35,11 @@ namespace InfoViewApp.WP81
             {
                 if (LockViewApplicationState.Instance.PreviewContextContract.JumpUri != null)
                 {
+                    BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
                     WebBrowserTask task = new WebBrowserTask();
                     task.Uri = new Uri(LockViewApplicationState.Instance.PreviewContextContract.JumpUri);
                     task.Show();
+                    throw new UserRequestExitException();
                 }
             }
         }
@@ -45,6 +47,11 @@ namespace InfoViewApp.WP81
         private void goToCropping_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/ImageSourceSelection.xaml", UriKind.Relative));
+        }
+
+        class UserRequestExitException:Exception
+        {
+
         }
 
     }

@@ -56,6 +56,10 @@ namespace InfoViewApp.WP81
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            if(e.Uri == new Uri(BackgroundTaskHelper.LowBalanceNavId,UriKind.Relative))
+            {
+                BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
+            }
             var requestStatus = BackgroundExecutionManager.GetAccessStatus();
             var allowedBg = requestStatus == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity || requestStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity;
             setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication && allowedBg ? Visibility.Collapsed : Visibility.Visible;
@@ -106,7 +110,6 @@ namespace InfoViewApp.WP81
             //close app.
             progressRing.Visibility = Visibility.Visible;
             SaveBtn.Visibility = Visibility.Collapsed;
-            await LockViewApplicationState.Instance.SaveState();
             var scale = ResolutionProvider.GetScaleFactor();
             var instance = LockViewApplicationState.Instance;
             instance.PreviewLayoutContract.Origin = new Point() { X = (int)(20 * scale), Y = (int)(20 * scale) };
@@ -120,26 +123,20 @@ namespace InfoViewApp.WP81
             var response = await client.Compose(LockViewApplicationState.Instance.PreviewContextContract,
                 LockViewApplicationState.Instance.PreviewFormattingContract,
                 LockViewApplicationState.Instance.PreviewLayoutContract,
-                LockViewApplicationState.Instance.PersistFileName);
+                LockViewApplicationState.Instance.RequestMetadata.PersistFileName);
             //restore fontSize
             progressRing.Visibility = Visibility.Collapsed;
             SaveBtn.Visibility = Visibility.Visible;
             //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
-            var jpegBytes = Convert.FromBase64String(response.Image);
+            var jpegBytes = response.Image;
             var fileName = DateTime.Now.ToBinary().ToString() + ".jpg";
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
             BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             BackgroundTaskHelper.TryUpdateTiles();
+
+            await instance.SaveState();
             //schedule the background task.
-            var periodicTask = ScheduledActionService.Find("BackgroundTask");
-            if (periodicTask != null)
-            {
-                ScheduledActionService.Remove("BackgroundTask");
-            }
-            periodicTask = new PeriodicTask("BackgroundTask");
-            (periodicTask as ScheduledTask).Description = "Updates Lock Screen when new content is available.";
-            ScheduledActionService.Add(periodicTask);
-            ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
+            BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
         }
         CustomMessageBox priceCalcMsgBx;
         private void priceCalculationLink_Click(object se1nder, RoutedEventArgs e)

@@ -67,7 +67,8 @@ namespace InfoViewApp.WP81
                     double width, height;
                     ResolutionProvider.GetScreenSizeInPixels(out height,out width);
                     imgRequestUrl += string.Format("_{0}x{1}.jpg", (int)width, (int)height);
-                    var response = await client.GetAsync(new Uri(string.Format("http://www.bing.com{0}", imgRequestUrl)));
+                    LockViewApplicationState.Instance.RequestMetadata.ImageRequestSource = string.Format("http://www.bing.com{0}", imgRequestUrl);
+                    var response = await client.GetAsync(new Uri(LockViewApplicationState.Instance.RequestMetadata.ImageRequestSource));
                     WB_CapturedImage = new WriteableBitmap(1, 1);
                     WB_CapturedImage = WB_CapturedImage.FromStream((await response.Content.ReadAsInputStreamAsync()).AsStreamForRead());
                     OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
@@ -126,7 +127,7 @@ namespace InfoViewApp.WP81
             ResolutionProvider.GetScreenSizeInPixels(out heightPixel, out widthPixel);
             //WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             WB_CapturedImage = LoadScaledImage(WB_CroppedImage);
-            await SaveBitmapAsJpeg(LockViewApplicationState.Instance.PersistFileName, WB_CapturedImage);
+            await SaveBitmapAsJpeg(LockViewApplicationState.Instance.RequestMetadata.PersistFileName, WB_CapturedImage);
             this.OriginalImage.Source = WB_CapturedImage;
             SaveBtn.Visibility = Visibility.Visible;
             progressRing.Visibility = Visibility.Collapsed;

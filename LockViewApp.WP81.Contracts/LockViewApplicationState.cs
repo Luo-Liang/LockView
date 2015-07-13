@@ -7,9 +7,11 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using System.Runtime.Serialization.Formatters;
+using Newtonsoft.Json;
+using System.Xml.Serialization;
 
 namespace InfoViewApp.WP81
 {
@@ -18,6 +20,9 @@ namespace InfoViewApp.WP81
         public string RequestLanguage = "En-Us";
         public int ImageBytesPerRequest = 1024;
         public double ScaleFactor;
+        public string ImageRequestSource;
+        public string PersistFileName { get; set; }
+
     }
 
     public class LockViewApplicationState
@@ -40,7 +45,8 @@ namespace InfoViewApp.WP81
             catch (Exception ex)
             {
                 Instance = new LockViewApplicationState();
-                Instance. PersistFileName = "MyBg.jpeg";
+                Instance.RequestMetadata = new LockViewRequestMetadata();
+                Instance.RequestMetadata.PersistFileName = "MyBg.jpeg";
                 Instance.PreviewFormattingContract = new OverlayFormattingContract()
                 {
                     BackgroundSecondLine = "Transparent",
@@ -56,14 +62,12 @@ namespace InfoViewApp.WP81
 
                 Instance.PreviewContextContract = new OverlayContextContract();
                 Instance.PreviewLayoutContract = new OverlayLayoutContract();
-                Instance.RequestMetadata = new LockViewRequestMetadata();
                 Instance.UserQuotaInDollars = 0.19;
                 Instance.SelectedInterest = new InterestRequest();
             }
         }
         //expose for XML Serializer
         public LockViewApplicationState() { }
-        public string PersistFileName { get; set; }
         public InterestRequest SelectedInterest { get; set; }
         public InterestGathering.InterestGatherer SelectedProvider { get; set; }
         public OverlayContextContract PreviewContextContract { get; set; }
@@ -74,8 +78,11 @@ namespace InfoViewApp.WP81
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SettingInstance, CreationCollisionOption.ReplaceExisting);
             using (var fs = await file.OpenStreamForWriteAsync())
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(InterestGatherer),typeof(NewsFeedCategory) });
-                xmlSerializer.Serialize(fs, this);
+                using (var sw = new StreamWriter(fs))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(InterestGatherer), typeof(NewsFeedCategory) });
+                    xmlSerializer.Serialize(fs, this);
+                }
             }
         }
     }

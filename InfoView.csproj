@@ -74,6 +74,10 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
       <HintPath>packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System.Net" />
     <Reference Include="System.Web.DynamicData" />
@@ -106,12 +110,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NewtonsoftJsonBehavior.cs" />
+    <Compile Include="NewtonsoftJsonClientFormatter.cs" />
+    <Compile Include="NewtonsoftJsonDispatchFormatter.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="ImageComposition.svc.cs">
       <DependentUpon>ImageComposition.svc</DependentUpon>
     </Compile>
     <Compile Include="IImageCompositionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RawBodyWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

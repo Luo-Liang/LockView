@@ -5,6 +5,8 @@ using System.Text;
 
 namespace InfoViewApp.WP81
 {
+    
+
     /// <summary>
     /// Always link this with CloudCompositionContracts.
     /// </summary>
@@ -17,13 +19,14 @@ namespace InfoViewApp.WP81
     public class ImageCompositionRequest
     {
         public string InterestId { get; set; }
-        public string RawImage { get; set; }
+        public byte[] RawImage { get; set; }
         public long UserId { get; set; } //may be used for persistence in future
         public long RequestId { get; set; }
         public OverlayFormattingContract FormattingContract { get; set; }
         public OverlayLayoutContract LayoutContract { get; set; }
         public OverlayContextContract ContextContract { get; set; }
     }
+    
 
     public class OverlayFormattingContract
     {
@@ -38,6 +41,7 @@ namespace InfoViewApp.WP81
         public FontContract TitleFont { get; set; }
     }
 
+    
     public class OverlayLayoutContract
     {
         public bool AutoExpand { get; set; }
@@ -46,6 +50,7 @@ namespace InfoViewApp.WP81
         public int TargetHeight { get; set; }
         public int TargetWidth { get; set; }
     }
+    
 
     public class OverlayContextContract
     {
@@ -58,6 +63,7 @@ namespace InfoViewApp.WP81
         public string Title { get; set; }
     }
 
+    
 
     public class Point
     {
@@ -67,7 +73,7 @@ namespace InfoViewApp.WP81
 
     public class ImageCompositionResponse
     {
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
         public string ResultString { get; set; }
     }
 }

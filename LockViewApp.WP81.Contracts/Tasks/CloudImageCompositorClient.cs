@@ -26,7 +26,7 @@ namespace InfoViewApp.WP81.Tasks
             localRequest.LayoutContract = PreviewLayoutContract;
             BackgroundTaskHelper.PrepareFormattingContractForScaling(localRequest.FormattingContract);
 #if DEBUG
-            localRequest.ContextContract.SecondLine += " @" + DateTime.Now;
+            localRequest.ContextContract.SecondLine = " @" + DateTime.Now;
 #endif
             BackgroundTaskHelper.RestoreFormattingContractForSerialization(localRequest.FormattingContract);
             var file = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
@@ -37,8 +37,10 @@ namespace InfoViewApp.WP81.Tasks
                 await stream.ReadAsync(imgBytes.AsBuffer(), (uint)imgBytes.Length, Windows.Storage.Streams.InputStreamOptions.None);
             }
             string reqContent = null;
-            localRequest.RawImage = Convert.ToBase64String(imgBytes);
-            await Task.Run(() => reqContent = Newtonsoft.Json.JsonConvert.SerializeObject(localRequest));
+            localRequest.RawImage = imgBytes;
+            //localRequest.RawImage = Convert.ToBase64String(imgBytes);
+            reqContent = Newtonsoft.Json.JsonConvert.SerializeObject(localRequest);
+            localRequest = null;
             var requestContent = new HttpStringContent(reqContent);
             requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
             //https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}
