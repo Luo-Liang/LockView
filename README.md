@@ -2,6 +2,7 @@
 Enrich lock screen with content that interests you with intelliSys LockView.
 
 IT IS coming to Android and iPhone, once Windows Universal Platform version is done.
+Windows Phone 8.1 version is now in Release Candidate.
 
 ![Main Window](https://raw.github.com/Luo-Liang/LockView/master/GitImage/mainpage.png)
 
