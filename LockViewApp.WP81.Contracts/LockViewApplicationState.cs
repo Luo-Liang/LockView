@@ -12,17 +12,38 @@ using Windows.Storage.Streams;
 using System.Runtime.Serialization.Formatters;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
+using Microsoft.Phone.Info;
 
 namespace InfoViewApp.WP81
 {
     public class LockViewRequestMetadata
     {
+        public enum TaskPhase
+        {
+            /// <summary>
+            /// The device is capable of finishing the task in one run
+            /// </summary>
+            Complete,
+            /// <summary>
+            /// The task is in tick phase
+            /// </summary>
+            Tick,
+            /// <summary>
+            /// The task is in tock phase.
+            /// </summary>
+            Tack,
+            Toe
+        }
         public string RequestLanguage = "En-Us";
         public int ImageBytesPerRequest = 1024;
         public double ScaleFactor;
-        public string ImageRequestSource;
         public string PersistFileName { get; set; }
-
+        public TaskPhase Phase { get; set; }
+        public LockViewRequestMetadata()
+        {
+            PersistFileName = "MyBg.jpeg";
+            Phase = TaskPhase.Complete;
+        }
     }
 
     public class LockViewApplicationState
@@ -46,15 +67,20 @@ namespace InfoViewApp.WP81
             {
                 Instance = new LockViewApplicationState();
                 Instance.RequestMetadata = new LockViewRequestMetadata();
-                Instance.RequestMetadata.PersistFileName = "MyBg.jpeg";
+
+                if(DeviceStatus.DeviceTotalMemory>>29 < 1)
+                {
+                    //low ram device.
+                    Instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
+                }
                 Instance.PreviewFormattingContract = new OverlayFormattingContract()
                 {
                     BackgroundSecondLine = "Transparent",
                     BackgroundFirstLine = "Transparent",
                     BackgroundTitle = "Transparent",
-                    FirstLineFont = new FontContract() { FontSize = 18, FontFamily = "Segoe UI Semibold" },
+                    FirstLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe UI Semibold" },
                     SecondLineFont = new FontContract() { FontSize = 14, FontFamily = "Segoe UI Semibold" },
-                    TitleFont = new FontContract() { FontSize = 22, FontFamily = "Segoe UI Semibold" },
+                    TitleFont = new FontContract() { FontSize = 26, FontFamily = "Segoe UI Semibold" },
                     ForegroundFirstLine = "White",
                     ForegroundSecondLine = "Gray",
                     ForegroundTitle = "White"

@@ -67,8 +67,8 @@ namespace InfoViewApp.WP81
                     double width, height;
                     ResolutionProvider.GetScreenSizeInPixels(out height,out width);
                     imgRequestUrl += string.Format("_{0}x{1}.jpg", (int)width, (int)height);
-                    LockViewApplicationState.Instance.RequestMetadata.ImageRequestSource = string.Format("http://www.bing.com{0}", imgRequestUrl);
-                    var response = await client.GetAsync(new Uri(LockViewApplicationState.Instance.RequestMetadata.ImageRequestSource));
+                    var imgUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
+                    var response = await client.GetAsync(new Uri(imgUrl));
                     WB_CapturedImage = new WriteableBitmap(1, 1);
                     WB_CapturedImage = WB_CapturedImage.FromStream((await response.Content.ReadAsInputStreamAsync()).AsStreamForRead());
                     OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Windows.Web.Http;
 
 namespace InfoViewApp.WP81.InterestGathering
 {
@@ -30,7 +32,6 @@ namespace InfoViewApp.WP81.InterestGathering
     public class InterestRequest
     {
         public string InterestString { get; set; }
-        public int PreviousInterestContentIdentifier { get; set; }
     }
 
     public interface IInterestGatherer
@@ -53,6 +54,11 @@ namespace InfoViewApp.WP81.InterestGathering
 
     public abstract class InterestGatherer : IInterestGatherer
     {
+        [XmlIgnore]
+        /// <summary>
+        /// Reuse the same client if possible to save memory on Low end devices.
+        /// </summary>
+        public HttpClient Client { get; set; }
         public string BaseRequestUrlTemplate = "INVALID";
         public string ExtendedContentUrl { get; set; }
         public string SourceName { get; set; }

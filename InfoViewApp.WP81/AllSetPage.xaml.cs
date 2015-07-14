@@ -56,7 +56,7 @@ namespace InfoViewApp.WP81
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if(e.Uri == new Uri(BackgroundTaskHelper.LowBalanceNavId,UriKind.Relative))
+            if (e.Uri == new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative))
             {
                 BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
             }
@@ -105,9 +105,7 @@ namespace InfoViewApp.WP81
         {
             while (NavigationService.CanGoBack)
                 NavigationService.RemoveBackEntry();
-            //save state
-            //launch task
-            //close app.
+            //save state  //launch task   //close app.
             progressRing.Visibility = Visibility.Visible;
             SaveBtn.Visibility = Visibility.Collapsed;
             var scale = ResolutionProvider.GetScaleFactor();
@@ -133,7 +131,6 @@ namespace InfoViewApp.WP81
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
             BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             BackgroundTaskHelper.TryUpdateTiles();
-
             await instance.SaveState();
             //schedule the background task.
             BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
@@ -198,7 +195,7 @@ namespace InfoViewApp.WP81
 #if DEBUG
                     CurrentApp.ReportProductFulfillment(n99Cents.Value.ProductId);
 #else
-                    await CurrentApp.ReportConsumableFulfillmentAsync(fiftypoints.Value.ProductId, receipt.TransactionId);
+                    await CurrentApp.ReportConsumableFulfillmentAsync(n99Cents.Value.ProductId, receipt.TransactionId);
 #endif
                     LockViewApplicationState.Instance.UserQuotaInDollars += 0.99;
                     await LockViewApplicationState.Instance.SaveState();
@@ -208,7 +205,7 @@ namespace InfoViewApp.WP81
             }
             catch (Exception ex)
             {
-               
+
             }
         }
 

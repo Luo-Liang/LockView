@@ -78,7 +78,6 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
                     }
                 }
             }
-            request.PreviousInterestContentIdentifier = contract.GetHashCode();
             return contract;
         }
         public override RequestMetaData GetMetaData()

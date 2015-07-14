@@ -14,12 +14,16 @@ namespace InfoViewApp.WP81.Tasks
 {
     public class CloudImageCompositorClient
     {
+        /// <summary>
+        /// On money penny device, an HttpClient will take a lot of memory. 
+        /// </summary>
+        public HttpClient Client { get; set; }
         public async Task<ImageCompositionResponse> Compose(OverlayContextContract PreviewContextContract,
                                   OverlayFormattingContract PreviewFormattingContract,
                                   OverlayLayoutContract PreviewLayoutContract,
                                   string fileName)
         {
-            HttpClient client = new HttpClient();
+            HttpClient client = Client;
             var localRequest = new ImageCompositionRequest();
             localRequest.ContextContract = PreviewContextContract;
             localRequest.FormattingContract = PreviewFormattingContract;
@@ -49,6 +53,16 @@ namespace InfoViewApp.WP81.Tasks
             var responseStr=await response.Content.ReadAsStringAsync();
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ImageCompositionResponse>(responseStr);
             return result;
+        }
+
+        public CloudImageCompositorClient()
+        {
+            Client = new HttpClient();
+        }
+
+        public CloudImageCompositorClient(HttpClient client)
+        {
+            Client = client;
         }
     }
 }

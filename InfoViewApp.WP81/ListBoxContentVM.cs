@@ -8,8 +8,11 @@ namespace InfoViewApp.WP81
     {
         public string FirstLine { get; set; }
         public string SecondLine { get; set; }
+        public bool FeatureEnabled { get; set; }
         public ListBoxContentVM()
-        { }
+        {
+            FeatureEnabled = true;
+        }
     }
 
     //Generic solution for all platforms. 

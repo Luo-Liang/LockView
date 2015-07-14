@@ -10,7 +10,7 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
     {
 
     }
-    public class LanguageSourceBase : IInterestGatherer
+    public class LanguageSourceBase : InterestGathering.InterestGatherer
     {
         public enum ContentType
         {
@@ -23,7 +23,7 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             ZhCn,
             EnUs
         }
-       
+
         public int RefreshTimeInMinutes
         {
             get;
@@ -57,9 +57,9 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
 
         public string SecondaryLineSelectionPath { get; set; }
 
-        public virtual async Task<InterestContent> RequestContent(InterestRequest request)
+        public override async Task<InterestContent> RequestContent(InterestRequest request)
         {
-            HttpClient client = new HttpClient();
+            HttpClient client = Client == null ? new HttpClient() : Client;
             var response = await client.GetStringAsync(new System.Uri(RequestString));
             XmlDocument document = new XmlDocument();
             document.LoadXml(response);
@@ -76,7 +76,6 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
                     Publisher = SourceName,
                     ContentUri = new Uri(RequestString)
                 };
-                request.PreviousInterestContentIdentifier = response1.GetHashCode();
                 return response1;
             }
             catch
@@ -85,12 +84,12 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             }
         }
 
-        public virtual RequestMetaData GetMetaData()
+        public override RequestMetaData GetMetaData()
         {
             return new RequestMetaData()
             {
-                 BytePerRequest = 512,
-                 UpdatePerDay = 1
+                BytePerRequest = 50 * 1024,
+                UpdatePerDay = 1
             };
         }
     }

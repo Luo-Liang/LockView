@@ -26,7 +26,7 @@ namespace InfoViewApp.WP81.InterestGathering
 
         public override async Task<InterestContent> RequestContent(InterestRequest request)
         {
-            var requestClient = new HttpClient();
+            var requestClient = Client == null ? new HttpClient() : Client;
             string response = null;
             try
             {
@@ -57,11 +57,6 @@ namespace InfoViewApp.WP81.InterestGathering
                                         Title = HtmlDecodingUtility.HtmlDecode(item.GetObject().GetNamedString("titleNoFormatting")),
                                         ContentUri = new Uri(item.GetObject().GetNamedString("unescapedUrl"))
                                     };
-                                    if (candidateContent.GetHashCode() != request.PreviousInterestContentIdentifier)
-                                    {
-                                        request.PreviousInterestContentIdentifier = candidateContent.GetHashCode();
-                                        return candidateContent;
-                                    }
                                 }
                             }
                         }

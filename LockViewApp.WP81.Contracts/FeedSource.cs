@@ -39,7 +39,7 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
         {
             try
             {
-                HttpClient client = new HttpClient();
+                HttpClient client = Client == null ? new HttpClient() : Client;
                 var feed = new SyndicationFeed();
                 feed.Load(await client.GetStringAsync(new System.Uri(XmlSource)));
                 var items = feed.Items;
@@ -56,7 +56,6 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
                     ContentUri = new Uri(items[0].Id)
                     
                 };
-                request.PreviousInterestContentIdentifier = response.GetHashCode();
                 return response;
             }
             catch

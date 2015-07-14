@@ -61,6 +61,10 @@ namespace InfoViewApp.WP81
         public string FirstLine { get; set; }
         public string SecondLine { get; set; }
         public string Title { get; set; }
+        public override int GetHashCode()
+        {
+            return Title.GetHashCode() ^ FirstLine.GetHashCode() ^ SecondLine.GetHashCode();
+        }
     }
 
     

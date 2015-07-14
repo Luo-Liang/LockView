@@ -1,5 +1,6 @@
 ﻿using InfoViewApp.WP81.Tasks;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Tasks;
 using System;
 using System.Windows.Media.Animation;

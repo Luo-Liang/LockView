@@ -37,7 +37,6 @@ namespace InfoViewApp.WP81
                 GoogleSpecificInterestGatherer gatherer = new GoogleSpecificInterestGatherer();
                 SaveBtn.Visibility = Visibility.Collapsed;
                 LockViewApplicationState.Instance.SelectedInterest.InterestString = specificTopicBox.Text;
-                LockViewApplicationState.Instance.SelectedInterest.PreviousInterestContentIdentifier = 0;
                 var interest = await gatherer.RequestContent(LockViewApplicationState.Instance.SelectedInterest);
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;

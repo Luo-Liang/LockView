@@ -118,6 +118,7 @@ namespace InfoViewApp.WP81
             if (Debugger.IsAttached)
             {
                 // An unhandled exception has occurred; break into the debugger
+                MessageBox.Show(e.ExceptionObject.StackTrace + e.ExceptionObject.Message);
                 Debugger.Break();
             }
         }

@@ -310,10 +310,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LockViewApp.WP81.BackgroundAgent\LockViewApp.WP81.BackgroundAgent.csproj">
-      <Project>{76ee9471-c8f6-4524-8f48-4057cc6a3a69}</Project>
-      <Name>LockViewApp.WP81.BackgroundAgent</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LockViewApp.WP81.Contracts\LockViewApp.WP81.Contracts.csproj">
       <Project>{d8a24836-91c1-4edc-9608-cb05583503dd}</Project>
       <Name>LockViewApp.WP81.Contracts</Name>
