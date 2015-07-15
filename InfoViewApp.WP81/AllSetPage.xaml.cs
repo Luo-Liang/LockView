@@ -131,7 +131,7 @@ namespace InfoViewApp.WP81
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
             BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             BackgroundTaskHelper.TryUpdateTiles();
-            //await instance.SaveState();
+            await instance.SaveState();
             //schedule the background task.
             BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
         }

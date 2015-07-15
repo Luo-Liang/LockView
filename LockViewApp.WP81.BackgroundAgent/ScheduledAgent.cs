@@ -71,7 +71,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             await LockViewApplicationState.Instance.SaveState();
 #if DEBUG
             var toast = new ShellToast();
-            toast.Title = task.LastExitReason.ToString() + " " + LockViewApplicationState.Instance.RequestMetadata.Phase;
+            toast.Title = string.Format("{0} {1}", task.LastExitReason.ToString(), LockViewApplicationState.Instance.RequestMetadata.Phase);
             toast.Content = (DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024).ToString();
             toast.Show();
 #else
@@ -119,9 +119,10 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             else
             {
-                BackgroundTaskHelper.TrySetLockScreenImage(string.Format("{0}.jpeg",instance.PreviewContextContract + ".jpeg"));
+                BackgroundTaskHelper.TrySetLockScreenImage(instance.PreviewContextContract.GenerateImgFileName());
                 //update tile if necessary.
                 BackgroundTaskHelper.TryUpdateTiles();
+                instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
             }
         }
         protected async Task LaunchTask(ScheduledTask task)
