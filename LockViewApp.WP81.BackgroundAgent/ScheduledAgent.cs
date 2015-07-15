@@ -152,7 +152,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 imgReqOverride = new ImageRequestOverride()
                 {
                     ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
-                    Arguments = instance.RequestMetadata.RequestLanguage
+                    Arguments = "lq"
                 };
             //if yes, execute that if (1) the image has changed OR the content has changed.
             await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);

@@ -35,7 +35,6 @@ namespace InfoView
     {
         [DataMember]
         public byte[] Image { get; set; }
-
         [DataMember]
         public string ResultString { get; set; }
     }
@@ -53,15 +52,9 @@ namespace InfoView
     public class ImageCompositionRequest
     {
         [DataMember]
-        public string InterestId { get; set; }
-        [DataMember]
         public byte[] RawImage { get; set; }
         [DataMember]
         public ImageRequestOverride ImageRequestOverride { get; set; }
-        [DataMember]
-        public long UserId { get; set; } //may be used for persistence in future
-        [DataMember]
-        public long RequestId { get; set; }
         [DataMember]
         public OverlayFormattingContract FormattingContract { get; set; }
         [DataMember]

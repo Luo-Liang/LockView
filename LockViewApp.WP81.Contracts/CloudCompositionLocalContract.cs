@@ -24,11 +24,8 @@ namespace InfoViewApp.WP81
 
     public class ImageCompositionRequest
     {
-        public string InterestId { get; set; }
         public byte[] RawImage { get; set; }
         public ImageRequestOverride ImageRequestOverride { get; set; }
-        public long UserId { get; set; } //may be used for persistence in future
-        public long RequestId { get; set; }
         public OverlayFormattingContract FormattingContract { get; set; }
         public OverlayLayoutContract LayoutContract { get; set; }
         public OverlayContextContract ContextContract { get; set; }

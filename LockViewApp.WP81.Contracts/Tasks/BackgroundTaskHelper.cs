@@ -116,7 +116,12 @@ namespace InfoViewApp.WP81.Tasks
             var periodicTask = ScheduledActionService.Find("BackgroundTask");
             if (periodicTask != null)
             {
+#if !DEBUG
                 ScheduledActionService.Remove("BackgroundTask");
+#else
+                ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
+                return;
+#endif
             }
             periodicTask = new PeriodicTask("BackgroundTask");
             (periodicTask as ScheduledTask).Description = "Updates Lock Screen when new content is available.";
