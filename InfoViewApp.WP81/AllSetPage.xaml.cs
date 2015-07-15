@@ -110,9 +110,9 @@ namespace InfoViewApp.WP81
             SaveBtn.Visibility = Visibility.Collapsed;
             var scale = ResolutionProvider.GetScaleFactor();
             var instance = LockViewApplicationState.Instance;
-            instance.PreviewLayoutContract.Origin = new Point() { X = (int)(20 * scale), Y = (int)(20 * scale) };
+            instance.PreviewLayoutContract.Origin = new Point() { X = (int)(20 * scale), Y = (int)(40 * scale) };
             instance.PreviewLayoutContract.AutoExpand = true;
-            instance.PreviewLayoutContract.ParagraphSpacing = (int)(10 * scale);
+            instance.PreviewLayoutContract.ParagraphSpacing = (int)(5 * scale);
             double height, width;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             instance.PreviewLayoutContract.TargetHeight = (int)height;
@@ -131,7 +131,7 @@ namespace InfoViewApp.WP81
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
             BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             BackgroundTaskHelper.TryUpdateTiles();
-            await instance.SaveState();
+            //await instance.SaveState();
             //schedule the background task.
             BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
         }

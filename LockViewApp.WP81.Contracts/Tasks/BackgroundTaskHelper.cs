@@ -8,8 +8,10 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
+using Windows.Data.Json;
 using Windows.Phone.System.UserProfile;
 using Windows.Storage;
+using Windows.Web.Http;
 
 namespace InfoViewApp.WP81.Tasks
 {
@@ -123,6 +125,19 @@ namespace InfoViewApp.WP81.Tasks
             ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
             //#endif
         }
+
+        public static async Task<string> GetBingImageFitScreenUrl(HttpClient client)
+        {
+            var instance = LockViewApplicationState.Instance;
+            var lang = instance.RequestMetadata.RequestLanguage;
+            var reqString = string.Format(BackgroundTaskHelper.ImageLocator, lang);
+            var json = await client.GetStringAsync(new Uri(reqString));
+            var jObj = JsonObject.Parse(json);
+            var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
+            imgRequestUrl = string.Format("{0}_{1}x{2}.jpg", imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_')), instance.PreviewLayoutContract.TargetWidth, instance.PreviewLayoutContract.TargetHeight);
+            var imgUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
+            return imgUrl;
+        }
     }
 
 
@@ -140,6 +155,16 @@ namespace InfoViewApp.WP81
                 context.JumpUri = content.ContentUri.ToString();
             if (content.ExtensionUri != null)
                 context.ExtendedUri = content.ExtensionUri.ToString();
+        }
+
+        public static string GenerateImgFileName(this OverlayContextContract contract)
+        {
+            var fileName = contract.Title;
+            foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+            {
+                fileName = fileName.Replace(c, '_');
+            }
+            return string.Format("{0}.jpeg", fileName);
         }
     }
 }

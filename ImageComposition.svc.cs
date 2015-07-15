@@ -43,15 +43,6 @@ namespace InfoView
                 entry = new ImageCacheEntry();
                 //create this entry.
                 entry.Content = await CacheFetcher.DownloadDataTaskAsync(identifier);
-                var json = await CacheFetcher.DownloadStringTaskAsync(new Uri(string.Format(ImageLocator,iro.Arguments)));
-                var jObj = JsonObject.Parse(json);
-                var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
-                imgRequestUrl = imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_'));
-                double width, height;
-                imgRequestUrl += string.Format("_{0}x{1}.jpg", (int)width, (int)height);
-                var imgUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
-                var response = await CacheFetcher.DownloadDataTaskAsync(new Uri(imgUrl));
-
                 entry.ExpirationDate = DateTime.Now.AddDays(1);
                 entry.UrlIdentifier = identifier;
                 CacheEntries.TryAdd(identifier, entry);
@@ -85,6 +76,7 @@ namespace InfoView
             var img = Image.FromStream(memStream);
             Graphics g = Graphics.FromImage(img);
             g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             g.Apply(request.LayoutContract.ToOverlayLayout(),
                 request.ContextContract.ToOverlayContext(),
                 request.FormattingContract.ToOverlayFormatting());

@@ -39,10 +39,13 @@ namespace InfoView
         [DataMember]
         public string ResultString { get; set; }
     }
-     
+
+    [DataContract, Newtonsoft.Json.JsonObject(MemberSerialization = Newtonsoft.Json.MemberSerialization.OptIn)]
     public class ImageRequestOverride
     {
+        [DataMember]
         public string ImageRequestUrl { get; set; }
+        [DataMember]
         public string Arguments { get; set; }
     }
 
@@ -53,6 +56,7 @@ namespace InfoView
         public string InterestId { get; set; }
         [DataMember]
         public byte[] RawImage { get; set; }
+        [DataMember]
         public ImageRequestOverride ImageRequestOverride { get; set; }
         [DataMember]
         public long UserId { get; set; } //may be used for persistence in future

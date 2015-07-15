@@ -149,7 +149,7 @@ namespace InfoViewApp.WP81
                     var quality = 100;
                     if (DeviceStatus.DeviceTotalMemory >> 29 < 1)
                         //money penny device.
-                        quality = 80;
+                        quality = 70;
                     await Task.Run(() => bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, quality));
                     LockViewApplicationState.Instance.RequestMetadata.ImageBytesPerRequest = (int)fs.Length;
                 }

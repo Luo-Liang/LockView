@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InfoViewApp.WP81
 {
-    
+
 
     /// <summary>
     /// Always link this with CloudCompositionContracts.
@@ -33,7 +33,7 @@ namespace InfoViewApp.WP81
         public OverlayLayoutContract LayoutContract { get; set; }
         public OverlayContextContract ContextContract { get; set; }
     }
-    
+
 
     public class OverlayFormattingContract
     {
@@ -48,7 +48,7 @@ namespace InfoViewApp.WP81
         public FontContract TitleFont { get; set; }
     }
 
-    
+
     public class OverlayLayoutContract
     {
         public bool AutoExpand { get; set; }
@@ -57,7 +57,7 @@ namespace InfoViewApp.WP81
         public int TargetHeight { get; set; }
         public int TargetWidth { get; set; }
     }
-    
+
 
     public class OverlayContextContract
     {
@@ -68,9 +68,19 @@ namespace InfoViewApp.WP81
         public string FirstLine { get; set; }
         public string SecondLine { get; set; }
         public string Title { get; set; }
-        public override int GetHashCode()
+        public override bool Equals(object obj)
         {
-            return Title.GetHashCode() ^ FirstLine.GetHashCode() ^ SecondLine.GetHashCode();
+            var other = obj as OverlayContextContract;
+            if (other != null)
+            {
+                return other.Title == Title && other.FirstLine == FirstLine && other.JumpUri == JumpUri;
+            }
+            var other1 = obj as InterestGathering.InterestContent;
+            if (other1 != null)
+            {
+                return other1.Title == Title && other1.Content == FirstLine;
+            }
+            return base.Equals(obj);
         }
     }
 

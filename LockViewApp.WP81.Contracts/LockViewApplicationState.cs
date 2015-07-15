@@ -32,7 +32,7 @@ namespace InfoViewApp.WP81
             /// The task is in tock phase.
             /// </summary>
             Tack,
-            Toe
+            Toe,
         }
         public string RequestLanguage = "En-Us";
         public int ImageBytesPerRequest = 1024;

@@ -84,47 +84,46 @@ namespace LockViewApp.WP81.BackgroundAgent
             NotifyComplete();
 
         }
-
         protected async Task LaunchLowRAMTask(ScheduledTask task)
         {
-            //
-            //check phase first.
             var instance = LockViewApplicationState.Instance;
             HttpClient client = new HttpClient();
             if (instance.RequestMetadata.Phase == LockViewRequestMetadata.TaskPhase.Tick)
             {
-                //download necessary files.
 #if !DEBUG
-                if (task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear && LockViewApplicationState.Instance.SelectedImageSource == ImageSource.Bing)
+            if (DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8)
 #endif
                 {
-                    //has time passed yet?
-                    //"MyBg.jpeg"
-                    await StoreDownloadedImage(client);
+                    var flag1 = false;
+                    //can disturb the user
+                    //use this client to send request.
+                    flag1 = await AcquireContentUpdateIfNecessary(client);
+#if !DEBUG
+                    if (flag1)
+#endif
                     instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tack;
                 }
             }
             else if (instance.RequestMetadata.Phase == LockViewRequestMetadata.TaskPhase.Tack)
             {
-#if !DEBUG
-                if (DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8)
-#endif
-                {
-                    //can disturb the user
-                    //use this client to send request.
-                    await AcquireContentUpdateIfNecessary(client);
-                    instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Toe;
-                }
+                ImageRequestOverride imgReqOverride = null;
+                if (instance.SelectedImageSource == ImageSource.Bing)
+                    imgReqOverride = new ImageRequestOverride()
+                    {
+                        ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
+                        Arguments = instance.RequestMetadata.RequestLanguage
+                    };
+                //if yes, execute that if (1) the image has changed OR the content has changed.
+                await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
+                instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Toe;
             }
             else
             {
-                //for a  tock part of the task, send request immediately.
-                await UpdateLockScreenTilesIfPossible(client, task);
-                instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
+                BackgroundTaskHelper.TrySetLockScreenImage(string.Format("{0}.jpeg",instance.PreviewContextContract + ".jpeg"));
+                //update tile if necessary.
+                BackgroundTaskHelper.TryUpdateTiles();
             }
-
         }
-
         protected async Task LaunchTask(ScheduledTask task)
         {
 
@@ -133,16 +132,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             var lastExecution = task.LastScheduledTime;
             var instance = LockViewApplicationState.Instance;
             HttpClient client = new HttpClient();
-            bool flag1 = false, flag2 = false;
-#if !DEBUG
-            if (task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear && LockViewApplicationState.Instance.SelectedImageSource == ImageSource.Bing)
-#endif
-            {
-                //has time passed yet?
-                //"MyBg.jpeg"
-                await StoreDownloadedImage(client);
-                flag2 = true;
-            }
+            bool flag1 = false;
 #if !DEBUG
             if (DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8)
 #endif
@@ -153,18 +143,25 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             //does the user have any quota executing that?
 #if !DEBUG
-            if (flag1 || flag2)
+            if (flag1)
             {
 #endif
+            ImageRequestOverride imgReqOverride = null;
+            if (instance.SelectedImageSource == ImageSource.Bing)
+                imgReqOverride = new ImageRequestOverride()
+                {
+                    ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
+                    Arguments = instance.RequestMetadata.RequestLanguage
+                };
             //if yes, execute that if (1) the image has changed OR the content has changed.
-            await UpdateLockScreenTilesIfPossible(client, task);
+            await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
 
 #if !DEBUG
             }
 #endif
         }
 
-        private static async Task UpdateLockScreenTilesIfPossible(HttpClient client, ScheduledTask task)
+        private static async Task UpdateLockScreenTilesIfPossible(HttpClient client, ScheduledTask task, ImageRequestOverride possibleOverride)
         {
             var instance = LockViewApplicationState.Instance;
             var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProvider.GetMetaData());
@@ -173,17 +170,15 @@ namespace LockViewApp.WP81.BackgroundAgent
             {
 #endif
             CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
-            var compositionResponse = await cloudClient.Compose(instance.PreviewContextContract, instance.PreviewFormattingContract, instance.PreviewLayoutContract, instance.RequestMetadata.PersistFileName);
-            var fileName = DateTime.Now.ToBinary().ToString() + ".jpeg";
+            ImageCompositionResponse compositionResponse = null;
+            if (possibleOverride == null)
+                compositionResponse = await cloudClient.Compose(instance.PreviewContextContract, instance.PreviewFormattingContract, instance.PreviewLayoutContract, instance.RequestMetadata.PersistFileName);
+            else
+                compositionResponse = await cloudClient.ComposeLite(instance.PreviewContextContract, instance.PreviewFormattingContract, instance.PreviewLayoutContract, possibleOverride);
+            var fileName = instance.PreviewContextContract.GenerateImgFileName();
             var jpegBytes = compositionResponse.Image;
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
-            //update tile and/or lock screen image.
-            BackgroundTaskHelper.TrySetLockScreenImage(fileName);
-            //update tile if necessary.
-            BackgroundTaskHelper.TryUpdateTiles();
-            //drain the user's balance.
-            instance.UserQuotaInDollars -= drainPerReq;
-            if (instance.UserQuotaInDollars - drainPerReq < 0)
+            if (instance.UserQuotaInDollars < 0)
             {
                 var toast = new ShellToast();
                 toast.Title = "LOCKVIEW ALERT";
@@ -191,6 +186,14 @@ namespace LockViewApp.WP81.BackgroundAgent
                 toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
                 toast.Show();
             }
+            if (possibleOverride != null) return;//don't update on money penny
+            //update tile and/or lock screen image.
+            BackgroundTaskHelper.TrySetLockScreenImage(fileName);
+            //update tile if necessary.
+            BackgroundTaskHelper.TryUpdateTiles();
+            //drain the user's balance.
+            instance.UserQuotaInDollars -= drainPerReq;
+            instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
 #if !DEBUG
             }
 #endif
@@ -202,7 +205,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             var instance = LockViewApplicationState.Instance;
             instance.SelectedProvider.Client = client;
             var content = await instance.SelectedProvider.RequestContent(LockViewApplicationState.Instance.SelectedInterest);
-            if (content.GetHashCode() != instance.PreviewContextContract.GetHashCode())
+            if (instance.PreviewContextContract.Equals(content))
             {
                 //are we getting the same update?
                 flag1 = true;
@@ -212,33 +215,5 @@ namespace LockViewApp.WP81.BackgroundAgent
 
             return flag1;
         }
-
-        private static async Task StoreDownloadedImage(HttpClient client)
-        {
-            var instance = LockViewApplicationState.Instance;
-            var lang = instance.RequestMetadata.RequestLanguage;
-            var reqString = string.Format(BackgroundTaskHelper.ImageLocator, lang);
-            var json = await client.GetStringAsync(new Uri(reqString));
-            var jObj = JsonObject.Parse(json);
-            var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
-            imgRequestUrl = string.Format("{0}_{1}x{2}.jpg", imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_')), instance.PreviewLayoutContract.TargetWidth, instance.PreviewLayoutContract.TargetHeight);
-            var imgUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
-            var response = await client.GetAsync(new Uri(imgUrl));
-            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                var fileName = LockViewApplicationState.Instance.RequestMetadata.PersistFileName;
-                if (myIsolatedStorage.FileExists(fileName))
-                {
-                    myIsolatedStorage.DeleteFile(fileName);
-                }
-                var file = myIsolatedStorage.CreateFile(fileName);
-                using (var fs = file)
-                {
-                    await response.Content.WriteToStreamAsync(fs.AsOutputStream());
-                    instance.RequestMetadata.ImageBytesPerRequest = (int)fs.Length;
-                }
-            }
-        }
-
     }
 }
