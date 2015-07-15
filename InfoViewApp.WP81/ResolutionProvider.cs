@@ -29,12 +29,14 @@ namespace InfoViewApp.WP81
             GetScreenSizeInPixels(out height, out width);
             return height / width;
         }
-
+        static double ScaleFactor;
         public static double GetScaleFactor()
         {
             try
             {
-                return (double)Application.Current.Host.Content.ScaleFactor / 100;
+                if (ScaleFactor != 0) return ScaleFactor;
+                ScaleFactor = (double)Application.Current.Host.Content.ScaleFactor / 100;
+                return ScaleFactor;
             }
             catch
             {

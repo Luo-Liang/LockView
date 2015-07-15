@@ -174,4 +174,12 @@ namespace InfoView.DataContract
         [DataMember]
         public int FontSize { get; set; }
     }
+
+    public enum ImageSource
+    {
+        [DataMember]
+        Local,
+        [DataMember]
+        Bing
+    }
 }

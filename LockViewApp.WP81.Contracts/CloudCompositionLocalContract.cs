@@ -16,10 +16,17 @@ namespace InfoViewApp.WP81
         public int FontSize { get; set; }
     }
 
+    public class ImageRequestOverride
+    {
+        public string ImageRequestUrl { get; set; }
+        public string Arguments { get; set; }
+    }
+
     public class ImageCompositionRequest
     {
         public string InterestId { get; set; }
         public byte[] RawImage { get; set; }
+        public ImageRequestOverride ImageRequestOverride { get; set; }
         public long UserId { get; set; } //may be used for persistence in future
         public long RequestId { get; set; }
         public OverlayFormattingContract FormattingContract { get; set; }
@@ -67,7 +74,11 @@ namespace InfoViewApp.WP81
         }
     }
 
-    
+    public enum ImageSource
+    {
+        Local,
+        Bing
+    }
 
     public class Point
     {

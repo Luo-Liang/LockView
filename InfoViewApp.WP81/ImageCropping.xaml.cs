@@ -14,6 +14,7 @@ using Windows.Storage.Streams;
 using System.Windows.Input;
 using System.IO.IsolatedStorage;
 using System.Globalization;
+using Microsoft.Phone.Info;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -145,7 +146,11 @@ namespace InfoViewApp.WP81
                 var file = myIsolatedStorage.CreateFile(fileName);
                 using (var fs = file)
                 {
-                    await Task.Run(() => bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, 100));
+                    var quality = 100;
+                    if (DeviceStatus.DeviceTotalMemory >> 29 < 1)
+                        //money penny device.
+                        quality = 80;
+                    await Task.Run(() => bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, quality));
                     LockViewApplicationState.Instance.RequestMetadata.ImageBytesPerRequest = (int)fs.Length;
                 }
             }

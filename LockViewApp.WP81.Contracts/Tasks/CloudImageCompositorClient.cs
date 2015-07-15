@@ -28,11 +28,9 @@ namespace InfoViewApp.WP81.Tasks
             localRequest.ContextContract = PreviewContextContract;
             localRequest.FormattingContract = PreviewFormattingContract;
             localRequest.LayoutContract = PreviewLayoutContract;
-            BackgroundTaskHelper.PrepareFormattingContractForScaling(localRequest.FormattingContract);
 #if DEBUG
             localRequest.ContextContract.SecondLine = " @" + DateTime.Now;
 #endif
-            BackgroundTaskHelper.RestoreFormattingContractForSerialization(localRequest.FormattingContract);
             var file = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
             byte[] imgBytes;//= new byte[5];
             using (var stream = await file.OpenReadAsync())

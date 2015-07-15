@@ -68,7 +68,7 @@ namespace InfoViewApp.WP81
                 Instance = new LockViewApplicationState();
                 Instance.RequestMetadata = new LockViewRequestMetadata();
 
-                if(DeviceStatus.DeviceTotalMemory>>29 < 1)
+                if (DeviceStatus.DeviceTotalMemory >> 29 < 1)
                 {
                     //low ram device.
                     Instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
@@ -104,11 +104,8 @@ namespace InfoViewApp.WP81
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SettingInstance, CreationCollisionOption.ReplaceExisting);
             using (var fs = await file.OpenStreamForWriteAsync())
             {
-                using (var sw = new StreamWriter(fs))
-                {
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(InterestGatherer), typeof(NewsFeedCategory) });
-                    xmlSerializer.Serialize(fs, this);
-                }
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(InterestGatherer), typeof(NewsFeedCategory) });
+                xmlSerializer.Serialize(fs, this);
             }
         }
     }

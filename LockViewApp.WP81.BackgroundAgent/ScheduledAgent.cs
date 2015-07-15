@@ -16,6 +16,7 @@ using Windows.Phone.System.UserProfile;
 using Microsoft.Phone.Shell;
 using System.Linq;
 using Microsoft.Phone.Info;
+using System.Net;
 
 namespace LockViewApp.WP81.BackgroundAgent
 {

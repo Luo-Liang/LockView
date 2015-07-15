@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace InfoView
 {
@@ -18,14 +19,14 @@ namespace InfoView
         [WebInvoke(
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, Method = "POST")]
-        ImageCompositionResponse Compose(ImageCompositionRequest request);
+        Task<ImageCompositionResponse> Compose(ImageCompositionRequest request);
 
         [Obsolete]
         [OperationContract]
         [WebInvoke(
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, Method = "POST")]
-        string ComposeLegacy(string request);
+        Task<string> ComposeLegacy(string request);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
@@ -38,6 +39,12 @@ namespace InfoView
         [DataMember]
         public string ResultString { get; set; }
     }
+     
+    public class ImageRequestOverride
+    {
+        public string ImageRequestUrl { get; set; }
+        public string Arguments { get; set; }
+    }
 
     [DataContract]
     public class ImageCompositionRequest
@@ -46,6 +53,7 @@ namespace InfoView
         public string InterestId { get; set; }
         [DataMember]
         public byte[] RawImage { get; set; }
+        public ImageRequestOverride ImageRequestOverride { get; set; }
         [DataMember]
         public long UserId { get; set; } //may be used for persistence in future
         [DataMember]

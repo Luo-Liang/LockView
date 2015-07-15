@@ -48,7 +48,7 @@ namespace InfoViewApp.WP81.Converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var fontContract = (FontContract)value;
-            return fontContract.FontSize;
+            return fontContract.FontSize / ResolutionProvider.GetScaleFactor();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -56,7 +56,7 @@ namespace InfoViewApp.WP81.Converter
             return new FontContract()
             {
                 FontFamily = "Segoe UI",
-                FontSize = int.Parse(value.ToString())
+                FontSize = (int)(int.Parse(value.ToString()) * ResolutionProvider.GetScaleFactor())
             };
         }
 

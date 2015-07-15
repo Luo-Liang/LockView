@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Phone.Info;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,10 @@ namespace InfoViewApp.WP81
         public const double TrafficPricePerGB = 0.185;
         public static double CalculateDrainPerRequest(LockViewRequestMetadata metaData, InterestGathering.RequestMetaData providerMetaData)
         {
-           return (((metaData.ImageBytesPerRequest + providerMetaData.BytePerRequest) / (1024.0 * 1024 * 1024)) * Pricing.TrafficPricePerGB +
-           (providerMetaData.TypicalComputationInSec / 3600.0) * Pricing.ComputationPricePerHour);
+            double multiplier = 1;
+            //if (DeviceStatus.DeviceTotalMemory >> 29 < 1) multiplier = 1.5;//pay extra money for inbound.
+            return (((metaData.ImageBytesPerRequest * multiplier + providerMetaData.BytePerRequest) / (1024.0 * 1024 * 1024)) * TrafficPricePerGB +
+            (providerMetaData.TypicalComputationInSec / 3600.0) * ComputationPricePerHour);
         }
     }
 }

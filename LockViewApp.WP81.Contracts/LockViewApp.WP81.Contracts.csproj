@@ -86,7 +86,6 @@
     <Compile Include="CloudCompositionLocalContract.cs" />
     <Compile Include="FeedSource.cs" />
     <Compile Include="HtmlDecodingUtility.cs" />
-    <Compile Include="ImageSourceEnum.cs" />
     <Compile Include="InterestGathering.cs" />
     <Compile Include="LanguageConcreteSources.cs" />
     <Compile Include="LanguageSources.cs" />
