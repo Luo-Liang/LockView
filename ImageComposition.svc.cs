@@ -24,7 +24,7 @@ namespace InfoView
         {
             public DateTime ExpirationDate;
             public string UrlIdentifier;
-            public byte[] Content;
+            public MemoryStream Content;
         }
         ConcurrentDictionary<string, ImageCacheEntry> CacheEntries;
         WebClient CacheFetcher;
@@ -37,23 +37,39 @@ namespace InfoView
         public async Task<Stream> TryFetchAndAdd(ImageRequestOverride iro)
         {
             ImageCacheEntry entry;
-            var identifier = iro.ImageRequestUrl;
+            var identifier = string.Format("{0}{1}", iro.ImageRequestUrl, iro.Arguments);
             if (false == CacheEntries.TryGetValue(identifier, out entry))
             {
                 entry = new ImageCacheEntry();
                 //create this entry.
-                entry.Content = await CacheFetcher.DownloadDataTaskAsync(identifier);
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(new MemoryStream(await CacheFetcher.DownloadDataTaskAsync(iro.ImageRequestUrl))));
+                if (iro.Arguments == "lq")
+                {
+                    //low quality.
+                    encoder.QualityLevel = 70;
+                }
+                MemoryStream decodedStream = new MemoryStream();
+                encoder.Save(decodedStream);
                 entry.ExpirationDate = DateTime.Now.AddDays(1);
                 entry.UrlIdentifier = identifier;
+                entry.Content = decodedStream;
                 CacheEntries.TryAdd(identifier, entry);
             }
-            else if (entry.ExpirationDate < DateTime.Now)
+            else
             {
                 ImageCacheEntry notUsed;
                 //it's a hit. But this value might expire. Don't expire the current request, simply get rid of it from the cache.
-                CacheEntries.TryRemove(identifier, out notUsed);
+                foreach (var key in CacheEntries.Keys)
+                {
+                    CacheEntries.TryGetValue(key, out notUsed);
+                    if (notUsed.ExpirationDate < DateTime.Now)
+                    {
+                        CacheEntries.TryRemove(key, out notUsed);
+                    }
+                }
             }
-            return new MemoryStream(entry.Content);
+            return entry.Content;
         }
     }
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the public class name "Service1" in code, svc and config file together.

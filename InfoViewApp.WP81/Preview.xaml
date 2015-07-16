@@ -23,10 +23,10 @@
         </Button>
         <StackPanel MouseLeftButtonDown="previewStack_MouseLeftButtonDown" x:Name="previewStack" Margin="30,30,30,0" Orientation="Vertical" VerticalAlignment="Top">
             <Grid Background="{Binding PreviewFormattingContract.BackgroundTitle, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
-                <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" Text="{Binding PreviewContextContract.Title}" VerticalAlignment="Top" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle,Mode=TwoWay,Converter={StaticResource str2clr}}"  FontFamily="Portable User Interface"  />
+                <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" Text="{Binding PreviewContextContract.Title}" VerticalAlignment="Top" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize,Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle,Mode=TwoWay,Converter={StaticResource str2clr}}"  FontFamily="Portable User Interface"  />
             </Grid>
             <Grid Background="{Binding PreviewFormattingContract.BackgroundFirstLine, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
-                <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Top" Text="{Binding PreviewContextContract.FirstLine}"  FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine,Mode=TwoWay,Converter={StaticResource str2clr}}" />
+                <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Top" Text="{Binding PreviewContextContract.FirstLine}"  FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize,Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine,Mode=TwoWay,Converter={StaticResource str2clr}}" />
             </Grid>
             <Grid Margin="0,0,0,5">
                 <TextBlock Text="{Binding PreviewContextContract.SecondLine}"   Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">

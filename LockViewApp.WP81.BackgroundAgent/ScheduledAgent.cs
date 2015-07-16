@@ -111,7 +111,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                     imgReqOverride = new ImageRequestOverride()
                     {
                         ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
-                        Arguments = instance.RequestMetadata.RequestLanguage
+                        Arguments = "lq"
                     };
                 //if yes, execute that if (1) the image has changed OR the content has changed.
                 await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
@@ -152,7 +152,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 imgReqOverride = new ImageRequestOverride()
                 {
                     ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
-                    Arguments = "lq"
+                    Arguments = ""
                 };
             //if yes, execute that if (1) the image has changed OR the content has changed.
             await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
@@ -187,7 +187,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
                 toast.Show();
             }
-            if (possibleOverride != null) return;//don't update on money penny
+            if (possibleOverride != null && possibleOverride.Arguments == "lq") return;//don't update on money penny
             //update tile and/or lock screen image.
             BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             //update tile if necessary.

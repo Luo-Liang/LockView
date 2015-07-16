@@ -65,7 +65,7 @@ namespace InfoViewApp.WP81
             setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication && allowedBg ? Visibility.Collapsed : Visibility.Visible;
             var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(BackgroundTaskHelper.PinnedHeadlineNavId, UriKind.Relative));
             PinFrontStory.Visibility = isPinned ? Visibility.Collapsed : Visibility.Visible;
-            button.IsEnabled = !LockScreenManager.IsProvidedByCurrentApplication;
+            button.IsEnabled = LockScreenManager.IsProvidedByCurrentApplication;
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)

@@ -57,6 +57,7 @@ namespace InfoViewApp.WP81.InterestGathering
                                         Title = HtmlDecodingUtility.HtmlDecode(item.GetObject().GetNamedString("titleNoFormatting")),
                                         ContentUri = new Uri(item.GetObject().GetNamedString("unescapedUrl"))
                                     };
+                                    return candidateContent;
                                 }
                             }
                         }

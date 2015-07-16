@@ -37,7 +37,6 @@
         </Grid>
         <ScrollViewer Margin="20,130,20,24" >
             <ScrollViewer.Resources>
-                <converter:int2FontConverter x:Key="intCon"/>
                 <converter:Str2ColorConverter x:Key="strCon"/>
                 <local:IntegerCollection x:Key="intCollection">
                     <clr:Int32>14</clr:Int32>
@@ -125,11 +124,11 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Title Fontsize" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
-                    <toolkit:ListPicker SelectedItem="{Binding TitleFont, Converter={StaticResource intCon}, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFullInteger}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
+                    <toolkit:ListPicker SelectedItem="{Binding TitleFont.FontSize, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFullInteger}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Content Fontsize" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
-                    <toolkit:ListPicker SelectedItem="{Binding FirstLineFont, Converter={StaticResource intCon}, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFullInteger}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
+                    <toolkit:ListPicker SelectedItem="{Binding FirstLineFont.FontSize, Mode=TwoWay}" FullModeItemTemplate="{StaticResource colorTemplateFullInteger}" ItemsSource="{StaticResource intCollection}" VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12"/>
                 </StackPanel>
 
             </StackPanel>
