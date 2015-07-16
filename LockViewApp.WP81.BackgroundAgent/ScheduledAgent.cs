@@ -206,7 +206,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             var instance = LockViewApplicationState.Instance;
             instance.SelectedProvider.Client = client;
             var content = await instance.SelectedProvider.RequestContent(LockViewApplicationState.Instance.SelectedInterest);
-            if (instance.PreviewContextContract.Equals(content))
+            if (!instance.PreviewContextContract.Equals(content))
             {
                 //are we getting the same update?
                 flag1 = true;
