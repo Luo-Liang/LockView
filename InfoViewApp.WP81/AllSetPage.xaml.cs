@@ -65,7 +65,8 @@ namespace InfoViewApp.WP81
             setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication && allowedBg ? Visibility.Collapsed : Visibility.Visible;
             var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(BackgroundTaskHelper.PinnedHeadlineNavId, UriKind.Relative));
             PinFrontStory.Visibility = isPinned ? Visibility.Collapsed : Visibility.Visible;
-            button.IsEnabled = LockScreenManager.IsProvidedByCurrentApplication;
+            SaveBtn.IsEnabled = LockScreenManager.IsProvidedByCurrentApplication;
+            
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)
@@ -75,6 +76,7 @@ namespace InfoViewApp.WP81
             var requestStatus = BackgroundExecutionManager.GetAccessStatus();
             var allowedBg = requestStatus == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity || requestStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity;
             setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication && allowedBg ? Visibility.Collapsed : Visibility.Visible;
+            SaveBtn.IsEnabled = LockScreenManager.IsProvidedByCurrentApplication;
         }
 
         private void shortcutButton_Click(object sender, RoutedEventArgs e)
@@ -110,6 +112,7 @@ namespace InfoViewApp.WP81
             SaveBtn.Visibility = Visibility.Collapsed;
             var scale = ResolutionProvider.GetScaleFactor();
             var instance = LockViewApplicationState.Instance;
+            await instance.SaveState();
             instance.PreviewLayoutContract.Origin = new Point() { X = (int)(20 * scale), Y = (int)(40 * scale) };
             instance.PreviewLayoutContract.AutoExpand = true;
             instance.PreviewLayoutContract.ParagraphSpacing = (int)(5 * scale);
@@ -131,7 +134,6 @@ namespace InfoViewApp.WP81
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
             BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             BackgroundTaskHelper.TryUpdateTiles();
-            await instance.SaveState();
             //schedule the background task.
             BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
         }
@@ -187,7 +189,7 @@ namespace InfoViewApp.WP81
 #if DEBUG
                 var receipt = await CurrentApp.RequestProductPurchaseAsync(n99Cents.Value.ProductId, true);
 #else
-                 var receipt = await CurrentApp.RequestProductPurchaseAsync(n99Cents.Value.ProductId);
+                var receipt = await CurrentApp.RequestProductPurchaseAsync(n99Cents.Value.ProductId);
 #endif
 
                 if (CurrentApp.LicenseInformation.ProductLicenses[n99Cents.Value.ProductId].IsActive)
