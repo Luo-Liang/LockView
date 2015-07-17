@@ -112,7 +112,6 @@ namespace InfoViewApp.WP81
             SaveBtn.Visibility = Visibility.Collapsed;
             var scale = ResolutionProvider.GetScaleFactor();
             var instance = LockViewApplicationState.Instance;
-            await instance.SaveState();
             instance.PreviewLayoutContract.Origin = new Point() { X = (int)(20 * scale), Y = (int)(40 * scale) };
             instance.PreviewLayoutContract.AutoExpand = true;
             instance.PreviewLayoutContract.ParagraphSpacing = (int)(5 * scale);
@@ -121,6 +120,7 @@ namespace InfoViewApp.WP81
             instance.PreviewLayoutContract.TargetHeight = (int)height;
             instance.PreviewLayoutContract.TargetWidth = (int)width;
             Tasks.CloudImageCompositorClient client = new Tasks.CloudImageCompositorClient();
+            await instance.SaveState();
             var response = await client.Compose(LockViewApplicationState.Instance.PreviewContextContract,
                 LockViewApplicationState.Instance.PreviewFormattingContract,
                 LockViewApplicationState.Instance.PreviewLayoutContract,
