@@ -130,7 +130,7 @@ namespace InfoViewApp.WP81
             SaveBtn.Visibility = Visibility.Visible;
             //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
             var jpegBytes = response.Image;
-            var fileName = DateTime.Now.ToBinary().ToString() + ".jpg";
+            var fileName = instance.PreviewContextContract.GenerateImgFileName();
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
             BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             BackgroundTaskHelper.TryUpdateTiles();
