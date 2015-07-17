@@ -42,14 +42,16 @@ namespace InfoView
             {
                 entry = new ImageCacheEntry();
                 //create this entry.
+                var rawBytes = await CacheFetcher.DownloadDataTaskAsync(iro.ImageRequestUrl);
                 JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(new MemoryStream(await CacheFetcher.DownloadDataTaskAsync(iro.ImageRequestUrl))));
+                encoder.Frames.Add(BitmapFrame.Create(new MemoryStream(rawBytes)));
                 if (iro.Arguments == "lq")
                 {
                     //low quality.
                     encoder.QualityLevel = 70;
                 }
                 MemoryStream decodedStream = new MemoryStream();
+                encoder.Frames[0].Freeze();
                 encoder.Save(decodedStream);
                 entry.ExpirationDate = DateTime.Now.AddDays(1);
                 entry.UrlIdentifier = identifier;
@@ -80,9 +82,11 @@ namespace InfoView
         public async Task<ImageCompositionResponse> Compose(ImageCompositionRequest request)
         {
             Stream memStream = null;
+            bool isStreamCached = false;
             if (request.ImageRequestOverride != null)
             {
                 memStream = await imgCache.TryFetchAndAdd(request.ImageRequestOverride);
+                isStreamCached = true;
             }
             else
             {
@@ -107,7 +111,10 @@ namespace InfoView
             byte[] ImageBytes = new byte[imgStream.Length];
             imgStream.Read(ImageBytes, 0, ImageBytes.Length);
             imgStream.Close();
-            memStream.Close();
+            if (!isStreamCached)
+            {
+                memStream.Close();
+            }
             response.Image = ImageBytes;
             return response;
         }
