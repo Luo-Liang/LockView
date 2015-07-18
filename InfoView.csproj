@@ -105,11 +105,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ImageComposition.svc" />
+    <Content Include="RequestProxying.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRequestProxying.cs" />
     <Compile Include="NewtonsoftJsonBehavior.cs" />
     <Compile Include="NewtonsoftJsonClientFormatter.cs" />
     <Compile Include="NewtonsoftJsonDispatchFormatter.cs" />
@@ -120,6 +122,9 @@
     <Compile Include="IImageCompositionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RawBodyWriter.cs" />
+    <Compile Include="RequestProxying.svc.cs">
+      <DependentUpon>RequestProxying.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

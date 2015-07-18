@@ -13,6 +13,7 @@ using System.Runtime.Serialization.Formatters;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
 using Microsoft.Phone.Info;
+using LockViewApp.WP81.Contracts;
 
 namespace InfoViewApp.WP81
 {
@@ -59,7 +60,7 @@ namespace InfoViewApp.WP81
             {
                 using (var fs = ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(SettingInstance).Result)
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(LanguageSourceBase), typeof(NewsFeedCategory), typeof(InterestGatherer) });
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] {typeof(NewsFeedCategory), typeof(InterestGatherer),typeof(SingleTextSource) });
                     Instance = (LockViewApplicationState)xmlSerializer.Deserialize(fs);
                 }
             }
@@ -104,7 +105,7 @@ namespace InfoViewApp.WP81
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SettingInstance, CreationCollisionOption.ReplaceExisting);
             using (var fs = await file.OpenStreamForWriteAsync())
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] { typeof(InterestGatherer), typeof(NewsFeedCategory) });
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] {typeof(NewsFeedCategory),typeof(GoogleSpecificInterestGatherer),typeof(SingleTextSource) });
                 xmlSerializer.Serialize(fs, this);
             }
         }

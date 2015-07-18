@@ -138,6 +138,9 @@
     <Compile Include="SpecificTopic.xaml.cs">
       <DependentUpon>SpecificTopic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WordsOfWisdom.xaml.cs">
+      <DependentUpon>WordsOfWisdom.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -183,6 +186,10 @@
     <Page Include="SpecificTopic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WordsOfWisdom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

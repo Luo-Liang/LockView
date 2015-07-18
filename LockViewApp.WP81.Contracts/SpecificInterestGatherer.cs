@@ -12,7 +12,7 @@ namespace InfoViewApp.WP81.InterestGathering
     {
         public GoogleSpecificInterestGatherer()
         {
-            BaseRequestUrlTemplate = "https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}";
+            BaseRequestUrlTemplate = "\"https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}\"";
         }
 
         public override RequestMetaData GetMetaData()
@@ -30,7 +30,8 @@ namespace InfoViewApp.WP81.InterestGathering
             string response = null;
             try
             {
-                response = await requestClient.GetStringAsync(new Uri(string.Format(BaseRequestUrlTemplate, request.InterestString)));
+                response = await (await requestClient.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/RequestProxying.svc/FulfillRequestSimple"),new HttpStringContent(string.Format(BaseRequestUrlTemplate, request.InterestString)))).Content.ReadAsStringAsync();
+                response = response.Trim('"').Replace("\\", "");
             }
             catch { }
             if (response != null)
@@ -52,9 +53,9 @@ namespace InfoViewApp.WP81.InterestGathering
                                 {
                                     var candidateContent = new InterestContent()
                                     {
-                                        Content = HtmlDecodingUtility.HtmlDecode(item.GetObject().GetNamedString("content", string.Empty)),
-                                        Publisher = HtmlDecodingUtility.HtmlDecode(item.GetObject().GetNamedString("publisher", string.Empty)),
-                                        Title = HtmlDecodingUtility.HtmlDecode(item.GetObject().GetNamedString("titleNoFormatting")),
+                                        Content = item.GetObject().GetNamedString("content", string.Empty),
+                                        Publisher = item.GetObject().GetNamedString("publisher", string.Empty),
+                                        Title = item.GetObject().GetNamedString("titleNoFormatting"),
                                         ContentUri = new Uri(item.GetObject().GetNamedString("unescapedUrl"))
                                     };
                                     return candidateContent;

@@ -114,7 +114,7 @@ namespace InfoViewApp.WP81
             var instance = LockViewApplicationState.Instance;
             instance.PreviewLayoutContract.Origin = new Point() { X = (int)(20 * scale), Y = (int)(40 * scale) };
             instance.PreviewLayoutContract.AutoExpand = true;
-            instance.PreviewLayoutContract.ParagraphSpacing = (int)(5 * scale);
+            instance.PreviewLayoutContract.ParagraphSpacing = 5;
             double height, width;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             instance.PreviewLayoutContract.TargetHeight = (int)height;
@@ -130,7 +130,7 @@ namespace InfoViewApp.WP81
             SaveBtn.Visibility = Visibility.Visible;
             //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
             var jpegBytes = response.Image;
-            var fileName = instance.PreviewContextContract.GenerateImgFileName();
+            var fileName = string.Format("{0}.jpeg", DateTime.Now.ToBinary());
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
             BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             BackgroundTaskHelper.TryUpdateTiles();

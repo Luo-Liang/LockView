@@ -30,21 +30,17 @@
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
     <phone:PhoneApplicationPage.Resources>
-        <local:ListBoxContentVMCollection x:Key="categories">
-            <local:ListBoxContentVM SecondLine="Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library." FirstLine="USE MY OWN IMAGE"/>
-            <local:ListBoxContentVM SecondLine="Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="BING"/>
-        </local:ListBoxContentVMCollection>
     </phone:PhoneApplicationPage.Resources>
     <Grid>
         <Grid.Resources>
             <local:ListBoxContentVMCollection x:Key="categories">
                 <local:ListBoxContentVM SecondLine="This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news." FirstLine="SPECIFIC TOPIC OF YOUR CHOICE"/>
                 <local:ListBoxContentVM SecondLine="Love News, Sports or Finance? We got you covered. Choose this option if you would like to see a broader news topic." FirstLine="GENERIC NEWS TOPIC"/>
-
+                <local:ListBoxContentVM FeatureEnabled="False" SecondLine="Leave blank, or use a sentence that you've been telling yourself." FirstLine="WORD OF WISDOM"/>
             </local:ListBoxContentVMCollection>
             <local:ListBoxContentVMCollection x:Key="disabledItems">
                 <local:ListBoxContentVM FeatureEnabled="False" SecondLine="Transform your phone into a best language learning tool. Learn a new word from a language of your choice right from the lock screen!" FirstLine="LANGUAGE LEARNING"/>
-                <local:ListBoxContentVM FeatureEnabled="False" SecondLine="Leave blank, or use a sentence that you've been telling yourself." FirstLine="WISDOM OF YOU"/>
+              
             </local:ListBoxContentVMCollection>
 
         </Grid.Resources>
