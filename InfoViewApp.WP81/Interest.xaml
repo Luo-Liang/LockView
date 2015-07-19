@@ -44,7 +44,7 @@
 
         </Grid.Resources>
         <Grid Background="{StaticResource AccentBrush}" Opacity="0.8" VerticalAlignment="Top" Margin="0,30,0,0">
-            <TextBlock TextWrapping="Wrap" Text="What would you like to read in your lock screen? Select a category from below." VerticalAlignment="Stretch" Foreground="White" FontSize="24" Margin="20,10,14,10" FontFamily="Portable User Interface"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Interest}" VerticalAlignment="Stretch" Foreground="White" FontSize="24" Margin="20,10,14,10" FontFamily="Portable User Interface"/>
         </Grid>
         <StackPanel Margin="20,134,14,84" Orientation="Vertical">
             <ListBox x:Name="categorySelector" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Portable User Interface">
@@ -68,7 +68,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
-        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" HorizontalAlignment="Left" Margin="6,0,0,10" FontFamily="Global User Interface" VerticalAlignment="Bottom">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.LetsGo}" HorizontalAlignment="Left" Margin="6,0,0,10" FontFamily="Global User Interface" VerticalAlignment="Bottom">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

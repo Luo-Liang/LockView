@@ -53,7 +53,7 @@
                     <GradientStop Color="#006F54A3" Offset="0.077"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="bye bye," VerticalAlignment="Stretch" IsHitTestVisible="False"  Margin="55,22,10,10" FontSize="53.333">
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.ByeBye}" VerticalAlignment="Stretch" IsHitTestVisible="False"  Margin="55,22,10,10" FontSize="53.333">
                 <TextBlock.Foreground>
                     <LinearGradientBrush EndPoint="2.753,0.5" StartPoint="-0.065,0.51">
                         <GradientStop Color="White" Offset="0"/>
@@ -80,9 +80,9 @@
                     <GradientStop Color="Transparent" Offset="0.006"/>
                 </LinearGradientBrush>
             </TextBlock.Foreground>
-        	<Run Text="mundane"/>
+        	<Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.mundane}"/>
         	<LineBreak/>
-        	<Run Text="lock screen"/>
+        	<Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.lockscreen}"/>
         </TextBlock>
         <Path x:Name="rectangle_Copy" HorizontalAlignment="Left" Height="101.594" Stroke="Black" VerticalAlignment="Top" StrokeThickness="0" UseLayoutRounding="False" d:LayoutRounding="Auto" Data="M0,0 L633.532,0 L633.532,167 L107.509,167 z" Margin="-147.512,-39.144,0,0" RenderTransformOrigin="0.439649,0.5" Stretch="Fill" Width="381.811">
             <Path.Fill>
@@ -92,7 +92,7 @@
                 <CompositeTransform Rotation="212.772"/>
             </Path.RenderTransform>
         </Path>
-        <Button Click="goToCropping_Click" x:Name="SaveBtn" Visibility="Visible" Content="Jump in!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface">
+        <Button Click="goToCropping_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.JumpIn}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

@@ -3,8 +3,9 @@
   <DefaultLanguage xmlns="" code="en-US" />
   <Languages xmlns="">
     <Language code="qps-ploc" />
+    <Language code="zh-CN" />
   </Languages>
-  <App xmlns="" ProductID="{5bda3499-658b-443e-972d-4d6b16d5186e}" Title="LockView" RuntimeType="Silverlight" Version="1.0.0.6" Genre="apps.normal" Author="TemplatingProject author" Description="Sample description" SDOptOut="false" BackUpOptOut="false" Publisher="TemplatingProject" PublisherID="{7958a0f1-0a57-4cd1-a954-d539d3344e31}">
+  <App xmlns="" ProductID="{5bda3499-658b-443e-972d-4d6b16d5186e}" Title="@AppResLib.dll,-100" RuntimeType="Silverlight" Version="1.0.0.6" Genre="apps.normal" Author="TemplatingProject author" Description="Sample description" SDOptOut="false" BackUpOptOut="false" Publisher="TemplatingProject" PublisherID="{7958a0f1-0a57-4cd1-a954-d539d3344e31}">
     <IconPath IsRelative="true" IsResource="false">LockView.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -29,13 +30,19 @@
           <Count>0</Count>
           <IconImageURI IsRelative="true" IsResource="false">LockView.png</IconImageURI>
           <Title>LockView</Title>
-          <Message></Message>
-          <BackgroundColor></BackgroundColor>
+          <Message>
+          </Message>
+          <BackgroundColor>
+          </BackgroundColor>
           <HasLarge>false</HasLarge>
-          <LargeContent1></LargeContent1>
-          <LargeContent2></LargeContent2>
-          <LargeContent3></LargeContent3>
-          <DeviceLockImageURI IsRelative="true" IsResource="false"></DeviceLockImageURI>
+          <LargeContent1>
+          </LargeContent1>
+          <LargeContent2>
+          </LargeContent2>
+          <LargeContent3>
+          </LargeContent3>
+          <DeviceLockImageURI IsRelative="true" IsResource="false">
+          </DeviceLockImageURI>
         </TemplateIconic>
       </PrimaryToken>
     </Tokens>

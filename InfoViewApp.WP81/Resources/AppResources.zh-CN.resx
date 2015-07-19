@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -122,91 +122,85 @@
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
+    <value>zh-CN</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
-  <data name="ApplicationTitle" xml:space="preserve">
-    <value>MY APPLICATION</value>
-  </data>
   <data name="ByeBye" xml:space="preserve">
-    <value>bye bye</value>
-  </data>
-  <data name="AppBarMenuItemText" xml:space="preserve">
-    <value>Menu Item</value>
-  </data>
-  <data name="lockscreen" xml:space="preserve">
-    <value>lock screen</value>
+    <value>和平凡,</value>
   </data>
   <data name="mundane" xml:space="preserve">
-    <value>mundane</value>
-  </data>
-  <data name="Bing" xml:space="preserve">
-    <value>BING</value>
-  </data>
-  <data name="BingText" xml:space="preserve">
-    <value>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</value>
-  </data>
-  <data name="GenericNewsTopic" xml:space="preserve">
-    <value>GENERIC NEWS TOPIC</value>
-  </data>
-  <data name="GenericNewsTopicText" xml:space="preserve">
-    <value>Love News, Sports or Finance? We got you covered. Choose this option if you would like to see a broader news topic.</value>
-  </data>
-  <data name="ImageCropping" xml:space="preserve">
-    <value>Swipe around to pick a best view. When done, click 'That's it!'</value>
-  </data>
-  <data name="ImageSourceSelection" xml:space="preserve">
-    <value>Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing.</value>
-  </data>
-  <data name="Interest" xml:space="preserve">
-    <value>What would you like to read in your lock screen? Select a category from below.</value>
+    <value>锁屏界面</value>
   </data>
   <data name="JumpIn" xml:space="preserve">
-    <value>Jump in!</value>
+    <value>开始!</value>
   </data>
-  <data name="Language" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="LanguageLearning" xml:space="preserve">
-    <value>LANGUAGE LEARNING</value>
-  </data>
-  <data name="LanguageLearningText" xml:space="preserve">
-    <value>Transform your phone into a best language learning tool. Learn a new word from a language of your choice right from the lock screen!</value>
-  </data>
-  <data name="LanguageSetting" xml:space="preserve">
-    <value>What do you want to learn today?</value>
+  <data name="Bing" xml:space="preserve">
+    <value>必应</value>
   </data>
   <data name="LetsGo" xml:space="preserve">
-    <value>Let's go!</value>
+    <value>继续!</value>
   </data>
   <data name="Next" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="SpecificTopicOfYourChoice" xml:space="preserve">
-    <value>SPECIFIC TOPIC OF YOUR CHOICE</value>
-  </data>
-  <data name="SpecificTopicOfYourChoiceText" xml:space="preserve">
-    <value>This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news.</value>
-  </data>
-  <data name="SuggestedSource" xml:space="preserve">
-    <value>Suggested Source</value>
-  </data>
-  <data name="ThatsIt" xml:space="preserve">
-    <value>That's it!</value>
-  </data>
-  <data name="TranslationLanguage" xml:space="preserve">
-    <value>Translation Language</value>
-  </data>
-  <data name="UseOwnImage" xml:space="preserve">
-    <value>USE MY OWN IMAGE</value>
+    <value>下一步</value>
   </data>
   <data name="UseOwnImageText" xml:space="preserve">
-    <value>Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library.</value>
+    <value>若您希望从您的图片库中选择一张静态图片，请选择此项</value>
   </data>
-  <data name="WordOfWisdom" xml:space="preserve">
-    <value>WORD OF WISDOM</value>
+  <data name="UseOwnImage" xml:space="preserve">
+    <value>图片库</value>
+  </data>
+  <data name="lockscreen" xml:space="preserve">
+    <value>说再见</value>
+  </data>
+  <data name="ImageSourceSelection" xml:space="preserve">
+    <value>您希望从哪里得到您的锁屏墙纸?您可以从图片库中选择，或者，我们将帮您从必应美图中选择一张。</value>
+  </data>
+  <data name="BingText" xml:space="preserve">
+    <value>选择此项若您希望从必应每天获得一张让人耳目一新的美图。若您选择此项，您同意该图片的唯一用途是墙纸。</value>
+  </data>
+  <data name="ImageCropping" xml:space="preserve">
+    <value>四处看看,选择最棒的景色!完成后，请按"棒极了!"</value>
+  </data>
+  <data name="ThatsIt" xml:space="preserve">
+    <value>棒极了!</value>
+  </data>
+  <data name="Interest" xml:space="preserve">
+    <value>您希望显示在锁屏界面上哪些内容?请从以下选择一项。</value>
+  </data>
+  <data name="GenericNewsTopicText" xml:space="preserve">
+    <value>喜欢资讯,体育或者财经?一切都包在我们身上。若您希望看到某类新闻，请选择此项。</value>
+  </data>
+  <data name="GenericNewsTopic" xml:space="preserve">
+    <value>新闻类</value>
+  </data>
+  <data name="LanguageLearningText" xml:space="preserve">
+    <value>将您的手机变为学习一门外语的最佳利器。在您的锁屏街面上显示一个外文单词。</value>
+  </data>
+  <data name="LanguageLearning" xml:space="preserve">
+    <value>语言学习</value>
+  </data>
+  <data name="SpecificTopicOfYourChoiceText" xml:space="preserve">
+    <value>有一个特殊的爱好?选择此项若您希望收到某个特定话题的更新。例如，如果您对微软有兴趣，只需键入微软，我们将把有关该话题的报道呈现给您。</value>
+  </data>
+  <data name="SpecificTopicOfYourChoice" xml:space="preserve">
+    <value>特定话题</value>
   </data>
   <data name="WordOfWisdomText" xml:space="preserve">
-    <value>Leave blank, or use a sentence that you've been telling yourself.</value>
+    <value>留白，或者给自己一句激励的话。</value>
+  </data>
+  <data name="WordOfWisdom" xml:space="preserve">
+    <value>箴言</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="LanguageSetting" xml:space="preserve">
+    <value>今天您想学些什么?</value>
+  </data>
+  <data name="SuggestedSource" xml:space="preserve">
+    <value>推荐的源</value>
+  </data>
+  <data name="TranslationLanguage" xml:space="preserve">
+    <value>翻译语言</value>
   </data>
 </root>

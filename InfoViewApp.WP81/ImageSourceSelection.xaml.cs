@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using InfoViewApp.WP81.Resources;
+using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +21,12 @@ namespace InfoViewApp.WP81
         public ImageSourceSelection()
         {
             this.InitializeComponent();
+            var lbVM = new ListBoxContentVMCollection();
+            lbVM.AddRange(new[] {
+                new ListBoxContentVM() { FirstLine = AppResources.UseOwnImage, SecondLine = AppResources.UseOwnImageText },
+                new ListBoxContentVM() {FirstLine = AppResources.Bing,SecondLine = AppResources.BingText }
+            });
+            categorySelector.ItemsSource = lbVM;
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)

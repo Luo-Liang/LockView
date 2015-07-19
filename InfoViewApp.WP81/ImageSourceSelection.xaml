@@ -42,7 +42,7 @@
     </phone:PhoneApplicationPage.Resources>
     <Grid>
         <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-            <TextBlock TextWrapping="Wrap" Text="Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing." VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="24"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.ImageSourceSelection}" VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="24"/>
         </Grid>
         <ListBox x:Name="categorySelector" Margin="20,173,14,78" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Portable User Interface">
             <ListBox.ItemTemplate>
@@ -54,7 +54,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Let's go!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,10" FontFamily="Portable User Interface" Width="140" Height="72">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.LetsGo}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,10" FontFamily="Portable User Interface" Width="140" Height="72">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

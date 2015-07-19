@@ -1,5 +1,6 @@
 ﻿// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
+using InfoViewApp.WP81.Resources;
 using Microsoft.Phone.Controls;
 using System.Windows;
 
@@ -14,6 +15,15 @@ namespace InfoViewApp.WP81
         public Interest()
         {
             this.InitializeComponent();
+            var lbm = new ListBoxContentVMCollection();
+            lbm.AddRange(new ListBoxContentVM[]
+            {
+                new ListBoxContentVM() {FirstLine = AppResources.SpecificTopicOfYourChoice, SecondLine = AppResources.SpecificTopicOfYourChoiceText },
+                new ListBoxContentVM() {FirstLine = AppResources.GenericNewsTopic,SecondLine = AppResources.GenericNewsTopicText },
+                new ListBoxContentVM() {FirstLine = AppResources.WordOfWisdom,SecondLine = AppResources.WordOfWisdomText },
+                new ListBoxContentVM() {FirstLine = AppResources.LanguageLearning,SecondLine = AppResources.LanguageLearningText }
+            });
+            categorySelector.ItemsSource = lbm;
         }
 
         /// <summary>

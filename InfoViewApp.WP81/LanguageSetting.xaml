@@ -42,12 +42,12 @@
     </phone:PhoneApplicationPage.Resources>
     <Grid>
         <StackPanel Margin="0,30,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-            <TextBlock IsHitTestVisible="False" TextWrapping="Wrap" Text="What do you want to learn today?" VerticalAlignment="Center" FontSize="24" HorizontalAlignment="Left" Margin="20,10,14,10" Foreground="White"/>
+            <TextBlock IsHitTestVisible="False" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.LanguageSetting}" VerticalAlignment="Center" FontSize="24" HorizontalAlignment="Left" Margin="20,10,14,10" Foreground="White"/>
         </StackPanel>
         <ScrollViewer Margin="20,100,20,82" >
             <StackPanel x:Name="settingsGrid" Orientation="Vertical">
                 <StackPanel  Orientation="Vertical" VerticalAlignment="Top">
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Language" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Global User Interface"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Language}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Global User Interface"/>
                     <toolkit:ListPicker x:Name="newsSources" SelectionChanged="newsSources_SelectionChanged"   VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12">
                         <toolkit:ListPicker.ItemTemplate>
                             <DataTemplate>

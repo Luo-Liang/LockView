@@ -9,10 +9,12 @@
     xmlns:newsFeed="clr-namespace:InfoViewApp.WP81.InterestGathering.NewsFeed;assembly=LockViewApp.WP81.Contracts"
     xmlns:language="clr-namespace:InfoViewApp.WP81.InterestGathering.LanguageLearning;assembly=LockViewApp.WP81.Contracts"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:res="clr-namespace:InfoViewApp.WP81.Resources"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--Application Resources-->
     <Application.Resources>
+        <res:LocalizedStrings x:Key="ls"/>
         <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>

@@ -20,13 +20,113 @@
           <source>MY APPLICATION</source>
           <target state="new">MY APPLICATION</target>
         </trans-unit>
-        <trans-unit id="Resx/AppBarButtonText" translate="yes" xml:space="preserve">
-          <source>add</source>
-          <target state="new">add</target>
+        <trans-unit id="Resx/ByeBye" translate="yes" xml:space="preserve">
+          <source>bye bye</source>
+          <target state="new">bye bye</target>
         </trans-unit>
         <trans-unit id="Resx/AppBarMenuItemText" translate="yes" xml:space="preserve">
           <source>Menu Item</source>
           <target state="new">Menu Item</target>
+        </trans-unit>
+        <trans-unit id="Resx/mundane" translate="yes" xml:space="preserve">
+          <source>mundane</source>
+          <target state="new">mundane</target>
+        </trans-unit>
+        <trans-unit id="Resx/ImageSourceSelection" translate="yes" xml:space="preserve">
+          <source>Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing.</source>
+          <target state="new">Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing.</target>
+        </trans-unit>
+        <trans-unit id="Resx/Interest" translate="yes" xml:space="preserve">
+          <source>What would you like to read in your lock screen? Select a category from below.</source>
+          <target state="new">What would you like to read in your lock screen? Select a category from below.</target>
+        </trans-unit>
+        <trans-unit id="Resx/BingText" translate="yes" xml:space="preserve">
+          <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
+          <target state="new">Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</target>
+        </trans-unit>
+        <trans-unit id="Resx/GenericNewsTopicText" translate="yes" xml:space="preserve">
+          <source>Love News, Sports or Finance? We got you covered. Choose this option if you would like to see a broader news topic.</source>
+          <target state="new">Love News, Sports or Finance? We got you covered. Choose this option if you would like to see a broader news topic.</target>
+        </trans-unit>
+        <trans-unit id="Resx/GenericNewsTopic" translate="yes" xml:space="preserve">
+          <source>GENERIC NEWS TOPIC</source>
+          <target state="new">GENERIC NEWS TOPIC</target>
+        </trans-unit>
+        <trans-unit id="Resx/ImageCropping" translate="yes" xml:space="preserve">
+          <source>Swipe around to pick a best view. When done, click 'That's it!'</source>
+          <target state="new">Swipe around to pick a best view. When done, click 'That's it!'</target>
+        </trans-unit>
+        <trans-unit id="Resx/Bing" translate="yes" xml:space="preserve">
+          <source>BING</source>
+          <target state="new">BING</target>
+        </trans-unit>
+        <trans-unit id="Resx/JumpIn" translate="yes" xml:space="preserve">
+          <source>Jump in!</source>
+          <target state="new">Jump in!</target>
+        </trans-unit>
+        <trans-unit id="Resx/Language" translate="yes" xml:space="preserve">
+          <source>Language</source>
+          <target state="new">Language</target>
+        </trans-unit>
+        <trans-unit id="Resx/LanguageLearningText" translate="yes" xml:space="preserve">
+          <source>Transform your phone into a best language learning tool. Learn a new word from a language of your choice right from the lock screen!</source>
+          <target state="new">Transform your phone into a best language learning tool. Learn a new word from a language of your choice right from the lock screen!</target>
+        </trans-unit>
+        <trans-unit id="Resx/LanguageSetting" translate="yes" xml:space="preserve">
+          <source>What do you want to learn today?</source>
+          <target state="new">What do you want to learn today?</target>
+        </trans-unit>
+        <trans-unit id="Resx/LanguageLearning" translate="yes" xml:space="preserve">
+          <source>LANGUAGE LEARNING</source>
+          <target state="new">LANGUAGE LEARNING</target>
+        </trans-unit>
+        <trans-unit id="Resx/LetsGo" translate="yes" xml:space="preserve">
+          <source>Let's go!</source>
+          <target state="new">Let's go!</target>
+        </trans-unit>
+        <trans-unit id="Resx/Next" translate="yes" xml:space="preserve">
+          <source>Next</source>
+          <target state="new">Next</target>
+        </trans-unit>
+        <trans-unit id="Resx/SpecificTopicOfYourChoiceText" translate="yes" xml:space="preserve">
+          <source>This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news.</source>
+          <target state="new">This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news.</target>
+        </trans-unit>
+        <trans-unit id="Resx/SuggestedSource" translate="yes" xml:space="preserve">
+          <source>Suggested Source</source>
+          <target state="new">Suggested Source</target>
+        </trans-unit>
+        <trans-unit id="Resx/SpecificTopicOfYourChoice" translate="yes" xml:space="preserve">
+          <source>SPECIFIC TOPIC OF YOUR CHOICE</source>
+          <target state="new">SPECIFIC TOPIC OF YOUR CHOICE</target>
+        </trans-unit>
+        <trans-unit id="Resx/ThatsIt" translate="yes" xml:space="preserve">
+          <source>That's it!</source>
+          <target state="new">That's it!</target>
+        </trans-unit>
+        <trans-unit id="Resx/TranslationLanguage" translate="yes" xml:space="preserve">
+          <source>Translation Language</source>
+          <target state="new">Translation Language</target>
+        </trans-unit>
+        <trans-unit id="Resx/UseOwnImageText" translate="yes" xml:space="preserve">
+          <source>Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library.</source>
+          <target state="new">Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library.</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomText" translate="yes" xml:space="preserve">
+          <source>Leave blank, or use a sentence that you've been telling yourself.</source>
+          <target state="new">Leave blank, or use a sentence that you've been telling yourself.</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdom" translate="yes" xml:space="preserve">
+          <source>WORD OF WISDOM</source>
+          <target state="new">WORD OF WISDOM</target>
+        </trans-unit>
+        <trans-unit id="Resx/UseOwnImage" translate="yes" xml:space="preserve">
+          <source>USE MY OWN IMAGE</source>
+          <target state="new">USE MY OWN IMAGE</target>
+        </trans-unit>
+        <trans-unit id="Resx/lockscreen" translate="yes" xml:space="preserve">
+          <source>lock screen</source>
+          <target state="new">lock screen</target>
         </trans-unit>
       </group>
     </body>
