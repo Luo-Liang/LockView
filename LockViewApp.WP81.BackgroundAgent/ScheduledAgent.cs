@@ -99,7 +99,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                     //use this client to send request.
                     flag1 = await AcquireContentUpdateIfNecessary(client);
 #if !DEBUG
-                    if (flag1)
+                    if (flag1 || task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear)
 #endif
                     instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tack;
                 }
@@ -144,7 +144,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             //does the user have any quota executing that?
 #if !DEBUG
-            if (flag1)
+            if (flag1 || lastExecution.DayOfYear < DateTime.Now.DayOfYear)
             {
 #endif
             ImageRequestOverride imgReqOverride = null;

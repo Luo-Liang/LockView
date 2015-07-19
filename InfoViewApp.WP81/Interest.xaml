@@ -37,10 +37,9 @@
                 <local:ListBoxContentVM SecondLine="This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news." FirstLine="SPECIFIC TOPIC OF YOUR CHOICE"/>
                 <local:ListBoxContentVM SecondLine="Love News, Sports or Finance? We got you covered. Choose this option if you would like to see a broader news topic." FirstLine="GENERIC NEWS TOPIC"/>
                 <local:ListBoxContentVM FeatureEnabled="False" SecondLine="Leave blank, or use a sentence that you've been telling yourself." FirstLine="WORD OF WISDOM"/>
+                <local:ListBoxContentVM FeatureEnabled="False" SecondLine="Transform your phone into a best language learning tool. Learn a new word from a language of your choice right from the lock screen!" FirstLine="LANGUAGE LEARNING"/>
             </local:ListBoxContentVMCollection>
             <local:ListBoxContentVMCollection x:Key="disabledItems">
-                <local:ListBoxContentVM FeatureEnabled="False" SecondLine="Transform your phone into a best language learning tool. Learn a new word from a language of your choice right from the lock screen!" FirstLine="LANGUAGE LEARNING"/>
-              
             </local:ListBoxContentVMCollection>
 
         </Grid.Resources>

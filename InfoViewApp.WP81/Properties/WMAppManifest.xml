@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{5bda3499-658b-443e-972d-4d6b16d5186e}" Title="LockView" RuntimeType="Silverlight" Version="1.0.0.4" Genre="apps.normal"  Author="TemplatingProject author" Description="Sample description" SDOptOut ="false" BackUpOptOut ="false" Publisher="TemplatingProject" PublisherID="{7958a0f1-0a57-4cd1-a954-d539d3344e31}">
+  <Languages xmlns="">
+    <Language code="qps-ploc" />
+  </Languages>
+  <App xmlns="" ProductID="{5bda3499-658b-443e-972d-4d6b16d5186e}" Title="LockView" RuntimeType="Silverlight" Version="1.0.0.6" Genre="apps.normal" Author="TemplatingProject author" Description="Sample description" SDOptOut="false" BackUpOptOut="false" Publisher="TemplatingProject" PublisherID="{7958a0f1-0a57-4cd1-a954-d539d3344e31}">
     <IconPath IsRelative="true" IsResource="false">LockView.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -15,9 +18,9 @@
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" ActivationPolicy="Resume" />
-        <ExtendedTask Name="BackgroundTask">
-          <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="updateTask" Source="LockViewApp.WP81.BackgroundAgent" Type="LockViewApp.WP81.BackgroundAgent.ScheduledAgent" />
-        </ExtendedTask>
+      <ExtendedTask Name="BackgroundTask">
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="updateTask" Source="LockViewApp.WP81.BackgroundAgent" Type="LockViewApp.WP81.BackgroundAgent.ScheduledAgent" />
+      </ExtendedTask>
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="InfoViewApp.WP81WP81Token" TaskName="_default">
@@ -26,19 +29,13 @@
           <Count>0</Count>
           <IconImageURI IsRelative="true" IsResource="false">LockView.png</IconImageURI>
           <Title>LockView</Title>
-          <Message>
-          </Message>
-          <BackgroundColor>
-          </BackgroundColor>
+          <Message></Message>
+          <BackgroundColor></BackgroundColor>
           <HasLarge>false</HasLarge>
-          <LargeContent1>
-          </LargeContent1>
-          <LargeContent2>
-          </LargeContent2>
-          <LargeContent3>
-          </LargeContent3>
-          <DeviceLockImageURI IsRelative="true" IsResource="false">
-          </DeviceLockImageURI>
+          <LargeContent1></LargeContent1>
+          <LargeContent2></LargeContent2>
+          <LargeContent3></LargeContent3>
+          <DeviceLockImageURI IsRelative="true" IsResource="false"></DeviceLockImageURI>
         </TemplateIconic>
       </PrimaryToken>
     </Tokens>

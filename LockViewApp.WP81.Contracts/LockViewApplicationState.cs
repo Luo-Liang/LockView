@@ -46,7 +46,11 @@ namespace InfoViewApp.WP81
             Phase = TaskPhase.Complete;
         }
     }
-
+    [XmlInclude(typeof(NewsFeedCategory))]
+    [XmlInclude(typeof(GoogleSpecificInterestGatherer))]
+    [XmlInclude(typeof(SingleTextSource))]
+    [XmlInclude(typeof(OnlineSource))]
+    [XmlInclude(typeof(OfflineSource))]
     public class LockViewApplicationState
     {
         const string SettingInstance = "Settings.xml";
@@ -60,7 +64,7 @@ namespace InfoViewApp.WP81
             {
                 using (var fs = ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(SettingInstance).Result)
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] {typeof(NewsFeedCategory), typeof(InterestGatherer),typeof(SingleTextSource) });
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState));
                     Instance = (LockViewApplicationState)xmlSerializer.Deserialize(fs);
                 }
             }
@@ -105,7 +109,7 @@ namespace InfoViewApp.WP81
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SettingInstance, CreationCollisionOption.ReplaceExisting);
             using (var fs = await file.OpenStreamForWriteAsync())
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState), new[] {typeof(NewsFeedCategory),typeof(GoogleSpecificInterestGatherer),typeof(SingleTextSource) });
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LockViewApplicationState));
                 xmlSerializer.Serialize(fs, this);
             }
         }

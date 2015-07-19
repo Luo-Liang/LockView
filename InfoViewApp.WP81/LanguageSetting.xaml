@@ -78,7 +78,7 @@
                 </StackPanel>
                 <StackPanel Visibility="{Binding Visibility, Converter={StaticResource logicalNeg2VisibilityConn}, ElementName=customizedSourceStack}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0" Background="Black">
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Suggested Source" VerticalAlignment="Top" FontSize="24" FontWeight="Light" Foreground="White" TextAlignment="Center"/>
-                    <toolkit:ListPicker x:Name="languegeSource" SelectionChanged="languageSource_SelectionChanged" ItemsSource="{StaticResource definedLanguageSources}"  VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12" >
+                    <toolkit:ListPicker x:Name="languageSource" SelectionChanged="languageSource_SelectionChanged" ItemsSource="{StaticResource definedLanguageSources}"  VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12" >
                         <toolkit:ListPicker.Background>
                             <SolidColorBrush Color="{StaticResource AccentColor}"/>
                         </toolkit:ListPicker.Background>

@@ -24,11 +24,6 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             EnUs
         }
 
-        public int RefreshTimeInMinutes
-        {
-            get;
-            set;
-        }
         public ContentType Content
         {
             get;
@@ -39,12 +34,6 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
         public override string ToString()
         {
             return SourceName;
-        }
-
-        public string SourceName
-        {
-            get;
-            set;
         }
 
         public string RequestString
@@ -88,7 +77,7 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
         {
             return new RequestMetaData()
             {
-                BytePerRequest = 50 * 1024,
+                BytePerRequest = 5 * 1024,
                 UpdatePerDay = 1
             };
         }

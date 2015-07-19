@@ -249,12 +249,14 @@
             </newsFeed:CustomizedFeedSource>
         </newsFeed:FeedSources>
         <language:LanguegeSources x:Key="definedLanguageSources">
-            <language:BingSource/>
-            <language:CET46Collection/>
-            <language:GRECollection/>
-            <language:ICIBASource/>
-            <language:MerriamWebsterSource/>
-            <language:TOEFLCollection/>
+            <!--<language:OnlineSource SourceName="Bing Dictionary" RequestString="http://cn.bing.com/dict/?mkt=zh-CN" HeadlineSelectionPath="//*[@id=&quot;sw_content&quot;]/div[2]/div/div[1]/div/div[2]/div[1]/div[1]/a" SecondaryLineSelectionPath="//*[@id=&quot;sw_content&quot;]/div[2]/div/div[1]/div/div[2]/div[1]/div[4]" Content="Word" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OnlineSource SourceName="ICIBA" RequestString="http://news.iciba.com/dailysentence" HeadlineSelectionPath="//*[@id=&quot;dailyEcont&quot;]/div[2]/h5[1]/a[1]" SecondaryLineSelectionPath="//*[@id=&quot;dailyEcont&quot;]/div[2]/h5[2]" Content="Sentence" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OnlineSource SourceName="Merriam Webster" RequestString="http://www.merriam-webster.com/word-of-the-day/" HeadlineSelectionPath="//strong[@class=&quot;main_entry_word&quot;]" SecondaryLineSelectionPath="//span[@class=&quot;ssens&quot;]" Content="Word" Language="EnUs" TranslationLanguage="EnUs"/>-->
+            <language:OfflineSource SourceName="CET 6 Collection" Content="Word" SourcePath="LocalDict\cet6.txt" LineCount="2087" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OfflineSource SourceName="CET 4 Collection" Content="Word" SourcePath="LocalDict\cet4.txt" LineCount="4608" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OfflineSource SourceName="TOEFL Collection" Content="Word" SourcePath="LocalDict\toefl.txt" LineCount="1836" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OfflineSource SourceName="GRE Collection" Content="Word" SourcePath="LocalDict\GRE.txt" LineCount="7495" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OfflineSource SourceName="IELTS Collection" Content="Word" SourcePath="LocalDict\IELTS.txt" LineCount="1517" Language="EnUs" TranslationLanguage="ZhCn"/>
         </language:LanguegeSources>
     </Application.Resources>
 

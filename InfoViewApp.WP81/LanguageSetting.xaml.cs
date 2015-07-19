@@ -48,18 +48,18 @@ namespace InfoViewApp.WP81
             {
                 SaveBtn.Visibility = Visibility.Collapsed;
                 progressRing.Visibility = Visibility.Visible;
-                InterestContent interestContent = await (languegeSource.SelectedItem as IInterestGatherer).RequestContent(LockViewApplicationState.Instance.SelectedInterest);
+                InterestContent interestContent = await (languageSource.SelectedItem as IInterestGatherer).RequestContent(LockViewApplicationState.Instance.SelectedInterest);
                 previewStack.DataContext = interestContent;
                 LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(interestContent);
                 SaveBtn.Content = "Preview";
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;
+                LockViewApplicationState.Instance.SelectedProvider = languageSource.SelectedItem as InterestGatherer;
             }
             else
             {
 
                 SaveBtn.Content = "Show me!";
-
                 NavigationService.Navigate(new Uri("/Preview.xaml", UriKind.Relative));
             }
         }
@@ -84,7 +84,7 @@ namespace InfoViewApp.WP81
                 var contentType = (LanguageSourceBase.ContentType)this.languageType.SelectedItem;
                 fullSource = fullSource.Where<LanguageSourceBase>(source => source.Content == contentType);
             }
-            languegeSource.ItemsSource = fullSource;
+            languageSource.ItemsSource = fullSource;
             if (fullSource.Count() == 0)
             {
                 SaveBtn.Visibility = Visibility.Collapsed;
