@@ -179,6 +179,11 @@ namespace InfoViewApp.WP81
 
         private async void quotaPurchase_Click(object sender, RoutedEventArgs e)
         {
+            if(LockViewApplicationState.Instance.UserQuotaInDollars >= 0.05)
+            {
+                MessageBox.Show("Come back later, as you still have sufficient balance. We'll remind you when it is running out.", "NOT THERE YET", MessageBoxButton.OK);
+                return;
+            }
             var listing = await CurrentApp.LoadListingInformationAsync();
             var n99Cents =
               listing.ProductListings.FirstOrDefault(

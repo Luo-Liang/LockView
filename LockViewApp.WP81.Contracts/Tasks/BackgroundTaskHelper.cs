@@ -47,11 +47,11 @@ namespace InfoViewApp.WP81.Tasks
             try
             {
                 LockScreen.SetImageUri(new Uri("ms-appx:///LockView.png", UriKind.Absolute));
+                LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName, UriKind.Absolute)));
             }
             catch (Exception ex)
             {
             }
-            LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName, UriKind.Absolute)));
         }
 
         public static void TryUpdateTiles()
@@ -126,9 +126,6 @@ namespace InfoViewApp.WP81.Tasks
             periodicTask = new PeriodicTask("BackgroundTask");
             (periodicTask as ScheduledTask).Description = "Updates Lock Screen when new content is available.";
             ScheduledActionService.Add(periodicTask);
-            //#if DEBUG
-            ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
-            //#endif
         }
 
         public static async Task<string> GetBingImageFitScreenUrl(HttpClient client)
@@ -164,11 +161,8 @@ namespace InfoViewApp.WP81
 
         public static string GenerateImgFileName(this OverlayContextContract contract)
         {
-            var fileName = contract.Title;
-            foreach (char c in System.IO.Path.GetInvalidFileNameChars())
-            {
-                fileName = fileName.Replace(c, '_');
-            }
+            var fileName = string.Join(string.Empty, contract.Title.Select<char, string>(o => ((int)o).ToString()));
+            if (fileName.Length > 20) fileName = fileName.Substring(0, 20);
             return string.Format("{0}.jpeg", fileName);
         }
     }
