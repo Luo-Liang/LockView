@@ -64,5 +64,6 @@ namespace InfoViewApp.WP81.InterestGathering
         public string SourceName { get; set; }
         public abstract Task<InterestContent> RequestContent(InterestRequest request);
         public abstract RequestMetaData GetMetaData();
+        public string ApplicableCulture { get; set; }
     }
 }
