@@ -12,7 +12,7 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
         Finance,
         Stories,
         World,
-        USA,
+        Domestic,
         Business,
         Politics,
         Health,
@@ -21,7 +21,11 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
         Living,
         Video,
         Student,
-        Customized
+        Customized,
+        Sports,
+        History,
+        Military,
+        Society
     }
 
     public class NewsFeedCategory : InterestGatherer
@@ -94,6 +98,7 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
         {
             FeedContentProviders = new List<InterestGatherer>();
         }
+        public string ApplicableLanguageId { get; set; }
     }
 
     public class FeedSources : List<FeedSource> { }

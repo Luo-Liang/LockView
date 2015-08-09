@@ -24,12 +24,13 @@ namespace InfoViewApp.WP81
         public BroadInterestPage()
         {
             this.InitializeComponent();
+            newsSources.ItemsSource = (WP81.App.Current.Resources["definedNewsFeedSources"] as FeedSources).Where<FeedSource>(o => o.ApplicableLanguageId == null || o.ApplicableLanguageId.ToLowerInvariant() == LockViewApplicationState.Instance.RequestMetadata.RequestLanguage.ToLowerInvariant());
         }
 
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            var collection = WP81.App.Current.Resources["definedNewsFeedSources"] as FeedSources;
-
+            IEnumerable<FeedSource> collection = WP81.App.Current.Resources["definedNewsFeedSources"] as FeedSources;
+            //collection = collection.Where<FeedSource>(o => o.ApplicableLanguageId == LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
             if (SaveBtn.Content as string == "Show me!")
             {
                 InterestContent interestContent = InterestContent.DefaultInterest;

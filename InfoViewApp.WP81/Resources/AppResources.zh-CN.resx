@@ -203,4 +203,10 @@
   <data name="TranslationLanguage" xml:space="preserve">
     <value>翻译语言</value>
   </data>
+  <data name="Stories" xml:space="preserve">
+    <value>资讯</value>
+  </data>
+  <data name="Sports" xml:space="preserve">
+    <value>体育</value>
+  </data>
 </root>

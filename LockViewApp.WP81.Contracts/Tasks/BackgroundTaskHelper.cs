@@ -130,6 +130,8 @@ namespace InfoViewApp.WP81.Tasks
 
         public static async Task<string> GetBingImageFitScreenUrl(HttpClient client)
         {
+            if (client == null)
+                client = new HttpClient();
             var instance = LockViewApplicationState.Instance;
             var lang = instance.RequestMetadata.RequestLanguage;
             var reqString = string.Format(BackgroundTaskHelper.ImageLocator, lang);

@@ -63,7 +63,7 @@
             <StackPanel x:Name="settingsGrid" Orientation="Vertical">
                 <StackPanel  Orientation="Vertical" VerticalAlignment="Top">
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="News Source" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
-                    <toolkit:ListPicker x:Name="newsSources" SelectionChanged="newsSources_SelectionChanged" ItemsSource="{StaticResource definedNewsFeedSources}"   VerticalAlignment="Top" FontFamily="Portable User Interface" Margin="0,12,12,12">
+                    <toolkit:ListPicker x:Name="newsSources" SelectionChanged="newsSources_SelectionChanged"   VerticalAlignment="Top" FontFamily="Portable User Interface" Margin="0,12,12,12">
                         <toolkit:ListPicker.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding SourceName, Mode=OneWay}"/>

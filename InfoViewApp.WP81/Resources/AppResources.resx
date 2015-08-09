@@ -209,4 +209,10 @@
   <data name="WordOfWisdomText" xml:space="preserve">
     <value>Leave blank, or use a sentence that you've been telling yourself.</value>
   </data>
+  <data name="Sports" xml:space="preserve">
+    <value>Sports</value>
+  </data>
+  <data name="Stories" xml:space="preserve">
+    <value>Stories</value>
+  </data>
 </root>

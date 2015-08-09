@@ -90,7 +90,6 @@ namespace InfoViewApp.WP81
                     ForegroundSecondLine = "Gray",
                     ForegroundTitle = "White"
                 };
-
                 Instance.PreviewContextContract = new OverlayContextContract();
                 Instance.PreviewLayoutContract = new OverlayLayoutContract();
                 Instance.UserQuotaInDollars = 0.19;

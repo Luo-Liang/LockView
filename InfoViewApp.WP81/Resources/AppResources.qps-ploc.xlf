@@ -116,6 +116,14 @@
           <source>Leave blank, or use a sentence that you've been telling yourself.</source>
           <target state="new">Leave blank, or use a sentence that you've been telling yourself.</target>
         </trans-unit>
+        <trans-unit id="Resx/Stories" translate="yes" xml:space="preserve">
+          <source>Stories</source>
+          <target state="new">Stories</target>
+        </trans-unit>
+        <trans-unit id="Resx/Sports" translate="yes" xml:space="preserve">
+          <source>Sports</source>
+          <target state="new">Sports</target>
+        </trans-unit>
         <trans-unit id="Resx/WordOfWisdom" translate="yes" xml:space="preserve">
           <source>WORD OF WISDOM</source>
           <target state="new">WORD OF WISDOM</target>

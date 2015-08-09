@@ -223,16 +223,40 @@
             <local:ColorNameVM Color="Transparent" ColorName="Transparent"/>
         </local:ColorNameVMCollection>
         <newsFeed:FeedSources x:Key="definedNewsFeedSources">
-            <newsFeed:FeedSource SourceName="MSNBC">
+            <newsFeed:FeedSource SourceName="凤凰" ApplicableLanguageId="zh-cn">
+                <newsFeed:FeedSource.FeedContentProviders>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://android-artworks.25pp.com/fs03/2015/07/08/11/102_ccfde6b3a07eb8e82332b84167c6bbec_con.png" SourceName="凤凰资讯" Topic="Stories" XmlSource="http://news.ifeng.com/rss/index.xml"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://android-artworks.25pp.com/fs03/2015/07/08/11/102_ccfde6b3a07eb8e82332b84167c6bbec_con.png" SourceName="凤凰国际" Topic="World" XmlSource="http://news.ifeng.com/rss/world.xml"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://android-artworks.25pp.com/fs03/2015/07/08/11/102_ccfde6b3a07eb8e82332b84167c6bbec_con.png" SourceName="凤凰体育" Topic="World" XmlSource="http://news.ifeng.com/sports/rss/index.xml"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://news.ifeng.com/history/rss/index.xml" SourceName="凤凰历史" Topic="History" XmlSource="http://news.ifeng.com/history/rss/index.xml"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://news.ifeng.com/history/rss/index.xml" SourceName="凤凰大陆" Topic="Domestic" XmlSource="http://news.ifeng.com/rss/mainland.xml"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://news.ifeng.com/history/rss/index.xml" SourceName="凤凰社会" Topic="Society" XmlSource="http://news.ifeng.com/rss/society.xml"/>
+                </newsFeed:FeedSource.FeedContentProviders>
+            </newsFeed:FeedSource>
+            <newsFeed:FeedSource SourceName="BBC" ApplicableLanguageId="en-us">
+                <newsFeed:FeedSource.FeedContentProviders>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="Stories" XmlSource="http://feeds.bbci.co.uk/news/rss.xml" SourceName="BBC News"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="World" XmlSource="http://feeds.bbci.co.uk/news/world/rss.xml" SourceName="BBC World"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="Business" XmlSource="http://feeds.bbci.co.uk/news/business/rss.xml" SourceName="BBC Business"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="Politics" XmlSource="http://feeds.bbci.co.uk/news/politics/rss.xml" SourceName="BBC Politics"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="Health" XmlSource="http://feeds.bbci.co.uk/news/health/rss.xml" SourceName="BBC Health"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="Student" XmlSource="http://feeds.bbci.co.uk/news/education/rss.xml" SourceName="BBC Education and Family"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="Student" XmlSource="http://feeds.bbci.co.uk/news/science_and_environment/rss.xml" SourceName="BBC Science and Environment"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="Technology" XmlSource="http://feeds.bbci.co.uk/news/technology/rss.xml" SourceName="BBC Technology"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="Entertainment" XmlSource="http://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml" SourceName="BBC Art and Entertainment"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://www.thedrum.com/uploads/drum_basic_article/113184/main_images/bbc.png" Topic="Domestic" XmlSource="http://feeds.bbci.co.uk/news/uk/rss.xml" SourceName="BBC Art and Entertainment"/>
+                </newsFeed:FeedSource.FeedContentProviders>
+            </newsFeed:FeedSource>
+            <newsFeed:FeedSource SourceName="MSNBC" ApplicableLanguageId="en-us">
                 <newsFeed:FeedSource.FeedContentProviders>
                     <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://static.tvtropes.org/pmwiki/pub/images/new-msnbc-logo-781050.gif" SourceName="MSNBC Latest" Topic="Stories" XmlSource="http://www.msnbc.com/feeds/latest" />
                 </newsFeed:FeedSource.FeedContentProviders>
             </newsFeed:FeedSource>
-            <newsFeed:FeedSource SourceName="CNN">
+            <newsFeed:FeedSource SourceName="CNN" ApplicableLanguageId="en-us">
                 <newsFeed:FeedSource.FeedContentProviders>
                     <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Stories" Topic="Stories" XmlSource="http://rss.cnn.com/rss/cnn_topstories.rss"/>
                     <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN World" Topic="World" XmlSource="http://rss.cnn.com/rss/cnn_world.rss"/>
-                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN USA" Topic="USA" XmlSource="http://rss.cnn.com/rss/cnn_us.rss"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN USA" Topic="Domestic" XmlSource="http://rss.cnn.com/rss/cnn_us.rss"/>
                     <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Business" Topic="Business" XmlSource="http://rss.cnn.com/rss/money_latest.rss"/>
                     <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Politics" Topic="Politics" XmlSource="http://rss.cnn.com/rss/cnn_allpolitics.rss"/>
                     <newsFeed:NewsFeedCategory ApplicableCulture="en-us" ExtendedContentUrl="http://palmbeachgrapevinedirectory.com/Images/cnn.jpg" SourceName ="CNN Technology" Topic="Technology" XmlSource="http://rss.cnn.com/rss/cnn_tech.rss"/>

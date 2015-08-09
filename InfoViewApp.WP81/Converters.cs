@@ -6,6 +6,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Globalization;
 using System.Windows;
+using InfoViewApp.WP81.Resources;
 
 namespace InfoViewApp.WP81.Converter
 {
@@ -64,6 +65,12 @@ namespace InfoViewApp.WP81.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            try
+            {
+                return typeof(AppResources).GetProperty(value.ToString(), System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).GetValue(null);
+
+            }
+            catch { }
             return Enum.GetName(value.GetType(),value);//default now
         }
 

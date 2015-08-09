@@ -268,6 +268,24 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sports.
+        /// </summary>
+        public static string Sports {
+            get {
+                return ResourceManager.GetString("Sports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stories.
+        /// </summary>
+        public static string Stories {
+            get {
+                return ResourceManager.GetString("Stories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suggested Source.
         /// </summary>
         public static string SuggestedSource {

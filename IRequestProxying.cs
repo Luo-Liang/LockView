@@ -18,5 +18,10 @@ namespace InfoView
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, Method = "POST")]
         Task<string> FulfillRequestSimple(string requestString);
+        [OperationContract]
+        [WebInvoke(
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        Task<string> FulfillRequestBytesSimple(string requestString);
     }
 }

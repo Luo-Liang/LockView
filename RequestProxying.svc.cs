@@ -40,5 +40,13 @@ namespace InfoView
             strResponse = WebUtility.HtmlDecode(HtmlDecodingUtility.HtmlDecode(Regex.Unescape(strResponse)));
             return strResponse;
         }
+
+        public async Task<string> FulfillRequestBytesSimple(string requestString)
+        {
+            var raw = requestString.Trim('"');
+            var reqUri = new Uri(raw);
+            var response = await requestClient.DownloadDataTaskAsync(reqUri);
+            return Convert.ToBase64String(response);
+        }
     }
 }
