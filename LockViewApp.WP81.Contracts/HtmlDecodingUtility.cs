@@ -13,7 +13,7 @@ namespace InfoViewApp.WP81.InterestGathering
         {
             if (value == null) return null;
 
-            int maxLength = 200;
+            int maxLength = 126;
             int strLength = 0;
             string fixedString = "";
 
@@ -48,8 +48,10 @@ namespace InfoViewApp.WP81.InterestGathering
                 fixedString = fixedString.Substring(0, maxLength);
 
                 // Unless we take the next step, the string truncation could occur in the middle of a word.
-                // Using LastIndexOf we can find the last space character in the string and truncate there. 
-                fixedString = fixedString.Substring(0, fixedString.LastIndexOf(" "));
+                // Using LastIndexOf we can find the last space character in the string and truncate there.
+                var lastIdx = fixedString.LastIndexOf(" ");
+                if (lastIdx >= 0)
+                    fixedString = fixedString.Substring(0, lastIdx);
             }
 
             fixedString = fixedString.Trim() + "...";

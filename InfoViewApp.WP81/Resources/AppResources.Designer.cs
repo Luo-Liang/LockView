@@ -97,11 +97,56 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Business.
+        /// </summary>
+        public static string Business {
+            get {
+                return ResourceManager.GetString("Business", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to bye bye.
         /// </summary>
         public static string ByeBye {
             get {
                 return ResourceManager.GetString("ByeBye", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customized.
+        /// </summary>
+        public static string Customized {
+            get {
+                return ResourceManager.GetString("Customized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domestic.
+        /// </summary>
+        public static string Domestic {
+            get {
+                return ResourceManager.GetString("Domestic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entertainment.
+        /// </summary>
+        public static string Entertainment {
+            get {
+                return ResourceManager.GetString("Entertainment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finance.
+        /// </summary>
+        public static string Finance {
+            get {
+                return ResourceManager.GetString("Finance", resourceCulture);
             }
         }
         
@@ -120,6 +165,24 @@ namespace InfoViewApp.WP81.Resources {
         public static string GenericNewsTopicText {
             get {
                 return ResourceManager.GetString("GenericNewsTopicText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Health.
+        /// </summary>
+        public static string Health {
+            get {
+                return ResourceManager.GetString("Health", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to History.
+        /// </summary>
+        public static string History {
+            get {
+                return ResourceManager.GetString("History", resourceCulture);
             }
         }
         
@@ -205,11 +268,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Living.
+        /// </summary>
+        public static string Living {
+            get {
+                return ResourceManager.GetString("Living", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to lock screen.
         /// </summary>
         public static string lockscreen {
             get {
                 return ResourceManager.GetString("lockscreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Military.
+        /// </summary>
+        public static string Military {
+            get {
+                return ResourceManager.GetString("Military", resourceCulture);
             }
         }
         
@@ -232,6 +313,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Politics.
+        /// </summary>
+        public static string Politics {
+            get {
+                return ResourceManager.GetString("Politics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LeftToRight.
         /// </summary>
         public static string ResourceFlowDirection {
@@ -246,6 +336,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Society.
+        /// </summary>
+        public static string Society {
+            get {
+                return ResourceManager.GetString("Society", resourceCulture);
             }
         }
         
@@ -286,11 +385,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Student.
+        /// </summary>
+        public static string Student {
+            get {
+                return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suggested Source.
         /// </summary>
         public static string SuggestedSource {
             get {
                 return ResourceManager.GetString("SuggestedSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technology.
+        /// </summary>
+        public static string Technology {
+            get {
+                return ResourceManager.GetString("Technology", resourceCulture);
             }
         }
         
@@ -313,6 +430,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Travel.
+        /// </summary>
+        public static string Travel {
+            get {
+                return ResourceManager.GetString("Travel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to USE MY OWN IMAGE.
         /// </summary>
         public static string UseOwnImage {
@@ -331,6 +457,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Video.
+        /// </summary>
+        public static string Video {
+            get {
+                return ResourceManager.GetString("Video", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WORD OF WISDOM.
         /// </summary>
         public static string WordOfWisdom {
@@ -345,6 +480,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string WordOfWisdomText {
             get {
                 return ResourceManager.GetString("WordOfWisdomText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to World.
+        /// </summary>
+        public static string World {
+            get {
+                return ResourceManager.GetString("World", resourceCulture);
             }
         }
     }

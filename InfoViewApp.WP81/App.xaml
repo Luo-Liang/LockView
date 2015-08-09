@@ -223,6 +223,16 @@
             <local:ColorNameVM Color="Transparent" ColorName="Transparent"/>
         </local:ColorNameVMCollection>
         <newsFeed:FeedSources x:Key="definedNewsFeedSources">
+            <newsFeed:FeedSource SourceName="豆瓣[warning;LockView has detected an egress request to a non-official RSS.]" ApplicableLanguageId="zh-cn">
+                <newsFeed:FeedSource.FeedContentProviders>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ftp.heanet.ie/mirrors/xbmc/addons/dharma/metadata.douban.com/icon.png" SourceName="看电影" Topic="Movie" XmlSource="http://yikerss.miantiao.me/rss/id/32"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ftp.heanet.ie/mirrors/xbmc/addons/dharma/metadata.douban.com/icon.png" SourceName="看闲书" Topic="Reading" XmlSource="http://yikerss.miantiao.me/rss/id/33"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ftp.heanet.ie/mirrors/xbmc/addons/dharma/metadata.douban.com/icon.png" SourceName="假日厨房" Topic="Cooking" XmlSource="http://yikerss.miantiao.me/rss/id/23"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ftp.heanet.ie/mirrors/xbmc/addons/dharma/metadata.douban.com/icon.png" SourceName="生活在别处" Topic="Living" XmlSource="http://yikerss.miantiao.me/rss/id/39"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ftp.heanet.ie/mirrors/xbmc/addons/dharma/metadata.douban.com/icon.png" SourceName="哈哈哈" Topic="Entertainment" XmlSource="http://yikerss.miantiao.me/rss/id/37"/>
+                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ftp.heanet.ie/mirrors/xbmc/addons/dharma/metadata.douban.com/icon.png" SourceName="热门精选" Topic="Hotpicks" XmlSource="http://yikerss.miantiao.me/rss/id/48"/>
+                </newsFeed:FeedSource.FeedContentProviders>
+            </newsFeed:FeedSource>
             <newsFeed:FeedSource SourceName="凤凰" ApplicableLanguageId="zh-cn">
                 <newsFeed:FeedSource.FeedContentProviders>
                     <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://android-artworks.25pp.com/fs03/2015/07/08/11/102_ccfde6b3a07eb8e82332b84167c6bbec_con.png" SourceName="凤凰资讯" Topic="Stories" XmlSource="http://news.ifeng.com/rss/index.xml"/>

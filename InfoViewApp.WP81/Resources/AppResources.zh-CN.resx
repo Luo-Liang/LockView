@@ -186,7 +186,7 @@
     <value>特定话题</value>
   </data>
   <data name="WordOfWisdomText" xml:space="preserve">
-    <value>留白，或者给自己一句激励的话。</value>
+    <value>留白或给自己一句激励的话。</value>
   </data>
   <data name="WordOfWisdom" xml:space="preserve">
     <value>箴言</value>
@@ -208,5 +208,54 @@
   </data>
   <data name="Sports" xml:space="preserve">
     <value>体育</value>
+  </data>
+  <data name="Society" xml:space="preserve">
+    <value>社会</value>
+  </data>
+  <data name="Politics" xml:space="preserve">
+    <value>政要</value>
+  </data>
+  <data name="Military" xml:space="preserve">
+    <value>军事</value>
+  </data>
+  <data name="Living" xml:space="preserve">
+    <value>生活</value>
+    <comment>``</comment>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>历史</value>
+  </data>
+  <data name="Health" xml:space="preserve">
+    <value>健康</value>
+  </data>
+  <data name="Finance" xml:space="preserve">
+    <value>财经</value>
+  </data>
+  <data name="Entertainment" xml:space="preserve">
+    <value>娱乐</value>
+  </data>
+  <data name="Domestic" xml:space="preserve">
+    <value>国内</value>
+  </data>
+  <data name="Customized" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="Business" xml:space="preserve">
+    <value>商务</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>国际</value>
+  </data>
+  <data name="Video" xml:space="preserve">
+    <value>视频</value>
+  </data>
+  <data name="Travel" xml:space="preserve">
+    <value>旅游</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>科技</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>教育</value>
   </data>
 </root>

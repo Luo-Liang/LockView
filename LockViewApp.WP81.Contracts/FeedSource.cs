@@ -25,7 +25,11 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
         Sports,
         History,
         Military,
-        Society
+        Society,
+        Movie,
+        Reading,
+        Hotpicks,
+        Cooking,
     }
 
     public class NewsFeedCategory : InterestGatherer

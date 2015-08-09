@@ -209,10 +209,59 @@
   <data name="WordOfWisdomText" xml:space="preserve">
     <value>Leave blank, or use a sentence that you've been telling yourself.</value>
   </data>
+  <data name="Business" xml:space="preserve">
+    <value>Business</value>
+  </data>
+  <data name="Customized" xml:space="preserve">
+    <value>Customized</value>
+  </data>
+  <data name="Domestic" xml:space="preserve">
+    <value>Domestic</value>
+  </data>
+  <data name="Entertainment" xml:space="preserve">
+    <value>Entertainment</value>
+  </data>
+  <data name="Finance" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="Health" xml:space="preserve">
+    <value>Health</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Living" xml:space="preserve">
+    <value>Living</value>
+    <comment>``</comment>
+  </data>
+  <data name="Military" xml:space="preserve">
+    <value>Military</value>
+  </data>
+  <data name="Politics" xml:space="preserve">
+    <value>Politics</value>
+  </data>
+  <data name="Society" xml:space="preserve">
+    <value>Society</value>
+  </data>
   <data name="Sports" xml:space="preserve">
     <value>Sports</value>
   </data>
   <data name="Stories" xml:space="preserve">
     <value>Stories</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>Technology</value>
+  </data>
+  <data name="Travel" xml:space="preserve">
+    <value>Travel</value>
+  </data>
+  <data name="Video" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>World</value>
   </data>
 </root>

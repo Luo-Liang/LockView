@@ -116,9 +116,74 @@
           <source>Leave blank, or use a sentence that you've been telling yourself.</source>
           <target state="new">Leave blank, or use a sentence that you've been telling yourself.</target>
         </trans-unit>
+        <trans-unit id="Resx/Society" translate="yes" xml:space="preserve">
+          <source>Society</source>
+          <target state="new">Society</target>
+        </trans-unit>
+        <trans-unit id="Resx/Politics" translate="yes" xml:space="preserve">
+          <source>Politics</source>
+          <target state="new">Politics</target>
+        </trans-unit>
+        <trans-unit id="Resx/Military" translate="yes" xml:space="preserve">
+          <source>Military</source>
+          <target state="new">Military</target>
+        </trans-unit>
+        <trans-unit id="Resx/Living" translate="yes" xml:space="preserve">
+          <source>Living</source>
+          <target state="new">Living</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">``</note>
+        </trans-unit>
+        <trans-unit id="Resx/History" translate="yes" xml:space="preserve">
+          <source>History</source>
+          <target state="new">History</target>
+        </trans-unit>
+        <trans-unit id="Resx/Health" translate="yes" xml:space="preserve">
+          <source>Health</source>
+          <target state="new">Health</target>
+        </trans-unit>
+        <trans-unit id="Resx/Finance" translate="yes" xml:space="preserve">
+          <source>Finance</source>
+          <target state="new">Finance</target>
+        </trans-unit>
+        <trans-unit id="Resx/Entertainment" translate="yes" xml:space="preserve">
+          <source>Entertainment</source>
+          <target state="new">Entertainment</target>
+        </trans-unit>
+        <trans-unit id="Resx/Domestic" translate="yes" xml:space="preserve">
+          <source>Domestic</source>
+          <target state="new">Domestic</target>
+        </trans-unit>
+        <trans-unit id="Resx/Customized" translate="yes" xml:space="preserve">
+          <source>Customized</source>
+          <target state="new">Customized</target>
+        </trans-unit>
+        <trans-unit id="Resx/Business" translate="yes" xml:space="preserve">
+          <source>Business</source>
+          <target state="new">Business</target>
+        </trans-unit>
         <trans-unit id="Resx/Stories" translate="yes" xml:space="preserve">
           <source>Stories</source>
           <target state="new">Stories</target>
+        </trans-unit>
+        <trans-unit id="Resx/World" translate="yes" xml:space="preserve">
+          <source>World</source>
+          <target state="new">World</target>
+        </trans-unit>
+        <trans-unit id="Resx/Video" translate="yes" xml:space="preserve">
+          <source>Video</source>
+          <target state="new">Video</target>
+        </trans-unit>
+        <trans-unit id="Resx/Travel" translate="yes" xml:space="preserve">
+          <source>Travel</source>
+          <target state="new">Travel</target>
+        </trans-unit>
+        <trans-unit id="Resx/Technology" translate="yes" xml:space="preserve">
+          <source>Technology</source>
+          <target state="new">Technology</target>
+        </trans-unit>
+        <trans-unit id="Resx/Student" translate="yes" xml:space="preserve">
+          <source>Student</source>
+          <target state="new">Student</target>
         </trans-unit>
         <trans-unit id="Resx/Sports" translate="yes" xml:space="preserve">
           <source>Sports</source>
