@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoView", "InfoView.csproj", "{900E1CCE-6313-4CF4-B607-C1685569C19B}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockViewApp.WP81.Contracts", "LockViewApp.WP81.Contracts\LockViewApp.WP81.Contracts.csproj", "{D8A24836-91C1-4EDC-9608-CB05583503DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockViewApp.WP81.BackgroundAgent", "LockViewApp.WP81.BackgroundAgent\LockViewApp.WP81.BackgroundAgent.csproj", "{76EE9471-C8F6-4524-8F48-4057CC6A3A69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockView.Universal", "LockView.Universal\LockView.Universal.csproj", "{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +123,26 @@ Global
 		{76EE9471-C8F6-4524-8F48-4057CC6A3A69}.Release|x64.Build.0 = Release|Any CPU
 		{76EE9471-C8F6-4524-8F48-4057CC6A3A69}.Release|x86.ActiveCfg = Release|x86
 		{76EE9471-C8F6-4524-8F48-4057CC6A3A69}.Release|x86.Build.0 = Release|x86
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|ARM.ActiveCfg = Debug|ARM
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|ARM.Build.0 = Debug|ARM
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|ARM.Deploy.0 = Debug|ARM
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|x64.ActiveCfg = Debug|x64
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|x64.Build.0 = Debug|x64
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|x64.Deploy.0 = Debug|x64
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|x86.ActiveCfg = Debug|x86
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|x86.Build.0 = Debug|x86
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Debug|x86.Deploy.0 = Debug|x86
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|Any CPU.ActiveCfg = Release|x86
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|ARM.ActiveCfg = Release|ARM
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|ARM.Build.0 = Release|ARM
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|ARM.Deploy.0 = Release|ARM
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|x64.ActiveCfg = Release|x64
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|x64.Build.0 = Release|x64
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|x64.Deploy.0 = Release|x64
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|x86.ActiveCfg = Release|x86
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|x86.Build.0 = Release|x86
+		{00E9347E-4C3E-445E-B0AC-7233C7D7AC91}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
