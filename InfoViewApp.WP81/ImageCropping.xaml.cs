@@ -66,15 +66,16 @@ namespace InfoViewApp.WP81
                     var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
                     imgRequestUrl = imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_'));
                     double width, height;
-                    ResolutionProvider.GetScreenSizeInPixels(out height,out width);
+                    ResolutionProvider.GetScreenSizeInPixels(out height, out width);
                     imgRequestUrl += string.Format("_{0}x{1}.jpg", (int)width, (int)height);
-                    var imgUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
-                    var response = await client.GetAsync(new Uri(imgUrl));
+                    if (imgRequestUrl.StartsWith("http") == false)
+                        imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
+                    var response = await client.GetAsync(new Uri(imgRequestUrl));
                     WB_CapturedImage = new WriteableBitmap(1, 1);
                     WB_CapturedImage = WB_CapturedImage.FromStream((await response.Content.ReadAsInputStreamAsync()).AsStreamForRead());
                     OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
                 }
-                catch (Exception ex){ }
+                catch (Exception ex) { }
                 progressRing.Visibility = Visibility.Collapsed;
                 SaveBtn.Visibility = Visibility.Visible;
             }
@@ -86,7 +87,7 @@ namespace InfoViewApp.WP81
             var imgWidth = WB_CapturedImage.PixelWidth;
             double widthPixel, heightPixel;
             ResolutionProvider.GetScreenSizeInPixels(out heightPixel, out widthPixel);
-            if (widthPixel / heightPixel > imgWidth / imgHeight)
+            if ((widthPixel / heightPixel) < (imgWidth / imgHeight))
             {
                 //swipe up and down
                 OriginalImage.Width = widthPixel / ResolutionProvider.GetScaleFactor();
@@ -109,7 +110,7 @@ namespace InfoViewApp.WP81
             //height larger than width.
             double imgRatio = 1.0 * WB_CapturedImage.PixelHeight / WB_CapturedImage.PixelWidth;
             double screenRatio = ResolutionProvider.GetScreenHeightWidthRatio();
-            if (imgRatio > 1)
+            if (imgRatio > screenRatio)
             {
                 //user swipes up and down.
                 double heightExtent = vO / canvas.ExtentWidth;
@@ -124,8 +125,6 @@ namespace InfoViewApp.WP81
             }
             OriginalImage.Source = WB_CroppedImage;
             //this is a jpeg stream now.
-            double widthPixel, heightPixel;
-            ResolutionProvider.GetScreenSizeInPixels(out heightPixel, out widthPixel);
             //WB_CapturedImage = WB_CapturedImage.Resize((int)widthPixel, (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             WB_CapturedImage = LoadScaledImage(WB_CroppedImage);
             await SaveBitmapAsJpeg(LockViewApplicationState.Instance.RequestMetadata.PersistFileName, WB_CapturedImage);
