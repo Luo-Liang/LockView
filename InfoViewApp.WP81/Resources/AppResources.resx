@@ -264,4 +264,25 @@
   <data name="World" xml:space="preserve">
     <value>World</value>
   </data>
+  <data name="BroadInterestTopicPageIntro" xml:space="preserve">
+    <value>Pick a news source, then select a category to continue.</value>
+  </data>
+  <data name="NewsSource" xml:space="preserve">
+    <value>News Source</value>
+  </data>
+  <data name="ShowMe" xml:space="preserve">
+    <value>Show Me!</value>
+  </data>
+  <data name="Topic" xml:space="preserve">
+    <value>Topic</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="WordOfWisdomPageGuide" xml:space="preserve">
+    <value>Type in something here. It will show up on your screen.</value>
+  </data>
+  <data name="WordOfWisdomPageIntro" xml:space="preserve">
+    <value>Is there anything you want to tell yourself? Maybe to calm down, slow down?</value>
+  </data>
 </root>

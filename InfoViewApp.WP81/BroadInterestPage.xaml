@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     xmlns:clr="clr-namespace:System;assembly=mscorlib"
     Background="{StaticResource PhoneBackgroundBrush}" 
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" Orientation="Portrait">
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
             <toolkit:NavigationInTransition.Backward>
@@ -57,12 +57,12 @@
 
     <Grid>
         <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-            <TextBlock IsHitTestVisible="False" TextWrapping="Wrap" Text="Pick a news source, then select a category to continue." VerticalAlignment="Stretch" FontSize="24" Margin="20,10,14,10" FontFamily="Portable User Interface" Foreground="White" />
+            <TextBlock IsHitTestVisible="False" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.BroadInterestTopicPageIntro}" VerticalAlignment="Stretch" FontSize="24" Margin="20,10,14,10" FontFamily="Portable User Interface" Foreground="White" />
         </Grid>
         <ScrollViewer Margin="20,130,20,82" FontFamily="Portable User Interface" >
             <StackPanel x:Name="settingsGrid" Orientation="Vertical">
                 <StackPanel  Orientation="Vertical" VerticalAlignment="Top">
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="News Source" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.NewsSource}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
                     <toolkit:ListPicker x:Name="newsSources" SelectionChanged="newsSources_SelectionChanged"   VerticalAlignment="Top" FontFamily="Portable User Interface" Margin="0,12,12,12">
                         <toolkit:ListPicker.ItemTemplate>
                             <DataTemplate>
@@ -72,7 +72,7 @@
                     </toolkit:ListPicker>
                 </StackPanel>
                 <StackPanel Visibility="{Binding Visibility, Converter={StaticResource logicalNeg2VisibilityConn}, ElementName=customizedSourceStack}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Topic" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Topic}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
                     <toolkit:ListPicker FullModeHeader="Pick a category" ExpansionMode="ExpansionAllowed" x:Name="newsTopic" SelectionChanged="newsTopic_SelectionChanged" ItemsSource="{Binding SelectedItem.FeedContentProviders, ElementName=newsSources, Mode=OneWay}"  VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12,12,12" >
                         <toolkit:ListPicker.ItemTemplate>
                             <DataTemplate>
@@ -99,7 +99,7 @@
             </StackPanel>
 
         </ScrollViewer>
-        <Button Visibility="Collapsed" Click="SaveBtn_Click" x:Name="SaveBtn" Content="Show me!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,12" FontFamily="Global User Interface">
+        <Button Visibility="Collapsed" Click="SaveBtn_Click" x:Name="SaveBtn" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ShowMe}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,12" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

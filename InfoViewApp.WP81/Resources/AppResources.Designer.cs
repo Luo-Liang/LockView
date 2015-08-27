@@ -97,6 +97,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pick a news source, then select a category to continue..
+        /// </summary>
+        public static string BroadInterestTopicPageIntro {
+            get {
+                return ResourceManager.GetString("BroadInterestTopicPageIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Business.
         /// </summary>
         public static string Business {
@@ -304,6 +313,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to News Source.
+        /// </summary>
+        public static string NewsSource {
+            get {
+                return ResourceManager.GetString("NewsSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string Next {
@@ -336,6 +354,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Me!.
+        /// </summary>
+        public static string ShowMe {
+            get {
+                return ResourceManager.GetString("ShowMe", resourceCulture);
             }
         }
         
@@ -421,6 +448,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Topic.
+        /// </summary>
+        public static string Topic {
+            get {
+                return ResourceManager.GetString("Topic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Translation Language.
         /// </summary>
         public static string TranslationLanguage {
@@ -435,6 +471,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Travel {
             get {
                 return ResourceManager.GetString("Travel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
             }
         }
         
@@ -471,6 +516,24 @@ namespace InfoViewApp.WP81.Resources {
         public static string WordOfWisdom {
             get {
                 return ResourceManager.GetString("WordOfWisdom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type in something here. It will show up on your screen..
+        /// </summary>
+        public static string WordOfWisdomPageGuide {
+            get {
+                return ResourceManager.GetString("WordOfWisdomPageGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is there anything you want to tell yourself? Maybe to calm down, slow down?.
+        /// </summary>
+        public static string WordOfWisdomPageIntro {
+            get {
+                return ResourceManager.GetString("WordOfWisdomPageIntro", resourceCulture);
             }
         }
         

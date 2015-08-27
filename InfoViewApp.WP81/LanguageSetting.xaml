@@ -9,7 +9,7 @@
     xmlns:clr="clr-namespace:System;assembly=mscorlib"
     mc:Ignorable="d"
     Background="{StaticResource PhoneBackgroundBrush}" 
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" Orientation="Portrait">
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
             <toolkit:NavigationInTransition.Backward>
@@ -57,7 +57,7 @@
                     </toolkit:ListPicker>
                 </StackPanel>
                 <StackPanel Visibility="{Binding Visibility, Converter={StaticResource logicalNeg2VisibilityConn}, ElementName=customizedSourceStack}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Translation Language" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.TranslationLanguage}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
                     <toolkit:ListPicker x:Name="newsTopic" SelectionChanged="newsTopic_SelectionChanged"   VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12" >
                         <toolkit:ListPicker.ItemTemplate>
                             <DataTemplate>
@@ -67,7 +67,7 @@
                     </toolkit:ListPicker>
                 </StackPanel>
                 <StackPanel Visibility="{Binding Visibility, Converter={StaticResource logicalNeg2VisibilityConn}, ElementName=customizedSourceStack}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0">
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Type" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Type}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}"/>
                     <toolkit:ListPicker x:Name="languageType" SelectionChanged="languageType_SelectionChanged"   VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12" >
                         <toolkit:ListPicker.ItemTemplate>
                             <DataTemplate>
@@ -77,7 +77,7 @@
                     </toolkit:ListPicker>
                 </StackPanel>
                 <StackPanel Visibility="{Binding Visibility, Converter={StaticResource logicalNeg2VisibilityConn}, ElementName=customizedSourceStack}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,20,0,0" Background="Black">
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Suggested Source" VerticalAlignment="Top" FontSize="24" FontWeight="Light" Foreground="White" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.SuggestedSource}" VerticalAlignment="Top" FontSize="24" FontWeight="Light" Foreground="White" TextAlignment="Center"/>
                     <toolkit:ListPicker x:Name="languageSource" SelectionChanged="languageSource_SelectionChanged" ItemsSource="{StaticResource definedLanguageSources}"  VerticalAlignment="Top" FontFamily="Global User Interface" Margin="0,12" >
                         <toolkit:ListPicker.Background>
                             <SolidColorBrush Color="{StaticResource AccentColor}"/>
@@ -97,7 +97,7 @@
             </StackPanel>
 
         </ScrollViewer>
-        <Button Visibility="Collapsed" Click="SaveBtn_Click" x:Name="SaveBtn" Content="Show me!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface" Width="140" Height="72">
+        <Button Visibility="Collapsed" Click="SaveBtn_Click" x:Name="SaveBtn" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ShowMe}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface" Width="140" Height="72">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

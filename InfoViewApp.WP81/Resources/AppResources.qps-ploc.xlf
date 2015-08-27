@@ -169,6 +169,34 @@
           <source>World</source>
           <target state="new">World</target>
         </trans-unit>
+        <trans-unit id="Resx/NewsSource" translate="yes" xml:space="preserve">
+          <source>News Source</source>
+          <target state="new">News Source</target>
+        </trans-unit>
+        <trans-unit id="Resx/BroadInterestTopicPageIntro" translate="yes" xml:space="preserve">
+          <source>Pick a news source, then select a category to continue.</source>
+          <target state="new">Pick a news source, then select a category to continue.</target>
+        </trans-unit>
+        <trans-unit id="Resx/ShowMe" translate="yes" xml:space="preserve">
+          <source>Show Me!</source>
+          <target state="new">Show Me!</target>
+        </trans-unit>
+        <trans-unit id="Resx/Topic" translate="yes" xml:space="preserve">
+          <source>Topic</source>
+          <target state="new">Topic</target>
+        </trans-unit>
+        <trans-unit id="Resx/Type" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <target state="new">Type</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomPageIntro" translate="yes" xml:space="preserve">
+          <source>Is there anything you want to tell yourself? Maybe to calm down, slow down?</source>
+          <target state="new">Is there anything you want to tell yourself? Maybe to calm down, slow down?</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomPageGuide" translate="yes" xml:space="preserve">
+          <source>Type in something here. It will show up on your screen.</source>
+          <target state="new">Type in something here. It will show up on your screen.</target>
+        </trans-unit>
         <trans-unit id="Resx/Video" translate="yes" xml:space="preserve">
           <source>Video</source>
           <target state="new">Video</target>
