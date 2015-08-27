@@ -83,20 +83,20 @@ namespace InfoViewApp.WP81
 
         private WriteableBitmap LoadScaledImage(WriteableBitmap WB_CapturedImage)
         {
-            var imgHeight = WB_CapturedImage.PixelHeight;
-            var imgWidth = WB_CapturedImage.PixelWidth;
+            double imgHeight = WB_CapturedImage.PixelHeight;
+            double imgWidth = WB_CapturedImage.PixelWidth;
             double widthPixel, heightPixel;
             ResolutionProvider.GetScreenSizeInPixels(out heightPixel, out widthPixel);
-            if ((widthPixel / heightPixel) < (imgWidth / imgHeight))
+            if ((widthPixel / heightPixel) > (imgWidth / imgHeight))
             {
                 //swipe up and down
-                OriginalImage.Width = widthPixel / ResolutionProvider.GetScaleFactor();
+                //OriginalImage.Width = widthPixel / ResolutionProvider.GetScaleFactor();
                 return WB_CapturedImage.Resize((int)widthPixel, (int)((widthPixel / imgWidth) * imgHeight), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
             else
             {
                 //swipe left and right.
-                OriginalImage.Height = heightPixel / ResolutionProvider.GetScaleFactor();
+                //OriginalImage.Height = heightPixel / ResolutionProvider.GetScaleFactor();
                 return WB_CapturedImage.Resize((int)(imgWidth * (heightPixel / imgHeight)), (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
         }
@@ -185,8 +185,8 @@ namespace InfoViewApp.WP81
                 WB_CapturedImage = new WriteableBitmap(1, 1);
                 WB_CapturedImage = WB_CapturedImage.FromStream(await storageFile.OpenStreamForReadAsync());
                 OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
-                //OriginalImage.Height = WB_CapturedImage.PixelHeight;
-                //OriginalImage.Width = WB_CapturedImage.PixelWidth;
+                OriginalImage.Height = WB_CapturedImage.PixelHeight / ResolutionProvider.GetScaleFactor();
+                OriginalImage.Width = WB_CapturedImage.PixelWidth / ResolutionProvider.GetScaleFactor();
             }
             else
             {
