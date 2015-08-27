@@ -133,6 +133,12 @@ namespace InfoViewApp.WP81.Converter
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo language)
         {
+            try
+            {
+                return typeof(AppResources).GetProperty(value.ToString(), System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).GetValue(null);
+
+            }
+            catch { }
             return value;
         }
 

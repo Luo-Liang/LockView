@@ -258,4 +258,52 @@
   <data name="Student" xml:space="preserve">
     <value>教育</value>
   </data>
+  <data name="NewsSource" xml:space="preserve">
+    <value>新闻源</value>
+  </data>
+  <data name="PreviewPageIntro" xml:space="preserve">
+    <value>按下相应的部分以更改样式。</value>
+  </data>
+  <data name="BroadInterestTopicPageIntro" xml:space="preserve">
+    <value>挑选一个新闻源。选择一个话题以继续。</value>
+  </data>
+  <data name="FontCASPageIntro" xml:space="preserve">
+    <value>自定义你选择的文字样式。</value>
+  </data>
+  <data name="ContentForeground" xml:space="preserve">
+    <value>内容前景色</value>
+  </data>
+  <data name="ContentFontSize" xml:space="preserve">
+    <value>内容字体大小</value>
+  </data>
+  <data name="ContentBackground" xml:space="preserve">
+    <value>内容背景色</value>
+  </data>
+  <data name="Great" xml:space="preserve">
+    <value>太棒了!</value>
+  </data>
+  <data name="ShowMe" xml:space="preserve">
+    <value>向我显示!</value>
+  </data>
+  <data name="TitleForeground" xml:space="preserve">
+    <value>标题前景色</value>
+  </data>
+  <data name="TitleFontSize" xml:space="preserve">
+    <value>标题字体大小</value>
+  </data>
+  <data name="TitleBackground" xml:space="preserve">
+    <value>标题背景</value>
+  </data>
+  <data name="Topic" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="WordOfWisdomPageIntro" xml:space="preserve">
+    <value>有什么想要告诉自己的?心如止水?减慢生活节奏?</value>
+  </data>
+  <data name="WordOfWisdomPageGuide" xml:space="preserve">
+    <value>在此处键入内容。它将显示在屏幕上。</value>
+  </data>
 </root>

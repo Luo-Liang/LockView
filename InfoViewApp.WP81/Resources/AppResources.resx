@@ -267,11 +267,38 @@
   <data name="BroadInterestTopicPageIntro" xml:space="preserve">
     <value>Pick a news source, then select a category to continue.</value>
   </data>
+  <data name="ContentBackground" xml:space="preserve">
+    <value>Content Background</value>
+  </data>
+  <data name="ContentFontSize" xml:space="preserve">
+    <value>Content Font Size</value>
+  </data>
+  <data name="ContentForeground" xml:space="preserve">
+    <value>Content Foreground</value>
+  </data>
+  <data name="FontCASPageIntro" xml:space="preserve">
+    <value>Customize the portion of the text you chose with new color and size.</value>
+  </data>
+  <data name="Great" xml:space="preserve">
+    <value>Great!</value>
+  </data>
   <data name="NewsSource" xml:space="preserve">
     <value>News Source</value>
   </data>
+  <data name="PreviewPageIntro" xml:space="preserve">
+    <value>You can customize styles by tapping the preview texts.</value>
+  </data>
   <data name="ShowMe" xml:space="preserve">
     <value>Show Me!</value>
+  </data>
+  <data name="TitleBackground" xml:space="preserve">
+    <value>Title Background</value>
+  </data>
+  <data name="TitleFontSize" xml:space="preserve">
+    <value>Title Font Size</value>
+  </data>
+  <data name="TitleForeground" xml:space="preserve">
+    <value>Title Foreground</value>
   </data>
   <data name="Topic" xml:space="preserve">
     <value>Topic</value>
@@ -284,5 +311,233 @@
   </data>
   <data name="WordOfWisdomPageIntro" xml:space="preserve">
     <value>Is there anything you want to tell yourself? Maybe to calm down, slow down?</value>
+  </data>
+  <data name="Aqua" xml:space="preserve">
+    <value>Aqua</value>
+  </data>
+  <data name="Azure" xml:space="preserve">
+    <value>Azure</value>
+  </data>
+  <data name="Bisque" xml:space="preserve">
+    <value>Bisque</value>
+  </data>
+  <data name="BlanchedAlmond" xml:space="preserve">
+    <value>Blanched Almond</value>
+  </data>
+  <data name="BlueViolet" xml:space="preserve">
+    <value>Blue Violet</value>
+  </data>
+  <data name="BurlyWood" xml:space="preserve">
+    <value>Burly Wood</value>
+  </data>
+  <data name="Chartreuse" xml:space="preserve">
+    <value>Chartreuse</value>
+  </data>
+  <data name="Coral" xml:space="preserve">
+    <value>Coral</value>
+  </data>
+  <data name="Cornsilk" xml:space="preserve">
+    <value>Cornsilk</value>
+  </data>
+  <data name="Cyan" xml:space="preserve">
+    <value>Cyan</value>
+  </data>
+  <data name="DarkCyan" xml:space="preserve">
+    <value>Dark Cyan</value>
+  </data>
+  <data name="DarkGray" xml:space="preserve">
+    <value>Dark Gray</value>
+  </data>
+  <data name="DarkKhaki" xml:space="preserve">
+    <value>Dark Khaki</value>
+  </data>
+  <data name="DarkOliveGreen" xml:space="preserve">
+    <value>Dark Olive Green</value>
+  </data>
+  <data name="DarkOrchid" xml:space="preserve">
+    <value>Dark Orchid</value>
+  </data>
+  <data name="DarkSalmon" xml:space="preserve">
+    <value>Dark Salmon</value>
+  </data>
+  <data name="DarkSlateBlue" xml:space="preserve">
+    <value>Dark Slate Blue</value>
+  </data>
+  <data name="DarkTurquoise" xml:space="preserve">
+    <value>Dark Turquoise</value>
+  </data>
+  <data name="DeepPink" xml:space="preserve">
+    <value>Deep Pink</value>
+  </data>
+  <data name="DimGray" xml:space="preserve">
+    <value>Dim Gray</value>
+  </data>
+  <data name="Firebrick" xml:space="preserve">
+    <value>Firebrick</value>
+  </data>
+  <data name="ForestGreen" xml:space="preserve">
+    <value>Forest Green</value>
+  </data>
+  <data name="Gainsboro" xml:space="preserve">
+    <value>Gainsboro</value>
+  </data>
+  <data name="Gold" xml:space="preserve">
+    <value>Gold</value>
+  </data>
+  <data name="Gray" xml:space="preserve">
+    <value>Gray</value>
+  </data>
+  <data name="GreenYellow" xml:space="preserve">
+    <value>Green Yellow</value>
+  </data>
+  <data name="HotPink" xml:space="preserve">
+    <value>Hot Pink</value>
+  </data>
+  <data name="Indigo" xml:space="preserve">
+    <value>Indigo</value>
+  </data>
+  <data name="Khaki" xml:space="preserve">
+    <value>Khaki</value>
+  </data>
+  <data name="LavenderBlush" xml:space="preserve">
+    <value>Lavender Blush</value>
+  </data>
+  <data name="LemonChiffon" xml:space="preserve">
+    <value>Lemon Chiffon</value>
+  </data>
+  <data name="LightCoral" xml:space="preserve">
+    <value>Light Coral</value>
+  </data>
+  <data name="LightGoldenrodYellow" xml:space="preserve">
+    <value>Light Goldenrod Yellow</value>
+  </data>
+  <data name="LightGreen" xml:space="preserve">
+    <value>Light Green</value>
+  </data>
+  <data name="LightSalmon" xml:space="preserve">
+    <value>Light Salmon</value>
+  </data>
+  <data name="LightSkyBlue" xml:space="preserve">
+    <value>Light Sky Blue</value>
+  </data>
+  <data name="LightSteelBlue" xml:space="preserve">
+    <value>Light Steel Blue</value>
+  </data>
+  <data name="Lime" xml:space="preserve">
+    <value>Lime</value>
+  </data>
+  <data name="Linen" xml:space="preserve">
+    <value>Linen</value>
+  </data>
+  <data name="Maroon" xml:space="preserve">
+    <value>Maroon</value>
+  </data>
+  <data name="MediumBlue" xml:space="preserve">
+    <value>Medium Blue</value>
+  </data>
+  <data name="MediumPurple" xml:space="preserve">
+    <value>Medium Purple</value>
+  </data>
+  <data name="MediumSlateBlue" xml:space="preserve">
+    <value>Medium Slate Blue</value>
+  </data>
+  <data name="MediumTurquoise" xml:space="preserve">
+    <value>Medium Turquoise</value>
+  </data>
+  <data name="MidnightBlue" xml:space="preserve">
+    <value>Midnight Blue</value>
+  </data>
+  <data name="MistyRose" xml:space="preserve">
+    <value>Misty Rose</value>
+  </data>
+  <data name="NavajoWhite" xml:space="preserve">
+    <value>Navajo White</value>
+  </data>
+  <data name="OldLace" xml:space="preserve">
+    <value>Old Lace</value>
+  </data>
+  <data name="OliveDrab" xml:space="preserve">
+    <value>Olive Drab</value>
+  </data>
+  <data name="OrangeRed" xml:space="preserve">
+    <value>Orange Red</value>
+  </data>
+  <data name="PaleGoldenrod" xml:space="preserve">
+    <value>Pale Goldenrod</value>
+  </data>
+  <data name="PaleTurquoise" xml:space="preserve">
+    <value>Pale Turquoise</value>
+  </data>
+  <data name="PapayaWhip" xml:space="preserve">
+    <value>Papaya Whip</value>
+  </data>
+  <data name="Peru" xml:space="preserve">
+    <value>Peru</value>
+  </data>
+  <data name="Plum" xml:space="preserve">
+    <value>Plum</value>
+  </data>
+  <data name="Purple" xml:space="preserve">
+    <value>Purple</value>
+  </data>
+  <data name="RosyBrown" xml:space="preserve">
+    <value>Rosy Brown</value>
+  </data>
+  <data name="SaddleBrown" xml:space="preserve">
+    <value>Saddle Brown</value>
+  </data>
+  <data name="SandyBrown" xml:space="preserve">
+    <value>Sandy Brown</value>
+  </data>
+  <data name="SeaShell" xml:space="preserve">
+    <value>Sea Shell</value>
+  </data>
+  <data name="Silver" xml:space="preserve">
+    <value>Silver</value>
+  </data>
+  <data name="SlateBlue" xml:space="preserve">
+    <value>Slate Blue</value>
+  </data>
+  <data name="Snow" xml:space="preserve">
+    <value>Snow</value>
+  </data>
+  <data name="SteelBlue" xml:space="preserve">
+    <value>Steel Blue</value>
+  </data>
+  <data name="Teal" xml:space="preserve">
+    <value>Teal</value>
+  </data>
+  <data name="Tomato" xml:space="preserve">
+    <value>Tomato</value>
+  </data>
+  <data name="Violet" xml:space="preserve">
+    <value>Violet</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="Transparent" xml:space="preserve">
+    <value>Transparent</value>
+  </data>
+  <data name="AllSetPageIntro" xml:space="preserve">
+    <value>Here're the final tweaks...</value>
+  </data>
+  <data name="PinShortcut" xml:space="preserve">
+    <value>Pin a shortcut to the story</value>
+  </data>
+  <data name="PinShortcutDetails" xml:space="preserve">
+    <value>You can also pin a short cut tile on the start screen so you can jump to the story real quick.</value>
+  </data>
+  <data name="SayYes" xml:space="preserve">
+    <value>say yes</value>
+  </data>
+  <data name="SetAsLockScreen" xml:space="preserve">
+    <value>Set as lock screen provider and allow background update</value>
+  </data>
+  <data name="WPRestrictions" xml:space="preserve">
+    <value>Windows Phone requires us to obtain your consent before we can change your lock screen.</value>
   </data>
 </root>

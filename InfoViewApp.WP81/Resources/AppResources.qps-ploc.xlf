@@ -173,13 +173,49 @@
           <source>News Source</source>
           <target state="new">News Source</target>
         </trans-unit>
+        <trans-unit id="Resx/PreviewPageIntro" translate="yes" xml:space="preserve">
+          <source>You can customize styles by tapping the preview texts.</source>
+          <target state="new">You can customize styles by tapping the preview texts.</target>
+        </trans-unit>
         <trans-unit id="Resx/BroadInterestTopicPageIntro" translate="yes" xml:space="preserve">
           <source>Pick a news source, then select a category to continue.</source>
           <target state="new">Pick a news source, then select a category to continue.</target>
         </trans-unit>
+        <trans-unit id="Resx/FontCASPageIntro" translate="yes" xml:space="preserve">
+          <source>Customize the portion of the text you chose with new color and size.</source>
+          <target state="new">Customize the portion of the text you chose with new color and size.</target>
+        </trans-unit>
+        <trans-unit id="Resx/ContentForeground" translate="yes" xml:space="preserve">
+          <source>Content Foreground</source>
+          <target state="new">Content Foreground</target>
+        </trans-unit>
+        <trans-unit id="Resx/ContentFontSize" translate="yes" xml:space="preserve">
+          <source>Content Font Size</source>
+          <target state="new">Content Font Size</target>
+        </trans-unit>
+        <trans-unit id="Resx/ContentBackground" translate="yes" xml:space="preserve">
+          <source>Content Background</source>
+          <target state="new">Content Background</target>
+        </trans-unit>
+        <trans-unit id="Resx/Great" translate="yes" xml:space="preserve">
+          <source>Great!</source>
+          <target state="new">Great!</target>
+        </trans-unit>
         <trans-unit id="Resx/ShowMe" translate="yes" xml:space="preserve">
           <source>Show Me!</source>
           <target state="new">Show Me!</target>
+        </trans-unit>
+        <trans-unit id="Resx/TitleForeground" translate="yes" xml:space="preserve">
+          <source>Title Foreground</source>
+          <target state="new">Title Foreground</target>
+        </trans-unit>
+        <trans-unit id="Resx/TitleFontSize" translate="yes" xml:space="preserve">
+          <source>Title Font Size</source>
+          <target state="new">Title Font Size</target>
+        </trans-unit>
+        <trans-unit id="Resx/TitleBackground" translate="yes" xml:space="preserve">
+          <source>Title Background</source>
+          <target state="new">Title Background</target>
         </trans-unit>
         <trans-unit id="Resx/Topic" translate="yes" xml:space="preserve">
           <source>Topic</source>
@@ -192,6 +228,290 @@
         <trans-unit id="Resx/WordOfWisdomPageIntro" translate="yes" xml:space="preserve">
           <source>Is there anything you want to tell yourself? Maybe to calm down, slow down?</source>
           <target state="new">Is there anything you want to tell yourself? Maybe to calm down, slow down?</target>
+        </trans-unit>
+        <trans-unit id="Resx/Transparent" translate="yes" xml:space="preserve">
+          <source>Transparent</source>
+          <target state="new">Transparent</target>
+        </trans-unit>
+        <trans-unit id="Resx/Yellow" translate="yes" xml:space="preserve">
+          <source>Yellow</source>
+          <target state="new">Yellow</target>
+        </trans-unit>
+        <trans-unit id="Resx/White" translate="yes" xml:space="preserve">
+          <source>White</source>
+          <target state="new">White</target>
+        </trans-unit>
+        <trans-unit id="Resx/Violet" translate="yes" xml:space="preserve">
+          <source>Violet</source>
+          <target state="new">Violet</target>
+        </trans-unit>
+        <trans-unit id="Resx/Tomato" translate="yes" xml:space="preserve">
+          <source>Tomato</source>
+          <target state="new">Tomato</target>
+        </trans-unit>
+        <trans-unit id="Resx/Teal" translate="yes" xml:space="preserve">
+          <source>Teal</source>
+          <target state="new">Teal</target>
+        </trans-unit>
+        <trans-unit id="Resx/SteelBlue" translate="yes" xml:space="preserve">
+          <source>Steel Blue</source>
+          <target state="new">Steel Blue</target>
+        </trans-unit>
+        <trans-unit id="Resx/Snow" translate="yes" xml:space="preserve">
+          <source>Snow</source>
+          <target state="new">Snow</target>
+        </trans-unit>
+        <trans-unit id="Resx/SlateBlue" translate="yes" xml:space="preserve">
+          <source>Slate Blue</source>
+          <target state="new">Slate Blue</target>
+        </trans-unit>
+        <trans-unit id="Resx/Silver" translate="yes" xml:space="preserve">
+          <source>Silver</source>
+          <target state="new">Silver</target>
+        </trans-unit>
+        <trans-unit id="Resx/SeaShell" translate="yes" xml:space="preserve">
+          <source>Sea Shell</source>
+          <target state="new">Sea Shell</target>
+        </trans-unit>
+        <trans-unit id="Resx/SandyBrown" translate="yes" xml:space="preserve">
+          <source>Sandy Brown</source>
+          <target state="new">Sandy Brown</target>
+        </trans-unit>
+        <trans-unit id="Resx/SaddleBrown" translate="yes" xml:space="preserve">
+          <source>Saddle Brown</source>
+          <target state="new">Saddle Brown</target>
+        </trans-unit>
+        <trans-unit id="Resx/RosyBrown" translate="yes" xml:space="preserve">
+          <source>Rosy Brown</source>
+          <target state="new">Rosy Brown</target>
+        </trans-unit>
+        <trans-unit id="Resx/Purple" translate="yes" xml:space="preserve">
+          <source>Purple</source>
+          <target state="new">Purple</target>
+        </trans-unit>
+        <trans-unit id="Resx/Plum" translate="yes" xml:space="preserve">
+          <source>Plum</source>
+          <target state="new">Plum</target>
+        </trans-unit>
+        <trans-unit id="Resx/Peru" translate="yes" xml:space="preserve">
+          <source>Peru</source>
+          <target state="new">Peru</target>
+        </trans-unit>
+        <trans-unit id="Resx/PapayaWhip" translate="yes" xml:space="preserve">
+          <source>Papaya Whip</source>
+          <target state="new">Papaya Whip</target>
+        </trans-unit>
+        <trans-unit id="Resx/PaleTurquoise" translate="yes" xml:space="preserve">
+          <source>Pale Turquoise</source>
+          <target state="new">Pale Turquoise</target>
+        </trans-unit>
+        <trans-unit id="Resx/PaleGoldenrod" translate="yes" xml:space="preserve">
+          <source>Pale Goldenrod</source>
+          <target state="new">Pale Goldenrod</target>
+        </trans-unit>
+        <trans-unit id="Resx/OrangeRed" translate="yes" xml:space="preserve">
+          <source>Orange Red</source>
+          <target state="new">Orange Red</target>
+        </trans-unit>
+        <trans-unit id="Resx/OliveDrab" translate="yes" xml:space="preserve">
+          <source>Olive Drab</source>
+          <target state="new">Olive Drab</target>
+        </trans-unit>
+        <trans-unit id="Resx/OldLace" translate="yes" xml:space="preserve">
+          <source>Old Lace</source>
+          <target state="new">Old Lace</target>
+        </trans-unit>
+        <trans-unit id="Resx/NavajoWhite" translate="yes" xml:space="preserve">
+          <source>Navajo White</source>
+          <target state="new">Navajo White</target>
+        </trans-unit>
+        <trans-unit id="Resx/MistyRose" translate="yes" xml:space="preserve">
+          <source>Misty Rose</source>
+          <target state="new">Misty Rose</target>
+        </trans-unit>
+        <trans-unit id="Resx/MidnightBlue" translate="yes" xml:space="preserve">
+          <source>Midnight Blue</source>
+          <target state="new">Midnight Blue</target>
+        </trans-unit>
+        <trans-unit id="Resx/MediumTurquoise" translate="yes" xml:space="preserve">
+          <source>Medium Turquoise</source>
+          <target state="new">Medium Turquoise</target>
+        </trans-unit>
+        <trans-unit id="Resx/MediumSlateBlue" translate="yes" xml:space="preserve">
+          <source>Medium Slate Blue</source>
+          <target state="new">Medium Slate Blue</target>
+        </trans-unit>
+        <trans-unit id="Resx/MediumPurple" translate="yes" xml:space="preserve">
+          <source>Medium Purple</source>
+          <target state="new">Medium Purple</target>
+        </trans-unit>
+        <trans-unit id="Resx/MediumBlue" translate="yes" xml:space="preserve">
+          <source>Medium Blue</source>
+          <target state="new">Medium Blue</target>
+        </trans-unit>
+        <trans-unit id="Resx/Maroon" translate="yes" xml:space="preserve">
+          <source>Maroon</source>
+          <target state="new">Maroon</target>
+        </trans-unit>
+        <trans-unit id="Resx/Linen" translate="yes" xml:space="preserve">
+          <source>Linen</source>
+          <target state="new">Linen</target>
+        </trans-unit>
+        <trans-unit id="Resx/Lime" translate="yes" xml:space="preserve">
+          <source>Lime</source>
+          <target state="new">Lime</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightSteelBlue" translate="yes" xml:space="preserve">
+          <source>Light Steel Blue</source>
+          <target state="new">Light Steel Blue</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightSkyBlue" translate="yes" xml:space="preserve">
+          <source>Light Sky Blue</source>
+          <target state="new">Light Sky Blue</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightSalmon" translate="yes" xml:space="preserve">
+          <source>Light Salmon</source>
+          <target state="new">Light Salmon</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightGreen" translate="yes" xml:space="preserve">
+          <source>Light Green</source>
+          <target state="new">Light Green</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightGoldenrodYellow" translate="yes" xml:space="preserve">
+          <source>Light Goldenrod Yellow</source>
+          <target state="new">Light Goldenrod Yellow</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightCoral" translate="yes" xml:space="preserve">
+          <source>Light Coral</source>
+          <target state="new">Light Coral</target>
+        </trans-unit>
+        <trans-unit id="Resx/LemonChiffon" translate="yes" xml:space="preserve">
+          <source>Lemon Chiffon</source>
+          <target state="new">Lemon Chiffon</target>
+        </trans-unit>
+        <trans-unit id="Resx/LavenderBlush" translate="yes" xml:space="preserve">
+          <source>Lavender Blush</source>
+          <target state="new">Lavender Blush</target>
+        </trans-unit>
+        <trans-unit id="Resx/Khaki" translate="yes" xml:space="preserve">
+          <source>Khaki</source>
+          <target state="new">Khaki</target>
+        </trans-unit>
+        <trans-unit id="Resx/Indigo" translate="yes" xml:space="preserve">
+          <source>Indigo</source>
+          <target state="new">Indigo</target>
+        </trans-unit>
+        <trans-unit id="Resx/HotPink" translate="yes" xml:space="preserve">
+          <source>Hot Pink</source>
+          <target state="new">Hot Pink</target>
+        </trans-unit>
+        <trans-unit id="Resx/GreenYellow" translate="yes" xml:space="preserve">
+          <source>Green Yellow</source>
+          <target state="new">Green Yellow</target>
+        </trans-unit>
+        <trans-unit id="Resx/Gray" translate="yes" xml:space="preserve">
+          <source>Gray</source>
+          <target state="new">Gray</target>
+        </trans-unit>
+        <trans-unit id="Resx/Gold" translate="yes" xml:space="preserve">
+          <source>Gold</source>
+          <target state="new">Gold</target>
+        </trans-unit>
+        <trans-unit id="Resx/Gainsboro" translate="yes" xml:space="preserve">
+          <source>Gainsboro</source>
+          <target state="new">Gainsboro</target>
+        </trans-unit>
+        <trans-unit id="Resx/ForestGreen" translate="yes" xml:space="preserve">
+          <source>Forest Green</source>
+          <target state="new">Forest Green</target>
+        </trans-unit>
+        <trans-unit id="Resx/Firebrick" translate="yes" xml:space="preserve">
+          <source>Firebrick</source>
+          <target state="new">Firebrick</target>
+        </trans-unit>
+        <trans-unit id="Resx/DimGray" translate="yes" xml:space="preserve">
+          <source>Dim Gray</source>
+          <target state="new">Dim Gray</target>
+        </trans-unit>
+        <trans-unit id="Resx/DeepPink" translate="yes" xml:space="preserve">
+          <source>Deep Pink</source>
+          <target state="new">Deep Pink</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkTurquoise" translate="yes" xml:space="preserve">
+          <source>Dark Turquoise</source>
+          <target state="new">Dark Turquoise</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkSlateBlue" translate="yes" xml:space="preserve">
+          <source>Dark Slate Blue</source>
+          <target state="new">Dark Slate Blue</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkSalmon" translate="yes" xml:space="preserve">
+          <source>Dark Salmon</source>
+          <target state="new">Dark Salmon</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkOrchid" translate="yes" xml:space="preserve">
+          <source>Dark Orchid</source>
+          <target state="new">Dark Orchid</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkOliveGreen" translate="yes" xml:space="preserve">
+          <source>Dark Olive Green</source>
+          <target state="new">Dark Olive Green</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkKhaki" translate="yes" xml:space="preserve">
+          <source>Dark Khaki</source>
+          <target state="new">Dark Khaki</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkGray" translate="yes" xml:space="preserve">
+          <source>Dark Gray</source>
+          <target state="new">Dark Gray</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkCyan" translate="yes" xml:space="preserve">
+          <source>Dark Cyan</source>
+          <target state="new">Dark Cyan</target>
+        </trans-unit>
+        <trans-unit id="Resx/Cyan" translate="yes" xml:space="preserve">
+          <source>Cyan</source>
+          <target state="new">Cyan</target>
+        </trans-unit>
+        <trans-unit id="Resx/Cornsilk" translate="yes" xml:space="preserve">
+          <source>Cornsilk</source>
+          <target state="new">Cornsilk</target>
+        </trans-unit>
+        <trans-unit id="Resx/Coral" translate="yes" xml:space="preserve">
+          <source>Coral</source>
+          <target state="new">Coral</target>
+        </trans-unit>
+        <trans-unit id="Resx/Chartreuse" translate="yes" xml:space="preserve">
+          <source>Chartreuse</source>
+          <target state="new">Chartreuse</target>
+        </trans-unit>
+        <trans-unit id="Resx/BurlyWood" translate="yes" xml:space="preserve">
+          <source>Burly Wood</source>
+          <target state="new">Burly Wood</target>
+        </trans-unit>
+        <trans-unit id="Resx/BlueViolet" translate="yes" xml:space="preserve">
+          <source>Blue Violet</source>
+          <target state="new">Blue Violet</target>
+        </trans-unit>
+        <trans-unit id="Resx/BlanchedAlmond" translate="yes" xml:space="preserve">
+          <source>Blanched Almond</source>
+          <target state="new">Blanched Almond</target>
+        </trans-unit>
+        <trans-unit id="Resx/Bisque" translate="yes" xml:space="preserve">
+          <source>Bisque</source>
+          <target state="new">Bisque</target>
+        </trans-unit>
+        <trans-unit id="Resx/Azure" translate="yes" xml:space="preserve">
+          <source>Azure</source>
+          <target state="new">Azure</target>
+        </trans-unit>
+        <trans-unit id="Resx/Aqua" translate="yes" xml:space="preserve">
+          <source>Aqua</source>
+          <target state="new">Aqua</target>
+        </trans-unit>
+        <trans-unit id="Resx/AliceBlue" translate="yes" xml:space="preserve">
+          <source>Alice Blue</source>
+          <target state="new">Alice Blue</target>
         </trans-unit>
         <trans-unit id="Resx/WordOfWisdomPageGuide" translate="yes" xml:space="preserve">
           <source>Type in something here. It will show up on your screen.</source>
