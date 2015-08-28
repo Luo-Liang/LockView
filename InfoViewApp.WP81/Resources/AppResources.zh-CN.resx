@@ -306,4 +306,214 @@
   <data name="WordOfWisdomPageGuide" xml:space="preserve">
     <value>在此处键入内容。它将显示在屏幕上。</value>
   </data>
+  <data name="Transparent" xml:space="preserve">
+    <value>Transparent</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>黄色</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>白色</value>
+  </data>
+  <data name="Violet" xml:space="preserve">
+    <value>紫罗兰</value>
+  </data>
+  <data name="Tomato" xml:space="preserve">
+    <value>番茄色</value>
+  </data>
+  <data name="Teal" xml:space="preserve">
+    <value>青色</value>
+  </data>
+  <data name="SteelBlue" xml:space="preserve">
+    <value>钢蓝色</value>
+  </data>
+  <data name="Snow" xml:space="preserve">
+    <value>雪白</value>
+  </data>
+  <data name="SlateBlue" xml:space="preserve">
+    <value>石板蓝</value>
+  </data>
+  <data name="Silver" xml:space="preserve">
+    <value>银色</value>
+  </data>
+  <data name="SeaShell" xml:space="preserve">
+    <value>贝壳白</value>
+  </data>
+  <data name="SandyBrown" xml:space="preserve">
+    <value>浅褐色</value>
+  </data>
+  <data name="SaddleBrown" xml:space="preserve">
+    <value>鞍具褐色</value>
+  </data>
+  <data name="RosyBrown" xml:space="preserve">
+    <value>玫瑰褐色</value>
+  </data>
+  <data name="Purple" xml:space="preserve">
+    <value>紫色</value>
+  </data>
+  <data name="Plum" xml:space="preserve">
+    <value>李子</value>
+  </data>
+  <data name="Peru" xml:space="preserve">
+    <value>秘鲁</value>
+  </data>
+  <data name="PapayaWhip" xml:space="preserve">
+    <value>粉木瓜橙</value>
+  </data>
+  <data name="PaleTurquoise" xml:space="preserve">
+    <value>淡青绿色</value>
+  </data>
+  <data name="PaleGoldenrod" xml:space="preserve">
+    <value>浅金黄色</value>
+  </data>
+  <data name="OrangeRed" xml:space="preserve">
+    <value>桔红色</value>
+  </data>
+  <data name="OliveDrab" xml:space="preserve">
+    <value>暗橄榄色</value>
+  </data>
+  <data name="OldLace" xml:space="preserve">
+    <value>老花色</value>
+  </data>
+  <data name="NavajoWhite" xml:space="preserve">
+    <value>印地安黄</value>
+  </data>
+  <data name="MistyRose" xml:space="preserve">
+    <value>粉红玫瑰</value>
+  </data>
+  <data name="MidnightBlue" xml:space="preserve">
+    <value>中灰蓝色</value>
+  </data>
+  <data name="MediumTurquoise" xml:space="preserve">
+    <value>浅青绿色</value>
+  </data>
+  <data name="MediumSlateBlue" xml:space="preserve">
+    <value>淡灰蓝色</value>
+  </data>
+  <data name="MediumPurple" xml:space="preserve">
+    <value>淡紫色</value>
+  </data>
+  <data name="MediumBlue" xml:space="preserve">
+    <value>淡蓝色</value>
+  </data>
+  <data name="Maroon" xml:space="preserve">
+    <value>褐紫红色</value>
+  </data>
+  <data name="Linen" xml:space="preserve">
+    <value>亚麻布色</value>
+  </data>
+  <data name="Lime" xml:space="preserve">
+    <value>酸橙色</value>
+  </data>
+  <data name="LightSteelBlue" xml:space="preserve">
+    <value>浅钢蓝色</value>
+  </data>
+  <data name="LightSkyBlue" xml:space="preserve">
+    <value>浅天蓝色</value>
+  </data>
+  <data name="LightSalmon" xml:space="preserve">
+    <value>浅橙红</value>
+  </data>
+  <data name="LightGreen" xml:space="preserve">
+    <value>浅绿色</value>
+  </data>
+  <data name="LightGoldenrodYellow" xml:space="preserve">
+    <value>浅金黄</value>
+  </data>
+  <data name="LightCoral" xml:space="preserve">
+    <value>浅珊瑚红</value>
+  </data>
+  <data name="LemonChiffon" xml:space="preserve">
+    <value>柠檬色</value>
+  </data>
+  <data name="LavenderBlush" xml:space="preserve">
+    <value>淡紫红色</value>
+  </data>
+  <data name="Khaki" xml:space="preserve">
+    <value>黄褐色</value>
+  </data>
+  <data name="Indigo" xml:space="preserve">
+    <value>靛蓝色</value>
+  </data>
+  <data name="HotPink" xml:space="preserve">
+    <value>桃红色</value>
+  </data>
+  <data name="GreenYellow" xml:space="preserve">
+    <value>绿黄色</value>
+  </data>
+  <data name="Gray" xml:space="preserve">
+    <value>灰度</value>
+  </data>
+  <data name="Gold" xml:space="preserve">
+    <value>金色</value>
+  </data>
+  <data name="Gainsboro" xml:space="preserve">
+    <value>亮灰色</value>
+  </data>
+  <data name="ForestGreen" xml:space="preserve">
+    <value>森林绿</value>
+  </data>
+  <data name="Firebrick" xml:space="preserve">
+    <value>砖红色</value>
+  </data>
+  <data name="DimGray" xml:space="preserve">
+    <value>暗灰色</value>
+  </data>
+  <data name="DeepPink" xml:space="preserve">
+    <value>深粉色</value>
+  </data>
+  <data name="DarkTurquoise" xml:space="preserve">
+    <value>深青绿色</value>
+  </data>
+  <data name="DarkSlateBlue" xml:space="preserve">
+    <value>深石板蓝</value>
+  </data>
+  <data name="DarkSalmon" xml:space="preserve">
+    <value>深橙红</value>
+  </data>
+  <data name="DarkOrchid" xml:space="preserve">
+    <value>暗兰花紫</value>
+  </data>
+  <data name="DarkOliveGreen" xml:space="preserve">
+    <value>深橄榄绿</value>
+  </data>
+  <data name="DarkKhaki" xml:space="preserve">
+    <value>深褐色</value>
+  </data>
+  <data name="DarkGray" xml:space="preserve">
+    <value>深灰色</value>
+  </data>
+  <data name="DarkCyan" xml:space="preserve">
+    <value>深青色</value>
+  </data>
+  <data name="Cyan" xml:space="preserve">
+    <value>青色</value>
+  </data>
+  <data name="Cornsilk" xml:space="preserve">
+    <value>玉米黄</value>
+  </data>
+  <data name="Coral" xml:space="preserve">
+    <value>珊瑚红</value>
+  </data>
+  <data name="Chartreuse" xml:space="preserve">
+    <value>浅黄绿色</value>
+  </data>
+  <data name="BurlyWood" xml:space="preserve">
+    <value>原木色</value>
+  </data>
+  <data name="BlueViolet" xml:space="preserve">
+    <value>蓝紫色</value>
+  </data>
+  <data name="BlanchedAlmond" xml:space="preserve">
+    <value>杏仁白</value>
+  </data>
+  <data name="Bisque" xml:space="preserve">
+    <value>乳黄色</value>
+  </data>
+  <data name="Azure" xml:space="preserve">
+    <value>天蓝色</value>
+  </data>
+  <data name="Aqua" xml:space="preserve">
+    <value>水绿色</value>
+  </data>
 </root>

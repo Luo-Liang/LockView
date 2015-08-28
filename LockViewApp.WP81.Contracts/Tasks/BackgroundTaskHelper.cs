@@ -139,8 +139,10 @@ namespace InfoViewApp.WP81.Tasks
             var jObj = JsonObject.Parse(json);
             var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
             imgRequestUrl = string.Format("{0}_{1}x{2}.jpg", imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_')), instance.PreviewLayoutContract.TargetWidth, instance.PreviewLayoutContract.TargetHeight);
-            var imgUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
-            return imgUrl;
+            //imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
+            if (imgRequestUrl.StartsWith("http") == false)
+                imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
+            return imgRequestUrl;
         }
     }
 

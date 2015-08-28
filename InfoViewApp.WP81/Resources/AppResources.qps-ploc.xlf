@@ -233,6 +233,30 @@
           <source>Transparent</source>
           <target state="new">Transparent</target>
         </trans-unit>
+        <trans-unit id="Resx/WPRestrictions" translate="yes" xml:space="preserve">
+          <source>Windows Phone requires us to obtain your consent before we can change your lock screen.</source>
+          <target state="new">Windows Phone requires us to obtain your consent before we can change your lock screen.</target>
+        </trans-unit>
+        <trans-unit id="Resx/SetAsLockScreen" translate="yes" xml:space="preserve">
+          <source>Set as lock screen provider and allow background update</source>
+          <target state="new">Set as lock screen provider and allow background update</target>
+        </trans-unit>
+        <trans-unit id="Resx/SayYes" translate="yes" xml:space="preserve">
+          <source>say yes</source>
+          <target state="new">say yes</target>
+        </trans-unit>
+        <trans-unit id="Resx/PinShortcutDetails" translate="yes" xml:space="preserve">
+          <source>You can also pin a short cut tile on the start screen so you can jump to the story real quick.</source>
+          <target state="new">You can also pin a short cut tile on the start screen so you can jump to the story real quick.</target>
+        </trans-unit>
+        <trans-unit id="Resx/PinShortcut" translate="yes" xml:space="preserve">
+          <source>Pin a shortcut to the story</source>
+          <target state="new">Pin a shortcut to the story</target>
+        </trans-unit>
+        <trans-unit id="Resx/AllSetPageIntro" translate="yes" xml:space="preserve">
+          <source>Here're the final tweaks...</source>
+          <target state="new">Here're the final tweaks...</target>
+        </trans-unit>
         <trans-unit id="Resx/Yellow" translate="yes" xml:space="preserve">
           <source>Yellow</source>
           <target state="new">Yellow</target>
@@ -508,10 +532,6 @@
         <trans-unit id="Resx/Aqua" translate="yes" xml:space="preserve">
           <source>Aqua</source>
           <target state="new">Aqua</target>
-        </trans-unit>
-        <trans-unit id="Resx/AliceBlue" translate="yes" xml:space="preserve">
-          <source>Alice Blue</source>
-          <target state="new">Alice Blue</target>
         </trans-unit>
         <trans-unit id="Resx/WordOfWisdomPageGuide" translate="yes" xml:space="preserve">
           <source>Type in something here. It will show up on your screen.</source>

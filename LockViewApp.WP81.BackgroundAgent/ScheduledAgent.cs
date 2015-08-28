@@ -182,8 +182,8 @@ namespace LockViewApp.WP81.BackgroundAgent
             if (instance.UserQuotaInDollars < 0)
             {
                 var toast = new ShellToast();
-                toast.Title = "LOCKVIEW";
-                toast.Content = "Your balance has run out. Update is now minimum.";
+                toast.Title = AppResources.LockView;
+                toast.Content = AppResources.BalanceRunOut;
                 toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
                 toast.Show();
             }
