@@ -540,4 +540,85 @@
   <data name="WPRestrictions" xml:space="preserve">
     <value>Windows Phone requires us to obtain your consent before we can change your lock screen.</value>
   </data>
+  <data name="AllDone" xml:space="preserve">
+    <value>All Done</value>
+  </data>
+  <data name="AverageRequestPerDay" xml:space="preserve">
+    <value>Average updates/day:</value>
+  </data>
+  <data name="AverageRequestPerDayExplained" xml:space="preserve">
+    <value>This is on average the number of updates you will receive per day.</value>
+  </data>
+  <data name="BalanceRunOut" xml:space="preserve">
+    <value>What happens if my balance runs out?</value>
+  </data>
+  <data name="BalanceRunOutPromptText" xml:space="preserve">
+    <value>If your balance runs out, you will still receive updates, but at a significantly lowered rate. We'll remind you if you're out of balance soon.</value>
+  </data>
+  <data name="BalanceRunOutPromptTitle" xml:space="preserve">
+    <value>WHAT IF QUOTA RUNS OUT...</value>
+  </data>
+  <data name="CalcPriceCaption" xml:space="preserve">
+    <value>DETERMINING YOUR PRICE</value>
+  </data>
+  <data name="CalculatedDaysPer099Lasts" xml:space="preserve">
+    <value>Calculated days per $0.99 lasts:</value>
+  </data>
+  <data name="ComputePrice" xml:space="preserve">
+    <value>Compute Price:</value>
+  </data>
+  <data name="ComputePriceExplained" xml:space="preserve">
+    <value>This is what our service provider charges us for computing. If our service provider lowers their traffic price, we'll lower ours too!</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value> days</value>
+  </data>
+  <data name="DaysFor099" xml:space="preserve">
+    <value> days for $0.99</value>
+  </data>
+  <data name="DontWantToPay" xml:space="preserve">
+    <value>What if I don't want to pay?</value>
+  </data>
+  <data name="Estimated" xml:space="preserve">
+    <value>(Estimated)</value>
+  </data>
+  <data name="NotThereYetText" xml:space="preserve">
+    <value>Come back later, as you still have sufficient balance. We'll remind you when it is running out.</value>
+  </data>
+  <data name="NotThereYetTitle" xml:space="preserve">
+    <value>NOT THERE YET</value>
+  </data>
+  <data name="PinShortcutButton" xml:space="preserve">
+    <value>pin shortcut</value>
+  </data>
+  <data name="PriceCalc" xml:space="preserve">
+    <value>How is my price calculated?</value>
+  </data>
+  <data name="Purchase" xml:space="preserve">
+    <value>refill my balance</value>
+  </data>
+  <data name="RemainingBalance" xml:space="preserve">
+    <value>Your remaining balance lasts:</value>
+  </data>
+  <data name="RemainingBalanceText" xml:space="preserve">
+    <value>LockView uses a web service to compose your image. LockView maintains this service by kindly ask you to purchase your quota for $</value>
+  </data>
+  <data name="SizePerRequest" xml:space="preserve">
+    <value>Size per request:</value>
+  </data>
+  <data name="SizePerRequestExplained" xml:space="preserve">
+    <value>This is based on the size of the cropped image you just selected, plus some metadata. This may vary a bit if you use automatic image update.</value>
+  </data>
+  <data name="TrafficPrice" xml:space="preserve">
+    <value>Traffic Price:</value>
+  </data>
+  <data name="TrafficPriceExplained" xml:space="preserve">
+    <value>This is what our service provider charges us for network traffic. If our service provider lowers their traffic price, we'll lower ours too!</value>
+  </data>
+  <data name="WhileBalanceLastsText" xml:space="preserve">
+    <value>While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days.</value>
+  </data>
+  <data name="WhileBalanceLastsTitle" xml:space="preserve">
+    <value>I'M NOT A FAN OF PAID APP...</value>
+  </data>
 </root>

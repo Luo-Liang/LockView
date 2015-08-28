@@ -61,6 +61,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Done.
+        /// </summary>
+        public static string AllDone {
+            get {
+                return ResourceManager.GetString("AllDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Here&apos;re the final tweaks....
         /// </summary>
         public static string AllSetPageIntro {
@@ -97,11 +106,56 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Average updates/day:.
+        /// </summary>
+        public static string AverageRequestPerDay {
+            get {
+                return ResourceManager.GetString("AverageRequestPerDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is on average the number of updates you will receive per day..
+        /// </summary>
+        public static string AverageRequestPerDayExplained {
+            get {
+                return ResourceManager.GetString("AverageRequestPerDayExplained", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Azure.
         /// </summary>
         public static string Azure {
             get {
                 return ResourceManager.GetString("Azure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What happens if my balance runs out?.
+        /// </summary>
+        public static string BalanceRunOut {
+            get {
+                return ResourceManager.GetString("BalanceRunOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If your balance runs out, you will still receive updates, but at a significantly lowered rate. We&apos;ll remind you if you&apos;re out of balance soon..
+        /// </summary>
+        public static string BalanceRunOutPromptText {
+            get {
+                return ResourceManager.GetString("BalanceRunOutPromptText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WHAT IF QUOTA RUNS OUT....
+        /// </summary>
+        public static string BalanceRunOutPromptTitle {
+            get {
+                return ResourceManager.GetString("BalanceRunOutPromptTitle", resourceCulture);
             }
         }
         
@@ -187,11 +241,47 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DETERMINING YOUR PRICE.
+        /// </summary>
+        public static string CalcPriceCaption {
+            get {
+                return ResourceManager.GetString("CalcPriceCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculated days per $0.99 lasts:.
+        /// </summary>
+        public static string CalculatedDaysPer099Lasts {
+            get {
+                return ResourceManager.GetString("CalculatedDaysPer099Lasts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chartreuse.
         /// </summary>
         public static string Chartreuse {
             get {
                 return ResourceManager.GetString("Chartreuse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compute Price:.
+        /// </summary>
+        public static string ComputePrice {
+            get {
+                return ResourceManager.GetString("ComputePrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is what our service provider charges us for computing. If our service provider lowers their traffic price, we&apos;ll lower ours too!.
+        /// </summary>
+        public static string ComputePriceExplained {
+            get {
+                return ResourceManager.GetString("ComputePriceExplained", resourceCulture);
             }
         }
         
@@ -331,6 +421,24 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  days.
+        /// </summary>
+        public static string Days {
+            get {
+                return ResourceManager.GetString("Days", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  days for $0.99.
+        /// </summary>
+        public static string DaysFor099 {
+            get {
+                return ResourceManager.GetString("DaysFor099", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deep Pink.
         /// </summary>
         public static string DeepPink {
@@ -358,11 +466,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to What if I don&apos;t want to pay?.
+        /// </summary>
+        public static string DontWantToPay {
+            get {
+                return ResourceManager.GetString("DontWantToPay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Entertainment.
         /// </summary>
         public static string Entertainment {
             get {
                 return ResourceManager.GetString("Entertainment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Estimated).
+        /// </summary>
+        public static string Estimated {
+            get {
+                return ResourceManager.GetString("Estimated", resourceCulture);
             }
         }
         
@@ -808,6 +934,24 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Come back later, as you still have sufficient balance. We&apos;ll remind you when it is running out..
+        /// </summary>
+        public static string NotThereYetText {
+            get {
+                return ResourceManager.GetString("NotThereYetText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NOT THERE YET.
+        /// </summary>
+        public static string NotThereYetTitle {
+            get {
+                return ResourceManager.GetString("NotThereYetTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Old Lace.
         /// </summary>
         public static string OldLace {
@@ -880,6 +1024,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to pin shortcut.
+        /// </summary>
+        public static string PinShortcutButton {
+            get {
+                return ResourceManager.GetString("PinShortcutButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can also pin a short cut tile on the start screen so you can jump to the story real quick..
         /// </summary>
         public static string PinShortcutDetails {
@@ -916,11 +1069,47 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How is my price calculated?.
+        /// </summary>
+        public static string PriceCalc {
+            get {
+                return ResourceManager.GetString("PriceCalc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to refill my balance.
+        /// </summary>
+        public static string Purchase {
+            get {
+                return ResourceManager.GetString("Purchase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purple.
         /// </summary>
         public static string Purple {
             get {
                 return ResourceManager.GetString("Purple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your remaining balance lasts:.
+        /// </summary>
+        public static string RemainingBalance {
+            get {
+                return ResourceManager.GetString("RemainingBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LockView uses a web service to compose your image. LockView maintains this service by kindly ask you to purchase your quota for $.
+        /// </summary>
+        public static string RemainingBalanceText {
+            get {
+                return ResourceManager.GetString("RemainingBalanceText", resourceCulture);
             }
         }
         
@@ -1011,6 +1200,24 @@ namespace InfoViewApp.WP81.Resources {
         public static string Silver {
             get {
                 return ResourceManager.GetString("Silver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size per request:.
+        /// </summary>
+        public static string SizePerRequest {
+            get {
+                return ResourceManager.GetString("SizePerRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is based on the size of the cropped image you just selected, plus some metadata. This may vary a bit if you use automatic image update..
+        /// </summary>
+        public static string SizePerRequestExplained {
+            get {
+                return ResourceManager.GetString("SizePerRequestExplained", resourceCulture);
             }
         }
         
@@ -1177,6 +1384,24 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Traffic Price:.
+        /// </summary>
+        public static string TrafficPrice {
+            get {
+                return ResourceManager.GetString("TrafficPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is what our service provider charges us for network traffic. If our service provider lowers their traffic price, we&apos;ll lower ours too!.
+        /// </summary>
+        public static string TrafficPriceExplained {
+            get {
+                return ResourceManager.GetString("TrafficPriceExplained", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Translation Language.
         /// </summary>
         public static string TranslationLanguage {
@@ -1245,6 +1470,24 @@ namespace InfoViewApp.WP81.Resources {
         public static string Violet {
             get {
                 return ResourceManager.GetString("Violet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days..
+        /// </summary>
+        public static string WhileBalanceLastsText {
+            get {
+                return ResourceManager.GetString("WhileBalanceLastsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I&apos;M NOT A FAN OF PAID APP....
+        /// </summary>
+        public static string WhileBalanceLastsTitle {
+            get {
+                return ResourceManager.GetString("WhileBalanceLastsTitle", resourceCulture);
             }
         }
         

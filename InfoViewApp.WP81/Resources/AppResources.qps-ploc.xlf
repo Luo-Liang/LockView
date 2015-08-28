@@ -237,6 +237,114 @@
           <source>Windows Phone requires us to obtain your consent before we can change your lock screen.</source>
           <target state="new">Windows Phone requires us to obtain your consent before we can change your lock screen.</target>
         </trans-unit>
+        <trans-unit id="Resx/WhileBalanceLastsTitle" translate="yes" xml:space="preserve">
+          <source>I'M NOT A FAN OF PAID APP...</source>
+          <target state="new">I'M NOT A FAN OF PAID APP...</target>
+        </trans-unit>
+        <trans-unit id="Resx/WhileBalanceLastsText" translate="yes" xml:space="preserve">
+          <source>While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days.</source>
+          <target state="new">While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days.</target>
+        </trans-unit>
+        <trans-unit id="Resx/TrafficPriceExplained" translate="yes" xml:space="preserve">
+          <source>This is what our service provider charges us for network traffic. If our service provider lowers their traffic price, we'll lower ours too!</source>
+          <target state="new">This is what our service provider charges us for network traffic. If our service provider lowers their traffic price, we'll lower ours too!</target>
+        </trans-unit>
+        <trans-unit id="Resx/TrafficPrice" translate="yes" xml:space="preserve">
+          <source>Traffic Price:</source>
+          <target state="new">Traffic Price:</target>
+        </trans-unit>
+        <trans-unit id="Resx/SizePerRequestExplained" translate="yes" xml:space="preserve">
+          <source>This is based on the size of the cropped image you just selected, plus some metadata. This may vary a bit if you use automatic image update.</source>
+          <target state="new">This is based on the size of the cropped image you just selected, plus some metadata. This may vary a bit if you use automatic image update.</target>
+        </trans-unit>
+        <trans-unit id="Resx/SizePerRequest" translate="yes" xml:space="preserve">
+          <source>Size per request:</source>
+          <target state="new">Size per request:</target>
+        </trans-unit>
+        <trans-unit id="Resx/RemainingBalanceText" translate="yes" xml:space="preserve">
+          <source>LockView uses a web service to compose your image. LockView maintains this service by kindly ask you to purchase your quota for $</source>
+          <target state="new">LockView uses a web service to compose your image. LockView maintains this service by kindly ask you to purchase your quota for $</target>
+        </trans-unit>
+        <trans-unit id="Resx/RemainingBalance" translate="yes" xml:space="preserve">
+          <source>Your remaining balance lasts:</source>
+          <target state="new">Your remaining balance lasts:</target>
+        </trans-unit>
+        <trans-unit id="Resx/Purchase" translate="yes" xml:space="preserve">
+          <source>refill my balance</source>
+          <target state="new">refill my balance</target>
+        </trans-unit>
+        <trans-unit id="Resx/PriceCalc" translate="yes" xml:space="preserve">
+          <source>How is my price calculated?</source>
+          <target state="new">How is my price calculated?</target>
+        </trans-unit>
+        <trans-unit id="Resx/NotThereYetTitle" translate="yes" xml:space="preserve">
+          <source>NOT THERE YET</source>
+          <target state="new">NOT THERE YET</target>
+        </trans-unit>
+        <trans-unit id="Resx/PinShortcutButton" translate="yes" xml:space="preserve">
+          <source>pin shortcut</source>
+          <target state="new">pin shortcut</target>
+        </trans-unit>
+        <trans-unit id="Resx/NotThereYetText" translate="yes" xml:space="preserve">
+          <source>Come back later, as you still have sufficient balance. We'll remind you when it is running out.</source>
+          <target state="new">Come back later, as you still have sufficient balance. We'll remind you when it is running out.</target>
+        </trans-unit>
+        <trans-unit id="Resx/Estimated" translate="yes" xml:space="preserve">
+          <source>(Estimated)</source>
+          <target state="new">(Estimated)</target>
+        </trans-unit>
+        <trans-unit id="Resx/DontWantToPay" translate="yes" xml:space="preserve">
+          <source>What if I don't want to pay?</source>
+          <target state="new">What if I don't want to pay?</target>
+        </trans-unit>
+        <trans-unit id="Resx/DaysFor099" translate="yes" xml:space="preserve">
+          <source> days for $0.99</source>
+          <target state="new"> days for $0.99</target>
+        </trans-unit>
+        <trans-unit id="Resx/Days" translate="yes" xml:space="preserve">
+          <source> days</source>
+          <target state="new"> days</target>
+        </trans-unit>
+        <trans-unit id="Resx/ComputePriceExplained" translate="yes" xml:space="preserve">
+          <source>This is what our service provider charges us for computing. If our service provider lowers their traffic price, we'll lower ours too!</source>
+          <target state="new">This is what our service provider charges us for computing. If our service provider lowers their traffic price, we'll lower ours too!</target>
+        </trans-unit>
+        <trans-unit id="Resx/ComputePrice" translate="yes" xml:space="preserve">
+          <source>Compute Price:</source>
+          <target state="new">Compute Price:</target>
+        </trans-unit>
+        <trans-unit id="Resx/CalculatedDaysPer099Lasts" translate="yes" xml:space="preserve">
+          <source>Calculated days per $0.99 lasts:</source>
+          <target state="new">Calculated days per $0.99 lasts:</target>
+        </trans-unit>
+        <trans-unit id="Resx/CalcPriceCaption" translate="yes" xml:space="preserve">
+          <source>DETERMINING YOUR PRICE</source>
+          <target state="new">DETERMINING YOUR PRICE</target>
+        </trans-unit>
+        <trans-unit id="Resx/BalanceRunOutPromptTitle" translate="yes" xml:space="preserve">
+          <source>WHAT IF QUOTA RUNS OUT...</source>
+          <target state="new">WHAT IF QUOTA RUNS OUT...</target>
+        </trans-unit>
+        <trans-unit id="Resx/BalanceRunOutPromptText" translate="yes" xml:space="preserve">
+          <source>If your balance runs out, you will still receive updates, but at a significantly lowered rate. We'll remind you if you're out of balance soon.</source>
+          <target state="new">If your balance runs out, you will still receive updates, but at a significantly lowered rate. We'll remind you if you're out of balance soon.</target>
+        </trans-unit>
+        <trans-unit id="Resx/BalanceRunOut" translate="yes" xml:space="preserve">
+          <source>What happens if my balance runs out?</source>
+          <target state="new">What happens if my balance runs out?</target>
+        </trans-unit>
+        <trans-unit id="Resx/AverageRequestPerDayExplained" translate="yes" xml:space="preserve">
+          <source>This is on average the number of updates you will receive per day.</source>
+          <target state="new">This is on average the number of updates you will receive per day.</target>
+        </trans-unit>
+        <trans-unit id="Resx/AverageRequestPerDay" translate="yes" xml:space="preserve">
+          <source>Average updates/day:</source>
+          <target state="new">Average updates/day:</target>
+        </trans-unit>
+        <trans-unit id="Resx/AllDone" translate="yes" xml:space="preserve">
+          <source>All Done</source>
+          <target state="new">All Done</target>
+        </trans-unit>
         <trans-unit id="Resx/SetAsLockScreen" translate="yes" xml:space="preserve">
           <source>Set as lock screen provider and allow background update</source>
           <target state="new">Set as lock screen provider and allow background update</target>

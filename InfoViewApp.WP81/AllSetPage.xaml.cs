@@ -146,7 +146,7 @@ namespace InfoViewApp.WP81
 
         private void quotaRunOut_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("If your balance runs out, you will still receive updates, but at a significantly lowered rate. We'll remind you if you're out of balance soon.", "WHAT IF QUOTA RUNS OUT...", MessageBoxButton.OK);
+            MessageBox.Show("If your balance runs WHAT IF QUOTA RUNS OUT...out, you will still receive updates, but at a significantly lowered rate. We'll remind you if you're out of balance soon.", "", MessageBoxButton.OK);
         }
 
         private void SetupMockIAP()
