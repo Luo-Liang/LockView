@@ -182,7 +182,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             if (instance.UserQuotaInDollars < 0)
             {
                 var toast = new ShellToast();
-                toast.Title = "LOCKVIEW ALERT";
+                toast.Title = "LOCKVIEW";
                 toast.Content = "Your balance has run out. Update is now minimum.";
                 toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
                 toast.Show();
@@ -194,7 +194,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             BackgroundTaskHelper.TryUpdateTiles();
             //drain the user's balance.
             instance.UserQuotaInDollars -= drainPerReq;
-            instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
+            //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
 #if !DEBUG
             }
 #endif
