@@ -26,5 +26,10 @@ namespace LockView.Universal
         {
             this.InitializeComponent();
         }
+
+        private void goToCropping_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

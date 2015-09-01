@@ -4,5 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LockView.Universal"
     RequestedTheme="Light">
-
+    <Application.Resources>
+        <Color x:Key="AccentColor">#FF562E8F</Color>
+        <Color x:Key="LightAccentColor">#FF6F54A3</Color>
+        <Color x:Key="Gray">#FF888888</Color>
+        <Color x:Key="DarkAccentColor">#FF3C2063</Color>
+        <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+        <SolidColorBrush x:Key="LightAccentBrush" Color="{StaticResource LightAccentColor}"/>
+        <SolidColorBrush x:Key="GrayBrush" Color="{StaticResource Gray}"/>
+        <SolidColorBrush x:Key="DarkAccent" Color="{StaticResource DarkAccentColor}"/>
+    </Application.Resources>
 </Application>

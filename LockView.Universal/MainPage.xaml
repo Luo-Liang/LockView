@@ -5,9 +5,22 @@
     xmlns:local="using:LockView.Universal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    mc:Ignorable="d" >
+    <Grid>
+        <TextBlock x:Name="textBlock" x:Uid="mainPageTitle" TextWrapping="Wrap" VerticalAlignment="Bottom" IsHitTestVisible="False" FontSize="26.667" Foreground="White" HorizontalAlignment="Left" Margin="30,0,0,241" Width="163" Height="40">
+        	<Run Text="GOODBYE"/>
+        	<LineBreak/>
+        	<Run/>
+        </TextBlock>
+        <TextBlock x:Name="textBlock1" FontFamily="Segoe UI Light" FontWeight="Light" TextWrapping="Wrap" FontSize="53.333" Foreground="White" Margin="30,0,0,112" Height="124" VerticalAlignment="Bottom">
+        	<Run x:Uid="mainPageMundaneRun" Text="mundane"/>
+        	<LineBreak/>
+        	<Run x:Uid="mainPageLockScreenRun" Text="lock screen"/>
+        </TextBlock>
+        <Button Click="goToCropping_Click" x:Name="SaveBtn" Visibility="Visible" x:Uid="mainPageGoCroppingButton" Content="Jump In!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,30" FontFamily="Global User Interface" Foreground="White">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource AccentColor}"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

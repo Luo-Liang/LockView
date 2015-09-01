@@ -90,13 +90,13 @@ namespace InfoViewApp.WP81
             if ((widthPixel / heightPixel) > (imgWidth / imgHeight))
             {
                 //swipe up and down
-                //OriginalImage.Width = widthPixel / ResolutionProvider.GetScaleFactor();
+                OriginalImage.Width = widthPixel / ResolutionProvider.GetScaleFactor();
                 return WB_CapturedImage.Resize((int)widthPixel, (int)((widthPixel / imgWidth) * imgHeight), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
             else
             {
                 //swipe left and right.
-                //OriginalImage.Height = heightPixel / ResolutionProvider.GetScaleFactor();
+                OriginalImage.Height = heightPixel / ResolutionProvider.GetScaleFactor();
                 return WB_CapturedImage.Resize((int)(imgWidth * (heightPixel / imgHeight)), (int)heightPixel, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
         }
@@ -185,8 +185,8 @@ namespace InfoViewApp.WP81
                 WB_CapturedImage = new WriteableBitmap(1, 1);
                 WB_CapturedImage = WB_CapturedImage.FromStream(await storageFile.OpenStreamForReadAsync());
                 OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
-                OriginalImage.Height = WB_CapturedImage.PixelHeight / ResolutionProvider.GetScaleFactor();
-                OriginalImage.Width = WB_CapturedImage.PixelWidth / ResolutionProvider.GetScaleFactor();
+                //OriginalImage.Height = WB_CapturedImage.PixelHeight / ResolutionProvider.GetScaleFactor();
+                //OriginalImage.Width = WB_CapturedImage.PixelWidth / ResolutionProvider.GetScaleFactor();
             }
             else
             {

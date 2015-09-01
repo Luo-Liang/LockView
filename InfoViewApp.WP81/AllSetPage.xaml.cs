@@ -147,7 +147,7 @@ namespace InfoViewApp.WP81
 
         private void quotaRunOut_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(AppResources.NotThereYetText, AppResources.NotThereYetTitle, MessageBoxButton.OK);
+            MessageBox.Show(AppResources.BalanceRunOutPromptText, AppResources.BalanceRunOutPromptTitle, MessageBoxButton.OK);
         }
 
         private void SetupMockIAP()
