@@ -307,7 +307,7 @@
     <value>在此处键入内容。它将显示在屏幕上。</value>
   </data>
   <data name="Transparent" xml:space="preserve">
-    <value>Transparent</value>
+    <value>透明</value>
   </data>
   <data name="Yellow" xml:space="preserve">
     <value>黄色</value>
@@ -515,5 +515,131 @@
   </data>
   <data name="Aqua" xml:space="preserve">
     <value>水绿色</value>
+  </data>
+  <data name="WPRestrictions" xml:space="preserve">
+    <value>Windows Phone要求我们在更改您的锁屏壁纸前征得您的同意。</value>
+  </data>
+  <data name="WhileBalanceLastsTitle" xml:space="preserve">
+    <value>我不喜欢收费软件...</value>
+  </data>
+  <data name="SpecificTopicPageTitle" xml:space="preserve">
+    <value>告诉我们您的特殊爱好。我们将收集有关其一切消息。</value>
+  </data>
+  <data name="WordOfWisdomPageText" xml:space="preserve">
+    <value>在此键入任何要显示在您的锁屏界面上的内容。</value>
+  </data>
+  <data name="SpecificTopicPageText" xml:space="preserve">
+    <value>键入一个特殊话题，例如，微软，华盛顿大学，谷歌，奥巴马或海鹰队。</value>
+  </data>
+  <data name="SpecificTopicPageDisclaimer" xml:space="preserve">
+    <value>锁屏视野并不提供任何内容。所有的新闻均从互联网获取。</value>
+  </data>
+  <data name="Reading" xml:space="preserve">
+    <value>阅读</value>
+  </data>
+  <data name="Movie" xml:space="preserve">
+    <value>电影</value>
+  </data>
+  <data name="Hotpicks" xml:space="preserve">
+    <value>热门精选</value>
+  </data>
+  <data name="Cooking" xml:space="preserve">
+    <value>烹饪</value>
+  </data>
+  <data name="WhileBalanceLastsText" xml:space="preserve">
+    <value>当您每次安装此应用时，您将获取一定数量的余额。您尚有余额的时候，您可以使用所有的功能。为了鼓励大家购买该应用以支持我们的开发工作，当您的余额耗尽时，您的更新频率将会明显降低。此时，您可以选择重新安装此应用。</value>
+  </data>
+  <data name="TrafficPriceExplained" xml:space="preserve">
+    <value>我们的供应商以此价格收取我们的流量费用。如果我们的供应商降低价格，我们也会降低价格。</value>
+  </data>
+  <data name="TrafficPrice" xml:space="preserve">
+    <value>流量价格:</value>
+  </data>
+  <data name="SizePerRequestExplained" xml:space="preserve">
+    <value>该计算基于您选择的图片大小，再加上额外的一些元数据。如果您选择必应美图，则您可以以非常小的流量获取更新。该计算仅为估计，并且可能随着更新不同而略有波动。</value>
+  </data>
+  <data name="SizePerRequest" xml:space="preserve">
+    <value>每次更新的大小：</value>
+  </data>
+  <data name="RemainingBalanceText" xml:space="preserve">
+    <value>锁屏视野使用网络服务来绘制您的图片。锁屏视野需要您的支持才能维持运作。因此我们希望您购买您的余额，以$</value>
+  </data>
+  <data name="RemainingBalance" xml:space="preserve">
+    <value>您的余额可以支持:</value>
+  </data>
+  <data name="Purchase" xml:space="preserve">
+    <value>充值</value>
+  </data>
+  <data name="PriceCalc" xml:space="preserve">
+    <value>我的费用是如何计算的?</value>
+  </data>
+  <data name="NotThereYetTitle" xml:space="preserve">
+    <value>绰绰有余</value>
+  </data>
+  <data name="PinShortcutButton" xml:space="preserve">
+    <value>固定到开始屏幕</value>
+  </data>
+  <data name="NotThereYetText" xml:space="preserve">
+    <value>稍等，您的余额足以支持很久的使用。我们会在您的余额耗尽时提示您。</value>
+  </data>
+  <data name="Estimated" xml:space="preserve">
+    <value>(估计)</value>
+  </data>
+  <data name="DontWantToPay" xml:space="preserve">
+    <value>我不想付费该怎么办?</value>
+  </data>
+  <data name="DaysFor099" xml:space="preserve">
+    <value>天/每0.99美元。</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value> 天</value>
+  </data>
+  <data name="ComputePriceExplained" xml:space="preserve">
+    <value>这是我们的运营商向我们收取的计算费用。如果运营商降低他们的价格，我们也将随之降价。</value>
+  </data>
+  <data name="ComputePrice" xml:space="preserve">
+    <value>计算费用:</value>
+  </data>
+  <data name="CalculatedDaysPer099Lasts" xml:space="preserve">
+    <value>预计每0.99美元可以使用:</value>
+  </data>
+  <data name="CalcPriceCaption" xml:space="preserve">
+    <value>计算您的价格</value>
+  </data>
+  <data name="BalanceRunOutPromptTitle" xml:space="preserve">
+    <value>若您的余额耗完...</value>
+  </data>
+  <data name="BalanceRunOutPromptText" xml:space="preserve">
+    <value>如果您的余额耗完，您仍然可以正常使用该应用。只不过您的更新频率将降低，通常一天只能获取一次更新。当您的余额耗完时，我们将提醒您。</value>
+  </data>
+  <data name="BalanceRunOut" xml:space="preserve">
+    <value>余额耗完时会发生什么?</value>
+  </data>
+  <data name="AverageRequestPerDayExplained" xml:space="preserve">
+    <value>每天，您大约收到如此数目的更新。</value>
+  </data>
+  <data name="AverageRequestPerDay" xml:space="preserve">
+    <value>更新次数/天:</value>
+  </data>
+  <data name="AllDone" xml:space="preserve">
+    <value>完成设置</value>
+  </data>
+  <data name="SetAsLockScreen" xml:space="preserve">
+    <value>将锁屏视野设置为您设备的锁屏提供应用。</value>
+  </data>
+  <data name="SayYes" xml:space="preserve">
+    <value>同意</value>
+  </data>
+  <data name="PinShortcutDetails" xml:space="preserve">
+    <value>您还可以将当前显示的更新固定到开始菜单上，这样您就可以快速转到该更新的详情。</value>
+  </data>
+  <data name="PinShortcut" xml:space="preserve">
+    <value>固定到开始屏幕</value>
+  </data>
+  <data name="AllSetPageIntro" xml:space="preserve">
+    <value>还需处理一些事情...</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>预览</value>
   </data>
 </root>

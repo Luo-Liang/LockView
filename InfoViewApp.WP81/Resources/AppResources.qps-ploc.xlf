@@ -241,6 +241,46 @@
           <source>I'M NOT A FAN OF PAID APP...</source>
           <target state="new">I'M NOT A FAN OF PAID APP...</target>
         </trans-unit>
+        <trans-unit id="Resx/SpecificTopicPageTitle" translate="yes" xml:space="preserve">
+          <source>Tell us about a specific topic. We'll gather all news about it for you.</source>
+          <target state="new">Tell us about a specific topic. We'll gather all news about it for you.</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomPageTitle" translate="yes" xml:space="preserve">
+          <source>Is there anything you want to tell yourself? Maybe to calm down, slow down?</source>
+          <target state="new">Is there anything you want to tell yourself? Maybe to calm down, slow down?</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomPageText" translate="yes" xml:space="preserve">
+          <source>Type in something here. It will show up on your screen.</source>
+          <target state="new">Type in something here. It will show up on your screen.</target>
+        </trans-unit>
+        <trans-unit id="Resx/SpecificTopicPageText" translate="yes" xml:space="preserve">
+          <source>Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk.</source>
+          <target state="new">Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk.</target>
+        </trans-unit>
+        <trans-unit id="Resx/SpecificTopicPageDisclaimer" translate="yes" xml:space="preserve">
+          <source>LockView is not a news provider. All related news is culled from Internet.</source>
+          <target state="new">LockView is not a news provider. All related news is culled from Internet.</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reading" translate="yes" xml:space="preserve">
+          <source>Reading</source>
+          <target state="new">Reading</target>
+        </trans-unit>
+        <trans-unit id="Resx/Movie" translate="yes" xml:space="preserve">
+          <source>Movie</source>
+          <target state="new">Movie</target>
+        </trans-unit>
+        <trans-unit id="Resx/Preview" translate="yes" xml:space="preserve">
+          <source>Preview</source>
+          <target state="new">Preview</target>
+        </trans-unit>
+        <trans-unit id="Resx/Hotpicks" translate="yes" xml:space="preserve">
+          <source>HotPicks</source>
+          <target state="new">HotPicks</target>
+        </trans-unit>
+        <trans-unit id="Resx/Cooking" translate="yes" xml:space="preserve">
+          <source>Cooking</source>
+          <target state="new">Cooking</target>
+        </trans-unit>
         <trans-unit id="Resx/WhileBalanceLastsText" translate="yes" xml:space="preserve">
           <source>While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days.</source>
           <target state="new">While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days.</target>

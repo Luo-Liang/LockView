@@ -621,4 +621,34 @@
   <data name="WhileBalanceLastsTitle" xml:space="preserve">
     <value>I'M NOT A FAN OF PAID APP...</value>
   </data>
+  <data name="Cooking" xml:space="preserve">
+    <value>Cooking</value>
+  </data>
+  <data name="Hotpicks" xml:space="preserve">
+    <value>HotPicks</value>
+  </data>
+  <data name="Movie" xml:space="preserve">
+    <value>Movie</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="Reading" xml:space="preserve">
+    <value>Reading</value>
+  </data>
+  <data name="SpecificTopicPageDisclaimer" xml:space="preserve">
+    <value>LockView is not a news provider. All related news is culled from Internet.</value>
+  </data>
+  <data name="SpecificTopicPageText" xml:space="preserve">
+    <value>Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk.</value>
+  </data>
+  <data name="SpecificTopicPageTitle" xml:space="preserve">
+    <value>Tell us about a specific topic. We'll gather all news about it for you.</value>
+  </data>
+  <data name="WordOfWisdomPageText" xml:space="preserve">
+    <value>Type in something here. It will show up on your screen.</value>
+  </data>
+  <data name="WordOfWisdomPageTitle" xml:space="preserve">
+    <value>Is there anything you want to tell yourself? Maybe to calm down, slow down?</value>
+  </data>
 </root>

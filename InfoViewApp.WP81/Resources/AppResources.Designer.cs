@@ -313,6 +313,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cooking.
+        /// </summary>
+        public static string Cooking {
+            get {
+                return ResourceManager.GetString("Cooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Coral.
         /// </summary>
         public static string Coral {
@@ -610,6 +619,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HotPicks.
+        /// </summary>
+        public static string Hotpicks {
+            get {
+                return ResourceManager.GetString("Hotpicks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hot Pink.
         /// </summary>
         public static string HotPink {
@@ -898,6 +916,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Movie.
+        /// </summary>
+        public static string Movie {
+            get {
+                return ResourceManager.GetString("Movie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to mundane.
         /// </summary>
         public static string mundane {
@@ -1060,6 +1087,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        public static string Preview {
+            get {
+                return ResourceManager.GetString("Preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can customize styles by tapping the preview texts..
         /// </summary>
         public static string PreviewPageIntro {
@@ -1092,6 +1128,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Purple {
             get {
                 return ResourceManager.GetString("Purple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reading.
+        /// </summary>
+        public static string Reading {
+            get {
+                return ResourceManager.GetString("Reading", resourceCulture);
             }
         }
         
@@ -1263,6 +1308,33 @@ namespace InfoViewApp.WP81.Resources {
         public static string SpecificTopicOfYourChoiceText {
             get {
                 return ResourceManager.GetString("SpecificTopicOfYourChoiceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LockView is not a news provider. All related news is culled from Internet..
+        /// </summary>
+        public static string SpecificTopicPageDisclaimer {
+            get {
+                return ResourceManager.GetString("SpecificTopicPageDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk..
+        /// </summary>
+        public static string SpecificTopicPageText {
+            get {
+                return ResourceManager.GetString("SpecificTopicPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tell us about a specific topic. We&apos;ll gather all news about it for you..
+        /// </summary>
+        public static string SpecificTopicPageTitle {
+            get {
+                return ResourceManager.GetString("SpecificTopicPageTitle", resourceCulture);
             }
         }
         
@@ -1524,6 +1596,24 @@ namespace InfoViewApp.WP81.Resources {
         public static string WordOfWisdomPageIntro {
             get {
                 return ResourceManager.GetString("WordOfWisdomPageIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type in something here. It will show up on your screen..
+        /// </summary>
+        public static string WordOfWisdomPageText {
+            get {
+                return ResourceManager.GetString("WordOfWisdomPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is there anything you want to tell yourself? Maybe to calm down, slow down?.
+        /// </summary>
+        public static string WordOfWisdomPageTitle {
+            get {
+                return ResourceManager.GetString("WordOfWisdomPageTitle", resourceCulture);
             }
         }
         

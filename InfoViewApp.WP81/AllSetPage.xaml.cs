@@ -18,6 +18,7 @@ using System.Windows.Media;
 using InfoViewApp.WP81.Tasks;
 using Windows.ApplicationModel.Background;
 using Microsoft.Phone.Scheduler;
+using InfoViewApp.WP81.Resources;
 #if DEBUG
 using MockIAPLib;
 using Store = MockIAPLib;
@@ -45,11 +46,11 @@ namespace InfoViewApp.WP81
             computePriceRun.Text = "$" + Pricing.ComputationPricePerHour + "/hr";
             trafficPriceRun.Text = "$" + Pricing.TrafficPricePerGB + "/GB";
             sizePerRequestRun.Text = (metaData.ImageBytesPerRequest + providerMetaData.BytePerRequest) / 1024 + "KB";
-            requestPerDayRun.Text = providerMetaData.UpdatePerDay + " (Estimated)";
+            requestPerDayRun.Text = providerMetaData.UpdatePerDay + AppResources.Estimated;
             var DrainPerRequest = Pricing.CalculateDrainPerRequest(LockViewApplicationState.Instance.RequestMetadata, LockViewApplicationState.Instance.SelectedProvider.GetMetaData());
             _099PriceDaysRun.Text = Math.Ceiling(0.99 / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
             days.Text = _099PriceDaysRun.Text;
-            quotaPurchase.Content = "purchase " + days.Text + " days for $0.99";
+            quotaPurchase.Content = AppResources.Purchase + days.Text + AppResources.DaysFor099;
             remainingQuota.Text = Math.Ceiling(LockViewApplicationState.Instance.UserQuotaInDollars / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
         }
 
@@ -146,7 +147,7 @@ namespace InfoViewApp.WP81
 
         private void quotaRunOut_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("If your balance runs WHAT IF QUOTA RUNS OUT...out, you will still receive updates, but at a significantly lowered rate. We'll remind you if you're out of balance soon.", "", MessageBoxButton.OK);
+            MessageBox.Show(AppResources.NotThereYetText, AppResources.NotThereYetTitle, MessageBoxButton.OK);
         }
 
         private void SetupMockIAP()
@@ -181,7 +182,7 @@ namespace InfoViewApp.WP81
         {
             if(LockViewApplicationState.Instance.UserQuotaInDollars >= 0.05)
             {
-                MessageBox.Show("Come back later, as you still have sufficient balance. We'll remind you when it is running out.", "NOT THERE YET", MessageBoxButton.OK);
+                MessageBox.Show(AppResources.NotThereYetText, AppResources.NotThereYetTitle, MessageBoxButton.OK);
                 return;
             }
             var listing = await CurrentApp.LoadListingInformationAsync();
@@ -218,7 +219,7 @@ namespace InfoViewApp.WP81
 
         private void dontwattopayLink_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days.", "I'M NOT A FAN OF PAID APP...", MessageBoxButton.OK);
+            MessageBox.Show(AppResources.BalanceRunOutPromptText, AppResources.BalanceRunOutPromptTitle, MessageBoxButton.OK);
         }
     }
 }

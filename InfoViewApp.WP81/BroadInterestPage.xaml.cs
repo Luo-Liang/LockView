@@ -1,5 +1,6 @@
 ﻿using InfoViewApp.WP81.InterestGathering;
 using InfoViewApp.WP81.InterestGathering.NewsFeed;
+using InfoViewApp.WP81.Resources;
 using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace InfoViewApp.WP81
         {
             IEnumerable<FeedSource> collection = WP81.App.Current.Resources["definedNewsFeedSources"] as FeedSources;
             //collection = collection.Where<FeedSource>(o => o.ApplicableLanguageId == LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
-            if (SaveBtn.Content as string == "Show me!")
+            if (SaveBtn.Content as string == AppResources.ShowMe)
             {
                 InterestContent interestContent = InterestContent.DefaultInterest;
                 SaveBtn.Visibility = Visibility.Collapsed;
@@ -49,20 +50,20 @@ namespace InfoViewApp.WP81
                 }
                 previewStack.DataContext = interestContent;
                 LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(interestContent);
-                SaveBtn.Content = "Preview";
+                SaveBtn.Content = AppResources.Preview;
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;
             }
             else
             {
 
-                SaveBtn.Content = "Show me!";
+                SaveBtn.Content =AppResources.ShowMe;
                 NavigationService.Navigate(new Uri("/Preview.xaml", UriKind.Relative));
             }
         }
         private void newsTopic_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SaveBtn.Content = "Show me!";
+            SaveBtn.Content = AppResources.ShowMe;
             if ((newsSources.SelectedItem as FeedSource).GetType() != typeof(CustomizedFeedSource))
                 if ((sender as ListPicker).SelectedIndex != -1)
                     SaveBtn.Visibility = Visibility.Visible;
@@ -72,7 +73,7 @@ namespace InfoViewApp.WP81
 
         private void RssField_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SaveBtn.Content = "Show me!";
+            SaveBtn.Content = AppResources.ShowMe;
             if ((newsSources.SelectedItem as FeedSource).GetType() == typeof(CustomizedFeedSource))
             {
                 if ((sender as TextBox).Text.Length > 0)
@@ -87,7 +88,7 @@ namespace InfoViewApp.WP81
         private void newsSources_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (SaveBtn == null) return;
-            SaveBtn.Content = "Show me!";
+            SaveBtn.Content = AppResources.ShowMe;
             //TODO:: Needs translation
             SaveBtn.Visibility = Visibility.Collapsed;
         }

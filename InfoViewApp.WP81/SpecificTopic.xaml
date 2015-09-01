@@ -31,17 +31,17 @@
 
     <Grid>
         <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource  AccentBrush}" Opacity="0.8">
-            <TextBlock TextWrapping="Wrap" Text="Tell us about a specific topic. We'll gather all news about it for you." VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.SpecificTopicPageTitle}" VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
         </Grid>
-        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="Show me!" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ShowMe}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
         <TextBox KeyDown="specificTopicBox_KeyDown" TextChanged="specificTopicBox_TextChanged" x:Name="specificTopicBox" Margin="8,202,8,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="0"/>
-        <TextBlock  IsHitTestVisible="False" TextWrapping="Wrap" Text="Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk." VerticalAlignment="Top"  Margin="18,140,10,0" Foreground="{StaticResource GrayBrush}" FontFamily="Global User Interface" FontSize="20"/>
+        <TextBlock  IsHitTestVisible="False" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.SpecificTopicPageText}" VerticalAlignment="Top"  Margin="18,140,10,0" Foreground="{StaticResource GrayBrush}" FontFamily="Global User Interface" FontSize="20"/>
         <TextBlock x:Name="Notice" FontWeight="Light" Height="50" Margin="22,275,22,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{StaticResource GrayBrush}" FontSize="18.667" d:LayoutOverrides="LeftPosition, RightPosition">
-    		<Run Text="LockView is not a news provider. All related news is culled from Internet."/>
+    		<Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.SpecificTopicPageDisclaimer}"/>
     		<LineBreak/>
     		<LineBreak/>
     		<Run/>

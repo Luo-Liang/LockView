@@ -1,6 +1,7 @@
 ﻿using InfoViewApp.WP81.InterestGathering;
 using InfoViewApp.WP81.InterestGathering.LanguageLearning;
 using InfoViewApp.WP81.InterestGathering.NewsFeed;
+using InfoViewApp.WP81.Resources;
 using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
@@ -44,14 +45,14 @@ namespace InfoViewApp.WP81
 
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (SaveBtn.Content as string == "Show me!")
+            if (SaveBtn.Content as string == AppResources.ShowMe)
             {
                 SaveBtn.Visibility = Visibility.Collapsed;
                 progressRing.Visibility = Visibility.Visible;
                 InterestContent interestContent = await (languageSource.SelectedItem as IInterestGatherer).RequestContent(LockViewApplicationState.Instance.SelectedInterest);
                 previewStack.DataContext = interestContent;
                 LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(interestContent);
-                SaveBtn.Content = "Preview";
+                SaveBtn.Content = AppResources.Preview;
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;
                 LockViewApplicationState.Instance.SelectedProvider = languageSource.SelectedItem as InterestGatherer;
@@ -59,7 +60,7 @@ namespace InfoViewApp.WP81
             else
             {
 
-                SaveBtn.Content = "Show me!";
+                SaveBtn.Content = AppResources.ShowMe;
                 NavigationService.Navigate(new Uri("/Preview.xaml", UriKind.Relative));
             }
         }
