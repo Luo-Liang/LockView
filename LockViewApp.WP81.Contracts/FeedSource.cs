@@ -61,9 +61,11 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
                     Title = title,
                     Publisher = publisher,
                     ExtensionUri = new Uri(ExtendedContentUrl),
-                    ContentUri = new Uri(items[0].Id)
-                    
                 };
+                if (string.IsNullOrEmpty(items[0].Id) == false)
+                {
+                    response.ContentUri = new Uri(items[0].Id);
+                }
                 return response;
             }
             catch
