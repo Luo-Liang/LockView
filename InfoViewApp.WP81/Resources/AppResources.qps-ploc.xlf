@@ -310,8 +310,8 @@
           <target state="new">Your remaining balance lasts:</target>
         </trans-unit>
         <trans-unit id="Resx/Purchase" translate="yes" xml:space="preserve">
-          <source>refill my balance</source>
-          <target state="new">refill my balance</target>
+          <source>purchase </source>
+          <target state="new">purchase </target>
         </trans-unit>
         <trans-unit id="Resx/PriceCalc" translate="yes" xml:space="preserve">
           <source>How is my price calculated?</source>

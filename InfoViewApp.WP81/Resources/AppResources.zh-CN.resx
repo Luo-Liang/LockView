@@ -569,6 +569,7 @@
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>充值</value>
+    <comment></comment>
   </data>
   <data name="PriceCalc" xml:space="preserve">
     <value>我的费用是如何计算的?</value>

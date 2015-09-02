@@ -595,7 +595,7 @@
     <value>How is my price calculated?</value>
   </data>
   <data name="Purchase" xml:space="preserve">
-    <value>refill my balance</value>
+    <value>purchase </value>
   </data>
   <data name="RemainingBalance" xml:space="preserve">
     <value>Your remaining balance lasts:</value>

@@ -1114,7 +1114,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to refill my balance.
+        ///   Looks up a localized string similar to purchase .
         /// </summary>
         public static string Purchase {
             get {

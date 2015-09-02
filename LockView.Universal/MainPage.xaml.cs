@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +26,16 @@ namespace LockView.Universal
         public MainPage()
         {
             this.InitializeComponent();
+            this.daynightCycle.Begin();
+            this.SizeChanged += MainPage_SizeChanged;
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+            ApplicationView.PreferredLaunchViewSize = new Size(360, 640);
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size { Height = 640, Width = 360 });
+        }
+
+        private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
         }
 
         private void goToCropping_Click(object sender, RoutedEventArgs e)
