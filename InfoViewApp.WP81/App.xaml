@@ -225,14 +225,14 @@
         <newsFeed:FeedSources x:Key="definedNewsFeedSources">
             <newsFeed:FeedSource SourceName="搜狐" ApplicableLanguageId="zh-cn">
                 <newsFeed:FeedSource.FeedContentProviders>
-                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐资讯" Topic="Stories" XmlSource="http://news.sohu.com/rss/scroll.xml"/>
-                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐国内" Topic="Domestic" XmlSource="http://news.sohu.com/rss/guonei.xml"/>
-                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐国际" Topic="World" XmlSource="hhttp://news.sohu.com/rss/guoji.xml"/>
-                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐社会" Topic="Society" XmlSource="http://news.sohu.com/rss/shehui.xml"/>
-                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐体育" Topic="Sports" XmlSource="http://news.sohu.com/rss/sports.xml"/>
-                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐财经" Topic="Business" XmlSource="http://news.sohu.com/rss/business.xml"/>
-                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐科技" Topic="Technology" XmlSource="http://news.sohu.com/rss/it.xml"/>
-                    <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐文教" Topic="Student" XmlSource="http://news.sohu.com/rss/learning.xml"/>
+                    <newsFeed:NewsFeedCategory EncodingScheme="utf-8" ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐资讯" Topic="Stories" XmlSource="http://news.sohu.com/rss/scroll.xml"/>
+                    <newsFeed:NewsFeedCategory EncodingScheme="utf-8" ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐国内" Topic="Domestic" XmlSource="http://news.sohu.com/rss/guonei.xml"/>
+                    <newsFeed:NewsFeedCategory EncodingScheme="utf-8" ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐国际" Topic="World" XmlSource="hhttp://news.sohu.com/rss/guoji.xml"/>
+                    <newsFeed:NewsFeedCategory EncodingScheme="utf-8" ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐社会" Topic="Society" XmlSource="http://news.sohu.com/rss/shehui.xml"/>
+                    <newsFeed:NewsFeedCategory EncodingScheme="utf-8" ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐体育" Topic="Sports" XmlSource="http://news.sohu.com/rss/sports.xml"/>
+                    <newsFeed:NewsFeedCategory EncodingScheme="utf-8" ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐财经" Topic="Business" XmlSource="http://news.sohu.com/rss/business.xml"/>
+                    <newsFeed:NewsFeedCategory EncodingScheme="utf-8" ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐科技" Topic="Technology" XmlSource="http://news.sohu.com/rss/it.xml"/>
+                    <newsFeed:NewsFeedCategory EncodingScheme="utf-8" ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="搜狐文教" Topic="Student" XmlSource="http://news.sohu.com/rss/learning.xml"/>
                 </newsFeed:FeedSource.FeedContentProviders>
             </newsFeed:FeedSource>
             <newsFeed:FeedSource SourceName="豆瓣[warning;LockView has detected an egress request to a non-official RSS.]" ApplicableLanguageId="zh-cn">

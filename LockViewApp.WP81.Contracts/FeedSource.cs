@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Windows.Web.Http;
 using Windows.Web.Syndication;
 using System;
+using System.Text;
 
 namespace InfoViewApp.WP81.InterestGathering.NewsFeed
 {
@@ -34,7 +35,7 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
 
     public class NewsFeedCategory : InterestGatherer
     {
-        //public string SourceName { get; set; }
+        public string EncodingScheme { get; set; }
         public CategoryTopic Topic { get; set; }
         public string XmlSource { get; set; }
         public NewsFeedCategory() { }
@@ -51,8 +52,18 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
                 var feed = new SyndicationFeed();
                 feed.Load(await client.GetStringAsync(new System.Uri(XmlSource)));
                 var items = feed.Items;
-                var content = HtmlDecodingUtility.HtmlDecode(items[0].Summary.Text);
-                var title = items[0].Title.Text;
+                string content = null;
+                string title = null;
+                if (EncodingScheme != null)
+                {
+                    var contentByte = Encoding.GetEncoding("ascii").GetBytes(items[0].Summary.Text);
+                    content = Encoding.GetEncoding(EncodingScheme).GetString(contentByte, 0, contentByte.Length);
+                    var titleByte = Encoding.GetEncoding("ascii").GetBytes(items[0].Title.Text);
+                    title = Encoding.GetEncoding(EncodingScheme).GetString(titleByte, 0, titleByte.Length);
+                }
+                content= HtmlDecodingUtility.HtmlDecode(content);
+                title =HtmlDecodingUtility.HtmlDecode(title);
+                
                 var publisher = SourceName; 
                 var img=feed.ImageUri;
                 var response = new InterestContent()
@@ -68,7 +79,7 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
                 }
                 return response;
             }
-            catch
+            catch (Exception ex)
             {
                 return InterestContent.DefaultInterest;
             }

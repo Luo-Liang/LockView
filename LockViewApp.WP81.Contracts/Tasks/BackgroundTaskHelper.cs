@@ -47,12 +47,13 @@ namespace InfoViewApp.WP81.Tasks
             try
             {
                 LockScreen.SetImageUri(new Uri("ms-appx:///LockView.png", UriKind.Absolute));
-                LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName, UriKind.Absolute)));
+                LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName),UriKind.Absolute));
             }
             catch (Exception ex)
             {
             }
         }
+
 
         public static void TryUpdateTiles()
         {

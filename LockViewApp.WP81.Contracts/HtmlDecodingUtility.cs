@@ -52,9 +52,8 @@ namespace InfoViewApp.WP81.InterestGathering
                 var lastIdx = fixedString.LastIndexOf(" ");
                 if (lastIdx >= 0)
                     fixedString = fixedString.Substring(0, lastIdx);
+                fixedString = fixedString.Trim() + "...";
             }
-
-            fixedString = fixedString.Trim() + "...";
 
             return fixedString;
         }

@@ -75,7 +75,10 @@ namespace InfoViewApp.WP81
                     WB_CapturedImage = WB_CapturedImage.FromStream((await response.Content.ReadAsInputStreamAsync()).AsStreamForRead());
                     OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    NavigationService.GoBack();
+                }
                 progressRing.Visibility = Visibility.Collapsed;
                 SaveBtn.Visibility = Visibility.Visible;
             }

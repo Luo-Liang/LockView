@@ -132,6 +132,7 @@ namespace InfoViewApp.WP81
             //WriteableBitmap bitmap = new WriteableBitmap((int)width, (int)height);
             var jpegBytes = response.Image;
             var fileName = string.Format("{0}.jpeg", DateTime.Now.ToBinary());
+            if (fileName.StartsWith("-")) fileName = fileName.TrimStart('-');
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
             BackgroundTaskHelper.TrySetLockScreenImage(fileName);
             BackgroundTaskHelper.TryUpdateTiles();
