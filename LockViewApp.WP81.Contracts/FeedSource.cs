@@ -35,7 +35,6 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
 
     public class NewsFeedCategory : InterestGatherer
     {
-        public string EncodingScheme { get; set; }
         public CategoryTopic Topic { get; set; }
         public string XmlSource { get; set; }
         public NewsFeedCategory() { }
@@ -50,17 +49,11 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
             {
                 HttpClient client = Client == null ? new HttpClient() : Client;
                 var feed = new SyndicationFeed();
-                feed.Load(await client.GetStringAsync(new System.Uri(XmlSource)));
+                var responsehrss = await client.GetStringAsync(new System.Uri(XmlSource));
+                feed.Load(responsehrss);
                 var items = feed.Items;
-                string content = null;
-                string title = null;
-                if (EncodingScheme != null)
-                {
-                    var contentByte = Encoding.GetEncoding("ascii").GetBytes(items[0].Summary.Text);
-                    content = Encoding.GetEncoding(EncodingScheme).GetString(contentByte, 0, contentByte.Length);
-                    var titleByte = Encoding.GetEncoding("ascii").GetBytes(items[0].Title.Text);
-                    title = Encoding.GetEncoding(EncodingScheme).GetString(titleByte, 0, titleByte.Length);
-                }
+                string content = items[0].Summary.Text;
+                string title = items[0].Title.Text;
                 content= HtmlDecodingUtility.HtmlDecode(content);
                 title =HtmlDecodingUtility.HtmlDecode(title);
                 
