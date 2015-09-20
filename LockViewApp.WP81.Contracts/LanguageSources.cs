@@ -42,36 +42,7 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             set;
         }
 
-        public string HeadlineSelectionPath { get; set; }
 
-        public string SecondaryLineSelectionPath { get; set; }
-
-        public override async Task<InterestContent> RequestContent(InterestRequest request)
-        {
-            HttpClient client = Client == null ? new HttpClient() : Client;
-            var response = await client.GetStringAsync(new System.Uri(RequestString));
-            XmlDocument document = new XmlDocument();
-            document.LoadXml(response);
-            IXmlNode node = null;
-            IXmlNode secondaryNode = null;
-            try
-            {
-                node = document.SelectSingleNode(HeadlineSelectionPath);
-                secondaryNode = document.SelectSingleNode(SecondaryLineSelectionPath);
-                var response1 = new InterestContent()
-                {
-                    Title = HtmlDecodingUtility.HtmlDecode(node.InnerText),
-                    Content = HtmlDecodingUtility.HtmlDecode(node.InnerText),
-                    Publisher = SourceName,
-                    ContentUri = new Uri(RequestString)
-                };
-                return response1;
-            }
-            catch
-            {
-                return InterestContent.DefaultInterest;
-            }
-        }
 
         public override RequestMetaData GetMetaData()
         {
@@ -80,6 +51,11 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
                 BytePerRequest = 5 * 1024,
                 UpdatePerDay = 1
             };
+        }
+
+        public override Task<InterestContent> RequestContent(InterestRequest request)
+        {
+            throw new NotImplementedException();
         }
     }
 }

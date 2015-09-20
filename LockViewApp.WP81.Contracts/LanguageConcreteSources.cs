@@ -7,11 +7,49 @@ using System.IO;
 using System.Windows;
 using InfoViewApp.WP81;
 using Windows.Storage;
+using Windows.Web.Http;
+using Windows.Data.Xml.Dom;
+using HtmlAgilityPack;
 
 namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
 {
     public class OnlineSource : LanguageSourceBase
     {
+        public string HeadlineSelectionPath { get; set; }
+        public string SecondaryLineSelectionPath { get; set; }
+
+        public string PhoneticSelectionPath { get; set; }
+        public override async Task<InterestContent> RequestContent(InterestRequest request)
+        {
+            HttpClient client = Client == null ? new HttpClient() : Client;
+            var response = await client.GetStringAsync(new System.Uri(RequestString));
+            HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
+            document.LoadHtml(response);
+            HtmlNode node = null;
+            HtmlNode secondaryNode = null;
+            HtmlNode phoneticNode = null;
+            try
+            {
+                node = document.DocumentNode.SelectSingleNode(HeadlineSelectionPath);
+                secondaryNode = document.DocumentNode.SelectSingleNode(SecondaryLineSelectionPath);
+                if(PhoneticSelectionPath != null)
+                {
+                    phoneticNode = document.DocumentNode.SelectSingleNode(PhoneticSelectionPath);
+                }
+                var response1 = new InterestContent()
+                {
+                    Title = HtmlDecodingUtility.HtmlDecode(node.InnerText),
+                    Publisher = SourceName,
+                    ContentUri = new Uri(RequestString)
+                };
+                response1.Content = HtmlDecodingUtility.HtmlDecode(secondaryNode.InnerText) + "  " + (phoneticNode == null ? string.Empty : HtmlDecodingUtility.HtmlDecode(phoneticNode.InnerText));
+                return response1;
+            }
+            catch
+            {
+                return InterestContent.DefaultInterest;
+            }
+        }
         public OnlineSource()
         {
             //SourceName = "Bing";
