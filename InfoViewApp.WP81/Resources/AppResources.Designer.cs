@@ -286,6 +286,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Content.
+        /// </summary>
+        public static string Content {
+            get {
+                return ResourceManager.GetString("Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Content Background.
         /// </summary>
         public static string ContentBackground {
@@ -525,6 +534,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string FontCASPageIntro {
             get {
                 return ResourceManager.GetString("FontCASPageIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Footer.
+        /// </summary>
+        public static string Footer {
+            get {
+                return ResourceManager.GetString("Footer", resourceCulture);
             }
         }
         
@@ -1407,6 +1425,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string ThatsIt {
             get {
                 return ResourceManager.GetString("ThatsIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

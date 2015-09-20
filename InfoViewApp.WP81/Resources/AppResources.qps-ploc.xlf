@@ -249,6 +249,18 @@
           <source>Is there anything you want to tell yourself? Maybe to calm down, slow down?</source>
           <target state="new">Is there anything you want to tell yourself? Maybe to calm down, slow down?</target>
         </trans-unit>
+        <trans-unit id="Resx/Title" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <target state="new">Title</target>
+        </trans-unit>
+        <trans-unit id="Resx/Footer" translate="yes" xml:space="preserve">
+          <source>Footer</source>
+          <target state="new">Footer</target>
+        </trans-unit>
+        <trans-unit id="Resx/Content" translate="yes" xml:space="preserve">
+          <source>Content</source>
+          <target state="new">Content</target>
+        </trans-unit>
         <trans-unit id="Resx/WordOfWisdomPageText" translate="yes" xml:space="preserve">
           <source>Type in something here. It will show up on your screen.</source>
           <target state="new">Type in something here. It will show up on your screen.</target>

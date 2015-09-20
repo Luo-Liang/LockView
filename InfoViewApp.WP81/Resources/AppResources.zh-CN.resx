@@ -569,7 +569,6 @@
   </data>
   <data name="Purchase" xml:space="preserve">
     <value>充值</value>
-    <comment></comment>
   </data>
   <data name="PriceCalc" xml:space="preserve">
     <value>我的费用是如何计算的?</value>
@@ -642,5 +641,14 @@
   </data>
   <data name="Preview" xml:space="preserve">
     <value>预览</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="Footer" xml:space="preserve">
+    <value>脚注</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>正文</value>
   </data>
 </root>

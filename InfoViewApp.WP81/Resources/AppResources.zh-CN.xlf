@@ -1,0 +1,735 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="zh-CN" original="AppResources.resx" tool-id="MultilingualAppToolkit" product-name="InfoViewApp.WP81" product-version="1.0.0.1" build-num="0">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="3.1.1250.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="Resx">
+        <trans-unit id="Resx/ResourceFlowDirection" translate="yes" xml:space="preserve">
+          <source>LeftToRight</source>
+          <target state="translated">LeftToRight</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</note>
+          </trans-unit>
+        <trans-unit id="Resx/ResourceLanguage" translate="yes" xml:space="preserve">
+          <source>en-US</source>
+          <target state="translated">zh-CN</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</note>
+          </trans-unit>
+        <trans-unit id="Resx/ApplicationTitle" translate="yes" xml:space="preserve">
+          <source>MY APPLICATION</source>
+          <target state="new">MY APPLICATION</target>
+        </trans-unit>
+        <trans-unit id="Resx/ByeBye" translate="yes" xml:space="preserve">
+          <source>bye bye</source>
+          <target state="translated">和平凡,</target>
+        </trans-unit>
+        <trans-unit id="Resx/AppBarMenuItemText" translate="yes" xml:space="preserve">
+          <source>Menu Item</source>
+          <target state="new">Menu Item</target>
+        </trans-unit>
+        <trans-unit id="Resx/mundane" translate="yes" xml:space="preserve">
+          <source>mundane</source>
+          <target state="translated">锁屏界面</target>
+        </trans-unit>
+        <trans-unit id="Resx/JumpIn" translate="yes" xml:space="preserve">
+          <source>Jump in!</source>
+          <target state="translated">开始!</target>
+        </trans-unit>
+        <trans-unit id="Resx/Bing" translate="yes" xml:space="preserve">
+          <source>BING</source>
+          <target state="translated">必应</target>
+        </trans-unit>
+        <trans-unit id="Resx/LetsGo" translate="yes" xml:space="preserve">
+          <source>Let's go!</source>
+          <target state="translated">继续!</target>
+        </trans-unit>
+        <trans-unit id="Resx/Next" translate="yes" xml:space="preserve">
+          <source>Next</source>
+          <target state="translated">下一步</target>
+        </trans-unit>
+        <trans-unit id="Resx/UseOwnImageText" translate="yes" xml:space="preserve">
+          <source>Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library.</source>
+          <target state="translated">若您希望从您的图片库中选择一张静态图片，请选择此项</target>
+        </trans-unit>
+        <trans-unit id="Resx/UseOwnImage" translate="yes" xml:space="preserve">
+          <source>USE MY OWN IMAGE</source>
+          <target state="translated">图片库</target>
+        </trans-unit>
+        <trans-unit id="Resx/lockscreen" translate="yes" xml:space="preserve">
+          <source>lock screen</source>
+          <target state="translated">说再见</target>
+        </trans-unit>
+        <trans-unit id="Resx/ImageSourceSelection" translate="yes" xml:space="preserve">
+          <source>Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing.</source>
+          <target state="translated">您希望从哪里得到您的锁屏墙纸?您可以从图片库中选择，或者，我们将帮您从必应美图中选择一张。</target>
+        </trans-unit>
+        <trans-unit id="Resx/BingText" translate="yes" xml:space="preserve">
+          <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
+          <target state="translated">选择此项若您希望从必应每天获得一张让人耳目一新的美图。若您选择此项，您同意该图片的唯一用途是墙纸。</target>
+        </trans-unit>
+        <trans-unit id="Resx/ImageCropping" translate="yes" xml:space="preserve">
+          <source>Swipe around to pick a best view. When done, click 'That's it!'</source>
+          <target state="translated">四处看看,选择最棒的景色!完成后，请按"棒极了!"</target>
+        </trans-unit>
+        <trans-unit id="Resx/ThatsIt" translate="yes" xml:space="preserve">
+          <source>That's it!</source>
+          <target state="translated">棒极了!</target>
+        </trans-unit>
+        <trans-unit id="Resx/Interest" translate="yes" xml:space="preserve">
+          <source>What would you like to read in your lock screen? Select a category from below.</source>
+          <target state="translated">您希望显示在锁屏界面上哪些内容?请从以下选择一项。</target>
+        </trans-unit>
+        <trans-unit id="Resx/GenericNewsTopicText" translate="yes" xml:space="preserve">
+          <source>Love News, Sports or Finance? We got you covered. Choose this option if you would like to see a broader news topic.</source>
+          <target state="translated">喜欢资讯,体育或者财经?一切都包在我们身上。若您希望看到某类新闻，请选择此项。</target>
+        </trans-unit>
+        <trans-unit id="Resx/GenericNewsTopic" translate="yes" xml:space="preserve">
+          <source>GENERIC NEWS TOPIC</source>
+          <target state="translated">新闻类</target>
+        </trans-unit>
+        <trans-unit id="Resx/LanguageLearningText" translate="yes" xml:space="preserve">
+          <source>Transform your phone into a best language learning tool. Learn a new word from a language of your choice right from the lock screen!</source>
+          <target state="translated">将您的手机变为学习一门外语的最佳利器。在您的锁屏街面上显示一个外文单词。</target>
+        </trans-unit>
+        <trans-unit id="Resx/LanguageLearning" translate="yes" xml:space="preserve">
+          <source>LANGUAGE LEARNING</source>
+          <target state="translated">语言学习</target>
+        </trans-unit>
+        <trans-unit id="Resx/SpecificTopicOfYourChoiceText" translate="yes" xml:space="preserve">
+          <source>This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news.</source>
+          <target state="translated">有一个特殊的爱好?选择此项若您希望收到某个特定话题的更新。例如，如果您对微软有兴趣，只需键入微软，我们将把有关该话题的报道呈现给您。</target>
+        </trans-unit>
+        <trans-unit id="Resx/SpecificTopicOfYourChoice" translate="yes" xml:space="preserve">
+          <source>SPECIFIC TOPIC OF YOUR CHOICE</source>
+          <target state="translated">特定话题</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomText" translate="yes" xml:space="preserve">
+          <source>Leave blank, or use a sentence that you've been telling yourself.</source>
+          <target state="translated">留白或给自己一句激励的话。</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdom" translate="yes" xml:space="preserve">
+          <source>WORD OF WISDOM</source>
+          <target state="translated">箴言</target>
+        </trans-unit>
+        <trans-unit id="Resx/Language" translate="yes" xml:space="preserve">
+          <source>Language</source>
+          <target state="translated">语言</target>
+        </trans-unit>
+        <trans-unit id="Resx/LanguageSetting" translate="yes" xml:space="preserve">
+          <source>What do you want to learn today?</source>
+          <target state="translated">今天您想学些什么?</target>
+        </trans-unit>
+        <trans-unit id="Resx/SuggestedSource" translate="yes" xml:space="preserve">
+          <source>Suggested Source</source>
+          <target state="translated">推荐的源</target>
+        </trans-unit>
+        <trans-unit id="Resx/TranslationLanguage" translate="yes" xml:space="preserve">
+          <source>Translation Language</source>
+          <target state="translated">翻译语言</target>
+        </trans-unit>
+        <trans-unit id="Resx/Stories" translate="yes" xml:space="preserve">
+          <source>Stories</source>
+          <target state="translated">资讯</target>
+        </trans-unit>
+        <trans-unit id="Resx/Sports" translate="yes" xml:space="preserve">
+          <source>Sports</source>
+          <target state="translated">体育</target>
+        </trans-unit>
+        <trans-unit id="Resx/Society" translate="yes" xml:space="preserve">
+          <source>Society</source>
+          <target state="translated">社会</target>
+        </trans-unit>
+        <trans-unit id="Resx/Politics" translate="yes" xml:space="preserve">
+          <source>Politics</source>
+          <target state="translated">政要</target>
+        </trans-unit>
+        <trans-unit id="Resx/Military" translate="yes" xml:space="preserve">
+          <source>Military</source>
+          <target state="translated">军事</target>
+        </trans-unit>
+        <trans-unit id="Resx/Living" translate="yes" xml:space="preserve">
+          <source>Living</source>
+          <target state="translated">生活</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">``</note>
+          </trans-unit>
+        <trans-unit id="Resx/History" translate="yes" xml:space="preserve">
+          <source>History</source>
+          <target state="translated">历史</target>
+        </trans-unit>
+        <trans-unit id="Resx/Health" translate="yes" xml:space="preserve">
+          <source>Health</source>
+          <target state="translated">健康</target>
+        </trans-unit>
+        <trans-unit id="Resx/Finance" translate="yes" xml:space="preserve">
+          <source>Finance</source>
+          <target state="translated">财经</target>
+        </trans-unit>
+        <trans-unit id="Resx/Entertainment" translate="yes" xml:space="preserve">
+          <source>Entertainment</source>
+          <target state="translated">娱乐</target>
+        </trans-unit>
+        <trans-unit id="Resx/Domestic" translate="yes" xml:space="preserve">
+          <source>Domestic</source>
+          <target state="translated">国内</target>
+        </trans-unit>
+        <trans-unit id="Resx/Customized" translate="yes" xml:space="preserve">
+          <source>Customized</source>
+          <target state="translated">自定义</target>
+        </trans-unit>
+        <trans-unit id="Resx/Business" translate="yes" xml:space="preserve">
+          <source>Business</source>
+          <target state="translated">商务</target>
+        </trans-unit>
+        <trans-unit id="Resx/World" translate="yes" xml:space="preserve">
+          <source>World</source>
+          <target state="translated">国际</target>
+        </trans-unit>
+        <trans-unit id="Resx/Video" translate="yes" xml:space="preserve">
+          <source>Video</source>
+          <target state="translated">视频</target>
+        </trans-unit>
+        <trans-unit id="Resx/Travel" translate="yes" xml:space="preserve">
+          <source>Travel</source>
+          <target state="translated">旅游</target>
+        </trans-unit>
+        <trans-unit id="Resx/Technology" translate="yes" xml:space="preserve">
+          <source>Technology</source>
+          <target state="translated">科技</target>
+        </trans-unit>
+        <trans-unit id="Resx/Student" translate="yes" xml:space="preserve">
+          <source>Student</source>
+          <target state="translated">教育</target>
+        </trans-unit>
+        <trans-unit id="Resx/NewsSource" translate="yes" xml:space="preserve">
+          <source>News Source</source>
+          <target state="translated">新闻源</target>
+        </trans-unit>
+        <trans-unit id="Resx/PreviewPageIntro" translate="yes" xml:space="preserve">
+          <source>You can customize styles by tapping the preview texts.</source>
+          <target state="translated">按下相应的部分以更改样式。</target>
+        </trans-unit>
+        <trans-unit id="Resx/BroadInterestTopicPageIntro" translate="yes" xml:space="preserve">
+          <source>Pick a news source, then select a category to continue.</source>
+          <target state="translated">挑选一个新闻源。选择一个话题以继续。</target>
+        </trans-unit>
+        <trans-unit id="Resx/FontCASPageIntro" translate="yes" xml:space="preserve">
+          <source>Customize the portion of the text you chose with new color and size.</source>
+          <target state="translated">自定义你选择的文字样式。</target>
+        </trans-unit>
+        <trans-unit id="Resx/ContentForeground" translate="yes" xml:space="preserve">
+          <source>Content Foreground</source>
+          <target state="translated">内容前景色</target>
+        </trans-unit>
+        <trans-unit id="Resx/ContentFontSize" translate="yes" xml:space="preserve">
+          <source>Content Font Size</source>
+          <target state="translated">内容字体大小</target>
+        </trans-unit>
+        <trans-unit id="Resx/ContentBackground" translate="yes" xml:space="preserve">
+          <source>Content Background</source>
+          <target state="translated">内容背景色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Great" translate="yes" xml:space="preserve">
+          <source>Great!</source>
+          <target state="translated">太棒了!</target>
+        </trans-unit>
+        <trans-unit id="Resx/ShowMe" translate="yes" xml:space="preserve">
+          <source>Show Me!</source>
+          <target state="translated">向我显示!</target>
+        </trans-unit>
+        <trans-unit id="Resx/TitleForeground" translate="yes" xml:space="preserve">
+          <source>Title Foreground</source>
+          <target state="translated">标题前景色</target>
+        </trans-unit>
+        <trans-unit id="Resx/TitleFontSize" translate="yes" xml:space="preserve">
+          <source>Title Font Size</source>
+          <target state="translated">标题字体大小</target>
+        </trans-unit>
+        <trans-unit id="Resx/TitleBackground" translate="yes" xml:space="preserve">
+          <source>Title Background</source>
+          <target state="translated">标题背景</target>
+        </trans-unit>
+        <trans-unit id="Resx/Topic" translate="yes" xml:space="preserve">
+          <source>Topic</source>
+          <target state="translated">主题</target>
+        </trans-unit>
+        <trans-unit id="Resx/Type" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <target state="translated">类型</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomPageIntro" translate="yes" xml:space="preserve">
+          <source>Is there anything you want to tell yourself? Maybe to calm down, slow down?</source>
+          <target state="translated">有什么想要告诉自己的?心如止水?减慢生活节奏?</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomPageGuide" translate="yes" xml:space="preserve">
+          <source>Type in something here. It will show up on your screen.</source>
+          <target state="translated">在此处键入内容。它将显示在屏幕上。</target>
+        </trans-unit>
+        <trans-unit id="Resx/Transparent" translate="yes" xml:space="preserve">
+          <source>Transparent</source>
+          <target state="translated">透明</target>
+        </trans-unit>
+        <trans-unit id="Resx/Yellow" translate="yes" xml:space="preserve">
+          <source>Yellow</source>
+          <target state="translated">黄色</target>
+        </trans-unit>
+        <trans-unit id="Resx/White" translate="yes" xml:space="preserve">
+          <source>White</source>
+          <target state="translated">白色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Violet" translate="yes" xml:space="preserve">
+          <source>Violet</source>
+          <target state="translated">紫罗兰</target>
+        </trans-unit>
+        <trans-unit id="Resx/Tomato" translate="yes" xml:space="preserve">
+          <source>Tomato</source>
+          <target state="translated">番茄色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Teal" translate="yes" xml:space="preserve">
+          <source>Teal</source>
+          <target state="translated">青色</target>
+        </trans-unit>
+        <trans-unit id="Resx/SteelBlue" translate="yes" xml:space="preserve">
+          <source>Steel Blue</source>
+          <target state="translated">钢蓝色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Snow" translate="yes" xml:space="preserve">
+          <source>Snow</source>
+          <target state="translated">雪白</target>
+        </trans-unit>
+        <trans-unit id="Resx/SlateBlue" translate="yes" xml:space="preserve">
+          <source>Slate Blue</source>
+          <target state="translated">石板蓝</target>
+        </trans-unit>
+        <trans-unit id="Resx/Silver" translate="yes" xml:space="preserve">
+          <source>Silver</source>
+          <target state="translated">银色</target>
+        </trans-unit>
+        <trans-unit id="Resx/SeaShell" translate="yes" xml:space="preserve">
+          <source>Sea Shell</source>
+          <target state="translated">贝壳白</target>
+        </trans-unit>
+        <trans-unit id="Resx/SandyBrown" translate="yes" xml:space="preserve">
+          <source>Sandy Brown</source>
+          <target state="translated">浅褐色</target>
+        </trans-unit>
+        <trans-unit id="Resx/SaddleBrown" translate="yes" xml:space="preserve">
+          <source>Saddle Brown</source>
+          <target state="translated">鞍具褐色</target>
+        </trans-unit>
+        <trans-unit id="Resx/RosyBrown" translate="yes" xml:space="preserve">
+          <source>Rosy Brown</source>
+          <target state="translated">玫瑰褐色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Purple" translate="yes" xml:space="preserve">
+          <source>Purple</source>
+          <target state="translated">紫色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Plum" translate="yes" xml:space="preserve">
+          <source>Plum</source>
+          <target state="translated">李子</target>
+        </trans-unit>
+        <trans-unit id="Resx/Peru" translate="yes" xml:space="preserve">
+          <source>Peru</source>
+          <target state="translated">秘鲁</target>
+        </trans-unit>
+        <trans-unit id="Resx/PapayaWhip" translate="yes" xml:space="preserve">
+          <source>Papaya Whip</source>
+          <target state="translated">粉木瓜橙</target>
+        </trans-unit>
+        <trans-unit id="Resx/PaleTurquoise" translate="yes" xml:space="preserve">
+          <source>Pale Turquoise</source>
+          <target state="translated">淡青绿色</target>
+        </trans-unit>
+        <trans-unit id="Resx/PaleGoldenrod" translate="yes" xml:space="preserve">
+          <source>Pale Goldenrod</source>
+          <target state="translated">浅金黄色</target>
+        </trans-unit>
+        <trans-unit id="Resx/OrangeRed" translate="yes" xml:space="preserve">
+          <source>Orange Red</source>
+          <target state="translated">桔红色</target>
+        </trans-unit>
+        <trans-unit id="Resx/OliveDrab" translate="yes" xml:space="preserve">
+          <source>Olive Drab</source>
+          <target state="translated">暗橄榄色</target>
+        </trans-unit>
+        <trans-unit id="Resx/OldLace" translate="yes" xml:space="preserve">
+          <source>Old Lace</source>
+          <target state="translated">老花色</target>
+        </trans-unit>
+        <trans-unit id="Resx/NavajoWhite" translate="yes" xml:space="preserve">
+          <source>Navajo White</source>
+          <target state="translated">印地安黄</target>
+        </trans-unit>
+        <trans-unit id="Resx/MistyRose" translate="yes" xml:space="preserve">
+          <source>Misty Rose</source>
+          <target state="translated">粉红玫瑰</target>
+        </trans-unit>
+        <trans-unit id="Resx/MidnightBlue" translate="yes" xml:space="preserve">
+          <source>Midnight Blue</source>
+          <target state="translated">中灰蓝色</target>
+        </trans-unit>
+        <trans-unit id="Resx/MediumTurquoise" translate="yes" xml:space="preserve">
+          <source>Medium Turquoise</source>
+          <target state="translated">浅青绿色</target>
+        </trans-unit>
+        <trans-unit id="Resx/MediumSlateBlue" translate="yes" xml:space="preserve">
+          <source>Medium Slate Blue</source>
+          <target state="translated">淡灰蓝色</target>
+        </trans-unit>
+        <trans-unit id="Resx/MediumPurple" translate="yes" xml:space="preserve">
+          <source>Medium Purple</source>
+          <target state="translated">淡紫色</target>
+        </trans-unit>
+        <trans-unit id="Resx/MediumBlue" translate="yes" xml:space="preserve">
+          <source>Medium Blue</source>
+          <target state="translated">淡蓝色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Maroon" translate="yes" xml:space="preserve">
+          <source>Maroon</source>
+          <target state="translated">褐紫红色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Linen" translate="yes" xml:space="preserve">
+          <source>Linen</source>
+          <target state="translated">亚麻布色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Lime" translate="yes" xml:space="preserve">
+          <source>Lime</source>
+          <target state="translated">酸橙色</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightSteelBlue" translate="yes" xml:space="preserve">
+          <source>Light Steel Blue</source>
+          <target state="translated">浅钢蓝色</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightSkyBlue" translate="yes" xml:space="preserve">
+          <source>Light Sky Blue</source>
+          <target state="translated">浅天蓝色</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightSalmon" translate="yes" xml:space="preserve">
+          <source>Light Salmon</source>
+          <target state="translated">浅橙红</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightGreen" translate="yes" xml:space="preserve">
+          <source>Light Green</source>
+          <target state="translated">浅绿色</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightGoldenrodYellow" translate="yes" xml:space="preserve">
+          <source>Light Goldenrod Yellow</source>
+          <target state="translated">浅金黄</target>
+        </trans-unit>
+        <trans-unit id="Resx/LightCoral" translate="yes" xml:space="preserve">
+          <source>Light Coral</source>
+          <target state="translated">浅珊瑚红</target>
+        </trans-unit>
+        <trans-unit id="Resx/LemonChiffon" translate="yes" xml:space="preserve">
+          <source>Lemon Chiffon</source>
+          <target state="translated">柠檬色</target>
+        </trans-unit>
+        <trans-unit id="Resx/LavenderBlush" translate="yes" xml:space="preserve">
+          <source>Lavender Blush</source>
+          <target state="translated">淡紫红色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Khaki" translate="yes" xml:space="preserve">
+          <source>Khaki</source>
+          <target state="translated">黄褐色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Indigo" translate="yes" xml:space="preserve">
+          <source>Indigo</source>
+          <target state="translated">靛蓝色</target>
+        </trans-unit>
+        <trans-unit id="Resx/HotPink" translate="yes" xml:space="preserve">
+          <source>Hot Pink</source>
+          <target state="translated">桃红色</target>
+        </trans-unit>
+        <trans-unit id="Resx/GreenYellow" translate="yes" xml:space="preserve">
+          <source>Green Yellow</source>
+          <target state="translated">绿黄色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Gray" translate="yes" xml:space="preserve">
+          <source>Gray</source>
+          <target state="translated">灰度</target>
+        </trans-unit>
+        <trans-unit id="Resx/Gold" translate="yes" xml:space="preserve">
+          <source>Gold</source>
+          <target state="translated">金色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Gainsboro" translate="yes" xml:space="preserve">
+          <source>Gainsboro</source>
+          <target state="translated">亮灰色</target>
+        </trans-unit>
+        <trans-unit id="Resx/ForestGreen" translate="yes" xml:space="preserve">
+          <source>Forest Green</source>
+          <target state="translated">森林绿</target>
+        </trans-unit>
+        <trans-unit id="Resx/Firebrick" translate="yes" xml:space="preserve">
+          <source>Firebrick</source>
+          <target state="translated">砖红色</target>
+        </trans-unit>
+        <trans-unit id="Resx/DimGray" translate="yes" xml:space="preserve">
+          <source>Dim Gray</source>
+          <target state="translated">暗灰色</target>
+        </trans-unit>
+        <trans-unit id="Resx/DeepPink" translate="yes" xml:space="preserve">
+          <source>Deep Pink</source>
+          <target state="translated">深粉色</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkTurquoise" translate="yes" xml:space="preserve">
+          <source>Dark Turquoise</source>
+          <target state="translated">深青绿色</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkSlateBlue" translate="yes" xml:space="preserve">
+          <source>Dark Slate Blue</source>
+          <target state="translated">深石板蓝</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkSalmon" translate="yes" xml:space="preserve">
+          <source>Dark Salmon</source>
+          <target state="translated">深橙红</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkOrchid" translate="yes" xml:space="preserve">
+          <source>Dark Orchid</source>
+          <target state="translated">暗兰花紫</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkOliveGreen" translate="yes" xml:space="preserve">
+          <source>Dark Olive Green</source>
+          <target state="translated">深橄榄绿</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkKhaki" translate="yes" xml:space="preserve">
+          <source>Dark Khaki</source>
+          <target state="translated">深褐色</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkGray" translate="yes" xml:space="preserve">
+          <source>Dark Gray</source>
+          <target state="translated">深灰色</target>
+        </trans-unit>
+        <trans-unit id="Resx/DarkCyan" translate="yes" xml:space="preserve">
+          <source>Dark Cyan</source>
+          <target state="translated">深青色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Cyan" translate="yes" xml:space="preserve">
+          <source>Cyan</source>
+          <target state="translated">青色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Cornsilk" translate="yes" xml:space="preserve">
+          <source>Cornsilk</source>
+          <target state="translated">玉米黄</target>
+        </trans-unit>
+        <trans-unit id="Resx/Coral" translate="yes" xml:space="preserve">
+          <source>Coral</source>
+          <target state="translated">珊瑚红</target>
+        </trans-unit>
+        <trans-unit id="Resx/Chartreuse" translate="yes" xml:space="preserve">
+          <source>Chartreuse</source>
+          <target state="translated">浅黄绿色</target>
+        </trans-unit>
+        <trans-unit id="Resx/BurlyWood" translate="yes" xml:space="preserve">
+          <source>Burly Wood</source>
+          <target state="translated">原木色</target>
+        </trans-unit>
+        <trans-unit id="Resx/BlueViolet" translate="yes" xml:space="preserve">
+          <source>Blue Violet</source>
+          <target state="translated">蓝紫色</target>
+        </trans-unit>
+        <trans-unit id="Resx/BlanchedAlmond" translate="yes" xml:space="preserve">
+          <source>Blanched Almond</source>
+          <target state="translated">杏仁白</target>
+        </trans-unit>
+        <trans-unit id="Resx/Bisque" translate="yes" xml:space="preserve">
+          <source>Bisque</source>
+          <target state="translated">乳黄色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Azure" translate="yes" xml:space="preserve">
+          <source>Azure</source>
+          <target state="translated">天蓝色</target>
+        </trans-unit>
+        <trans-unit id="Resx/Aqua" translate="yes" xml:space="preserve">
+          <source>Aqua</source>
+          <target state="translated">水绿色</target>
+        </trans-unit>
+        <trans-unit id="Resx/WPRestrictions" translate="yes" xml:space="preserve">
+          <source>Windows Phone requires us to obtain your consent before we can change your lock screen.</source>
+          <target state="translated">Windows Phone要求我们在更改您的锁屏壁纸前征得您的同意。</target>
+        </trans-unit>
+        <trans-unit id="Resx/WhileBalanceLastsTitle" translate="yes" xml:space="preserve">
+          <source>I'M NOT A FAN OF PAID APP...</source>
+          <target state="translated">我不喜欢收费软件...</target>
+        </trans-unit>
+        <trans-unit id="Resx/SpecificTopicPageTitle" translate="yes" xml:space="preserve">
+          <source>Tell us about a specific topic. We'll gather all news about it for you.</source>
+          <target state="translated">告诉我们您的特殊爱好。我们将收集有关其一切消息。</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomPageText" translate="yes" xml:space="preserve">
+          <source>Type in something here. It will show up on your screen.</source>
+          <target state="translated">在此键入任何要显示在您的锁屏界面上的内容。</target>
+        </trans-unit>
+        <trans-unit id="Resx/Title" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <target state="translated">标题</target>
+        </trans-unit>
+        <trans-unit id="Resx/Footer" translate="yes" xml:space="preserve">
+          <source>Footer</source>
+          <target state="translated">脚注</target>
+        </trans-unit>
+        <trans-unit id="Resx/Content" translate="yes" xml:space="preserve">
+          <source>Content</source>
+          <target state="translated">正文</target>
+        </trans-unit>
+        <trans-unit id="Resx/WordOfWisdomPageTitle" translate="yes" xml:space="preserve">
+          <source>Is there anything you want to tell yourself? Maybe to calm down, slow down?</source>
+          <target state="new">Is there anything you want to tell yourself? Maybe to calm down, slow down?</target>
+        </trans-unit>
+        <trans-unit id="Resx/SpecificTopicPageText" translate="yes" xml:space="preserve">
+          <source>Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk.</source>
+          <target state="translated">键入一个特殊话题，例如，微软，华盛顿大学，谷歌，奥巴马或海鹰队。</target>
+        </trans-unit>
+        <trans-unit id="Resx/SpecificTopicPageDisclaimer" translate="yes" xml:space="preserve">
+          <source>LockView is not a news provider. All related news is culled from Internet.</source>
+          <target state="translated">锁屏视野并不提供任何内容。所有的新闻均从互联网获取。</target>
+        </trans-unit>
+        <trans-unit id="Resx/Reading" translate="yes" xml:space="preserve">
+          <source>Reading</source>
+          <target state="translated">阅读</target>
+        </trans-unit>
+        <trans-unit id="Resx/Movie" translate="yes" xml:space="preserve">
+          <source>Movie</source>
+          <target state="translated">电影</target>
+        </trans-unit>
+        <trans-unit id="Resx/Hotpicks" translate="yes" xml:space="preserve">
+          <source>HotPicks</source>
+          <target state="translated">热门精选</target>
+        </trans-unit>
+        <trans-unit id="Resx/Cooking" translate="yes" xml:space="preserve">
+          <source>Cooking</source>
+          <target state="translated">烹饪</target>
+        </trans-unit>
+        <trans-unit id="Resx/WhileBalanceLastsText" translate="yes" xml:space="preserve">
+          <source>While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days.</source>
+          <target state="translated">当您每次安装此应用时，您将获取一定数量的余额。您尚有余额的时候，您可以使用所有的功能。为了鼓励大家购买该应用以支持我们的开发工作，当您的余额耗尽时，您的更新频率将会明显降低。此时，您可以选择重新安装此应用。</target>
+        </trans-unit>
+        <trans-unit id="Resx/TrafficPriceExplained" translate="yes" xml:space="preserve">
+          <source>This is what our service provider charges us for network traffic. If our service provider lowers their traffic price, we'll lower ours too!</source>
+          <target state="translated">我们的供应商以此价格收取我们的流量费用。如果我们的供应商降低价格，我们也会降低价格。</target>
+        </trans-unit>
+        <trans-unit id="Resx/TrafficPrice" translate="yes" xml:space="preserve">
+          <source>Traffic Price:</source>
+          <target state="translated">流量价格:</target>
+        </trans-unit>
+        <trans-unit id="Resx/SizePerRequestExplained" translate="yes" xml:space="preserve">
+          <source>This is based on the size of the cropped image you just selected, plus some metadata. This may vary a bit if you use automatic image update.</source>
+          <target state="translated">该计算基于您选择的图片大小，再加上额外的一些元数据。如果您选择必应美图，则您可以以非常小的流量获取更新。该计算仅为估计，并且可能随着更新不同而略有波动。</target>
+        </trans-unit>
+        <trans-unit id="Resx/SizePerRequest" translate="yes" xml:space="preserve">
+          <source>Size per request:</source>
+          <target state="translated">每次更新的大小：</target>
+        </trans-unit>
+        <trans-unit id="Resx/RemainingBalanceText" translate="yes" xml:space="preserve">
+          <source>LockView uses a web service to compose your image. LockView maintains this service by kindly ask you to purchase your quota for $</source>
+          <target state="translated">锁屏视野使用网络服务来绘制您的图片。锁屏视野需要您的支持才能维持运作。因此我们希望您购买您的余额，以$</target>
+        </trans-unit>
+        <trans-unit id="Resx/RemainingBalance" translate="yes" xml:space="preserve">
+          <source>Your remaining balance lasts:</source>
+          <target state="translated">您的余额可以支持:</target>
+        </trans-unit>
+        <trans-unit id="Resx/Purchase" translate="yes" xml:space="preserve">
+          <source>purchase </source>
+          <target state="translated">充值</target>
+        </trans-unit>
+        <trans-unit id="Resx/PriceCalc" translate="yes" xml:space="preserve">
+          <source>How is my price calculated?</source>
+          <target state="translated">我的费用是如何计算的?</target>
+        </trans-unit>
+        <trans-unit id="Resx/NotThereYetTitle" translate="yes" xml:space="preserve">
+          <source>NOT THERE YET</source>
+          <target state="translated">绰绰有余</target>
+        </trans-unit>
+        <trans-unit id="Resx/PinShortcutButton" translate="yes" xml:space="preserve">
+          <source>pin shortcut</source>
+          <target state="translated">固定到开始屏幕</target>
+        </trans-unit>
+        <trans-unit id="Resx/NotThereYetText" translate="yes" xml:space="preserve">
+          <source>Come back later, as you still have sufficient balance. We'll remind you when it is running out.</source>
+          <target state="translated">稍等，您的余额足以支持很久的使用。我们会在您的余额耗尽时提示您。</target>
+        </trans-unit>
+        <trans-unit id="Resx/Estimated" translate="yes" xml:space="preserve">
+          <source>(Estimated)</source>
+          <target state="translated">(估计)</target>
+        </trans-unit>
+        <trans-unit id="Resx/DontWantToPay" translate="yes" xml:space="preserve">
+          <source>What if I don't want to pay?</source>
+          <target state="translated">我不想付费该怎么办?</target>
+        </trans-unit>
+        <trans-unit id="Resx/DaysFor099" translate="yes" xml:space="preserve">
+          <source> days for $0.99</source>
+          <target state="translated">天/每0.99美元。</target>
+        </trans-unit>
+        <trans-unit id="Resx/Days" translate="yes" xml:space="preserve">
+          <source> days</source>
+          <target state="translated"> 天</target>
+        </trans-unit>
+        <trans-unit id="Resx/ComputePriceExplained" translate="yes" xml:space="preserve">
+          <source>This is what our service provider charges us for computing. If our service provider lowers their traffic price, we'll lower ours too!</source>
+          <target state="translated">这是我们的运营商向我们收取的计算费用。如果运营商降低他们的价格，我们也将随之降价。</target>
+        </trans-unit>
+        <trans-unit id="Resx/ComputePrice" translate="yes" xml:space="preserve">
+          <source>Compute Price:</source>
+          <target state="translated">计算费用:</target>
+        </trans-unit>
+        <trans-unit id="Resx/CalculatedDaysPer099Lasts" translate="yes" xml:space="preserve">
+          <source>Calculated days per $0.99 lasts:</source>
+          <target state="translated">预计每0.99美元可以使用:</target>
+        </trans-unit>
+        <trans-unit id="Resx/CalcPriceCaption" translate="yes" xml:space="preserve">
+          <source>DETERMINING YOUR PRICE</source>
+          <target state="translated">计算您的价格</target>
+        </trans-unit>
+        <trans-unit id="Resx/BalanceRunOutPromptTitle" translate="yes" xml:space="preserve">
+          <source>WHAT IF QUOTA RUNS OUT...</source>
+          <target state="translated">若您的余额耗完...</target>
+        </trans-unit>
+        <trans-unit id="Resx/BalanceRunOutPromptText" translate="yes" xml:space="preserve">
+          <source>If your balance runs out, you will still receive updates, but at a significantly lowered rate. We'll remind you if you're out of balance soon.</source>
+          <target state="translated">如果您的余额耗完，您仍然可以正常使用该应用。只不过您的更新频率将降低，通常一天只能获取一次更新。当您的余额耗完时，我们将提醒您。</target>
+        </trans-unit>
+        <trans-unit id="Resx/BalanceRunOut" translate="yes" xml:space="preserve">
+          <source>What happens if my balance runs out?</source>
+          <target state="translated">余额耗完时会发生什么?</target>
+        </trans-unit>
+        <trans-unit id="Resx/AverageRequestPerDayExplained" translate="yes" xml:space="preserve">
+          <source>This is on average the number of updates you will receive per day.</source>
+          <target state="translated">每天，您大约收到如此数目的更新。</target>
+        </trans-unit>
+        <trans-unit id="Resx/AverageRequestPerDay" translate="yes" xml:space="preserve">
+          <source>Average updates/day:</source>
+          <target state="translated">更新次数/天:</target>
+        </trans-unit>
+        <trans-unit id="Resx/AllDone" translate="yes" xml:space="preserve">
+          <source>All Done</source>
+          <target state="translated">完成设置</target>
+        </trans-unit>
+        <trans-unit id="Resx/SetAsLockScreen" translate="yes" xml:space="preserve">
+          <source>Set as lock screen provider and allow background update</source>
+          <target state="translated">将锁屏视野设置为您设备的锁屏提供应用。</target>
+        </trans-unit>
+        <trans-unit id="Resx/SayYes" translate="yes" xml:space="preserve">
+          <source>say yes</source>
+          <target state="translated">同意</target>
+        </trans-unit>
+        <trans-unit id="Resx/PinShortcutDetails" translate="yes" xml:space="preserve">
+          <source>You can also pin a short cut tile on the start screen so you can jump to the story real quick.</source>
+          <target state="translated">您还可以将当前显示的更新固定到开始菜单上，这样您就可以快速转到该更新的详情。</target>
+        </trans-unit>
+        <trans-unit id="Resx/PinShortcut" translate="yes" xml:space="preserve">
+          <source>Pin a shortcut to the story</source>
+          <target state="translated">固定到开始屏幕</target>
+        </trans-unit>
+        <trans-unit id="Resx/AllSetPageIntro" translate="yes" xml:space="preserve">
+          <source>Here're the final tweaks...</source>
+          <target state="translated">还需处理一些事情...</target>
+        </trans-unit>
+        <trans-unit id="Resx/Preview" translate="yes" xml:space="preserve">
+          <source>Preview</source>
+          <target state="translated">预览</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

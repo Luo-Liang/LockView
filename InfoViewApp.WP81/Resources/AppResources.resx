@@ -651,4 +651,13 @@
   <data name="WordOfWisdomPageTitle" xml:space="preserve">
     <value>Is there anything you want to tell yourself? Maybe to calm down, slow down?</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Footer" xml:space="preserve">
+    <value>Footer</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
 </root>

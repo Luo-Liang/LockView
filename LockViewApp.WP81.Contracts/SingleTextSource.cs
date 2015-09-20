@@ -9,12 +9,14 @@ namespace LockViewApp.WP81.Contracts
 {
     public class SingleTextSource : InfoViewApp.WP81.InterestGathering.InterestGatherer
     {
-        public string MyCustomizedText { get; set; }
+        public string FirstLine { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string SecondLine { get; set; } = "";
         public override RequestMetaData GetMetaData()
         {
             return new RequestMetaData()
             {
-                BytePerRequest = MyCustomizedText.Length,
+                BytePerRequest = FirstLine.Length + Title.Length + SecondLine.Length,
                 UpdatePerDay = 1,
                 TypicalComputationInSec = 5
             };
@@ -24,16 +26,14 @@ namespace LockViewApp.WP81.Contracts
         {
             return new InterestContent()
             {
-                Content = "",
-                Title = MyCustomizedText,
-                Publisher = SourceName
+                Content = FirstLine,
+                Title = Title,
+                Publisher = SecondLine
             };
         }
 
         public SingleTextSource()
         {
-            SourceName = "Word of Wisdom";
-            MyCustomizedText = "";
         }
     }
 }

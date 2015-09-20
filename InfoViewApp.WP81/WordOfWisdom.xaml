@@ -11,25 +11,52 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" >
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="768"/>
         </Grid.RowDefinitions>
+        <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" VerticalAlignment="Top" Height="105">
+            <TextBlock IsHitTestVisible="False" TextWrapping="Wrap" Text="{Binding LocalizedResources.WordOfWisdomPageTitle, Source={StaticResource ls}}" FontSize="24" Foreground="White" Margin="20,21,0,20" d:LayoutOverrides="LeftPosition, RightPosition"/>
+        </Grid>
+        <TextBlock  IsHitTestVisible="False" TextWrapping="Wrap" Text="{Binding LocalizedResources.WordOfWisdomPageText, Source={StaticResource ls}}" VerticalAlignment="Top"  Margin="18,140,10,0" Foreground="{StaticResource GrayBrush}" FontFamily="Global User Interface" FontSize="20"/>
+        <TextBox Text="{Binding Title,Mode=TwoWay}" x:Name="wowContent" Margin="6,239,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="0" FontFamily="Portable User Interface"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding LocalizedResources.Title,Source={StaticResource ls}}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface" d:LayoutOverrides="VerticalAlignment" Margin="18,202,0,0"/>
+        <TextBox Text="{Binding Path=FirstLine,Mode=TwoWay}" Name="wowContent_Copy" Margin="6,359,10,0" TextWrapping="Wrap" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="0" FontFamily="Portable User Interface" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Content}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface" Margin="18,322,0,0" d:LayoutOverrides="VerticalAlignment"/>
+        <TextBox Text="{Binding Path=SecondLine,Mode=TwoWay}" Margin="6,479,10,0" TextWrapping="Wrap" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="0" FontFamily="Portable User Interface" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Footer}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface" Margin="18,442,0,0"/>
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding LocalizedResources.ShowMe, Source={StaticResource ls}}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource AccentColor}"/>
+            </Button.Background>
+        </Button>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>

@@ -45,7 +45,7 @@ namespace InfoViewApp.WP81
                     NavigationService.Navigate(new System.Uri("/BroadInterestPage.xaml", System.UriKind.Relative));
                     break;
                 case 2:
-                    NavigationService.Navigate(new System.Uri("/WordsOfWisdom.xaml", System.UriKind.Relative));
+                    NavigationService.Navigate(new System.Uri("/WordOfWisdom.xaml", System.UriKind.Relative));
                     break;
                 case 3:
                     NavigationService.Navigate(new System.Uri("/LanguageSetting.xaml", System.UriKind.Relative));
