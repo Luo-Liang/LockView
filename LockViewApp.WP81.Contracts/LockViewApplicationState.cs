@@ -100,7 +100,9 @@ namespace InfoViewApp.WP81
         public LockViewApplicationState() { }
         public InterestRequest SelectedInterest { get; set; }
         public InterestGathering.InterestGatherer SelectedProvider { get; set; }
+        public InterestGatherer[] SecondaryProviders { get; set; }
         public OverlayContextContract PreviewContextContract { get; set; }
+        public OverlayContextContract[] SecondaryContextContracts { get; set; }
         public OverlayFormattingContract PreviewFormattingContract { get; set; }
         public OverlayLayoutContract PreviewLayoutContract { get; set; }
         public async Task SaveState()

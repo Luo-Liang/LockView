@@ -22,6 +22,9 @@ namespace InfoViewApp.WP81
         public string Arguments { get; set; }
     }
 
+    /// <summary>
+    /// Must keep in sync with the service's format.
+    /// </summary>
     public class ImageCompositionRequest
     {
         public byte[] RawImage { get; set; }
@@ -29,6 +32,7 @@ namespace InfoViewApp.WP81
         public OverlayFormattingContract FormattingContract { get; set; }
         public OverlayLayoutContract LayoutContract { get; set; }
         public OverlayContextContract ContextContract { get; set; }
+        public OverlayContextContract[] SecondaryContextContracts { get; set; }
     }
 
 

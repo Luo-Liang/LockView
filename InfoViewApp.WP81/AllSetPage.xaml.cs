@@ -67,7 +67,7 @@ namespace InfoViewApp.WP81
             var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(BackgroundTaskHelper.PinnedHeadlineNavId, UriKind.Relative));
             PinFrontStory.Visibility = isPinned ? Visibility.Collapsed : Visibility.Visible;
             SaveBtn.IsEnabled = LockScreenManager.IsProvidedByCurrentApplication;
-            
+
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)
@@ -118,7 +118,7 @@ namespace InfoViewApp.WP81
             instance.PreviewLayoutContract.ParagraphSpacing = 5;
             double height, width;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
-            instance.PreviewLayoutContract.TargetHeight = (int)height;
+            instance.PreviewLayoutContract.TargetHeight = (int)height * 2 / 3;
             instance.PreviewLayoutContract.TargetWidth = (int)width;
             Tasks.CloudImageCompositorClient client = new Tasks.CloudImageCompositorClient();
             await instance.SaveState();
@@ -138,6 +138,7 @@ namespace InfoViewApp.WP81
             BackgroundTaskHelper.TryUpdateTiles();
             //schedule the background task.
             BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
+            SaveBtn.Visibility = Visibility.Collapsed;
         }
         CustomMessageBox priceCalcMsgBx;
         private void priceCalculationLink_Click(object se1nder, RoutedEventArgs e)
@@ -181,7 +182,7 @@ namespace InfoViewApp.WP81
 
         private async void quotaPurchase_Click(object sender, RoutedEventArgs e)
         {
-            if(LockViewApplicationState.Instance.UserQuotaInDollars >= 0.05)
+            if (LockViewApplicationState.Instance.UserQuotaInDollars >= 0.05)
             {
                 MessageBox.Show(AppResources.NotThereYetText, AppResources.NotThereYetTitle, MessageBoxButton.OK);
                 return;
@@ -220,7 +221,7 @@ namespace InfoViewApp.WP81
 
         private void dontwattopayLink_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(AppResources.BalanceRunOutPromptText, AppResources.BalanceRunOutPromptTitle, MessageBoxButton.OK);
+            MessageBox.Show(AppResources.WhileBalanceLastsTitle, AppResources.WhileBalanceLastsText, MessageBoxButton.OK);
         }
     }
 }

@@ -89,15 +89,15 @@
                         </toolkit:ListPicker.ItemTemplate>
                     </toolkit:ListPicker>
                 </StackPanel>
-                <StackPanel x:Name="previewStack" Orientation="Vertical" Margin="0,10,0,0">
-                    <TextBlock TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Top" FontSize="24" />
-                    <TextBlock Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Content}" VerticalAlignment="Top" FontSize="20"/>
-                    <TextBlock Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Publisher}" VerticalAlignment="Top" FontSize="16"/>
+                <StackPanel x:Name="previewStack" Orientation="Vertical" Margin="0,10,0,0" >
+                    <TextBlock Foreground="{StaticResource PhoneForegroundBrush}" TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Top" FontSize="24" />
+                    <TextBlock Foreground="{StaticResource PhoneForegroundBrush}" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Content}" VerticalAlignment="Top" FontSize="20"/>
+                    <TextBlock Foreground="{StaticResource PhoneAccentBrush}" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Publisher}" VerticalAlignment="Top" FontSize="16"/>
                 </StackPanel>
             </StackPanel>
 
         </ScrollViewer>
-        <Button Visibility="Collapsed" Click="SaveBtn_Click" x:Name="SaveBtn" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ShowMe}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface" Width="140" Height="72">
+        <Button Visibility="Collapsed" Click="SaveBtn_Click" x:Name="SaveBtn" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ShowMe}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface" Height="72">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

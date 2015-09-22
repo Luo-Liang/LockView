@@ -15,6 +15,7 @@ using System.Drawing.Imaging;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Threading.Tasks;
+using InfoView.DataContract;
 
 namespace InfoView
 {
@@ -99,6 +100,7 @@ namespace InfoView
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             g.Apply(request.LayoutContract.ToOverlayLayout(),
                 request.ContextContract.ToOverlayContext(),
+                request.SecondaryContextContracts.Select(ctx=>ctx.ToOverlayContext()).ToArray(),
                 request.FormattingContract.ToOverlayFormatting());
             g.Save();
             g.Dispose();
@@ -118,7 +120,6 @@ namespace InfoView
             response.Image = ImageBytes;
             return response;
         }
-
 
         public async Task<string> ComposeLegacy(string request)
         {

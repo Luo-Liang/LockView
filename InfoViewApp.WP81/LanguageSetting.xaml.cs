@@ -52,7 +52,7 @@ namespace InfoViewApp.WP81
                 InterestContent interestContent = await (languageSource.SelectedItem as IInterestGatherer).RequestContent(LockViewApplicationState.Instance.SelectedInterest);
                 previewStack.DataContext = interestContent;
                 LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(interestContent);
-                SaveBtn.Content = AppResources.Preview;
+                SaveBtn.Content = AppResources.Next;
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;
                 LockViewApplicationState.Instance.SelectedProvider = languageSource.SelectedItem as InterestGatherer;
@@ -61,7 +61,7 @@ namespace InfoViewApp.WP81
             {
 
                 SaveBtn.Content = AppResources.ShowMe;
-                NavigationService.Navigate(new Uri("/Preview.xaml", UriKind.Relative));
+                NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.LanguageSettingPage));
             }
         }
 
