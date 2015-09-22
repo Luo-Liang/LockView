@@ -46,7 +46,7 @@
     		<LineBreak/>
     		<Run/>
         </TextBlock>
-        <ProgressBar x:Name="progressRing" Margin="0" VerticalAlignment="Top" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" IsIndeterminate="True"/>
+        <ProgressBar Visibility="Collapsed" x:Name="progressRing" Margin="0" VerticalAlignment="Top" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" IsIndeterminate="True"/>
         <ScrollViewer Margin="22,335,22,84">
             <StackPanel x:Name="previewStack" Orientation="Vertical">
                 <TextBlock TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Top" FontSize="24" Foreground="White" />

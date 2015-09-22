@@ -119,6 +119,7 @@
     <Compile Include="Interest.xaml.cs">
       <DependentUpon>Interest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InterestNavigationQueue.cs" />
     <Compile Include="LanguageSetting.xaml.cs">
       <DependentUpon>LanguageSetting.xaml</DependentUpon>
     </Compile>

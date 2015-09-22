@@ -46,33 +46,24 @@
         <Grid Background="{StaticResource AccentBrush}" Opacity="0.8" VerticalAlignment="Top" Margin="0,30,0,0">
             <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Interest}" VerticalAlignment="Stretch" Foreground="White" FontSize="24" Margin="20,10,14,10" FontFamily="Portable User Interface"/>
         </Grid>
-        <StackPanel Margin="20,134,14,84" Orientation="Vertical">
-            <ListBox x:Name="categorySelector" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Portable User Interface">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel IsHitTestVisible="{Binding FeatureEnabled}" Orientation="Vertical">
-                            <TextBlock FontSize="24" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
-                            <TextBlock FontFamily="Segoe UI Light" FontWeight="Light" FontSize="21.333" TextWrapping="Wrap"   Text="{Binding SecondLine}" Margin="0,0,0,10"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox IsEnabled="False" x:Name="disabledList" Background="{x:Null}" ItemsSource="{StaticResource disabledItems}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Global User Interface">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel IsHitTestVisible="{Binding FeatureEnabled}" Orientation="Vertical">
-                            <TextBlock FontSize="24" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
-                            <TextBlock FontFamily="Segoe UI Light" FontWeight="Light" FontSize="21.333" TextWrapping="Wrap"   Text="{Binding SecondLine}" Margin="0,0,0,10"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
         <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.LetsGo}" HorizontalAlignment="Left" Margin="6,0,0,10" FontFamily="Global User Interface" VerticalAlignment="Bottom">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
+        <Grid Margin="18,125,17,79">
+            <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.InterestSelectionGuide, Source={StaticResource ls}}" VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="1,0,2,0"/>
+            <ListBox SelectionMode="Multiple" x:Name="categorySelector" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Portable User Interface" Margin="0,147,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel IsHitTestVisible="{Binding FeatureEnabled}" Orientation="Vertical">
+                            <TextBlock FontSize="24" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
+                            <TextBlock FontFamily="Segoe UI Light" FontWeight="Light" FontSize="21.333" TextWrapping="Wrap"   Text="{Binding SecondLine}" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
 
     </Grid>
 </phone:PhoneApplicationPage>

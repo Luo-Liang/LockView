@@ -1,13 +1,7 @@
 ﻿using InfoViewApp.WP81.Resources;
 using Microsoft.Phone.Controls;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -23,8 +17,8 @@ namespace InfoViewApp.WP81
             this.InitializeComponent();
             var lbVM = new ListBoxContentVMCollection();
             lbVM.AddRange(new[] {
-                new ListBoxContentVM() { FirstLine = AppResources.UseOwnImage, SecondLine = AppResources.UseOwnImageText },
-                new ListBoxContentVM() {FirstLine = AppResources.Bing,SecondLine = AppResources.BingText }
+                new ListBoxContentVM() { FirstLine = AppResources.UseOwnImage, SecondLine = AppResources.UseOwnImageText,NavigationPath = new Uri("/ImageCropping.xaml?ImgSrc=library",UriKind.Relative) },
+                new ListBoxContentVM() {FirstLine = AppResources.Bing,SecondLine = AppResources.BingText,NavigationPath = new Uri("/ImageCropping.xaml?ImgSrc=bing",UriKind.Relative) }
             });
             categorySelector.ItemsSource = lbVM;
         }
@@ -32,16 +26,8 @@ namespace InfoViewApp.WP81
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             if (categorySelector.SelectedItem == null) return;
-            if (categorySelector.SelectedIndex == 0)
-            {
-                NavigationService.Navigate(new Uri("/ImageCropping.xaml?ImgSrc=library", UriKind.Relative));
-                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Local;
-            }
-            else
-            {
-                NavigationService.Navigate(new Uri("/ImageCropping.xaml?ImgSrc=bing", UriKind.Relative));
-                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Bing;
-            }
+            var lbContext = categorySelector.SelectedItem as ListBoxContentVM;
+            NavigationService.Navigate(lbContext.NavigationPath);
         }
     }
 }

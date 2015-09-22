@@ -50,15 +50,15 @@ namespace InfoViewApp.WP81
                 }
                 previewStack.DataContext = interestContent;
                 LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(interestContent);
-                SaveBtn.Content = AppResources.Preview;
+                SaveBtn.Content = AppResources.Next;
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;
             }
             else
             {
 
-                SaveBtn.Content =AppResources.ShowMe;
-                NavigationService.Navigate(new Uri("/Preview.xaml", UriKind.Relative));
+                SaveBtn.Content = AppResources.ShowMe;
+                NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.BroadInterestPage));
             }
         }
         private void newsTopic_SelectionChanged(object sender, SelectionChangedEventArgs e)

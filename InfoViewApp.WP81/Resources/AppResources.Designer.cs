@@ -682,11 +682,20 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What would you like to read in your lock screen? Select a category from below..
+        ///   Looks up a localized string similar to What would you like to read in your lock screen? You can select some from below..
         /// </summary>
         public static string Interest {
             get {
                 return ResourceManager.GetString("Interest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit..
+        /// </summary>
+        public static string InterestSelectionGuide {
+            get {
+                return ResourceManager.GetString("InterestSelectionGuide", resourceCulture);
             }
         }
         

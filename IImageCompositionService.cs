@@ -61,5 +61,10 @@ namespace InfoView
         public OverlayLayoutContract LayoutContract { get; set; }
         [DataMember]
         public OverlayContextContract ContextContract { get; set; }
+        /// <summary>
+        /// Some users strongly recommend the lock screen to contain additional information.
+        /// </summary>
+        [DataMember]
+        public OverlayContextContract[] SecondaryContextContracts { get; set; }
     }
 }

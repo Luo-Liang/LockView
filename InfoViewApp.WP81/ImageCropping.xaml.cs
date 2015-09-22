@@ -43,6 +43,7 @@ namespace InfoViewApp.WP81
             var parameter = NavigationContext.QueryString["ImgSrc"];
             if (parameter == "library" && !PickInProcess)
             {
+                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Local;
                 FileOpenPicker openPicker = new FileOpenPicker();
                 openPicker.ViewMode = PickerViewMode.Thumbnail;
                 openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
@@ -54,6 +55,7 @@ namespace InfoViewApp.WP81
             }
             else if (parameter == "bing")
             {
+                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Bing;
                 var lang = LockViewApplicationState.Instance.RequestMetadata.RequestLanguage = CultureInfo.CurrentCulture.ToString();
                 var reqString = string.Format(Locator, lang);
                 HttpClient client = new HttpClient();

@@ -3,6 +3,7 @@
 using InfoViewApp.WP81.Resources;
 using Microsoft.Phone.Controls;
 using System.Windows;
+using static InfoViewApp.WP81.InterestNavigationQueue;
 
 namespace InfoViewApp.WP81
 {
@@ -11,17 +12,17 @@ namespace InfoViewApp.WP81
     /// </summary>
     public sealed partial class Interest : PhoneApplicationPage
     {
-       
+
         public Interest()
         {
             this.InitializeComponent();
             var lbm = new ListBoxContentVMCollection();
             lbm.AddRange(new ListBoxContentVM[]
             {
-                new ListBoxContentVM() {FirstLine = AppResources.SpecificTopicOfYourChoice, SecondLine = AppResources.SpecificTopicOfYourChoiceText },
-                new ListBoxContentVM() {FirstLine = AppResources.GenericNewsTopic,SecondLine = AppResources.GenericNewsTopicText },
-                new ListBoxContentVM() {FirstLine = AppResources.WordOfWisdom,SecondLine = AppResources.WordOfWisdomText },
-                new ListBoxContentVM() {FirstLine = AppResources.LanguageLearning,SecondLine = AppResources.LanguageLearningText }
+                new ListBoxContentVM() {FirstLine = AppResources.SpecificTopicOfYourChoice, SecondLine = AppResources.SpecificTopicOfYourChoiceText,NavigationPath = SpecificTopicPage },
+                new ListBoxContentVM() {FirstLine = AppResources.GenericNewsTopic,SecondLine = AppResources.GenericNewsTopicText ,NavigationPath= InterestNavigationQueue.BroadInterestPage},
+                new ListBoxContentVM() {FirstLine = AppResources.WordOfWisdom,SecondLine = AppResources.WordOfWisdomText ,NavigationPath=WordOfWisdomPage },
+                new ListBoxContentVM() {FirstLine = AppResources.LanguageLearning,SecondLine = AppResources.LanguageLearningText,NavigationPath = LanguageSettingPage }
             });
             categorySelector.ItemsSource = lbm;
         }
@@ -34,25 +35,15 @@ namespace InfoViewApp.WP81
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            switch (categorySelector.SelectedIndex)
+            if (categorySelector.SelectedItem == null) return;
+            Instance.NavigationPages.Clear();
+            for (int i = 0; i < categorySelector.SelectedItems.Count; i++)
             {
-                case -1:
-                    return;
-                case 0:
-                    NavigationService.Navigate(new System.Uri("/SpecificTopic.xaml", System.UriKind.Relative));
-                    break;
-                case 1:
-                    NavigationService.Navigate(new System.Uri("/BroadInterestPage.xaml", System.UriKind.Relative));
-                    break;
-                case 2:
-                    NavigationService.Navigate(new System.Uri("/WordOfWisdom.xaml", System.UriKind.Relative));
-                    break;
-                case 3:
-                    NavigationService.Navigate(new System.Uri("/LanguageSetting.xaml", System.UriKind.Relative));
-                    break;
-                default:
-                    return;
+                Instance.NavigationPages.Add((categorySelector.SelectedItems[i] as ListBoxContentVM).NavigationPath);
             }
+            LockViewApplicationState.Instance.SecondaryProviders = new InterestGathering.InterestGatherer[categorySelector.SelectedItems.Count];
+            LockViewApplicationState.Instance.SecondaryContextContracts = new OverlayContextContract[categorySelector.SelectedItems.Count];
+            NavigationService.Navigate(Instance.NavigationPages[0]);
         }
     }
 }

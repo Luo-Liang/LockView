@@ -159,7 +159,7 @@
     <value>Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing.</value>
   </data>
   <data name="Interest" xml:space="preserve">
-    <value>What would you like to read in your lock screen? Select a category from below.</value>
+    <value>What would you like to read in your lock screen? You can select some from below.</value>
   </data>
   <data name="JumpIn" xml:space="preserve">
     <value>Jump in!</value>
@@ -659,5 +659,8 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="InterestSelectionGuide" xml:space="preserve">
+    <value>You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</value>
   </data>
 </root>

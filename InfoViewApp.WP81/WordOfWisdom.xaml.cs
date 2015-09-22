@@ -22,7 +22,7 @@ namespace InfoViewApp.WP81
         {
             LockViewApplicationState.Instance.PreviewContextContract = new OverlayContextContract();
             LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(await LockViewApplicationState.Instance.SelectedProvider.RequestContent(null));
-            NavigationService.Navigate(new Uri("/Preview.xaml", UriKind.Relative));
+            NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.WordOfWisdomPage));
         }
     }
 }

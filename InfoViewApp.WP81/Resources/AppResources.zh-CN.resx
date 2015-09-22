@@ -166,6 +166,7 @@
   </data>
   <data name="Interest" xml:space="preserve">
     <value>您希望显示在锁屏界面上哪些内容?请从以下选择一项。</value>
+    <comment></comment>
   </data>
   <data name="GenericNewsTopicText" xml:space="preserve">
     <value>喜欢资讯,体育或者财经?一切都包在我们身上。若您希望看到某类新闻，请选择此项。</value>
@@ -650,5 +651,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>正文</value>
+  </data>
+  <data name="InterestSelectionGuide" xml:space="preserve">
+    <value>您可以选择多个类别。这些类别的优先级由您选择它们的顺序决定。请注意，如果某些类别由于内容过多而无法显示，它们将被禁用，直到它们的内容可以适应屏幕为止。</value>
+    <comment></comment>
   </data>
 </root>

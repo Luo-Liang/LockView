@@ -1,4 +1,5 @@
 ﻿using InfoViewApp.WP81.InterestGathering;
+using InfoViewApp.WP81.Resources;
 using Microsoft.Phone.Controls;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,9 +31,9 @@ namespace InfoViewApp.WP81
 
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (SaveBtn.Content.ToString() == "Show me!")
+            if (SaveBtn.Content.ToString() == AppResources.ShowMe)
             {
-                SaveBtn.Content = "Preview";
+                SaveBtn.Content = AppResources.Next;
                 progressRing.Visibility = Visibility.Visible;
                 GoogleSpecificInterestGatherer gatherer = new GoogleSpecificInterestGatherer();
                 SaveBtn.Visibility = Visibility.Collapsed;
@@ -53,8 +54,8 @@ namespace InfoViewApp.WP81
             }
             else
             {
-                SaveBtn.Content = "Show me!";
-                NavigationService.Navigate(new System.Uri("/Preview.xaml", System.UriKind.Relative));
+                SaveBtn.Content = AppResources.ShowMe;
+                NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.SpecificTopicPage));
                 //Navigate to customization page.
             }
         }
@@ -64,7 +65,7 @@ namespace InfoViewApp.WP81
             SaveBtn.IsEnabled = true;
             if (specificTopicBox.Text.Length == 0)
             {
-                SaveBtn.Content = "Show me!";
+                SaveBtn.Content = AppResources.ShowMe;
                 SaveBtn.IsEnabled = false;
             }
         }

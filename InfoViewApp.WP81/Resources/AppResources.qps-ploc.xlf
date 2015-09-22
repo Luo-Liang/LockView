@@ -37,8 +37,8 @@
           <target state="new">Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing.</target>
         </trans-unit>
         <trans-unit id="Resx/Interest" translate="yes" xml:space="preserve">
-          <source>What would you like to read in your lock screen? Select a category from below.</source>
-          <target state="new">What would you like to read in your lock screen? Select a category from below.</target>
+          <source>What would you like to read in your lock screen? You can select some from below.</source>
+          <target state="new">What would you like to read in your lock screen? You can select some from below.</target>
         </trans-unit>
         <trans-unit id="Resx/BingText" translate="yes" xml:space="preserve">
           <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
@@ -252,6 +252,10 @@
         <trans-unit id="Resx/Title" translate="yes" xml:space="preserve">
           <source>Title</source>
           <target state="new">Title</target>
+        </trans-unit>
+        <trans-unit id="Resx/InterestSelectionGuide" translate="yes" xml:space="preserve">
+          <source>You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</source>
+          <target state="new">You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</target>
         </trans-unit>
         <trans-unit id="Resx/Footer" translate="yes" xml:space="preserve">
           <source>Footer</source>
