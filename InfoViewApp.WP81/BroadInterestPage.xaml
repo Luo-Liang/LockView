@@ -105,6 +105,13 @@
             </Button.Background>
         </Button>
         <ProgressBar IsIndeterminate="True" x:Name="progressRing" Margin="0" VerticalAlignment="Top" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" Visibility="Collapsed"/>
+        <TextBlock VerticalAlignment="Bottom" x:Name="interestConfig" Margin="165,0,20,32" TextWrapping="Wrap" FontFamily="Segoe WP" TextAlignment="Right" FontSize="22.667" >
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Gray}"/>
+            </TextBlock.Foreground>
+        	<Run Text="{Binding LocalizedResources.InterestSelectionProgress, Source={StaticResource ls}}"/>
+        	<Run x:Name="currentConfig"/><Run Text="/"/><Run x:Name="totalConfigStep"/>
+        </TextBlock>
 
     </Grid>
 </phone:PhoneApplicationPage>

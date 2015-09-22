@@ -29,7 +29,7 @@ namespace InfoViewApp.WP81.Tasks
             localRequest.FormattingContract = formattingContract;
             localRequest.LayoutContract = layoutContract;
 #if DEBUG
-            localRequest.ContextContract.SecondLine = " @" + DateTime.Now;
+            localRequest.ContextContracts[0].SecondLine = " @" + DateTime.Now;
 #endif
             var file = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
             byte[] imgBytes;//= new byte[5];
@@ -42,18 +42,18 @@ namespace InfoViewApp.WP81.Tasks
             //localRequest.RawImage = Convert.ToBase64String(imgBytes);
             return Newtonsoft.Json.JsonConvert.SerializeObject(localRequest);
         }
-        public static void TrySetLockScreenImage(string fileName)
+        public static void TrySetLockScreenImage(string fileName, string cultureHint)
         {
             try
             {
                 //This allows an early death of the setup, then apply the ABA pattern
                 LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName), UriKind.Absolute));
-                LockScreen.SetImageUri(new Uri("ms-appx:///Outage.png", UriKind.Absolute));
+                LockScreen.SetImageUri(new Uri($"ms-appx:///Outage_{cultureHint}.png", UriKind.Absolute));
                 LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName), UriKind.Absolute));
             }
             catch (Exception ex)
             {
-                LockScreen.SetImageUri(new Uri("ms-appx:///Outage.png", UriKind.Absolute));
+                LockScreen.SetImageUri(new Uri($"ms-appx:///Outage_{cultureHint}.png", UriKind.Absolute));
             }
         }
 
@@ -171,7 +171,8 @@ namespace InfoViewApp.WP81
         {
             var fileName = string.Join(string.Empty, contract.Title.Select<char, string>(o => ((int)o).ToString()));
             if (fileName.Length > 20) fileName = fileName.Substring(0, 20);
-            return string.Format("{0}.jpeg", fileName);
+            Random rand = new Random(DateTime.Now.Second);
+            return $"{rand}{fileName}.jpeg";
         }
     }
 }

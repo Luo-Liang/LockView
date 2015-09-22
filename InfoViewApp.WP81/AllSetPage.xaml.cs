@@ -47,11 +47,12 @@ namespace InfoViewApp.WP81
             trafficPriceRun.Text = "$" + Pricing.TrafficPricePerGB + "/GB";
             sizePerRequestRun.Text = (metaData.ImageBytesPerRequest + providerMetaData.BytePerRequest) / 1024 + "KB";
             requestPerDayRun.Text = providerMetaData.UpdatePerDay + AppResources.Estimated;
-            var DrainPerRequest = Pricing.CalculateDrainPerRequest(LockViewApplicationState.Instance.RequestMetadata, LockViewApplicationState.Instance.SelectedProvider.GetMetaData());
+            var DrainPerRequest = Pricing.CalculateDrainPerRequest(LockViewApplicationState.Instance.RequestMetadata, LockViewApplicationState.Instance.SelectedProviders.Select(o => o.GetMetaData()));
             _099PriceDaysRun.Text = Math.Ceiling(0.99 / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
             days.Text = _099PriceDaysRun.Text;
             quotaPurchase.Content = AppResources.Purchase + days.Text + AppResources.DaysFor099;
             remainingQuota.Text = Math.Ceiling(LockViewApplicationState.Instance.UserQuotaInDollars / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
+            balanceRaw.Text = (((int)(LockViewApplicationState.Instance.UserQuotaInDollars * 1000)) / 1000.0).ToString();
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -118,11 +119,11 @@ namespace InfoViewApp.WP81
             instance.PreviewLayoutContract.ParagraphSpacing = 5;
             double height, width;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
-            instance.PreviewLayoutContract.TargetHeight = (int)height * 2 / 3;
+            instance.PreviewLayoutContract.TargetHeight = (int)height;
             instance.PreviewLayoutContract.TargetWidth = (int)width;
             Tasks.CloudImageCompositorClient client = new Tasks.CloudImageCompositorClient();
             await instance.SaveState();
-            var response = await client.Compose(LockViewApplicationState.Instance.PreviewContextContract,
+            var response = await client.Compose(LockViewApplicationState.Instance.SelectedContextContracts,
                 LockViewApplicationState.Instance.PreviewFormattingContract,
                 LockViewApplicationState.Instance.PreviewLayoutContract,
                 LockViewApplicationState.Instance.RequestMetadata.PersistFileName);
@@ -134,11 +135,12 @@ namespace InfoViewApp.WP81
             var fileName = string.Format("{0}.jpeg", DateTime.Now.ToBinary());
             if (fileName.StartsWith("-")) fileName = fileName.TrimStart('-');
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
-            BackgroundTaskHelper.TrySetLockScreenImage(fileName);
+            BackgroundTaskHelper.TrySetLockScreenImage(fileName, instance.RequestMetadata.RequestLanguage);
             BackgroundTaskHelper.TryUpdateTiles();
             //schedule the background task.
             BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
             SaveBtn.Visibility = Visibility.Collapsed;
+            AllSetTitle.Text = AppResources.AllSetTitleText;
         }
         CustomMessageBox priceCalcMsgBx;
         private void priceCalculationLink_Click(object se1nder, RoutedEventArgs e)

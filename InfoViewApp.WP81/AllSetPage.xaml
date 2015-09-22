@@ -106,9 +106,9 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
 
         <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" d:LayoutOverrides="Height, TopPosition, BottomPosition" VerticalAlignment="Top">
-            <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.AllSetPageIntro}" VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
+            <TextBlock x:Name="AllSetTitle" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.AllSetPageIntro}" VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
         </Grid>
-        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.AllDone}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface" Grid.Row="1">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.AllDone}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="8,0,0,10" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
@@ -125,10 +125,11 @@
                 <Button Click="shortcutButton_Click" x:Name="shortcutButton" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.PinShortcutButton}" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
             </StackPanel>
             <StackPanel x:Name="quotaStack" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,5,0,0">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Width="442" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface">
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface">
             		<Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.RemainingBalance}"/>
             		<Run x:Name="remainingQuota" Text="30"/>
             		<Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Days}"/>
+                    <Run Text="($"/><Run x:Name="balanceRaw"/><Run Text=")"/>
                 </TextBlock>
                 <TextBlock TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface">
             		<Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.RemainingBalanceText}"/>

@@ -132,7 +132,7 @@
           <source>Living</source>
           <target state="new">Living</target>
           <note from="MultilingualBuild" annotates="source" priority="2">``</note>
-        </trans-unit>
+          </trans-unit>
         <trans-unit id="Resx/History" translate="yes" xml:space="preserve">
           <source>History</source>
           <target state="new">History</target>
@@ -256,6 +256,14 @@
         <trans-unit id="Resx/InterestSelectionGuide" translate="yes" xml:space="preserve">
           <source>You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</source>
           <target state="new">You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</target>
+        </trans-unit>
+        <trans-unit id="Resx/InterestSelectionProgress" translate="yes" xml:space="preserve">
+          <source>Setup  Interest... Step </source>
+          <target state="new">Setup  Interest... Step </target>
+        </trans-unit>
+        <trans-unit id="Resx/AllSetTitleText" translate="yes" xml:space="preserve">
+          <source>Thanks! You're all set.</source>
+          <target state="new">Thanks! You're all set.</target>
         </trans-unit>
         <trans-unit id="Resx/Footer" translate="yes" xml:space="preserve">
           <source>Footer</source>
@@ -398,8 +406,8 @@
           <target state="new">Average updates/day:</target>
         </trans-unit>
         <trans-unit id="Resx/AllDone" translate="yes" xml:space="preserve">
-          <source>All Done</source>
-          <target state="new">All Done</target>
+          <source>Finalize</source>
+          <target state="new">Finalize</target>
         </trans-unit>
         <trans-unit id="Resx/SetAsLockScreen" translate="yes" xml:space="preserve">
           <source>Set as lock screen provider and allow background update</source>

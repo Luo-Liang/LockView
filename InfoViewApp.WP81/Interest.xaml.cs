@@ -43,6 +43,7 @@ namespace InfoViewApp.WP81
             }
             LockViewApplicationState.Instance.SelectedProviders = new InterestGathering.InterestGatherer[categorySelector.SelectedItems.Count];
             LockViewApplicationState.Instance.SelectedContextContracts = new OverlayContextContract[categorySelector.SelectedItems.Count];
+            LockViewApplicationState.Instance.SelectedInterests = new InterestGathering.InterestRequest[categorySelector.SelectedItems.Count];
             NavigationService.Navigate(Instance.NavigationPages[0]);
         }
     }

@@ -12,12 +12,12 @@ namespace InfoViewApp.WP81
     {
         public const double ComputationPricePerHour = 0.4;
         public const double TrafficPricePerGB = 0.185;
-        public static double CalculateDrainPerRequest(LockViewRequestMetadata metaData, RequestMetaData providerMetaData)
+        public static double CalculateDrainPerRequest(LockViewRequestMetadata metaData, IEnumerable<RequestMetaData> providerMetaData)
         {
             double multiplier = 1;
             //if (DeviceStatus.DeviceTotalMemory >> 29 < 1) multiplier = 1.5;//pay extra money for inbound.
-            return (((metaData.ImageBytesPerRequest * multiplier + providerMetaData.BytePerRequest) / (1024.0 * 1024 * 1024)) * TrafficPricePerGB +
-            (providerMetaData.TypicalComputationInSec / 3600.0) * ComputationPricePerHour);
+            return (((metaData.ImageBytesPerRequest * multiplier + providerMetaData.Sum(o=>o.BytePerRequest)) / (1024.0 * 1024 * 1024)) * TrafficPricePerGB +
+            (providerMetaData.Sum(o=>o.TypicalComputationInSec) / 3600.0) * ComputationPricePerHour);
         }
     }
 }

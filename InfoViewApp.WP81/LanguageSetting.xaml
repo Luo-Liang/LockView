@@ -97,12 +97,19 @@
             </StackPanel>
 
         </ScrollViewer>
-        <Button Visibility="Collapsed" Click="SaveBtn_Click" x:Name="SaveBtn" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ShowMe}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface" Height="72">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ShowMe}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Portable User Interface" Height="72" Visibility="Collapsed">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
         <ProgressBar IsIndeterminate="True" x:Name="progressRing"  VerticalAlignment="Top" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" HorizontalAlignment="Stretch" Visibility="Collapsed"/>
+        <TextBlock VerticalAlignment="Bottom" x:Name="interestConfig" Margin="165,0,20,35" TextWrapping="Wrap" FontFamily="Segoe WP" TextAlignment="Right" FontSize="22.667" >
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Gray}"/>
+            </TextBlock.Foreground>
+            <Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.InterestSelectionProgress}"/>
+            <Run x:Name="currentConfig"/><Run Text="/"/><Run x:Name="totalConfigStep"/>
+        </TextBlock>
 
     </Grid>
 </phone:PhoneApplicationPage>

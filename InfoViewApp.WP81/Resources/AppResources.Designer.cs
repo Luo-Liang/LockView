@@ -61,7 +61,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All Done.
+        ///   Looks up a localized string similar to Finalize.
         /// </summary>
         public static string AllDone {
             get {
@@ -75,6 +75,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string AllSetPageIntro {
             get {
                 return ResourceManager.GetString("AllSetPageIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thanks! You&apos;re all set..
+        /// </summary>
+        public static string AllSetTitleText {
+            get {
+                return ResourceManager.GetString("AllSetTitleText", resourceCulture);
             }
         }
         
@@ -696,6 +705,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string InterestSelectionGuide {
             get {
                 return ResourceManager.GetString("InterestSelectionGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setup  Interest... Step .
+        /// </summary>
+        public static string InterestSelectionProgress {
+            get {
+                return ResourceManager.GetString("InterestSelectionProgress", resourceCulture);
             }
         }
         

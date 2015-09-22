@@ -18,6 +18,8 @@ namespace InfoViewApp.WP81
         public SpecificTopic()
         {
             this.InitializeComponent();
+            currentConfig.Text = (InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.SpecificTopicPage)+1).ToString();
+            totalConfigStep.Text = InterestNavigationQueue.Instance.NavigationPages.Count.ToString();
         }
 
         /// <summary>
@@ -37,8 +39,8 @@ namespace InfoViewApp.WP81
                 progressRing.Visibility = Visibility.Visible;
                 GoogleSpecificInterestGatherer gatherer = new GoogleSpecificInterestGatherer();
                 SaveBtn.Visibility = Visibility.Collapsed;
-                LockViewApplicationState.Instance.SelectedInterest.InterestString = specificTopicBox.Text;
-                var interest = await gatherer.RequestContent(LockViewApplicationState.Instance.SelectedInterest);
+                LockViewApplicationState.Instance.SelectedInterests[InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.SpecificTopicPage)] = new InterestRequest() { InterestString = specificTopicBox.Text };
+                var interest = await gatherer.RequestContent(LockViewApplicationState.Instance.SelectedInterests[InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.SpecificTopicPage)]);
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;
                 if (interest != null)
@@ -63,9 +65,9 @@ namespace InfoViewApp.WP81
         private void specificTopicBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             SaveBtn.IsEnabled = true;
+            SaveBtn.Content = AppResources.ShowMe;
             if (specificTopicBox.Text.Length == 0)
             {
-                SaveBtn.Content = AppResources.ShowMe;
                 SaveBtn.IsEnabled = false;
             }
         }

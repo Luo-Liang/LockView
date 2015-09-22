@@ -27,6 +27,8 @@ namespace InfoViewApp.WP81
         public LanguageSetting()
         {
             this.InitializeComponent();
+            currentConfig.Text = (InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.LanguageSettingPage)+1).ToString();
+            totalConfigStep.Text = InterestNavigationQueue.Instance.NavigationPages.Count.ToString();
         }
 
         /// <summary>

@@ -99,7 +99,7 @@ namespace InfoView
             g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             g.Apply(request.LayoutContract.ToOverlayLayout(),
-                request.ContextContracts.Select(ctx=>ctx.ToOverlayContext()).ToArray(),
+                new[] { request.ContextContract.ToOverlayContext() },
                 request.FormattingContract.ToOverlayFormatting());
             g.Save();
             g.Dispose();
@@ -123,6 +123,46 @@ namespace InfoView
         public async Task<string> ComposeLegacy(string request)
         {
             return request;
+        }
+
+        public async Task<ImageCompositionResponse> ComposeV2(ImageCompositionRequestV2 request)
+        {
+            Stream memStream = null;
+            bool isStreamCached = false;
+            if (request.ImageRequestOverride != null)
+            {
+                memStream = await imgCache.TryFetchAndAdd(request.ImageRequestOverride);
+                isStreamCached = true;
+            }
+            else
+            {
+                memStream = new MemoryStream(request.RawImage);
+            }
+            memStream.Seek(0, SeekOrigin.Begin);
+            var img = Image.FromStream(memStream);
+            Graphics g = Graphics.FromImage(img);
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.Apply(request.LayoutContract.ToOverlayLayout(),
+                request.ContextContracts.Select(ctx => ctx.ToOverlayContext()).ToArray(),
+                request.FormattingContract.ToOverlayFormatting());
+            g.Save();
+            g.Dispose();
+            MemoryStream imgStream = new MemoryStream();
+            img.Save(imgStream, ImageFormat.Jpeg);
+            imgStream.Seek(0, SeekOrigin.Begin);
+            //img.Save(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\abc.jpg",ImageFormat.Jpeg);
+            var response = new ImageCompositionResponse();
+            response.ResultString = "Okay";
+            byte[] ImageBytes = new byte[imgStream.Length];
+            imgStream.Read(ImageBytes, 0, ImageBytes.Length);
+            imgStream.Close();
+            if (!isStreamCached)
+            {
+                memStream.Close();
+            }
+            response.Image = ImageBytes;
+            return response;
         }
     }
 }

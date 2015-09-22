@@ -26,7 +26,7 @@ namespace InfoViewApp.WP81
         public void AssignProvider(Uri currentPageUri, InterestGathering.InterestGatherer gatherer)
         {
             //this is one of the secondary sources.
-            LockViewApplicationState.Instance.SelectedProviders[Instance.GetNavigationSequence(WordOfWisdomPage)] = gatherer;
+            LockViewApplicationState.Instance.SelectedProviders[Instance.GetNavigationSequence(currentPageUri)] = gatherer;
         }
         public void AssignContent(Uri currentPageUri,InterestGathering.InterestContent content)
         {
@@ -36,7 +36,7 @@ namespace InfoViewApp.WP81
         }
         public void AssignContent(Uri currentPageUri, OverlayContextContract context)
         {
-            LockViewApplicationState.Instance.SelectedContextContracts[Instance.GetNavigationSequence(WordOfWisdomPage)] = context;
+            LockViewApplicationState.Instance.SelectedContextContracts[Instance.GetNavigationSequence(currentPageUri)] = context;
         }
     }
 }

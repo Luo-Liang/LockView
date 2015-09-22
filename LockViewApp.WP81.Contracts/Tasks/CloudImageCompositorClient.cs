@@ -18,18 +18,18 @@ namespace InfoViewApp.WP81.Tasks
         /// On money penny device, an HttpClient will take a lot of memory. 
         /// </summary>
         public HttpClient Client { get; set; }
-        public async Task<ImageCompositionResponse> Compose(OverlayContextContract PreviewContextContract,
+        public async Task<ImageCompositionResponse> Compose(OverlayContextContract[] PreviewContextContract,
                                                             OverlayFormattingContract PreviewFormattingContract,
                                                             OverlayLayoutContract PreviewLayoutContract,
                                                             string fileName)
         {
             HttpClient client = Client;
             var localRequest = new ImageCompositionRequest();
-            localRequest.ContextContract = PreviewContextContract;
+            localRequest.ContextContracts = PreviewContextContract;
             localRequest.FormattingContract = PreviewFormattingContract;
             localRequest.LayoutContract = PreviewLayoutContract;
 #if DEBUG
-            localRequest.ContextContract.SecondLine = " @" + DateTime.Now;
+            localRequest.ContextContracts[0].SecondLine = " @" + DateTime.Now;
 #endif
             var file = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
             byte[] imgBytes;//= new byte[5];
@@ -49,14 +49,14 @@ namespace InfoViewApp.WP81.Tasks
             GC.Collect();
             requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
             //https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}
-            var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/Compose", UriKind.Absolute),
+            var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/ComposeV2", UriKind.Absolute),
                  requestContent);
             var responseStr = await response.Content.ReadAsStringAsync();
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ImageCompositionResponse>(responseStr);
             return result;
         }
 
-        public async Task<ImageCompositionResponse> ComposeLite(OverlayContextContract PreviewContextContract,
+        public async Task<ImageCompositionResponse> ComposeLite(OverlayContextContract[] PreviewContextContract,
                                                                 OverlayFormattingContract PreviewFormattingContract,
                                                                 OverlayLayoutContract PreviewLayoutContract,
                                                                 ImageRequestOverride imgReqOverride)
@@ -64,11 +64,11 @@ namespace InfoViewApp.WP81.Tasks
 
             HttpClient client = Client;
             var localRequest = new ImageCompositionRequest();
-            localRequest.ContextContract = PreviewContextContract;
+            localRequest.ContextContracts = PreviewContextContract;
             localRequest.FormattingContract = PreviewFormattingContract;
             localRequest.LayoutContract = PreviewLayoutContract;
 #if DEBUG
-            localRequest.ContextContract.SecondLine = " @" + DateTime.Now;
+            localRequest.ContextContracts[0].SecondLine = " @" + DateTime.Now;
 #endif
             localRequest.ImageRequestOverride = imgReqOverride;
             //localRequest.RawImage = Convert.ToBase64String(imgBytes);
@@ -76,7 +76,7 @@ namespace InfoViewApp.WP81.Tasks
             var requestContent = new HttpStringContent(reqContent);
             requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
             //https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}
-            var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/Compose", UriKind.Absolute),
+            var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/ComposeV2", UriKind.Absolute),
                  requestContent);
             var responseStr = await response.Content.ReadAsStringAsync();
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ImageCompositionResponse>(responseStr);

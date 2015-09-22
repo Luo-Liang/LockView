@@ -9,35 +9,85 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{StaticResource PhoneBackgroundBrush}" Orientation="Portrait">
+    <phone:PhoneApplicationPage.Resources>
+        <con:Str2BrushConverter x:Key="str2clr"/>
+    </phone:PhoneApplicationPage.Resources>
 
     <Grid>
         <Grid.Resources>
             <con:Str2BrushConverter x:Key="str2clr"/>
         </Grid.Resources>
         <Image x:Name="previewImage" Margin="0" Source="Assets/seattle_skyline.jpg" Stretch="Fill"/>
+        <StackPanel x:Name="previewHolder" Margin="30,30,30,0" Orientation="Vertical" VerticalAlignment="Top">
+            <StackPanel MouseLeftButtonDown="previewStack_MouseLeftButtonDown" x:Name="previewStack0" Orientation="Vertical">
+                <Grid Background="{Binding PreviewFormattingContract.BackgroundTitle, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                    <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" Text="{Binding SelectedContextContracts[0].Title}" VerticalAlignment="Top" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle, Converter={StaticResource str2clr}, Mode=TwoWay}"  FontFamily="Portable User Interface"  />
+                </Grid>
+                <Grid Background="{Binding PreviewFormattingContract.BackgroundFirstLine, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                    <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Top" Text="{Binding SelectedContextContracts[0].FirstLine}"  FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine, Converter={StaticResource str2clr}, Mode=TwoWay}" />
+                </Grid>
+                <Grid Margin="0,0,0,5">
+                    <TextBlock Text="{Binding SelectedContextContracts[0].SecondLine}"   Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource Gray}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+            <StackPanel MouseLeftButtonDown="previewStack_MouseLeftButtonDown" x:Name="previewStack1" Orientation="Vertical">
+                <Grid Background="{Binding PreviewFormattingContract.BackgroundTitle, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                    <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" Text="{Binding SelectedContextContracts[1].Title}" VerticalAlignment="Top" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle, Converter={StaticResource str2clr}, Mode=TwoWay}"  FontFamily="Portable User Interface"  />
+                </Grid>
+                <Grid Background="{Binding PreviewFormattingContract.BackgroundFirstLine, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                    <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Top" Text="{Binding SelectedContextContracts[1].FirstLine}"  FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine, Converter={StaticResource str2clr}, Mode=TwoWay}" />
+                </Grid>
+                <Grid Margin="0,0,0,5">
+                    <TextBlock Text="{Binding SelectedContextContracts[1].SecondLine}"   Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource Gray}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+            <StackPanel MouseLeftButtonDown="previewStack_MouseLeftButtonDown" x:Name="previewStack2" Orientation="Vertical">
+                <Grid Background="{Binding PreviewFormattingContract.BackgroundTitle, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                    <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" Text="{Binding SelectedContextContracts[2].Title}" VerticalAlignment="Top" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle, Converter={StaticResource str2clr}, Mode=TwoWay}"  FontFamily="Portable User Interface"  />
+                </Grid>
+                <Grid Background="{Binding PreviewFormattingContract.BackgroundFirstLine, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                    <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Top" Text="{Binding SelectedContextContracts[2].FirstLine}"  FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine, Converter={StaticResource str2clr}, Mode=TwoWay}" />
+                </Grid>
+                <Grid Margin="0,0,0,5">
+                    <TextBlock Text="{Binding SelectedContextContracts[2].SecondLine}"   Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource Gray}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+            <StackPanel MouseLeftButtonDown="previewStack_MouseLeftButtonDown" x:Name="previewStack3" Orientation="Vertical">
+                <Grid Background="{Binding PreviewFormattingContract.BackgroundTitle, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                    <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" Text="{Binding SelectedContextContracts[3].Title}" VerticalAlignment="Top" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle, Converter={StaticResource str2clr}, Mode=TwoWay}"  FontFamily="Portable User Interface"  />
+                </Grid>
+                <Grid Background="{Binding PreviewFormattingContract.BackgroundFirstLine, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
+                    <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Top" Text="{Binding SelectedContextContracts[3].FirstLine}"  FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine, Converter={StaticResource str2clr}, Mode=TwoWay}" />
+                </Grid>
+                <Grid Margin="0,0,0,5">
+                    <TextBlock Text="{Binding SelectedContextContracts[3].SecondLine}"   Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource Gray}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
 
-        <Button x:Name="SaveBtn" Click="SaveBtn_Click" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.Great}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface" Width="140" Height="72">
+        <Button x:Name="SaveBtn" Click="SaveBtn_Click" Visibility="Visible" Content="{Binding LocalizedResources.Great, Source={StaticResource ls}}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,10" FontFamily="Global User Interface" Width="140" Height="72">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <StackPanel MouseLeftButtonDown="previewStack_MouseLeftButtonDown" x:Name="previewStack" Margin="30,30,30,0" Orientation="Vertical" VerticalAlignment="Top">
-            <Grid Background="{Binding PreviewFormattingContract.BackgroundTitle, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
-                <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" Text="{Binding PreviewContextContract.Title}" VerticalAlignment="Top" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize,Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle,Mode=TwoWay,Converter={StaticResource str2clr}}"  FontFamily="Portable User Interface"  />
-            </Grid>
-            <Grid Background="{Binding PreviewFormattingContract.BackgroundFirstLine, Converter={StaticResource str2clr}}" Margin="0,0,0,5">
-                <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Top" Text="{Binding PreviewContextContract.FirstLine}"  FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize,Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine,Mode=TwoWay,Converter={StaticResource str2clr}}" />
-            </Grid>
-            <Grid Margin="0,0,0,5">
-                <TextBlock Text="{Binding PreviewContextContract.SecondLine}"   Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
-                    <TextBlock.Foreground>
-                        <SolidColorBrush Color="{StaticResource Gray}"/>
-                    </TextBlock.Foreground>
-                </TextBlock>
-            </Grid>
-        </StackPanel>
         <Grid Margin="0,30,0,90" VerticalAlignment="Bottom" Background="{StaticResource AccentBrush}" Opacity="0.8">
-            <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.PreviewPageIntro}" VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.PreviewPageIntro, Source={StaticResource ls}}" VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
         </Grid>
 
     </Grid>

@@ -21,6 +21,12 @@ namespace InfoView
         ResponseFormat = WebMessageFormat.Json, Method = "POST")]
         Task<ImageCompositionResponse> Compose(ImageCompositionRequest request);
 
+        [OperationContract]
+        [WebInvoke(
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        Task<ImageCompositionResponse> ComposeV2(ImageCompositionRequestV2 request);
+
         [Obsolete]
         [OperationContract]
         [WebInvoke(
@@ -48,8 +54,24 @@ namespace InfoView
         public string Arguments { get; set; }
     }
 
-    [DataContract]
-    public class ImageCompositionRequest
+    
+     [DataContract] 
+     public class ImageCompositionRequest
+     { 
+         [DataMember] 
+         public byte[] RawImage { get; set; } 
+         [DataMember] 
+         public ImageRequestOverride ImageRequestOverride { get; set; } 
+         [DataMember] 
+         public OverlayFormattingContract FormattingContract { get; set; } 
+         [DataMember] 
+         public OverlayLayoutContract LayoutContract { get; set; } 
+         [DataMember] 
+         public OverlayContextContract ContextContract { get; set; } 
+     }
+
+
+public class ImageCompositionRequestV2
     {
         [DataMember]
         public byte[] RawImage { get; set; }

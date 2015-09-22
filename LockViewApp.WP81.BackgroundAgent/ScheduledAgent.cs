@@ -42,7 +42,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }
-            BackgroundTaskHelper.TrySetLockScreenImage("InvalidName.InvalidName");
+            BackgroundTaskHelper.TrySetLockScreenImage("InvalidName.InvalidName",LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
         }
 
         /// <summary>
@@ -60,16 +60,16 @@ namespace LockViewApp.WP81.BackgroundAgent
             try
             {
 #endif
-            if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
-            {
-                //low ram device.
-                await LaunchLowRAMTask(task);
-            }
-            else
-            {
-                await LaunchTask(task);
-            }
-            await LockViewApplicationState.Instance.SaveState();
+                if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
+                {
+                    //low ram device.
+                    await LaunchLowRAMTask(task);
+                }
+                else
+                {
+                    await LaunchTask(task);
+                }
+                await LockViewApplicationState.Instance.SaveState();
 #if DEBUG
             var toast = new ShellToast();
             toast.Title = string.Format("{0} {1}", task.LastExitReason.ToString(), LockViewApplicationState.Instance.RequestMetadata.Phase);
@@ -92,7 +92,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             if (instance.RequestMetadata.Phase == LockViewRequestMetadata.TaskPhase.Tick)
             {
 #if !DEBUG
-            if (DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8)
+                if (DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8)
 #endif
                 {
                     var flag1 = false;
@@ -102,7 +102,7 @@ namespace LockViewApp.WP81.BackgroundAgent
 #if !DEBUG
                     if (flag1 || task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear)
 #endif
-                    instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tack;
+                        instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tack;
                 }
             }
             else if (instance.RequestMetadata.Phase == LockViewRequestMetadata.TaskPhase.Tack)
@@ -120,7 +120,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             else
             {
-                BackgroundTaskHelper.TrySetLockScreenImage(instance.PreviewContextContract.GenerateImgFileName());
+                BackgroundTaskHelper.TrySetLockScreenImage(instance.PreviewContextContract.GenerateImgFileName(),instance.RequestMetadata.RequestLanguage);
                 //update tile if necessary.
                 BackgroundTaskHelper.TryUpdateTiles();
                 instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
@@ -148,15 +148,15 @@ namespace LockViewApp.WP81.BackgroundAgent
             if (flag1 || lastExecution.DayOfYear < DateTime.Now.DayOfYear)
             {
 #endif
-            ImageRequestOverride imgReqOverride = null;
-            if (instance.SelectedImageSource == ImageSource.Bing)
-                imgReqOverride = new ImageRequestOverride()
-                {
-                    ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
-                    Arguments = ""
-                };
-            //if yes, execute that if (1) the image has changed OR the content has changed.
-            await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
+                ImageRequestOverride imgReqOverride = null;
+                if (instance.SelectedImageSource == ImageSource.Bing)
+                    imgReqOverride = new ImageRequestOverride()
+                    {
+                        ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
+                        Arguments = ""
+                    };
+                //if yes, execute that if (1) the image has changed OR the content has changed.
+                await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
 
 #if !DEBUG
             }
@@ -166,36 +166,36 @@ namespace LockViewApp.WP81.BackgroundAgent
         private static async Task UpdateLockScreenTilesIfPossible(HttpClient client, ScheduledTask task, ImageRequestOverride possibleOverride)
         {
             var instance = LockViewApplicationState.Instance;
-            var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProvider.GetMetaData());
+            var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o=>o.GetMetaData()));
 #if !DEBUG
             if (instance.UserQuotaInDollars - drainPerReq >= 0 || task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear)
             {
 #endif
-            CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
-            ImageCompositionResponse compositionResponse = null;
-            if (possibleOverride == null)
-                compositionResponse = await cloudClient.Compose(instance.PreviewContextContract, instance.PreviewFormattingContract, instance.PreviewLayoutContract, instance.RequestMetadata.PersistFileName);
-            else
-                compositionResponse = await cloudClient.ComposeLite(instance.PreviewContextContract, instance.PreviewFormattingContract, instance.PreviewLayoutContract, possibleOverride);
-            var fileName = instance.PreviewContextContract.GenerateImgFileName();
-            var jpegBytes = compositionResponse.Image;
-            BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
-            if (instance.UserQuotaInDollars < 0)
-            {
-                var toast = new ShellToast();
-                toast.Title = AppResources.LockView;
-                toast.Content = AppResources.BalanceRunOut;
-                toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
-                toast.Show();
-            }
-            if (possibleOverride != null && possibleOverride.Arguments == "lq") return;//don't update on money penny
-            //update tile and/or lock screen image.
-            BackgroundTaskHelper.TrySetLockScreenImage(fileName);
-            //update tile if necessary.
-            BackgroundTaskHelper.TryUpdateTiles();
-            //drain the user's balance.
-            instance.UserQuotaInDollars -= drainPerReq;
-            //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
+                CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
+                ImageCompositionResponse compositionResponse = null;
+                if (possibleOverride == null)
+                    compositionResponse = await cloudClient.Compose(instance.SelectedContextContracts, instance.PreviewFormattingContract, instance.PreviewLayoutContract, instance.RequestMetadata.PersistFileName);
+                else
+                    compositionResponse = await cloudClient.ComposeLite(instance.SelectedContextContracts, instance.PreviewFormattingContract, instance.PreviewLayoutContract, possibleOverride);
+                var fileName = instance.PreviewContextContract.GenerateImgFileName();
+                var jpegBytes = compositionResponse.Image;
+                BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
+                if (instance.UserQuotaInDollars < 0)
+                {
+                    var toast = new ShellToast();
+                    toast.Title = AppResources.LockView;
+                    toast.Content = AppResources.BalanceRunOut;
+                    toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
+                    toast.Show();
+                }
+                if (possibleOverride != null && possibleOverride.Arguments == "lq") return;//don't update on money penny
+                                                                                           //update tile and/or lock screen image.
+                BackgroundTaskHelper.TrySetLockScreenImage(fileName,instance.RequestMetadata.RequestLanguage);
+                //update tile if necessary.
+                BackgroundTaskHelper.TryUpdateTiles();
+                //drain the user's balance.
+                instance.UserQuotaInDollars -= drainPerReq;
+                //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
 #if !DEBUG
             }
 #endif
@@ -206,13 +206,16 @@ namespace LockViewApp.WP81.BackgroundAgent
             var flag1 = false;
             var instance = LockViewApplicationState.Instance;
             instance.SelectedProvider.Client = client;
-            var content = await instance.SelectedProvider.RequestContent(LockViewApplicationState.Instance.SelectedInterest);
-            if (!instance.PreviewContextContract.Equals(content))
+            var contents = await Task.WhenAll(instance.SelectedProviders.Select(async (o, i) => await o.RequestContent(instance.SelectedInterests[i]))); //<--- forcing eval.
+            if (instance.SelectedContextContracts.Select((o, i) => !o.Equals(contents[i])).Count(o => o) > 0)
             {
                 //are we getting the same update?
                 flag1 = true;
                 //set flag1 to true -- approve.
-                instance.PreviewContextContract.CopyFromInterestContent(content);
+                for (int i = 0; i < instance.SelectedContextContracts.Length; i++)
+                {
+                    instance.SelectedContextContracts[i].CopyFromInterestContent(contents[i]);
+                }
             }
 
             return flag1;

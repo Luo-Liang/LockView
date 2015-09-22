@@ -85,14 +85,14 @@ namespace InfoViewApp.WP81
                     BackgroundTitle = "Transparent",
                     FirstLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe UI Semibold" },
                     SecondLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe UI Semibold" },
-                    TitleFont = new FontContract() { FontSize = 26, FontFamily = "Segoe UI Semibold" },
+                    TitleFont = new FontContract() { FontSize = 26, FontFamily = "Segoe UI Bold" },
                     ForegroundFirstLine = "White",
                     ForegroundSecondLine = "Gray",
                     ForegroundTitle = "White"
                 };
                 Instance.PreviewContextContract = new OverlayContextContract();
                 Instance.PreviewLayoutContract = new OverlayLayoutContract();
-                Instance.UserQuotaInDollars = 1.0;
+                Instance.UserQuotaInDollars = 0.33;
                 Instance.SelectedInterest = new InterestRequest();
             }
         }
@@ -101,8 +101,19 @@ namespace InfoViewApp.WP81
         {
             SelectedProviders = new InterestGatherer[1];
             SelectedContextContracts = new OverlayContextContract[1];
+            SelectedInterests = new InterestRequest[1];
         }
-        public InterestRequest SelectedInterest { get; set; }
+        public InterestRequest[] SelectedInterests { get; set;}
+        public InterestRequest SelectedInterest {
+            get
+            {
+                return SelectedInterests[0];
+            }
+            set
+            {
+                SelectedInterests[0] = value;
+            }
+        }
         public InterestGathering.InterestGatherer SelectedProvider
         {
             get

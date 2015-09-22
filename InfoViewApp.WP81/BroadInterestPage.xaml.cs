@@ -26,6 +26,8 @@ namespace InfoViewApp.WP81
         {
             this.InitializeComponent();
             newsSources.ItemsSource = (WP81.App.Current.Resources["definedNewsFeedSources"] as FeedSources).Where<FeedSource>(o => o.ApplicableLanguageId == null || o.ApplicableLanguageId.ToLowerInvariant() == LockViewApplicationState.Instance.RequestMetadata.RequestLanguage.ToLowerInvariant());
+            currentConfig.Text = (InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.BroadInterestPage)+1).ToString();
+            totalConfigStep.Text = InterestNavigationQueue.Instance.NavigationPages.Count.ToString();
         }
 
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)

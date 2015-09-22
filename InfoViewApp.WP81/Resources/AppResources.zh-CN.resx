@@ -624,6 +624,7 @@
   </data>
   <data name="AllDone" xml:space="preserve">
     <value>完成设置</value>
+    <comment></comment>
   </data>
   <data name="SetAsLockScreen" xml:space="preserve">
     <value>将锁屏视野设置为您设备的锁屏提供应用。</value>
@@ -654,6 +655,10 @@
   </data>
   <data name="InterestSelectionGuide" xml:space="preserve">
     <value>您可以选择多个类别。这些类别的优先级由您选择它们的顺序决定。请注意，如果某些类别由于内容过多而无法显示，它们将被禁用，直到它们的内容可以适应屏幕为止。</value>
+    <comment></comment>
+  </data>
+  <data name="InterestSelectionProgress" xml:space="preserve">
+    <value>设置兴趣细节...步骤 </value>
     <comment></comment>
   </data>
 </root>

@@ -54,5 +54,12 @@
                 <TextBlock Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Publisher}" VerticalAlignment="Top" FontSize="16" Foreground="White"/>
             </StackPanel>
         </ScrollViewer>
+        <TextBlock VerticalAlignment="Bottom" x:Name="interestConfig" Margin="165,0,20,35" TextWrapping="Wrap" FontFamily="Segoe WP" TextAlignment="Right" FontSize="22.667" >
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Gray}"/>
+            </TextBlock.Foreground>
+        	<Run Text="{Binding LocalizedResources.InterestSelectionProgress, Source={StaticResource ls}}"/>
+        	<Run x:Name="currentConfig"/><Run Text="/"/><Run x:Name="totalConfigStep"/>
+        </TextBlock>
     </Grid>
 </phone:PhoneApplicationPage>

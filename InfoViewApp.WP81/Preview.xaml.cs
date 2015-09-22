@@ -23,6 +23,12 @@ namespace InfoViewApp.WP81
         public Preview()
         {
             this.InitializeComponent();
+            Loaded += Preview_Loaded;
+        }
+
+        private void Preview_Loaded(object sender, RoutedEventArgs e)
+        {
+            previewHolder.MaxHeight = ActualHeight * 0.66;
         }
 
         async Task<WriteableBitmap> OpenBitmapFromFile(string fileName, int width, int height)
@@ -61,8 +67,13 @@ namespace InfoViewApp.WP81
             double width, height;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             img.Source = await OpenBitmapFromFile(LockViewApplicationState.Instance.RequestMetadata.PersistFileName, (int)width, (int)height);
-            previewStack.DataContext = null;//force rebind.
-            previewStack.DataContext = LockViewApplicationState.Instance;
+            var cnt = InterestNavigationQueue.Instance.NavigationPages.Count;
+            for (int i = 0; i < cnt; i++)
+            {
+                var panel = this.FindName($"previewStack{i}") as StackPanel;
+                panel.DataContext = null;//force rebind.
+                panel.DataContext = LockViewApplicationState.Instance;
+            }
         }
 
         private void previewStack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

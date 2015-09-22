@@ -541,7 +541,7 @@
     <value>Windows Phone requires us to obtain your consent before we can change your lock screen.</value>
   </data>
   <data name="AllDone" xml:space="preserve">
-    <value>All Done</value>
+    <value>Finalize</value>
   </data>
   <data name="AverageRequestPerDay" xml:space="preserve">
     <value>Average updates/day:</value>
@@ -662,5 +662,11 @@
   </data>
   <data name="InterestSelectionGuide" xml:space="preserve">
     <value>You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</value>
+  </data>
+  <data name="AllSetTitleText" xml:space="preserve">
+    <value>Thanks! You're all set.</value>
+  </data>
+  <data name="InterestSelectionProgress" xml:space="preserve">
+    <value>Setup  Interest... Step </value>
   </data>
 </root>

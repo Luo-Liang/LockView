@@ -15,7 +15,7 @@ namespace GraphicsOverlay
         /// </summary>
         /// <param name="graphics"></param>
         /// <param name="maxWidth"></param>
-        /// <param name="maxHeight"></param>
+        /// <param name="maxY"></param>
         /// <param name="startingY"></param>
         /// <param name="startingX"></param>
         /// <param name="str2Draw"></param>
@@ -25,7 +25,7 @@ namespace GraphicsOverlay
         /// <returns>If for any reason, most likely due to insufficent space, false is returned.</returns>
         static int applyText(Graphics graphics,
                              int maxWidth,
-                             int maxHeight,
+                             int maxY,
                              int startingY,
                              int startingX,
                              string str2Draw,
@@ -35,8 +35,8 @@ namespace GraphicsOverlay
         {
             success = true;
             var desiredHeight = (int)Math.Ceiling(graphics.MeasureString(str2Draw, font, maxWidth).Height);
-            var rect = new Rectangle(startingX, startingY, maxWidth, Math.Min(desiredHeight, maxHeight));
-            if (desiredHeight > maxHeight)
+            var rect = new Rectangle(startingX, startingY, maxWidth, Math.Min(desiredHeight, maxY));
+            if (desiredHeight + startingY > maxY)
             {
                 success = false;
             }
@@ -45,7 +45,7 @@ namespace GraphicsOverlay
         }
         static int applyContext(this Graphics graphics,
                                 int maxWidth,
-                                int maxHeight,
+                                int maxY,
                                 int startingY,
                                 int startingX,
                                 OverlayLayout layout,
@@ -54,13 +54,11 @@ namespace GraphicsOverlay
                                 out bool shouldContinue)
         {
             shouldContinue = true;
-            startingY = applyText(graphics, maxWidth, maxHeight, startingY, layout.Origin.X, context.Title, formatting.TitleFont, formatting.ForegroundTitle, out shouldContinue);
-            maxHeight -= startingY;
+            startingY = applyText(graphics, maxWidth, maxY, startingY, layout.Origin.X, context.Title, formatting.TitleFont, formatting.ForegroundTitle, out shouldContinue);
             if (shouldContinue)
-                startingY = applyText(graphics, maxWidth, maxHeight - startingY, startingY, layout.Origin.X, context.FirstLine, formatting.FirstLineFont, formatting.ForegroundFirstLine, out shouldContinue);
-            maxHeight -= startingY;
+                startingY = applyText(graphics, maxWidth, maxY, startingY, layout.Origin.X, context.FirstLine, formatting.FirstLineFont, formatting.ForegroundFirstLine, out shouldContinue);
             if (shouldContinue)
-                startingY = applyText(graphics, maxWidth, maxHeight, startingY, layout.Origin.X, context.SecondLine, formatting.SecondLineFont, formatting.ForegroundSecondLine, out shouldContinue);
+                startingY = applyText(graphics, maxWidth, maxY, startingY, layout.Origin.X, context.SecondLine, formatting.SecondLineFont, formatting.ForegroundSecondLine, out shouldContinue);
             return startingY;
         }
         public static void Apply(this Graphics graphics,
@@ -69,15 +67,15 @@ namespace GraphicsOverlay
                                  OverlayFormatting formatting)
         {
             int maxWidth = layout.TargetWidth - 2 * layout.Origin.X;
-            int maxHeight = layout.TargetHeight - 2 * layout.Origin.Y;
+            int maxY = layout.TargetHeight - layout.Origin.Y;
+            maxY = maxY * 7 / 11;
             int startingY = layout.Origin.Y;
             int startingX = layout.Origin.X;
             bool shouldContinue = true;
             foreach (var ctx in contexts)
             {
                 if (shouldContinue)
-                    startingY = applyContext(graphics, maxWidth, maxHeight, startingY, startingX, layout, ctx, formatting, out shouldContinue);
-                maxHeight -= startingY;
+                    startingY = applyContext(graphics, maxWidth, maxY, startingY, startingX, layout, ctx, formatting, out shouldContinue);
             }
         }
     }

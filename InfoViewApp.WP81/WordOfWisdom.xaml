@@ -48,11 +48,18 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Content}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface" Margin="18,322,0,0" d:LayoutOverrides="VerticalAlignment"/>
         <TextBox Text="{Binding Path=SecondLine,Mode=TwoWay}" Margin="6,479,10,0" TextWrapping="Wrap" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="0" FontFamily="Portable User Interface" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Footer}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface" Margin="18,442,0,0"/>
-        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding LocalizedResources.ShowMe, Source={StaticResource ls}}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding LocalizedResources.Next, Source={StaticResource ls}}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
+        <TextBlock VerticalAlignment="Bottom" x:Name="interestConfig" Margin="165,0,20,34" TextWrapping="Wrap" FontFamily="Segoe WP" TextAlignment="Right" FontSize="22.667" >
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Gray}"/>
+            </TextBlock.Foreground>
+        	<Run Text="{Binding LocalizedResources.InterestSelectionProgress, Source={StaticResource ls}}"/>
+        	<Run x:Name="currentConfig"/><Run Text="/"/><Run x:Name="totalConfigStep"/>
+        </TextBlock>
 
         <!--TitlePanel contains the name of the application and page title-->
 
