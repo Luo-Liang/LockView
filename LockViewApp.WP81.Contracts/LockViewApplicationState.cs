@@ -92,17 +92,41 @@ namespace InfoViewApp.WP81
                 };
                 Instance.PreviewContextContract = new OverlayContextContract();
                 Instance.PreviewLayoutContract = new OverlayLayoutContract();
-                Instance.UserQuotaInDollars = 0.19;
+                Instance.UserQuotaInDollars = 1.0;
                 Instance.SelectedInterest = new InterestRequest();
             }
         }
         //expose for XML Serializer
-        public LockViewApplicationState() { }
+        public LockViewApplicationState()
+        {
+            SelectedProviders = new InterestGatherer[1];
+            SelectedContextContracts = new OverlayContextContract[1];
+        }
         public InterestRequest SelectedInterest { get; set; }
-        public InterestGathering.InterestGatherer SelectedProvider { get; set; }
-        public InterestGatherer[] SecondaryProviders { get; set; }
-        public OverlayContextContract PreviewContextContract { get; set; }
-        public OverlayContextContract[] SecondaryContextContracts { get; set; }
+        public InterestGathering.InterestGatherer SelectedProvider
+        {
+            get
+            {
+                return SelectedProviders[0];
+            }
+            set
+            {
+                SelectedProviders[0] = value;
+            }
+        }
+        public InterestGatherer[] SelectedProviders { get; set; }
+        public OverlayContextContract PreviewContextContract
+        {
+            get
+            {
+                return SelectedContextContracts[0];
+            }
+            set
+            {
+                SelectedContextContracts[0] = value;
+            }
+        }
+        public OverlayContextContract[] SelectedContextContracts { get; set; }
         public OverlayFormattingContract PreviewFormattingContract { get; set; }
         public OverlayLayoutContract PreviewLayoutContract { get; set; }
         public async Task SaveState()

@@ -65,8 +65,7 @@ namespace GraphicsOverlay
         }
         public static void Apply(this Graphics graphics,
                                  OverlayLayout layout,
-                                 OverlayContext context,
-                                 OverlayContext[] secondaryContexts,
+                                 OverlayContext[] contexts,
                                  OverlayFormatting formatting)
         {
             int maxWidth = layout.TargetWidth - 2 * layout.Origin.X;
@@ -74,16 +73,11 @@ namespace GraphicsOverlay
             int startingY = layout.Origin.Y;
             int startingX = layout.Origin.X;
             bool shouldContinue = true;
-            startingY = applyContext(graphics, maxWidth, maxHeight, startingY, startingX, layout, context, formatting, out shouldContinue);
-            maxHeight -= startingY;
-            if (secondaryContexts != null)
+            foreach (var ctx in contexts)
             {
-                foreach (var ctx in secondaryContexts)
-                {
-                    if (shouldContinue)
-                        startingY = applyContext(graphics, maxWidth, maxHeight, startingY, startingX, layout, ctx, formatting, out shouldContinue);
-                    maxHeight -= startingY;
-                }
+                if (shouldContinue)
+                    startingY = applyContext(graphics, maxWidth, maxHeight, startingY, startingX, layout, ctx, formatting, out shouldContinue);
+                maxHeight -= startingY;
             }
         }
     }

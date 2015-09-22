@@ -42,6 +42,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }
+            BackgroundTaskHelper.TrySetLockScreenImage("InvalidName.InvalidName");
         }
 
         /// <summary>

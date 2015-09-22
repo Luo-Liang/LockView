@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Info;
+﻿using InfoViewApp.WP81.InterestGathering;
+using Microsoft.Phone.Info;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace InfoViewApp.WP81
     {
         public const double ComputationPricePerHour = 0.4;
         public const double TrafficPricePerGB = 0.185;
-        public static double CalculateDrainPerRequest(LockViewRequestMetadata metaData, InterestGathering.RequestMetaData providerMetaData)
+        public static double CalculateDrainPerRequest(LockViewRequestMetadata metaData, RequestMetaData providerMetaData)
         {
             double multiplier = 1;
             //if (DeviceStatus.DeviceTotalMemory >> 29 < 1) multiplier = 1.5;//pay extra money for inbound.

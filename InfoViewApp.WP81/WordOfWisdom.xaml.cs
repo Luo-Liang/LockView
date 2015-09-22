@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LockViewApp.WP81.Contracts;
+using static InfoViewApp.WP81.InterestNavigationQueue;
 namespace InfoViewApp.WP81
 {
     public partial class WordOfWisdom : PhoneApplicationPage
@@ -15,14 +16,18 @@ namespace InfoViewApp.WP81
         public WordOfWisdom()
         {
             InitializeComponent();
-            LayoutRoot.DataContext = LockViewApplicationState.Instance.SelectedProvider =  new SingleTextSource();
+            var dataContext = new SingleTextSource();
+            //update sources.
+            Instance.AssignProvider(WordOfWisdomPage, dataContext);
+            LayoutRoot.DataContext = dataContext;
         }
 
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            LockViewApplicationState.Instance.PreviewContextContract = new OverlayContextContract();
-            LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(await LockViewApplicationState.Instance.SelectedProvider.RequestContent(null));
-            NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.WordOfWisdomPage));
+            var context = new OverlayContextContract();
+            context.CopyFromInterestContent(await LockViewApplicationState.Instance.SelectedProvider.RequestContent(null));
+            Instance.AssignContent(WordOfWisdomPage, context);
+            NavigationService.Navigate(Instance.GetNextNavigationUri(WordOfWisdomPage));
         }
     }
 }

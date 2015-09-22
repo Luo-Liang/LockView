@@ -22,6 +22,21 @@ namespace InfoViewApp.WP81
         public static Uri PreviewPage { get; } = new Uri("/Preview.xaml", UriKind.Relative);
         public List<Uri> NavigationPages { get; set; } = new List<Uri>();
         public int GetNavigationSequence(Uri currentPageUri) => NavigationPages.IndexOf(currentPageUri);
-        public Uri GetNextNavigationUri(Uri currentPageUri) => NavigationPages.IndexOf(currentPageUri) + 1 == NavigationPages.Count ? PreviewPage : NavigationPages[GetNavigationSequence(currentPageUri)]; 
+        public Uri GetNextNavigationUri(Uri currentPageUri) => NavigationPages.IndexOf(currentPageUri) + 1 == NavigationPages.Count ? PreviewPage : NavigationPages[GetNavigationSequence(currentPageUri) + 1];
+        public void AssignProvider(Uri currentPageUri, InterestGathering.InterestGatherer gatherer)
+        {
+            //this is one of the secondary sources.
+            LockViewApplicationState.Instance.SelectedProviders[Instance.GetNavigationSequence(WordOfWisdomPage)] = gatherer;
+        }
+        public void AssignContent(Uri currentPageUri,InterestGathering.InterestContent content)
+        {
+            var contract = new OverlayContextContract();
+            contract.CopyFromInterestContent(content);
+            AssignContent(currentPageUri, contract);
+        }
+        public void AssignContent(Uri currentPageUri, OverlayContextContract context)
+        {
+            LockViewApplicationState.Instance.SelectedContextContracts[Instance.GetNavigationSequence(WordOfWisdomPage)] = context;
+        }
     }
 }

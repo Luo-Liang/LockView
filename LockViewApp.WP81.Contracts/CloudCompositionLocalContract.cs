@@ -31,8 +31,7 @@ namespace InfoViewApp.WP81
         public ImageRequestOverride ImageRequestOverride { get; set; }
         public OverlayFormattingContract FormattingContract { get; set; }
         public OverlayLayoutContract LayoutContract { get; set; }
-        public OverlayContextContract ContextContract { get; set; }
-        public OverlayContextContract[] SecondaryContextContracts { get; set; }
+        public OverlayContextContract[] ContextContracts { get; set; }
     }
 
 

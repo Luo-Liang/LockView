@@ -41,8 +41,8 @@ namespace InfoViewApp.WP81
             {
                 Instance.NavigationPages.Add((categorySelector.SelectedItems[i] as ListBoxContentVM).NavigationPath);
             }
-            LockViewApplicationState.Instance.SecondaryProviders = new InterestGathering.InterestGatherer[categorySelector.SelectedItems.Count];
-            LockViewApplicationState.Instance.SecondaryContextContracts = new OverlayContextContract[categorySelector.SelectedItems.Count];
+            LockViewApplicationState.Instance.SelectedProviders = new InterestGathering.InterestGatherer[categorySelector.SelectedItems.Count];
+            LockViewApplicationState.Instance.SelectedContextContracts = new OverlayContextContract[categorySelector.SelectedItems.Count];
             NavigationService.Navigate(Instance.NavigationPages[0]);
         }
     }

@@ -51,15 +51,14 @@ namespace InfoViewApp.WP81
                 progressRing.Visibility = Visibility.Visible;
                 InterestContent interestContent = await (languageSource.SelectedItem as IInterestGatherer).RequestContent(LockViewApplicationState.Instance.SelectedInterest);
                 previewStack.DataContext = interestContent;
-                LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(interestContent);
+                InterestNavigationQueue.Instance.AssignContent(InterestNavigationQueue.LanguageSettingPage, interestContent);
                 SaveBtn.Content = AppResources.Next;
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;
-                LockViewApplicationState.Instance.SelectedProvider = languageSource.SelectedItem as InterestGatherer;
+                InterestNavigationQueue.Instance.AssignProvider(InterestNavigationQueue.LanguageSettingPage, languageSource.SelectedItem as InterestGatherer);
             }
             else
             {
-
                 SaveBtn.Content = AppResources.ShowMe;
                 NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.LanguageSettingPage));
             }

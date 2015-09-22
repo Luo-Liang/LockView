@@ -43,14 +43,14 @@ namespace InfoViewApp.WP81
                 progressRing.Visibility = Visibility.Collapsed;
                 if (interest != null)
                 {
-                    LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(interest);
+                    InterestNavigationQueue.Instance.AssignContent(InterestNavigationQueue.SpecificTopicPage, interest);
                     previewStack.DataContext = interest;
                 }
                 else
                 {
                     previewStack.DataContext = InterestContent.DefaultInterest;
                 }
-                LockViewApplicationState.Instance.SelectedProvider = gatherer;
+                InterestNavigationQueue.Instance.AssignProvider(InterestNavigationQueue.SpecificTopicPage, gatherer);
             }
             else
             {

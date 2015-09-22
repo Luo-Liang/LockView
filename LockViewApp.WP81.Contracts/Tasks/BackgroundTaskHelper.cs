@@ -20,12 +20,12 @@ namespace InfoViewApp.WP81.Tasks
         public const string PinnedHeadlineNavId = "/MainPage.xaml?NavId=headLine";
         public const string LowBalanceNavId = "/AllSetPage.xaml?NavId=PurchaseBalance";
         public const string ImageLocator = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt={0}";
-        public static async Task<string> BuildRequestString(OverlayContextContract contextContract,
+        public static async Task<string> BuildRequestString(OverlayContextContract[] contextContracts,
                                                             OverlayFormattingContract formattingContract,
                                                             OverlayLayoutContract layoutContract, string fileName)
         {
             var localRequest = new ImageCompositionRequest();
-            localRequest.ContextContract = contextContract;
+            localRequest.ContextContracts = contextContracts;
             localRequest.FormattingContract = formattingContract;
             localRequest.LayoutContract = layoutContract;
 #if DEBUG
@@ -46,11 +46,14 @@ namespace InfoViewApp.WP81.Tasks
         {
             try
             {
-                LockScreen.SetImageUri(new Uri("ms-appx:///LockView.png", UriKind.Absolute));
-                LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName),UriKind.Absolute));
+                //This allows an early death of the setup, then apply the ABA pattern
+                LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName), UriKind.Absolute));
+                LockScreen.SetImageUri(new Uri("ms-appx:///Outage.png", UriKind.Absolute));
+                LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName), UriKind.Absolute));
             }
             catch (Exception ex)
             {
+                LockScreen.SetImageUri(new Uri("ms-appx:///Outage.png", UriKind.Absolute));
             }
         }
 

@@ -41,22 +41,22 @@ namespace InfoViewApp.WP81
                 if (newsSources.SelectedItem.GetType() == typeof(CustomizedFeedSource))
                 {
                     interestContent = await LockViewApplicationState.Instance.SelectedProvider.RequestContent(LockViewApplicationState.Instance.SelectedInterest);
+                    InterestNavigationQueue.Instance.AssignProvider(InterestNavigationQueue.BroadInterestPage, (newsSources.SelectedItem as CustomizedFeedSource).FeedContentProviders[0]);
                 }
                 else
                 {
-                    LockViewApplicationState.Instance.SelectedProvider = newsTopic.SelectedItem as InterestGatherer;
+                    InterestNavigationQueue.Instance.AssignProvider(InterestNavigationQueue.BroadInterestPage, newsTopic.SelectedItem as InterestGatherer);
                     var provider = newsTopic.SelectedItem as IInterestGatherer;
                     interestContent = await provider.RequestContent(LockViewApplicationState.Instance.SelectedInterest);
                 }
                 previewStack.DataContext = interestContent;
-                LockViewApplicationState.Instance.PreviewContextContract.CopyFromInterestContent(interestContent);
+                InterestNavigationQueue.Instance.AssignContent(InterestNavigationQueue.BroadInterestPage,interestContent);
                 SaveBtn.Content = AppResources.Next;
                 SaveBtn.Visibility = Visibility.Visible;
                 progressRing.Visibility = Visibility.Collapsed;
             }
             else
             {
-
                 SaveBtn.Content = AppResources.ShowMe;
                 NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.BroadInterestPage));
             }
@@ -80,8 +80,8 @@ namespace InfoViewApp.WP81
                     SaveBtn.Visibility = Visibility.Visible;
                 else
                     SaveBtn.Visibility = Visibility.Collapsed;
-                var customSource = newsSources.SelectedItem as CustomizedFeedSource;
-                LockViewApplicationState.Instance.SelectedProvider = customSource.FeedContentProviders[0];
+                //var customSource = newsSources.SelectedItem as CustomizedFeedSource;
+                //LockViewApplicationState.Instance.SelectedProvider = customSource.FeedContentProviders[0];
             }
         }
 

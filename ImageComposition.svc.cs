@@ -99,8 +99,7 @@ namespace InfoView
             g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             g.Apply(request.LayoutContract.ToOverlayLayout(),
-                request.ContextContract.ToOverlayContext(),
-                request.SecondaryContextContracts.Select(ctx=>ctx.ToOverlayContext()).ToArray(),
+                request.ContextContracts.Select(ctx=>ctx.ToOverlayContext()).ToArray(),
                 request.FormattingContract.ToOverlayFormatting());
             g.Save();
             g.Dispose();
