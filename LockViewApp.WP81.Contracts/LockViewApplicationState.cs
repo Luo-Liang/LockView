@@ -73,7 +73,7 @@ namespace InfoViewApp.WP81
                 Instance = new LockViewApplicationState();
                 Instance.RequestMetadata = new LockViewRequestMetadata();
 
-                if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
+                if (DeviceStatus.DeviceTotalMemory >> 29 < 1)
                 {
                     //low ram device.
                     Instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
