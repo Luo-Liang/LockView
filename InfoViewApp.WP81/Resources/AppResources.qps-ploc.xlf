@@ -261,6 +261,22 @@
           <source>Setup  Interest... Step </source>
           <target state="new">Setup  Interest... Step </target>
         </trans-unit>
+        <trans-unit id="Resx/WeatherInterestText" translate="yes" xml:space="preserve">
+          <source>Always worried about rain? Track your favourite city's immediate weather condition right on your Lock Screen.</source>
+          <target state="new">Always worried about rain? Track your favourite city's immediate weather condition right on your Lock Screen.</target>
+        </trans-unit>
+        <trans-unit id="Resx/WeatherSettingPageTitle" translate="yes" xml:space="preserve">
+          <source>Where do you want to track?</source>
+          <target state="new">Where do you want to track?</target>
+        </trans-unit>
+        <trans-unit id="Resx/WeatherSettingPageText" translate="yes" xml:space="preserve">
+          <source>Just put in the name of the city. We'll give you its immediate weather forcast so you won't be caught by bad weather!</source>
+          <target state="new">Just put in the name of the city. We'll give you its immediate weather forcast so you won't be caught by bad weather!</target>
+        </trans-unit>
+        <trans-unit id="Resx/WeatherInterest" translate="yes" xml:space="preserve">
+          <source>WEATHER</source>
+          <target state="new">WEATHER</target>
+        </trans-unit>
         <trans-unit id="Resx/AllSetTitleText" translate="yes" xml:space="preserve">
           <source>Thanks! You're all set.</source>
           <target state="new">Thanks! You're all set.</target>

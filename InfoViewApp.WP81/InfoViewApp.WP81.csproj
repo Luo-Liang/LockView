@@ -141,6 +141,9 @@
     <Compile Include="SpecificTopic.xaml.cs">
       <DependentUpon>SpecificTopic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Weather.xaml.cs">
+      <DependentUpon>Weather.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WordOfWisdom.xaml.cs">
       <DependentUpon>WordOfWisdom.xaml</DependentUpon>
     </Compile>
@@ -189,6 +192,10 @@
     <Page Include="SpecificTopic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Weather.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WordOfWisdom.xaml">
       <SubType>Designer</SubType>

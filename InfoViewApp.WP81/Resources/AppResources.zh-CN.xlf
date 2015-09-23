@@ -569,14 +569,32 @@
         <trans-unit id="Resx/InterestSelectionGuide" translate="yes" xml:space="preserve">
           <source>You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</source>
           <target state="needs-review-translation">您可以选择多个类别。这些类别的优先级由您选择它们的顺序决定。请注意，如果某些类别由于内容过多而无法显示，它们将被禁用，直到它们的内容可以适应屏幕为止。</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          </trans-unit>
         <trans-unit id="Resx/InterestSelectionProgress" translate="yes" xml:space="preserve">
           <source>Setup  Interest... Step </source>
-          <target state="needs-review-translation">设置兴趣细节...步骤 </target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="needs-review-translation">设置兴趣细节...步骤 </target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          </trans-unit>
+        <trans-unit id="Resx/WeatherInterestText" translate="yes" xml:space="preserve">
+          <source>Always worried about rain? Track your favourite city's immediate weather condition right on your Lock Screen.</source>
+          <target state="translated">总是担心下雨?使用锁屏界面追踪您所在城市的天气信息。</target>
+        </trans-unit>
+        <trans-unit id="Resx/WeatherSettingPageTitle" translate="yes" xml:space="preserve">
+          <source>Where do you want to track?</source>
+          <target state="translated">您要追踪何处的天气?</target>
+        </trans-unit>
+        <trans-unit id="Resx/WeatherSettingPageText" translate="yes" xml:space="preserve">
+          <source>Just put in the name of the city. We'll give you its immediate weather forcast so you won't be caught by bad weather!</source>
+          <target state="translated">仅需输入城市名，我们将显示它的天气预报，您将无被坏天气逮个正着之虞。</target>
+        </trans-unit>
+        <trans-unit id="Resx/WeatherInterest" translate="yes" xml:space="preserve">
+          <source>WEATHER</source>
+          <target state="new">WEATHER</target>
         </trans-unit>
         <trans-unit id="Resx/AllSetTitleText" translate="yes" xml:space="preserve">
           <source>Thanks! You're all set.</source>
-          <target state="new">Thanks! You're all set.</target>
+          <target state="translated">谢谢!一切就绪。</target>
         </trans-unit>
         <trans-unit id="Resx/Footer" translate="yes" xml:space="preserve">
           <source>Footer</source>
@@ -588,7 +606,7 @@
         </trans-unit>
         <trans-unit id="Resx/WordOfWisdomPageTitle" translate="yes" xml:space="preserve">
           <source>Is there anything you want to tell yourself? Maybe to calm down, slow down?</source>
-          <target state="new">Is there anything you want to tell yourself? Maybe to calm down, slow down?</target>
+          <target state="translated">想要告诉自己一句话?也许是要享受生活，或者是要沉着冷静?</target>
         </trans-unit>
         <trans-unit id="Resx/SpecificTopicPageText" translate="yes" xml:space="preserve">
           <source>Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk.</source>
@@ -716,8 +734,9 @@
         </trans-unit>
         <trans-unit id="Resx/AllDone" translate="yes" xml:space="preserve">
           <source>Finalize</source>
-          <target state="needs-review-translation">完成设置</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
-        </trans-unit>
+          <target state="needs-review-translation">完成设置</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          </trans-unit>
         <trans-unit id="Resx/SetAsLockScreen" translate="yes" xml:space="preserve">
           <source>Set as lock screen provider and allow background update</source>
           <target state="translated">将锁屏视野设置为您设备的锁屏提供应用。</target>

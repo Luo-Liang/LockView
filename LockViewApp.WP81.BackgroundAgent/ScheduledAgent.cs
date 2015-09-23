@@ -60,7 +60,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             try
             {
 #endif
-                if (DeviceStatus.DeviceTotalMemory >> 29 < 1)
+                if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
                 {
                     //low ram device.
                     await LaunchLowRAMTask(task);

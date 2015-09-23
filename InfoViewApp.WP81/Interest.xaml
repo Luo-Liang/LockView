@@ -51,9 +51,9 @@
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <Grid Margin="18,125,17,79">
-            <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.InterestSelectionGuide, Source={StaticResource ls}}" VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="1,0,2,0"/>
-            <ListBox SelectionMode="Multiple" x:Name="categorySelector" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Portable User Interface" Margin="0,147,0,0">
+        <StackPanel Margin="18,125,17,79">
+            <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.InterestSelectionGuide, Source={StaticResource ls}}" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="1,0,2,0" d:LayoutOverrides="TopPosition, BottomPosition"/>
+            <ListBox SelectionMode="Multiple" x:Name="categorySelector" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Portable User Interface" Margin="0,10,0,0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel IsHitTestVisible="{Binding FeatureEnabled}" Orientation="Vertical">
@@ -63,7 +63,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </Grid>
+        </StackPanel>
 
     </Grid>
 </phone:PhoneApplicationPage>

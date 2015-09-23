@@ -669,4 +669,16 @@
   <data name="InterestSelectionProgress" xml:space="preserve">
     <value>Setup  Interest... Step </value>
   </data>
+  <data name="WeatherInterest" xml:space="preserve">
+    <value>WEATHER</value>
+  </data>
+  <data name="WeatherInterestText" xml:space="preserve">
+    <value>Always worried about rain? Track your favourite city's immediate weather condition right on your Lock Screen.</value>
+  </data>
+  <data name="WeatherSettingPageText" xml:space="preserve">
+    <value>Just put in the name of the city. We'll give you its immediate weather forcast so you won't be caught by bad weather!</value>
+  </data>
+  <data name="WeatherSettingPageTitle" xml:space="preserve">
+    <value>Where do you want to track?</value>
+  </data>
 </root>

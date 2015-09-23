@@ -151,7 +151,7 @@ namespace InfoViewApp.WP81
                 using (var fs = file)
                 {
                     var quality = 100;
-                    if (DeviceStatus.DeviceTotalMemory >> 29 < 1)
+                    if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
                         //money penny device.
                         quality = 70;
                     await Task.Run(() => bitmap.SaveJpeg(fs, bitmap.PixelWidth, bitmap.PixelHeight, 0, quality));

@@ -1600,6 +1600,42 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WEATHER.
+        /// </summary>
+        public static string WeatherInterest {
+            get {
+                return ResourceManager.GetString("WeatherInterest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always worried about rain? Track your favourite city&apos;s immediate weather condition right on your Lock Screen..
+        /// </summary>
+        public static string WeatherInterestText {
+            get {
+                return ResourceManager.GetString("WeatherInterestText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Just put in the name of the city. We&apos;ll give you its immediate weather forcast so you won&apos;t be caught by bad weather!.
+        /// </summary>
+        public static string WeatherSettingPageText {
+            get {
+                return ResourceManager.GetString("WeatherSettingPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where do you want to track?.
+        /// </summary>
+        public static string WeatherSettingPageTitle {
+            get {
+                return ResourceManager.GetString("WeatherSettingPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days..
         /// </summary>
         public static string WhileBalanceLastsText {

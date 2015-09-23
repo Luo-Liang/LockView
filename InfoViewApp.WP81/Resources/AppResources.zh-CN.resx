@@ -661,4 +661,19 @@
     <value>设置兴趣细节...步骤 </value>
     <comment></comment>
   </data>
+  <data name="AllSetTitleText" xml:space="preserve">
+    <value>谢谢!一切就绪。</value>
+  </data>
+  <data name="WordOfWisdomPageTitle" xml:space="preserve">
+    <value>想要告诉自己一句话?也许是要享受生活，或者是要沉着冷静?</value>
+  </data>
+  <data name="WeatherInterestText" xml:space="preserve">
+    <value>总是担心下雨?使用锁屏界面追踪您所在城市的天气信息。</value>
+  </data>
+  <data name="WeatherSettingPageTitle" xml:space="preserve">
+    <value>您要追踪何处的天气?</value>
+  </data>
+  <data name="WeatherSettingPageText" xml:space="preserve">
+    <value>仅需输入城市名，我们将显示它的天气预报，您将无被坏天气逮个正着之虞。</value>
+  </data>
 </root>

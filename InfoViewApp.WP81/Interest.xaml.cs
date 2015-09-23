@@ -22,7 +22,8 @@ namespace InfoViewApp.WP81
                 new ListBoxContentVM() {FirstLine = AppResources.SpecificTopicOfYourChoice, SecondLine = AppResources.SpecificTopicOfYourChoiceText,NavigationPath = SpecificTopicPage },
                 new ListBoxContentVM() {FirstLine = AppResources.GenericNewsTopic,SecondLine = AppResources.GenericNewsTopicText ,NavigationPath= InterestNavigationQueue.BroadInterestPage},
                 new ListBoxContentVM() {FirstLine = AppResources.WordOfWisdom,SecondLine = AppResources.WordOfWisdomText ,NavigationPath=WordOfWisdomPage },
-                new ListBoxContentVM() {FirstLine = AppResources.LanguageLearning,SecondLine = AppResources.LanguageLearningText,NavigationPath = LanguageSettingPage }
+                new ListBoxContentVM() {FirstLine = AppResources.LanguageLearning,SecondLine = AppResources.LanguageLearningText,NavigationPath = LanguageSettingPage },
+                new ListBoxContentVM() {FirstLine = AppResources.WeatherInterest,SecondLine = AppResources.WeatherInterestText,NavigationPath = WeatherSettingsPage }
             });
             categorySelector.ItemsSource = lbm;
         }
