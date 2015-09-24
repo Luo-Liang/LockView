@@ -89,8 +89,8 @@
           <target state="new">Next</target>
         </trans-unit>
         <trans-unit id="Resx/SpecificTopicOfYourChoiceText" translate="yes" xml:space="preserve">
-          <source>This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news.</source>
-          <target state="new">This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news.</target>
+          <source>This option allows user to use a specific topic of their interest.</source>
+          <target state="new">This option allows user to use a specific topic of their interest.</target>
         </trans-unit>
         <trans-unit id="Resx/SuggestedSource" translate="yes" xml:space="preserve">
           <source>Suggested Source</source>
@@ -254,8 +254,8 @@
           <target state="new">Title</target>
         </trans-unit>
         <trans-unit id="Resx/InterestSelectionGuide" translate="yes" xml:space="preserve">
-          <source>You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</source>
-          <target state="new">You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</target>
+          <source>You can select multiple categories. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</source>
+          <target state="new">You can select multiple categories. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</target>
         </trans-unit>
         <trans-unit id="Resx/InterestSelectionProgress" translate="yes" xml:space="preserve">
           <source>Setup  Interest... Step </source>
@@ -268,6 +268,18 @@
         <trans-unit id="Resx/WeatherSettingPageTitle" translate="yes" xml:space="preserve">
           <source>Where do you want to track?</source>
           <target state="new">Where do you want to track?</target>
+        </trans-unit>
+        <trans-unit id="Resx/UseMetric" translate="yes" xml:space="preserve">
+          <source>Use metric</source>
+          <target state="new">Use metric</target>
+        </trans-unit>
+        <trans-unit id="Resx/UseImperial" translate="yes" xml:space="preserve">
+          <source>Use imperial</source>
+          <target state="new">Use imperial</target>
+        </trans-unit>
+        <trans-unit id="Resx/UnitMetric" translate="yes" xml:space="preserve">
+          <source>METRIC</source>
+          <target state="new">METRIC</target>
         </trans-unit>
         <trans-unit id="Resx/WeatherSettingPageText" translate="yes" xml:space="preserve">
           <source>Just put in the name of the city. We'll give you its immediate weather forcast so you won't be caught by bad weather!</source>

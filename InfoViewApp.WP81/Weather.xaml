@@ -21,7 +21,29 @@
         <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" VerticalAlignment="Top">
             <TextBlock IsHitTestVisible="False" TextWrapping="Wrap" Text="{Binding LocalizedResources.WeatherSettingPageTitle, Source={StaticResource ls}}" FontSize="24" Foreground="White" Margin="20,21,0,20" d:LayoutOverrides="LeftPosition, RightPosition"/>
         </Grid>
-        <TextBlock  IsHitTestVisible="False" TextWrapping="Wrap" Text="{Binding LocalizedResources.WeatherSettingPageText, Source={StaticResource ls}}" VerticalAlignment="Top"  Margin="18,120,10,0" Foreground="{StaticResource GrayBrush}" FontFamily="Global User Interface" FontSize="20"/>
+        <TextBlock  IsHitTestVisible="False" TextWrapping="Wrap" Text="{Binding LocalizedResources.WeatherSettingPageText, Source={StaticResource ls}}" VerticalAlignment="Top"  Margin="18,120,10,0" Foreground="{StaticResource GrayBrush}" FontFamily="Portable User Interface" FontSize="20"/>
+        <TextBox KeyDown="weatherBox_KeyDown" TextChanged="weatherBox_TextChanged" x:Name="weatherBox" Margin="8,206,8,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" BorderBrush="{StaticResource LightAccentBrush}" BorderThickness="0" FontFamily="Portable User Interface"/>
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Content="{Binding LocalizedResources.ShowMe, Source={StaticResource ls}}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface" Visibility="Collapsed">
+            <Button.Background>
+                <SolidColorBrush Color="{StaticResource AccentColor}"/>
+            </Button.Background>
+        </Button>
+        <TextBlock VerticalAlignment="Bottom" x:Name="interestConfig" Margin="165,0,20,33" TextWrapping="Wrap" FontFamily="Segoe WP" TextAlignment="Right" FontSize="22.667" >
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{StaticResource Gray}"/>
+            </TextBlock.Foreground>
+        	<Run Text="{Binding LocalizedResources.InterestSelectionProgress, Source={StaticResource ls}}"/>
+        	<Run x:Name="currentConfig"/><Run Text="/"/><Run x:Name="totalConfigStep"/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding LocalizedResources.UnitMetric, Source={StaticResource ls}}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface" Margin="18,292,0,0" d:LayoutOverrides="VerticalAlignment"/>
+        <StackPanel x:Name="previewStack" Orientation="Vertical" Margin="18,0,20,166" VerticalAlignment="Bottom" >
+            <TextBlock Foreground="{StaticResource PhoneForegroundBrush}" TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Top" FontSize="24" FontFamily="Portable User Interface" />
+            <TextBlock Foreground="{StaticResource PhoneForegroundBrush}" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Content}" VerticalAlignment="Top" FontSize="20"/>
+            <TextBlock Foreground="{StaticResource PhoneForegroundBrush}" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Publisher}" VerticalAlignment="Top" FontSize="16"/>
+        </StackPanel>
+        <ProgressBar x:Name="progressRing" VerticalAlignment="Top" Background="{x:Null}" Foreground="{StaticResource AccentBrush}" IsIndeterminate="True" Visibility="Collapsed"/>
+        <RadioButton GroupName="metric" x:Name="useImperial" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.UseImperial}" Margin="11,320,124,370" FontSize="20" FontFamily="Segoe WP Light"/>
+        <RadioButton IsChecked="True" GroupName="metric" x:Name="useMetric" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.UseMetric}" Margin="11,0,124,292" FontSize="20" FontFamily="Segoe WP Light" Height="78" VerticalAlignment="Bottom"/>
 
         <!--TitlePanel contains the name of the application and page title-->
 

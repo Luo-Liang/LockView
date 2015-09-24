@@ -700,7 +700,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit..
+        ///   Looks up a localized string similar to You can select multiple categories. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit..
         /// </summary>
         public static string InterestSelectionGuide {
             get {
@@ -1348,7 +1348,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we&apos;ll gather you the hottest and latest Microsoft news..
+        ///   Looks up a localized string similar to This option allows user to use a specific topic of their interest..
         /// </summary>
         public static string SpecificTopicOfYourChoiceText {
             get {
@@ -1560,6 +1560,33 @@ namespace InfoViewApp.WP81.Resources {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to METRIC.
+        /// </summary>
+        public static string UnitMetric {
+            get {
+                return ResourceManager.GetString("UnitMetric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use imperial.
+        /// </summary>
+        public static string UseImperial {
+            get {
+                return ResourceManager.GetString("UseImperial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use metric.
+        /// </summary>
+        public static string UseMetric {
+            get {
+                return ResourceManager.GetString("UseMetric", resourceCulture);
             }
         }
         

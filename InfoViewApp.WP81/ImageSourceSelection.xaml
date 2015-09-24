@@ -54,7 +54,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.LetsGo}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,10" FontFamily="Portable User Interface" Width="140" Height="72">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.LetsGo}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,10" FontFamily="Portable User Interface" Height="72">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

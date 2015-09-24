@@ -98,9 +98,9 @@
           <target state="translated">语言学习</target>
         </trans-unit>
         <trans-unit id="Resx/SpecificTopicOfYourChoiceText" translate="yes" xml:space="preserve">
-          <source>This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news.</source>
-          <target state="translated">有一个特殊的爱好?选择此项若您希望收到某个特定话题的更新。例如，如果您对微软有兴趣，只需键入微软，我们将把有关该话题的报道呈现给您。</target>
-        </trans-unit>
+          <source>This option allows user to use a specific topic of their interest.</source>
+          <target state="needs-review-translation">有一个特殊的爱好?选择此项若您希望收到某个特定话题的更新。例如，如果您对微软有兴趣，只需键入微软，我们将把有关该话题的报道呈现给您。</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
         <trans-unit id="Resx/SpecificTopicOfYourChoice" translate="yes" xml:space="preserve">
           <source>SPECIFIC TOPIC OF YOUR CHOICE</source>
           <target state="translated">特定话题</target>
@@ -567,7 +567,7 @@
           <target state="translated">标题</target>
         </trans-unit>
         <trans-unit id="Resx/InterestSelectionGuide" translate="yes" xml:space="preserve">
-          <source>You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</source>
+          <source>You can select multiple categories. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</source>
           <target state="needs-review-translation">您可以选择多个类别。这些类别的优先级由您选择它们的顺序决定。请注意，如果某些类别由于内容过多而无法显示，它们将被禁用，直到它们的内容可以适应屏幕为止。</target>
           <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
           </trans-unit>
@@ -584,13 +584,25 @@
           <source>Where do you want to track?</source>
           <target state="translated">您要追踪何处的天气?</target>
         </trans-unit>
+        <trans-unit id="Resx/UseMetric" translate="yes" xml:space="preserve">
+          <source>Use metric</source>
+          <target state="translated">使用公制单位</target>
+        </trans-unit>
+        <trans-unit id="Resx/UseImperial" translate="yes" xml:space="preserve">
+          <source>Use imperial</source>
+          <target state="translated">使用英制单位</target>
+        </trans-unit>
+        <trans-unit id="Resx/UnitMetric" translate="yes" xml:space="preserve">
+          <source>METRIC</source>
+          <target state="translated">计量单位</target>
+        </trans-unit>
         <trans-unit id="Resx/WeatherSettingPageText" translate="yes" xml:space="preserve">
           <source>Just put in the name of the city. We'll give you its immediate weather forcast so you won't be caught by bad weather!</source>
           <target state="translated">仅需输入城市名，我们将显示它的天气预报，您将无被坏天气逮个正着之虞。</target>
         </trans-unit>
         <trans-unit id="Resx/WeatherInterest" translate="yes" xml:space="preserve">
           <source>WEATHER</source>
-          <target state="new">WEATHER</target>
+          <target state="translated">天气预报</target>
         </trans-unit>
         <trans-unit id="Resx/AllSetTitleText" translate="yes" xml:space="preserve">
           <source>Thanks! You're all set.</source>

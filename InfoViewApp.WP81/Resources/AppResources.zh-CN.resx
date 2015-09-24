@@ -182,6 +182,7 @@
   </data>
   <data name="SpecificTopicOfYourChoiceText" xml:space="preserve">
     <value>有一个特殊的爱好?选择此项若您希望收到某个特定话题的更新。例如，如果您对微软有兴趣，只需键入微软，我们将把有关该话题的报道呈现给您。</value>
+    <comment></comment>
   </data>
   <data name="SpecificTopicOfYourChoice" xml:space="preserve">
     <value>特定话题</value>
@@ -675,5 +676,17 @@
   </data>
   <data name="WeatherSettingPageText" xml:space="preserve">
     <value>仅需输入城市名，我们将显示它的天气预报，您将无被坏天气逮个正着之虞。</value>
+  </data>
+  <data name="WeatherInterest" xml:space="preserve">
+    <value>天气预报</value>
+  </data>
+  <data name="UseMetric" xml:space="preserve">
+    <value>使用公制单位</value>
+  </data>
+  <data name="UseImperial" xml:space="preserve">
+    <value>使用英制单位</value>
+  </data>
+  <data name="UnitMetric" xml:space="preserve">
+    <value>计量单位</value>
   </data>
 </root>

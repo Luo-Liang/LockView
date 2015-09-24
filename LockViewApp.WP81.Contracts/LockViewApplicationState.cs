@@ -51,6 +51,7 @@ namespace InfoViewApp.WP81
     [XmlInclude(typeof(SingleTextSource))]
     [XmlInclude(typeof(OnlineSource))]
     [XmlInclude(typeof(OfflineSource))]
+    [XmlInclude(typeof(WeatherDataSource))]
     public class LockViewApplicationState
     {
         const string SettingInstance = "Settings.xml";

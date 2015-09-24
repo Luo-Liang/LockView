@@ -186,7 +186,7 @@
     <value>SPECIFIC TOPIC OF YOUR CHOICE</value>
   </data>
   <data name="SpecificTopicOfYourChoiceText" xml:space="preserve">
-    <value>This option allows user to use a specific topic of their interest. For example, if you are interested in Microsoft news, just type in Microsoft and we'll gather you the hottest and latest Microsoft news.</value>
+    <value>This option allows user to use a specific topic of their interest.</value>
   </data>
   <data name="SuggestedSource" xml:space="preserve">
     <value>Suggested Source</value>
@@ -661,7 +661,7 @@
     <value>Title</value>
   </data>
   <data name="InterestSelectionGuide" xml:space="preserve">
-    <value>You can select multiple categories. The priority of these categories are chosen based on the order you select. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</value>
+    <value>You can select multiple categories. If we cannot fit all the contents on your screen, some of them will be dropped until next time they fit.</value>
   </data>
   <data name="AllSetTitleText" xml:space="preserve">
     <value>Thanks! You're all set.</value>
@@ -680,5 +680,14 @@
   </data>
   <data name="WeatherSettingPageTitle" xml:space="preserve">
     <value>Where do you want to track?</value>
+  </data>
+  <data name="UnitMetric" xml:space="preserve">
+    <value>METRIC</value>
+  </data>
+  <data name="UseImperial" xml:space="preserve">
+    <value>Use imperial</value>
+  </data>
+  <data name="UseMetric" xml:space="preserve">
+    <value>Use metric</value>
   </data>
 </root>

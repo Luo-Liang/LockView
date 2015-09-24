@@ -96,6 +96,7 @@
     <Compile Include="SpecificInterestGatherer.cs" />
     <Compile Include="Tasks\BackgroundTaskHelper.cs" />
     <Compile Include="Tasks\CloudImageCompositorClient.cs" />
+    <Compile Include="WeatherDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">

@@ -51,19 +51,17 @@
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <StackPanel Margin="18,125,17,79">
-            <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.InterestSelectionGuide, Source={StaticResource ls}}" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="1,0,2,0" d:LayoutOverrides="TopPosition, BottomPosition"/>
-            <ListBox SelectionMode="Multiple" x:Name="categorySelector" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Portable User Interface" Margin="0,10,0,0">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel IsHitTestVisible="{Binding FeatureEnabled}" Orientation="Vertical">
-                            <TextBlock FontSize="24" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
-                            <TextBlock FontFamily="Segoe UI Light" FontWeight="Light" FontSize="21.333" TextWrapping="Wrap"   Text="{Binding SecondLine}" Margin="0,0,0,10"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
+        <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.InterestSelectionGuide, Source={StaticResource ls}}" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="19,125,19,0" VerticalAlignment="Top"/>
+        <ListBox SelectionMode="Multiple" x:Name="categorySelector" Background="{x:Null}" ItemsSource="{StaticResource categories}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Portable User Interface" Margin="18,223,17,84">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel IsHitTestVisible="{Binding FeatureEnabled}" Orientation="Vertical">
+                        <TextBlock FontSize="24" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
+                        <TextBlock FontFamily="Segoe UI Light" FontWeight="Light" FontSize="21.333" TextWrapping="Wrap"   Text="{Binding SecondLine}" Margin="0,0,0,10"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </phone:PhoneApplicationPage>

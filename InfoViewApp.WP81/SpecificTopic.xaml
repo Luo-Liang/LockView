@@ -33,7 +33,7 @@
         <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource  AccentBrush}" Opacity="0.8">
             <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.SpecificTopicPageTitle}" VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
         </Grid>
-        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Collapsed" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ShowMe}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface">
+        <Button Click="SaveBtn_Click" x:Name="SaveBtn" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ShowMe}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="7,0,0,12" FontFamily="Global User Interface" Visibility="Collapsed">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
