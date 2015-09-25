@@ -54,5 +54,9 @@ namespace InfoViewApp.WP81
 
         }
 
+        private void LaunchBgground_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
+        }
     }
 }

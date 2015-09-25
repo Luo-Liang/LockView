@@ -66,7 +66,7 @@ namespace InfoViewApp.WP81.Tasks
             {
                 var tile = ShellTile.ActiveTiles.First<ShellTile>(st => st.NavigationUri == uri);
                 var context = LockViewApplicationState.Instance.PreviewContextContract;
-                var standardTile = new StandardTileData() { Title = "LockView", BackTitle = context.Title, BackContent = context.FirstLine };
+                var standardTile = new StandardTileData() { Title = context.SecondLine, BackTitle = context.Title, BackContent = context.FirstLine };
                 if (context.ExtendedUri != null)
                 {
                     standardTile.BackgroundImage = new Uri(context.ExtendedUri, UriKind.Absolute);
@@ -172,7 +172,7 @@ namespace InfoViewApp.WP81
             var fileName = string.Join(string.Empty, contract.Title.Select<char, string>(o => ((int)o).ToString()));
             if (fileName.Length > 20) fileName = fileName.Substring(0, 20);
             Random rand = new Random(DateTime.Now.Second);
-            return $"{rand}{fileName}.jpeg";
+            return $"{rand.Next()}{fileName}.jpeg";
         }
     }
 }

@@ -15,13 +15,19 @@ namespace LockViewApp.WP81.Contracts
         public bool IsImperial { get; set; }
         public string Language { get; set; }
         const string ApiKey = "9af6667faad810f1b2bd4fa2dae3d03b"; //<--- if you see this in GitHub, then it is fake.
+        const string uriString = "http://www.weatherapi.net/wp-content/uploads/2014/10/openweathermap_logo.png";
+        public WeatherDataSource()
+        {
+            ExtendedContentUrl = uriString;
+        }
+
         public override RequestMetaData GetMetaData()
         {
             return new RequestMetaData()
             {
                 BytePerRequest = 20,
                 TypicalComputationInSec = 5,
-                UpdatePerDay = 16
+                UpdatePerDay = 16*2
             };
         }
 
@@ -40,7 +46,8 @@ namespace LockViewApp.WP81.Contracts
             {
                 Content = weatherAndTemp,
                 Title = CityName,
-                Publisher = "OpenWeatherMap"
+                Publisher = $"OpenWeatherMap [{DateTime.Now}]",
+                ExtensionUri = new Uri(uriString,UriKind.Absolute)
             };
         }
     }

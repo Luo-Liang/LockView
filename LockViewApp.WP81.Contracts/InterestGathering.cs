@@ -60,6 +60,9 @@ namespace InfoViewApp.WP81.InterestGathering
         /// </summary>
         public HttpClient Client { get; set; }
         public string BaseRequestUrlTemplate = "INVALID";
+        /// <summary>
+        /// Usually, this is a image of the source.
+        /// </summary>
         public string ExtendedContentUrl { get; set; }
         public string SourceName { get; set; }
         public abstract Task<InterestContent> RequestContent(InterestRequest request);
