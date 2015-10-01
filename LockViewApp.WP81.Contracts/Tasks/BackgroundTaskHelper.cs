@@ -148,6 +148,17 @@ namespace InfoViewApp.WP81.Tasks
                 imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
             return imgRequestUrl;
         }
+
+        public static async Task<string> GetNASAImageFitScreenUrl(HttpClient client)
+        {
+            if (client == null)
+                client = new HttpClient();
+            var instance = LockViewApplicationState.Instance;
+            var reqString = "https://api.nasa.gov/planetary/apod?concept_tags=True&api_key=mzzFYcsRbS2oVEak5fvY4Znbx6tTsAy200MiQqXF";
+            var json = await client.GetStringAsync(new Uri(reqString));
+            var jObj = JsonObject.Parse(json);
+            return jObj.GetNamedString("url");
+        }
     }
 
 

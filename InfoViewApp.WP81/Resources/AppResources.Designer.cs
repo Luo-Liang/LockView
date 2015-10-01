@@ -979,6 +979,42 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NASA.
+        /// </summary>
+        public static string NASA {
+            get {
+                return ResourceManager.GetString("NASA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use the explaination for the image shown on your screen. This option is only available if you&apos;re using NASA as your image provider in the previous screen..
+        /// </summary>
+        public static string NASAInterestText {
+            get {
+                return ResourceManager.GetString("NASAInterestText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NASA IMAGE EXPLAINATION.
+        /// </summary>
+        public static string NASAInterestTitle {
+            get {
+                return ResourceManager.GetString("NASAInterestTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image..
+        /// </summary>
+        public static string NASAText {
+            get {
+                return ResourceManager.GetString("NASAText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Navajo White.
         /// </summary>
         public static string NavajoWhite {

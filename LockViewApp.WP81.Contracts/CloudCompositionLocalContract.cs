@@ -87,7 +87,8 @@ namespace InfoViewApp.WP81
     public enum ImageSource
     {
         Local,
-        Bing
+        Bing,
+        NASA
     }
 
     public class Point

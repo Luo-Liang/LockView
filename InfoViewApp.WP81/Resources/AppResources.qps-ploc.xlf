@@ -273,6 +273,22 @@
           <source>Use metric</source>
           <target state="new">Use metric</target>
         </trans-unit>
+        <trans-unit id="Resx/NASAText" translate="yes" xml:space="preserve">
+          <source>Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
+          <target state="new">Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</target>
+        </trans-unit>
+        <trans-unit id="Resx/NASA" translate="yes" xml:space="preserve">
+          <source>NASA</source>
+          <target state="new">NASA</target>
+        </trans-unit>
+        <trans-unit id="Resx/NASAInterestTitle" translate="yes" xml:space="preserve">
+          <source>NASA IMAGE EXPLAINATION</source>
+          <target state="new">NASA IMAGE EXPLAINATION</target>
+        </trans-unit>
+        <trans-unit id="Resx/NASAInterestText" translate="yes" xml:space="preserve">
+          <source>Use the explaination for the image shown on your screen. This option is only available if you're using NASA as your image provider in the previous screen.</source>
+          <target state="new">Use the explaination for the image shown on your screen. This option is only available if you're using NASA as your image provider in the previous screen.</target>
+        </trans-unit>
         <trans-unit id="Resx/UseImperial" translate="yes" xml:space="preserve">
           <source>Use imperial</source>
           <target state="new">Use imperial</target>

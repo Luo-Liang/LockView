@@ -38,6 +38,7 @@
         <local:ListBoxContentVMCollection x:Key="categories">
             <local:ListBoxContentVM NavigationPath="/ImageCropping.xaml?ImgSrc=library" SecondLine="Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library." FirstLine="USE MY OWN IMAGE"/>
             <local:ListBoxContentVM NavigationPath="/ImageCropping.xaml?ImgSrc=bing" SecondLine="Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="BING"/>
+            <local:ListBoxContentVM NavigationPath="/ImageCropping.xaml?ImgSrc=nasa" SecondLine="Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="NASA"/>
         </local:ListBoxContentVMCollection>
     </phone:PhoneApplicationPage.Resources>
     <Grid>
