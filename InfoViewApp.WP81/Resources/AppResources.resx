@@ -702,4 +702,16 @@
   <data name="ZhCn" xml:space="preserve">
     <value>Chinese</value>
   </data>
+  <data name="NASA" xml:space="preserve">
+    <value>NASA</value>
+  </data>
+  <data name="NASAInterestText" xml:space="preserve">
+    <value>Use the explaination for the image shown on your screen. This option is only available if you're using NASA as your image provider in the previous screen.</value>
+  </data>
+  <data name="NASAInterestTitle" xml:space="preserve">
+    <value>NASA IMAGE EXPLAINATION</value>
+  </data>
+  <data name="NASAText" xml:space="preserve">
+    <value>Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</value>
+  </data>
 </root>

@@ -97,7 +97,7 @@
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <Button Visibility="Collapsed" Click="LaunchBgground_Click" x:Name="LaunchBgground" Content="Debug Launch" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="124,0,0,10" FontFamily="Global User Interface">
+        <Button Click="LaunchBgground_Click" x:Name="LaunchBgground" Content="Debug Launch" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="124,0,0,10" FontFamily="Global User Interface" Visibility="Collapsed">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>

@@ -84,6 +84,12 @@ namespace InfoViewApp.WP81
                 progressRing.Visibility = Visibility.Collapsed;
                 SaveBtn.Visibility = Visibility.Visible;
             }
+            else if(parameter == "nasa")
+            {
+                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.NASA;
+
+                var request = "";
+            }
         }
 
         private WriteableBitmap LoadScaledImage(WriteableBitmap WB_CapturedImage)

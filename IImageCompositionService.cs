@@ -33,6 +33,12 @@ namespace InfoView
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json, Method = "POST")]
         Task<string> ComposeLegacy(string request);
+
+        [OperationContract]
+        [WebInvoke(
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        Task<byte[]> RequestImage(string request);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
