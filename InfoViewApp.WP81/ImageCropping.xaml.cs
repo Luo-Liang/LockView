@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.IO.IsolatedStorage;
 using System.Globalization;
 using Microsoft.Phone.Info;
+using InfoViewApp.WP81.Tasks;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -40,6 +41,8 @@ namespace InfoViewApp.WP81
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            double width, height;
+            ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             var parameter = NavigationContext.QueryString["ImgSrc"];
             if (parameter == "library" && !PickInProcess)
             {
@@ -67,8 +70,7 @@ namespace InfoViewApp.WP81
                     var jObj = JsonObject.Parse(json);
                     var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
                     imgRequestUrl = imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_'));
-                    double width, height;
-                    ResolutionProvider.GetScreenSizeInPixels(out height, out width);
+
                     imgRequestUrl += string.Format("_{0}x{1}.jpg", (int)width, (int)height);
                     if (imgRequestUrl.StartsWith("http") == false)
                         imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
@@ -84,11 +86,27 @@ namespace InfoViewApp.WP81
                 progressRing.Visibility = Visibility.Collapsed;
                 SaveBtn.Visibility = Visibility.Visible;
             }
-            else if(parameter == "nasa")
+            else if (parameter == "nasa")
             {
-                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.NASA;
-
-                var request = "";
+                try
+                {
+                    LockViewApplicationState.Instance.SelectedImageSource = ImageSource.NASA;
+                    HttpClient client = new HttpClient();
+                    var requestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client);
+                    var requestParameter = $"{requestUrl}?resolution={width}x{height}";
+                    var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestParameter));
+                    requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
+                    var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/RequestImage"), requestContent);
+                    var responseStr = await response.Content.ReadAsStringAsync();
+                    var rawBytes = Newtonsoft.Json.JsonConvert.DeserializeObject<byte[]>(responseStr);
+                    WB_CapturedImage = new WriteableBitmap(1,1);
+                    WB_CapturedImage = WB_CapturedImage.FromStream(new MemoryStream(rawBytes));
+                    OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
+                }
+                catch(Exception ex)
+                {
+                    NavigationService.GoBack();
+                }
             }
         }
 

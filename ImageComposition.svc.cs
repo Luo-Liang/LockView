@@ -36,7 +36,7 @@ namespace InfoView
         }
         //public const string ImageLocator = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt={0}";
         const string nasaAPIKey = "mzzFYcsRbS2oVEak5fvY4Znbx6tTsAy200MiQqXF"; //<--- if you see this, it is mangled.
-        public async Task<Stream> TryFetchAndAdd(ImageRequestOverride iro)
+        public Stream TryFetchAndAdd(ImageRequestOverride iro)
         {
             ImageCacheEntry entry;
             Dictionary<string, string> argumentKeyValue = new Dictionary<string, string>();
@@ -49,11 +49,14 @@ namespace InfoView
             if (false == CacheEntries.TryGetValue(identifier, out entry))
             {
                 entry = new ImageCacheEntry();
+                WebClient client = new WebClient();
+                //var rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
                 //create this entry.
-                var rawBytes = await CacheFetcher.DownloadDataTaskAsync(iro.ImageRequestUrl);
-                WriteableBitmap bitmap = new WriteableBitmap(1, 1, 1, 1, PixelFormats.Bgr101010, BitmapPalettes.BlackAndWhite);
-                bitmap = bitmap.FromByteArray(rawBytes);
-                bitmap.Lock();
+                //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
+                //decoder.Frames[0].Freeze();
+                WriteableBitmap bitmap = new WriteableBitmap(new BitmapImage(new Uri(iro.ImageRequestUrl,UriKind.Absolute)));//<---anything
+                //bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
+                //bitmap = bitmap.FromByteArray(rawBytes);
                 if (argumentKeyValue.ContainsKey("resolution"))
                 {
                     var resolution = argumentKeyValue["resolution"];
@@ -61,30 +64,29 @@ namespace InfoView
                     double height = double.Parse(whString[1]),
                            width = double.Parse(whString[0]);
                     double desiredRatio = height / width;
-                    double actualRatio = bitmap.PixelHeight / bitmap.PixelWidth;
-                    if (actualRatio > desiredRatio)
+                    double actualRatio = (double)bitmap.PixelHeight / bitmap.PixelWidth;
+                    if (actualRatio <= desiredRatio)
                     {
                         //scale to croppable settings first.
                         //in this case, the user can in general select along the x-axis. (width)
                         double scale = height / bitmap.PixelHeight;
                         //now scale the height and width as appropriate.
-                        bitmap = bitmap.Resize((int)(bitmap.PixelWidth * scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                        bitmap = bitmap.Resize((int)(bitmap.PixelWidth / scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
                         //place the selection at the center of the image.
                         //entire height is now selected.
-                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point((int)(bitmap.PixelWidth - width / 2),0), new System.Windows.Size((int)width, (int)height)));
+                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point((int)(bitmap.PixelWidth - width) / 2, 0), new System.Windows.Size((int)width, (int)height)));
                     }
                     else
                     {
                         //symmetric
                         double scale = width / bitmap.PixelWidth;
-                        bitmap = bitmap.Resize((int)width, (int)(scale * bitmap.PixelHeight), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point(0, (int)(bitmap.PixelHeight / 2)), new System.Windows.Size((int)width, (int)height)));
+                        bitmap = bitmap.Resize((int)width, (int)(bitmap.PixelHeight / scale), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point(0, (int)(bitmap.PixelHeight - height) / 2), new System.Windows.Size((int)width, (int)height)));
                     }
                 }
-                bitmap.Unlock();
-                rawBytes = bitmap.ToByteArray();
+                //bitmap.Unlock();
                 JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(new MemoryStream(rawBytes)));
+                encoder.Frames.Add(BitmapFrame.Create(bitmap));
                 if (argumentKeyValue.ContainsKey("lq"))
                 {
                     //low quality.
@@ -97,6 +99,10 @@ namespace InfoView
                 entry.UrlIdentifier = identifier;
                 entry.Content = decodedStream;
                 CacheEntries.TryAdd(identifier, entry);
+                //using (var fs = File.Open("c:/users/liang luo/desktop/1.jpg", FileMode.Create))
+                //{
+                //    encoder.Save(fs);
+                //}
             }
             else
             {
@@ -111,6 +117,7 @@ namespace InfoView
                     }
                 }
             }
+            entry.Content.Seek(0, SeekOrigin.Begin);
             return entry.Content;
         }
     }
@@ -125,7 +132,7 @@ namespace InfoView
             bool isStreamCached = false;
             if (request.ImageRequestOverride != null)
             {
-                memStream = await imgCache.TryFetchAndAdd(request.ImageRequestOverride);
+                memStream = imgCache.TryFetchAndAdd(request.ImageRequestOverride);
                 isStreamCached = true;
             }
             else
@@ -141,6 +148,7 @@ namespace InfoView
                 new[] { request.ContextContract.ToOverlayContext() },
                 request.FormattingContract.ToOverlayFormatting());
             g.Save();
+            //g.
             g.Dispose();
             MemoryStream imgStream = new MemoryStream();
             img.Save(imgStream, ImageFormat.Jpeg);
@@ -170,7 +178,7 @@ namespace InfoView
             bool isStreamCached = false;
             if (request.ImageRequestOverride != null)
             {
-                memStream = await imgCache.TryFetchAndAdd(request.ImageRequestOverride);
+                memStream = imgCache.TryFetchAndAdd(request.ImageRequestOverride);
                 isStreamCached = true;
             }
             else
@@ -204,13 +212,14 @@ namespace InfoView
             return response;
         }
 
-        public async Task<byte[]> RequestImage(string request)
+        public byte[] RequestImage(string request)
         {
             var parts = request.Split('?');
             var urlPart = parts[0];
-            var argumentPart = parts[1];
-            var stream = await imgCache.TryFetchAndAdd(new ImageRequestOverride() { ImageRequestUrl = urlPart, Arguments = argumentPart });
+            //var argumentPart = parts[1];
+            var stream = imgCache.TryFetchAndAdd(new ImageRequestOverride() { ImageRequestUrl = urlPart, Arguments = parts.Length == 1 ? "" : parts[1] });
             byte[] imageBytes = new byte[stream.Length];
+            stream.Seek(0, SeekOrigin.Begin);
             stream.Read(imageBytes, 0, imageBytes.Length);
             return imageBytes;
         }

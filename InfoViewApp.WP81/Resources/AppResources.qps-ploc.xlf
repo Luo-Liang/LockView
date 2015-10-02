@@ -273,6 +273,22 @@
           <source>Use metric</source>
           <target state="new">Use metric</target>
         </trans-unit>
+        <trans-unit id="Resx/ZhCn" translate="yes" xml:space="preserve">
+          <source>Chinese</source>
+          <target state="new">Chinese</target>
+        </trans-unit>
+        <trans-unit id="Resx/Word" translate="yes" xml:space="preserve">
+          <source>Word</source>
+          <target state="new">Word</target>
+        </trans-unit>
+        <trans-unit id="Resx/Sentence" translate="yes" xml:space="preserve">
+          <source>Sentence</source>
+          <target state="new">Sentence</target>
+        </trans-unit>
+        <trans-unit id="Resx/EnUs" translate="yes" xml:space="preserve">
+          <source>English</source>
+          <target state="new">English</target>
+        </trans-unit>
         <trans-unit id="Resx/NASAText" translate="yes" xml:space="preserve">
           <source>Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
           <target state="new">Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</target>
