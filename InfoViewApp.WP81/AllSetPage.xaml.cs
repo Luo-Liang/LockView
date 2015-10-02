@@ -139,7 +139,9 @@ namespace InfoViewApp.WP81
             BackgroundTaskHelper.TryUpdateTiles();
             //schedule the background task.
             BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
+#if !DEBUG
             SaveBtn.Visibility = Visibility.Collapsed;
+#endif
             AllSetTitle.Text = AppResources.AllSetTitleText;
         }
         CustomMessageBox priceCalcMsgBx;

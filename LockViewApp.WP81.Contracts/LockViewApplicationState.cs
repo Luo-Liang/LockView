@@ -72,7 +72,7 @@ namespace InfoViewApp.WP81
             catch (Exception ex)
             {
                 Instance = new LockViewApplicationState();
-                Instance.RequestMetadata = new LockViewRequestMetadata();
+                Instance.RequestMetadata = new LockViewRequestMetadata() { RequestLanguage = "en-us", ScaleFactor = 1.0 };
 
                 if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
                 {
@@ -84,9 +84,9 @@ namespace InfoViewApp.WP81
                     BackgroundSecondLine = "Transparent",
                     BackgroundFirstLine = "Transparent",
                     BackgroundTitle = "Transparent",
-                    FirstLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe UI Semibold" },
-                    SecondLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe UI Semibold" },
-                    TitleFont = new FontContract() { FontSize = 26, FontFamily = "Segoe UI Bold" },
+                    FirstLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe WP Semibold" },
+                    SecondLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe WP Semibold" },
+                    TitleFont = new FontContract() { FontSize = 26, FontFamily = "Segoe WP Bold" },
                     ForegroundFirstLine = "White",
                     ForegroundSecondLine = "Gray",
                     ForegroundTitle = "White"
@@ -104,8 +104,9 @@ namespace InfoViewApp.WP81
             SelectedContextContracts = new OverlayContextContract[1];
             SelectedInterests = new InterestRequest[1];
         }
-        public InterestRequest[] SelectedInterests { get; set;}
-        public InterestRequest SelectedInterest {
+        public InterestRequest[] SelectedInterests { get; set; }
+        public InterestRequest SelectedInterest
+        {
             get
             {
                 return SelectedInterests[0];

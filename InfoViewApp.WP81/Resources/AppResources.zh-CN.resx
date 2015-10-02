@@ -659,8 +659,7 @@
     <comment></comment>
   </data>
   <data name="InterestSelectionProgress" xml:space="preserve">
-    <value>设置兴趣细节...步骤 </value>
-    <comment></comment>
+    <value>设置兴趣...步骤 </value>
   </data>
   <data name="AllSetTitleText" xml:space="preserve">
     <value>谢谢!一切就绪。</value>
@@ -688,5 +687,17 @@
   </data>
   <data name="UnitMetric" xml:space="preserve">
     <value>计量单位</value>
+  </data>
+  <data name="ZhCn" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="Word" xml:space="preserve">
+    <value>单词</value>
+  </data>
+  <data name="Sentence" xml:space="preserve">
+    <value>句子</value>
+  </data>
+  <data name="EnUs" xml:space="preserve">
+    <value>英语</value>
   </data>
 </root>

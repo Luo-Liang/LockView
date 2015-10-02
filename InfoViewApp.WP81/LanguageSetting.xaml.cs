@@ -124,7 +124,7 @@ namespace InfoViewApp.WP81
         private void languageSource_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(SaveBtn!=null)
-            SaveBtn.Visibility = Visibility.Visible;
+            SaveBtn.Content = AppResources.ShowMe;
         }
     }
 }

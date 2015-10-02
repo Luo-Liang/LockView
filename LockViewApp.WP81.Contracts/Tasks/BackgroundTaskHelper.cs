@@ -46,9 +46,7 @@ namespace InfoViewApp.WP81.Tasks
         {
             try
             {
-                //This allows an early death of the setup, then apply the ABA pattern
-                LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName), UriKind.Absolute));
-                LockScreen.SetImageUri(new Uri($"ms-appx:///Outage_{cultureHint}.png", UriKind.Absolute));
+                LockScreen.SetImageUri(new Uri($"ms-appx:///Transitioning.png", UriKind.Absolute));
                 LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName), UriKind.Absolute));
             }
             catch (Exception ex)
@@ -120,16 +118,19 @@ namespace InfoViewApp.WP81.Tasks
             var periodicTask = ScheduledActionService.Find("BackgroundTask");
             if (periodicTask != null)
             {
-#if !DEBUG
+//#if !DEBUG
                 ScheduledActionService.Remove("BackgroundTask");
-#else
-                ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
-                return;
-#endif
+//#else
+                //ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
+//                return;
+//#endif
             }
             periodicTask = new PeriodicTask("BackgroundTask");
             (periodicTask as ScheduledTask).Description = "Updates Lock Screen when new content is available.";
             ScheduledActionService.Add(periodicTask);
+#if DEBUG
+            ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
+#endif
         }
 
         public static async Task<string> GetBingImageFitScreenUrl(HttpClient client)
@@ -167,12 +168,12 @@ namespace InfoViewApp.WP81
                 context.ExtendedUri = content.ExtensionUri.ToString();
         }
 
-        public static string GenerateImgFileName(this OverlayContextContract contract)
+        public static string GenerateImgFileName(this IEnumerable<OverlayContextContract> contracts)
         {
-            var fileName = string.Join(string.Empty, contract.Title.Select<char, string>(o => ((int)o).ToString()));
-            if (fileName.Length > 20) fileName = fileName.Substring(0, 20);
-            Random rand = new Random(DateTime.Now.Second);
-            return $"{rand.Next()}{fileName}.jpeg";
+            var fileName = string.Join(string.Empty, contracts.Select(o=>o.Title));
+            fileName = string.Join(string.Empty, fileName.Select(o => ((int)(o % 10)).ToString()));
+            if (fileName.Length > 100) fileName = fileName.Substring(0, 100);
+            return $"{fileName}.jpeg";
         }
     }
 }

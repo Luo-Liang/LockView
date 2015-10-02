@@ -27,28 +27,34 @@ namespace LockViewApp.WP81.Contracts
             {
                 BytePerRequest = 20,
                 TypicalComputationInSec = 5,
-                UpdatePerDay = 16*2
+                UpdatePerDay = 16
             };
         }
 
         public async override Task<InterestContent> RequestContent(InterestRequest request)
         {
-            HttpClient client = Client == null ? new HttpClient() : Client;
-            var metricModifier = (IsImperial ? "&units=imperial" : "&units=metric");
-            var requestString = $"http://api.openweathermap.org/data/2.5/weather?q={CityName}{metricModifier}=metric&mode=xml&lang={Language}&APPID={ApiKey}";
-            var doc = await client.GetStringAsync(new Uri(requestString));
-            var document = new XmlDocument();
-            document.LoadXml(doc);
-            var symbolName = document.SelectSingleNode("/current/weather").Attributes.GetNamedItem("value").NodeValue.ToString();
-            var tempValue = document.SelectSingleNode("/current/temperature").Attributes.GetNamedItem("value").NodeValue.ToString();
-            var weatherAndTemp = $"{symbolName} @ {tempValue}"+ (IsImperial ? "℉":"℃");
-            return new InterestContent()
+            try {
+                HttpClient client = Client == null ? new HttpClient() : Client;
+                var metricModifier = (IsImperial ? "&units=imperial" : "&units=metric");
+                var requestString = $"http://api.openweathermap.org/data/2.5/weather?q={CityName}{metricModifier}=metric&mode=xml&lang={Language}&APPID={ApiKey}";
+                var doc = await client.GetStringAsync(new Uri(requestString));
+                var document = new XmlDocument();
+                document.LoadXml(doc);
+                var symbolName = document.SelectSingleNode("/current/weather").Attributes.GetNamedItem("value").NodeValue.ToString();
+                var tempValue = document.SelectSingleNode("/current/temperature").Attributes.GetNamedItem("value").NodeValue.ToString();
+                var weatherAndTemp = $"{symbolName} ({tempValue}" + (IsImperial ? "℉)" : "℃)");
+                return new InterestContent()
+                {
+                    Content = weatherAndTemp,
+                    Title = CityName + " @ " + DateTime.Now,
+                    Publisher = $"OpenWeatherMap",
+                    ExtensionUri = new Uri(uriString, UriKind.Absolute)
+                };
+            }
+            catch
             {
-                Content = weatherAndTemp,
-                Title = CityName,
-                Publisher = $"OpenWeatherMap [{DateTime.Now}]",
-                ExtensionUri = new Uri(uriString,UriKind.Absolute)
-            };
+                return InterestContent.DefaultInterest;
+            }
         }
     }
 }

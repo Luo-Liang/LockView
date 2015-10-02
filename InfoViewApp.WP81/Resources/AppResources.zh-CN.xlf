@@ -100,7 +100,8 @@
         <trans-unit id="Resx/SpecificTopicOfYourChoiceText" translate="yes" xml:space="preserve">
           <source>This option allows user to use a specific topic of their interest.</source>
           <target state="needs-review-translation">有一个特殊的爱好?选择此项若您希望收到某个特定话题的更新。例如，如果您对微软有兴趣，只需键入微软，我们将把有关该话题的报道呈现给您。</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          </trans-unit>
         <trans-unit id="Resx/SpecificTopicOfYourChoice" translate="yes" xml:space="preserve">
           <source>SPECIFIC TOPIC OF YOUR CHOICE</source>
           <target state="translated">特定话题</target>
@@ -573,8 +574,7 @@
           </trans-unit>
         <trans-unit id="Resx/InterestSelectionProgress" translate="yes" xml:space="preserve">
           <source>Setup  Interest... Step </source>
-          <target state="needs-review-translation">设置兴趣细节...步骤 </target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="translated">设置兴趣...步骤 </target>
           </trans-unit>
         <trans-unit id="Resx/WeatherInterestText" translate="yes" xml:space="preserve">
           <source>Always worried about rain? Track your favourite city's immediate weather condition right on your Lock Screen.</source>
@@ -587,6 +587,22 @@
         <trans-unit id="Resx/UseMetric" translate="yes" xml:space="preserve">
           <source>Use metric</source>
           <target state="translated">使用公制单位</target>
+        </trans-unit>
+        <trans-unit id="Resx/ZhCn" translate="yes" xml:space="preserve">
+          <source>Chinese</source>
+          <target state="translated">中文</target>
+        </trans-unit>
+        <trans-unit id="Resx/Word" translate="yes" xml:space="preserve">
+          <source>Word</source>
+          <target state="translated">单词</target>
+        </trans-unit>
+        <trans-unit id="Resx/Sentence" translate="yes" xml:space="preserve">
+          <source>Sentence</source>
+          <target state="translated">句子</target>
+        </trans-unit>
+        <trans-unit id="Resx/EnUs" translate="yes" xml:space="preserve">
+          <source>English</source>
+          <target state="translated">英语</target>
         </trans-unit>
         <trans-unit id="Resx/UseImperial" translate="yes" xml:space="preserve">
           <source>Use imperial</source>

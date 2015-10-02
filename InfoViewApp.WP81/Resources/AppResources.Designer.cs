@@ -511,6 +511,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string EnUs {
+            get {
+                return ResourceManager.GetString("EnUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (Estimated).
         /// </summary>
         public static string Estimated {
@@ -1267,6 +1276,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sentence.
+        /// </summary>
+        public static string Sentence {
+            get {
+                return ResourceManager.GetString("Sentence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set as lock screen provider and allow background update.
         /// </summary>
         public static string SetAsLockScreen {
@@ -1690,6 +1708,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Word.
+        /// </summary>
+        public static string Word {
+            get {
+                return ResourceManager.GetString("Word", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WORD OF WISDOM.
         /// </summary>
         public static string WordOfWisdom {
@@ -1767,6 +1794,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Yellow {
             get {
                 return ResourceManager.GetString("Yellow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chinese.
+        /// </summary>
+        public static string ZhCn {
+            get {
+                return ResourceManager.GetString("ZhCn", resourceCulture);
             }
         }
     }

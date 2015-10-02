@@ -64,11 +64,11 @@ namespace InfoViewApp.WP81
 
         private void specificTopicBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SaveBtn.IsEnabled = true;
+            SaveBtn.Visibility = Visibility.Visible;
             SaveBtn.Content = AppResources.ShowMe;
             if (specificTopicBox.Text.Length == 0)
             {
-                SaveBtn.IsEnabled = false;
+                SaveBtn.Visibility =  Visibility.Collapsed;
             }
         }
 

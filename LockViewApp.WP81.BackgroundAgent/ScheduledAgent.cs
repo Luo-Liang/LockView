@@ -120,7 +120,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             else
             {
-                BackgroundTaskHelper.TrySetLockScreenImage(instance.PreviewContextContract.GenerateImgFileName(),instance.RequestMetadata.RequestLanguage);
+                BackgroundTaskHelper.TrySetLockScreenImage(instance.SelectedContextContracts.GenerateImgFileName(),instance.RequestMetadata.RequestLanguage);
                 //update tile if necessary.
                 BackgroundTaskHelper.TryUpdateTiles();
                 instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
@@ -177,7 +177,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                     compositionResponse = await cloudClient.Compose(instance.SelectedContextContracts, instance.PreviewFormattingContract, instance.PreviewLayoutContract, instance.RequestMetadata.PersistFileName);
                 else
                     compositionResponse = await cloudClient.ComposeLite(instance.SelectedContextContracts, instance.PreviewFormattingContract, instance.PreviewLayoutContract, possibleOverride);
-                var fileName = instance.PreviewContextContract.GenerateImgFileName();
+                var fileName = instance.SelectedContextContracts.GenerateImgFileName();
                 var jpegBytes = compositionResponse.Image;
                 BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
                 if (instance.UserQuotaInDollars < 0)

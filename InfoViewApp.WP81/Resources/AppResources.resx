@@ -690,4 +690,16 @@
   <data name="UseMetric" xml:space="preserve">
     <value>Use metric</value>
   </data>
+  <data name="EnUs" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Sentence" xml:space="preserve">
+    <value>Sentence</value>
+  </data>
+  <data name="Word" xml:space="preserve">
+    <value>Word</value>
+  </data>
+  <data name="ZhCn" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
 </root>

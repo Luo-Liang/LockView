@@ -75,7 +75,10 @@ namespace GraphicsOverlay
             foreach (var ctx in contexts)
             {
                 if (shouldContinue)
+                {
                     startingY = applyContext(graphics, maxWidth, maxY, startingY, startingX, layout, ctx, formatting, out shouldContinue);
+                    startingY += 10; //<--- this is the spacing btw sources.
+                }
             }
         }
     }
