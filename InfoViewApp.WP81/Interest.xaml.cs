@@ -24,8 +24,10 @@ namespace InfoViewApp.WP81
                 new ListBoxContentVM() {FirstLine = AppResources.WordOfWisdom,SecondLine = AppResources.WordOfWisdomText ,NavigationPath=WordOfWisdomPage },
                 new ListBoxContentVM() {FirstLine = AppResources.LanguageLearning,SecondLine = AppResources.LanguageLearningText,NavigationPath = LanguageSettingPage },
                 new ListBoxContentVM() {FirstLine = AppResources.WeatherInterest,SecondLine = AppResources.WeatherInterestText,NavigationPath = WeatherSettingsPage },
-            });
 
+            });
+            var nasaImageInterest = new ListBoxContentVM() { FirstLine = AppResources.NASAInterestTitle, SecondLine = AppResources.NASAInterestText, NavigationPath = InterestNavigationQueue.NASAAPODFastTransitPage, FeatureEnabled = LockViewApplicationState.Instance.SelectedImageSource == ImageSource.NASA };
+            lbm.Add(nasaImageInterest);
             categorySelector.ItemsSource = lbm;
         }
 

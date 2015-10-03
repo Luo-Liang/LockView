@@ -100,7 +100,8 @@
         <trans-unit id="Resx/SpecificTopicOfYourChoiceText" translate="yes" xml:space="preserve">
           <source>This option allows user to use a specific topic of their interest.</source>
           <target state="needs-review-translation">有一个特殊的爱好?选择此项若您希望收到某个特定话题的更新。例如，如果您对微软有兴趣，只需键入微软，我们将把有关该话题的报道呈现给您。</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          </trans-unit>
         <trans-unit id="Resx/SpecificTopicOfYourChoice" translate="yes" xml:space="preserve">
           <source>SPECIFIC TOPIC OF YOUR CHOICE</source>
           <target state="translated">特定话题</target>
@@ -590,35 +591,55 @@
         </trans-unit>
         <trans-unit id="Resx/ZhCn" translate="yes" xml:space="preserve">
           <source>Chinese</source>
-          <target state="new">Chinese</target>
+          <target state="translated">中文</target>
         </trans-unit>
         <trans-unit id="Resx/Word" translate="yes" xml:space="preserve">
           <source>Word</source>
-          <target state="new">Word</target>
+          <target state="translated">单词</target>
         </trans-unit>
         <trans-unit id="Resx/Sentence" translate="yes" xml:space="preserve">
           <source>Sentence</source>
-          <target state="new">Sentence</target>
+          <target state="translated">句子</target>
         </trans-unit>
         <trans-unit id="Resx/EnUs" translate="yes" xml:space="preserve">
           <source>English</source>
-          <target state="new">English</target>
+          <target state="translated">英语</target>
         </trans-unit>
         <trans-unit id="Resx/NASAText" translate="yes" xml:space="preserve">
           <source>Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
-          <target state="new">Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</target>
+          <target state="translated">没有什么比宇宙母亲更加美丽。NASA宇航照片从早晨激活您一天的灵感。该照片的版权属于NASA和其他相关人员。</target>
+        </trans-unit>
+        <trans-unit id="Resx/Redeem" translate="yes" xml:space="preserve">
+          <source>redeem</source>
+          <target state="translated">兑换</target>
+        </trans-unit>
+        <trans-unit id="Resx/RedeemStatusOkay" translate="yes" xml:space="preserve">
+          <source>Great! You can now enjoy LockView free of charge.</source>
+          <target state="translated">好极了! 现在您可以免费享受锁屏视野了。</target>
+        </trans-unit>
+        <trans-unit id="Resx/RedeemStatusNotOkay" translate="yes" xml:space="preserve">
+          <source>Sorry, but this doesn't look like a valid code.</source>
+          <target state="translated">抱歉，这看起来不像是有效序列号</target>
+        </trans-unit>
+        <trans-unit id="Resx/RedeemACodeGuide" translate="yes" xml:space="preserve">
+          <source>Enter your code below. It should look something like this: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</source>
+          <target state="translated">在此输入您的序列号。它看起来像以下内容：XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</target>
+        </trans-unit>
+        <trans-unit id="Resx/RedeemACode" translate="yes" xml:space="preserve">
+          <source>REDEEM A CODE</source>
+          <target state="translated">兑换一个序列号</target>
         </trans-unit>
         <trans-unit id="Resx/NASA" translate="yes" xml:space="preserve">
           <source>NASA</source>
-          <target state="new">NASA</target>
+          <target state="translated">美国宇航局NASA</target>
         </trans-unit>
         <trans-unit id="Resx/NASAInterestTitle" translate="yes" xml:space="preserve">
-          <source>NASA IMAGE EXPLAINATION</source>
-          <target state="new">NASA IMAGE EXPLAINATION</target>
+          <source>NASA IMAGE CAPTION</source>
+          <target state="translated">NASA照片解释</target>
         </trans-unit>
         <trans-unit id="Resx/NASAInterestText" translate="yes" xml:space="preserve">
           <source>Use the explaination for the image shown on your screen. This option is only available if you're using NASA as your image provider in the previous screen.</source>
-          <target state="new">Use the explaination for the image shown on your screen. This option is only available if you're using NASA as your image provider in the previous screen.</target>
+          <target state="translated">使用NASA照片的解释。该选项仅当您选择使用NASA宇航照片时有效。</target>
         </trans-unit>
         <trans-unit id="Resx/UseImperial" translate="yes" xml:space="preserve">
           <source>Use imperial</source>

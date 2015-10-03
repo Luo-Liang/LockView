@@ -44,6 +44,7 @@ namespace InfoViewApp.WP81
             double width, height;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             var parameter = NavigationContext.QueryString["ImgSrc"];
+            var lang = LockViewApplicationState.Instance.RequestMetadata.RequestLanguage = CultureInfo.CurrentCulture.ToString();
             if (parameter == "library" && !PickInProcess)
             {
                 LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Local;
@@ -59,7 +60,6 @@ namespace InfoViewApp.WP81
             else if (parameter == "bing")
             {
                 LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Bing;
-                var lang = LockViewApplicationState.Instance.RequestMetadata.RequestLanguage = CultureInfo.CurrentCulture.ToString();
                 var reqString = string.Format(Locator, lang);
                 HttpClient client = new HttpClient();
                 progressRing.Visibility = Visibility.Visible;
@@ -90,13 +90,15 @@ namespace InfoViewApp.WP81
             {
                 try
                 {
+                    progressRing.Visibility = Visibility.Visible;
+                    SaveBtn.Visibility = Visibility.Collapsed;
                     LockViewApplicationState.Instance.SelectedImageSource = ImageSource.NASA;
                     HttpClient client = new HttpClient();
                     var requestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client);
                     var requestParameter = $"{requestUrl}?resolution={width}x{height}";
                     var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestParameter));
                     requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
-                    var response = await client.PostAsync(new Uri("http://localhost:49791/ImageComposition.svc/RequestImage"), requestContent);
+                    var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net//ImageComposition.svc/RequestImage"), requestContent);
                     var responseStr = await response.Content.ReadAsStringAsync();
                     var rawBytes = Newtonsoft.Json.JsonConvert.DeserializeObject<byte[]>(responseStr);
                     WB_CapturedImage = new WriteableBitmap(1,1);
@@ -107,6 +109,8 @@ namespace InfoViewApp.WP81
                 {
                     NavigationService.GoBack();
                 }
+                progressRing.Visibility = Visibility.Collapsed;
+                SaveBtn.Visibility = Visibility.Visible;
             }
         }
 

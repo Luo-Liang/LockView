@@ -141,11 +141,23 @@
                 <HyperlinkButton x:Name="priceCalculationLink" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.PriceCalc}" Margin="-10,0,0,0" Click="priceCalculationLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
                 <HyperlinkButton x:Name="quotaRunOut" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.BalanceRunOut}" Margin="-10,0,0,0" Click="quotaRunOut_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
                 <HyperlinkButton x:Name="dontwattopayLink" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.DontWantToPay}" Margin="-10,0,0,0" Click="dontwattopayLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
-                <Button Click="quotaPurchase_Click" x:Name="quotaPurchase" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.Purchase}" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="quotaPurchase_Click" x:Name="quotaPurchase" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.Purchase}" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
+                    <Button Click="redeem_Click" x:Name="redeem" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.Redeem}" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
+                </StackPanel>
             </StackPanel>
 
         </StackPanel>
         <ProgressBar x:Name="progressRing" Height="10" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="Black" Foreground="{StaticResource DarkAccent}" Visibility="Collapsed"/>
+        <!--<toolkit:CustomMessageBox Title="REDEEM A CODE" LeftButtonContent="redeem" Height="341">
+            <toolkit:CustomMessageBox.Content>
+                <StackPanel>
+                    <TextBlock Margin="12" TextWrapping="Wrap" Text="Enter your code below. It should look something like this: XXXXX-XXXXX-XXXXX-XXXXX."/>
+                    <TextBox Text="" x:Name="codeBox"/>
+                    <TextBlock Margin="12" Foreground="{StaticResource AccentBrush}" x:Name="redeemValidation" Text="This doesn't look like a valid code."/>
+                </StackPanel>
+            </toolkit:CustomMessageBox.Content>
+        </toolkit:CustomMessageBox>-->
 
 
         <!--TitlePanel contains the name of the application and page title-->

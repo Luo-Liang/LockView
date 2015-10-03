@@ -709,9 +709,24 @@
     <value>Use the explaination for the image shown on your screen. This option is only available if you're using NASA as your image provider in the previous screen.</value>
   </data>
   <data name="NASAInterestTitle" xml:space="preserve">
-    <value>NASA IMAGE EXPLAINATION</value>
+    <value>NASA IMAGE CAPTION</value>
   </data>
   <data name="NASAText" xml:space="preserve">
     <value>Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</value>
+  </data>
+  <data name="Redeem" xml:space="preserve">
+    <value>redeem</value>
+  </data>
+  <data name="RedeemACode" xml:space="preserve">
+    <value>REDEEM A CODE</value>
+  </data>
+  <data name="RedeemACodeGuide" xml:space="preserve">
+    <value>Enter your code below. It should look something like this: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</value>
+  </data>
+  <data name="RedeemStatusNotOkay" xml:space="preserve">
+    <value>Sorry, but this doesn't look like a valid code.</value>
+  </data>
+  <data name="RedeemStatusOkay" xml:space="preserve">
+    <value>Great! You can now enjoy LockView free of charge.</value>
   </data>
 </root>

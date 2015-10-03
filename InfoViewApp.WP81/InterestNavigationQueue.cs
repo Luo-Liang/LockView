@@ -22,6 +22,7 @@ namespace InfoViewApp.WP81
         public static Uri PreviewPage { get; } = new Uri("/Preview.xaml", UriKind.Relative);
         public static Uri WeatherSettingsPage { get; } = new Uri("/Weather.xaml", UriKind.Relative);
 
+        public static Uri NASAAPODFastTransitPage { get; } = new Uri("/NASAAPODFastTransit.xaml", UriKind.Relative);
         public List<Uri> NavigationPages { get; set; } = new List<Uri>();
         public int GetNavigationSequence(Uri currentPageUri) => NavigationPages.IndexOf(currentPageUri);
         public Uri GetNextNavigationUri(Uri currentPageUri) => NavigationPages.IndexOf(currentPageUri) + 1 == NavigationPages.Count ? PreviewPage : NavigationPages[GetNavigationSequence(currentPageUri) + 1];

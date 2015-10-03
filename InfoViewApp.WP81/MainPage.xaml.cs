@@ -3,6 +3,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Tasks;
 using System;
+using System.Diagnostics;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 
@@ -21,6 +22,10 @@ namespace InfoViewApp.WP81
             //this.NavigationCacheMode = NavigationCacheMode.Required;
             this.Loaded += MainPage_Loaded1;
             LockViewApplicationState.Instance.RequestMetadata.ScaleFactor = ResolutionProvider.GetScaleFactor();
+            if(Debugger.IsAttached)
+            {
+                LaunchBgground.Visibility = System.Windows.Visibility.Visible;
+            }
         }
 
         private void MainPage_Loaded1(object sender, System.Windows.RoutedEventArgs e)

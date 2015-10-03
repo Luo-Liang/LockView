@@ -689,4 +689,43 @@
   <data name="UnitMetric" xml:space="preserve">
     <value>计量单位</value>
   </data>
+  <data name="ZhCn" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="Word" xml:space="preserve">
+    <value>单词</value>
+  </data>
+  <data name="Sentence" xml:space="preserve">
+    <value>句子</value>
+  </data>
+  <data name="EnUs" xml:space="preserve">
+    <value>英语</value>
+  </data>
+  <data name="NASAText" xml:space="preserve">
+    <value>没有什么比宇宙母亲更加美丽。NASA宇航照片从早晨激活您一天的灵感。该照片的版权属于NASA和其他相关人员。</value>
+  </data>
+  <data name="Redeem" xml:space="preserve">
+    <value>兑换</value>
+  </data>
+  <data name="RedeemStatusOkay" xml:space="preserve">
+    <value>好极了! 现在您可以免费享受锁屏视野了。</value>
+  </data>
+  <data name="RedeemStatusNotOkay" xml:space="preserve">
+    <value>抱歉，这看起来不像是有效序列号</value>
+  </data>
+  <data name="RedeemACodeGuide" xml:space="preserve">
+    <value>在此输入您的序列号。它看起来像以下内容：XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</value>
+  </data>
+  <data name="RedeemACode" xml:space="preserve">
+    <value>兑换一个序列号</value>
+  </data>
+  <data name="NASA" xml:space="preserve">
+    <value>美国宇航局NASA</value>
+  </data>
+  <data name="NASAInterestTitle" xml:space="preserve">
+    <value>NASA照片解释</value>
+  </data>
+  <data name="NASAInterestText" xml:space="preserve">
+    <value>使用NASA照片的解释。该选项仅当您选择使用NASA宇航照片时有效。</value>
+  </data>
 </root>

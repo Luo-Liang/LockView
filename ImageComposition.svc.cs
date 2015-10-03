@@ -50,11 +50,15 @@ namespace InfoView
             {
                 entry = new ImageCacheEntry();
                 WebClient client = new WebClient();
-                //var rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
+                var rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
                 //create this entry.
                 //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
                 //decoder.Frames[0].Freeze();
-                WriteableBitmap bitmap = new WriteableBitmap(new BitmapImage(new Uri(iro.ImageRequestUrl,UriKind.Absolute)));//<---anything
+               //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
+               //bmp.BeginInit();
+               //bmp.EndInit();
+                WriteableBitmap bitmap = new WriteableBitmap(1,1,72,72,PixelFormats.Bgr24,BitmapPalettes.WebPalette);//<---anything
+                bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
                 //bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
                 //bitmap = bitmap.FromByteArray(rawBytes);
                 if (argumentKeyValue.ContainsKey("resolution"))

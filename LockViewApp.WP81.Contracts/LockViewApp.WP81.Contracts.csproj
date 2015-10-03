@@ -90,6 +90,7 @@
     <Compile Include="LanguageConcreteSources.cs" />
     <Compile Include="LanguageSources.cs" />
     <Compile Include="LockViewApplicationState.cs" />
+    <Compile Include="NASAAPODCaptionSource.cs" />
     <Compile Include="Pricing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleTextSource.cs" />

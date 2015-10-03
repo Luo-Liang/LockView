@@ -227,5 +227,77 @@ namespace InfoViewApp.WP81
         {
             MessageBox.Show(AppResources.WhileBalanceLastsTitle, AppResources.WhileBalanceLastsText, MessageBoxButton.OK);
         }
+
+        private void redeem_Click
+        (
+            object sender,
+            RoutedEventArgs e
+        )
+        {
+            /* <toolkit:CustomMessageBox Title="REDEEM A CODE" LeftButtonContent="redeem" Height="341">
+            <toolkit:CustomMessageBox.Content>
+                <StackPanel>
+                    <TextBlock Margin="12" TextWrapping="Wrap" Text="Enter your code below. It should look something like this: XXXXX-XXXXX-XXXXX-XXXXX."/>
+                    <TextBox Text="" x:Name="codeBox"/>
+                    <TextBlock Margin="12" Foreground="{StaticResource AccentBrush}" x:Name="redeemValidation" Text="This doesn't look like a valid code."/>
+                </StackPanel>
+            </toolkit:CustomMessageBox.Content>
+        </toolkit:CustomMessageBox>*/
+            //translate of the above XAML.
+            StackPanel content = new StackPanel();
+            content.Children.Add(new TextBlock() { Text = AppResources.RedeemACodeGuide, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(12) });
+            var keyBox = new TextBox();
+            keyBox.TextChanged += KeyBox_TextChanged;
+            keyBox.KeyUp += KeyBox_KeyUp;
+            keyBox.KeyDown += KeyBox_KeyDown;
+            content.Children.Add(keyBox);
+            validationResultBox = new TextBlock() { Foreground = App.Current.Resources["AccentBrush"] as SolidColorBrush };
+            content.Children.Add(validationResultBox);
+            redeemMessageBox = new CustomMessageBox()
+            {
+                Title = AppResources.RedeemACode,
+                Content = content
+            };
+            redeemMessageBox.LeftButtonContent = AppResources.Next;
+            redeemMessageBox.IsLeftButtonEnabled = false;
+            redeemMessageBox.Show();
+
+        }
+
+        private void KeyBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Subtract)
+            {
+                e.Handled = true;//cannot type this key
+            }
+            var txtBx = sender as TextBox;
+            var supplyDash = (txtBx.Text.Length + 1) % 6 == 0;
+            if (supplyDash)
+            {
+                txtBx.Text += "-";
+            }
+        }
+
+        private void KeyBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+
+        }
+
+        CustomMessageBox redeemMessageBox;
+        TextBlock validationResultBox;
+        private void KeyBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var txtBx = sender as TextBox;
+            var isValid = txtBx.Text.Where(o => o != '-').Select(o => (int)o).Aggregate((current, aggregated) => current * aggregated) % 199171 == 0;
+            if (isValid)
+            {
+                validationResultBox.Text = AppResources.RedeemStatusOkay;
+                redeemMessageBox.IsLeftButtonEnabled = true;
+            }
+            else
+            {
+                validationResultBox.Text = AppResources.RedeemStatusNotOkay;
+            }
+        }
     }
 }

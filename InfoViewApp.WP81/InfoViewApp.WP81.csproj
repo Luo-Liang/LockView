@@ -128,6 +128,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NASAAPODFastTransit.xaml.cs">
+      <DependentUpon>NASAAPODFastTransit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Preview.xaml.cs">
       <DependentUpon>Preview.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NASAAPODFastTransit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Preview.xaml">
       <Generator>MSBuild:Compile</Generator>

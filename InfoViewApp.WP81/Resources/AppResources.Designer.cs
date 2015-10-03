@@ -1006,7 +1006,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NASA IMAGE EXPLAINATION.
+        ///   Looks up a localized string similar to NASA IMAGE CAPTION.
         /// </summary>
         public static string NASAInterestTitle {
             get {
@@ -1227,6 +1227,51 @@ namespace InfoViewApp.WP81.Resources {
         public static string Reading {
             get {
                 return ResourceManager.GetString("Reading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to redeem.
+        /// </summary>
+        public static string Redeem {
+            get {
+                return ResourceManager.GetString("Redeem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to REDEEM A CODE.
+        /// </summary>
+        public static string RedeemACode {
+            get {
+                return ResourceManager.GetString("RedeemACode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your code below. It should look something like this: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX.
+        /// </summary>
+        public static string RedeemACodeGuide {
+            get {
+                return ResourceManager.GetString("RedeemACodeGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, but this doesn&apos;t look like a valid code..
+        /// </summary>
+        public static string RedeemStatusNotOkay {
+            get {
+                return ResourceManager.GetString("RedeemStatusNotOkay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Great! You can now enjoy LockView free of charge..
+        /// </summary>
+        public static string RedeemStatusOkay {
+            get {
+                return ResourceManager.GetString("RedeemStatusOkay", resourceCulture);
             }
         }
         

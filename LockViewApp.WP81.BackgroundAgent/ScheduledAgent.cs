@@ -42,7 +42,6 @@ namespace LockViewApp.WP81.BackgroundAgent
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }
-            BackgroundTaskHelper.TrySetLockScreenImage("InvalidName.InvalidName",LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
         }
 
         /// <summary>
@@ -56,10 +55,8 @@ namespace LockViewApp.WP81.BackgroundAgent
         /// </remarks>
         protected async override void OnInvoke(ScheduledTask task)
         {
-#if !DEBUG
             try
             {
-#endif
                 if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
                 {
                     //low ram device.
@@ -70,19 +67,25 @@ namespace LockViewApp.WP81.BackgroundAgent
                     await LaunchTask(task);
                 }
                 await LockViewApplicationState.Instance.SaveState();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    BackgroundTaskHelper.TrySetLockScreenImage("INVALID.INVALID", LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
+                }
+                catch { }
+            }
+            finally
+            {
+                NotifyComplete();
+            }
 #if DEBUG
             var toast = new ShellToast();
             toast.Title = string.Format("{0} {1}", task.LastExitReason.ToString(), LockViewApplicationState.Instance.RequestMetadata.Phase);
             toast.Content = (DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024).ToString();
             toast.Show();
-#else
-            }
-            catch
-            {
-
-            }
 #endif
-            NotifyComplete();
 
         }
         protected async Task LaunchLowRAMTask(ScheduledTask task)
@@ -120,7 +123,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             else
             {
-                BackgroundTaskHelper.TrySetLockScreenImage(instance.SelectedContextContracts.GenerateImgFileName(),instance.RequestMetadata.RequestLanguage);
+                BackgroundTaskHelper.TrySetLockScreenImage(instance.SelectedContextContracts.GenerateImgFileName(), instance.RequestMetadata.RequestLanguage);
                 //update tile if necessary.
                 BackgroundTaskHelper.TryUpdateTiles();
                 instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
@@ -166,7 +169,7 @@ namespace LockViewApp.WP81.BackgroundAgent
         private static async Task UpdateLockScreenTilesIfPossible(HttpClient client, ScheduledTask task, ImageRequestOverride possibleOverride)
         {
             var instance = LockViewApplicationState.Instance;
-            var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o=>o.GetMetaData()));
+            var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o => o.GetMetaData()));
 #if !DEBUG
             if (instance.UserQuotaInDollars - drainPerReq >= 0 || task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear)
             {
@@ -190,7 +193,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 }
                 if (possibleOverride != null && possibleOverride.Arguments == "lq") return;//don't update on money penny
                                                                                            //update tile and/or lock screen image.
-                BackgroundTaskHelper.TrySetLockScreenImage(fileName,instance.RequestMetadata.RequestLanguage);
+                BackgroundTaskHelper.TrySetLockScreenImage(fileName, instance.RequestMetadata.RequestLanguage);
                 //update tile if necessary.
                 BackgroundTaskHelper.TryUpdateTiles();
                 //drain the user's balance.
@@ -205,7 +208,10 @@ namespace LockViewApp.WP81.BackgroundAgent
         {
             var flag1 = false;
             var instance = LockViewApplicationState.Instance;
-            instance.SelectedProvider.Client = client;
+            foreach (var provider in instance.SelectedProviders)
+            {
+                provider.Client = client;//<--- use the same client to save memory.
+            }
             var contents = await Task.WhenAll(instance.SelectedProviders.Select(async (o, i) => await o.RequestContent(instance.SelectedInterests[i]))); //<--- forcing eval.
             if (instance.SelectedContextContracts.Select((o, i) => !o.Equals(contents[i])).Count(o => o) > 0)
             {

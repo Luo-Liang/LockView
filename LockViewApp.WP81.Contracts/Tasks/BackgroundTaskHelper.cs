@@ -2,6 +2,7 @@
 using Microsoft.Phone.Shell;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -118,19 +119,18 @@ namespace InfoViewApp.WP81.Tasks
             var periodicTask = ScheduledActionService.Find("BackgroundTask");
             if (periodicTask != null)
             {
-//#if !DEBUG
+                //#if !DEBUG
                 ScheduledActionService.Remove("BackgroundTask");
-//#else
+                //#else
                 //ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
-//                return;
-//#endif
+                //                return;
+                //#endif
             }
             periodicTask = new PeriodicTask("BackgroundTask");
             (periodicTask as ScheduledTask).Description = "Updates Lock Screen when new content is available.";
             ScheduledActionService.Add(periodicTask);
-#if DEBUG
-            ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
-#endif
+            if (Debugger.IsAttached)
+                ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
         }
 
         public static async Task<string> GetBingImageFitScreenUrl(HttpClient client)
@@ -181,7 +181,7 @@ namespace InfoViewApp.WP81
 
         public static string GenerateImgFileName(this IEnumerable<OverlayContextContract> contracts)
         {
-            var fileName = string.Join(string.Empty, contracts.Select(o=>o.Title));
+            var fileName = string.Join(string.Empty, contracts.Select(o => o.Title));
             fileName = string.Join(string.Empty, fileName.Select(o => ((int)(o % 10)).ToString()));
             if (fileName.Length > 100) fileName = fileName.Substring(0, 100);
             return $"{fileName}.jpeg";
