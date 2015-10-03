@@ -43,15 +43,23 @@
             <!--Rectangle to be used for Crop Original Image-->
         </ScrollViewer>
         <!--Cropped Image-->
-        <Rectangle StrokeThickness="2" Stroke="{StaticResource AccentBrush}"></Rectangle>
         <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
             <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.ImageCropping}" VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="24"/>
         </Grid>
-        <ProgressBar x:Name="progressRing" Margin="0" VerticalAlignment="Top" Foreground="{StaticResource AccentBrush}" FontFamily="Global User Interface" Background="{x:Null}" IsIndeterminate="True" Visibility="Collapsed"/>
         <Button x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.ThatsIt}" Click="go_Select"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,10" Width="140" FontFamily="Portable User Interface" Height="72">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
+        <Rectangle x:Name="busyMask" StrokeThickness="2" Stroke="{StaticResource AccentBrush}">
+            <Rectangle.Fill>
+                <ImageBrush Stretch="Fill" ImageSource="/Assets/SplashScreen.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <ProgressBar x:Name="progressRing" Margin="0" VerticalAlignment="Top" FontFamily="Global User Interface" Background="{x:Null}" IsIndeterminate="True" Visibility="Collapsed">
+            <ProgressBar.Foreground>
+                <SolidColorBrush Color="White"/>
+            </ProgressBar.Foreground>
+        </ProgressBar>
     </Grid>
 </phone:PhoneApplicationPage>

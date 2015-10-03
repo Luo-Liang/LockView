@@ -197,7 +197,8 @@ namespace LockViewApp.WP81.BackgroundAgent
                 //update tile if necessary.
                 BackgroundTaskHelper.TryUpdateTiles();
                 //drain the user's balance.
-                instance.UserQuotaInDollars -= drainPerReq;
+                if (instance.UserQuotaInDollars != double.MaxValue) //<--- free users don't get deducted.
+                    instance.UserQuotaInDollars -= drainPerReq;
                 //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
 #if !DEBUG
             }

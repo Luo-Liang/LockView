@@ -41,6 +41,11 @@ namespace InfoViewApp.WP81
 
         private void UpdateBalanceInfo()
         {
+            if(LockViewApplicationState.Instance.UserQuotaInDollars == double.MaxValue)
+            {
+                quotaStack.Visibility = Visibility.Collapsed;
+                return;// do not bother.
+            }
             var metaData = LockViewApplicationState.Instance.RequestMetadata;
             var providerMetaData = LockViewApplicationState.Instance.SelectedProvider.GetMetaData();
             computePriceRun.Text = "$" + Pricing.ComputationPricePerHour + "/hr";
@@ -251,7 +256,7 @@ namespace InfoViewApp.WP81
             keyBox.KeyUp += KeyBox_KeyUp;
             keyBox.KeyDown += KeyBox_KeyDown;
             content.Children.Add(keyBox);
-            validationResultBox = new TextBlock() { Foreground = App.Current.Resources["AccentBrush"] as SolidColorBrush };
+            validationResultBox = new TextBlock() { Margin = new Thickness(12), Foreground = App.Current.Resources["LightAccentBrush"] as SolidColorBrush };
             content.Children.Add(validationResultBox);
             redeemMessageBox = new CustomMessageBox()
             {
@@ -261,7 +266,17 @@ namespace InfoViewApp.WP81
             redeemMessageBox.LeftButtonContent = AppResources.Next;
             redeemMessageBox.IsLeftButtonEnabled = false;
             redeemMessageBox.Show();
+            redeemMessageBox.Dismissed += RedeemMessageBox_Dismissed;
 
+        }
+
+        private void RedeemMessageBox_Dismissed(object sender, DismissedEventArgs e)
+        {
+            if(e.Result == CustomMessageBoxResult.LeftButton)
+            {
+                LockViewApplicationState.Instance.UserQuotaInDollars = double.MaxValue;
+                quotaStack.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void KeyBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -270,17 +285,22 @@ namespace InfoViewApp.WP81
             {
                 e.Handled = true;//cannot type this key
             }
-            var txtBx = sender as TextBox;
-            var supplyDash = (txtBx.Text.Length + 1) % 6 == 0;
-            if (supplyDash)
-            {
-                txtBx.Text += "-";
-            }
+
         }
 
         private void KeyBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-
+            if (e.Key == System.Windows.Input.Key.Back)
+            {
+                return;//do not mess up with backspace.
+            }
+            var txtBx = sender as TextBox;
+            var supplyDash = (txtBx.Text.Length + 1) % 6 == 0;
+            if (supplyDash && txtBx.Text.Length < 29)
+            {
+                txtBx.Text += "-";
+                txtBx.Select(txtBx.Text.Length, 0);
+            }
         }
 
         CustomMessageBox redeemMessageBox;
@@ -288,11 +308,15 @@ namespace InfoViewApp.WP81
         private void KeyBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var txtBx = sender as TextBox;
-            var isValid = txtBx.Text.Where(o => o != '-').Select(o => (int)o).Aggregate((current, aggregated) => current * aggregated) % 199171 == 0;
-            if (isValid)
+            if (txtBx.Text.Length == 29)
             {
-                validationResultBox.Text = AppResources.RedeemStatusOkay;
-                redeemMessageBox.IsLeftButtonEnabled = true;
+                var raw = txtBx.Text.Where(o => o != '-').Select(o => (uint)o).Aggregate<uint, uint>(1, (current, accumulate) => current * accumulate);
+                var isValid = raw % 3642621952 == 0;
+                if (isValid)
+                {
+                    validationResultBox.Text = AppResources.RedeemStatusOkay;
+                    redeemMessageBox.IsLeftButtonEnabled = true;
+                }
             }
             else
             {

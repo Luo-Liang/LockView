@@ -68,7 +68,7 @@ namespace GraphicsOverlay
         {
             int maxWidth = layout.TargetWidth - 2 * layout.Origin.X;
             int maxY = layout.TargetHeight - layout.Origin.Y;
-            maxY = maxY * 2 / 3;
+            maxY = (int)(maxY * 0.6);
             int startingY = layout.Origin.Y;
             int startingX = layout.Origin.X;
             bool shouldContinue = true;

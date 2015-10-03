@@ -15,18 +15,25 @@ namespace InfoViewApp.WP81
         public NASAAPODFastTransit()
         {
             InitializeComponent();
-            this.Loaded += NASAAPODFastTransit_Loaded;
-         
         }
 
-        private async void NASAAPODFastTransit_Loaded(object sender, RoutedEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var source = new LockViewApp.WP81.Contracts.NASAAPODCaptionSource();
-            LockViewApplicationState.Instance.SelectedProviders[InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.NASAAPODFastTransitPage)] = source;
-            var content = new OverlayContextContract();
-            content.CopyFromInterestContent(await source.RequestContent(null));
-            LockViewApplicationState.Instance.SelectedContextContracts[InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.NASAAPODFastTransitPage)] = content;
-            NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.NASAAPODFastTransitPage));
+            base.OnNavigatedTo(e);
+            if (e.NavigationMode != NavigationMode.Back)
+            {
+                var source = new LockViewApp.WP81.Contracts.NASAAPODCaptionSource();
+                LockViewApplicationState.Instance.SelectedProviders[InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.NASAAPODFastTransitPage)] = source;
+                var content = new OverlayContextContract();
+                content.CopyFromInterestContent(await source.RequestContent(null));
+                LockViewApplicationState.Instance.SelectedContextContracts[InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.NASAAPODFastTransitPage)] = content;
+                NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.NASAAPODFastTransitPage));
+            }
+            else
+            {
+                //back.
+                NavigationService.GoBack();
+            }
         }
     }
 }

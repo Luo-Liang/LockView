@@ -16,6 +16,7 @@ using System.IO.IsolatedStorage;
 using System.Globalization;
 using Microsoft.Phone.Info;
 using InfoViewApp.WP81.Tasks;
+using System.Windows.Media;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -35,8 +36,9 @@ namespace InfoViewApp.WP81
         {
             InitializeComponent();
             //fire when render frame
+            maskSource = busyMask.Fill;
         }
-
+        Brush maskSource;
         const string Locator = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt={0}";
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -62,8 +64,7 @@ namespace InfoViewApp.WP81
                 LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Bing;
                 var reqString = string.Format(Locator, lang);
                 HttpClient client = new HttpClient();
-                progressRing.Visibility = Visibility.Visible;
-                SaveBtn.Visibility = Visibility.Collapsed;
+                MakeBusy();
                 try
                 {
                     var json = await client.GetStringAsync(new Uri(reqString));
@@ -83,15 +84,13 @@ namespace InfoViewApp.WP81
                 {
                     NavigationService.GoBack();
                 }
-                progressRing.Visibility = Visibility.Collapsed;
-                SaveBtn.Visibility = Visibility.Visible;
+                MakeIdle();
             }
             else if (parameter == "nasa")
             {
                 try
                 {
-                    progressRing.Visibility = Visibility.Visible;
-                    SaveBtn.Visibility = Visibility.Collapsed;
+                    MakeBusy();
                     LockViewApplicationState.Instance.SelectedImageSource = ImageSource.NASA;
                     HttpClient client = new HttpClient();
                     var requestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client);
@@ -101,17 +100,30 @@ namespace InfoViewApp.WP81
                     var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net//ImageComposition.svc/RequestImage"), requestContent);
                     var responseStr = await response.Content.ReadAsStringAsync();
                     var rawBytes = Newtonsoft.Json.JsonConvert.DeserializeObject<byte[]>(responseStr);
-                    WB_CapturedImage = new WriteableBitmap(1,1);
+                    WB_CapturedImage = new WriteableBitmap(1, 1);
                     WB_CapturedImage = WB_CapturedImage.FromStream(new MemoryStream(rawBytes));
                     OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     NavigationService.GoBack();
                 }
-                progressRing.Visibility = Visibility.Collapsed;
-                SaveBtn.Visibility = Visibility.Visible;
+                MakeIdle();
             }
+        }
+
+        private void MakeIdle()
+        {
+            progressRing.Visibility = Visibility.Collapsed;
+            SaveBtn.Visibility = Visibility.Visible;
+            busyMask.Fill = null;
+        }
+
+        private void MakeBusy()
+        {
+            progressRing.Visibility = Visibility.Visible;
+            SaveBtn.Visibility = Visibility.Collapsed;
+            busyMask.Fill = maskSource;
         }
 
         private WriteableBitmap LoadScaledImage(WriteableBitmap WB_CapturedImage)

@@ -28,8 +28,8 @@ namespace LockViewApp.WP81.Contracts
             var jObj = JsonObject.Parse(jString);
             return new InterestContent()
             {
-                Content = jObj.GetNamedString("explanation"),
-                Title = HtmlDecodingUtility.HtmlDecode(jObj.GetNamedString("title")),
+                Content = HtmlDecodingUtility.HtmlDecode(jObj.GetNamedString("explanation")),
+                Title =jObj.GetNamedString("title"),
                 Publisher = "NASA",
                 ExtensionUri = new Uri("http://quest.nasa.gov/ltc/images/logo-nasa.gif")
             };
