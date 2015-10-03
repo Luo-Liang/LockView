@@ -117,6 +117,12 @@ namespace LockViewApp.WP81.BackgroundAgent
                         ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
                         Arguments = "lq"
                     };
+                else if (instance.SelectedImageSource == ImageSource.NASA)
+                    imgReqOverride = new ImageRequestOverride()
+                    {
+                        ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
+                        Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
+                    };
                 //if yes, execute that if (1) the image has changed OR the content has changed.
                 await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
                 instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Toe;
@@ -157,6 +163,12 @@ namespace LockViewApp.WP81.BackgroundAgent
                     {
                         ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
                         Arguments = ""
+                    };
+                else if (instance.SelectedImageSource == ImageSource.NASA)
+                    imgReqOverride = new ImageRequestOverride()
+                    {
+                        ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
+                        Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                     };
                 //if yes, execute that if (1) the image has changed OR the content has changed.
                 await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);

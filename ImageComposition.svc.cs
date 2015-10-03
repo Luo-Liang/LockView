@@ -75,7 +75,7 @@ namespace InfoView
                         //in this case, the user can in general select along the x-axis. (width)
                         double scale = height / bitmap.PixelHeight;
                         //now scale the height and width as appropriate.
-                        bitmap = bitmap.Resize((int)(bitmap.PixelWidth / scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                        bitmap = bitmap.Resize((int)(bitmap.PixelWidth * scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
                         //place the selection at the center of the image.
                         //entire height is now selected.
                         bitmap = bitmap.Crop(new Rect(new System.Windows.Point((int)(bitmap.PixelWidth - width) / 2, 0), new System.Windows.Size((int)width, (int)height)));
@@ -84,7 +84,7 @@ namespace InfoView
                     {
                         //symmetric
                         double scale = width / bitmap.PixelWidth;
-                        bitmap = bitmap.Resize((int)width, (int)(bitmap.PixelHeight / scale), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                        bitmap = bitmap.Resize((int)width, (int)(bitmap.PixelHeight * scale), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
                         bitmap = bitmap.Crop(new Rect(new System.Windows.Point(0, (int)(bitmap.PixelHeight - height) / 2), new System.Windows.Size((int)width, (int)height)));
                     }
                 }
