@@ -1,5 +1,4 @@
 ﻿using InfoViewApp.WP81.InterestGathering;
-using Microsoft.Phone.Info;
 using System;
 using System.Collections.Generic;
 using System.Linq;

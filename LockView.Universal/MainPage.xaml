@@ -5,33 +5,9 @@
     xmlns:local="using:LockView.Universal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Foreground="{x:Null}">
-    <Grid x:Name="grid">
-        <Grid.Background>
-            <ImageBrush Stretch="Fill"/>
-        </Grid.Background>
-        <Image x:Name="bground" Source="Assets/LockViewBground.png" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill">
-            <Image.RenderTransform>
-                <CompositeTransform/>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="image" Source="Assets/sun.png" HorizontalAlignment="Left" Width="60" Height="60" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <CompositeTransform/>
-            </Image.RenderTransform>
-        </Image>
-        <Grid x:Name="contentGrid" Height="251" Margin="30,0,0,30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="330" d:LayoutOverrides="LeftPosition, RightPosition">
-            <TextBlock x:Name="textBlock" x:Uid="mainPageTitle" TextWrapping="Wrap" VerticalAlignment="Top" IsHitTestVisible="False" FontSize="26.667" Foreground="White" HorizontalAlignment="Left" Width="163" Height="40" d:LayoutOverrides="HorizontalAlignment">
-        		<Run Text="GOODBYE"/>
-        		<LineBreak/>
-        		<Run/>
-            </TextBlock>
-            <TextBlock x:Name="textBlock1" FontFamily="Segoe UI Light" FontWeight="Light" TextWrapping="Wrap" FontSize="53.333" Foreground="White" Margin="0,45,0,82" d:LayoutOverrides="TopPosition, BottomPosition">
-        		<Run x:Uid="mainPageMundaneRun" Text="mundane"/>
-        		<LineBreak/>
-        		<Run x:Uid="mainPageLockScreenRun" Text="lock screen"/>
-            </TextBlock>
-            <Button Click="goToCropping_Click" x:Name="SaveBtn" Visibility="Visible" x:Uid="mainPageGoCroppingButton" Content="Jump In!" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Global User Interface" Foreground="White" Background="{StaticResource LightAccentBrush}"/>
-        </Grid>
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
     </Grid>
 </Page>

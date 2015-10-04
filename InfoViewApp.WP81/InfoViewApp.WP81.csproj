@@ -397,6 +397,7 @@
     <XliffResource Include="Resources\AppResources.zh-CN.xlf">
       <Generator>XliffResxGenerator</Generator>
       <LastGenOutput>AppResources.zh-CN.resx</LastGenOutput>
+      <SubType>Designer</SubType>
     </XliffResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

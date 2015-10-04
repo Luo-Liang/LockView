@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="a379011c-4324-4531-95d2-1aaa794373d0"
-    Publisher="CN=liang"
+    Name="2dd7b460-b31e-4d12-ac83-88a1ad7394fc"
+    Publisher="CN=Liang Luo Local"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="a379011c-4324-4531-95d2-1aaa794373d0" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="2dd7b460-b31e-4d12-ac83-88a1ad7394fc" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>LockView.Universal</DisplayName>
-    <PublisherDisplayName>liang</PublisherDisplayName>
+    <PublisherDisplayName>Liang Luo Local</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

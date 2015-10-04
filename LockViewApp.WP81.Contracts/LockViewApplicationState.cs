@@ -9,43 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
-using System.Runtime.Serialization.Formatters;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
-using Microsoft.Phone.Info;
 using LockViewApp.WP81.Contracts;
 
 namespace InfoViewApp.WP81
 {
-    public class LockViewRequestMetadata
-    {
-        public enum TaskPhase
-        {
-            /// <summary>
-            /// The device is capable of finishing the task in one run
-            /// </summary>
-            Complete,
-            /// <summary>
-            /// The task is in tick phase
-            /// </summary>
-            Tick,
-            /// <summary>
-            /// The task is in tock phase.
-            /// </summary>
-            Tack,
-            Toe,
-        }
-        public string RequestLanguage = "En-Us";
-        public int ImageBytesPerRequest = 1024;
-        public double ScaleFactor;
-        public string PersistFileName { get; set; }
-        public TaskPhase Phase { get; set; }
-        public LockViewRequestMetadata()
-        {
-            PersistFileName = "MyBg.jpeg";
-            Phase = TaskPhase.Complete;
-        }
-    }
+  
     [XmlInclude(typeof(NewsFeedCategory))]
     [XmlInclude(typeof(GoogleSpecificInterestGatherer))]
     [XmlInclude(typeof(SingleTextSource))]
@@ -75,7 +45,7 @@ namespace InfoViewApp.WP81
                 Instance = new LockViewApplicationState();
                 Instance.RequestMetadata = new LockViewRequestMetadata() { RequestLanguage = "en-us", ScaleFactor = 1.0 };
 
-                if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
+                if (Microsoft.Phone.Info.DeviceStatus.DeviceTotalMemory >> 28 < 1)
                 {
                     //low ram device.
                     Instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;

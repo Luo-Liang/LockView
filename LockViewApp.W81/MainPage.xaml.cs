@@ -13,9 +13,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace LockView.Universal
+namespace LockViewApp.W81
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -25,7 +25,6 @@ namespace LockView.Universal
         public MainPage()
         {
             this.InitializeComponent();
-            Windows.System.UserProfile.LockScreen.RequestSetImageFeedAsync(new Uri("http://www.nasa.gov/rss/lg_image_of_the_day.rss"));
         }
     }
 }
