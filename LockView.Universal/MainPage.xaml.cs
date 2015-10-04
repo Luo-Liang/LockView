@@ -26,11 +26,9 @@ namespace LockView.Universal
         public MainPage()
         {
             this.InitializeComponent();
-            this.daynightCycle.Begin();
-            this.SizeChanged += MainPage_SizeChanged;
-            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
-            ApplicationView.PreferredLaunchViewSize = new Size(360, 640);
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size { Height = 640, Width = 360 });
+
+
+
         }
 
         private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -38,9 +36,9 @@ namespace LockView.Universal
             
         }
 
-        private void goToCropping_Click(object sender, RoutedEventArgs e)
+        private async void goToCropping_Click(object sender, RoutedEventArgs e)
         {
-
+            await Windows.System.UserProfile.LockScreen.RequestSetImageFeedAsync(new Uri("http://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss"));
         }
     }
 }

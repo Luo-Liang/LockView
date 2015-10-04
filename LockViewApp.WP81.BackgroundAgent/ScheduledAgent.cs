@@ -59,6 +59,7 @@ namespace LockViewApp.WP81.BackgroundAgent
         {
             try
             {
+                var appInsightsAwaitTask = WindowsAppInitializer.InitializeAsync("8240d723 - c08b - 4d55 - 8c18 - 62cbe3c35157", WindowsCollectors.UnhandledException);
                 if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
                 {
                     //low ram device.
@@ -69,6 +70,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                     await LaunchTask(task);
                 }
                 await LockViewApplicationState.Instance.SaveState();
+                await appInsightsAwaitTask;
                 TelemetryClient tc = new TelemetryClient();
                 var property = new Dictionary<string, string>();
                 property["Hardware Id"] = BackgroundTaskHelper.GetDeviceId();
