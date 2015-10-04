@@ -17,6 +17,8 @@ using Microsoft.Phone.Shell;
 using System.Linq;
 using Microsoft.Phone.Info;
 using System.Net;
+using Microsoft.ApplicationInsights;
+using System.Collections.Generic;
 
 namespace LockViewApp.WP81.BackgroundAgent
 {
@@ -67,6 +69,11 @@ namespace LockViewApp.WP81.BackgroundAgent
                     await LaunchTask(task);
                 }
                 await LockViewApplicationState.Instance.SaveState();
+                TelemetryClient tc = new TelemetryClient();
+                var property = new Dictionary<string, string>();
+                property["Hardware Id"] = BackgroundTaskHelper.GetDeviceId();
+                tc.TrackEvent("User Background Request", property);
+                tc.Flush();
             }
             catch (Exception ex)
             {
