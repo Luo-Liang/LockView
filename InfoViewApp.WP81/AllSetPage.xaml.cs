@@ -19,6 +19,7 @@ using InfoViewApp.WP81.Tasks;
 using Windows.ApplicationModel.Background;
 using Microsoft.Phone.Scheduler;
 using InfoViewApp.WP81.Resources;
+using Microsoft.ApplicationInsights;
 #if DEBUG
 using MockIAPLib;
 using Store = MockIAPLib;
@@ -41,22 +42,22 @@ namespace InfoViewApp.WP81
 
         private void UpdateBalanceInfo()
         {
-            if(LockViewApplicationState.Instance.UserQuotaInDollars == double.MaxValue)
+            if (LockViewApplicationState.Instance.UserQuotaInDollars == double.MaxValue)
             {
                 quotaStack.Visibility = Visibility.Collapsed;
                 return;// do not bother.
             }
             var metaData = LockViewApplicationState.Instance.RequestMetadata;
-            var providerMetaData = LockViewApplicationState.Instance.SelectedProvider.GetMetaData();
+            var providerMetaData = LockViewApplicationState.Instance.SelectedProviders.Select(o => o.GetMetaData());
             computePriceRun.Text = "$" + Pricing.ComputationPricePerHour + "/hr";
             trafficPriceRun.Text = "$" + Pricing.TrafficPricePerGB + "/GB";
-            sizePerRequestRun.Text = (metaData.ImageBytesPerRequest + providerMetaData.BytePerRequest) / 1024 + "KB";
-            requestPerDayRun.Text = providerMetaData.UpdatePerDay + AppResources.Estimated;
+            sizePerRequestRun.Text = (metaData.ImageBytesPerRequest + providerMetaData.Sum(o => o.BytePerRequest)) / 1024 + "KB";
+            requestPerDayRun.Text = providerMetaData.Max(o => o.UpdatePerDay) + AppResources.Estimated;
             var DrainPerRequest = Pricing.CalculateDrainPerRequest(LockViewApplicationState.Instance.RequestMetadata, LockViewApplicationState.Instance.SelectedProviders.Select(o => o.GetMetaData()));
-            _099PriceDaysRun.Text = Math.Ceiling(0.99 / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
+            _099PriceDaysRun.Text = Math.Ceiling(0.99 / (DrainPerRequest * providerMetaData.Max(o => o.UpdatePerDay))).ToString();
             days.Text = _099PriceDaysRun.Text;
             quotaPurchase.Content = AppResources.Purchase + days.Text + AppResources.DaysFor099;
-            remainingQuota.Text = Math.Ceiling(LockViewApplicationState.Instance.UserQuotaInDollars / (DrainPerRequest * providerMetaData.UpdatePerDay)).ToString();
+            remainingQuota.Text = Math.Ceiling(LockViewApplicationState.Instance.UserQuotaInDollars / (DrainPerRequest * providerMetaData.Max(o => o.UpdatePerDay))).ToString();
             balanceRaw.Text = (((int)(LockViewApplicationState.Instance.UserQuotaInDollars * 1000)) / 1000.0).ToString();
         }
 
@@ -73,7 +74,11 @@ namespace InfoViewApp.WP81
             var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == new Uri(BackgroundTaskHelper.PinnedHeadlineNavId, UriKind.Relative));
             PinFrontStory.Visibility = isPinned ? Visibility.Collapsed : Visibility.Visible;
             SaveBtn.IsEnabled = LockScreenManager.IsProvidedByCurrentApplication;
-
+            var LockScreenNothing2Do = !(contentStackPanel as StackPanel).Children.Any(o => o.Visibility == Visibility.Visible);
+            if (LockScreenNothing2Do)
+            {
+                lockScreenNothingToDo.Visibility = Visibility.Visible;
+            }
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)
@@ -84,6 +89,11 @@ namespace InfoViewApp.WP81
             var allowedBg = requestStatus == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity || requestStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity;
             setAsLockScreenProvider.Visibility = LockScreenManager.IsProvidedByCurrentApplication && allowedBg ? Visibility.Collapsed : Visibility.Visible;
             SaveBtn.IsEnabled = LockScreenManager.IsProvidedByCurrentApplication;
+            var LockScreenNothing2Do = !(contentStackPanel as StackPanel).Children.Any(o => o.Visibility == Visibility.Visible);
+            if (LockScreenNothing2Do)
+            {
+                lockScreenNothingToDo.Visibility = Visibility.Visible;
+            }
         }
 
         private void shortcutButton_Click(object sender, RoutedEventArgs e)
@@ -148,6 +158,16 @@ namespace InfoViewApp.WP81
             SaveBtn.Visibility = Visibility.Collapsed;
 #endif
             AllSetTitle.Text = AppResources.AllSetTitleText;
+            //take a look what people use as their providers.
+            var tc = new TelemetryClient();
+            var property = new Dictionary<string, string>() { { "Hardware Id", BackgroundTaskHelper.GetDeviceId() } };
+            for (int i = 0; i < instance.SelectedProviders.Length; i++)
+            {
+                property[$"Selection{i}"] = instance.SelectedProviders[i].GetType().Name;
+            }
+            tc.TrackEvent("Content Provider Comfirmation", property);
+            var imgSrcProperty = new Dictionary<string, string>() { { "SourceName", instance.SelectedImageSource.ToString() }, { "Hardware Id", BackgroundTaskHelper.GetDeviceId() } };
+            tc.TrackEvent("Image Provider Comfirmation", imgSrcProperty);
         }
         CustomMessageBox priceCalcMsgBx;
         private void priceCalculationLink_Click(object se1nder, RoutedEventArgs e)
@@ -272,10 +292,15 @@ namespace InfoViewApp.WP81
 
         private void RedeemMessageBox_Dismissed(object sender, DismissedEventArgs e)
         {
-            if(e.Result == CustomMessageBoxResult.LeftButton)
+            if (e.Result == CustomMessageBoxResult.LeftButton)
             {
                 LockViewApplicationState.Instance.UserQuotaInDollars = double.MaxValue;
                 quotaStack.Visibility = Visibility.Collapsed;
+                var LockScreenNothing2Do = !(contentStackPanel as StackPanel).Children.Any(o => o.Visibility == Visibility.Visible);
+                if (LockScreenNothing2Do)
+                {
+                    lockScreenNothingToDo.Visibility = Visibility.Visible;
+                }
             }
         }
 

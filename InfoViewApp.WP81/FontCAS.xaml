@@ -39,12 +39,6 @@
             <ScrollViewer.Resources>
                 <converter:Str2ColorConverter x:Key="strCon"/>
                 <local:IntegerCollection x:Key="intCollection">
-                    <clr:Int32>14</clr:Int32>
-                    <clr:Int32>15</clr:Int32>
-                    <clr:Int32>16</clr:Int32>
-                    <clr:Int32>17</clr:Int32>
-                    <clr:Int32>18</clr:Int32>
-                    <clr:Int32>19</clr:Int32>
                     <clr:Int32>20</clr:Int32>
                     <clr:Int32>21</clr:Int32>
                     <clr:Int32>22</clr:Int32>
@@ -86,7 +80,7 @@
                                 <SolidColorBrush Color="{Binding Color}"/>
                             </Rectangle.Fill>
                         </Rectangle>
-                        <TextBlock Margin="15,0,0,0" Text="{Binding ColorName}"/>
+                        <TextBlock Margin="15,0,0,0" Text="{Binding ColorName,Converter={StaticResource str2LocStrConn}}"/>
                     </StackPanel>
                 </DataTemplate>
                 <DataTemplate x:Key="colorTemplateFull">

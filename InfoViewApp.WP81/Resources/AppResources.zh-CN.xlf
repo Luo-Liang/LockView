@@ -18,7 +18,7 @@
           </trans-unit>
         <trans-unit id="Resx/ApplicationTitle" translate="yes" xml:space="preserve">
           <source>MY APPLICATION</source>
-          <target state="new">MY APPLICATION</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">我的应用程序</target>
         </trans-unit>
         <trans-unit id="Resx/ByeBye" translate="yes" xml:space="preserve">
           <source>bye bye</source>
@@ -26,7 +26,7 @@
         </trans-unit>
         <trans-unit id="Resx/AppBarMenuItemText" translate="yes" xml:space="preserve">
           <source>Menu Item</source>
-          <target state="new">Menu Item</target>
+          <target state="translated" state-qualifier="tm-suggestion">菜单项目</target>
         </trans-unit>
         <trans-unit id="Resx/mundane" translate="yes" xml:space="preserve">
           <source>mundane</source>
@@ -263,6 +263,14 @@
           <source>Is there anything you want to tell yourself? Maybe to calm down, slow down?</source>
           <target state="translated">有什么想要告诉自己的?心如止水?减慢生活节奏?</target>
         </trans-unit>
+        <trans-unit id="Resx/AntiqueWhite" translate="yes" xml:space="preserve">
+          <source>Antique White</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">古董白</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
+        <trans-unit id="Resx/AliceBlue" translate="yes" xml:space="preserve">
+          <source>Alice Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">艾莉斯蓝</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
         <trans-unit id="Resx/WordOfWisdomPageGuide" translate="yes" xml:space="preserve">
           <source>Type in something here. It will show up on your screen.</source>
           <target state="translated">在此处键入内容。它将显示在屏幕上。</target>
@@ -273,279 +281,555 @@
         </trans-unit>
         <trans-unit id="Resx/Yellow" translate="yes" xml:space="preserve">
           <source>Yellow</source>
-          <target state="translated">黄色</target>
+          <target state="needs-review-translation">黄色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/YellowGreen" translate="yes" xml:space="preserve">
+          <source>Yellow Green</source>
+          <target state="needs-review-translation">黄绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/White" translate="yes" xml:space="preserve">
           <source>White</source>
-          <target state="translated">白色</target>
+          <target state="needs-review-translation">白色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/WhiteSmoke" translate="yes" xml:space="preserve">
+          <source>White Smoke</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">白烟</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Violet" translate="yes" xml:space="preserve">
           <source>Violet</source>
-          <target state="translated">紫罗兰</target>
+          <target state="needs-review-translation">紫罗兰</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Wheat" translate="yes" xml:space="preserve">
+          <source>Wheat</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">麦</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Tomato" translate="yes" xml:space="preserve">
           <source>Tomato</source>
-          <target state="translated">番茄色</target>
+          <target state="needs-review-translation">番茄色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Turquoise" translate="yes" xml:space="preserve">
+          <source>Turquoise</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">青绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Teal" translate="yes" xml:space="preserve">
           <source>Teal</source>
-          <target state="translated">青色</target>
+          <target state="needs-review-translation">青色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Thistle" translate="yes" xml:space="preserve">
+          <source>Thistle</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">蓟</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/SteelBlue" translate="yes" xml:space="preserve">
           <source>Steel Blue</source>
-          <target state="translated">钢蓝色</target>
+          <target state="needs-review-translation">钢蓝色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Tan" translate="yes" xml:space="preserve">
+          <source>Tan</source>
+          <target state="needs-review-translation">炭黄色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Snow" translate="yes" xml:space="preserve">
           <source>Snow</source>
-          <target state="translated">雪白</target>
+          <target state="needs-review-translation">雪白</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/SpringGreen" translate="yes" xml:space="preserve">
+          <source>Spring Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">草绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/SlateBlue" translate="yes" xml:space="preserve">
           <source>Slate Blue</source>
-          <target state="translated">石板蓝</target>
+          <target state="needs-review-translation">石板蓝</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/SlateGray" translate="yes" xml:space="preserve">
+          <source>Slate Gray</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">石板灰</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Silver" translate="yes" xml:space="preserve">
           <source>Silver</source>
-          <target state="translated">银色</target>
+          <target state="needs-review-translation">银色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/SkyBlue" translate="yes" xml:space="preserve">
+          <source>Sky Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">天空蓝</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/SeaShell" translate="yes" xml:space="preserve">
           <source>Sea Shell</source>
-          <target state="translated">贝壳白</target>
+          <target state="needs-review-translation">贝壳白</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Sienna" translate="yes" xml:space="preserve">
+          <source>Sienna</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Sienna</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/SandyBrown" translate="yes" xml:space="preserve">
           <source>Sandy Brown</source>
-          <target state="translated">浅褐色</target>
+          <target state="needs-review-translation">浅褐色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/SeaGreen" translate="yes" xml:space="preserve">
+          <source>Sea Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">海绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/SaddleBrown" translate="yes" xml:space="preserve">
           <source>Saddle Brown</source>
-          <target state="translated">鞍具褐色</target>
+          <target state="needs-review-translation">鞍具褐色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Salmon" translate="yes" xml:space="preserve">
+          <source>Salmon</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">鲑鱼</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/RosyBrown" translate="yes" xml:space="preserve">
           <source>Rosy Brown</source>
-          <target state="translated">玫瑰褐色</target>
+          <target state="needs-review-translation">玫瑰褐色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/RoyalBlue" translate="yes" xml:space="preserve">
+          <source>Royal Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">贵族蓝</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Purple" translate="yes" xml:space="preserve">
           <source>Purple</source>
-          <target state="translated">紫色</target>
+          <target state="needs-review-translation">紫色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Red" translate="yes" xml:space="preserve">
+          <source>Red</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">红色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Plum" translate="yes" xml:space="preserve">
           <source>Plum</source>
-          <target state="translated">李子</target>
+          <target state="needs-review-translation">李子</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/PowderBlue" translate="yes" xml:space="preserve">
+          <source>Powder Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">粉蓝色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Peru" translate="yes" xml:space="preserve">
           <source>Peru</source>
-          <target state="translated">秘鲁</target>
+          <target state="needs-review-translation">秘鲁</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Pink" translate="yes" xml:space="preserve">
+          <source>Pink</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">粉色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/PapayaWhip" translate="yes" xml:space="preserve">
           <source>Papaya Whip</source>
-          <target state="translated">粉木瓜橙</target>
+          <target state="needs-review-translation">粉木瓜橙</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/PeachPuff" translate="yes" xml:space="preserve">
+          <source>Peach Puff</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">浅桃红色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/PaleTurquoise" translate="yes" xml:space="preserve">
           <source>Pale Turquoise</source>
-          <target state="translated">淡青绿色</target>
+          <target state="needs-review-translation">淡青绿色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/PaleVioletRed" translate="yes" xml:space="preserve">
+          <source>Pale Violet Red</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">浅紫红色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/PaleGoldenrod" translate="yes" xml:space="preserve">
           <source>Pale Goldenrod</source>
-          <target state="translated">浅金黄色</target>
+          <target state="needs-review-translation">浅金黄色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/PaleGreen" translate="yes" xml:space="preserve">
+          <source>Pale Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">淡绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/OrangeRed" translate="yes" xml:space="preserve">
           <source>Orange Red</source>
-          <target state="translated">桔红色</target>
+          <target state="needs-review-translation">桔红色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Orchid" translate="yes" xml:space="preserve">
+          <source>Orchid</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">兰花</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/OliveDrab" translate="yes" xml:space="preserve">
           <source>Olive Drab</source>
-          <target state="translated">暗橄榄色</target>
+          <target state="needs-review-translation">暗橄榄色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Orange" translate="yes" xml:space="preserve">
+          <source>Orange</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">橙色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/OldLace" translate="yes" xml:space="preserve">
           <source>Old Lace</source>
-          <target state="translated">老花色</target>
+          <target state="needs-review-translation">老花色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Olive" translate="yes" xml:space="preserve">
+          <source>Olive</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">橄榄色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/NavajoWhite" translate="yes" xml:space="preserve">
           <source>Navajo White</source>
-          <target state="translated">印地安黄</target>
+          <target state="needs-review-translation">印地安黄</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Navy" translate="yes" xml:space="preserve">
+          <source>Navy</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">海军</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/MistyRose" translate="yes" xml:space="preserve">
           <source>Misty Rose</source>
-          <target state="translated">粉红玫瑰</target>
+          <target state="needs-review-translation">粉红玫瑰</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Moccasin" translate="yes" xml:space="preserve">
+          <source>Moccasin</source>
+          <target state="needs-review-translation">鹿皮色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/MidnightBlue" translate="yes" xml:space="preserve">
           <source>Midnight Blue</source>
-          <target state="translated">中灰蓝色</target>
+          <target state="needs-review-translation">中灰蓝色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/MintCream" translate="yes" xml:space="preserve">
+          <source>Mint Cream</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">薄荷冰激凌</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/MediumTurquoise" translate="yes" xml:space="preserve">
           <source>Medium Turquoise</source>
-          <target state="translated">浅青绿色</target>
+          <target state="needs-review-translation">浅青绿色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/MediumVioletRed" translate="yes" xml:space="preserve">
+          <source>Medium Violet Red</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">中等的紫罗兰红色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/MediumSlateBlue" translate="yes" xml:space="preserve">
           <source>Medium Slate Blue</source>
-          <target state="translated">淡灰蓝色</target>
+          <target state="needs-review-translation">淡灰蓝色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/MediumSpringGreen" translate="yes" xml:space="preserve">
+          <source>Medium Spring Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">中草绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/MediumPurple" translate="yes" xml:space="preserve">
           <source>Medium Purple</source>
-          <target state="translated">淡紫色</target>
+          <target state="needs-review-translation">淡紫色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/MediumSeaGreen" translate="yes" xml:space="preserve">
+          <source>Medium Sea Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">中海绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/MediumBlue" translate="yes" xml:space="preserve">
           <source>Medium Blue</source>
-          <target state="translated">淡蓝色</target>
+          <target state="needs-review-translation">淡蓝色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/MediumOrchid" translate="yes" xml:space="preserve">
+          <source>Medium Orchid</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">中兰花色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Maroon" translate="yes" xml:space="preserve">
           <source>Maroon</source>
-          <target state="translated">褐紫红色</target>
+          <target state="needs-review-translation">褐紫红色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/MediumAquamarine" translate="yes" xml:space="preserve">
+          <source>Medium Aquamarine</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">中玉色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Linen" translate="yes" xml:space="preserve">
           <source>Linen</source>
-          <target state="translated">亚麻布色</target>
+          <target state="needs-review-translation">亚麻布色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Magenta" translate="yes" xml:space="preserve">
+          <source>Magenta</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">洋红</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Lime" translate="yes" xml:space="preserve">
           <source>Lime</source>
-          <target state="translated">酸橙色</target>
+          <target state="needs-review-translation">酸橙色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/LimeGreen" translate="yes" xml:space="preserve">
+          <source>Lime Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">浅绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/LightSteelBlue" translate="yes" xml:space="preserve">
           <source>Light Steel Blue</source>
-          <target state="translated">浅钢蓝色</target>
+          <target state="needs-review-translation">浅钢蓝色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/LightYellow" translate="yes" xml:space="preserve">
+          <source>Light Yellow</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">浅黄色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/LightSkyBlue" translate="yes" xml:space="preserve">
           <source>Light Sky Blue</source>
-          <target state="translated">浅天蓝色</target>
+          <target state="needs-review-translation">浅天蓝色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/LightSlateGray" translate="yes" xml:space="preserve">
+          <source>Light Slate Gray</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">浅石板灰</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/LightSalmon" translate="yes" xml:space="preserve">
           <source>Light Salmon</source>
-          <target state="translated">浅橙红</target>
+          <target state="needs-review-translation">浅橙红</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/LightSeaGreen" translate="yes" xml:space="preserve">
+          <source>Light Sea Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">灯海绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/LightGreen" translate="yes" xml:space="preserve">
           <source>Light Green</source>
-          <target state="translated">浅绿色</target>
+          <target state="needs-review-translation">浅绿色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/LightPink" translate="yes" xml:space="preserve">
+          <source>Light Pink</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">浅粉色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/LightGoldenrodYellow" translate="yes" xml:space="preserve">
           <source>Light Goldenrod Yellow</source>
-          <target state="translated">浅金黄</target>
+          <target state="needs-review-translation">浅金黄</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/LightGray" translate="yes" xml:space="preserve">
+          <source>Light Gray</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">浅灰色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/LightCoral" translate="yes" xml:space="preserve">
           <source>Light Coral</source>
-          <target state="translated">浅珊瑚红</target>
+          <target state="needs-review-translation">浅珊瑚红</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/LightCyan" translate="yes" xml:space="preserve">
+          <source>Light Cyan</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">淡青色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/LemonChiffon" translate="yes" xml:space="preserve">
           <source>Lemon Chiffon</source>
-          <target state="translated">柠檬色</target>
+          <target state="needs-review-translation">柠檬色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/LightBlue" translate="yes" xml:space="preserve">
+          <source>Light Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">浅蓝色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/LavenderBlush" translate="yes" xml:space="preserve">
           <source>Lavender Blush</source>
-          <target state="translated">淡紫红色</target>
+          <target state="needs-review-translation">淡紫红色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/LawnGreen" translate="yes" xml:space="preserve">
+          <source>Lawn Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">草绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Khaki" translate="yes" xml:space="preserve">
           <source>Khaki</source>
-          <target state="translated">黄褐色</target>
+          <target state="needs-review-translation">黄褐色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Lavender" translate="yes" xml:space="preserve">
+          <source>Lavender</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">淡紫色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Indigo" translate="yes" xml:space="preserve">
           <source>Indigo</source>
-          <target state="translated">靛蓝色</target>
+          <target state="needs-review-translation">靛蓝色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Ivory" translate="yes" xml:space="preserve">
+          <source>Ivory</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">象牙塔</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/HotPink" translate="yes" xml:space="preserve">
           <source>Hot Pink</source>
-          <target state="translated">桃红色</target>
+          <target state="needs-review-translation">桃红色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/IndianRed" translate="yes" xml:space="preserve">
+          <source>Indian Red</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">印度红</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/GreenYellow" translate="yes" xml:space="preserve">
           <source>Green Yellow</source>
-          <target state="translated">绿黄色</target>
+          <target state="needs-review-translation">绿黄色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Honeydew" translate="yes" xml:space="preserve">
+          <source>Honeydew</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Honeydew</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Gray" translate="yes" xml:space="preserve">
           <source>Gray</source>
-          <target state="translated">灰度</target>
+          <target state="needs-review-translation">灰度</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Green" translate="yes" xml:space="preserve">
+          <source>Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Gold" translate="yes" xml:space="preserve">
           <source>Gold</source>
-          <target state="translated">金色</target>
+          <target state="needs-review-translation">金色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Goldenrod" translate="yes" xml:space="preserve">
+          <source>Goldenrod</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">金黄色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Gainsboro" translate="yes" xml:space="preserve">
           <source>Gainsboro</source>
-          <target state="translated">亮灰色</target>
+          <target state="needs-review-translation">亮灰色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/GhostWhite" translate="yes" xml:space="preserve">
+          <source>Ghost White</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">苍白</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/ForestGreen" translate="yes" xml:space="preserve">
           <source>Forest Green</source>
-          <target state="translated">森林绿</target>
+          <target state="needs-review-translation">森林绿</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Fuchsia" translate="yes" xml:space="preserve">
+          <source>Fuchsia</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">紫红色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Firebrick" translate="yes" xml:space="preserve">
           <source>Firebrick</source>
-          <target state="translated">砖红色</target>
+          <target state="needs-review-translation">砖红色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/FloralWhite" translate="yes" xml:space="preserve">
+          <source>Floral White</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">花白</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DimGray" translate="yes" xml:space="preserve">
           <source>Dim Gray</source>
-          <target state="translated">暗灰色</target>
+          <target state="needs-review-translation">暗灰色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DodgerBlue" translate="yes" xml:space="preserve">
+          <source>Dodger Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">宝蓝</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DeepPink" translate="yes" xml:space="preserve">
           <source>Deep Pink</source>
-          <target state="translated">深粉色</target>
+          <target state="needs-review-translation">深粉色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DeepSkyBlue" translate="yes" xml:space="preserve">
+          <source>Deep Sky Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深蓝的天空</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DarkTurquoise" translate="yes" xml:space="preserve">
           <source>Dark Turquoise</source>
-          <target state="translated">深青绿色</target>
+          <target state="needs-review-translation">深青绿色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DarkViolet" translate="yes" xml:space="preserve">
+          <source>Dark Violet</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深紫色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DarkSlateBlue" translate="yes" xml:space="preserve">
           <source>Dark Slate Blue</source>
-          <target state="translated">深石板蓝</target>
+          <target state="needs-review-translation">深石板蓝</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DarkSlateGray" translate="yes" xml:space="preserve">
+          <source>Dark Slate Gray</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深石板灰</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DarkSalmon" translate="yes" xml:space="preserve">
           <source>Dark Salmon</source>
-          <target state="translated">深橙红</target>
+          <target state="needs-review-translation">深橙红</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DarkSeaGreen" translate="yes" xml:space="preserve">
+          <source>Dark Sea Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深海绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DarkOrchid" translate="yes" xml:space="preserve">
           <source>Dark Orchid</source>
-          <target state="translated">暗兰花紫</target>
+          <target state="needs-review-translation">暗兰花紫</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DarkRed" translate="yes" xml:space="preserve">
+          <source>Dark Red</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深红色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DarkOliveGreen" translate="yes" xml:space="preserve">
           <source>Dark Olive Green</source>
-          <target state="translated">深橄榄绿</target>
+          <target state="needs-review-translation">深橄榄绿</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DarkOrange" translate="yes" xml:space="preserve">
+          <source>Dark Orange</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深橙色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DarkKhaki" translate="yes" xml:space="preserve">
           <source>Dark Khaki</source>
-          <target state="translated">深褐色</target>
+          <target state="needs-review-translation">深褐色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DarkMagenta" translate="yes" xml:space="preserve">
+          <source>Dark Magenta</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深品红</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DarkGray" translate="yes" xml:space="preserve">
           <source>Dark Gray</source>
-          <target state="translated">深灰色</target>
+          <target state="needs-review-translation">深灰色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DarkGreen" translate="yes" xml:space="preserve">
+          <source>Dark Green</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/DarkCyan" translate="yes" xml:space="preserve">
           <source>Dark Cyan</source>
-          <target state="translated">深青色</target>
+          <target state="needs-review-translation">深青色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DarkGoldenrod" translate="yes" xml:space="preserve">
+          <source>Dark Goldenrod</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深金黄色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Cyan" translate="yes" xml:space="preserve">
           <source>Cyan</source>
-          <target state="translated">青色</target>
+          <target state="needs-review-translation">青色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/DarkBlue" translate="yes" xml:space="preserve">
+          <source>Dark Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">深蓝色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Cornsilk" translate="yes" xml:space="preserve">
           <source>Cornsilk</source>
-          <target state="translated">玉米黄</target>
+          <target state="needs-review-translation">玉米黄</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Crimson" translate="yes" xml:space="preserve">
+          <source>Crimson</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Crimson</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Coral" translate="yes" xml:space="preserve">
           <source>Coral</source>
-          <target state="translated">珊瑚红</target>
+          <target state="needs-review-translation">珊瑚红</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/CornflowerBlue" translate="yes" xml:space="preserve">
+          <source>Cornflower Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">藏蓝色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Chartreuse" translate="yes" xml:space="preserve">
           <source>Chartreuse</source>
-          <target state="translated">浅黄绿色</target>
+          <target state="needs-review-translation">浅黄绿色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Chocolate" translate="yes" xml:space="preserve">
+          <source>Chocolate</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">巧克力</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/BurlyWood" translate="yes" xml:space="preserve">
           <source>Burly Wood</source>
-          <target state="translated">原木色</target>
+          <target state="needs-review-translation">原木色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/CadetBlue" translate="yes" xml:space="preserve">
+          <source>Cadet Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">士官服蓝</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/BlueViolet" translate="yes" xml:space="preserve">
           <source>Blue Violet</source>
-          <target state="translated">蓝紫色</target>
+          <target state="needs-review-translation">蓝紫色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Brown" translate="yes" xml:space="preserve">
+          <source>Brown</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">棕色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/BlanchedAlmond" translate="yes" xml:space="preserve">
           <source>Blanched Almond</source>
-          <target state="translated">杏仁白</target>
+          <target state="needs-review-translation">杏仁白</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Blue" translate="yes" xml:space="preserve">
+          <source>Blue</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">蓝色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Bisque" translate="yes" xml:space="preserve">
           <source>Bisque</source>
-          <target state="translated">乳黄色</target>
+          <target state="needs-review-translation">乳黄色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Black" translate="yes" xml:space="preserve">
+          <source>Black</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">黑色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Azure" translate="yes" xml:space="preserve">
           <source>Azure</source>
-          <target state="translated">天蓝色</target>
+          <target state="needs-review-translation">天蓝色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Beige" translate="yes" xml:space="preserve">
+          <source>Beige</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">米黄色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/Aqua" translate="yes" xml:space="preserve">
           <source>Aqua</source>
-          <target state="translated">水绿色</target>
+          <target state="needs-review-translation">水绿色</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+        <trans-unit id="Resx/Aquamarine" translate="yes" xml:space="preserve">
+          <source>Aquamarine</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">水绿色</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resx/WPRestrictions" translate="yes" xml:space="preserve">
           <source>Windows Phone requires us to obtain your consent before we can change your lock screen.</source>
@@ -616,6 +900,10 @@
         <trans-unit id="Resx/RedeemStatusOkay" translate="yes" xml:space="preserve">
           <source>Great! You can now enjoy LockView free of charge.</source>
           <target state="translated">好极了! 现在您可以免费享受锁屏视野了。</target>
+        </trans-unit>
+        <trans-unit id="Resx/NothingToDo" translate="yes" xml:space="preserve">
+          <source>Great! We have taken care of everything. If you haven't already, press Finalize and you're good to go. And oh, by the way, take a look at your Lock Screen.</source>
+          <target state="translated">谢谢!我们已经处理好一切。您可以在按下"完成设置"后安全地退出程序。您已经可以看到锁屏界面的变化了。</target>
         </trans-unit>
         <trans-unit id="Resx/RedeemStatusNotOkay" translate="yes" xml:space="preserve">
           <source>Sorry, but this doesn't look like a valid code.</source>

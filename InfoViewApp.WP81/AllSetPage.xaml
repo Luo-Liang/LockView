@@ -106,49 +106,52 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
 
         <Grid Margin="0,30,0,0" Background="{StaticResource AccentBrush}" Opacity="0.8" d:LayoutOverrides="Height, TopPosition, BottomPosition" VerticalAlignment="Top">
-            <TextBlock x:Name="AllSetTitle" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.AllSetPageIntro}" VerticalAlignment="Stretch" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14,14,14"/>
+            <TextBlock x:Name="AllSetTitle" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.AllSetPageIntro}" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="White" FontSize="24" Margin="20,14"/>
         </Grid>
         <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.AllDone}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="8,0,0,10" FontFamily="Global User Interface">
             <Button.Background>
                 <SolidColorBrush Color="{StaticResource AccentColor}"/>
             </Button.Background>
         </Button>
-        <StackPanel Margin="19,95,19,79" Orientation="Vertical" d:LayoutOverrides="TopPosition, BottomPosition">
-            <StackPanel x:Name="setAsLockScreenProvider" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width">
-                <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.SetAsLockScreen}" VerticalAlignment="Top" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
-                <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.WPRestrictions}" VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0"/>
-                <Button Click="button_Click" x:Name="button" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.SayYes}" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
-            </StackPanel>
-            <StackPanel x:Name="PinFrontStory" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,5,0,0">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.PinShortcut}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
-                <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.PinShortcutDetails}" VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface"/>
-                <Button Click="shortcutButton_Click" x:Name="shortcutButton" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.PinShortcutButton}" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
-            </StackPanel>
-            <StackPanel x:Name="quotaStack" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,5,0,0">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface">
-            		<Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.RemainingBalance}"/>
-            		<Run x:Name="remainingQuota" Text="30"/>
-            		<Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.Days}"/>
-                    <Run Text="($"/><Run x:Name="balanceRaw"/><Run Text=")"/>
-                </TextBlock>
-                <TextBlock TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface">
-            		<Run Text="{Binding Source={StaticResource ls},Path=LocalizedResources.RemainingBalanceText}"/>
-            		<Run x:Name="price" Text="0.99"/>
-            		<Run Text="/"/>
-            		<Run Text="60" x:Name="days"/>
-            		<Run Text=" days."/>
-                </TextBlock>
-                <HyperlinkButton x:Name="priceCalculationLink" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.PriceCalc}" Margin="-10,0,0,0" Click="priceCalculationLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
-                <HyperlinkButton x:Name="quotaRunOut" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.BalanceRunOut}" Margin="-10,0,0,0" Click="quotaRunOut_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
-                <HyperlinkButton x:Name="dontwattopayLink" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.DontWantToPay}" Margin="-10,0,0,0" Click="dontwattopayLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
-                <StackPanel Orientation="Horizontal">
-                    <Button Click="quotaPurchase_Click" x:Name="quotaPurchase" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.Purchase}" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
-                    <Button Click="redeem_Click" x:Name="redeem" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.Redeem}" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
+        <ScrollViewer Margin="19,95,19,79" d:LayoutOverrides="TopPosition, BottomPosition">
+            <StackPanel x:Name="contentStackPanel" Orientation="Vertical">
+                <StackPanel x:Name="setAsLockScreenProvider" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" d:LayoutOverrides="Width">
+                    <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.SetAsLockScreen, Source={StaticResource ls}}" VerticalAlignment="Top" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.WPRestrictions, Source={StaticResource ls}}" VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0"/>
+                    <Button Click="button_Click" x:Name="button" Content="{Binding LocalizedResources.SayYes, Source={StaticResource ls}}" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
                 </StackPanel>
-            </StackPanel>
+                <StackPanel x:Name="PinFrontStory" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,5,0,0">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding LocalizedResources.PinShortcut, Source={StaticResource ls}}" VerticalAlignment="Top" Width="362" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding LocalizedResources.PinShortcutDetails, Source={StaticResource ls}}" VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface"/>
+                    <Button Click="shortcutButton_Click" x:Name="shortcutButton" Content="{Binding LocalizedResources.PinShortcutButton, Source={StaticResource ls}}" HorizontalAlignment="Left" Margin="-11,0,0,0"/>
+                </StackPanel>
+                <StackPanel x:Name="quotaStack" Visibility="{Binding SelectedItem, Converter={StaticResource src2VisibilityConn}, ElementName=newsSources}" Orientation="Vertical" VerticalAlignment="Top" Margin="0,5,0,0">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="24" Foreground="{StaticResource LightAccentBrush}" FontFamily="Portable User Interface">
+        				<Run Text="{Binding LocalizedResources.RemainingBalance, Source={StaticResource ls}}"/>
+        				<Run x:Name="remainingQuota" Text="30"/>
+        				<Run Text="{Binding LocalizedResources.Days, Source={StaticResource ls}}"/>
+        				<Run Text="($"/><Run x:Name="balanceRaw"/><Run Text=")"/>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="20" Foreground="{StaticResource GrayBrush}" Margin="0,5,0,0" FontFamily="Portable User Interface">
+        				<Run Text="{Binding LocalizedResources.RemainingBalanceText, Source={StaticResource ls}}"/>
+        				<Run x:Name="price" Text="0.99"/>
+        				<Run Text="/"/>
+        				<Run Text="60" x:Name="days"/>
+        				<Run Text=" days."/>
+                    </TextBlock>
+                    <HyperlinkButton x:Name="priceCalculationLink" Content="{Binding LocalizedResources.PriceCalc, Source={StaticResource ls}}" Margin="-10,0,0,0" Click="priceCalculationLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
+                    <HyperlinkButton x:Name="quotaRunOut" Content="{Binding LocalizedResources.BalanceRunOut, Source={StaticResource ls}}" Margin="-10,0,0,0" Click="quotaRunOut_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
+                    <HyperlinkButton x:Name="dontwattopayLink" Content="{Binding LocalizedResources.DontWantToPay, Source={StaticResource ls}}" Margin="-10,0,0,0" Click="dontwattopayLink_Click" HorizontalAlignment="Left" FontFamily="Portable User Interface" FontSize="20"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Click="quotaPurchase_Click" x:Name="quotaPurchase" Content="{Binding LocalizedResources.Purchase, Source={StaticResource ls}}" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
+                        <Button Click="redeem_Click" x:Name="redeem" Content="{Binding LocalizedResources.Redeem, Source={StaticResource ls}}" HorizontalAlignment="Left" Margin="-11,0,0,0" FontFamily="Portable User Interface"/>
+                    </StackPanel>
+                </StackPanel>
 
-        </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
         <ProgressBar x:Name="progressRing" Height="10" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="Black" Foreground="{StaticResource DarkAccent}" Visibility="Collapsed"/>
+        <TextBlock x:Name="lockScreenNothingToDo" Height="158" Margin="18,99,11,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{StaticResource LightAccentBrush}" FontSize="22.667" Visibility="Collapsed" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.NothingToDo}"/>
         <!--<toolkit:CustomMessageBox Title="REDEEM A CODE" LeftButtonContent="redeem" Height="341">
             <toolkit:CustomMessageBox.Content>
                 <StackPanel>

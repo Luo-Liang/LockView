@@ -16,9 +16,9 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="/Assets/SplashScreen.png"/>
+            <ImageBrush Stretch="Fill" ImageSource="/beaming.png"/>
         </Grid.Background>
-        <ProgressBar Margin="0" IsIndeterminate="True" Background="{x:Null}" Height="14" VerticalAlignment="Top">
+        <ProgressBar Margin="0" IsIndeterminate="True" Background="{x:Null}" Height="14" VerticalAlignment="Center">
             <ProgressBar.Foreground>
                 <SolidColorBrush Color="White"/>
             </ProgressBar.Foreground>

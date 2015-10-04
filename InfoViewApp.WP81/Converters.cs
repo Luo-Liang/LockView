@@ -7,16 +7,21 @@ using System.Windows.Media;
 using System.Globalization;
 using System.Windows;
 using InfoViewApp.WP81.Resources;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace InfoViewApp.WP81.Converter
 {
     public class Str2BrushConverter : IValueConverter
     {
+        static Dictionary<string, Brush> colorCache;
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var clrCollection = WP81.App.Current.Resources["colorCollection"] as ColorNameVMCollection;
-            var color = clrCollection.FirstOrDefault<ColorNameVM>(clr => clr.ColorName.Replace(" ", "") == value.ToString());
-            return new SolidColorBrush(color.Color);
+            if (colorCache == null)
+            {
+                colorCache = (App.Current.Resources["colorCollection"] as ColorNameVMCollection).ToDictionary<ColorNameVM, string, Brush>(o => o.ColorName.Replace(" ", ""), o => new SolidColorBrush(o.Color));
+            }
+            return colorCache[value.ToString()];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo language)
@@ -29,11 +34,16 @@ namespace InfoViewApp.WP81.Converter
     }
     public class Str2ColorConverter : IValueConverter
     {
+        static Dictionary<string, ColorNameVM> colorCache;
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var clrCollection = WP81.App.Current.Resources["colorCollection"] as ColorNameVMCollection;
-            var color = clrCollection.FirstOrDefault<ColorNameVM>(clr => clr.ColorName == value.ToString());
-            return color;
+            //race condition can be tolerated because assignment is atomic.
+            if (colorCache == null)
+            {
+                var clrCollection = WP81.App.Current.Resources["colorCollection"] as ColorNameVMCollection;
+                colorCache = clrCollection.ToDictionary(o => o.ColorName);
+            }
+            return colorCache[value.ToString()];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -63,15 +73,20 @@ namespace InfoViewApp.WP81.Converter
     }
     public class enum2LocalizedStrConverter : IValueConverter
     {
+        static Dictionary<string, string> propertyCache;
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            try
+            if (propertyCache == null)
             {
-                return typeof(AppResources).GetProperty(value.ToString(), System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).GetValue(null);
-
+                // propertyCache = typeof(AppResources).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static).ToDictionary<PropertyInfo, string, string>(o => o.Name, o => o.GetValue(null).ToString());
+                // the above is hard to debug.
+                propertyCache = new Dictionary<string, string>();
+                foreach (var property in typeof(AppResources).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static))
+                {
+                    propertyCache[property.Name] = property.GetValue(null) as string;
+                }
             }
-            catch { }
-            return Enum.GetName(value.GetType(),value);//default now
+            return propertyCache.ContainsKey(value.ToString()) ? propertyCache[value.ToString()] : Enum.GetName(value.GetType(), value);//default now
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -95,7 +110,7 @@ namespace InfoViewApp.WP81.Converter
         }
     }
     //accepts a boolean (and negates that) or a visibility value
-    public class logicalNeg2Visibility:IValueConverter
+    public class logicalNeg2Visibility : IValueConverter
     {
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo language)
@@ -130,16 +145,22 @@ namespace InfoViewApp.WP81.Converter
     }
     public class str2LocStr : IValueConverter
     {
-
+        static Dictionary<string, string> propertyCache;
         public object Convert(object value, Type targetType, object parameter, CultureInfo language)
         {
-            try
+            //again, allow race.
+            if (propertyCache == null)
             {
-                return typeof(AppResources).GetProperty(value.ToString(), System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).GetValue(null);
-
+                // propertyCache = typeof(AppResources).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static).ToDictionary<PropertyInfo, string, string>(o => o.Name, o => o.GetValue(null).ToString());
+                // the above is hard to debug.
+                propertyCache = new Dictionary<string, string>();
+                foreach (var property in typeof(AppResources).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static))
+                {
+                    propertyCache[property.Name] = property.GetValue(null) as string;
+                }
             }
-            catch { }
-            return value;
+            var key = value.ToString().Replace(" ", "");
+            return propertyCache.ContainsKey(key) ? propertyCache[key] : key;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo language)

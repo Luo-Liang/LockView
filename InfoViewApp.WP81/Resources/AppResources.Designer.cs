@@ -61,6 +61,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alice Blue.
+        /// </summary>
+        public static string AliceBlue {
+            get {
+                return ResourceManager.GetString("AliceBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Finalize.
         /// </summary>
         public static string AllDone {
@@ -88,6 +97,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Antique White.
+        /// </summary>
+        public static string AntiqueWhite {
+            get {
+                return ResourceManager.GetString("AntiqueWhite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Menu Item.
         /// </summary>
         public static string AppBarMenuItemText {
@@ -111,6 +129,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Aqua {
             get {
                 return ResourceManager.GetString("Aqua", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aquamarine.
+        /// </summary>
+        public static string Aquamarine {
+            get {
+                return ResourceManager.GetString("Aquamarine", resourceCulture);
             }
         }
         
@@ -169,6 +196,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Beige.
+        /// </summary>
+        public static string Beige {
+            get {
+                return ResourceManager.GetString("Beige", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BING.
         /// </summary>
         public static string Bing {
@@ -196,11 +232,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Black.
+        /// </summary>
+        public static string Black {
+            get {
+                return ResourceManager.GetString("Black", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blanched Almond.
         /// </summary>
         public static string BlanchedAlmond {
             get {
                 return ResourceManager.GetString("BlanchedAlmond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blue.
+        /// </summary>
+        public static string Blue {
+            get {
+                return ResourceManager.GetString("Blue", resourceCulture);
             }
         }
         
@@ -219,6 +273,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string BroadInterestTopicPageIntro {
             get {
                 return ResourceManager.GetString("BroadInterestTopicPageIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brown.
+        /// </summary>
+        public static string Brown {
+            get {
+                return ResourceManager.GetString("Brown", resourceCulture);
             }
         }
         
@@ -250,6 +313,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cadet Blue.
+        /// </summary>
+        public static string CadetBlue {
+            get {
+                return ResourceManager.GetString("CadetBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DETERMINING YOUR PRICE.
         /// </summary>
         public static string CalcPriceCaption {
@@ -273,6 +345,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Chartreuse {
             get {
                 return ResourceManager.GetString("Chartreuse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chocolate.
+        /// </summary>
+        public static string Chocolate {
+            get {
+                return ResourceManager.GetString("Chocolate", resourceCulture);
             }
         }
         
@@ -349,11 +430,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cornflower Blue.
+        /// </summary>
+        public static string CornflowerBlue {
+            get {
+                return ResourceManager.GetString("CornflowerBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cornsilk.
         /// </summary>
         public static string Cornsilk {
             get {
                 return ResourceManager.GetString("Cornsilk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crimson.
+        /// </summary>
+        public static string Crimson {
+            get {
+                return ResourceManager.GetString("Crimson", resourceCulture);
             }
         }
         
@@ -376,11 +475,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dark Blue.
+        /// </summary>
+        public static string DarkBlue {
+            get {
+                return ResourceManager.GetString("DarkBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark Cyan.
         /// </summary>
         public static string DarkCyan {
             get {
                 return ResourceManager.GetString("DarkCyan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Goldenrod.
+        /// </summary>
+        public static string DarkGoldenrod {
+            get {
+                return ResourceManager.GetString("DarkGoldenrod", resourceCulture);
             }
         }
         
@@ -394,11 +511,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dark Green.
+        /// </summary>
+        public static string DarkGreen {
+            get {
+                return ResourceManager.GetString("DarkGreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark Khaki.
         /// </summary>
         public static string DarkKhaki {
             get {
                 return ResourceManager.GetString("DarkKhaki", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Magenta.
+        /// </summary>
+        public static string DarkMagenta {
+            get {
+                return ResourceManager.GetString("DarkMagenta", resourceCulture);
             }
         }
         
@@ -412,11 +547,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dark Orange.
+        /// </summary>
+        public static string DarkOrange {
+            get {
+                return ResourceManager.GetString("DarkOrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark Orchid.
         /// </summary>
         public static string DarkOrchid {
             get {
                 return ResourceManager.GetString("DarkOrchid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Red.
+        /// </summary>
+        public static string DarkRed {
+            get {
+                return ResourceManager.GetString("DarkRed", resourceCulture);
             }
         }
         
@@ -430,6 +583,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dark Sea Green.
+        /// </summary>
+        public static string DarkSeaGreen {
+            get {
+                return ResourceManager.GetString("DarkSeaGreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark Slate Blue.
         /// </summary>
         public static string DarkSlateBlue {
@@ -439,11 +601,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dark Slate Gray.
+        /// </summary>
+        public static string DarkSlateGray {
+            get {
+                return ResourceManager.GetString("DarkSlateGray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark Turquoise.
         /// </summary>
         public static string DarkTurquoise {
             get {
                 return ResourceManager.GetString("DarkTurquoise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark Violet.
+        /// </summary>
+        public static string DarkViolet {
+            get {
+                return ResourceManager.GetString("DarkViolet", resourceCulture);
             }
         }
         
@@ -475,11 +655,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deep Sky Blue.
+        /// </summary>
+        public static string DeepSkyBlue {
+            get {
+                return ResourceManager.GetString("DeepSkyBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dim Gray.
         /// </summary>
         public static string DimGray {
             get {
                 return ResourceManager.GetString("DimGray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodger Blue.
+        /// </summary>
+        public static string DodgerBlue {
+            get {
+                return ResourceManager.GetString("DodgerBlue", resourceCulture);
             }
         }
         
@@ -547,6 +745,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Floral White.
+        /// </summary>
+        public static string FloralWhite {
+            get {
+                return ResourceManager.GetString("FloralWhite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customize the portion of the text you chose with new color and size..
         /// </summary>
         public static string FontCASPageIntro {
@@ -570,6 +777,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string ForestGreen {
             get {
                 return ResourceManager.GetString("ForestGreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fuchsia.
+        /// </summary>
+        public static string Fuchsia {
+            get {
+                return ResourceManager.GetString("Fuchsia", resourceCulture);
             }
         }
         
@@ -601,11 +817,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ghost White.
+        /// </summary>
+        public static string GhostWhite {
+            get {
+                return ResourceManager.GetString("GhostWhite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gold.
         /// </summary>
         public static string Gold {
             get {
                 return ResourceManager.GetString("Gold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goldenrod.
+        /// </summary>
+        public static string Goldenrod {
+            get {
+                return ResourceManager.GetString("Goldenrod", resourceCulture);
             }
         }
         
@@ -624,6 +858,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Great {
             get {
                 return ResourceManager.GetString("Great", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Green.
+        /// </summary>
+        public static string Green {
+            get {
+                return ResourceManager.GetString("Green", resourceCulture);
             }
         }
         
@@ -651,6 +894,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string History {
             get {
                 return ResourceManager.GetString("History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Honeydew.
+        /// </summary>
+        public static string Honeydew {
+            get {
+                return ResourceManager.GetString("Honeydew", resourceCulture);
             }
         }
         
@@ -691,6 +943,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Indian Red.
+        /// </summary>
+        public static string IndianRed {
+            get {
+                return ResourceManager.GetString("IndianRed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indigo.
         /// </summary>
         public static string Indigo {
@@ -723,6 +984,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string InterestSelectionProgress {
             get {
                 return ResourceManager.GetString("InterestSelectionProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ivory.
+        /// </summary>
+        public static string Ivory {
+            get {
+                return ResourceManager.GetString("Ivory", resourceCulture);
             }
         }
         
@@ -781,11 +1051,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lavender.
+        /// </summary>
+        public static string Lavender {
+            get {
+                return ResourceManager.GetString("Lavender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lavender Blush.
         /// </summary>
         public static string LavenderBlush {
             get {
                 return ResourceManager.GetString("LavenderBlush", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lawn Green.
+        /// </summary>
+        public static string LawnGreen {
+            get {
+                return ResourceManager.GetString("LawnGreen", resourceCulture);
             }
         }
         
@@ -808,11 +1096,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Light Blue.
+        /// </summary>
+        public static string LightBlue {
+            get {
+                return ResourceManager.GetString("LightBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Light Coral.
         /// </summary>
         public static string LightCoral {
             get {
                 return ResourceManager.GetString("LightCoral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Cyan.
+        /// </summary>
+        public static string LightCyan {
+            get {
+                return ResourceManager.GetString("LightCyan", resourceCulture);
             }
         }
         
@@ -826,11 +1132,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Light Gray.
+        /// </summary>
+        public static string LightGray {
+            get {
+                return ResourceManager.GetString("LightGray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Light Green.
         /// </summary>
         public static string LightGreen {
             get {
                 return ResourceManager.GetString("LightGreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Pink.
+        /// </summary>
+        public static string LightPink {
+            get {
+                return ResourceManager.GetString("LightPink", resourceCulture);
             }
         }
         
@@ -844,11 +1168,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Light Sea Green.
+        /// </summary>
+        public static string LightSeaGreen {
+            get {
+                return ResourceManager.GetString("LightSeaGreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Light Sky Blue.
         /// </summary>
         public static string LightSkyBlue {
             get {
                 return ResourceManager.GetString("LightSkyBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light Slate Gray.
+        /// </summary>
+        public static string LightSlateGray {
+            get {
+                return ResourceManager.GetString("LightSlateGray", resourceCulture);
             }
         }
         
@@ -862,11 +1204,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Light Yellow.
+        /// </summary>
+        public static string LightYellow {
+            get {
+                return ResourceManager.GetString("LightYellow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lime.
         /// </summary>
         public static string Lime {
             get {
                 return ResourceManager.GetString("Lime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lime Green.
+        /// </summary>
+        public static string LimeGreen {
+            get {
+                return ResourceManager.GetString("LimeGreen", resourceCulture);
             }
         }
         
@@ -898,11 +1258,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Magenta.
+        /// </summary>
+        public static string Magenta {
+            get {
+                return ResourceManager.GetString("Magenta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maroon.
         /// </summary>
         public static string Maroon {
             get {
                 return ResourceManager.GetString("Maroon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium Aquamarine.
+        /// </summary>
+        public static string MediumAquamarine {
+            get {
+                return ResourceManager.GetString("MediumAquamarine", resourceCulture);
             }
         }
         
@@ -916,11 +1294,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Medium Orchid.
+        /// </summary>
+        public static string MediumOrchid {
+            get {
+                return ResourceManager.GetString("MediumOrchid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Medium Purple.
         /// </summary>
         public static string MediumPurple {
             get {
                 return ResourceManager.GetString("MediumPurple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium Sea Green.
+        /// </summary>
+        public static string MediumSeaGreen {
+            get {
+                return ResourceManager.GetString("MediumSeaGreen", resourceCulture);
             }
         }
         
@@ -934,11 +1330,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Medium Spring Green.
+        /// </summary>
+        public static string MediumSpringGreen {
+            get {
+                return ResourceManager.GetString("MediumSpringGreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Medium Turquoise.
         /// </summary>
         public static string MediumTurquoise {
             get {
                 return ResourceManager.GetString("MediumTurquoise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium Violet Red.
+        /// </summary>
+        public static string MediumVioletRed {
+            get {
+                return ResourceManager.GetString("MediumVioletRed", resourceCulture);
             }
         }
         
@@ -961,11 +1375,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mint Cream.
+        /// </summary>
+        public static string MintCream {
+            get {
+                return ResourceManager.GetString("MintCream", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Misty Rose.
         /// </summary>
         public static string MistyRose {
             get {
                 return ResourceManager.GetString("MistyRose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moccasin.
+        /// </summary>
+        public static string Moccasin {
+            get {
+                return ResourceManager.GetString("Moccasin", resourceCulture);
             }
         }
         
@@ -1033,6 +1465,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Navy.
+        /// </summary>
+        public static string Navy {
+            get {
+                return ResourceManager.GetString("Navy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to News Source.
         /// </summary>
         public static string NewsSource {
@@ -1047,6 +1488,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Next {
             get {
                 return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Great! We have taken care of everything. If you haven&apos;t already, press Finalize and you&apos;re good to go. And oh, by the way, take a look at your Lock Screen..
+        /// </summary>
+        public static string NothingToDo {
+            get {
+                return ResourceManager.GetString("NothingToDo", resourceCulture);
             }
         }
         
@@ -1078,11 +1528,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Olive.
+        /// </summary>
+        public static string Olive {
+            get {
+                return ResourceManager.GetString("Olive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Olive Drab.
         /// </summary>
         public static string OliveDrab {
             get {
                 return ResourceManager.GetString("OliveDrab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orange.
+        /// </summary>
+        public static string Orange {
+            get {
+                return ResourceManager.GetString("Orange", resourceCulture);
             }
         }
         
@@ -1096,11 +1564,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Orchid.
+        /// </summary>
+        public static string Orchid {
+            get {
+                return ResourceManager.GetString("Orchid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pale Goldenrod.
         /// </summary>
         public static string PaleGoldenrod {
             get {
                 return ResourceManager.GetString("PaleGoldenrod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pale Green.
+        /// </summary>
+        public static string PaleGreen {
+            get {
+                return ResourceManager.GetString("PaleGreen", resourceCulture);
             }
         }
         
@@ -1114,6 +1600,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pale Violet Red.
+        /// </summary>
+        public static string PaleVioletRed {
+            get {
+                return ResourceManager.GetString("PaleVioletRed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Papaya Whip.
         /// </summary>
         public static string PapayaWhip {
@@ -1123,11 +1618,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Peach Puff.
+        /// </summary>
+        public static string PeachPuff {
+            get {
+                return ResourceManager.GetString("PeachPuff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Peru.
         /// </summary>
         public static string Peru {
             get {
                 return ResourceManager.GetString("Peru", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pink.
+        /// </summary>
+        public static string Pink {
+            get {
+                return ResourceManager.GetString("Pink", resourceCulture);
             }
         }
         
@@ -1173,6 +1686,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Politics {
             get {
                 return ResourceManager.GetString("Politics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Powder Blue.
+        /// </summary>
+        public static string PowderBlue {
+            get {
+                return ResourceManager.GetString("PowderBlue", resourceCulture);
             }
         }
         
@@ -1227,6 +1749,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Reading {
             get {
                 return ResourceManager.GetString("Reading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red.
+        /// </summary>
+        public static string Red {
+            get {
+                return ResourceManager.GetString("Red", resourceCulture);
             }
         }
         
@@ -1321,11 +1852,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Royal Blue.
+        /// </summary>
+        public static string RoyalBlue {
+            get {
+                return ResourceManager.GetString("RoyalBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saddle Brown.
         /// </summary>
         public static string SaddleBrown {
             get {
                 return ResourceManager.GetString("SaddleBrown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salmon.
+        /// </summary>
+        public static string Salmon {
+            get {
+                return ResourceManager.GetString("Salmon", resourceCulture);
             }
         }
         
@@ -1344,6 +1893,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string SayYes {
             get {
                 return ResourceManager.GetString("SayYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sea Green.
+        /// </summary>
+        public static string SeaGreen {
+            get {
+                return ResourceManager.GetString("SeaGreen", resourceCulture);
             }
         }
         
@@ -1384,6 +1942,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sienna.
+        /// </summary>
+        public static string Sienna {
+            get {
+                return ResourceManager.GetString("Sienna", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Silver.
         /// </summary>
         public static string Silver {
@@ -1411,11 +1978,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sky Blue.
+        /// </summary>
+        public static string SkyBlue {
+            get {
+                return ResourceManager.GetString("SkyBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Slate Blue.
         /// </summary>
         public static string SlateBlue {
             get {
                 return ResourceManager.GetString("SlateBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slate Gray.
+        /// </summary>
+        public static string SlateGray {
+            get {
+                return ResourceManager.GetString("SlateGray", resourceCulture);
             }
         }
         
@@ -1492,6 +2077,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spring Green.
+        /// </summary>
+        public static string SpringGreen {
+            get {
+                return ResourceManager.GetString("SpringGreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Steel Blue.
         /// </summary>
         public static string SteelBlue {
@@ -1528,6 +2122,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tan.
+        /// </summary>
+        public static string Tan {
+            get {
+                return ResourceManager.GetString("Tan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Teal.
         /// </summary>
         public static string Teal {
@@ -1551,6 +2154,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string ThatsIt {
             get {
                 return ResourceManager.GetString("ThatsIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thistle.
+        /// </summary>
+        public static string Thistle {
+            get {
+                return ResourceManager.GetString("Thistle", resourceCulture);
             }
         }
         
@@ -1650,6 +2262,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Travel {
             get {
                 return ResourceManager.GetString("Travel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turquoise.
+        /// </summary>
+        public static string Turquoise {
+            get {
+                return ResourceManager.GetString("Turquoise", resourceCulture);
             }
         }
         
@@ -1762,6 +2383,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wheat.
+        /// </summary>
+        public static string Wheat {
+            get {
+                return ResourceManager.GetString("Wheat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to While your balance lasts, you receive full feature of the application. As an encouragement to support our work, you will have to reinstall this app to get some new balance every few days..
         /// </summary>
         public static string WhileBalanceLastsText {
@@ -1785,6 +2415,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string White {
             get {
                 return ResourceManager.GetString("White", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to White Smoke.
+        /// </summary>
+        public static string WhiteSmoke {
+            get {
+                return ResourceManager.GetString("WhiteSmoke", resourceCulture);
             }
         }
         
@@ -1875,6 +2514,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Yellow {
             get {
                 return ResourceManager.GetString("Yellow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yellow Green.
+        /// </summary>
+        public static string YellowGreen {
+            get {
+                return ResourceManager.GetString("YellowGreen", resourceCulture);
             }
         }
         

@@ -7,6 +7,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using InfoViewApp.WP81.Resources;
+using Microsoft.ApplicationInsights;
 
 namespace InfoViewApp.WP81
 {
@@ -29,6 +30,7 @@ namespace InfoViewApp.WP81
         public App()
         {
             //TelemetryClient = new Microsoft.ApplicationInsights.TelemetryClient();
+            WindowsAppInitializer.InitializeAsync();
 
             // Global handler for uncaught exceptions.
             UnhandledException += Application_UnhandledException;

@@ -133,6 +133,12 @@ namespace InfoViewApp.WP81.Tasks
                 ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
         }
 
+        public static string GetDeviceId()
+        {
+            byte[] myDeviceID = (byte[])Microsoft.Phone.Info.DeviceExtendedProperties.GetValue("DeviceUniqueId");
+            return Convert.ToBase64String(myDeviceID);
+        }
+
         public static async Task<string> GetBingImageFitScreenUrl(HttpClient client)
         {
             if (client == null)

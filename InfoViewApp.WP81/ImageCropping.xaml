@@ -53,10 +53,10 @@
         </Button>
         <Rectangle x:Name="busyMask" StrokeThickness="2" Stroke="{StaticResource AccentBrush}">
             <Rectangle.Fill>
-                <ImageBrush Stretch="Fill" ImageSource="/Assets/SplashScreen.png"/>
+                <ImageBrush Stretch="Fill" ImageSource="/beaming.png"/>
             </Rectangle.Fill>
         </Rectangle>
-        <ProgressBar x:Name="progressRing" Margin="0" VerticalAlignment="Top" FontFamily="Global User Interface" Background="{x:Null}" IsIndeterminate="True" Visibility="Collapsed">
+        <ProgressBar x:Name="progressRing" Margin="0" VerticalAlignment="Center" FontFamily="Global User Interface" Background="{x:Null}" IsIndeterminate="True" Visibility="Collapsed">
             <ProgressBar.Foreground>
                 <SolidColorBrush Color="White"/>
             </ProgressBar.Foreground>
