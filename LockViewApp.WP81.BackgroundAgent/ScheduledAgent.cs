@@ -97,7 +97,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 telemetryProperty["last run status"] = task.LastExitReason.ToString();
                 telemetryProperty["maximum memory usage"] = $"{DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024}MB";
                 telemetryProperty["total available RAM"] = $"{DeviceStatus.DeviceTotalMemory / 1024.0 / 1024}MB";
-                telemetryProperty["total allowed RAM"] = $"{DeviceStatus.ApplicationMemoryUsageLimit / 1024.0 / 1024}MB";
+                //telemetryProperty["total allowed RAM"] = $"{DeviceStatus.ApplicationMemoryUsageLimit / 1024.0 / 1024}MB";
                 tc.TrackEvent("User Background Request", telemetryProperty);
                 tc.Flush();
                 NotifyComplete();
