@@ -61,6 +61,15 @@ namespace LockViewApp.WP81.BackgroundAgent {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LockView needs you to renew the background task..
+        /// </summary>
+        internal static string AreYouStillThere {
+            get {
+                return ResourceManager.GetString("AreYouStillThere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your balance has run out. Update is now minimum..
         /// </summary>
         internal static string BalanceRunOut {

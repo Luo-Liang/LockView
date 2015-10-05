@@ -6,6 +6,10 @@
     </header>
     <body>
       <group id="Resx">
+        <trans-unit id="Resx/AreYouStillThere" translate="yes" xml:space="preserve">
+          <source>LockView needs you to renew the background task.</source>
+          <target state="translated">请单击此消息重新激活锁屏视野。</target>
+        </trans-unit>
         <trans-unit id="Resx/BalanceRunOut" translate="yes" xml:space="preserve">
           <source>Your balance has run out. Update is now minimum.</source>
           <target state="translated">您的账户余额已经耗完。更新频率已经降低。</target>

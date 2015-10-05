@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AreYouStillThere" xml:space="preserve">
+    <value>LockView needs you to renew the background task.</value>
+  </data>
   <data name="BalanceRunOut" xml:space="preserve">
     <value>Your balance has run out. Update is now minimum.</value>
   </data>

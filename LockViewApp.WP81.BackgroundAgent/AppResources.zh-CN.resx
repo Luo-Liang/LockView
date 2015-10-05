@@ -123,4 +123,7 @@
   <data name="LockView" xml:space="preserve">
     <value>锁屏视野</value>
   </data>
+  <data name="AreYouStillThere" xml:space="preserve">
+    <value>请单击此消息重新激活锁屏视野。</value>
+  </data>
 </root>

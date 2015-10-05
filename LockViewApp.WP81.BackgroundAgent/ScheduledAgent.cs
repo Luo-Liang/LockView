@@ -19,6 +19,7 @@ using Microsoft.Phone.Info;
 using System.Net;
 using Microsoft.ApplicationInsights;
 using System.Collections.Generic;
+using LockViewApp.WP81.Contracts;
 
 namespace LockViewApp.WP81.BackgroundAgent
 {
@@ -44,8 +45,10 @@ namespace LockViewApp.WP81.BackgroundAgent
                 // An unhandled exception has occurred; break into the debugger
                 Debugger.Break();
             }
+            BackgroundTaskHelper.TrySetLockScreenImage("INVALID.INVALID", LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
         }
-
+        TelemetryClient tc;
+        Dictionary<string, string> telemetryProperty = new Dictionary<string, string>();
         /// <summary>
         /// Agent that runs a scheduled task
         /// </summary>
@@ -57,9 +60,21 @@ namespace LockViewApp.WP81.BackgroundAgent
         /// </remarks>
         protected async override void OnInvoke(ScheduledTask task)
         {
+            var appInsightsAwaitTask = WindowsAppInitializer.InitializeAsync("8240d723 - c08b - 4d55 - 8c18 - 62cbe3c35157", WindowsCollectors.UnhandledException);
+            await appInsightsAwaitTask;
+            tc = new TelemetryClient();
+            if((task.ExpirationTime - DateTime.Now).Days == 0)
+            {
+                //expiring soon.
+                var toast = new ShellToast();
+                toast.Title = AppResources.LockView;
+                toast.Content = AppResources.AreYouStillThere;
+                toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
+                toast.Show();
+            }
+            telemetryProperty["Hardware Id"] = BackgroundTaskHelper.GetDeviceId();
             try
             {
-                var appInsightsAwaitTask = WindowsAppInitializer.InitializeAsync("8240d723 - c08b - 4d55 - 8c18 - 62cbe3c35157", WindowsCollectors.UnhandledException);
                 if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
                 {
                     //low ram device.
@@ -70,23 +85,21 @@ namespace LockViewApp.WP81.BackgroundAgent
                     await LaunchTask(task);
                 }
                 await LockViewApplicationState.Instance.SaveState();
-                await appInsightsAwaitTask;
-                TelemetryClient tc = new TelemetryClient();
-                var property = new Dictionary<string, string>();
-                property["Hardware Id"] = BackgroundTaskHelper.GetDeviceId();
-                tc.TrackEvent("User Background Request", property);
-                tc.Flush();
+                telemetryProperty["exception"] = "null";
             }
             catch (Exception ex)
             {
-                try
-                {
-                    BackgroundTaskHelper.TrySetLockScreenImage("INVALID.INVALID", LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
-                }
-                catch { }
+                telemetryProperty["exception"] = ex.GetType().Name;
+                BackgroundTaskHelper.TrySetLockScreenImage("INVALID.INVALID", LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
             }
             finally
             {
+                telemetryProperty["last run status"] = task.LastExitReason.ToString();
+                telemetryProperty["maximum memory usage"] = $"{DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024}MB";
+                telemetryProperty["total available RAM"] = $"{DeviceStatus.DeviceTotalMemory / 1024.0 / 1024}MB";
+                telemetryProperty["total allowed RAM"] = $"{DeviceStatus.ApplicationMemoryUsageLimit / 1024.0 / 1024}MB";
+                tc.TrackEvent("User Background Request", telemetryProperty);
+                tc.Flush();
                 NotifyComplete();
             }
 #if DEBUG
@@ -146,7 +159,6 @@ namespace LockViewApp.WP81.BackgroundAgent
         }
         protected async Task LaunchTask(ScheduledTask task)
         {
-
             //make it very defensive.
             //check last run time.
             var lastExecution = task.LastScheduledTime;
@@ -159,7 +171,9 @@ namespace LockViewApp.WP81.BackgroundAgent
             {
                 //can disturb the user
                 //use this client to send request.
+                telemetryProperty["within time frame"] = "yes";
                 flag1 = await AcquireContentUpdateIfNecessary(client);
+                telemetryProperty["update necessary"] = flag1.ToString();
             }
             //does the user have any quota executing that?
 #if !DEBUG
@@ -187,33 +201,28 @@ namespace LockViewApp.WP81.BackgroundAgent
 #endif
         }
 
-        private static async Task UpdateLockScreenTilesIfPossible(HttpClient client, ScheduledTask task, ImageRequestOverride possibleOverride)
+        private async Task UpdateLockScreenTilesIfPossible(HttpClient client, ScheduledTask task, ImageRequestOverride possibleOverride)
         {
             var instance = LockViewApplicationState.Instance;
             var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o => o.GetMetaData()));
 #if !DEBUG
             if (instance.UserQuotaInDollars - drainPerReq >= 0 || task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear)
             {
-#endif
+#endif 
+                telemetryProperty["Update Accepted"] = "Yes";
                 CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
                 ImageCompositionResponse compositionResponse = null;
                 if (possibleOverride == null)
                     compositionResponse = await cloudClient.Compose(instance.SelectedContextContracts, instance.PreviewFormattingContract, instance.PreviewLayoutContract, instance.RequestMetadata.PersistFileName);
                 else
                     compositionResponse = await cloudClient.ComposeLite(instance.SelectedContextContracts, instance.PreviewFormattingContract, instance.PreviewLayoutContract, possibleOverride);
+                telemetryProperty["Image Update Successful"] = "Yes";
                 var fileName = instance.SelectedContextContracts.GenerateImgFileName();
+                telemetryProperty["File Name"] = fileName;
                 var jpegBytes = compositionResponse.Image;
                 BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
-                if (instance.UserQuotaInDollars < 0)
-                {
-                    var toast = new ShellToast();
-                    toast.Title = AppResources.LockView;
-                    toast.Content = AppResources.BalanceRunOut;
-                    toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
-                    toast.Show();
-                }
+                telemetryProperty["File Saved"] = "Yes";
                 if (possibleOverride != null && possibleOverride.Arguments == "lq") return;//don't update on money penny
-                                                                                           //update tile and/or lock screen image.
                 BackgroundTaskHelper.TrySetLockScreenImage(fileName, instance.RequestMetadata.RequestLanguage);
                 //update tile if necessary.
                 BackgroundTaskHelper.TryUpdateTiles();
@@ -223,10 +232,18 @@ namespace LockViewApp.WP81.BackgroundAgent
                 //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
 #if !DEBUG
             }
+            if (instance.UserQuotaInDollars - drainPerReq < 0)
+            {
+                var toast = new ShellToast();
+                toast.Title = AppResources.LockView;
+                toast.Content = AppResources.BalanceRunOut;
+                toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
+                toast.Show();
+            }
 #endif
         }
 
-        private static async Task<bool> AcquireContentUpdateIfNecessary(HttpClient client)
+        private async Task<bool> AcquireContentUpdateIfNecessary(HttpClient client)
         {
             var flag1 = false;
             var instance = LockViewApplicationState.Instance;
@@ -245,7 +262,6 @@ namespace LockViewApp.WP81.BackgroundAgent
                     instance.SelectedContextContracts[i].CopyFromInterestContent(contents[i]);
                 }
             }
-
             return flag1;
         }
     }

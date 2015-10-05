@@ -1,4 +1,5 @@
 ﻿using InfoViewApp.WP81.InterestGathering;
+using LockViewApp.WP81.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

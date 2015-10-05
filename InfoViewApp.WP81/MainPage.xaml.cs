@@ -40,7 +40,6 @@ namespace InfoViewApp.WP81
             {
                 if (LockViewApplicationState.Instance.PreviewContextContract.JumpUri != null)
                 {
-                    BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
                     WebBrowserTask task = new WebBrowserTask();
                     task.Uri = new Uri(LockViewApplicationState.Instance.PreviewContextContract.JumpUri);
                     task.Show();
