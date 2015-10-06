@@ -63,18 +63,28 @@ namespace InfoView.DataContract
             if (ForegroundFirstLine == null) ForegroundFirstLine = DefaultBrush.Color.Name;
             if (ForegroundSecondLine == null) ForegroundSecondLine = DefaultBrush.Color.Name;
             if (ForegroundTitle == null) ForegroundTitle = DefaultBrush.Color.Name;
-            return new OverlayFormatting()
+            var value = new OverlayFormatting()
             {
                 BackgroundFirstLine = new SolidBrush(Colors[this.BackgroundFirstLine]),
                 ForegroundFirstLine = new SolidBrush(Colors[this.ForegroundFirstLine]),
                 BackgroundTitle = new SolidBrush(Colors[this.BackgroundTitle]),
                 ForegroundTitle = new SolidBrush(Colors[this.ForegroundTitle]),
                 BackgroundSecondLine = new SolidBrush(Colors[this.BackgroundSecondLine]),
-                ForegroundSecondLine = new SolidBrush(Colors[this.ForegroundSecondLine]),
-                TitleFont = new Font(new FontFamily(this.TitleFont.FontFamily,FontCollection),this.TitleFont.FontSize),
-                FirstLineFont = new Font(new FontFamily(this.FirstLineFont.FontFamily, FontCollection), this.FirstLineFont.FontSize),
-                SecondLineFont = new Font(new FontFamily(this.SecondLineFont.FontFamily, FontCollection), this.SecondLineFont.FontSize)
-            }; 
+                ForegroundSecondLine = new SolidBrush(Colors[this.ForegroundSecondLine])
+            };
+            try
+            {
+                value.TitleFont = new Font(new FontFamily(this.TitleFont.FontFamily, FontCollection), this.TitleFont.FontSize);
+                value.FirstLineFont = new Font(new FontFamily(this.FirstLineFont.FontFamily, FontCollection), this.FirstLineFont.FontSize);
+                value.SecondLineFont = new Font(new FontFamily(this.SecondLineFont.FontFamily, FontCollection), this.SecondLineFont.FontSize);
+            }
+            catch
+            {
+                value.TitleFont = new Font(TitleFont.FontFamily, this.TitleFont.FontSize);
+                value.FirstLineFont = new Font(this.FirstLineFont.FontFamily, this.FirstLineFont.FontSize);
+                value.SecondLineFont = new Font(this.SecondLineFont.FontFamily, this.SecondLineFont.FontSize);
+            }
+            return value;
         }
         public static OverlayFormattingContract FromOverlayFormatting(OverlayFormatting formatting)
         {
