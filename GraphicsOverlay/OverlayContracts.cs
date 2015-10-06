@@ -25,7 +25,7 @@ namespace InfoView.DataContract
             {
                 ColorNames[color] = color.Name;
             }
-            DefaultFont = new FontContract() { FontFamily = "Segoe UI", FontSize = 16 };
+            DefaultFont = new FontContract() { FontFamily = "Segoe UI Semibold", FontSize = 16 };
             DefaultBrush = new SolidBrush(Color.Transparent);
         }
         [DataMember]

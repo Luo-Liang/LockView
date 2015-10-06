@@ -63,6 +63,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             var appInsightsAwaitTask = WindowsAppInitializer.InitializeAsync("8240d723 - c08b - 4d55 - 8c18 - 62cbe3c35157", WindowsCollectors.UnhandledException);
             await appInsightsAwaitTask;
             tc = new TelemetryClient();
+            CollectDeviceInfo();
             if ((task.ExpirationTime - DateTime.Now).Days == 0)
             {
                 //expiring soon.
@@ -72,7 +73,6 @@ namespace LockViewApp.WP81.BackgroundAgent
                 toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
                 toast.Show();
             }
-            telemetryProperty["Hardware Id"] = BackgroundTaskHelper.GetDeviceId();
             try
             {
                 if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
@@ -85,7 +85,6 @@ namespace LockViewApp.WP81.BackgroundAgent
                     await LaunchTask(task);
                 }
                 await LockViewApplicationState.Instance.SaveState();
-                telemetryProperty["exception"] = "null";
             }
             catch (Exception ex)
             {
@@ -94,11 +93,12 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             finally
             {
-                telemetryProperty["last run status"] = task.LastExitReason.ToString();
-                telemetryProperty["maximum memory usage"] = $"{DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024}MB";
-                telemetryProperty["total available RAM"] = $"{DeviceStatus.DeviceTotalMemory / 1024.0 / 1024}MB";
+                telemetryProperty["$"] = LockViewApplicationState.Instance.UserQuotaInDollars.ToString();
+                telemetryProperty["lrs"] = task.LastExitReason.ToString();
+                telemetryProperty["mmu"] = $"{(int)(1000.0 * DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024) / 1000}MB";
+                telemetryProperty["ram"] = $"{(int)(DeviceStatus.DeviceTotalMemory / 1024.0 / 1024)}MB";
                 //telemetryProperty["total allowed RAM"] = $"{DeviceStatus.ApplicationMemoryUsageLimit / 1024.0 / 1024}MB";
-                tc.TrackEvent("User Background Request", telemetryProperty);
+                tc.TrackEvent("Background Request", telemetryProperty);
                 tc.Flush();
                 NotifyComplete();
             }
@@ -110,6 +110,23 @@ namespace LockViewApp.WP81.BackgroundAgent
 #endif
 
         }
+
+        private void CollectDeviceInfo()
+        {
+            telemetryProperty["hid"] = BackgroundTaskHelper.GetDeviceId();
+            object modelobject = null;
+            if (Microsoft.Phone.Info.DeviceExtendedProperties.TryGetValue("DeviceName", out modelobject))
+            {
+                telemetryProperty["dnm"] = modelobject as string;
+            }
+            object manufacturerobject;
+            if (DeviceExtendedProperties.TryGetValue("DeviceManufacturer", out manufacturerobject))
+            {
+                telemetryProperty["dma"] = manufacturerobject as string;
+            }
+
+        }
+
         protected async Task LaunchLowRAMTask(ScheduledTask task)
         {
             var instance = LockViewApplicationState.Instance;
@@ -171,9 +188,9 @@ namespace LockViewApp.WP81.BackgroundAgent
             {
                 //can disturb the user
                 //use this client to send request.
-                telemetryProperty["within time frame"] = "yes";
+                telemetryProperty["intime"] = "yes";
                 flag1 = await AcquireContentUpdateIfNecessary(client);
-                telemetryProperty["update necessary"] = flag1.ToString();
+                telemetryProperty["should update"] = flag1.ToString();
             }
             //does the user have any quota executing that?
 #if !DEBUG
@@ -193,7 +210,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                         ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
                         Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                     };
-                telemetryProperty["Image Source Resolved"] = "Yes";
+                telemetryProperty["request build ok"] = "Yes";
                 //if yes, execute that if (1) the image has changed OR the content has changed.
                 await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
 
@@ -219,7 +236,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                     compositionResponse = await cloudClient.ComposeLite(instance.SelectedContextContracts, instance.PreviewFormattingContract, instance.PreviewLayoutContract, possibleOverride);
                 telemetryProperty["Image Update Successful"] = "Yes";
                 var fileName = instance.SelectedContextContracts.GenerateImgFileName();
-                telemetryProperty["File Name"] = fileName;
+                telemetryProperty["fn"] = fileName;
                 var jpegBytes = compositionResponse.Image;
                 BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
                 telemetryProperty["File Saved"] = "Yes";

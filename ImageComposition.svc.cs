@@ -50,12 +50,12 @@ namespace InfoView
             if (false == CacheEntries.TryGetValue(identifier, out entry))
             {
                 entry = new ImageCacheEntry();
-                WebClient client = new WebClient();
                 byte[] rawBytes = null;
                 bool Insert = true;
                 WriteableBitmap bitmap = null;
                 try
                 {
+                    WebClient client = new WebClient();
                     rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
                     //create this entry.
                     //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
@@ -68,7 +68,9 @@ namespace InfoView
                 }
                 catch
                 {
-                    rawBytes = client.DownloadData(DefaultImageUri);
+                    var directoryPath = AppDomain.CurrentDomain.BaseDirectory + "\\Assets";
+                    int maximum = Directory.GetFiles(directoryPath).Length;
+                    var fileName = (DateTime.Now.Second % maximum) + 1;
                     //create this entry.
                     //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
                     //decoder.Frames[0].Freeze();
@@ -76,7 +78,8 @@ namespace InfoView
                     //bmp.BeginInit();
                     //bmp.EndInit();
                     bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
-                    bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
+                    using (var stream = File.Open($"{directoryPath}\\{fileName}.jpg", FileMode.Open))
+                        bitmap = bitmap.FromStream(stream);
                     Insert = false;
                     //replace those with defaults.
                 }
@@ -123,8 +126,8 @@ namespace InfoView
                 entry.ExpirationDate = DateTime.Now.AddDays(1);
                 entry.UrlIdentifier = identifier;
                 entry.Content = decodedStream;
-                if (Insert) 
-                CacheEntries.TryAdd(identifier, entry);
+                if (Insert)
+                    CacheEntries.TryAdd(identifier, entry);
                 //using (var fs = File.Open("c:/users/liang luo/desktop/1.jpg", FileMode.Create))
                 //{
                 //    encoder.Save(fs);
