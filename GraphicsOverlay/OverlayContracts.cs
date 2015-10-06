@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -12,10 +14,11 @@ namespace InfoView.DataContract
     [DataContract, Newtonsoft.Json.JsonObject(MemberSerialization = Newtonsoft.Json.MemberSerialization.OptIn)]
     public struct OverlayFormattingContract
     {
-        static FontContract DefaultFont;
-        static SolidBrush DefaultBrush;
-        static Dictionary<string, Color> Colors;
-        static Dictionary<Color, string> ColorNames;
+        internal static FontContract DefaultFont;
+        internal static SolidBrush DefaultBrush;
+        internal static Dictionary<string, Color> Colors;
+        internal static Dictionary<Color, string> ColorNames;
+        internal static PrivateFontCollection FontCollection;
         static OverlayFormattingContract()
         {
             var systemColors = typeof(Color).GetProperties(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public).Select<PropertyInfo, Color>(pi => (Color)pi.GetValue(null));
@@ -27,6 +30,11 @@ namespace InfoView.DataContract
             }
             DefaultFont = new FontContract() { FontFamily = "Segoe UI Semibold", FontSize = 16 };
             DefaultBrush = new SolidBrush(Color.Transparent);
+            FontCollection = new PrivateFontCollection();
+            var fontFiles = Directory.GetFiles($"{AppDomain.CurrentDomain.BaseDirectory}\\Fonts");
+            foreach (var file in fontFiles)
+                FontCollection.AddFontFile(file);
+
         }
         [DataMember]
         public FontContract TitleFont { get; set; }
@@ -63,10 +71,10 @@ namespace InfoView.DataContract
                 ForegroundTitle = new SolidBrush(Colors[this.ForegroundTitle]),
                 BackgroundSecondLine = new SolidBrush(Colors[this.BackgroundSecondLine]),
                 ForegroundSecondLine = new SolidBrush(Colors[this.ForegroundSecondLine]),
-                TitleFont = new Font(this.TitleFont.FontFamily, this.TitleFont.FontSize),
-                FirstLineFont = new Font(this.FirstLineFont.FontFamily, this.FirstLineFont.FontSize),
-                SecondLineFont = new Font(this.SecondLineFont.FontFamily, this.SecondLineFont.FontSize)
-            };
+                TitleFont = new Font(new FontFamily(this.TitleFont.FontFamily,FontCollection),this.TitleFont.FontSize),
+                FirstLineFont = new Font(new FontFamily(this.FirstLineFont.FontFamily, FontCollection), this.FirstLineFont.FontSize),
+                SecondLineFont = new Font(new FontFamily(this.SecondLineFont.FontFamily, FontCollection), this.SecondLineFont.FontSize)
+            }; 
         }
         public static OverlayFormattingContract FromOverlayFormatting(OverlayFormatting formatting)
         {

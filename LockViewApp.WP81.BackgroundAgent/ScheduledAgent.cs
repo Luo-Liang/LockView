@@ -20,6 +20,7 @@ using System.Net;
 using Microsoft.ApplicationInsights;
 using System.Collections.Generic;
 using LockViewApp.WP81.Contracts;
+using Windows.ApplicationModel;
 
 namespace LockViewApp.WP81.BackgroundAgent
 {
@@ -93,6 +94,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             finally
             {
+                telemetryProperty["ver"] = Package.Current.Id.Version.ToString();
                 telemetryProperty["$"] = LockViewApplicationState.Instance.UserQuotaInDollars.ToString();
                 telemetryProperty["lrs"] = task.LastExitReason.ToString();
                 telemetryProperty["mmu"] = $"{(int)(1000.0 * DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024) / 1000}MB";
