@@ -63,7 +63,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             var appInsightsAwaitTask = WindowsAppInitializer.InitializeAsync("8240d723 - c08b - 4d55 - 8c18 - 62cbe3c35157", WindowsCollectors.UnhandledException);
             await appInsightsAwaitTask;
             tc = new TelemetryClient();
-            if((task.ExpirationTime - DateTime.Now).Days == 0)
+            if ((task.ExpirationTime - DateTime.Now).Days == 0)
             {
                 //expiring soon.
                 var toast = new ShellToast();
@@ -89,8 +89,8 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             catch (Exception ex)
             {
-                telemetryProperty["exception"] = ex.GetType().Name;
-                BackgroundTaskHelper.TrySetLockScreenImage("INVALID.INVALID", LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
+                telemetryProperty["exception"] = ex.Message;
+                //BackgroundTaskHelper.TrySetLockScreenImage("INVALID.INVALID", LockViewApplicationState.Instance.RequestMetadata.RequestLanguage);
             }
             finally
             {
@@ -166,7 +166,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             HttpClient client = new HttpClient();
             bool flag1 = false;
 #if !DEBUG
-            if (DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8)
+            if ((DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8) || !instance.DoNotDisturb)
 #endif
             {
                 //can disturb the user
@@ -193,6 +193,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                         ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
                         Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                     };
+                telemetryProperty["Image Source Resolved"] = "Yes";
                 //if yes, execute that if (1) the image has changed OR the content has changed.
                 await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
 

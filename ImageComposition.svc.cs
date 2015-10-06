@@ -21,6 +21,7 @@ namespace InfoView
 {
     public class BingImageCache
     {
+        static Uri DefaultImageUri = new Uri("http://dovecomputers.com/blog/wp-content/uploads/2012/10/Windows-XP-desktop.png");
         class ImageCacheEntry
         {
             public DateTime ExpirationDate;
@@ -50,15 +51,35 @@ namespace InfoView
             {
                 entry = new ImageCacheEntry();
                 WebClient client = new WebClient();
-                var rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
-                //create this entry.
-                //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
-                //decoder.Frames[0].Freeze();
-               //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
-               //bmp.BeginInit();
-               //bmp.EndInit();
-                WriteableBitmap bitmap = new WriteableBitmap(1,1,72,72,PixelFormats.Bgr24,BitmapPalettes.WebPalette);//<---anything
-                bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
+                byte[] rawBytes = null;
+                bool Insert = true;
+                WriteableBitmap bitmap = null;
+                try
+                {
+                    rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
+                    //create this entry.
+                    //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
+                    //decoder.Frames[0].Freeze();
+                    //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
+                    //bmp.BeginInit();
+                    //bmp.EndInit();
+                    bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
+                    bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
+                }
+                catch
+                {
+                    rawBytes = client.DownloadData(DefaultImageUri);
+                    //create this entry.
+                    //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
+                    //decoder.Frames[0].Freeze();
+                    //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
+                    //bmp.BeginInit();
+                    //bmp.EndInit();
+                    bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
+                    bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
+                    Insert = false;
+                    //replace those with defaults.
+                }
                 //bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
                 //bitmap = bitmap.FromByteArray(rawBytes);
                 if (argumentKeyValue.ContainsKey("resolution"))
@@ -102,6 +123,7 @@ namespace InfoView
                 entry.ExpirationDate = DateTime.Now.AddDays(1);
                 entry.UrlIdentifier = identifier;
                 entry.Content = decodedStream;
+                if (Insert) 
                 CacheEntries.TryAdd(identifier, entry);
                 //using (var fs = File.Open("c:/users/liang luo/desktop/1.jpg", FileMode.Create))
                 //{

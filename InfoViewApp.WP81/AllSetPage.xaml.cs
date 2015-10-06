@@ -137,6 +137,7 @@ namespace InfoViewApp.WP81
             instance.PreviewLayoutContract.TargetHeight = (int)height;
             instance.PreviewLayoutContract.TargetWidth = (int)width;
             Tasks.CloudImageCompositorClient client = new Tasks.CloudImageCompositorClient();
+            instance.DoNotDisturb = doNotDisturb.IsChecked.Value;
             await instance.SaveState();
             var response = await client.Compose(LockViewApplicationState.Instance.SelectedContextContracts,
                 LockViewApplicationState.Instance.PreviewFormattingContract,
@@ -168,6 +169,7 @@ namespace InfoViewApp.WP81
             tc.TrackEvent("Content Provider Comfirmation", property);
             var imgSrcProperty = new Dictionary<string, string>() { { "SourceName", instance.SelectedImageSource.ToString() }, { "Hardware Id", BackgroundTaskHelper.GetDeviceId() } };
             tc.TrackEvent("Image Provider Comfirmation", imgSrcProperty);
+
         }
         CustomMessageBox priceCalcMsgBx;
         private void priceCalculationLink_Click(object se1nder, RoutedEventArgs e)

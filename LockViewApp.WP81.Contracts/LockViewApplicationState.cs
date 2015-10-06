@@ -75,6 +75,8 @@ namespace InfoViewApp.WP81
             SelectedContextContracts = new OverlayContextContract[1];
             SelectedInterests = new InterestRequest[1];
         }
+
+        public bool DoNotDisturb { get; set; }
         public InterestRequest[] SelectedInterests { get; set; }
         public InterestRequest SelectedInterest
         {

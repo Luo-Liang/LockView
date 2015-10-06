@@ -691,11 +691,29 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do not disturb.
+        /// </summary>
+        public static string DoNotDisturbTitle {
+            get {
+                return ResourceManager.GetString("DoNotDisturbTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to What if I don&apos;t want to pay?.
         /// </summary>
         public static string DontWantToPay {
             get {
                 return ResourceManager.GetString("DontWantToPay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Do not disturb during night..
+        /// </summary>
+        public static string EnableDoNotDisturbDuring {
+            get {
+                return ResourceManager.GetString("EnableDoNotDisturbDuring", resourceCulture);
             }
         }
         

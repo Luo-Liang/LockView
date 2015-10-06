@@ -94,10 +94,12 @@ namespace InfoViewApp.WP81
                     LockViewApplicationState.Instance.SelectedImageSource = ImageSource.NASA;
                     HttpClient client = new HttpClient();
                     var requestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client);
-                    var requestParameter = $"{requestUrl}?resolution={width}x{height}";
+                    var concatChar = '?';
+                    if (requestUrl.Contains("?")) concatChar = '&';
+                    var requestParameter = $"{requestUrl}{concatChar}resolution={width}x{height}";
                     var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestParameter));
                     requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
-                    var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/RequestImage"), requestContent);
+                    var response = await client.PostAsync(new Uri("http://localhost:49791/ImageComposition.svc/RequestImage"), requestContent);
                     var responseStr = await response.Content.ReadAsStringAsync();
                     var rawBytes = Newtonsoft.Json.JsonConvert.DeserializeObject<byte[]>(responseStr);
                     WB_CapturedImage = new WriteableBitmap(1, 1);

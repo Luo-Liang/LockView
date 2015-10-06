@@ -313,6 +313,14 @@
           <source>Great! We have taken care of everything. If you haven't already, press Finalize and you're good to go. And oh, by the way, take a look at your Lock Screen.</source>
           <target state="new">Great! We have taken care of everything. If you haven't already, press Finalize and you're good to go. And oh, by the way, take a look at your Lock Screen.</target>
         </trans-unit>
+        <trans-unit id="Resx/EnableDoNotDisturbDuring" translate="yes" xml:space="preserve">
+          <source>Enable Do not disturb during night.</source>
+          <target state="new">Enable Do not disturb during night.</target>
+        </trans-unit>
+        <trans-unit id="Resx/DoNotDisturbTitle" translate="yes" xml:space="preserve">
+          <source>Do not disturb</source>
+          <target state="new">Do not disturb</target>
+        </trans-unit>
         <trans-unit id="Resx/RedeemStatusNotOkay" translate="yes" xml:space="preserve">
           <source>Sorry, but this doesn't look like a valid code.</source>
           <target state="new">Sorry, but this doesn't look like a valid code.</target>

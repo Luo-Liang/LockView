@@ -851,8 +851,7 @@
     <comment></comment>
   </data>
   <data name="Sienna" xml:space="preserve">
-    <value>Sienna</value>
-    <comment></comment>
+    <value>黄褐色</value>
   </data>
   <data name="SeaGreen" xml:space="preserve">
     <value>海绿色</value>
@@ -987,8 +986,7 @@
     <comment></comment>
   </data>
   <data name="Honeydew" xml:space="preserve">
-    <value>Honeydew</value>
-    <comment></comment>
+    <value>蜜色</value>
   </data>
   <data name="Green" xml:space="preserve">
     <value>绿色</value>
@@ -1055,8 +1053,7 @@
     <comment></comment>
   </data>
   <data name="Crimson" xml:space="preserve">
-    <value>Crimson</value>
-    <comment></comment>
+    <value>赤红色</value>
   </data>
   <data name="CornflowerBlue" xml:space="preserve">
     <value>藏蓝色</value>
@@ -1089,5 +1086,11 @@
   <data name="Aquamarine" xml:space="preserve">
     <value>水绿色</value>
     <comment></comment>
+  </data>
+  <data name="EnableDoNotDisturbDuring" xml:space="preserve">
+    <value>在深夜时不要更新</value>
+  </data>
+  <data name="DoNotDisturbTitle" xml:space="preserve">
+    <value>请勿打扰</value>
   </data>
 </root>
