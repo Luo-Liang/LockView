@@ -10,17 +10,24 @@ using Microsoft.Phone.Shell;
 using InfoViewApp.WP81.Resources;
 using InfoViewApp.WP81.InterestGathering;
 using LockViewApp.WP81.Contracts;
+using Windows.Devices.Geolocation;
+using Microsoft.Phone.Maps.Services;
 
 namespace InfoViewApp.WP81
 {
     public partial class Weather : PhoneApplicationPage
     {
+        Geolocator geolocator;
         public Weather()
         {
             InitializeComponent();
             currentConfig.Text = (InterestNavigationQueue.Instance.GetNavigationSequence(InterestNavigationQueue.WeatherSettingsPage) + 1).ToString();
             totalConfigStep.Text = InterestNavigationQueue.Instance.NavigationPages.Count.ToString();
+            geolocator = new Geolocator();
+            geolocator.DesiredAccuracy = PositionAccuracy.Default;
+            geolocator.MovementThreshold = 50;
         }
+
         WeatherDataSource source = new WeatherDataSource();
         private void weatherBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
@@ -60,5 +67,19 @@ namespace InfoViewApp.WP81
                 NavigationService.Navigate(InterestNavigationQueue.Instance.GetNextNavigationUri(InterestNavigationQueue.WeatherSettingsPage));
             }
         }
+
+        private async void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            busyGrid.Visibility = Visibility.Visible;
+            var location = await geolocator.GetGeopositionAsync();
+            source.LongitudeAndLatitudeString = $"lat={location.Coordinate.Point.Position.Latitude}&lon={location.Coordinate.Point.Position.Longitude}";
+            ReverseGeocodeQuery reverseGeocode = new ReverseGeocodeQuery();
+            reverseGeocode.GeoCoordinate = new System.Device.Location.GeoCoordinate(location.Coordinate.Point.Position.Latitude, location.Coordinate.Point.Position.Longitude);
+            var geoLocation = await reverseGeocode.GetMapLocationsAsync();
+            var addr = geoLocation.First().Information.Address;
+            weatherBox.Text = source.DisplayName = $"{addr.City},{addr.CountryCode}";
+            busyGrid.Visibility = Visibility.Collapsed;
+        }
+
     }
 }

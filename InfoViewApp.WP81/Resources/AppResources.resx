@@ -951,4 +951,13 @@
   <data name="EnableDoNotDisturbDuring" xml:space="preserve">
     <value>Enable Do not disturb during night.</value>
   </data>
+  <data name="NoUninstallation" xml:space="preserve">
+    <value>DO NOT UNINSTALL</value>
+  </data>
+  <data name="NoUninstallationText" xml:space="preserve">
+    <value>If you uninstall, all your quota will be gone (you will still get the free quota).</value>
+  </data>
+  <data name="UseMyLocation" xml:space="preserve">
+    <value>Use my location</value>
+  </data>
 </root>

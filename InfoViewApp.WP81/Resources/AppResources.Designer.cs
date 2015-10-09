@@ -1537,6 +1537,24 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DO NOT UNINSTALL.
+        /// </summary>
+        public static string NoUninstallation {
+            get {
+                return ResourceManager.GetString("NoUninstallation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you uninstall, all your quota will be gone (you will still get the free quota)..
+        /// </summary>
+        public static string NoUninstallationText {
+            get {
+                return ResourceManager.GetString("NoUninstallationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Old Lace.
         /// </summary>
         public static string OldLace {
@@ -2325,6 +2343,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string UseMetric {
             get {
                 return ResourceManager.GetString("UseMetric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use my location.
+        /// </summary>
+        public static string UseMyLocation {
+            get {
+                return ResourceManager.GetString("UseMyLocation", resourceCulture);
             }
         }
         

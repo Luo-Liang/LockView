@@ -94,8 +94,9 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             finally
             {
-                telemetryProperty["ver"] = Package.Current.Id.Version.ToString();
-                telemetryProperty["$"] = LockViewApplicationState.Instance.UserQuotaInDollars.ToString();
+                var pkgVer = Package.Current.Id.Version;
+                telemetryProperty["ver"] = $"{pkgVer.Major}.{pkgVer.Minor}.{pkgVer.Build}.{pkgVer.Revision}";
+                telemetryProperty["quota"] = LockViewApplicationState.Instance.UserQuotaInDollars.ToString();
                 telemetryProperty["lrs"] = task.LastExitReason.ToString();
                 telemetryProperty["mmu"] = $"{(int)(1000.0 * DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024) / 1000}MB";
                 telemetryProperty["ram"] = $"{(int)(DeviceStatus.DeviceTotalMemory / 1024.0 / 1024)}MB";

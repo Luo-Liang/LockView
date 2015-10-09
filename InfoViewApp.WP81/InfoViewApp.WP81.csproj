@@ -215,6 +215,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\locating.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="beaming.png" />
     <Content Include="Transitioning.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -11,7 +11,9 @@ namespace LockViewApp.WP81.Contracts
 {
     public class WeatherDataSource : InterestGatherer
     {
+        public string DisplayName { get; set; }
         public string CityName { get; set; }
+        public string LongitudeAndLatitudeString { get; set; }
         public bool IsImperial { get; set; }
         public string Language { get; set; }
         const string ApiKey = "9af6667faad810f1b2bd4fa2dae3d03b"; //<--- if you see this in GitHub, then it is fake.
@@ -33,20 +35,24 @@ namespace LockViewApp.WP81.Contracts
 
         public async override Task<InterestContent> RequestContent(InterestRequest request)
         {
-            try {
+            try
+            {
                 HttpClient client = Client == null ? new HttpClient() : Client;
                 var metricModifier = (IsImperial ? "&units=imperial" : "&units=metric");
                 var requestString = $"http://api.openweathermap.org/data/2.5/weather?q={CityName}{metricModifier}=metric&mode=xml&lang={Language}&APPID={ApiKey}";
+                if (LongitudeAndLatitudeString != null)
+                    requestString = $"http://api.openweathermap.org/data/2.5/weather?{LongitudeAndLatitudeString}{metricModifier}=metric&mode=xml&lang={Language}&APPID={ApiKey}";
                 var doc = await client.GetStringAsync(new Uri(requestString));
                 var document = new XmlDocument();
                 document.LoadXml(doc);
                 var symbolName = document.SelectSingleNode("/current/weather").Attributes.GetNamedItem("value").NodeValue.ToString();
                 var tempValue = document.SelectSingleNode("/current/temperature").Attributes.GetNamedItem("value").NodeValue.ToString();
                 var weatherAndTemp = $"{symbolName} ({tempValue}" + (IsImperial ? "℉)" : "℃)");
+                var titlePrefix = DisplayName == null ? CityName : DisplayName;
                 return new InterestContent()
                 {
                     Content = weatherAndTemp,
-                    Title = CityName + " @ " + DateTime.Now,
+                    Title = $"{titlePrefix} {DateTime.Now.Hour}:{DateTime.Now.Minute.ToString().PadLeft(2,'0')}",
                     Publisher = $"OpenWeatherMap",
                     ExtensionUri = new Uri(uriString, UriKind.Absolute)
                 };

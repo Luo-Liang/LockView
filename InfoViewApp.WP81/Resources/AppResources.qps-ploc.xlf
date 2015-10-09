@@ -317,6 +317,18 @@
           <source>Enable Do not disturb during night.</source>
           <target state="new">Enable Do not disturb during night.</target>
         </trans-unit>
+        <trans-unit id="Resx/NoUninstallationText" translate="yes" xml:space="preserve">
+          <source>If you uninstall, all your quota will be gone (you will still get the free quota).</source>
+          <target state="new">If you uninstall, all your quota will be gone (you will still get the free quota).</target>
+        </trans-unit>
+        <trans-unit id="Resx/UseMyLocation" translate="yes" xml:space="preserve">
+          <source>Use my location</source>
+          <target state="new">Use my location</target>
+        </trans-unit>
+        <trans-unit id="Resx/NoUninstallation" translate="yes" xml:space="preserve">
+          <source>DO NOT UNINSTALL</source>
+          <target state="new">DO NOT UNINSTALL</target>
+        </trans-unit>
         <trans-unit id="Resx/DoNotDisturbTitle" translate="yes" xml:space="preserve">
           <source>Do not disturb</source>
           <target state="new">Do not disturb</target>

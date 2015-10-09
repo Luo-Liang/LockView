@@ -58,6 +58,7 @@ namespace InfoViewApp.WP81
                 openPicker.FileTypeFilter.Add(".png");
                 openPicker.PickSingleFileAndContinue();
                 PickInProcess = true;
+                MakeIdle();
             }
             else if (parameter == "bing")
             {

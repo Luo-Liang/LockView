@@ -20,6 +20,8 @@ using Windows.ApplicationModel.Background;
 using Microsoft.Phone.Scheduler;
 using InfoViewApp.WP81.Resources;
 using Microsoft.ApplicationInsights;
+using Windows.ApplicationModel;
+using Microsoft.Phone.Info;
 #if DEBUG
 using MockIAPLib;
 using Store = MockIAPLib;
@@ -138,6 +140,7 @@ namespace InfoViewApp.WP81
             instance.PreviewLayoutContract.TargetWidth = (int)width;
             Tasks.CloudImageCompositorClient client = new Tasks.CloudImageCompositorClient();
             instance.DoNotDisturb = doNotDisturb.IsChecked.Value;
+            instance.PreviewFormattingContract.SecondLineFont.FontSize = instance.PreviewFormattingContract.SecondLineFont.FontSize/2;
             await instance.SaveState();
             var response = await client.Compose(LockViewApplicationState.Instance.SelectedContextContracts,
                 LockViewApplicationState.Instance.PreviewFormattingContract,
@@ -162,6 +165,20 @@ namespace InfoViewApp.WP81
             //take a look what people use as their providers.
             var tc = new TelemetryClient();
             var property = new Dictionary<string, string>() { { "Hardware Id", BackgroundTaskHelper.GetDeviceId() } };
+            var pkgVer = Package.Current.Id.Version;
+            property["ver"] = $"{pkgVer.Major}.{pkgVer.Minor}.{pkgVer.Build}.{pkgVer.Revision}";
+            property["quota"] = LockViewApplicationState.Instance.UserQuotaInDollars.ToString();
+            property["hid"] = BackgroundTaskHelper.GetDeviceId();
+            object modelobject = null;
+            if (Microsoft.Phone.Info.DeviceExtendedProperties.TryGetValue("DeviceName", out modelobject))
+            {
+                property["dnm"] = modelobject as string;
+            }
+            object manufacturerobject;
+            if (DeviceExtendedProperties.TryGetValue("DeviceManufacturer", out manufacturerobject))
+            {
+                property["dma"] = manufacturerobject as string;
+            }
             for (int i = 0; i < instance.SelectedProviders.Length; i++)
             {
                 property[$"Selection{i}"] = instance.SelectedProviders[i].GetType().Name;
@@ -213,11 +230,7 @@ namespace InfoViewApp.WP81
 
         private async void quotaPurchase_Click(object sender, RoutedEventArgs e)
         {
-            if (LockViewApplicationState.Instance.UserQuotaInDollars >= 0.05)
-            {
-                MessageBox.Show(AppResources.NotThereYetText, AppResources.NotThereYetTitle, MessageBoxButton.OK);
-                return;
-            }
+            MessageBox.Show(AppResources.NoUninstallationText, AppResources.NoUninstallation, MessageBoxButton.OK);
             var listing = await CurrentApp.LoadListingInformationAsync();
             var n99Cents =
               listing.ProductListings.FirstOrDefault(
@@ -252,7 +265,7 @@ namespace InfoViewApp.WP81
 
         private void dontwattopayLink_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(AppResources.WhileBalanceLastsTitle, AppResources.WhileBalanceLastsText, MessageBoxButton.OK);
+            MessageBox.Show(AppResources.WhileBalanceLastsText, AppResources.WhileBalanceLastsTitle, MessageBoxButton.OK);
         }
 
         private void redeem_Click
