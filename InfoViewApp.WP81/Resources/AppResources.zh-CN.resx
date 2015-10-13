@@ -1093,4 +1093,13 @@
   <data name="DoNotDisturbTitle" xml:space="preserve">
     <value>请勿打扰</value>
   </data>
+  <data name="NoUninstallationText" xml:space="preserve">
+    <value>若您卸载，您的余额将无法找回（但您下次安装时仍可获得赠送余额）。</value>
+  </data>
+  <data name="UseMyLocation" xml:space="preserve">
+    <value>使用我的位置</value>
+  </data>
+  <data name="NoUninstallation" xml:space="preserve">
+    <value>请勿卸载</value>
+  </data>
 </root>

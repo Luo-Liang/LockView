@@ -85,7 +85,9 @@ namespace InfoViewApp.WP81.Tasks
                     var idx = path.LastIndexOf('/');
                     removeName = path.Substring(idx + 1, path.Length - idx - 1);
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                }
                 if (removeName != null && myIsolatedStorage.FileExists(removeName))
                 {
                     myIsolatedStorage.DeleteFile(removeName);
@@ -161,10 +163,16 @@ namespace InfoViewApp.WP81.Tasks
             if (client == null)
                 client = new HttpClient();
             var instance = LockViewApplicationState.Instance;
-            var reqString = "https://api.nasa.gov/planetary/apod?concept_tags=True&api_key=mzzFYcsRbS2oVEak5fvY4Znbx6tTsAy200MiQqXF";
-            var json = await client.GetStringAsync(new Uri(reqString));
-            var jObj = JsonObject.Parse(json);
-            return jObj.GetNamedString("url");
+            var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject("https://api.nasa.gov/planetary/apod?concept_tags=True&api_key=2iBksIVxBi8g0dsMpXFdaNgxCEJx1mrtivaKCGjn"));
+            //var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(string.Format(ImageLocator,"en-US")));
+            requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
+            var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/RequestJson", UriKind.Absolute),
+                 requestContent);
+            var responseStr = await response.Content.ReadAsStringAsync();
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<string>(responseStr);
+            var jObj = JsonObject.Parse(result);
+            result = jObj.GetNamedString("url");
+            return result;
         }
     }
 
@@ -187,7 +195,7 @@ namespace InfoViewApp.WP81
 
         public static string GenerateImgFileName(this IEnumerable<OverlayContextContract> contracts)
         {
-            var fileName = string.Join(string.Empty, contracts.Select(o => o.Title));
+            var fileName = string.Join(string.Empty, contracts.Select(o => o.Title.Length > 25 ? $"{o.Title.Substring(0, 12)}{o.Title.Substring(o.Title.Length - 13, 13)}" : o.Title));
             fileName = string.Join(string.Empty, fileName.Select(o => ((int)(o % 10)).ToString()));
             if (fileName.Length > 100) fileName = fileName.Substring(0, 100);
             return $"{fileName}.jpeg";

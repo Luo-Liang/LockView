@@ -55,9 +55,9 @@ namespace InfoViewApp.WP81
                     BackgroundSecondLine = "Transparent",
                     BackgroundFirstLine = "Transparent",
                     BackgroundTitle = "Transparent",
-                    FirstLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe UI Semibold" },
-                    SecondLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe UI Semibold" },
-                    TitleFont = new FontContract() { FontSize = 26, FontFamily = "Segoe UI Black" },
+                    FirstLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe WP Semibold" },
+                    SecondLineFont = new FontContract() { FontSize = 20, FontFamily = "Segoe WP Semibold" },
+                    TitleFont = new FontContract() { FontSize = 26, FontFamily = "Segoe WP Black" },
                     ForegroundFirstLine = "White",
                     ForegroundSecondLine = "Gray",
                     ForegroundTitle = "White"

@@ -19,142 +19,186 @@ using InfoView.DataContract;
 
 namespace InfoView
 {
-    public class BingImageCache
+    public class ServiceCache<T, K>
     {
-        static Uri DefaultImageUri = new Uri("http://dovecomputers.com/blog/wp-content/uploads/2012/10/Windows-XP-desktop.png");
-        class ImageCacheEntry
+        ConcurrentDictionary<string, ServiceCacheEntry<K>> cache = new ConcurrentDictionary<string, ServiceCacheEntry<K>>();
+        internal WebClient CacheFetcher = new WebClient();
+        DateTime lastService = DateTime.MinValue;
+        internal class ServiceCacheEntry<K>
         {
             public DateTime ExpirationDate;
             public string UrlIdentifier;
-            public MemoryStream Content;
+            public K Content;
         }
-        ConcurrentDictionary<string, ImageCacheEntry> CacheEntries;
-        WebClient CacheFetcher;
-        public BingImageCache()
+        internal virtual string getEntryIdFromRequest(T request)
         {
-            CacheEntries = new ConcurrentDictionary<string, ImageCacheEntry>();
-            CacheFetcher = new WebClient();
+            throw new NotImplementedException();
+        }
+        internal virtual ServiceCacheEntry<K> getEntryFromRequest(T request)
+        {
+            throw new NotImplementedException();
+        }
+        internal virtual void prepareContentRelease(K content)
+        {
+            throw new NotImplementedException();
+        }
+        public virtual K TryFetchAndAdd(T request)
+        {
+            ServiceCacheEntry<K> entry = null;
+            var key = getEntryIdFromRequest(request);
+            if (cache.TryGetValue(key, out entry) == false)
+            {
+                entry = getEntryFromRequest(request);
+                cache.TryAdd(key, entry);
+            }
+            else if ((DateTime.Now - lastService).Days >= 1)
+            {
+                ServiceCacheEntry<K> notUsed;
+                //it's a hit. But this value might expire. Don't expire the current request, simply get rid of it from the cache -- only if last service is 24 hours ago.
+                foreach (var k in cache.Keys)
+                {
+                    cache.TryGetValue(k, out notUsed);
+                    if (notUsed.ExpirationDate < DateTime.Now)
+                    {
+                        cache.TryRemove(key, out notUsed);
+                    }
+                }
+                lastService = DateTime.Now;
+            }
+            prepareContentRelease(entry.Content);
+            return entry.Content;
+        }
+    }
+
+    //circumvent API restrictions
+    public class ImageCache : ServiceCache<ImageRequestOverride,MemoryStream>
+    {
+        static Uri DefaultImageUri = new Uri("http://dovecomputers.com/blog/wp-content/uploads/2012/10/Windows-XP-desktop.png");
+        ConcurrentDictionary<string, ServiceCacheEntry<MemoryStream>> CacheEntries;
+        public ImageCache()
+        {
         }
         //public const string ImageLocator = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt={0}";
         const string nasaAPIKey = "mzzFYcsRbS2oVEak5fvY4Znbx6tTsAy200MiQqXF"; //<--- if you see this, it is mangled.
-        public Stream TryFetchAndAdd(ImageRequestOverride iro)
+        internal override string getEntryIdFromRequest(ImageRequestOverride iro)
         {
-            ImageCacheEntry entry;
+            return string.Format("{0}{1}", iro.ImageRequestUrl, iro.Arguments);
+        }
+        internal override ServiceCacheEntry<MemoryStream> getEntryFromRequest(ImageRequestOverride iro)
+        {
             Dictionary<string, string> argumentKeyValue = new Dictionary<string, string>();
             foreach (var item in iro.Arguments.Split('&'))
             {
                 var parts = item.Split('=');
                 argumentKeyValue.Add(parts[0], parts.Length == 1 ? "" : parts[1]);
             }
-            var identifier = string.Format("{0}{1}", iro.ImageRequestUrl, iro.Arguments);
-            if (false == CacheEntries.TryGetValue(identifier, out entry))
+            ServiceCacheEntry<MemoryStream> entry = new ServiceCacheEntry<MemoryStream>();
+            byte[] rawBytes = null;
+            bool Insert = true;
+            WriteableBitmap bitmap = null;
+            try
             {
-                entry = new ImageCacheEntry();
-                byte[] rawBytes = null;
-                bool Insert = true;
-                WriteableBitmap bitmap = null;
-                try
-                {
-                    WebClient client = new WebClient();
-                    rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
-                    //create this entry.
-                    //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
-                    //decoder.Frames[0].Freeze();
-                    //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
-                    //bmp.BeginInit();
-                    //bmp.EndInit();
-                    bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
-                    bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
-                }
-                catch
-                {
-                    var directoryPath = AppDomain.CurrentDomain.BaseDirectory + "\\Assets";
-                    int maximum = Directory.GetFiles(directoryPath).Length;
-                    var fileName = (DateTime.Now.Second % maximum) + 1;
-                    //create this entry.
-                    //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
-                    //decoder.Frames[0].Freeze();
-                    //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
-                    //bmp.BeginInit();
-                    //bmp.EndInit();
-                    bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
-                    using (var stream = File.Open($"{directoryPath}\\{fileName}.jpg", FileMode.Open))
-                        bitmap = bitmap.FromStream(stream);
-                    Insert = false;
-                    //replace those with defaults.
-                }
-                //bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
-                //bitmap = bitmap.FromByteArray(rawBytes);
-                if (argumentKeyValue.ContainsKey("resolution"))
-                {
-                    var resolution = argumentKeyValue["resolution"];
-                    var whString = resolution.Split('x');
-                    double height = double.Parse(whString[1]),
-                           width = double.Parse(whString[0]);
-                    double desiredRatio = height / width;
-                    double actualRatio = (double)bitmap.PixelHeight / bitmap.PixelWidth;
-                    if (actualRatio <= desiredRatio)
-                    {
-                        //scale to croppable settings first.
-                        //in this case, the user can in general select along the x-axis. (width)
-                        double scale = height / bitmap.PixelHeight;
-                        //now scale the height and width as appropriate.
-                        bitmap = bitmap.Resize((int)(bitmap.PixelWidth * scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-                        //place the selection at the center of the image.
-                        //entire height is now selected.
-                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point((int)(bitmap.PixelWidth - width) / 2, 0), new System.Windows.Size((int)width, (int)height)));
-                    }
-                    else
-                    {
-                        //symmetric
-                        double scale = width / bitmap.PixelWidth;
-                        bitmap = bitmap.Resize((int)width, (int)(bitmap.PixelHeight * scale), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point(0, (int)(bitmap.PixelHeight - height) / 2), new System.Windows.Size((int)width, (int)height)));
-                    }
-                }
-                //bitmap.Unlock();
-                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(bitmap));
-                if (argumentKeyValue.ContainsKey("lq"))
-                {
-                    //low quality.
-                    encoder.QualityLevel = 70;
-                }
-                MemoryStream decodedStream = new MemoryStream();
-                encoder.Frames[0].Freeze();
-                encoder.Save(decodedStream);
-                entry.ExpirationDate = DateTime.Now.AddDays(1);
-                entry.UrlIdentifier = identifier;
-                entry.Content = decodedStream;
-                if (Insert)
-                    CacheEntries.TryAdd(identifier, entry);
-                //using (var fs = File.Open("c:/users/liang luo/desktop/1.jpg", FileMode.Create))
-                //{
-                //    encoder.Save(fs);
-                //}
+                WebClient client = new WebClient();
+                rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
+                //create this entry.
+                //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
+                //decoder.Frames[0].Freeze();
+                //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
+                //bmp.BeginInit();
+                //bmp.EndInit();
+                bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
+                bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
             }
-            else
+            catch
             {
-                ImageCacheEntry notUsed;
-                //it's a hit. But this value might expire. Don't expire the current request, simply get rid of it from the cache.
-                foreach (var key in CacheEntries.Keys)
+                var directoryPath = AppDomain.CurrentDomain.BaseDirectory + "\\Assets";
+                int maximum = Directory.GetFiles(directoryPath).Length;
+                var fileName = (DateTime.Now.Second % maximum) + 1;
+                //create this entry.
+                //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
+                //decoder.Frames[0].Freeze();
+                //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
+                //bmp.BeginInit();
+                //bmp.EndInit();
+                bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
+                using (var stream = File.Open($"{directoryPath}\\{fileName}.jpg", FileMode.Open))
+                    bitmap = bitmap.FromStream(stream);
+                Insert = false;
+                //replace those with defaults.
+            }
+            //bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
+            //bitmap = bitmap.FromByteArray(rawBytes);
+            if (argumentKeyValue.ContainsKey("resolution"))
+            {
+                var resolution = argumentKeyValue["resolution"];
+                var whString = resolution.Split('x');
+                double height = double.Parse(whString[1]),
+                       width = double.Parse(whString[0]);
+                double desiredRatio = height / width;
+                double actualRatio = (double)bitmap.PixelHeight / bitmap.PixelWidth;
+                if (actualRatio <= desiredRatio)
                 {
-                    CacheEntries.TryGetValue(key, out notUsed);
-                    if (notUsed.ExpirationDate < DateTime.Now)
-                    {
-                        CacheEntries.TryRemove(key, out notUsed);
-                    }
+                    //scale to croppable settings first.
+                    //in this case, the user can in general select along the x-axis. (width)
+                    double scale = height / bitmap.PixelHeight;
+                    //now scale the height and width as appropriate.
+                    bitmap = bitmap.Resize((int)(bitmap.PixelWidth * scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                    //place the selection at the center of the image.
+                    //entire height is now selected.
+                    bitmap = bitmap.Crop(new Rect(new System.Windows.Point((int)(bitmap.PixelWidth - width) / 2, 0), new System.Windows.Size((int)width, (int)height)));
+                }
+                else
+                {
+                    //symmetric
+                    double scale = width / bitmap.PixelWidth;
+                    bitmap = bitmap.Resize((int)width, (int)(bitmap.PixelHeight * scale), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                    bitmap = bitmap.Crop(new Rect(new System.Windows.Point(0, (int)(bitmap.PixelHeight - height) / 2), new System.Windows.Size((int)width, (int)height)));
                 }
             }
-            entry.Content.Seek(0, SeekOrigin.Begin);
-            return entry.Content;
+            //bitmap.Unlock();
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmap));
+            if (argumentKeyValue.ContainsKey("lq"))
+            {
+                //low quality.
+                encoder.QualityLevel = 70;
+            }
+            MemoryStream decodedStream = new MemoryStream();
+            encoder.Frames[0].Freeze();
+            encoder.Save(decodedStream);
+            entry.ExpirationDate = DateTime.Now.AddDays(1);
+            entry.UrlIdentifier = getEntryIdFromRequest(iro);
+            entry.Content = decodedStream;
+            return entry;
+        }
+        internal override void prepareContentRelease(MemoryStream content)
+        {
+            content.Seek(0, SeekOrigin.Begin);
         }
     }
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the public class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
+
+    public class JsonCache : ServiceCache<string, string>
+    {
+        internal override ServiceCacheEntry<string> getEntryFromRequest(string request)
+        {
+            ServiceCacheEntry<string> entry = new ServiceCacheEntry<string>();
+            entry.Content = CacheFetcher.DownloadString(request);
+            entry.ExpirationDate = DateTime.Now.AddDays(1);
+            entry.UrlIdentifier = getEntryIdFromRequest(request); ;
+            return entry;
+        }
+        internal override void prepareContentRelease(string content)
+        {
+        }
+        internal override string getEntryIdFromRequest(string request)
+        {
+            return request;
+        }
+    }
     public class ImageComposition : IImageCompositionService
     {
-        static BingImageCache imgCache = new BingImageCache();
+        static ImageCache imgCache = new ImageCache();
+        static JsonCache jsonCache = new JsonCache();
         public async Task<ImageCompositionResponse> Compose(ImageCompositionRequest request)
         {
             Stream memStream = null;
@@ -251,6 +295,12 @@ namespace InfoView
             stream.Seek(0, SeekOrigin.Begin);
             stream.Read(imageBytes, 0, imageBytes.Length);
             return imageBytes;
+        }
+
+        public string RequestJson(string request)
+        {
+            var value = jsonCache.TryFetchAndAdd(request);
+            return value;
         }
     }
 }
