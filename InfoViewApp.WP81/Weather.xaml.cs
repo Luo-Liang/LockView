@@ -42,6 +42,7 @@ namespace InfoViewApp.WP81
             {
                 SaveBtn.Visibility = Visibility.Visible;
             }
+            source.LongitudeAndLatitudeString = null;
         }
 
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)

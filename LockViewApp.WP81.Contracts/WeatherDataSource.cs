@@ -39,9 +39,9 @@ namespace LockViewApp.WP81.Contracts
             {
                 HttpClient client = Client == null ? new HttpClient() : Client;
                 var metricModifier = (IsImperial ? "&units=imperial" : "&units=metric");
-                var requestString = $"http://api.openweathermap.org/data/2.5/weather?q={CityName}{metricModifier}=metric&mode=xml&lang={Language}&APPID={ApiKey}";
+                var requestString = $"http://api.openweathermap.org/data/2.5/weather?q={CityName}{metricModifier}&mode=xml&lang={Language}&APPID={ApiKey}";
                 if (LongitudeAndLatitudeString != null)
-                    requestString = $"http://api.openweathermap.org/data/2.5/weather?{LongitudeAndLatitudeString}{metricModifier}=metric&mode=xml&lang={Language}&APPID={ApiKey}";
+                    requestString = $"http://api.openweathermap.org/data/2.5/weather?{LongitudeAndLatitudeString}{metricModifier}&mode=xml&lang={Language}&APPID={ApiKey}";
                 var doc = await client.GetStringAsync(new Uri(requestString));
                 var document = new XmlDocument();
                 document.LoadXml(doc);
