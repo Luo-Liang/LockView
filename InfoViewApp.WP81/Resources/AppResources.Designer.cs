@@ -2131,6 +2131,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Which .
+        /// </summary>
+        public static string StockQuoteTitle {
+            get {
+                return ResourceManager.GetString("StockQuoteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stories.
         /// </summary>
         public static string Stories {

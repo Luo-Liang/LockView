@@ -325,6 +325,10 @@
           <source>Use my location</source>
           <target state="new">Use my location</target>
         </trans-unit>
+        <trans-unit id="Resx/StockQuoteTitle" translate="yes" xml:space="preserve">
+          <source>Which </source>
+          <target state="new">Which </target>
+        </trans-unit>
         <trans-unit id="Resx/NoUninstallation" translate="yes" xml:space="preserve">
           <source>DO NOT UNINSTALL</source>
           <target state="new">DO NOT UNINSTALL</target>

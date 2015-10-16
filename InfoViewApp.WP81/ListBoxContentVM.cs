@@ -9,7 +9,11 @@ namespace InfoViewApp.WP81
         public string FirstLine { get; set; }
         public string SecondLine { get; set; }
         public bool FeatureEnabled { get; set; }
+#if WINDOWS_PHONE
         public Uri NavigationPath { get; set; }
+#elif WINDOWS_APP
+        public string NavigationType { get; set; }
+#endif
         public ListBoxContentVM()
         {
             FeatureEnabled = true;

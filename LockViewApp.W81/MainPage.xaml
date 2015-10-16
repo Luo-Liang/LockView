@@ -8,10 +8,44 @@
     mc:Ignorable="d">
     <Page.Resources>
         <local:ListBoxContentVMCollection x:Key="categories">
-            <local:ListBoxContentVM NavigationPath="/ImageCropping.xaml?ImgSrc=library" SecondLine="Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library." FirstLine="USE MY OWN IMAGE" />
-            <local:ListBoxContentVM NavigationPath="/ImageCropping.xaml?ImgSrc=bing" SecondLine="Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="BING"/>
-            <local:ListBoxContentVM NavigationPath="/ImageCropping.xaml?ImgSrc=nasa" SecondLine="Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. " FirstLine="NASA"/>
+            <local:ListBoxContentVM NavigationType="library" SecondLine="Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library." FirstLine="USE MY OWN IMAGE" />
+            <local:ListBoxContentVM NavigationType="bing" SecondLine="Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="BING"/>
+            <local:ListBoxContentVM NavigationType="nasa" SecondLine="Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. " FirstLine="NASA"/>
         </local:ListBoxContentVMCollection>
+        <Storyboard RepeatBehavior="Forever" x:Name="maximize">
+            <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="520">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="520"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="310">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="310"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.039">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.039"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-6">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-6"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Page.Resources>
 
     <Grid Background="#FF1A1A1A">
@@ -45,40 +79,56 @@
                 </Path.Fill>
             </Path>
         </Grid>
-        <TextBlock x:Name="textBlock" Height="99" Margin="144,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" Width="275" d:LayoutOverrides="HorizontalAlignment">
+        <TextBlock x:Name="textBlock" Height="80" Margin="146,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" Width="364">
         	<Run Text="LOCKVIEW "/>
         	<LineBreak/>
-        	<Run Text="FOR DESKTOP"/>
+        	<Run FontSize="24" Text="PC, CONSOLE AND TABLET"/>
         </TextBlock>
-        <ScrollViewer x:Name="SettingViewer" Margin="40,152,43,90" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
-            <Grid Width="{Binding ElementName=SettingViewer,Path=ActualWidth}" MaxHeight="{Binding ElementName=SettingViewer, Path=ActualHeight}" x:Name="ImageSourceSelectionMainGrid" HorizontalAlignment="Left">
-                <Grid Width="380" HorizontalAlignment="Left">
-                    <StackPanel Margin="2,0" Background="{StaticResource AccentBrush}" Height="103" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
-                        <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Image Source" FontSize="24" Margin="10,10,10,5"/>
-                        <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10">
-                            <TextBlock.Foreground>
-                                <SolidColorBrush Color="{StaticResource LighterGray}"/>
-                            </TextBlock.Foreground>
-            				<Run Text="Where do you want us to pull the images?"/>
-            				<LineBreak/>
-            				<Run Text="Select a source from below."/>
-                        </TextBlock>
-                    </StackPanel>
-                    <ListBox ItemsSource="{StaticResource categories}" x:Name="listBox" Background="{x:Null}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" FontFamily="Global User Interface" ItemTemplate="{StaticResource ListBoxDataTemplate}" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,123,0,-2"/>
-                </Grid>
-                <Grid x:Name="ImagePreviewTool" Margin="400,0,0,0" d:LayoutOverrides="LeftPosition, RightPosition">
-                    <StackPanel Margin="2,0" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
-                        <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="Pick a best view." FontSize="24" Margin="0,10,10,5" Foreground="{StaticResource LightAccentBrush}"/>
-                        <TextBlock x:Name="textBlock1_Copy1" TextWrapping="Wrap" FontSize="18.667" Margin="0,4,10,10" Text="Look around. When you find a best view, click Ok. This is picking an image for your Lock Screen, the image is scaled appropriately.">
-                            <TextBlock.Foreground>
-                                <SolidColorBrush Color="{StaticResource LighterGray}"/>
-                            </TextBlock.Foreground>
-                        </TextBlock>
-                    </StackPanel>
-                    <Image x:Name="imageCropper" Margin="0,103,0,0" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Grid Margin="40,152,43,90" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid" HorizontalAlignment="Left">
+            <Grid Width="380" HorizontalAlignment="Left">
+                <StackPanel Margin="2,0" Background="{StaticResource AccentBrush}" Height="103" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
+                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Image Source" FontSize="24" Margin="10,10,10,5"/>
+                    <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LighterGray}"/>
+                        </TextBlock.Foreground>
+                		<Run Text="Where do you want us to pull the images?"/>
+                		<LineBreak/>
+                		<Run Text="Select a source from below."/>
+                    </TextBlock>
+                </StackPanel>
+                <ListBox SelectionChanged="listBox_SelectionChanged" ItemsSource="{StaticResource categories}" x:Name="listBox" Background="{x:Null}" FontFamily="Global User Interface" ItemTemplate="{StaticResource ListBoxDataTemplate}" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,123,0,-2" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
+            </Grid>
+            <Grid x:Name="ImagePreviewTool" Margin="400,0,0,0" d:LayoutOverrides="LeftPosition, RightPosition">
+                <StackPanel Margin="2,0" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
+                    <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Pick a best view." FontSize="24" Margin="0,10,10,5" Foreground="{StaticResource LightAccentBrush}"/>
+                    <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="0,4,10,10" Text="Look around. When you find a best view, click Ok. This is picking an image for your Lock Screen, the image is scaled appropriately.">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LighterGray}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </StackPanel>
+                <Image x:Name="imageCropper" Margin="0,103,0,0" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+                <Grid x:Name="maximizeAnimationGrid" Margin="0,147,0,0" HorizontalAlignment="Center" Width="542" Height="354" VerticalAlignment="Top" Visibility="Collapsed">
+                    <Rectangle Stroke="#FF1A1A1A" Height="20" VerticalAlignment="Bottom" StrokeThickness="0" Fill="#FF424242" RadiusX="5" RadiusY="5" d:LayoutOverrides="LeftPosition, RightPosition"/>
+                    <Rectangle Margin="0,0,0,9" Stroke="#FF424242" StrokeThickness="10" RadiusX="5" RadiusY="5" d:LayoutOverrides="LeftPosition, RightPosition" Width="542" Height="345" HorizontalAlignment="Center"/>
+                    <Rectangle Height="19" Margin="136,0,143,1" StrokeThickness="2" VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="Assets/Maximize.png" Stretch="Uniform"/>
+                        </Rectangle.Fill>
+                        <Rectangle.Stroke>
+                            <ImageBrush Stretch="Fill"/>
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <Rectangle x:Name="rectangle" Stroke="#FF1A1A1A" StrokeThickness="0" Fill="{StaticResource AccentBrush}" HorizontalAlignment="Center" Width="271" Height="172" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <Rectangle.RenderTransform>
+                            <CompositeTransform/>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
                 </Grid>
             </Grid>
-        </ScrollViewer>
+        </Grid>
         <Image x:Name="image" HorizontalAlignment="Left" Height="139" Margin="8,4,0,0" VerticalAlignment="Top" Width="139" Source="Assets/LockViewInApp.png"/>
+        <Button x:Name="nextButton" Content="Next" Margin="48,0,0,38" VerticalAlignment="Bottom" />
     </Grid>
 </Page>

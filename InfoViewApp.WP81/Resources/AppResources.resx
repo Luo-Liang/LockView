@@ -960,4 +960,7 @@
   <data name="UseMyLocation" xml:space="preserve">
     <value>Use my location</value>
   </data>
+  <data name="StockQuoteTitle" xml:space="preserve">
+    <value>Which </value>
+  </data>
 </root>
