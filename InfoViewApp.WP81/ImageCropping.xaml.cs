@@ -161,7 +161,7 @@ namespace InfoViewApp.WP81
             if (imgRatio > screenRatio)
             {
                 //user swipes up and down.
-                double heightExtent = vO / canvas.ExtentWidth;
+                double heightExtent = vO / canvas.ExtentHeight;
                 int actualHeight = (int)(heightExtent * WB_CapturedImage.PixelHeight);
                 WB_CroppedImage = WB_CapturedImage.Crop(0, actualHeight, WB_CapturedImage.PixelWidth, (int)(screenRatio * WB_CapturedImage.PixelWidth));
             }

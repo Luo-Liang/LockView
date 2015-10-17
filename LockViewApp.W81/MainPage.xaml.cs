@@ -34,6 +34,7 @@ namespace LockViewApp.W81
             this.InitializeComponent();
             this.SizeChanged += MainPage_SizeChanged;
             this.Loaded += MainPage_Loaded;
+            nextButton.IsEnabled = false;
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
@@ -177,7 +178,6 @@ namespace LockViewApp.W81
         private void adjustImagePreview(bool useActualTarget)
         {
             if (originalMap == null) return;
-            WriteableBitmap currentMap;
             int actualHeight, actualWidth;
             actualHeight = originalMap.PixelHeight;
             actualWidth = originalMap.PixelWidth;
@@ -188,17 +188,17 @@ namespace LockViewApp.W81
             if (actualRatio > targetRatio)
             {
                 //user swipe up and down.
-                //imageCropper.Height = actualHeight * targetHeight / actualWidth;
-                //imageCropper.Width = targetWidth;
-                currentMap = originalMap.Resize(targetWidth, actualHeight * targetWidth / actualWidth, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                imageCropper.Height = actualHeight * targetWidth / actualWidth;
+                imageCropper.Width = targetWidth;
+                //currentMap = originalMap.Resize(targetWidth, actualHeight * targetWidth / actualWidth, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
             else
             {
-                //imageCropper.Height = targetHeight;
-                //imageCropper.Width = actualWidth * targetHeight / actualHeight;
-                currentMap = originalMap.Resize(actualWidth * targetHeight / actualHeight, targetHeight, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                imageCropper.Height = targetHeight;
+                imageCropper.Width = actualWidth * targetHeight / actualHeight;
+                //currentMap = originalMap.Resize(actualWidth * targetHeight / actualHeight, targetHeight, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
-            imageCropper.Source = currentMap;
+            imageCropper.Source = originalMap;
         }
 
         private void resoluionHeight_TextChanged(object sender, TextChangedEventArgs e)
@@ -214,6 +214,31 @@ namespace LockViewApp.W81
         private void repickImage_Click(object sender, RoutedEventArgs e)
         {
             listBox_SelectionChanged(null, null);
+        }
+
+        private void nextButton_Click(object sender, RoutedEventArgs e)
+        {
+            var canvas = imageViewBox;
+            var WB_CapturedImage = originalMap;
+            var hO = canvas.HorizontalOffset;
+            var vO = canvas.VerticalOffset;
+            //height larger than width.
+            double imgRatio = 1.0 * WB_CapturedImage.PixelHeight / WB_CapturedImage.PixelWidth;
+            double screenRatio = imageViewBox.ActualHeight / imageViewBox.ActualWidth;
+            if (imgRatio > screenRatio)
+            {
+                //user swipes up and down.
+                double heightExtent = vO / canvas.ExtentHeight;
+                int actualHeight = (int)(heightExtent * WB_CapturedImage.PixelHeight);
+                WB_CapturedImage = WB_CapturedImage.Crop(0, actualHeight, WB_CapturedImage.PixelWidth, (int)(screenRatio * WB_CapturedImage.PixelWidth));
+            }
+            else
+            {
+                double widthExtent = hO / canvas.ExtentWidth;
+                int actualWidth = (int)(widthExtent * WB_CapturedImage.PixelWidth);
+                WB_CapturedImage = WB_CapturedImage.Crop(actualWidth, 0, (int)(WB_CapturedImage.PixelHeight / screenRatio), WB_CapturedImage.PixelHeight);
+            }
+            //OriginalImage.Source = WB_CroppedImage;
         }
     }
 }

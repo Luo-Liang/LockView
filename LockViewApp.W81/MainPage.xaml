@@ -84,12 +84,12 @@
         	<LineBreak/>
         	<Run FontSize="24" Text="PC, CONSOLE AND TABLET"/>
         </TextBlock>
-        <Grid x:Name="ImagePreviewTool" Margin="794,167,40,90" d:LayoutOverrides="LeftPosition, RightPosition">
-            <Grid x:Name="boundingBox" Margin="0">
+        <Grid x:Name="ImagePreviewTool" Margin="862,152,40,90" d:LayoutOverrides="LeftPosition, RightPosition">
+            <Grid x:Name="boundingBox" Margin="0,136,0,0">
                 <Grid x:Name="imagePreviewBox" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Border x:Name="boundingBorder" BorderThickness="15,15,15,35" CornerRadius="5" BorderBrush="#FF444444" Margin="0">
-                        <ScrollViewer HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ZoomMode="Disabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="imageViewBox">
-                            <Image x:Name="imageCropper"/>
+                        <ScrollViewer Background="{x:Null}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ZoomMode="Disabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="imageViewBox">
+                            <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="UniformToFill" x:Name="imageCropper"/>
                         </ScrollViewer>
                     </Border>
                     <ProgressRing x:Name="busyRIng" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="30" Height="30" Foreground="{StaticResource AccentBrush}"/>
@@ -114,22 +114,35 @@
                     </Rectangle.RenderTransform>
                 </Rectangle>
             </Grid>
+            <StackPanel Background="{StaticResource AccentBrush}" Height="103" VerticalAlignment="Top" d:LayoutOverrides="LeftPosition, RightPosition">
+                <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Swipe around!" FontSize="24" Margin="10,10,10,5"/>
+                <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource LighterGray}"/>
+                    </TextBlock.Foreground>
+                	<Run Text="Laptops: Scroll using your mouse wheel."/>
+                	<LineBreak/>
+                	<Run Text="Tablets: Scroll using your fingers."/>
+                </TextBlock>
+            </StackPanel>
         </Grid>
-        <StackPanel x:Name="notification" Margin="449,152,0,90" d:LayoutOverrides="TopPosition, BottomPosition" HorizontalAlignment="Left" Width="306">
-            <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Pick a best view." FontSize="24" Margin="0,10,10,5" Foreground="{StaticResource LightAccentBrush}"/>
-            <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="0,4,10,10" Text="Look around. When you find a best view, click Ok. This is picking an image for your Lock Screen, the image is scaled appropriately." TextAlignment="Justify">
-                <TextBlock.Foreground>
-                    <SolidColorBrush Color="{StaticResource LighterGray}"/>
-                </TextBlock.Foreground>
-            </TextBlock>
-            <StackPanel Height="378" Width="306">
-                <TextBlock x:Name="textBlock2" Margin="0,4,0,5" TextWrapping="Wrap" FontSize="24" d:LayoutOverrides="Height, LeftPosition, RightPosition" Text="Enter your resolution. " Foreground="{StaticResource LightAccentBrush}"/>
-                <TextBlock x:Name="croppingGuideText_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="0,4,0,10" Text="You resolution refers to the native resolution of your screen. If unsure, right click on the desktop and select display properties." TextAlignment="Justify">
+        <Grid x:Name="notification" Margin="449,152,0,90" d:LayoutOverrides="TopPosition, BottomPosition" HorizontalAlignment="Left" Width="380">
+            <StackPanel Margin="0" Background="{StaticResource AccentBrush}" Height="103" VerticalAlignment="Top">
+                <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="Fine-tuning Image" FontSize="24" Margin="10,10,10,5"/>
+                <TextBlock x:Name="textBlock1_Copy1" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" Text="Follow the guide to sure the image fit your screen best.">
                     <TextBlock.Foreground>
                         <SolidColorBrush Color="{StaticResource LighterGray}"/>
                     </TextBlock.Foreground>
                 </TextBlock>
-                <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width">
+            </StackPanel>
+            <StackPanel Margin="0,129,0,2" d:LayoutOverrides="TopPosition, BottomPosition">
+                <TextBlock x:Name="textBlock2" Margin="0,4,0,5" TextWrapping="Wrap" FontSize="21.333" d:LayoutOverrides="Height, LeftPosition, RightPosition" Text="ENTER YOUR RESOLUTION" Foreground="{StaticResource LightAccentBrush}"/>
+                <TextBlock x:Name="croppingGuideText_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="0,0,0,10" Text="You resolution refers to the native resolution of your screen. If unsure, right click on the desktop and select display properties." TextAlignment="Justify">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="#FFB4B4B4"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width" Margin="0,20,0,0">
                     <TextBlock x:Name="textBlock2_Copy1" TextWrapping="Wrap" FontSize="18.667" Text="Height" VerticalAlignment="Top" Margin="0,5,0,0"/>
                     <TextBox TextChanged="resoluionHeight_TextChanged" x:Name="resoluionHeight" TextWrapping="Wrap" Text="1080" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="20,0,0,0" VerticalAlignment="Top"/>
                 </StackPanel>
@@ -137,14 +150,14 @@
                     <TextBlock x:Name="textBlock2_Copy" TextWrapping="Wrap" FontSize="18.667" Text="Width " VerticalAlignment="Top" Margin="0,5,0,0"/>
                     <TextBox TextChanged="resolutionWidth_TextChanged" x:Name="resolutionWidth" TextWrapping="Wrap" Text="1920" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="27,0,0,0" VerticalAlignment="Top"/>
                 </StackPanel>
-                <TextBlock x:Name="textBlock2_Copy2" Margin="0,20,0,0" TextWrapping="Wrap" FontSize="24" Text="Repick or refresh the image." Foreground="{StaticResource LightAccentBrush}"/>
+                <TextBlock x:Name="textBlock2_Copy2" Margin="0,30,0,0" TextWrapping="Wrap" FontSize="21.333" Text="REPICK OR REFRESH IMAGE" Foreground="{StaticResource LightAccentBrush}"/>
                 <Button x:Name="repickImage" Click="repickImage_Click" Content="repick image" VerticalAlignment="Stretch" Margin="-2,10,0,0" FontFamily="Global User Interface" />
             </StackPanel>
-        </StackPanel>
+        </Grid>
         <Grid Margin="40,152,0,90" d:LayoutOverrides="TopPosition, BottomPosition" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid" HorizontalAlignment="Left">
             <Grid Width="380" HorizontalAlignment="Left">
                 <StackPanel Margin="2,0" Background="{StaticResource AccentBrush}" Height="103" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
-                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Image Source" FontSize="24" Margin="10,10,10,5"/>
+                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Image Source Setup" FontSize="24" Margin="10,10,10,5"/>
                     <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{StaticResource LighterGray}"/>
@@ -158,6 +171,6 @@
             </Grid>
         </Grid>
         <Image HorizontalAlignment="Left" Height="139" Margin="8,4,0,0" VerticalAlignment="Top" Width="139" Source="Assets/LockViewInApp.png"/>
-        <Button x:Name="nextButton" Content="Next" Margin="48,0,0,38" VerticalAlignment="Bottom" />
+        <Button Click="nextButton_Click" x:Name="nextButton" Content="Next" Margin="48,0,0,38" VerticalAlignment="Bottom" />
     </Grid>
 </Page>
