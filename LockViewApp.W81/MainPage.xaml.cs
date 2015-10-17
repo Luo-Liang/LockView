@@ -46,6 +46,13 @@ namespace LockViewApp.W81
             int width = 1920, height = 1080;
             int.TryParse(resoluionHeight.Text, out height);
             int.TryParse(resolutionWidth.Text, out width);
+            if (width > 1920 * 2 || height > 1200 * 2)
+            {
+                width = 3840;
+                height = 2400;
+                resoluionHeight.Text = height.ToString();  
+                resolutionWidth.Text = width.ToString(); 
+            }
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight = height;
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth = width;
             var boundingBoxhwRatio = boundingBox.ActualHeight / boundingBox.ActualWidth;
@@ -61,29 +68,31 @@ namespace LockViewApp.W81
                 imageViewBox.Width = boundingBox.ActualWidth;
                 imageViewBox.Height = height * boundingBox.ActualWidth / width;
             }
-            listBox_SelectionChanged(null, null);
+            adjustImagePreview(false);
             //imageCropper.Source = adjustImagePreview(false);
         }
         private async void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (ViewManagementHelper.DetermineFullScreen())
-            {
-                croppingGuideText.Text = "Pick a best view";
-                croppingGuide.Text = "Pick a best view";
-                boundingBox.Visibility = Visibility.Visible;
-                maximizeAnimationGrid.Visibility = Visibility.Collapsed;
-                maximize.Stop();
-                nextButton.IsEnabled = imageCropper.Source != null;
-            }
-            else
-            {
-                croppingGuide.Text = "Maximize the window";
-                croppingGuideText.Text = "In order to find a best fit, maximize your window first.";
-                nextButton.IsEnabled = false;
-                boundingBox.Visibility = Visibility.Collapsed;
-                maximizeAnimationGrid.Visibility = Visibility.Visible;
-                maximize.Begin();
-            }
+            //if (ViewManagementHelper.DetermineFullScreen())
+            //{
+            //    croppingGuideText.Text = "Pick a best view";
+            //    croppingGuide.Text = "Pick a best view";
+            //    boundingBox.Visibility = Visibility.Visible;
+            //    maximizeAnimationGrid.Visibility = Visibility.Collapsed;
+            //    maximize.Stop();
+            //    nextButton.IsEnabled = imageCropper.Source != null;
+            //}
+            //else
+            //{
+            //    croppingGuide.Text = "Maximize the window";
+            //    croppingGuideText.Text = "In order to find a best fit, maximize your window first.";
+            //    nextButton.IsEnabled = false;
+            //    boundingBox.Visibility = Visibility.Collapsed;
+            //    maximizeAnimationGrid.Visibility = Visibility.Visible;
+            //    maximize.Begin();
+            //}
+            RedrawCropper();
+            adjustImagePreview(false);
         }
         void MakeBusy()
         {
@@ -104,7 +113,7 @@ namespace LockViewApp.W81
                 nextButton.IsEnabled = false;
                 return;
             }
-            imageCropper.Source = null;
+            //imageCropper.Source = null;
             croppingGuide.Text = "Pick a best view";
             croppingGuideText.Text = "When you've decided where to get your picture, you can crop the picture to fit your screen. Move around and pick a best view!";
             var context = selectedItem as ListBoxContentVM;
@@ -152,7 +161,7 @@ namespace LockViewApp.W81
                     }
                 }
                 //now resize the actual image.
-                imageCropper.Source = adjustImagePreview(true);
+                adjustImagePreview(true);
             }
             catch
             {
@@ -165,9 +174,9 @@ namespace LockViewApp.W81
             }
         }
 
-        private WriteableBitmap adjustImagePreview(bool useActualTarget)
+        private void adjustImagePreview(bool useActualTarget)
         {
-            if (originalMap == null) return null;
+            if (originalMap == null) return;
             WriteableBitmap currentMap;
             int actualHeight, actualWidth;
             actualHeight = originalMap.PixelHeight;
@@ -179,14 +188,17 @@ namespace LockViewApp.W81
             if (actualRatio > targetRatio)
             {
                 //user swipe up and down.
+                //imageCropper.Height = actualHeight * targetHeight / actualWidth;
+                //imageCropper.Width = targetWidth;
                 currentMap = originalMap.Resize(targetWidth, actualHeight * targetWidth / actualWidth, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
             else
             {
-                currentMap = originalMap.Resize(actualWidth * targetHeight / actualHeight, targetHeight,WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                //imageCropper.Height = targetHeight;
+                //imageCropper.Width = actualWidth * targetHeight / actualHeight;
+                currentMap = originalMap.Resize(actualWidth * targetHeight / actualHeight, targetHeight, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
-            //imageCropper.Source = currentMap;
-            return currentMap;
+            imageCropper.Source = currentMap;
         }
 
         private void resoluionHeight_TextChanged(object sender, TextChangedEventArgs e)
@@ -197,6 +209,11 @@ namespace LockViewApp.W81
         private void resolutionWidth_TextChanged(object sender, TextChangedEventArgs e)
         {
             RedrawCropper();
+        }
+
+        private void repickImage_Click(object sender, RoutedEventArgs e)
+        {
+            listBox_SelectionChanged(null, null);
         }
     }
 }
