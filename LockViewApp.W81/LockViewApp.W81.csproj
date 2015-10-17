@@ -160,6 +160,12 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LockViewApp.W81.DataContracts\LockViewApp.W81.DataContracts.csproj">
+      <Project>{d81f3bc8-764a-46d0-ab1f-69fadbecad61}</Project>
+      <Name>LockViewApp.W81.DataContracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

@@ -1,16 +1,22 @@
-﻿using Microsoft.Phone.Scheduler;
+﻿#if WINDOWS_PHONE
+using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Shell;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+#if WINDOWS_PHONE
 using System.IO.IsolatedStorage;
+#endif
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.Data.Json;
+#if WINDOWS_PHONE
 using Windows.Phone.System.UserProfile;
+#endif
 using Windows.Storage;
 using Windows.Web.Http;
 
@@ -45,6 +51,7 @@ namespace InfoViewApp.WP81.Tasks
         }
         public static void TrySetLockScreenImage(string fileName, string cultureHint)
         {
+#if WINDOWS_PHONE
             try
             {
                 LockScreen.SetImageUri(new Uri($"ms-appx:///Transitioning.png", UriKind.Absolute));
@@ -54,11 +61,14 @@ namespace InfoViewApp.WP81.Tasks
             {
                 LockScreen.SetImageUri(new Uri($"ms-appx:///Outage_{cultureHint}.png", UriKind.Absolute));
             }
+#elif WINDOWS_APP
+#endif
         }
 
 
         public static void TryUpdateTiles()
         {
+#if WINDOWS_PHONE
             var uri = new Uri(PinnedHeadlineNavId, UriKind.Relative);
             var isPinned = ShellTile.ActiveTiles.Any<ShellTile>(st => st.NavigationUri == uri);
             if (isPinned)
@@ -72,10 +82,13 @@ namespace InfoViewApp.WP81.Tasks
                 }
                 tile.Update(standardTile);
             }
+#elif WINDOWS_APP
+#endif
         }
 
         public static void SaveAndClearUsedComposedImage(byte[] jpegBytes, string fileName)
         {
+#if WINDOWS_PHONE
             using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
             {
                 string removeName = null;
@@ -98,6 +111,22 @@ namespace InfoViewApp.WP81.Tasks
                     fs.Write(jpegBytes, 0, jpegBytes.Length);
                 }
             }
+#elif WINDOWS_APP
+            StorageFile imgFile = null;
+            try
+            {
+                imgFile = StorageFile.GetFileFromApplicationUriAsync(Windows.System.UserProfile.LockScreen.OriginalImageFile).GetResults();
+            }
+            catch(Exception ex)
+            { }
+            imgFile.DeleteAsync(StorageDeleteOption.PermanentDelete).GetResults();
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            var storageFile = folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting).GetResults();
+            using (var randomAccessStream = storageFile.OpenAsync(FileAccessMode.ReadWrite).GetResults())
+            {
+                randomAccessStream.WriteAsync(jpegBytes.AsBuffer()).GetResults();
+            }
+#endif
         }
 
         public static void PrepareFormattingContractForScaling(OverlayFormattingContract instance)
@@ -118,6 +147,7 @@ namespace InfoViewApp.WP81.Tasks
 
         public static void RegisterOrRenewBackgroundAgent()
         {
+#if WINDOWS_PHONE
             var periodicTask = ScheduledActionService.Find("BackgroundTask");
             if (periodicTask != null)
             {
@@ -133,12 +163,19 @@ namespace InfoViewApp.WP81.Tasks
             ScheduledActionService.Add(periodicTask);
             if (Debugger.IsAttached)
                 ScheduledActionService.LaunchForTest("BackgroundTask", TimeSpan.FromSeconds(2));
+#elif WINDOWS_APP
+            throw new NotImplementedException();
+#endif
         }
 
         public static string GetDeviceId()
         {
+#if WINDOWS_PHONE
             byte[] myDeviceID = (byte[])Microsoft.Phone.Info.DeviceExtendedProperties.GetValue("DeviceUniqueId");
             return Convert.ToBase64String(myDeviceID);
+#elif WINDOWS_APP
+            throw new NotImplementedException();
+#endif
         }
 
         public static async Task<string> GetBingImageFitScreenUrl(HttpClient client)
@@ -151,8 +188,10 @@ namespace InfoViewApp.WP81.Tasks
             var json = await client.GetStringAsync(new Uri(reqString));
             var jObj = JsonObject.Parse(json);
             var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
+#if WINDOWS_PHONE
             imgRequestUrl = string.Format("{0}_{1}x{2}.jpg", imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_')), instance.PreviewLayoutContract.TargetWidth, instance.PreviewLayoutContract.TargetHeight);
             //imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
+#endif
             if (imgRequestUrl.StartsWith("http") == false)
                 imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
             return imgRequestUrl;

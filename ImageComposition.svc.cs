@@ -82,7 +82,7 @@ namespace InfoView
         const string nasaAPIKey = "mzzFYcsRbS2oVEak5fvY4Znbx6tTsAy200MiQqXF"; //<--- if you see this, it is mangled.
         internal override string getEntryIdFromRequest(ImageRequestOverride iro)
         {
-            return string.Format("{0}{1}", iro.ImageRequestUrl, iro.Arguments);
+            return string.Format("{0}&{1}", iro.ImageRequestUrl, iro.Arguments);
         }
         internal override ServiceCacheEntry<MemoryStream> getEntryFromRequest(ImageRequestOverride iro)
         {

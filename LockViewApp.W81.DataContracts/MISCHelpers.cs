@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Graphics.Display;
 using Windows.UI.Xaml;
 
 namespace LockViewApp.W81
@@ -11,8 +12,8 @@ namespace LockViewApp.W81
     {
         public static void GetResolutionInPixels(out int width, out int height)
         {
-            height= (int)Window.Current.Bounds.Height;
-            width = (int)Window.Current.Bounds.Width;
+            height = (int)((Window.Current.Bounds.Bottom) * DisplayInformation.GetForCurrentView().LogicalDpi);
+            width = (int)(Window.Current.Bounds.Width * DisplayInformation.GetForCurrentView().LogicalDpi);
         }
     }
 }

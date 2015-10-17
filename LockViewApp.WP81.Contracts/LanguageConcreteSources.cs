@@ -30,12 +30,16 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             HtmlNode phoneticNode = null;
             try
             {
+#if WINDOWS_PHONE
                 node = document.DocumentNode.SelectSingleNode(HeadlineSelectionPath);
                 secondaryNode = document.DocumentNode.SelectSingleNode(SecondaryLineSelectionPath);
                 if(PhoneticSelectionPath != null)
                 {
                     phoneticNode = document.DocumentNode.SelectSingleNode(PhoneticSelectionPath);
                 }
+#elif WINDOWS_APP
+                //node = document.DocumentNode.
+#endif
                 var response1 = new InterestContent()
                 {
                     Title = HtmlDecodingUtility.HtmlDecode(node.InnerText),
@@ -68,7 +72,11 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
         public override async Task<InterestContent> RequestContent(InterestRequest request)
         {
             InterestContent contract = new InterestContent();
+#if WINDOWS_PHONE
             using (Stream stream = Application.GetResourceStream(new Uri(SourcePath, UriKind.Relative)).Stream)
+#elif WINDOWS_APP
+            using (Stream stream = await ((await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///{SourcePath}"))).OpenStreamForReadAsync()))
+#endif
             {
                 StreamReader sr = new StreamReader(stream);
                 var idx = ((int)DateTime.Now.TimeOfDay.TotalSeconds) % LineCount;

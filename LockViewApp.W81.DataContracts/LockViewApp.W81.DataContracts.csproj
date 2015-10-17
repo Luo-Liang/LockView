@@ -119,6 +119,9 @@
     <Compile Include="..\LockViewApp.WP81.Contracts\LanguageSources.cs">
       <Link>LanguageSources.cs</Link>
     </Compile>
+    <Compile Include="..\LockViewApp.WP81.Contracts\LockViewApplicationState.cs">
+      <Link>LockViewApplicationState.cs</Link>
+    </Compile>
     <Compile Include="..\LockViewApp.WP81.Contracts\LockViewRequestMetadata.cs">
       <Link>LockViewRequestMetadata.cs</Link>
     </Compile>
@@ -133,6 +136,9 @@
     </Compile>
     <Compile Include="..\LockViewApp.WP81.Contracts\SpecificInterestGatherer.cs">
       <Link>SpecificInterestGatherer.cs</Link>
+    </Compile>
+    <Compile Include="..\LockViewApp.WP81.Contracts\Tasks\BackgroundTaskHelper.cs">
+      <Link>Task\BackgroundTaskHelper.cs</Link>
     </Compile>
     <Compile Include="..\LockViewApp.WP81.Contracts\Tasks\CloudImageCompositorClient.cs">
       <Link>Task\CloudImageCompositorClient.cs</Link>
@@ -158,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

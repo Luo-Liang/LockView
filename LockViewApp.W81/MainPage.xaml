@@ -49,7 +49,7 @@
     </Page.Resources>
 
     <Grid Background="#FF1A1A1A">
-        <Grid Height="308" VerticalAlignment="Top" HorizontalAlignment="Right" Width="817">
+        <Grid Height="308" VerticalAlignment="Top" HorizontalAlignment="Right" Width="817" d:IsLocked="True">
             <Rectangle HorizontalAlignment="Left" Height="116" Margin="183,0,0,0" VerticalAlignment="Top" Width="634">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="#FF926FD4"/>
@@ -70,7 +70,7 @@
                     <SolidColorBrush Color="{StaticResource DarkAccentColor}"/>
                 </Ellipse.Fill>
             </Ellipse>
-            <Path Data="M155,0 C197.802,1.5E-05 236.552,14.3829 264.602,37.6368 L268.936,41.4062 L272.71,39.7229 C286.169,34.106 300.967,31 316.5,31 C359.216,31 396.371,54.4893 415.422,89.0908 L415.901,90.0138 L418.225,87.3661 C438.805,65.0257 468.492,51 501.5,51 C522.858,51 542.826,56.8723 559.835,67.0699 L562.827,68.962 L563.458,67.9771 C587.09,32.9979 627.109,10 672.5,10 C745.125,10 804,68.8746 804,141.5 C804,214.125 745.125,273 672.5,273 L672,272.988 L672,308 L309,308 L309,252.734 L307.131,252.621 C285.505,250.861 265.613,243.067 249.189,230.948 L248.894,230.719 L247.739,231.472 C221.878,247.505 189.777,257 155,257 C69.3959,257 0,199.469 0,128.5 C0,57.5314 69.3959,1.5E-05 155,0 z" HorizontalAlignment="Left" Stretch="Fill" UseLayoutRounding="False" Width="804" Margin="14,0,-1,0">
+            <Path Data="M155,0 C197.802,1.5E-05 236.552,14.3829 264.602,37.6368 L268.936,41.4062 L272.71,39.7229 C286.169,34.106 300.967,31 316.5,31 C359.216,31 396.371,54.4893 415.422,89.0908 L415.901,90.0138 L418.225,87.3661 C438.805,65.0257 468.492,51 501.5,51 C522.858,51 542.826,56.8723 559.835,67.0699 L562.827,68.962 L563.458,67.9771 C587.09,32.9979 627.109,10 672.5,10 C745.125,10 804,68.8746 804,141.5 C804,214.125 745.125,273 672.5,273 L672,272.988 L672,308 L309,308 L309,252.734 L307.131,252.621 C285.505,250.861 265.613,243.067 249.189,230.948 L248.894,230.719 L247.739,231.472 C221.878,247.505 189.777,257 155,257 C69.3959,257 0,199.469 0,128.5 C0,57.5314 69.3959,1.5E-05 155,0 z" HorizontalAlignment="Left" Stretch="Fill" UseLayoutRounding="False" Width="804" Margin="14,0,-1,0" d:IsLocked="True">
                 <Path.Fill>
                     <LinearGradientBrush EndPoint="0.878,-1.481" StartPoint="0.841,0.386">
                         <GradientStop Color="#FF1A1A1A" Offset="0"/>
@@ -84,7 +84,61 @@
         	<LineBreak/>
         	<Run FontSize="24" Text="PC, CONSOLE AND TABLET"/>
         </TextBlock>
-        <Grid Margin="40,152,43,90" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid" HorizontalAlignment="Left">
+        <Grid x:Name="ImagePreviewTool" Margin="794,167,40,90" d:LayoutOverrides="LeftPosition, RightPosition">
+            <Grid x:Name="boundingBox" Margin="0">
+                <Grid x:Name="imagePreviewBox" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border x:Name="boundingBorder" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" BorderThickness="15,15,15,35" CornerRadius="5" BorderBrush="#FF444444" Margin="0">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="imageViewBox" ZoomMode="Disabled">
+                            <Image x:Name="imageCropper" Stretch="Uniform"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ProgressRing x:Name="busyRIng" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="30" Height="30" Foreground="{StaticResource AccentBrush}"/>
+                    <Image x:Name="image" VerticalAlignment="Bottom" HorizontalAlignment="Center" Source="Assets/Maximize.png" Width="25" Height="25" Margin="0,0,0,3"/>
+                </Grid>
+            </Grid>
+            <Grid x:Name="maximizeAnimationGrid" Margin="0" HorizontalAlignment="Left" Width="542" Height="354" VerticalAlignment="Top" Visibility="Collapsed">
+                <Rectangle Stroke="#FF1A1A1A" Height="20" VerticalAlignment="Bottom" StrokeThickness="0" Fill="#FF424242" RadiusX="5" RadiusY="5" d:LayoutOverrides="LeftPosition, RightPosition"/>
+                <Rectangle Margin="0,0,0,9" Stroke="#FF424242" StrokeThickness="10" RadiusX="5" RadiusY="5" d:LayoutOverrides="LeftPosition, RightPosition" Width="542" Height="345" HorizontalAlignment="Center"/>
+                <Rectangle Height="19" Margin="136,0,143,1" StrokeThickness="2" VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="Assets/Maximize.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                    <Rectangle.Stroke>
+                        <ImageBrush Stretch="Fill"/>
+                    </Rectangle.Stroke>
+                </Rectangle>
+                <Rectangle x:Name="rectangle" Stroke="#FF1A1A1A" StrokeThickness="0" Fill="{StaticResource AccentBrush}" HorizontalAlignment="Center" Width="271" Height="172" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <CompositeTransform/>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+        </Grid>
+        <StackPanel x:Name="notification" Margin="449,152,0,90" d:LayoutOverrides="TopPosition, BottomPosition" HorizontalAlignment="Left" Width="306">
+            <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Pick a best view." FontSize="24" Margin="0,10,10,5" Foreground="{StaticResource LightAccentBrush}"/>
+            <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="0,4,10,10" Text="Look around. When you find a best view, click Ok. This is picking an image for your Lock Screen, the image is scaled appropriately." TextAlignment="Justify">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{StaticResource LighterGray}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <StackPanel Height="378" Width="306">
+                <TextBlock x:Name="textBlock2" Margin="0,4,0,5" TextWrapping="Wrap" FontSize="24" d:LayoutOverrides="Height, LeftPosition, RightPosition" Text="Enter your resolution. " Foreground="{StaticResource LightAccentBrush}"/>
+                <TextBlock x:Name="croppingGuideText_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="0,4,0,10" Text="You resolution refers to the native resolution of your screen. If unsure, right click on the desktop and select display properties." TextAlignment="Justify">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource LighterGray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width">
+                    <TextBlock x:Name="textBlock2_Copy1" TextWrapping="Wrap" FontSize="18.667" Text="Height" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                    <TextBox TextChanged="resoluionHeight_TextChanged" x:Name="resoluionHeight" TextWrapping="Wrap" Text="1080" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="20,0,0,0" VerticalAlignment="Top"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width" Margin="0,20,0,0">
+                    <TextBlock x:Name="textBlock2_Copy" TextWrapping="Wrap" FontSize="18.667" Text="Width " VerticalAlignment="Top" Margin="0,5,0,0"/>
+                    <TextBox TextChanged="resolutionWidth_TextChanged" x:Name="resolutionWidth" TextWrapping="Wrap" Text="1920" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="27,0,0,0" VerticalAlignment="Top"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Grid Margin="40,152,0,90" d:LayoutOverrides="TopPosition, BottomPosition" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid" HorizontalAlignment="Left">
             <Grid Width="380" HorizontalAlignment="Left">
                 <StackPanel Margin="2,0" Background="{StaticResource AccentBrush}" Height="103" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
                     <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Image Source" FontSize="24" Margin="10,10,10,5"/>
@@ -97,38 +151,10 @@
                 		<Run Text="Select a source from below."/>
                     </TextBlock>
                 </StackPanel>
-                <ListBox SelectionChanged="listBox_SelectionChanged" ItemsSource="{StaticResource categories}" x:Name="listBox" Background="{x:Null}" FontFamily="Global User Interface" ItemTemplate="{StaticResource ListBoxDataTemplate}" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,123,0,-2" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
-            </Grid>
-            <Grid x:Name="ImagePreviewTool" Margin="400,0,0,0" d:LayoutOverrides="LeftPosition, RightPosition">
-                <StackPanel Margin="2,0" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
-                    <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Pick a best view." FontSize="24" Margin="0,10,10,5" Foreground="{StaticResource LightAccentBrush}"/>
-                    <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="0,4,10,10" Text="Look around. When you find a best view, click Ok. This is picking an image for your Lock Screen, the image is scaled appropriately.">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource LighterGray}"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                </StackPanel>
-                <Image x:Name="imageCropper" Margin="0,103,0,0" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
-                <Grid x:Name="maximizeAnimationGrid" Margin="0,147,0,0" HorizontalAlignment="Center" Width="542" Height="354" VerticalAlignment="Top" Visibility="Collapsed">
-                    <Rectangle Stroke="#FF1A1A1A" Height="20" VerticalAlignment="Bottom" StrokeThickness="0" Fill="#FF424242" RadiusX="5" RadiusY="5" d:LayoutOverrides="LeftPosition, RightPosition"/>
-                    <Rectangle Margin="0,0,0,9" Stroke="#FF424242" StrokeThickness="10" RadiusX="5" RadiusY="5" d:LayoutOverrides="LeftPosition, RightPosition" Width="542" Height="345" HorizontalAlignment="Center"/>
-                    <Rectangle Height="19" Margin="136,0,143,1" StrokeThickness="2" VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition">
-                        <Rectangle.Fill>
-                            <ImageBrush ImageSource="Assets/Maximize.png" Stretch="Uniform"/>
-                        </Rectangle.Fill>
-                        <Rectangle.Stroke>
-                            <ImageBrush Stretch="Fill"/>
-                        </Rectangle.Stroke>
-                    </Rectangle>
-                    <Rectangle x:Name="rectangle" Stroke="#FF1A1A1A" StrokeThickness="0" Fill="{StaticResource AccentBrush}" HorizontalAlignment="Center" Width="271" Height="172" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-                        <Rectangle.RenderTransform>
-                            <CompositeTransform/>
-                        </Rectangle.RenderTransform>
-                    </Rectangle>
-                </Grid>
+                <ListBox SelectionChanged="listBox_SelectionChanged" ItemsSource="{StaticResource categories}" x:Name="listBox" Background="{x:Null}" FontFamily="Global User Interface" ItemTemplate="{StaticResource ListBoxDataTemplate}" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,123,0,-2" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" BorderThickness="0" />
             </Grid>
         </Grid>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="139" Margin="8,4,0,0" VerticalAlignment="Top" Width="139" Source="Assets/LockViewInApp.png"/>
+        <Image HorizontalAlignment="Left" Height="139" Margin="8,4,0,0" VerticalAlignment="Top" Width="139" Source="Assets/LockViewInApp.png"/>
         <Button x:Name="nextButton" Content="Next" Margin="48,0,0,38" VerticalAlignment="Bottom" />
     </Grid>
 </Page>

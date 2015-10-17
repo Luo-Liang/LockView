@@ -45,11 +45,13 @@ namespace InfoViewApp.WP81
                 Instance = new LockViewApplicationState();
                 Instance.RequestMetadata = new LockViewRequestMetadata() { RequestLanguage = "en-us", ScaleFactor = 1.0 };
 
+#if WINDOWS_PHONE
                 if (Microsoft.Phone.Info.DeviceStatus.DeviceTotalMemory >> 28 < 1)
                 {
                     //low ram device.
                     Instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
                 }
+#endif
                 Instance.PreviewFormattingContract = new OverlayFormattingContract()
                 {
                     BackgroundSecondLine = "Transparent",
