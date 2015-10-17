@@ -68,7 +68,7 @@ namespace InfoViewApp.WP81
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             img.Source = await OpenBitmapFromFile(LockViewApplicationState.Instance.RequestMetadata.PersistFileName, (int)width, (int)height);
             var cnt = InterestNavigationQueue.Instance.NavigationPages.Count;
-            for (int i = 0; i < cnt; i++)
+            for (int i = 0; i < Math.Min(4,cnt); i++)
             {
                 var panel = this.FindName($"previewStack{i}") as StackPanel;
                 panel.DataContext = null;//force rebind.
