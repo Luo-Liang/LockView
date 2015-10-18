@@ -63,8 +63,8 @@
                 <ListBox SelectionChanged="listBox_SelectionChanged" ItemsSource="{StaticResource categories}" x:Name="listBox" Background="{x:Null}" FontFamily="Global User Interface" ItemTemplate="{StaticResource ListBoxDataTemplate}" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,123,0,-2" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" BorderThickness="0" />
             </Grid>
         </Grid>
-        <Grid Margin="460,152,526,90" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid_Copy" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
-            <Grid Width="380" HorizontalAlignment="Left">
+        <Grid Margin="453,152,533,90" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid_Copy" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
+            <Grid Width="380" HorizontalAlignment="Left" Margin="-1,0,0,0">
                 <StackPanel Margin="2,0" Background="{StaticResource AccentBrush}" Height="103" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
                     <TextBlock x:Name="DeailedSetupBox" TextWrapping="Wrap" Text="Setup" FontSize="24" Margin="10,10,10,5"/>
                     <TextBlock x:Name="DetailedSetupText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" Text="Here're some specific questions regarding your interest in ">
@@ -74,6 +74,48 @@
                     </TextBlock>
                 </StackPanel>
             </Grid>
+        </Grid>
+        <Grid x:Name="ImagePreviewTool" Margin="862,152,40,90" d:LayoutOverrides="LeftPosition, RightPosition">
+            <Grid x:Name="boundingBox" Margin="0,136,0,0">
+                <Grid x:Name="imagePreviewBox" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border x:Name="boundingBorder" BorderThickness="15,15,15,35" CornerRadius="5" BorderBrush="#FF444444" Margin="0">
+                        <ScrollViewer Background="{x:Null}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ZoomMode="Disabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="imageViewBox">
+                            <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="UniformToFill" x:Name="imageCropper"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ProgressRing x:Name="busyRIng" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="30" Height="30" Foreground="{StaticResource AccentBrush}"/>
+                    <Image x:Name="image" VerticalAlignment="Bottom" HorizontalAlignment="Center" Source="Assets/Maximize.png" Width="25" Height="25" Margin="0,0,0,3"/>
+
+                </Grid>
+            </Grid>
+            <Grid x:Name="maximizeAnimationGrid" Margin="0" HorizontalAlignment="Left" Width="542" Height="354" VerticalAlignment="Top" Visibility="Collapsed">
+                <Rectangle Stroke="#FF1A1A1A" Height="20" VerticalAlignment="Bottom" StrokeThickness="0" Fill="#FF424242" RadiusX="5" RadiusY="5" d:LayoutOverrides="LeftPosition, RightPosition"/>
+                <Rectangle Margin="0,0,0,9" Stroke="#FF424242" StrokeThickness="10" RadiusX="5" RadiusY="5" d:LayoutOverrides="LeftPosition, RightPosition" Width="542" Height="345" HorizontalAlignment="Center"/>
+                <Rectangle Height="19" Margin="136,0,143,1" StrokeThickness="2" VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="Assets/Maximize.png" Stretch="Uniform"/>
+                    </Rectangle.Fill>
+                    <Rectangle.Stroke>
+                        <ImageBrush Stretch="Fill"/>
+                    </Rectangle.Stroke>
+                </Rectangle>
+                <Rectangle x:Name="rectangle" Stroke="#FF1A1A1A" StrokeThickness="0" Fill="{StaticResource AccentBrush}" HorizontalAlignment="Center" Width="271" Height="172" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <CompositeTransform/>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+            <StackPanel Background="{StaticResource AccentBrush}" Height="103" VerticalAlignment="Top" d:LayoutOverrides="LeftPosition, RightPosition">
+                <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Swipe around!" FontSize="24" Margin="10,10,10,5"/>
+                <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource LighterGray}"/>
+                    </TextBlock.Foreground>
+        			<Run Text="Laptops: Scroll using your mouse wheel."/>
+        			<LineBreak/>
+        			<Run Text="Tablets: Scroll using your fingers."/>
+                </TextBlock>
+            </StackPanel>
         </Grid>
 
     </Grid>
