@@ -51,25 +51,26 @@ namespace LockViewApp.W81
             {
                 width = 3840;
                 height = 2400;
-                resoluionHeight.Text = height.ToString();  
-                resolutionWidth.Text = width.ToString(); 
+                resoluionHeight.Text = height.ToString();
+                resolutionWidth.Text = width.ToString();
             }
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight = height;
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth = width;
-            var boundingBoxhwRatio = boundingBox.ActualHeight / boundingBox.ActualWidth;
+            var boundingBoxhwRatio = (boundingBox.ActualHeight - 50) / (boundingBox.ActualWidth - 30);
             var actualScreenRatio = 1.0 * height / width;
             if (actualScreenRatio > boundingBoxhwRatio)
             {
                 //align height.
-                imageViewBox.Height = boundingBox.ActualHeight;
-                imageViewBox.Width = width * boundingBox.ActualHeight / height;
+                imageViewBox.Height = boundingBox.ActualHeight - 50;
+                imageViewBox.Width = width * (boundingBox.ActualHeight - 50) / height;
             }
             else
             {
-                imageViewBox.Width = boundingBox.ActualWidth;
-                imageViewBox.Height = height * boundingBox.ActualWidth / width;
+                imageViewBox.Width = boundingBox.ActualWidth - 30;
+                imageViewBox.Height = height * (boundingBox.ActualWidth - 30) / width;
             }
             adjustImagePreview(false);
+            System.Diagnostics.Debug.Assert(imageCropper.ActualHeight / imageCropper.ActualWidth == 1.0 * height / width);
             //imageCropper.Source = adjustImagePreview(false);
         }
         private async void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -93,7 +94,7 @@ namespace LockViewApp.W81
             //    maximize.Begin();
             //}
             RedrawCropper();
-            adjustImagePreview(false);
+            //adjustImagePreview(false);
         }
         void MakeBusy()
         {
@@ -188,14 +189,14 @@ namespace LockViewApp.W81
             if (actualRatio > targetRatio)
             {
                 //user swipe up and down.
-                imageCropper.Height = actualHeight * targetWidth / actualWidth;
-                imageCropper.Width = targetWidth;
+                imageCropper.Height = actualHeight * (targetWidth - 0) / actualWidth;
+                imageCropper.Width = (targetWidth - 0);
                 //currentMap = originalMap.Resize(targetWidth, actualHeight * targetWidth / actualWidth, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
             else
             {
-                imageCropper.Height = targetHeight;
-                imageCropper.Width = actualWidth * targetHeight / actualHeight;
+                imageCropper.Height = (targetHeight - 0);
+                imageCropper.Width = actualWidth * (targetHeight - 0) / actualHeight;
                 //currentMap = originalMap.Resize(actualWidth * targetHeight / actualHeight, targetHeight, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
             }
             imageCropper.Source = originalMap;
@@ -238,6 +239,7 @@ namespace LockViewApp.W81
                 int actualWidth = (int)(widthExtent * WB_CapturedImage.PixelWidth);
                 WB_CapturedImage = WB_CapturedImage.Crop(actualWidth, 0, (int)(WB_CapturedImage.PixelHeight / screenRatio), WB_CapturedImage.PixelHeight);
             }
+            this.Frame.Navigate(typeof(SourceSelectionAndPreview), WB_CapturedImage);
             //OriginalImage.Source = WB_CroppedImage;
         }
     }

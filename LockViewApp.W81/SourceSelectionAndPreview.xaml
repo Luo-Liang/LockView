@@ -63,7 +63,7 @@
                 <ListBox SelectionChanged="listBox_SelectionChanged" ItemsSource="{StaticResource categories}" x:Name="listBox" Background="{x:Null}" FontFamily="Global User Interface" ItemTemplate="{StaticResource ListBoxDataTemplate}" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,123,0,-2" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" BorderThickness="0" />
             </Grid>
         </Grid>
-        <Grid Margin="453,152,533,90" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid_Copy" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
+        <Grid Margin="453,152,0,90" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid_Copy" d:LayoutOverrides="TopPosition, BottomPosition" HorizontalAlignment="Left">
             <Grid Width="380" HorizontalAlignment="Left" Margin="-1,0,0,0">
                 <StackPanel Margin="2,0" Background="{StaticResource AccentBrush}" Height="103" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
                     <TextBlock x:Name="DeailedSetupBox" TextWrapping="Wrap" Text="Setup" FontSize="24" Margin="10,10,10,5"/>
@@ -106,14 +106,11 @@
                 </Rectangle>
             </Grid>
             <StackPanel Background="{StaticResource AccentBrush}" Height="103" VerticalAlignment="Top" d:LayoutOverrides="LeftPosition, RightPosition">
-                <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Swipe around!" FontSize="24" Margin="10,10,10,5"/>
-                <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10">
+                <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Preview" FontSize="24" Margin="10,10,10,5"/>
+                <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" Text="This shows how things may look like on your lock screen.">
                     <TextBlock.Foreground>
                         <SolidColorBrush Color="{StaticResource LighterGray}"/>
                     </TextBlock.Foreground>
-        			<Run Text="Laptops: Scroll using your mouse wheel."/>
-        			<LineBreak/>
-        			<Run Text="Tablets: Scroll using your fingers."/>
                 </TextBlock>
             </StackPanel>
         </Grid>

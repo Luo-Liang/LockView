@@ -26,5 +26,9 @@ namespace LockViewApp.W81
             Gatherer = new GoogleSpecificInterestGatherer();
         }
 
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            InvokeHandlerIfPossible();
+        }
     }
 }
