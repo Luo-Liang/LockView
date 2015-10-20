@@ -26,9 +26,9 @@ namespace LockViewApp.W81
             Gatherer = new GoogleSpecificInterestGatherer();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        async private void button_Click(object sender, RoutedEventArgs e)
         {
-            InvokeHandlerIfPossible();
+            await InvokeHandlerIfPossible(new InterestRequest() { InterestString = textBox.Text});
         }
     }
 }

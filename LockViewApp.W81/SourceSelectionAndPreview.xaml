@@ -79,9 +79,12 @@
             <Grid x:Name="boundingBox" Margin="0,136,0,0">
                 <Grid x:Name="imagePreviewBox" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Border x:Name="boundingBorder" BorderThickness="15,15,15,35" CornerRadius="5" BorderBrush="#FF444444" Margin="0">
-                        <ScrollViewer Background="{x:Null}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ZoomMode="Disabled" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="imageViewBox">
-                            <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="UniformToFill" x:Name="imageCropper"/>
-                        </ScrollViewer>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="mockScreen" Height="302" Width="400">
+                            <Image Stretch="UniformToFill" x:Name="imageCropper"/>
+                            <TextBlock x:Name="timePreviewGrid" Margin="23,0,23,64" TextWrapping="Wrap" Text="22:10" VerticalAlignment="Bottom" FontSize="42.667"/>
+                            <TextBlock x:Name="datePreview" Margin="23,0,23,36" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="26.667"/>
+                            <StackPanel x:Name="previewItemStackPanel" Margin="23,23,23,120"/>
+                        </Grid>
                     </Border>
                     <ProgressRing x:Name="busyRIng" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="30" Height="30" Foreground="{StaticResource AccentBrush}"/>
                     <Image x:Name="image" VerticalAlignment="Bottom" HorizontalAlignment="Center" Source="Assets/Maximize.png" Width="25" Height="25" Margin="0,0,0,3"/>
@@ -107,7 +110,7 @@
             </Grid>
             <StackPanel Background="{StaticResource AccentBrush}" Height="103" VerticalAlignment="Top" d:LayoutOverrides="LeftPosition, RightPosition">
                 <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Preview" FontSize="24" Margin="10,10,10,5"/>
-                <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" Text="This shows how things may look like on your lock screen.">
+                <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" Text="This shows how things may look like on your lock screen. Click on texts to adjust style.">
                     <TextBlock.Foreground>
                         <SolidColorBrush Color="{StaticResource LighterGray}"/>
                     </TextBlock.Foreground>

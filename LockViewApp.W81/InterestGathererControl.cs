@@ -11,21 +11,21 @@ namespace LockViewApp.W81
 {
     public class GathererReadyEvent : EventArgs
     {
-        public IInterestGatherer InvokingGatherer { get; private set; }
-        public GathererReadyEvent(IInterestGatherer gatherer)
+        public InterestContent Content { get; private set; }
+        public GathererReadyEvent(InterestContent content)
         {
-            InvokingGatherer = gatherer;
+            Content = content;
         }
     }
     public class InterestGathererControl : UserControl
     {
         public InterestGatherer Gatherer { get; set; }
         public event EventHandler<GathererReadyEvent> ShowMeClicked;
-        internal void InvokeHandlerIfPossible()
+        async internal Task InvokeHandlerIfPossible(InterestRequest request)
         {
             if (ShowMeClicked != null)
             {
-                ShowMeClicked(this, new GathererReadyEvent(Gatherer));
+                ShowMeClicked(this, new GathererReadyEvent(await Gatherer.RequestContent(request)));
             }
         }
     }

@@ -59,17 +59,18 @@ namespace LockViewApp.W81
             if (actualScreenRatio > boundingBoxhwRatio)
             {
                 //align height.
-                imageViewBox.Height = boundingBox.ActualHeight-50;
-                imageViewBox.Width = width * (boundingBox.ActualHeight-50) / height;
+                mockScreen.Height = boundingBox.ActualHeight-50;
+                mockScreen.Width = width * (boundingBox.ActualHeight-50) / height;
             }
             else
             {
-                imageViewBox.Width = boundingBox.ActualWidth-30;
-                imageViewBox.Height = height * (boundingBox.ActualWidth-30) / width;
+                mockScreen.Width = boundingBox.ActualWidth-30;
+                mockScreen.Height = height * (boundingBox.ActualWidth-30) / width;
             }
-
-            imageCropper.Height = imageViewBox.Height;
-            imageCropper.Width = imageViewBox.Width;
+            //mockScreen.Height = imageViewBox.Height;
+            //mockScreen.Width = imageViewBox.Width;
+            //imageCropper.Height = imageViewBox.Height;
+            //imageCropper.Width = imageViewBox.Width;
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

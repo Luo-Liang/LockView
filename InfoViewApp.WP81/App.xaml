@@ -62,7 +62,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+         
         <converter:enum2LocalizedStrConverter x:Key="enumLocConn"/>
         <converter:int2FontConverter x:Key="i2fConn"/>
         <converter:Str2BrushConverter x:Key="str2BrushConn"/>

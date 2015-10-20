@@ -12,7 +12,6 @@ using Windows.Storage.Streams;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
 using LockViewApp.WP81.Contracts;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace InfoViewApp.WP81
 {
