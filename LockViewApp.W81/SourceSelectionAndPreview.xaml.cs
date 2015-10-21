@@ -1,4 +1,5 @@
 ﻿using InfoViewApp.WP81;
+using InfoViewApp.WP81.InterestGathering;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -54,18 +55,18 @@ namespace LockViewApp.W81
         {
             var height = LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight;
             var width = LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth;
-            var boundingBoxhwRatio = (boundingBox.ActualHeight-50) / (boundingBox.ActualWidth-30);
+            var boundingBoxhwRatio = (boundingBox.ActualHeight - 50) / (boundingBox.ActualWidth - 30);
             var actualScreenRatio = 1.0 * height / width;
             if (actualScreenRatio > boundingBoxhwRatio)
             {
                 //align height.
-                mockScreen.Height = boundingBox.ActualHeight-50;
-                mockScreen.Width = width * (boundingBox.ActualHeight-50) / height;
+                mockScreen.Height = boundingBox.ActualHeight - 50;
+                mockScreen.Width = width * (boundingBox.ActualHeight - 50) / height;
             }
             else
             {
-                mockScreen.Width = boundingBox.ActualWidth-30;
-                mockScreen.Height = height * (boundingBox.ActualWidth-30) / width;
+                mockScreen.Width = boundingBox.ActualWidth - 30;
+                mockScreen.Height = height * (boundingBox.ActualWidth - 30) / width;
             }
             //mockScreen.Height = imageViewBox.Height;
             //mockScreen.Width = imageViewBox.Width;
@@ -74,6 +75,60 @@ namespace LockViewApp.W81
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listBox.SelectedItem == null) return;
+            var dataContext = listBox.SelectedItem as ListBoxContentVM;
+            setupTarget.ClearValue(ScrollViewer.ContentProperty);
+            InterestGathererControl selectedControl = null;
+            if (dataContext.NavigationType == "specificInterest")
+            {
+                selectedControl = new SpecificInterestControl();
+                selectedControl.SelectionStatusChanged += Control_SelectionStatusChanged;
+                selectedControl.ShowMeClicked += Control_ShowMeClicked;
+            }
+            selectedControl.Width = setupTarget.ActualWidth;
+            selectedControl.HorizontalAlignment = HorizontalAlignment.Stretch;
+            selectedControl.VerticalAlignment = VerticalAlignment.Top;
+            setupTarget.Content = selectedControl;
+        }
+
+        private void Control_ShowMeClicked(object sender, GathererReadyEvent e)
+        {
+            var ctrl = requestRelationship[sender.GetType()];
+            for (int i = 0; i < previewItemStackPanel.Children.Count; i++)
+            {
+                if(previewItemStackPanel.Children[i] == requestRelationship[sender.GetType()])
+                {
+                    ctrl.SelectedInterestIndex = i;
+                    //update index i.
+                    TemporaryContentStorage[i].CopyFromInterestContent(e.Content);
+                    //assign. Let's just waste some processing time.
+                    LockViewApplicationState.Instance.SelectedContextContracts = TemporaryContentStorage.ToArray();
+                    break;
+                }
+            }
+            ctrl.DataContext = LockViewApplicationState.Instance;
+        }
+        List<OverlayContextContract> TemporaryContentStorage = new List<OverlayContextContract>();
+        Dictionary<Type, PreviewItemDisplayControl> requestRelationship = new Dictionary<Type, PreviewItemDisplayControl>();
+        private void Control_SelectionStatusChanged(object sender, InterestSelectionEvent e)
+        {
+            var preview = new PreviewItemDisplayControl();
+            if (e.IsEnabled)
+            {
+                requestRelationship[sender.GetType()] = preview;
+                previewItemStackPanel.Children.Add(preview);
+                TemporaryContentStorage.Add(new OverlayContextContract());
+            }
+            else
+            {
+                TemporaryContentStorage.RemoveAt(previewItemStackPanel.Children.IndexOf(requestRelationship[sender.GetType()]));
+                previewItemStackPanel.Children.Remove(requestRelationship[sender.GetType()]);
+                requestRelationship.Remove(sender.GetType());
+            }
+        }
+
+        private void nextButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

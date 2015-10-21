@@ -17,15 +17,36 @@ namespace LockViewApp.W81
             Content = content;
         }
     }
+
+    public class InterestSelectionEvent : EventArgs
+    {
+        public bool IsEnabled { get; private set; }
+        public InterestSelectionEvent(bool selected)
+        {
+            IsEnabled = selected;
+        }
+    }
+
     public class InterestGathererControl : UserControl
     {
         public InterestGatherer Gatherer { get; set; }
         public event EventHandler<GathererReadyEvent> ShowMeClicked;
-        async internal Task InvokeHandlerIfPossible(InterestRequest request)
+        public event EventHandler<InterestSelectionEvent> SelectionStatusChanged;
+        //unclear if this is a good design.
+        //can probably use DependencyProperty instead.
+        async internal Task InvokeContentReadyEvent(InterestRequest request)
         {
             if (ShowMeClicked != null)
             {
                 ShowMeClicked(this, new GathererReadyEvent(await Gatherer.RequestContent(request)));
+            }
+        }
+
+        internal void InvokeSelectionStatusChange(bool selected)
+        {
+            if (SelectionStatusChanged != null)
+            {
+                SelectionStatusChanged(this, new InterestSelectionEvent(selected));
             }
         }
     }

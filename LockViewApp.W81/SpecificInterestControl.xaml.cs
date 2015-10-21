@@ -28,7 +28,21 @@ namespace LockViewApp.W81
 
         async private void button_Click(object sender, RoutedEventArgs e)
         {
-            await InvokeHandlerIfPossible(new InterestRequest() { InterestString = textBox.Text});
+            busyBar.Visibility = Visibility.Visible;
+            button.IsEnabled = false;
+            await InvokeContentReadyEvent(new InterestRequest() { InterestString = textBox.Text});
+            busyBar.Visibility = Visibility.Collapsed;
+            button.IsEnabled = true;
+        }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            InvokeSelectionStatusChange(true);
+        }
+
+        private void checkBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            InvokeSelectionStatusChange(false);
         }
     }
 }

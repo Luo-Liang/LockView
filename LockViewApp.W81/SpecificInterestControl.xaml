@@ -5,26 +5,28 @@
     xmlns:local="using:LockViewApp.W81"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="332" Height="204.667">
+    mc:Ignorable="d" Width="332" Height="350">
 
-    <Grid Margin="0,0,0,-118">
+    <Grid Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Margin="10" Orientation="Vertical" d:LayoutOverrides="Height">
-            <CheckBox x:Name="checkBox" Content="Select this interest" Height="36" VerticalAlignment="Stretch" FontFamily="Global User Interface" FontSize="16" Foreground="White" IsChecked="True"/>
-            <TextBlock x:Name="textBlock" Margin="3,10,0,0" TextWrapping="Wrap" FontSize="14.667">
+        <ProgressBar x:Name="busyBar" Height="6" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed"/>
+
+        <StackPanel  Orientation="Vertical" d:LayoutOverrides="Height">
+            <CheckBox Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" x:Name="checkBox" Content="Select this interest" Height="36" VerticalAlignment="Stretch" FontFamily="Global User Interface" FontSize="21.333" Foreground="White" IsChecked="False"/>
+            <TextBlock FontWeight="Light" x:Name="textBlock" Margin="3,10,0,0" TextWrapping="Wrap" FontSize="18.667" FontFamily="Segoe UI Light">
     			<Run Text="Tell us about a specific topic. We'll gather all news about it for you."/>
     			<LineBreak/>
     			<Run Foreground="Gray" Text="Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk."/>
             </TextBlock>
-            <TextBox IsEnabled="{Binding ElementName=checkBox, Path=IsChecked, Mode=OneWay}" x:Name="textBox" Margin="3,10,2,0" TextWrapping="Wrap" Text="" FontFamily="Global User Interface" FontSize="18.667" BorderBrush="White" SelectionHighlightColor="{StaticResource AccentBrush}" Background="{x:Null}" Foreground="White"/>
-            <TextBlock x:Name="textBlock_Copy" Margin="3,10,3,0" TextWrapping="Wrap" FontSize="14.667">
+            <TextBox IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="textBox" Margin="3,10,2,0" TextWrapping="Wrap" Text="" FontFamily="Global User Interface" FontSize="18.667" BorderBrush="White" SelectionHighlightColor="{StaticResource AccentBrush}" Background="{x:Null}" Foreground="White"/>
+            <TextBlock FontWeight="Light" FontFamily="Segoe UI Light" x:Name="textBlock_Copy" Margin="3,20,3,0" TextWrapping="Wrap" FontSize="18.667">
             	<Run Text="Preview this content."/>
             	<LineBreak/>
             	<Run Foreground="Gray" Text="Request this interest and the image will be shown on the right."/>
             </TextBlock>
-            <Button Click="button_Click" IsEnabled="{Binding ElementName=checkBox, Path=IsChecked,Mode=OneWay}" x:Name="button" Content="Show Me" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Stretch"/>
+            <Button Click="button_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" Content="Show Me" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch"/>
 
         </StackPanel>
 

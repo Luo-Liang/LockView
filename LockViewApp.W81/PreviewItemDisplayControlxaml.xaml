@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="LockViewApp.W81.PreviewItemDisplayControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LockViewApp.W81"
+    xmlns:localWP="clr-namespace:InfoViewApp.WP81"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <StackPanel>
+        <Grid Background="{Binding PreviewFormattingContract.BackgroundTitle, Converter={StaticResource str2BrushConn}}" Margin="0,0,0,5">
+            <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap" FontWeight="Bold" x:Name="TitleTextBox" VerticalAlignment="Top" FontSize="{Binding PreviewFormattingContract.TitleFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundTitle, Converter={StaticResource str2BrushConn}, Mode=TwoWay}"  FontFamily="Portable User Interface"  />
+        </Grid>
+        <Grid Background="{Binding PreviewFormattingContract.BackgroundFirstLine, Converter={StaticResource str2BrushConn}}" Margin="0,0,0,5">
+            <TextBlock  Margin="0,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" x:Name="ContentTextBox"  FontSize="{Binding PreviewFormattingContract.FirstLineFont.FontSize, Converter={StaticResource i2fConn}}" Foreground="{Binding PreviewFormattingContract.ForegroundFirstLine, Converter={StaticResource str2BrushConn}, Mode=TwoWay}" />
+        </Grid>
+        <Grid Margin="0,0,0,5">
+            <TextBlock x:Name="PublisherTextBox" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{StaticResource Gray}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+        </Grid>
+    </StackPanel>
+</UserControl>

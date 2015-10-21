@@ -10,7 +10,7 @@
 
     <Page.Resources>
         <WP81:ListBoxContentVMCollection x:Key="categories">
-            <WP81:ListBoxContentVM NavigationType="library" SecondLine="Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library." FirstLine="USE MY OWN IMAGE" />
+            <WP81:ListBoxContentVM NavigationType="specificInterest" SecondLine="Use a specific interest. Give us a topic, and we'll gather all news around it!" FirstLine="SPECIFIC INTEREST" />
             <WP81:ListBoxContentVM NavigationType="bing" SecondLine="Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="BING"/>
             <WP81:ListBoxContentVM NavigationType="nasa" SecondLine="Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. " FirstLine="NASA"/>
         </WP81:ListBoxContentVMCollection>
@@ -73,6 +73,7 @@
                         </TextBlock.Foreground>
                     </TextBlock>
                 </StackPanel>
+                <ScrollViewer HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" x:Name="setupTarget" Margin="0,133,2,0"/>
             </Grid>
         </Grid>
         <Grid x:Name="ImagePreviewTool" Margin="862,152,40,90" d:LayoutOverrides="LeftPosition, RightPosition">
@@ -117,6 +118,7 @@
                 </TextBlock>
             </StackPanel>
         </Grid>
+        <Button Click="nextButton_Click" x:Name="nextButton" Content="Next" Margin="48,0,0,38" VerticalAlignment="Bottom" />
 
     </Grid>
 </Page>

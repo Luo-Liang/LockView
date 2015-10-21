@@ -3,7 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converter="using:InfoViewApp.WP81.Converter"
-    xmlns:local="using:LockViewApp.W81">
+    xmlns:local="using:LockViewApp.W81"
+    xmlns:localWP="using:InfoViewApp.WP81">
     <Application.Resources>
         <converter:enum2LocalizedStrConverter x:Key="enumLocConn"/>
         <converter:int2FontConverter x:Key="i2fConn"/>
@@ -29,6 +30,150 @@
         <SolidColorBrush x:Key="DarkAccent" Color="{StaticResource DarkAccentColor}"/>
         <SolidColorBrush x:Key="LightGray" Color="LightGray"/>
         <Color x:Key="LighterGray">#FFB4B4B4</Color>
+        <localWP:ColorNameVMCollection x:Key="colorCollection">
+            <localWP:ColorNameVM Color="AliceBlue" ColorName="Alice Blue" />
+            <localWP:ColorNameVM Color="AntiqueWhite" ColorName="Antique White" />
+            <localWP:ColorNameVM Color="Aqua" ColorName="Aqua" />
+            <localWP:ColorNameVM Color="Aquamarine" ColorName="Aquamarine" />
+            <localWP:ColorNameVM Color="Azure" ColorName="Azure" />
+            <localWP:ColorNameVM Color="Beige" ColorName="Beige" />
+            <localWP:ColorNameVM Color="Bisque" ColorName="Bisque" />
+            <localWP:ColorNameVM Color="Black" ColorName="Black" />
+            <localWP:ColorNameVM Color="BlanchedAlmond" ColorName="Blanched Almond" />
+            <localWP:ColorNameVM Color="Blue" ColorName="Blue" />
+            <localWP:ColorNameVM Color="BlueViolet" ColorName="Blue Violet" />
+            <localWP:ColorNameVM Color="Brown" ColorName="Brown" />
+            <localWP:ColorNameVM Color="BurlyWood" ColorName="Burly Wood" />
+            <localWP:ColorNameVM Color="CadetBlue" ColorName="Cadet Blue" />
+            <localWP:ColorNameVM Color="Chartreuse" ColorName="Chartreuse" />
+            <localWP:ColorNameVM Color="Chocolate" ColorName="Chocolate" />
+            <localWP:ColorNameVM Color="Coral" ColorName="Coral" />
+            <localWP:ColorNameVM Color="CornflowerBlue" ColorName="Cornflower Blue" />
+            <localWP:ColorNameVM Color="Cornsilk" ColorName="Cornsilk" />
+            <localWP:ColorNameVM Color="Crimson" ColorName="Crimson" />
+            <localWP:ColorNameVM Color="Cyan" ColorName="Cyan" />
+            <localWP:ColorNameVM Color="DarkBlue" ColorName="Dark Blue" />
+            <localWP:ColorNameVM Color="DarkCyan" ColorName="Dark Cyan" />
+            <localWP:ColorNameVM Color="DarkGoldenrod" ColorName="Dark Goldenrod" />
+            <localWP:ColorNameVM Color="DarkGray" ColorName="Dark Gray" />
+            <localWP:ColorNameVM Color="DarkGreen" ColorName="Dark Green" />
+            <localWP:ColorNameVM Color="DarkKhaki" ColorName="Dark Khaki" />
+            <localWP:ColorNameVM Color="DarkMagenta" ColorName="Dark Magenta" />
+            <localWP:ColorNameVM Color="DarkOliveGreen" ColorName="Dark Olive Green" />
+            <localWP:ColorNameVM Color="DarkOrange" ColorName="Dark Orange" />
+            <localWP:ColorNameVM Color="DarkOrchid" ColorName="Dark Orchid" />
+            <localWP:ColorNameVM Color="DarkRed" ColorName="Dark Red" />
+            <localWP:ColorNameVM Color="DarkSalmon" ColorName="Dark Salmon" />
+            <localWP:ColorNameVM Color="DarkSeaGreen" ColorName="Dark Sea Green" />
+            <localWP:ColorNameVM Color="DarkSlateBlue" ColorName="Dark Slate Blue" />
+            <localWP:ColorNameVM Color="DarkSlateGray" ColorName="Dark Slate Gray" />
+            <localWP:ColorNameVM Color="DarkTurquoise" ColorName="Dark Turquoise" />
+            <localWP:ColorNameVM Color="DarkViolet" ColorName="Dark Violet" />
+            <localWP:ColorNameVM Color="DeepPink" ColorName="Deep Pink" />
+            <localWP:ColorNameVM Color="DeepSkyBlue" ColorName="Deep Sky Blue" />
+            <localWP:ColorNameVM Color="DimGray" ColorName="Dim Gray" />
+            <localWP:ColorNameVM Color="DodgerBlue" ColorName="Dodger Blue" />
+            <localWP:ColorNameVM Color="Firebrick" ColorName="Firebrick" />
+            <localWP:ColorNameVM Color="FloralWhite" ColorName="Floral White" />
+            <localWP:ColorNameVM Color="ForestGreen" ColorName="Forest Green" />
+            <localWP:ColorNameVM Color="Fuchsia" ColorName="Fuchsia" />
+            <localWP:ColorNameVM Color="Gainsboro" ColorName="Gainsboro" />
+            <localWP:ColorNameVM Color="GhostWhite" ColorName="Ghost White" />
+            <localWP:ColorNameVM Color="Gold" ColorName="Gold" />
+            <localWP:ColorNameVM Color="Goldenrod" ColorName="Goldenrod" />
+            <localWP:ColorNameVM Color="Gray" ColorName="Gray" />
+            <localWP:ColorNameVM Color="Green" ColorName="Green" />
+            <localWP:ColorNameVM Color="GreenYellow" ColorName="Green Yellow" />
+            <localWP:ColorNameVM Color="Honeydew" ColorName="Honeydew" />
+            <localWP:ColorNameVM Color="HotPink" ColorName="Hot Pink" />
+            <localWP:ColorNameVM Color="IndianRed" ColorName="Indian Red" />
+            <localWP:ColorNameVM Color="Indigo" ColorName="Indigo" />
+            <localWP:ColorNameVM Color="Ivory" ColorName="Ivory" />
+            <localWP:ColorNameVM Color="Khaki" ColorName="Khaki" />
+            <localWP:ColorNameVM Color="Lavender" ColorName="Lavender" />
+            <localWP:ColorNameVM Color="LavenderBlush" ColorName="Lavender Blush" />
+            <localWP:ColorNameVM Color="LawnGreen" ColorName="Lawn Green" />
+            <localWP:ColorNameVM Color="LemonChiffon" ColorName="Lemon Chiffon" />
+            <localWP:ColorNameVM Color="LightBlue" ColorName="Light Blue" />
+            <localWP:ColorNameVM Color="LightCoral" ColorName="Light Coral" />
+            <localWP:ColorNameVM Color="LightCyan" ColorName="Light Cyan" />
+            <localWP:ColorNameVM Color="LightGoldenrodYellow" ColorName="Light Goldenrod Yellow" />
+            <localWP:ColorNameVM Color="LightGray" ColorName="Light Gray" />
+            <localWP:ColorNameVM Color="LightGreen" ColorName="Light Green" />
+            <localWP:ColorNameVM Color="LightPink" ColorName="Light Pink" />
+            <localWP:ColorNameVM Color="LightSalmon" ColorName="Light Salmon" />
+            <localWP:ColorNameVM Color="LightSeaGreen" ColorName="Light Sea Green" />
+            <localWP:ColorNameVM Color="LightSkyBlue" ColorName="Light Sky Blue" />
+            <localWP:ColorNameVM Color="LightSlateGray" ColorName="Light Slate Gray" />
+            <localWP:ColorNameVM Color="LightSteelBlue" ColorName="Light Steel Blue" />
+            <localWP:ColorNameVM Color="LightYellow" ColorName="Light Yellow" />
+            <localWP:ColorNameVM Color="Lime" ColorName="Lime" />
+            <localWP:ColorNameVM Color="LimeGreen" ColorName="Lime Green" />
+            <localWP:ColorNameVM Color="Linen" ColorName="Linen" />
+            <localWP:ColorNameVM Color="Magenta" ColorName="Magenta" />
+            <localWP:ColorNameVM Color="Maroon" ColorName="Maroon" />
+            <localWP:ColorNameVM Color="MediumAquamarine" ColorName="Medium Aquamarine" />
+            <localWP:ColorNameVM Color="MediumBlue" ColorName="Medium Blue" />
+            <localWP:ColorNameVM Color="MediumOrchid" ColorName="Medium Orchid" />
+            <localWP:ColorNameVM Color="MediumPurple" ColorName="Medium Purple" />
+            <localWP:ColorNameVM Color="MediumSeaGreen" ColorName="Medium Sea Green" />
+            <localWP:ColorNameVM Color="MediumSlateBlue" ColorName="Medium Slate Blue" />
+            <localWP:ColorNameVM Color="MediumSpringGreen" ColorName="Medium Spring Green" />
+            <localWP:ColorNameVM Color="MediumTurquoise" ColorName="Medium Turquoise" />
+            <localWP:ColorNameVM Color="MediumVioletRed" ColorName="Medium Violet Red" />
+            <localWP:ColorNameVM Color="MidnightBlue" ColorName="Midnight Blue" />
+            <localWP:ColorNameVM Color="MintCream" ColorName="Mint Cream" />
+            <localWP:ColorNameVM Color="MistyRose" ColorName="Misty Rose" />
+            <localWP:ColorNameVM Color="Moccasin" ColorName="Moccasin" />
+            <localWP:ColorNameVM Color="NavajoWhite" ColorName="Navajo White" />
+            <localWP:ColorNameVM Color="Navy" ColorName="Navy" />
+            <localWP:ColorNameVM Color="OldLace" ColorName="Old Lace" />
+            <localWP:ColorNameVM Color="Olive" ColorName="Olive" />
+            <localWP:ColorNameVM Color="OliveDrab" ColorName="Olive Drab" />
+            <localWP:ColorNameVM Color="Orange" ColorName="Orange" />
+            <localWP:ColorNameVM Color="OrangeRed" ColorName="Orange Red" />
+            <localWP:ColorNameVM Color="Orchid" ColorName="Orchid" />
+            <localWP:ColorNameVM Color="PaleGoldenrod" ColorName="Pale Goldenrod" />
+            <localWP:ColorNameVM Color="PaleGreen" ColorName="Pale Green" />
+            <localWP:ColorNameVM Color="PaleTurquoise" ColorName="Pale Turquoise" />
+            <localWP:ColorNameVM Color="PaleVioletRed" ColorName="Pale Violet Red" />
+            <localWP:ColorNameVM Color="PapayaWhip" ColorName="Papaya Whip" />
+            <localWP:ColorNameVM Color="PeachPuff" ColorName="Peach Puff" />
+            <localWP:ColorNameVM Color="Peru" ColorName="Peru" />
+            <localWP:ColorNameVM Color="Pink" ColorName="Pink" />
+            <localWP:ColorNameVM Color="Plum" ColorName="Plum" />
+            <localWP:ColorNameVM Color="PowderBlue" ColorName="Powder Blue" />
+            <localWP:ColorNameVM Color="Purple" ColorName="Purple" />
+            <localWP:ColorNameVM Color="Red" ColorName="Red" />
+            <localWP:ColorNameVM Color="RosyBrown" ColorName="Rosy Brown" />
+            <localWP:ColorNameVM Color="RoyalBlue" ColorName="Royal Blue" />
+            <localWP:ColorNameVM Color="SaddleBrown" ColorName="Saddle Brown" />
+            <localWP:ColorNameVM Color="Salmon" ColorName="Salmon" />
+            <localWP:ColorNameVM Color="SandyBrown" ColorName="Sandy Brown" />
+            <localWP:ColorNameVM Color="SeaGreen" ColorName="Sea Green" />
+            <localWP:ColorNameVM Color="SeaShell" ColorName="Sea Shell" />
+            <localWP:ColorNameVM Color="Sienna" ColorName="Sienna" />
+            <localWP:ColorNameVM Color="Silver" ColorName="Silver" />
+            <localWP:ColorNameVM Color="SkyBlue" ColorName="Sky Blue" />
+            <localWP:ColorNameVM Color="SlateBlue" ColorName="Slate Blue" />
+            <localWP:ColorNameVM Color="SlateGray" ColorName="Slate Gray" />
+            <localWP:ColorNameVM Color="Snow" ColorName="Snow" />
+            <localWP:ColorNameVM Color="SpringGreen" ColorName="Spring Green" />
+            <localWP:ColorNameVM Color="SteelBlue" ColorName="Steel Blue" />
+            <localWP:ColorNameVM Color="Tan" ColorName="Tan" />
+            <localWP:ColorNameVM Color="Teal" ColorName="Teal" />
+            <localWP:ColorNameVM Color="Thistle" ColorName="Thistle" />
+            <localWP:ColorNameVM Color="Tomato" ColorName="Tomato" />
+            <localWP:ColorNameVM Color="Turquoise" ColorName="Turquoise" />
+            <localWP:ColorNameVM Color="Violet" ColorName="Violet" />
+            <localWP:ColorNameVM Color="Wheat" ColorName="Wheat" />
+            <localWP:ColorNameVM Color="White" ColorName="White" />
+            <localWP:ColorNameVM Color="WhiteSmoke" ColorName="White Smoke" />
+            <localWP:ColorNameVM Color="Yellow" ColorName="Yellow" />
+            <localWP:ColorNameVM Color="YellowGreen" ColorName="Yellow Green" />
+            <localWP:ColorNameVM Color="Transparent" ColorName="Transparent"/>
+        </localWP:ColorNameVMCollection>
+
         <Style x:Key="ListBoxStyle" TargetType="ListBox">
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
