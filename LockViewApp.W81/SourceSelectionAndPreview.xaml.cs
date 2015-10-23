@@ -30,27 +30,50 @@ namespace LockViewApp.W81
             this.InitializeComponent();
             this.SizeChanged += SourceSelectionAndPreview_SizeChanged;
             this.Loaded += SourceSelectionAndPreview_Loaded;
+            
         }
 
         private void SourceSelectionAndPreview_Loaded(object sender, RoutedEventArgs e)
         {
             RenderPreview();
+            effectiveHeight = dtGrid.ActualHeight;
+            RenderPreview();
+            RescaleDTandPreviewGrid();
         }
 
         WriteableBitmap selectedImage;
+        double effectiveHeight = 0;
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             selectedImage = e.Parameter as WriteableBitmap;
             imageCropper.Source = selectedImage;
             //RenderPreview();
+
         }
 
         private void SourceSelectionAndPreview_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             RenderPreview();
-        }
+            RescaleDTandPreviewGrid();
 
+        }
+        void RescaleDTandPreviewGrid()
+        {
+            if (effectiveHeight == 0) return;//not loaded yet.
+            var dtTransform = dtGrid.RenderTransform as CompositeTransform;
+            //var previewTransform = previewItemStackPanel.RenderTransform as CompositeTransform;
+            //dtTransform.ScaleX = dtTransform.ScaleY = previewTransform.ScaleX = previewTransform.ScaleY = 1;
+            var scale = imagePreviewBox.ActualHeight * 0.15 / effectiveHeight;
+            dtTransform.ScaleX = dtTransform.ScaleY = dtTransform.ScaleX *scale;
+            //previewTransform.ScaleX = previewTransform.ScaleY = dtTransform.ScaleX * scale;
+            effectiveHeight *= scale;
+            foreach(PreviewItemDisplayControl ctrl in previewItemStackPanel.Children)
+            {
+                ctrl.RescaleContent(scale);
+            }
+
+        }
         void RenderPreview()
         {
             var height = LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight;
@@ -97,7 +120,7 @@ namespace LockViewApp.W81
             var ctrl = requestRelationship[sender.GetType()];
             for (int i = 0; i < previewItemStackPanel.Children.Count; i++)
             {
-                if(previewItemStackPanel.Children[i] == requestRelationship[sender.GetType()])
+                if (previewItemStackPanel.Children[i] == requestRelationship[sender.GetType()])
                 {
                     ctrl.SelectedInterestIndex = i;
                     //update index i.
@@ -108,6 +131,7 @@ namespace LockViewApp.W81
                 }
             }
             ctrl.DataContext = LockViewApplicationState.Instance;
+            RescaleDTandPreviewGrid();
         }
         List<OverlayContextContract> TemporaryContentStorage = new List<OverlayContextContract>();
         Dictionary<Type, PreviewItemDisplayControl> requestRelationship = new Dictionary<Type, PreviewItemDisplayControl>();

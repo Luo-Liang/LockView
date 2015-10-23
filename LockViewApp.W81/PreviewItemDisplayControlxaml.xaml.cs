@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Display;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,6 +27,7 @@ namespace LockViewApp.W81
             InitializeComponent();
             DataContextChanged += PreviewItemDisplayControl_DataContextChanged;
         }
+
         public int SelectedInterestIndex { get; set; } = -1;
         private void PreviewItemDisplayControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
@@ -34,6 +36,13 @@ namespace LockViewApp.W81
             TitleTextBox.Text = value.SelectedContextContracts[SelectedInterestIndex].Title;
             ContentTextBox.Text = value.SelectedContextContracts[SelectedInterestIndex].FirstLine;
             PublisherTextBox.Text = value.SelectedContextContracts[SelectedInterestIndex].SecondLine;
+        }
+
+        public void RescaleContent(double cumulatedScaleFactor)
+        {
+            TitleTextBox.FontSize *= cumulatedScaleFactor;
+            ContentTextBox.FontSize *= cumulatedScaleFactor;
+             PublisherTextBox.FontSize *= cumulatedScaleFactor;
         }
     }
 }
