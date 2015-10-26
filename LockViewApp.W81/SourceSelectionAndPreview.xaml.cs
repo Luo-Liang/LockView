@@ -30,15 +30,20 @@ namespace LockViewApp.W81
             this.InitializeComponent();
             this.SizeChanged += SourceSelectionAndPreview_SizeChanged;
             this.Loaded += SourceSelectionAndPreview_Loaded;
-            
+            this.mockScreen.SizeChanged += ImagePreviewBox_SizeChanged;
+
+        }
+
+        private void ImagePreviewBox_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            RescaleDTandPreviewGrid(e.NewSize.Height);
         }
 
         private void SourceSelectionAndPreview_Loaded(object sender, RoutedEventArgs e)
         {
             RenderPreview();
             effectiveHeight = dtGrid.ActualHeight;
-            RenderPreview();
-            RescaleDTandPreviewGrid();
+            RescaleDTandPreviewGrid(mockScreen.ActualHeight);
         }
 
         WriteableBitmap selectedImage;
@@ -55,20 +60,18 @@ namespace LockViewApp.W81
         private void SourceSelectionAndPreview_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             RenderPreview();
-            RescaleDTandPreviewGrid();
-
         }
-        void RescaleDTandPreviewGrid()
+        void RescaleDTandPreviewGrid(double height)
         {
             if (effectiveHeight == 0) return;//not loaded yet.
             var dtTransform = dtGrid.RenderTransform as CompositeTransform;
             //var previewTransform = previewItemStackPanel.RenderTransform as CompositeTransform;
             //dtTransform.ScaleX = dtTransform.ScaleY = previewTransform.ScaleX = previewTransform.ScaleY = 1;
-            var scale = imagePreviewBox.ActualHeight * 0.15 / effectiveHeight;
-            dtTransform.ScaleX = dtTransform.ScaleY = dtTransform.ScaleX *scale;
+            var scale = height * 0.1 / effectiveHeight;
+            dtTransform.ScaleX = dtTransform.ScaleY = dtTransform.ScaleX * scale;
             //previewTransform.ScaleX = previewTransform.ScaleY = dtTransform.ScaleX * scale;
             effectiveHeight *= scale;
-            foreach(PreviewItemDisplayControl ctrl in previewItemStackPanel.Children)
+            foreach (PreviewItemDisplayControl ctrl in previewItemStackPanel.Children)
             {
                 ctrl.RescaleContent(scale);
             }
@@ -103,12 +106,22 @@ namespace LockViewApp.W81
             var dataContext = listBox.SelectedItem as ListBoxContentVM;
             setupTarget.ClearValue(ScrollViewer.ContentProperty);
             InterestGathererControl selectedControl = null;
-            if (dataContext.NavigationType == "specificInterest")
+
+            if (!navigationRelatiobship.ContainsKey(dataContext.NavigationType))
             {
-                selectedControl = new SpecificInterestControl();
-                selectedControl.SelectionStatusChanged += Control_SelectionStatusChanged;
-                selectedControl.ShowMeClicked += Control_ShowMeClicked;
+                if (dataContext.NavigationType == "specificInterest")
+                {
+                    navigationRelatiobship[dataContext.NavigationType] = new SpecificInterestControl();
+                }
+                if (dataContext.NavigationType == "weather")
+                {
+                    navigationRelatiobship[dataContext.NavigationType] = new WeatherInterestControl();
+                }
+                navigationRelatiobship[dataContext.NavigationType].SelectionStatusChanged += Control_SelectionStatusChanged;
+                navigationRelatiobship[dataContext.NavigationType].ShowMeClicked += Control_ShowMeClicked;
+
             }
+            selectedControl = navigationRelatiobship[dataContext.NavigationType];
             selectedControl.Width = setupTarget.ActualWidth;
             selectedControl.HorizontalAlignment = HorizontalAlignment.Stretch;
             selectedControl.VerticalAlignment = VerticalAlignment.Top;
@@ -117,10 +130,10 @@ namespace LockViewApp.W81
 
         private void Control_ShowMeClicked(object sender, GathererReadyEvent e)
         {
-            var ctrl = requestRelationship[sender.GetType()];
+            var ctrl = requestRelationship[sender as InterestGathererControl];
             for (int i = 0; i < previewItemStackPanel.Children.Count; i++)
             {
-                if (previewItemStackPanel.Children[i] == requestRelationship[sender.GetType()])
+                if (previewItemStackPanel.Children[i] == requestRelationship[sender as InterestGathererControl])
                 {
                     ctrl.SelectedInterestIndex = i;
                     //update index i.
@@ -131,24 +144,25 @@ namespace LockViewApp.W81
                 }
             }
             ctrl.DataContext = LockViewApplicationState.Instance;
-            RescaleDTandPreviewGrid();
+            RescaleDTandPreviewGrid(mockScreen.ActualHeight);
         }
         List<OverlayContextContract> TemporaryContentStorage = new List<OverlayContextContract>();
-        Dictionary<Type, PreviewItemDisplayControl> requestRelationship = new Dictionary<Type, PreviewItemDisplayControl>();
+        Dictionary<InterestGathererControl, PreviewItemDisplayControl> requestRelationship = new Dictionary<InterestGathererControl, PreviewItemDisplayControl>();
+        Dictionary<string, InterestGathererControl> navigationRelatiobship = new Dictionary<string, InterestGathererControl>();
         private void Control_SelectionStatusChanged(object sender, InterestSelectionEvent e)
         {
             var preview = new PreviewItemDisplayControl();
             if (e.IsEnabled)
             {
-                requestRelationship[sender.GetType()] = preview;
+                requestRelationship[sender as InterestGathererControl] = preview;
                 previewItemStackPanel.Children.Add(preview);
                 TemporaryContentStorage.Add(new OverlayContextContract());
             }
             else
             {
-                TemporaryContentStorage.RemoveAt(previewItemStackPanel.Children.IndexOf(requestRelationship[sender.GetType()]));
-                previewItemStackPanel.Children.Remove(requestRelationship[sender.GetType()]);
-                requestRelationship.Remove(sender.GetType());
+                TemporaryContentStorage.RemoveAt(previewItemStackPanel.Children.IndexOf(requestRelationship[sender as InterestGathererControl]));
+                previewItemStackPanel.Children.Remove(requestRelationship[sender as InterestGathererControl]);
+                requestRelationship.Remove(sender as InterestGathererControl);
             }
         }
 

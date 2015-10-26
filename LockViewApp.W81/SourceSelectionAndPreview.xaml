@@ -11,7 +11,7 @@
     <Page.Resources>
         <WP81:ListBoxContentVMCollection x:Key="categories">
             <WP81:ListBoxContentVM NavigationType="specificInterest" SecondLine="Use a specific interest. Give us a topic, and we'll gather all news around it!" FirstLine="SPECIFIC INTEREST" />
-            <WP81:ListBoxContentVM NavigationType="bing" SecondLine="Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="BING"/>
+            <WP81:ListBoxContentVM NavigationType="weather" SecondLine="Never get caught in a rain. Use this options to display semi realtime weather information right on your lock screen." FirstLine="WEATHER"/>
             <WP81:ListBoxContentVM NavigationType="nasa" SecondLine="Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. " FirstLine="NASA"/>
         </WP81:ListBoxContentVMCollection>
     </Page.Resources>

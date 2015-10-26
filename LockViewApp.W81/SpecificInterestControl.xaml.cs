@@ -30,7 +30,7 @@ namespace LockViewApp.W81
         {
             busyBar.Visibility = Visibility.Visible;
             button.IsEnabled = false;
-            await InvokeContentReadyEvent(new InterestRequest() { InterestString = textBox.Text});
+            await InvokeContentRequestEvent(new InterestRequest() { InterestString = textBox.Text});
             busyBar.Visibility = Visibility.Collapsed;
             button.IsEnabled = true;
         }

@@ -136,6 +136,9 @@
     <Compile Include="SpecificInterestControl.xaml.cs">
       <DependentUpon>SpecificInterestControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WeatherInterestControl.xaml.cs">
+      <DependentUpon>WeatherInterestControl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -143,6 +146,7 @@
     </AppxManifest>
     <None Include="LockViewApp.W81_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
     <PRIResource Include="MultilingualResources\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SpecificInterestControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WeatherInterestControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

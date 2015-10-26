@@ -86,6 +86,17 @@ namespace InfoViewApp.WP81.Tasks
 #endif
         }
 
+        public async static Task<string> RequestJsonProxied(string getAddr, HttpClient client=null)
+        {
+            if (client == null) client = new HttpClient();
+            var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(getAddr));
+            //var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(string.Format(ImageLocator,"en-US")));
+            requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
+            var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/RequestJson", UriKind.Absolute),
+                 requestContent);
+            return await response.Content.ReadAsStringAsync();
+        }
+
         public static void SaveAndClearUsedComposedImage(byte[] jpegBytes, string fileName)
         {
 #if WINDOWS_PHONE

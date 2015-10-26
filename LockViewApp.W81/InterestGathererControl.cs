@@ -34,7 +34,7 @@ namespace LockViewApp.W81
         public event EventHandler<InterestSelectionEvent> SelectionStatusChanged;
         //unclear if this is a good design.
         //can probably use DependencyProperty instead.
-        async internal Task InvokeContentReadyEvent(InterestRequest request)
+        async internal Task InvokeContentRequestEvent(InterestRequest request)
         {
             if (ShowMeClicked != null)
             {
