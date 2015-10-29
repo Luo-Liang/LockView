@@ -34,7 +34,7 @@ namespace LockViewApp.W81
             var value = args.NewValue as LockViewApplicationState;
             if (value == null) return;
             TitleTextBox.Text = value.SelectedContextContracts[SelectedInterestIndex].Title;
-            ContentTextBox.Text = value.SelectedContextContracts[SelectedInterestIndex].FirstLine;
+            ContentTextBox.Text = value.SelectedContextContracts[SelectedInterestIndex].FirstLine == null ? "" : value.SelectedContextContracts[SelectedInterestIndex].FirstLine;
             PublisherTextBox.Text = value.SelectedContextContracts[SelectedInterestIndex].SecondLine;
         }
 
@@ -42,7 +42,7 @@ namespace LockViewApp.W81
         {
             TitleTextBox.FontSize *= cumulatedScaleFactor;
             ContentTextBox.FontSize *= cumulatedScaleFactor;
-             PublisherTextBox.FontSize *= cumulatedScaleFactor;
+            PublisherTextBox.FontSize *= cumulatedScaleFactor;
         }
     }
 }

@@ -113,9 +113,13 @@ namespace LockViewApp.W81
                 {
                     navigationRelatiobship[dataContext.NavigationType] = new SpecificInterestControl();
                 }
-                if (dataContext.NavigationType == "weather")
+                else if (dataContext.NavigationType == "weather")
                 {
                     navigationRelatiobship[dataContext.NavigationType] = new WeatherInterestControl();
+                }
+                else if (dataContext.NavigationType == "news")
+                {
+                    navigationRelatiobship[dataContext.NavigationType] = new GenericNewsSource();
                 }
                 navigationRelatiobship[dataContext.NavigationType].SelectionStatusChanged += Control_SelectionStatusChanged;
                 navigationRelatiobship[dataContext.NavigationType].ShowMeClicked += Control_ShowMeClicked;

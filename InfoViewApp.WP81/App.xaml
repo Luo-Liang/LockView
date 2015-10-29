@@ -232,7 +232,7 @@
                     <newsFeed:NewsFeedCategory  ApplicableCulture="zh-cn" ExtendedContentUrl="http://ii.911cha.com/caitu/b/0149.jpg" SourceName="网易军事" Topic="Military" XmlSource="http://news.163.com/special/00011K6L/rss_war.xml"/>
                 </newsFeed:FeedSource.FeedContentProviders>
             </newsFeed:FeedSource>
-            <newsFeed:FeedSource SourceName="豆瓣[warning;LockView has detected an egress request to a non-official RSS.]" ApplicableLanguageId="zh-cn">
+            <newsFeed:FeedSource SourceName="豆瓣" ApplicableLanguageId="zh-cn">
                 <newsFeed:FeedSource.FeedContentProviders>
                     <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ftp.heanet.ie/mirrors/xbmc/addons/dharma/metadata.douban.com/icon.png" SourceName="看电影" Topic="Movie" XmlSource="http://yikerss.miantiao.me/rss/id/32"/>
                     <newsFeed:NewsFeedCategory ApplicableCulture="zh-cn" ExtendedContentUrl="http://ftp.heanet.ie/mirrors/xbmc/addons/dharma/metadata.douban.com/icon.png" SourceName="看闲书" Topic="Reading" XmlSource="http://yikerss.miantiao.me/rss/id/33"/>
