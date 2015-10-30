@@ -121,6 +121,10 @@ namespace LockViewApp.W81
                 {
                     navigationRelatiobship[dataContext.NavigationType] = new GenericNewsSource();
                 }
+                else if(dataContext.NavigationType == "language")
+                {
+                    navigationRelatiobship[dataContext.NavigationType] = new LanguageLearningInterestControl();
+                }
                 navigationRelatiobship[dataContext.NavigationType].SelectionStatusChanged += Control_SelectionStatusChanged;
                 navigationRelatiobship[dataContext.NavigationType].ShowMeClicked += Control_ShowMeClicked;
 

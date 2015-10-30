@@ -5,6 +5,7 @@
     xmlns:converter="using:InfoViewApp.WP81.Converter"
     xmlns:local="using:LockViewApp.W81"
     xmlns:newsFeed="using:InfoViewApp.WP81.InterestGathering.NewsFeed"
+    xmlns:language="using:InfoViewApp.WP81.InterestGathering.LanguageLearning"
     xmlns:localWP="using:InfoViewApp.WP81">
     <Application.Resources>
         <converter:enum2LocalizedStrConverter x:Key="enumLocConn"/>
@@ -244,7 +245,16 @@
                 </newsFeed:CustomizedFeedSource.FeedContentProviders>
             </newsFeed:CustomizedFeedSource>
         </newsFeed:FeedSources>
-
+        <language:LanguegeSources x:Key="definedLanguageSources">
+            <language:OnlineSource SourceName="Bing Dictionary" RequestString="http://cn.bing.com/dict/?mkt=zh-CN" HeadlineSelectionPath="/html/body/div[3]/div/div[1]/div/div[2]/div[1]/div[1]/a" PhoneticSelectionPath="/html/body/div[3]/div/div[1]/div/div[2]/div[1]/div[2]/div[1]" SecondaryLineSelectionPath="/html/body/div[3]/div/div[1]/div/div[2]/div[1]/div[4]" Content="Word" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OnlineSource SourceName="iCIBA英语学习" RequestString="http://news.iciba.com/dailysentence" HeadlineSelectionPath="//*[@id=&quot;content&quot;]/div[1]/div[1]/div[1]/div/div/p[1]" SecondaryLineSelectionPath="//*[@id=&quot;content&quot;]/div[1]/div[1]/div[1]/div/div/p[2]/a" Content="Sentence" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OnlineSource SourceName="Merriam Webster" RequestString="http://www.merriam-webster.com/word-of-the-day/" HeadlineSelectionPath="/html/body/div[2]/div[1]/div[1]/div[2]/div/div[1]/div[2]/h1" SecondaryLineSelectionPath="/html/body/div[2]/div[1]/div[1]/div[2]/div/div[5]" Content="Word" Language="EnUs" TranslationLanguage="EnUs"/>
+            <language:OfflineSource SourceName="CET 6 Collection" Content="Word" SourcePath="LocalDict\cet6.txt" LineCount="2087" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OfflineSource SourceName="CET 4 Collection" Content="Word" SourcePath="LocalDict\cet4.txt" LineCount="4608" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OfflineSource SourceName="TOEFL Collection" Content="Word" SourcePath="LocalDict\toefl.txt" LineCount="1836" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OfflineSource SourceName="GRE Collection" Content="Word" SourcePath="LocalDict\GRE.txt" LineCount="7495" Language="EnUs" TranslationLanguage="ZhCn"/>
+            <language:OfflineSource SourceName="IELTS Collection" Content="Word" SourcePath="LocalDict\IELTS.txt" LineCount="1517" Language="EnUs" TranslationLanguage="ZhCn"/>
+        </language:LanguegeSources>
         <Style x:Key="ListBoxStyle" TargetType="ListBox">
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -446,6 +456,9 @@
                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ComboBoxPressedForegroundThemeBrush}"/>
                                             </ObjectAnimationUsingKeyFrames>
                                             <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PressedBackground"/>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill)" Storyboard.TargetName="PressedBackground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}"/>
+                                            </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
                                     <VisualState x:Name="Disabled">
