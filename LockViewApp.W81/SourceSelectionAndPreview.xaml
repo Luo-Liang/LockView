@@ -14,6 +14,7 @@
             <WP81:ListBoxContentVM NavigationType="weather" SecondLine="Never get caught in a rain. Use this options to display semi realtime weather information right on your lock screen." FirstLine="WEATHER"/>
             <WP81:ListBoxContentVM NavigationType="news" SecondLine="Love news? Never miss a beat from your favourite news source and category!" FirstLine="NEWS"/>
             <WP81:ListBoxContentVM NavigationType="language" SecondLine="Turn your phone to the ultimate tool to pick up a foreign language." FirstLine="LANGUAGE LEARNING"/>
+            <WP81:ListBoxContentVM NavigationType="wordofwisdom" SecondLine="One static motto that inspires of what all you do." FirstLine="WORD OF WISDOM"/>
         </WP81:ListBoxContentVMCollection>
     </Page.Resources>
 

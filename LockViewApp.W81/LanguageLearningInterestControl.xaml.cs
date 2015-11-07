@@ -52,7 +52,7 @@ namespace LockViewApp.W81
             if (this.Type.SelectedItem != null)
             {
                 var contentType = (LanguageSourceBase.ContentType)this.Type.SelectedItem;
-                fullSource = fullSource.Where<LanguageSourceBase>(source => source.Content == contentType);
+                fullSource = fullSource.Where(source => source.Content == contentType);
             }
             SuggestedSource.ItemsSource = fullSource;
             SuggestedSource.SelectedItem = fullSource.FirstOrDefault();

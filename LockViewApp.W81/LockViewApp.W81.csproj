@@ -136,6 +136,9 @@
       <DependentUpon>PreviewItemDisplayControlxaml.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadyPage.xaml.cs">
+      <DependentUpon>ReadyPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SourceSelectionAndPreview.xaml.cs">
       <DependentUpon>SourceSelectionAndPreview.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,9 @@
     </Compile>
     <Compile Include="WeatherInterestControl.xaml.cs">
       <DependentUpon>WeatherInterestControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WordOfWisdomInterestControl.xaml.cs">
+      <DependentUpon>WordOfWisdomInterestControl.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ReadyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SourceSelectionAndPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WeatherInterestControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WordOfWisdomInterestControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

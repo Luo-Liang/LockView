@@ -10,6 +10,11 @@ using Windows.Storage;
 using Windows.Web.Http;
 using Windows.Data.Xml.Dom;
 using HtmlAgilityPack;
+using System.Runtime.InteropServices.WindowsRuntime;
+#if WINDOWS_APP
+using intelliSys.XPath;
+#endif
+
 
 namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
 {
@@ -22,7 +27,9 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
         public override async Task<InterestContent> RequestContent(InterestRequest request)
         {
             HttpClient client = Client == null ? new HttpClient() : Client;
-            var response = await client.GetStringAsync(new System.Uri(RequestString));
+            client.DefaultRequestHeaders.Add("Accept-Charset", "UTF-8");
+            var responseBytes = await client.GetBufferAsync(new System.Uri(RequestString));
+            var response = UTF8Encoding.UTF8.GetString(responseBytes.ToArray(), 0, (int)responseBytes.Length);
             HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
             document.LoadHtml(response);
             HtmlNode node = null;
@@ -30,16 +37,12 @@ namespace InfoViewApp.WP81.InterestGathering.LanguageLearning
             HtmlNode phoneticNode = null;
             try
             {
-#if WINDOWS_PHONE
                 node = document.DocumentNode.SelectSingleNode(HeadlineSelectionPath);
                 secondaryNode = document.DocumentNode.SelectSingleNode(SecondaryLineSelectionPath);
-                if(PhoneticSelectionPath != null)
+                if (PhoneticSelectionPath != null)
                 {
                     phoneticNode = document.DocumentNode.SelectSingleNode(PhoneticSelectionPath);
                 }
-#elif WINDOWS_APP
-                //node = document.DocumentNode.
-#endif
                 var response1 = new InterestContent()
                 {
                     Title = HtmlDecodingUtility.HtmlDecode(node.InnerText),

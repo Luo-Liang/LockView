@@ -12,7 +12,6 @@ namespace InfoViewApp.WP81.InterestGathering
         public static string HtmlDecode(string value)
         {
             if (value == null) return null;
-
             int maxLength = 126;
             int strLength = 0;
             string fixedString = "";

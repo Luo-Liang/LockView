@@ -125,9 +125,12 @@ namespace LockViewApp.W81
                 {
                     navigationRelatiobship[dataContext.NavigationType] = new LanguageLearningInterestControl();
                 }
+                else if(dataContext.NavigationType == "wordofwisdom")
+                {
+                    navigationRelatiobship[dataContext.NavigationType] = new WordOfWisdomInterestControl();
+                }
                 navigationRelatiobship[dataContext.NavigationType].SelectionStatusChanged += Control_SelectionStatusChanged;
                 navigationRelatiobship[dataContext.NavigationType].ShowMeClicked += Control_ShowMeClicked;
-
             }
             selectedControl = navigationRelatiobship[dataContext.NavigationType];
             selectedControl.Width = setupTarget.ActualWidth;
@@ -176,7 +179,8 @@ namespace LockViewApp.W81
 
         private void nextButton_Click(object sender, RoutedEventArgs e)
         {
-
+            LockViewApplicationState.Instance.SelectedProviders = requestRelationship.Keys.Cast<InterestGathererControl>().Select(o => o.Gatherer).ToArray();
+            this.Frame.Navigate(typeof(ReadyPage));
         }
     }
 }

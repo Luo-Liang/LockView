@@ -1,0 +1,167 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LockViewApp.W81"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:WP81="using:InfoViewApp.WP81"
+    x:Class="LockViewApp.W81.ReadyPage"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <WP81:ListBoxContentVMCollection x:Key="categories">
+            <WP81:ListBoxContentVM NavigationType="specificInterest" SecondLine="Use a specific interest. Give us a topic, and we'll gather all news around it!" FirstLine="SPECIFIC INTEREST" />
+            <WP81:ListBoxContentVM NavigationType="weather" SecondLine="Never get caught in a rain. Use this options to display semi realtime weather information right on your lock screen." FirstLine="WEATHER"/>
+            <WP81:ListBoxContentVM NavigationType="news" SecondLine="Love news? Never miss a beat from your favourite news source and category!" FirstLine="NEWS"/>
+            <WP81:ListBoxContentVM NavigationType="language" SecondLine="Turn your phone to the ultimate tool to pick up a foreign language." FirstLine="LANGUAGE LEARNING"/>
+            <WP81:ListBoxContentVM NavigationType="wordofwisdom" SecondLine="One static motto that inspires of what all you do." FirstLine="WORD OF WISDOM"/>
+        </WP81:ListBoxContentVMCollection>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid d:IsLocked="True" Width="817" VerticalAlignment="Top" Height="308" HorizontalAlignment="Right">
+            <Rectangle Width="634" VerticalAlignment="Top" Margin="183,0,0,0" Height="116" HorizontalAlignment="Left" Fill="#FF926FD4"/>
+            <Ellipse Margin="361,7,188,33" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Margin="377,20,196,43" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="{StaticResource AccentColor}"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Margin="389,37,212,56" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="{StaticResource DarkAccentColor}"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Path d:IsLocked="True" Width="804" UseLayoutRounding="False" Stretch="Fill" Margin="14,0,-1,0" HorizontalAlignment="Left" Data="M155,0 C197.802,1.5E-05 236.552,14.3829 264.602,37.6368 L268.936,41.4062 L272.71,39.7229 C286.169,34.106 300.967,31 316.5,31 C359.216,31 396.371,54.4893 415.422,89.0908 L415.901,90.0138 L418.225,87.3661 C438.805,65.0257 468.492,51 501.5,51 C522.858,51 542.826,56.8723 559.835,67.0699 L562.827,68.962 L563.458,67.9771 C587.09,32.9979 627.109,10 672.5,10 C745.125,10 804,68.8746 804,141.5 C804,214.125 745.125,273 672.5,273 L672,272.988 L672,308 L309,308 L309,252.734 L307.131,252.621 C285.505,250.861 265.613,243.067 249.189,230.948 L248.894,230.719 L247.739,231.472 C221.878,247.505 189.777,257 155,257 C69.3959,257 0,199.469 0,128.5 C0,57.5314 69.3959,1.5E-05 155,0 z">
+                <Path.Fill>
+                    <LinearGradientBrush EndPoint="0.878,-1.481" StartPoint="0.841,0.386">
+                        <GradientStop Color="#FF1A1A1A" Offset="0"/>
+                        <GradientStop Color="{StaticResource AccentColor}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+        </Grid>
+        <TextBlock x:Name="textBlock" d:IsLocked="True" Width="364" VerticalAlignment="Top" TextWrapping="Wrap" Margin="146,31,0,0" Height="80" HorizontalAlignment="Left" FontSize="40" FontWeight="Bold">
+			<Run Text="LOCKVIEW "/>
+			<LineBreak/>
+			<Run FontSize="24" Text="PC, CONSOLE AND TABLET"/>
+        </TextBlock>
+        <Image d:IsLocked="True" Width="139" VerticalAlignment="Top" Source="Assets/LockViewInApp.png" Margin="8,4,0,0" Height="139" HorizontalAlignment="Left"/>
+        <Grid x:Name="ImageSourceSelectionMainGrid" d:LayoutOverrides="TopPosition, BottomPosition" Width="{Binding ActualWidth, ElementName=SettingViewer}" Margin="40,152,0,90" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" HorizontalAlignment="Left">
+            <Grid HorizontalAlignment="Left" Width="380">
+                <StackPanel d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top" Margin="2,0" Height="103" Background="{StaticResource AccentBrush}">
+                    <TextBlock x:Name="textBlock1" Text="Final Tweaks" TextWrapping="Wrap" Margin="10,10,10,5" FontSize="24"/>
+                    <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" Margin="10,4,10,10" FontSize="18.667" Text="Here're some minor tweaks, including your balance, and Do-Not-Disturb settings.">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LighterGray}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </StackPanel>
+                <ScrollViewer Margin="7,120,6,7" d:LayoutOverrides="Height">
+                    <StackPanel Orientation="Vertical" Width="367">
+                        <TextBlock FontWeight="Light" Margin="3,0,0,0" TextWrapping="Wrap" FontSize="18.667">
+                			<Run Text="Permissions"/>
+                			<LineBreak/>
+                			<Run Foreground="Gray" Text="Before we can change your lock screen, we need your consent. If you'd like to jump directly to stories, pin a tile."/>
+                        </TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="refill_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="sayYes" Content="say yes" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Global User Interface" d:LayoutOverrides="Width"/>
+                            <Button Click="pinStory_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="pinTileButton" Content="pin story" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Global User Interface" d:LayoutOverrides="Width" Margin="10,0,0,0"/>
+                        </StackPanel>
+                        <TextBlock FontWeight="Light" Margin="3,15,0,0" TextWrapping="Wrap" FontSize="18.667">
+                			<Run Text="Do not disturb"/>
+                			<LineBreak/>
+                			<Run Foreground="Gray" Text="If you do not wish to receive updates late in the night, check this."/>
+                        </TextBlock>
+                        <CheckBox x:Name="doNotDisturb" Content="Enable Do-Not-Disturb" Margin="0,10,4,0" VerticalAlignment="Stretch" FontFamily="Global User Interface"/>
+                        <TextBlock FontWeight="Light" Margin="3,10,0,0" TextWrapping="Wrap" FontSize="18.667" Height="91" VerticalAlignment="Top">
+                			<Run Text="Your remaining balance"/>
+                			<LineBreak/>
+                			<Run Foreground="Gray" Text="LockView uses a web service to compose your image. Support this development kindly "/>
+                			<Run Foreground="Gray" Text="refilling "/>
+                			<Run Foreground="Gray" Text="your"/>
+                			<Run Foreground="Gray" Text=" account."/>
+                        </TextBlock>
+                        <StackPanel HorizontalAlignment="Left" Height="24" Margin="3,12,0,0" Orientation="Horizontal" VerticalAlignment="Top">
+                            <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="$" VerticalAlignment="Top">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{StaticResource AccentColor}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                            <TextBlock x:Name="balanceTextBlock" FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="0.33" VerticalAlignment="Top">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{StaticResource AccentColor}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                            <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text="(" Margin="10,0,0,0">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{StaticResource AccentColor}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                            <TextBlock x:Name="daysText" FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text="0" Margin="0">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{StaticResource AccentColor}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                            <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text="estimated days remaining" Margin="10,0,0,0">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{StaticResource AccentColor}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                            <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text=")" Margin="0">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Color="{StaticResource AccentColor}"/>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                        </StackPanel>
+                        <TextBlock FontWeight="Light" Margin="3,10,0,0" TextWrapping="Wrap" FontSize="18.667" Height="110" VerticalAlignment="Top">
+                			<Run Foreground="Gray" Text="Each time we update your content, you account will encounter a tiny charge. When your balance reaches 0, your update raae will be drastically reduced. When that happens,you will be ntified."/>
+                        </TextBlock>
+                        <Button Click="refill_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" Content="refill" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontFamily="Global User Interface" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+        <Button x:Name="nextButton" VerticalAlignment="Bottom" Margin="48,0,0,38" Content="finish" Click="nextButton_Click"/>
+        <Grid x:Name="ImageSourceSelectionMainGrid_Copy" Width="{Binding ActualWidth, ElementName=SettingViewer}" Margin="441,152,545,90" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
+            <Grid HorizontalAlignment="Left" Width="380">
+                <StackPanel d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top" Margin="2,0" Height="103" Background="{StaticResource AccentBrush}">
+                    <TextBlock x:Name="textBlock2" Text="Other interesting things" TextWrapping="Wrap" Margin="10,10,10,5" FontSize="24"/>
+                    <TextBlock x:Name="textBlock1_Copy1" TextWrapping="Wrap" Margin="10,4,10,10" FontSize="18.667" Text="You can view version specific content here in this pane.">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource LighterGray}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </StackPanel>
+                <TextBlock FontWeight="Light" Margin="10,120,6,0" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top">
+                	<Run Text="LockView for mobile devices"/>
+                	<LineBreak/>
+                	<Run Foreground="Gray" Text="If you wish, you can get LockView for mobile devices. "/>
+                </TextBlock>
+                <TextBlock FontWeight="Light" Margin="10,192,6,0" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="White"/>
+                    </TextBlock.Foreground>
+                	<Run Text="Windows Phone:"/>
+                </TextBlock>
+                <HyperlinkButton Content="Get it for your phone" HorizontalAlignment="Left" Margin="-7,213,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="{StaticResource AccentBrush}" d:LayoutOverrides="VerticalAlignment"/>
+                <TextBlock FontWeight="Light" Margin="10,249,6,0" TextWrapping="Wrap" FontSize="18.667" Foreground="White" Text="Windows Tablet:" VerticalAlignment="Top"/>
+                <TextBlock FontWeight="Light" Margin="10,277,6,0" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top">
+                	<Run Foreground="Gray" Text="Why pay double? Your lock screen is automatically sync-ed across all your Windows screens."/>
+                </TextBlock>
+                <TextBlock FontWeight="Light" Margin="10,348,6,0" TextWrapping="Wrap" FontSize="18.667" Foreground="White" Text="IOS Devices:" VerticalAlignment="Top"/>
+                <TextBlock FontWeight="Light" Margin="10,376,6,0" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top">
+                	<Run Foreground="Gray" Text="Coming soon."/>
+                </TextBlock>
+                <TextBlock FontWeight="Light" Margin="10,405,6,0" TextWrapping="Wrap" FontSize="18.667" Foreground="White" Text="Android Devices" VerticalAlignment="Top"/>
+                <TextBlock FontWeight="Light" Margin="10,433,6,0" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top">
+                	<Run Foreground="Gray" Text="Coming soon."/>
+                </TextBlock>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

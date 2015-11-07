@@ -4,6 +4,7 @@ using Windows.Web.Http;
 using Windows.Web.Syndication;
 using System;
 using System.Text;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace InfoViewApp.WP81.InterestGathering.NewsFeed
 {
@@ -48,9 +49,11 @@ namespace InfoViewApp.WP81.InterestGathering.NewsFeed
             try
             {
                 HttpClient client = Client == null ? new HttpClient() : Client;
+                client.DefaultRequestHeaders.Add("Accept-Charset", "UTF-8");
                 var feed = new SyndicationFeed();
-                var responsehrss = await client.GetStringAsync(new System.Uri(XmlSource));
-                feed.Load(responsehrss);
+                var responsehrssBytes = await client.GetBufferAsync(new System.Uri(XmlSource));
+                var responserss = UTF8Encoding.UTF8.GetString(responsehrssBytes.ToArray(), 0, (int)responsehrssBytes.Length);
+                feed.Load(responserss);
                 var items = feed.Items;
                 string content = items[0].Summary.Text;
                 string title = items[0].Title.Text;
