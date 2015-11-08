@@ -64,22 +64,22 @@
                 <ScrollViewer Margin="7,120,6,7" d:LayoutOverrides="Height">
                     <StackPanel Orientation="Vertical" Width="367">
                         <TextBlock FontWeight="Light" Margin="3,0,0,0" TextWrapping="Wrap" FontSize="18.667">
-                			<Run Text="Permissions"/>
-                			<LineBreak/>
-                			<Run Foreground="Gray" Text="Before we can change your lock screen, we need your consent. If you'd like to jump directly to stories, pin a tile."/>
+                        	<Run Foreground="{StaticResource LightAccentBrush}" FontSize="21.333" Text="PERMISSIONS"/>
+                        	<LineBreak/>
+                        	<Run Foreground="Gray" Text="Before we can change your lock screen, we need your consent. If you'd like to jump directly to stories, pin a tile."/>
                         </TextBlock>
-                        <StackPanel Orientation="Horizontal">
-                            <Button Click="refill_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="sayYes" Content="say yes" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Global User Interface" d:LayoutOverrides="Width"/>
+                        <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                            <Button Click="sayYes_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="sayYes" Content="say yes" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Global User Interface" d:LayoutOverrides="Width"/>
                             <Button Click="pinStory_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="pinTileButton" Content="pin story" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Global User Interface" d:LayoutOverrides="Width" Margin="10,0,0,0"/>
                         </StackPanel>
                         <TextBlock FontWeight="Light" Margin="3,15,0,0" TextWrapping="Wrap" FontSize="18.667">
-                			<Run Text="Do not disturb"/>
+                			<Run FontSize="21.333" Text="DO NOT DISTURB" Foreground="{StaticResource LightAccentBrush}"/>
                 			<LineBreak/>
                 			<Run Foreground="Gray" Text="If you do not wish to receive updates late in the night, check this."/>
                         </TextBlock>
                         <CheckBox x:Name="doNotDisturb" Content="Enable Do-Not-Disturb" Margin="0,10,4,0" VerticalAlignment="Stretch" FontFamily="Global User Interface"/>
                         <TextBlock FontWeight="Light" Margin="3,10,0,0" TextWrapping="Wrap" FontSize="18.667" Height="91" VerticalAlignment="Top">
-                			<Run Text="Your remaining balance"/>
+                			<Run FontSize="21.333" Foreground="{StaticResource LightAccentBrush}" Text="BALANCE"/>
                 			<LineBreak/>
                 			<Run Foreground="Gray" Text="LockView uses a web service to compose your image. Support this development kindly "/>
                 			<Run Foreground="Gray" Text="refilling "/>

@@ -8,7 +8,9 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -107,6 +109,7 @@ namespace LockViewApp.W81
             nextButton.IsEnabled = imageCropper.Source != null;
         }
         WriteableBitmap originalMap;
+
         private async void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = listBox.SelectedItem;
@@ -217,7 +220,7 @@ namespace LockViewApp.W81
             listBox_SelectionChanged(null, null);
         }
 
-        private void nextButton_Click(object sender, RoutedEventArgs e)
+        private async void nextButton_Click(object sender, RoutedEventArgs e)
         {
             var canvas = imageViewBox;
             var WB_CapturedImage = originalMap;
@@ -241,6 +244,18 @@ namespace LockViewApp.W81
             }
             this.Frame.Navigate(typeof(SourceSelectionAndPreview), WB_CapturedImage);
             //OriginalImage.Source = WB_CroppedImage;
+            StorageFile sf = await ApplicationData.Current.LocalFolder.CreateFileAsync("myfile.jpg", CreationCollisionOption.ReplaceExisting);
+            try
+            {
+                using (var stream = await sf.OpenAsync(FileAccessMode.ReadWrite))
+                {
+                    await WB_CapturedImage.ToStreamAsJpeg(stream);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

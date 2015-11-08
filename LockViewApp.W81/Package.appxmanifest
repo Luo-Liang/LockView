@@ -16,8 +16,16 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="LockViewApp.W81.App">
       <m2:VisualElements DisplayName="LockView" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="LockViewApp.W81" ForegroundText="light" BackgroundColor="#464646" ToastCapable="true">
+        <m2:LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
         <m2:SplashScreen Image="Assets\SplashScreen.png" />
       </m2:VisualElements>
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="LockViewApp.W81.BackgroundTasks.BackgroundTask">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>

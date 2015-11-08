@@ -86,7 +86,7 @@ namespace InfoViewApp.WP81.Tasks
 #endif
         }
 
-        public async static Task<string> RequestJsonProxied(string getAddr, HttpClient client=null)
+        public async static Task<string> RequestJsonProxied(string getAddr, HttpClient client = null)
         {
             if (client == null) client = new HttpClient();
             var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(getAddr));
@@ -97,7 +97,8 @@ namespace InfoViewApp.WP81.Tasks
             return await response.Content.ReadAsStringAsync();
         }
 
-        public static void SaveAndClearUsedComposedImage(byte[] jpegBytes, string fileName)
+        public static void
+            SaveAndClearUsedComposedImage(byte[] jpegBytes, string fileName)
         {
 #if WINDOWS_PHONE
             using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
@@ -126,16 +127,17 @@ namespace InfoViewApp.WP81.Tasks
             StorageFile imgFile = null;
             try
             {
-                imgFile = StorageFile.GetFileFromApplicationUriAsync(Windows.System.UserProfile.LockScreen.OriginalImageFile).GetResults();
+                imgFile = StorageFile.GetFileFromApplicationUriAsync(Windows.System.UserProfile.LockScreen.OriginalImageFile).GetAwaiter().GetResult();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { }
-            imgFile.DeleteAsync(StorageDeleteOption.PermanentDelete).GetResults();
+            if (imgFile != null)
+                imgFile.DeleteAsync(StorageDeleteOption.PermanentDelete).GetAwaiter().GetResult();
             StorageFolder folder = ApplicationData.Current.LocalFolder;
-            var storageFile = folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting).GetResults();
-            using (var randomAccessStream = storageFile.OpenAsync(FileAccessMode.ReadWrite).GetResults())
+            var storageFile = folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting).GetAwaiter().GetResult();
+            using (var randomAccessStream = storageFile.OpenAsync(FileAccessMode.ReadWrite).GetAwaiter().GetResult())
             {
-                randomAccessStream.WriteAsync(jpegBytes.AsBuffer()).GetResults();
+                randomAccessStream.WriteAsync(jpegBytes.AsBuffer()).GetAwaiter().GetResult();
             }
 #endif
         }

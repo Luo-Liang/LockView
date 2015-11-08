@@ -162,6 +162,7 @@
     <PRIResource Include="MultilingualResources\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BadgeLogo.scale-180.png" />
     <Content Include="Assets\LockViewInApp.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\Maximize.png">
@@ -227,6 +228,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LockViewApp.W81.BackgroundTasks\LockViewApp.W81.BackgroundTasks.csproj">
+      <Project>{bf3bbfb3-6cec-46b2-b7ac-e5d494f10cd7}</Project>
+      <Name>LockViewApp.W81.BackgroundTasks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LockViewApp.W81.DataContracts\LockViewApp.W81.DataContracts.csproj">
       <Project>{d81f3bc8-764a-46d0-ab1f-69fadbecad61}</Project>
       <Name>LockViewApp.W81.DataContracts</Name>

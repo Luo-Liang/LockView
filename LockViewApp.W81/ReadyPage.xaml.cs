@@ -1,23 +1,17 @@
 ﻿using InfoViewApp.WP81;
+using LockViewApp.W81.BackgroundTasks;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Store;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.System.UserProfile;
 using Windows.UI.StartScreen;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -67,9 +61,26 @@ namespace LockViewApp.W81
             daysText.Text = ((int)((quota / perDrain) / LockViewApplicationState.Instance.SelectedProviders.Select(o => o.GetMetaData()).Max(meta => meta.UpdatePerDay))).ToString();
         }
 
-        private void nextButton_Click(object sender, RoutedEventArgs e)
+        private async void nextButton_Click(object sender, RoutedEventArgs e)
         {
+            string taskName = "LockView BackgroundTask";
 
+            // check if task is already registered
+            foreach (var cur in BackgroundTaskRegistration.AllTasks)
+                if (cur.Value.Name == taskName)
+                {
+                    cur.Value.Unregister(true);
+                }
+
+            // Windows Phone app must call this to use trigger types (see MSDN)
+            await BackgroundExecutionManager.RequestAccessAsync();
+
+            // register a new task
+            BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder { Name = taskName, TaskEntryPoint = typeof(BackgroundTask).FullName };
+            taskBuilder.SetTrigger(new TimeTrigger(15, false));
+            BackgroundTaskRegistration myFirstTask = taskBuilder.Register();
+
+          
         }
 
         void updateUsability()
