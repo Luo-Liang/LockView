@@ -62,6 +62,8 @@ namespace InfoViewApp.WP81.Tasks
                 LockScreen.SetImageUri(new Uri($"ms-appx:///Outage_{cultureHint}.png", UriKind.Absolute));
             }
 #elif WINDOWS_APP
+            StorageFile imgFile = ApplicationData.Current.LocalFolder.GetFileAsync(fileName).GetAwaiter().GetResult();
+            Windows.System.UserProfile.LockScreen.SetImageFileAsync(imgFile).GetAwaiter().GetResult();
 #endif
         }
 

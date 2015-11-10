@@ -15,7 +15,6 @@ using LockViewApp.WP81.Contracts;
 
 namespace InfoViewApp.WP81
 {
-
     [XmlInclude(typeof(NewsFeedCategory))]
     [XmlInclude(typeof(GoogleSpecificInterestGatherer))]
     [XmlInclude(typeof(SingleTextSource))]
@@ -77,7 +76,9 @@ namespace InfoViewApp.WP81
             SelectedContextContracts = new OverlayContextContract[1];
             SelectedInterests = new InterestRequest[1];
         }
-
+#if WINDOWS_APP
+        public DateTime BackgroundTaskLastRun { get; set; }
+#endif
         public bool DoNotDisturb { get; set; }
         public InterestRequest[] SelectedInterests { get; set; }
         public InterestRequest SelectedInterest

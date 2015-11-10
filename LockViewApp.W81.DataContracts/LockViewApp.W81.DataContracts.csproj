@@ -147,6 +147,11 @@
       <Link>WeatherDataSource.cs</Link>
     </Compile>
     <Compile Include="MISCHelpers.cs" />
+    <Compile Include="NotificationExtensions\BadgeContent.cs" />
+    <Compile Include="NotificationExtensions\Common.cs" />
+    <Compile Include="NotificationExtensions\ContentInterfaces.cs" />
+    <Compile Include="NotificationExtensions\TileContent.cs" />
+    <Compile Include="NotificationExtensions\ToastContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XPathExtensions.cs" />
   </ItemGroup>

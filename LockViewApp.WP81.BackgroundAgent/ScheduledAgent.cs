@@ -253,7 +253,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
 #if !DEBUG
             }
-            if (instance.UserQuotaInDollars - drainPerReq < 0 && (DateTime.Now - task.LastScheduledTime).Days != 0)
+            if (instance.UserQuotaInDollars - drainPerReq < 0 && (DateTime.Now.DayOfYear - task.LastScheduledTime.DayOfYear)!= 0)
             {
                 var toast = new ShellToast();
                 toast.Title = AppResources.LockView;

@@ -149,8 +149,10 @@ namespace LockViewApp.W81
                     ctrl.SelectedInterestIndex = i;
                     //update index i.
                     TemporaryContentStorage[i].CopyFromInterestContent(e.Content);
+                    TemporaryInterestStorage[i] = e.Request;
                     //assign. Let's just waste some processing time.
                     LockViewApplicationState.Instance.SelectedContextContracts = TemporaryContentStorage.ToArray();
+                    LockViewApplicationState.Instance.SelectedInterests = TemporaryInterestStorage.ToArray();
                     break;
                 }
             }
@@ -158,6 +160,7 @@ namespace LockViewApp.W81
             RescaleDTandPreviewGrid(mockScreen.ActualHeight);
         }
         List<OverlayContextContract> TemporaryContentStorage = new List<OverlayContextContract>();
+        List<InterestRequest> TemporaryInterestStorage = new List<InterestRequest>();
         Dictionary<InterestGathererControl, PreviewItemDisplayControl> requestRelationship = new Dictionary<InterestGathererControl, PreviewItemDisplayControl>();
         Dictionary<string, InterestGathererControl> navigationRelatiobship = new Dictionary<string, InterestGathererControl>();
         private void Control_SelectionStatusChanged(object sender, InterestSelectionEvent e)
@@ -168,12 +171,15 @@ namespace LockViewApp.W81
                 requestRelationship[sender as InterestGathererControl] = preview;
                 previewItemStackPanel.Children.Add(preview);
                 TemporaryContentStorage.Add(new OverlayContextContract());
+                TemporaryInterestStorage.Add(new InterestRequest());
             }
             else
             {
-                TemporaryContentStorage.RemoveAt(previewItemStackPanel.Children.IndexOf(requestRelationship[sender as InterestGathererControl]));
+                var idx = previewItemStackPanel.Children.IndexOf(requestRelationship[sender as InterestGathererControl]);
+                TemporaryContentStorage.RemoveAt(idx);
                 previewItemStackPanel.Children.Remove(requestRelationship[sender as InterestGathererControl]);
                 requestRelationship.Remove(sender as InterestGathererControl);
+                TemporaryInterestStorage.RemoveAt(idx);
             }
         }
 

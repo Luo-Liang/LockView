@@ -128,6 +128,18 @@ namespace LockViewApp.W81
             int.TryParse(resolutionWidth.Text, out width);
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight = height;
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth = width;
+            if(context.NavigationType == "bing")
+            {
+                LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.Bing;
+            }
+            else if (context.NavigationType == "nasa")
+            {
+                LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.NASA;
+            }
+            else
+            {
+                LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.Local;
+            }
             //RedrawCropper();
             try
             {

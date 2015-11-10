@@ -63,6 +63,13 @@ namespace LockViewApp.W81
 
         private async void nextButton_Click(object sender, RoutedEventArgs e)
         {
+            var scale = ResolutionProvider.GetScaleFactor();
+            var instance = LockViewApplicationState.Instance;
+            instance.PreviewLayoutContract.Origin = new InfoViewApp.WP81.Point() { X = (int)(20 * scale), Y = (int)(40 * scale) };
+            instance.PreviewLayoutContract.AutoExpand = true;
+            instance.PreviewLayoutContract.ParagraphSpacing = 5;
+            instance.DoNotDisturb = doNotDisturb.IsChecked.Value;
+            instance.PreviewFormattingContract.SecondLineFont.FontSize = instance.PreviewFormattingContract.SecondLineFont.FontSize / 2;
             string taskName = "LockView BackgroundTask";
 
             // check if task is already registered
@@ -71,7 +78,7 @@ namespace LockViewApp.W81
                 {
                     cur.Value.Unregister(true);
                 }
-
+            await LockViewApplicationState.Instance.SaveState();
             // Windows Phone app must call this to use trigger types (see MSDN)
             await BackgroundExecutionManager.RequestAccessAsync();
 

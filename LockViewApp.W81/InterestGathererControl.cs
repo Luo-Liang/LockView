@@ -12,9 +12,11 @@ namespace LockViewApp.W81
     public class GathererReadyEvent : EventArgs
     {
         public InterestContent Content { get; private set; }
-        public GathererReadyEvent(InterestContent content)
+        public InterestRequest Request { get; private set; }
+        public GathererReadyEvent(InterestContent content, InterestRequest requestIssued)
         {
             Content = content;
+            Request = requestIssued;
         }
     }
 
@@ -38,7 +40,7 @@ namespace LockViewApp.W81
         {
             if (ShowMeClicked != null)
             {
-                ShowMeClicked(this, new GathererReadyEvent(await Gatherer.RequestContent(request)));
+                ShowMeClicked(this, new GathererReadyEvent(await Gatherer.RequestContent(request), request));
             }
         }
 
