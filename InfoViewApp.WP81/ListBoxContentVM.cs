@@ -28,5 +28,11 @@ namespace InfoViewApp.WP81
 
     public class IntegerCollection : List<int>
     {
+#if WINDOWS_APP
+        public IntegerCollection()
+        {
+            for (int i = 10; i <= 52; i++) this.Add(i);
+        }
+#endif
     }
 }

@@ -61,7 +61,7 @@
                         </TextBlock.Foreground>
                     </TextBlock>
                 </StackPanel>
-                <ScrollViewer Margin="7,120,6,7" d:LayoutOverrides="Height">
+                <ScrollViewer Margin="7,120,6,0">
                     <StackPanel Orientation="Vertical">
                         <TextBlock FontWeight="Light" Margin="3,0,0,0" TextWrapping="Wrap" FontSize="18.667">
                         	<Run FontWeight="Normal" Foreground="{StaticResource LightAccentBrush}" FontSize="21.333" Text="PERMISSIONS"/>
@@ -78,50 +78,63 @@
                 			<Run Foreground="Gray" Text="If you do not wish to receive updates late in the night, check this."/>
                         </TextBlock>
                         <CheckBox x:Name="doNotDisturb" Content="Enable Do-Not-Disturb" Margin="0,10,4,0" VerticalAlignment="Stretch" FontFamily="Global User Interface"/>
-                        <TextBlock FontWeight="Light" Margin="3,20,0,0" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top">
-                			<Run FontWeight="Normal" FontSize="21.333" Foreground="{StaticResource LightAccentBrush}" Text="BALANCE"/>
-                			<LineBreak/>
-                			<Run Foreground="Gray" Text="LockView uses a web service to compose your image. Support this development kindly "/>
-                			<Run Foreground="Gray" Text="refilling "/>
-                			<Run Foreground="Gray" Text="your"/>
-                			<Run Foreground="Gray" Text=" account."/>
-                        </TextBlock>
-                        <StackPanel HorizontalAlignment="Left" Height="24" Margin="3,10,0,0" Orientation="Horizontal" VerticalAlignment="Top">
-                            <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="$" VerticalAlignment="Top">
-                                <TextBlock.Foreground>
-                                    <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                                </TextBlock.Foreground>
+                        <StackPanel x:Name="balanceGrid" Margin="0,20,25,0">
+                            <TextBlock FontWeight="Light" Margin="3,0,0,0" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" d:LayoutOverrides="Width, LeftMargin, RightMargin">
+                        		<Run FontWeight="Normal" FontSize="21.333" Foreground="{StaticResource LightAccentBrush}" Text="BALANCE"/>
+                        		<LineBreak/>
+                        		<Run Foreground="Gray" Text="LockView uses a web service to compose your image. Support this development kindly "/>
+                        		<Run Foreground="Gray" Text="refilling "/>
+                        		<Run Foreground="Gray" Text="your"/>
+                        		<Run Foreground="Gray" Text=" account."/>
                             </TextBlock>
-                            <TextBlock x:Name="balanceTextBlock" FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="0.33" VerticalAlignment="Top">
-                                <TextBlock.Foreground>
-                                    <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                                </TextBlock.Foreground>
+                            <StackPanel HorizontalAlignment="Left" Height="24" Orientation="Horizontal" VerticalAlignment="Top" d:LayoutOverrides="LeftPosition, RightPosition" Margin="3,15,0,0">
+                                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="$" VerticalAlignment="Top">
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                                <TextBlock x:Name="balanceTextBlock" FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="0.33" VerticalAlignment="Top">
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text="(" Margin="10,0,0,0">
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                                <TextBlock x:Name="daysText" FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text="0" Margin="0">
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text="estimated days remaining" Margin="5,0,0,0">
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text=")" Margin="0">
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                            </StackPanel>
+                            <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Height="110" VerticalAlignment="Top" d:LayoutOverrides="Width" Margin="3,10,0,0">
+                        		<Run Foreground="Gray" Text="Each time we update your content, you account will encounter a tiny charge. When your balance reaches 0, your update raae will be drastically reduced. When that happens,you will be ntified."/>
                             </TextBlock>
-                            <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text="(" Margin="10,0,0,0">
-                                <TextBlock.Foreground>
-                                    <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                                </TextBlock.Foreground>
-                            </TextBlock>
-                            <TextBlock x:Name="daysText" FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text="0" Margin="0">
-                                <TextBlock.Foreground>
-                                    <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                                </TextBlock.Foreground>
-                            </TextBlock>
-                            <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text="estimated days remaining" Margin="10,0,0,0">
-                                <TextBlock.Foreground>
-                                    <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                                </TextBlock.Foreground>
-                            </TextBlock>
-                            <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" VerticalAlignment="Top" Text=")" Margin="0">
-                                <TextBlock.Foreground>
-                                    <SolidColorBrush Color="{StaticResource LightAccentColor}"/>
-                                </TextBlock.Foreground>
-                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width" Margin="0,15,0,0">
+                                <Button Click="refill_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" Content="refill" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontFamily="Global User Interface" d:LayoutOverrides="HorizontalAlignment"/>
+                                <Button Click="useACode_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="useACode" Content="use a code instead" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontFamily="Global User Interface"/>
+                            </StackPanel>
+                            <StackPanel x:Name="codeEnterStack" Orientation="Vertical" Visibility="Collapsed" d:LayoutOverrides="Width" Margin="0,15,0,0">
+                                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" d:LayoutOverrides="Width">
+                        			<Run FontWeight="Normal" Foreground="{StaticResource LightAccentBrush}" FontSize="21.333" Text="ENTER YOUR CODE BELOW"/>
+                        			<LineBreak/>
+                        			<Run x:Name="codeStatus" Foreground="Gray" Text="The code looks like this: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX."/>
+                                </TextBlock>
+                                <TextBox KeyUp="codeBox_KeyUp" KeyDown="codeBox_KeyDown"  TextChanged="codeBox_TextChanged" x:Name="codeBox" Height="18" TextWrapping="Wrap" Text="" Foreground="White" Background="{x:Null}" Margin="0,10,0,0" FontFamily="Global User Interface"/>
+                            </StackPanel>
                         </StackPanel>
-                        <TextBlock FontWeight="Light" Margin="3,10,0,0" TextWrapping="Wrap" FontSize="18.667" Height="110" VerticalAlignment="Top">
-                			<Run Foreground="Gray" Text="Each time we update your content, you account will encounter a tiny charge. When your balance reaches 0, your update raae will be drastically reduced. When that happens,you will be ntified."/>
-                        </TextBlock>
-                        <Button Click="refill_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" Content="refill" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontFamily="Global User Interface" Margin="0,10,0,0"/>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

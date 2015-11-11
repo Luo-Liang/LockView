@@ -254,8 +254,6 @@ namespace LockViewApp.W81
                 int actualWidth = (int)(widthExtent * WB_CapturedImage.PixelWidth);
                 WB_CapturedImage = WB_CapturedImage.Crop(actualWidth, 0, (int)(WB_CapturedImage.PixelHeight / screenRatio), WB_CapturedImage.PixelHeight);
             }
-            this.Frame.Navigate(typeof(SourceSelectionAndPreview), WB_CapturedImage);
-            //OriginalImage.Source = WB_CroppedImage;
             StorageFile sf = await ApplicationData.Current.LocalFolder.CreateFileAsync("myfile.jpg", CreationCollisionOption.ReplaceExisting);
             try
             {
@@ -268,6 +266,7 @@ namespace LockViewApp.W81
             {
 
             }
+            this.Frame.Navigate(typeof(SourceSelectionAndPreview), WB_CapturedImage);
         }
     }
 }

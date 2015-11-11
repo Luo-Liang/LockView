@@ -78,6 +78,7 @@
                 <ScrollViewer HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" x:Name="setupTarget" Margin="0,133,2,0"/>
             </Grid>
         </Grid>
+        <local:CreateAStyleControl x:Name="createAStyle" Margin="862,152,34,90" Visibility="Collapsed"/>
         <Grid x:Name="ImagePreviewTool" Margin="862,152,40,90" d:LayoutOverrides="LeftPosition, RightPosition">
             <Grid x:Name="boundingBox" Margin="0,136,0,0">
                 <Grid x:Name="imagePreviewBox" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -89,9 +90,13 @@
                                     <CompositeTransform ScaleX="1" ScaleY="1"/>
                                 </Grid.RenderTransform>
                                 <TextBlock TextWrapping="NoWrap" x:Name="timePreviewGrid" Margin="0,0,0,27" Text="22:10" FontSize="42.667" d:LayoutOverrides="Height, TopPosition, BottomPosition"/>
-                                <TextBlock TextWrapping="NoWrap" x:Name="datePreview" Text="Wednesday, october 21" VerticalAlignment="Bottom" FontSize="26.667"/>
+                                <TextBlock TextWrapping="NoWrap" x:Name="datePreview" VerticalAlignment="Bottom" FontSize="26.667">
+                                	<Run Text="Wednesday, "/>
+                                	<Run Text="O"/>
+                                	<Run Text="ctober 21"/>
+                                </TextBlock>
                             </Grid>
-                            <StackPanel x:Name="previewItemStackPanel" Margin="23,23,23,120" RenderTransformOrigin="0,0">
+                            <StackPanel PointerReleased="previewItemStackPanel_PointerReleased" x:Name="previewItemStackPanel" Margin="23,23,23,120" RenderTransformOrigin="0,0">
                                 <StackPanel.RenderTransform>
                                     <CompositeTransform ScaleX="1" ScaleY="1"/>
                                 </StackPanel.RenderTransform>

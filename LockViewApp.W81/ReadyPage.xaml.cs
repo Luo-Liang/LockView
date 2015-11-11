@@ -2,16 +2,19 @@
 using LockViewApp.W81.BackgroundTasks;
 using System;
 using System.Linq;
+using Windows.Web.Http;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Store;
 using Windows.Foundation;
 using Windows.Storage;
 using Windows.System.UserProfile;
+using Windows.UI.Popups;
 using Windows.UI.StartScreen;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using InfoViewApp.WP81.Tasks;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -69,7 +72,7 @@ namespace LockViewApp.W81
             instance.PreviewLayoutContract.AutoExpand = true;
             instance.PreviewLayoutContract.ParagraphSpacing = 5;
             instance.DoNotDisturb = doNotDisturb.IsChecked.Value;
-            instance.PreviewFormattingContract.SecondLineFont.FontSize = instance.PreviewFormattingContract.SecondLineFont.FontSize / 2;
+            instance.PreviewFormattingContract.SecondLineFont.FontSize = instance.PreviewFormattingContract.FirstLineFont.FontSize * 6 / 10;
             string taskName = "LockView BackgroundTask";
 
             // check if task is already registered
@@ -87,7 +90,38 @@ namespace LockViewApp.W81
             taskBuilder.SetTrigger(new TimeTrigger(15, false));
             BackgroundTaskRegistration myFirstTask = taskBuilder.Register();
 
-          
+            HttpClient client = new HttpClient();
+            ImageRequestOverride imgReqOverride = null;
+            if (instance.SelectedImageSource == InfoViewApp.WP81.ImageSource.Bing)
+            {
+                imgReqOverride = new ImageRequestOverride()
+                {
+                    ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
+                    Arguments = ""
+                };
+            }
+            else if (instance.SelectedImageSource == InfoViewApp.WP81.ImageSource.NASA)
+            {
+                imgReqOverride = new ImageRequestOverride()
+                {
+                    ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
+                    Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
+                };
+            }
+            CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
+            ImageCompositionResponse compositionResponse = null;
+            if (imgReqOverride == null)
+                compositionResponse = await cloudClient.Compose(instance.SelectedContextContracts, instance.PreviewFormattingContract, instance.PreviewLayoutContract, instance.RequestMetadata.PersistFileName);
+            else
+                compositionResponse = await cloudClient.ComposeLite(instance.SelectedContextContracts, instance.PreviewFormattingContract, instance.PreviewLayoutContract, imgReqOverride);
+            var fileName = instance.SelectedContextContracts.GenerateImgFileName();
+            var jpegBytes = compositionResponse.Image;
+            BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
+            BackgroundTaskHelper.TrySetLockScreenImage(fileName, instance.RequestMetadata.RequestLanguage);
+            //update tile if necessary.
+            BackgroundTaskHelper.TryUpdateTiles();
+            //drain the user's balance.
+            //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
         }
 
         void updateUsability()
@@ -107,6 +141,10 @@ namespace LockViewApp.W81
             else
             {
                 pinTileButton.IsEnabled = true;
+            }
+            if (LockViewApplicationState.Instance.UserQuotaInDollars == double.MaxValue)
+            {
+                balanceGrid.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -155,6 +193,52 @@ namespace LockViewApp.W81
         bool isPinned()
         {
             return Windows.UI.StartScreen.SecondaryTile.Exists("CURR_STORY");
+        }
+
+        private void useACode_Click(object sender, RoutedEventArgs e)
+        {
+            codeEnterStack.Visibility = Visibility.Visible;
+        }
+
+        private void codeBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var txtBx = sender as TextBox;
+            if (txtBx.Text.Length == 29)
+            {
+                var raw = txtBx.Text.Where(o => o != '-').Select(o => (uint)o).Aggregate<uint, uint>(1, (current, accumulate) => current * accumulate);
+                var isValid = raw % 3642621952 == 0;
+                if (isValid)
+                {
+                    updateUsability();
+                }
+            }
+            else
+            {
+                codeStatus.Text = "This does not seem like a valid code.";
+            }
+        }
+
+        private void codeBox_KeyUp(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Back)
+            {
+                return;//do not mess up with backspace.
+            }
+            var txtBx = sender as TextBox;
+            var supplyDash = (txtBx.Text.Length + 1) % 6 == 0;
+            if (supplyDash && txtBx.Text.Length < 29)
+            {
+                txtBx.Text += "-";
+                txtBx.Select(txtBx.Text.Length, 0);
+            }
+        }
+
+        private void codeBox_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Subtract)
+            {
+                e.Handled = true;//cannot type this key
+            }
         }
     }
 }

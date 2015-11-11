@@ -188,5 +188,11 @@ namespace LockViewApp.W81
             LockViewApplicationState.Instance.SelectedProviders = requestRelationship.Keys.Cast<InterestGathererControl>().Select(o => o.Gatherer).ToArray();
             this.Frame.Navigate(typeof(ReadyPage));
         }
+
+        private void previewItemStackPanel_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            createAStyle.Visibility = Visibility.Visible;
+            ImagePreviewTool.Visibility = Visibility.Collapsed;
+        }
     }
 }

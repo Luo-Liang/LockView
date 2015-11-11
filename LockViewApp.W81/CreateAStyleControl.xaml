@@ -1,0 +1,74 @@
+﻿<UserControl
+    x:Class="LockViewApp.W81.CreateAStyleControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LockViewApp.W81"
+    xmlns:localWp="using:InfoViewApp.WP81"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:clr="using:System"
+    mc:Ignorable="d" Width="470" Height="Auto">
+
+    <ScrollViewer>
+        <StackPanel Margin="0,0,25,0">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="colorTemplateFullInteger">
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal">
+                        <TextBlock FontSize="32" Margin="0,0,0,0" Text="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate x:Key="colorTemplateFull">
+                    <StackPanel Margin="10" Orientation="Horizontal">
+                        <Rectangle Height="25" Width="25" StrokeThickness="0">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="{Binding Color}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock FontSize="32" Margin="15,0,0,0" Text="{Binding ColorName,Converter={StaticResource str2LocStrConn}}" FontFamily="Global User Interface"/>
+                    </StackPanel>
+                </DataTemplate>
+                <localWp:IntegerCollection x:Key="intCollection">
+                </localWp:IntegerCollection>
+            </StackPanel.Resources>
+            <StackPanel Height="103" Background="{StaticResource AccentBrush}" d:LayoutOverrides="TopPosition, BottomPosition" Width="446">
+                <TextBlock x:Name="textBlock1" Text="Create a Style" TextWrapping="Wrap" Margin="10,10,10,5" FontSize="24"/>
+                <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" Margin="10,4,10,10" FontSize="18.667" Text="Here's a list of settings that you can use to tune the style of texts. ">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource LighterGray}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10,20,0,0">
+                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="Title Foreground"/>
+                <ComboBox ItemsSource="{StaticResource colorCollection}" SelectedItem="{Binding ForegroundTitle,Converter={StaticResource str2ClrConn}}" ItemTemplate="{StaticResource colorTemplateFull}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10,20,0,0">
+                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667">
+                	<Run Text="Title "/>
+                	<Run Text="Background"/>
+                </TextBlock>
+                <ComboBox ItemsSource="{StaticResource colorCollection}" SelectedItem="{Binding BackgroundTitle, Converter={StaticResource str2ClrConn}, Mode=TwoWay}"  ItemTemplate="{StaticResource colorTemplateFull}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10,20,0,0">
+                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="Title Fontsize"/>
+                <ComboBox ItemsSource="{StaticResource intCollection}" SelectedItem="{Binding TitleFont.FontSize, Mode=TwoWay}"  ItemTemplate="{StaticResource colorTemplateFullInteger}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10,20,0,0">
+                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="Content Foreground"/>
+                <ComboBox ItemsSource="{StaticResource colorCollection}" SelectedItem="{Binding ForegroundFirstLine, Converter={StaticResource str2LocStrConn}, Mode=TwoWay}"  ItemTemplate="{StaticResource colorTemplateFull}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10,20,0,0">
+                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="Content Background"/>
+                <ComboBox ItemsSource="{StaticResource colorCollection}" SelectedItem="{Binding BackgroundFirstLine, Converter={StaticResource str2ClrConn}, Mode=TwoWay}"  ItemTemplate="{StaticResource colorTemplateFull}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10,20,0,0">
+                <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667">
+                	<Run Text="Content Fontsize"/>
+                	<Run Text=""/>
+                </TextBlock>
+                <ComboBox ItemsSource="{StaticResource intCollection}" SelectedItem="{Binding FirstLineFont.FontSize, Mode=TwoWay}" ItemTemplate="{StaticResource colorTemplateFullInteger}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
+            </StackPanel>
+            <Button Click="saveStyle_Click" x:Name="saveStyle" Content="okay" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="10,20,0,0"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

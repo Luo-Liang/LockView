@@ -1,22 +1,20 @@
 ﻿#if WINDOWS_PHONE
 using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Shell;
+using System.IO.IsolatedStorage;
+using Windows.Phone.System.UserProfile;
+#elif WINDOWS_APP
+using NotificationsExtensions.TileContent;
 #endif
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-#if WINDOWS_PHONE
-using System.IO.IsolatedStorage;
-#endif
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.Data.Json;
-#if WINDOWS_PHONE
-using Windows.Phone.System.UserProfile;
-#endif
 using Windows.Storage;
 using Windows.Web.Http;
 
@@ -85,6 +83,13 @@ namespace InfoViewApp.WP81.Tasks
                 tile.Update(standardTile);
             }
 #elif WINDOWS_APP
+            if(Windows.UI.StartScreen.SecondaryTile.Exists("CURR_STORY"))
+            {
+                ITileSquare150x150Text04 squareContent = TileContentFactory.CreateTileSquare150x150Text04();
+                squareContent.TextBodyWrap.Text = "Sent to a secondary tile from NotificationExtensions!";
+                // Send the notification to the secondary tile by creating a secondary tile updater
+                Windows.UI.Notifications.TileUpdateManager.CreateTileUpdaterForSecondaryTile("CURR_STORY").Update(squareContent.CreateNotification());
+            }
 #endif
         }
 

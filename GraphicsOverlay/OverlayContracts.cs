@@ -76,7 +76,7 @@ namespace InfoView.DataContract
             {
                 value.TitleFont = new Font(new FontFamily(this.TitleFont.FontFamily, FontCollection), this.FirstLineFont.FontSize);
                 value.FirstLineFont = new Font(new FontFamily(this.FirstLineFont.FontFamily, FontCollection), this.FirstLineFont.FontSize);
-                value.SecondLineFont = new Font(new FontFamily(this.SecondLineFont.FontFamily, FontCollection), this.SecondLineFont.FontSize);
+                value.SecondLineFont = new Font(new FontFamily(this.SecondLineFont.FontFamily, FontCollection), this.SecondLineFont.FontSize == 0 ? 10 : this.SecondLineFont.FontSize);
             }
             catch
             {

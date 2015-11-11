@@ -140,7 +140,7 @@ namespace InfoViewApp.WP81
             instance.PreviewLayoutContract.TargetWidth = (int)width;
             Tasks.CloudImageCompositorClient client = new Tasks.CloudImageCompositorClient();
             instance.DoNotDisturb = doNotDisturb.IsChecked.Value;
-            instance.PreviewFormattingContract.SecondLineFont.FontSize = instance.PreviewFormattingContract.SecondLineFont.FontSize / 2;
+            instance.PreviewFormattingContract.SecondLineFont.FontSize = instance.PreviewFormattingContract.FirstLineFont.FontSize / 2;
             await instance.SaveState();
             var response = await client.Compose(LockViewApplicationState.Instance.SelectedContextContracts,
                 LockViewApplicationState.Instance.PreviewFormattingContract,
