@@ -31,7 +31,18 @@ namespace LockViewApp.W81
             this.SizeChanged += SourceSelectionAndPreview_SizeChanged;
             this.Loaded += SourceSelectionAndPreview_Loaded;
             this.mockScreen.SizeChanged += ImagePreviewBox_SizeChanged;
+            this.createAStyle.OnClick += CreateAStyle_OnClick;
+        }
 
+        private void CreateAStyle_OnClick(object sender, RoutedEventArgs e)
+        {
+            createAStyle.Visibility = Visibility.Collapsed;
+            ImagePreviewTool.Visibility = Visibility.Visible;
+            foreach(var content in requestRelationship.Values)
+            {
+                content.DataContext = null;
+                content.DataContext = LockViewApplicationState.Instance;
+            }
         }
 
         private void ImagePreviewBox_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -121,11 +132,11 @@ namespace LockViewApp.W81
                 {
                     navigationRelatiobship[dataContext.NavigationType] = new GenericNewsSource();
                 }
-                else if(dataContext.NavigationType == "language")
+                else if (dataContext.NavigationType == "language")
                 {
                     navigationRelatiobship[dataContext.NavigationType] = new LanguageLearningInterestControl();
                 }
-                else if(dataContext.NavigationType == "wordofwisdom")
+                else if (dataContext.NavigationType == "wordofwisdom")
                 {
                     navigationRelatiobship[dataContext.NavigationType] = new WordOfWisdomInterestControl();
                 }
@@ -156,6 +167,7 @@ namespace LockViewApp.W81
                     break;
                 }
             }
+            ctrl.DataContext = null;
             ctrl.DataContext = LockViewApplicationState.Instance;
             RescaleDTandPreviewGrid(mockScreen.ActualHeight);
         }
@@ -191,6 +203,8 @@ namespace LockViewApp.W81
 
         private void previewItemStackPanel_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
+            createAStyle.DataContext = LockViewApplicationState.Instance.PreviewFormattingContract;
+            //createAStyle.ReviveObject = ImagePreviewTool;
             createAStyle.Visibility = Visibility.Visible;
             ImagePreviewTool.Visibility = Visibility.Collapsed;
         }

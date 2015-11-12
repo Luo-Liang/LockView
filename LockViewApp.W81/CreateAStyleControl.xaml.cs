@@ -19,20 +19,15 @@ namespace LockViewApp.W81
 {
     public sealed partial class CreateAStyleControl : UserControl
     {
+        public event EventHandler<RoutedEventArgs> OnClick;
         public CreateAStyleControl()
         {
             this.InitializeComponent();
         }
 
-        public UIElement ReviveObject;
-
         private void saveStyle_Click(object sender, RoutedEventArgs e)
         {
-            Visibility = Visibility.Collapsed;
-            if (ReviveObject != null)
-            {
-                ReviveObject.Visibility = Visibility.Visible;
-            }
+            if (OnClick != null) OnClick(this, e);
         }
     }
 }

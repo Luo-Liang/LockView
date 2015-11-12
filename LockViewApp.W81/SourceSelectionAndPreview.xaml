@@ -79,7 +79,7 @@
             </Grid>
         </Grid>
         <local:CreateAStyleControl x:Name="createAStyle" Margin="862,152,34,90" Visibility="Collapsed"/>
-        <Grid x:Name="ImagePreviewTool" Margin="862,152,40,90" d:LayoutOverrides="LeftPosition, RightPosition">
+        <Grid Visibility="Visible"  x:Name="ImagePreviewTool" Margin="862,152,40,90" d:LayoutOverrides="LeftPosition, RightPosition">
             <Grid x:Name="boundingBox" Margin="0,136,0,0">
                 <Grid x:Name="imagePreviewBox" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Border x:Name="boundingBorder" BorderThickness="15,15,15,35" CornerRadius="5" BorderBrush="#FF444444" Margin="0">
