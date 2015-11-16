@@ -8,111 +8,111 @@
       <group id="Resources">
         <trans-unit id="Resources\Width\Text" translate="yes" xml:space="preserve">
           <source>Width </source>
-          <target state="translated">宽度</target>
+          <target state="new">Width </target>
         </trans-unit>
         <trans-unit id="Resources\UseMyOwnImage\SecondLine" translate="yes" xml:space="preserve">
           <source>Choose this if you would like to use the same image as your lock screen over time.</source>
-          <target state="translated">若您希望使用同一张图片作为锁屏界面，请选择此项。</target>
+          <target state="new">Choose this if you would like to use the same image as your lock screen over time.</target>
         </trans-unit>
         <trans-unit id="Resources\UseMyOwnImage\FirstLine" translate="yes" xml:space="preserve">
           <source>USE MY OWN IMAGE</source>
-          <target state="translated">使用本机图片</target>
+          <target state="new">USE MY OWN IMAGE</target>
         </trans-unit>
         <trans-unit id="Resources\SwipeAroundContent\Text" translate="yes" xml:space="preserve">
           <source>Use your mouse wheel or drag with your fingers to select a best view.</source>
-          <target state="needs-review-translation">使用鼠标滚轮或拖动手指来选择最佳视图。</target>
+          <target state="new">Use your mouse wheel or drag with your fingers to select a best view.</target>
         </trans-unit>
         <trans-unit id="Resources\SwipeAround\Text" translate="yes" xml:space="preserve">
           <source>Swipe Around!</source>
-          <target state="translated">四处看看!</target>
-        </trans-unit>
-        <trans-unit id="Resources\SetupSettings\Text" translate="yes" xml:space="preserve">
-          <source>Specific Settings</source>
-          <target state="new">Specific Settings</target>
+          <target state="new">Swipe Around!</target>
         </trans-unit>
         <trans-unit id="Resources\SetupSettingsContent\Text" translate="yes" xml:space="preserve">
           <source>Here're some specific questions regarding your selected interest.</source>
           <target state="new">Here're some specific questions regarding your selected interest.</target>
         </trans-unit>
+        <trans-unit id="Resources\SetupSettings\Text" translate="yes" xml:space="preserve">
+          <source>Specific Settings</source>
+          <target state="new">Specific Settings</target>
+        </trans-unit>
         <trans-unit id="Resources\ServiceUnavailableContent" translate="yes" xml:space="preserve">
           <source>The source you selected doesn't appear responsive now. Try another source.</source>
-          <target state="translated">您选择的源暂时无响应。请尝试另一个源。</target>
+          <target state="new">The source you selected doesn't appear responsive now. Try another source.</target>
         </trans-unit>
         <trans-unit id="Resources\ServiceUnavailable" translate="yes" xml:space="preserve">
           <source>Server not available</source>
-          <target state="needs-review-translation">服务器不可用</target>
+          <target state="new">Server not available</target>
         </trans-unit>
         <trans-unit id="Resources\ResolutionContent\Text" translate="yes" xml:space="preserve">
           <source>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties.</source>
-          <target state="translated">分辨率指屏幕的自然分辨率。如果您不确定，在桌面上右击并选择显示属性进行查看。</target>
+          <target state="new">Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties.</target>
         </trans-unit>
         <trans-unit id="Resources\Resolution\Text" translate="yes" xml:space="preserve">
           <source>ENTER YOUR RESOLUTION</source>
-          <target state="needs-review-translation">输入您的分辨率</target>
+          <target state="new">ENTER YOUR RESOLUTION</target>
         </trans-unit>
         <trans-unit id="Resources\RepickOrRefreshImage\Text" translate="yes" xml:space="preserve">
           <source>REPICK OR REFRESH IMAGE</source>
-          <target state="translated">重新选择或刷新</target>
+          <target state="new">REPICK OR REFRESH IMAGE</target>
         </trans-unit>
         <trans-unit id="Resources\RepickImageButton\Content" translate="yes" xml:space="preserve">
           <source>repick image</source>
-          <target state="translated">重新选择</target>
-        </trans-unit>
-        <trans-unit id="Resources\Preview\Text" translate="yes" xml:space="preserve">
-          <source>Preview</source>
-          <target state="new">Preview</target>
+          <target state="new">repick image</target>
         </trans-unit>
         <trans-unit id="Resources\PreviewContent\Text" translate="yes" xml:space="preserve">
           <source>This shows how things may look like on your lock screen. Click on texts to adjust style.</source>
           <target state="new">This shows how things may look like on your lock screen. Click on texts to adjust style.</target>
         </trans-unit>
+        <trans-unit id="Resources\Preview\Text" translate="yes" xml:space="preserve">
+          <source>Preview</source>
+          <target state="new">Preview</target>
+        </trans-unit>
         <trans-unit id="Resources\PCConsoleAndTablet\Text" translate="yes" xml:space="preserve">
           <source>PC CONSOLE AND TABLET</source>
-          <target state="translated">适用于PC、主机和平板电脑</target>
+          <target state="new">PC CONSOLE AND TABLET</target>
         </trans-unit>
         <trans-unit id="Resources\NextButton\Content" translate="yes" xml:space="preserve">
           <source>next</source>
-          <target state="needs-review-translation">下一步</target>
+          <target state="new">next</target>
         </trans-unit>
         <trans-unit id="Resources\NASA\SecondLine" translate="yes" xml:space="preserve">
           <source>Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday.</source>
-          <target state="translated">没有什么比宇宙母亲更漂亮。让NASA宇航图片每天给您惊喜。</target>
+          <target state="new">Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday.</target>
         </trans-unit>
         <trans-unit id="Resources\NASA\FirstLine" translate="yes" xml:space="preserve">
           <source>NASA</source>
-          <target state="translated">美国航空航天局</target>
+          <target state="new">NASA</target>
         </trans-unit>
         <trans-unit id="Resources\LockViewCapital\Text" translate="yes" xml:space="preserve">
-          <source>LOCKVIEW</source>
-          <target state="translated">锁屏视野</target>
-        </trans-unit>
-        <trans-unit id="Resources\InterestSetup\Text" translate="yes" xml:space="preserve">
-          <source>Interest Setup</source>
-          <target state="new">Interest Setup</target>
+          <source>LOCKVIEW PREVIEW</source>
+          <target state="new">LOCKVIEW PREVIEW</target>
         </trans-unit>
         <trans-unit id="Resources\InterestSetupContent\Text" translate="yes" xml:space="preserve">
           <source>What would you like to see on your lock screen? Select some from below.</source>
           <target state="new">What would you like to see on your lock screen? Select some from below.</target>
         </trans-unit>
+        <trans-unit id="Resources\InterestSetup\Text" translate="yes" xml:space="preserve">
+          <source>Interest Setup</source>
+          <target state="new">Interest Setup</target>
+        </trans-unit>
         <trans-unit id="Resources\ImageSourceSetupContent\Text" translate="yes" xml:space="preserve">
           <source>Where do you want us to pull the images? Select a source from below.</source>
-          <target state="translated">您要我们从哪提取图像?请从下面选择一个源。</target>
+          <target state="new">Where do you want us to pull the images? Select a source from below.</target>
         </trans-unit>
         <trans-unit id="Resources\ImageSourceSetup\Text" translate="yes" xml:space="preserve">
           <source>Image Source Setup</source>
-          <target state="translated">图片源</target>
+          <target state="new">Image Source Setup</target>
         </trans-unit>
         <trans-unit id="Resources\Height\Text" translate="yes" xml:space="preserve">
           <source>Height </source>
-          <target state="translated">高度   </target>
+          <target state="new">Height </target>
         </trans-unit>
         <trans-unit id="Resources\FineTuningContent\Text" translate="yes" xml:space="preserve">
           <source>Follow the guide to make sure the images fit your screen best.</source>
-          <target state="translated">调整图片使其最适合您的屏幕。</target>
+          <target state="new">Follow the guide to make sure the images fit your screen best.</target>
         </trans-unit>
         <trans-unit id="Resources\FineTuning\Text" translate="yes" xml:space="preserve">
           <source>Fine Tuning Image</source>
-          <target state="translated">精细调节</target>
+          <target state="new">Fine Tuning Image</target>
         </trans-unit>
         <trans-unit id="Resources\DateTimeString\Text" translate="yes" xml:space="preserve">
           <source>Wednesday, October 21</source>
@@ -120,11 +120,11 @@
         </trans-unit>
         <trans-unit id="Resources\Bing\SecondLine" translate="yes" xml:space="preserve">
           <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
-          <target state="translated">使用必应每日精选图片。如果您选择此选项，您同意所有的权利都属于各自的所有者的图像。</target>
+          <target state="new">Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</target>
         </trans-unit>
         <trans-unit id="Resources\Bing\FirstLine" translate="yes" xml:space="preserve">
           <source>BING</source>
-          <target state="translated">必应</target>
+          <target state="new">BING</target>
         </trans-unit>
       </group>
     </body>

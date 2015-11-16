@@ -148,7 +148,7 @@
     <value>What would you like to see on your lock screen? Select some from below.</value>
   </data>
   <data name="LockViewCapital.Text" xml:space="preserve">
-    <value>LOCKVIEW</value>
+    <value>LOCKVIEW PREVIEW</value>
   </data>
   <data name="NASA.FirstLine" xml:space="preserve">
     <value>NASA</value>
