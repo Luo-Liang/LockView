@@ -8,9 +8,9 @@
     mc:Ignorable="d">
     <Page.Resources>
         <local:ListBoxContentVMCollection x:Key="categories">
-            <local:ListBoxContentVM NavigationType="library" SecondLine="Choose this if you would like to use the same image as your lock screen over time. In the next step we will let you pick one from your library." FirstLine="USE MY OWN IMAGE" />
-            <local:ListBoxContentVM NavigationType="bing" SecondLine="Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image." FirstLine="BING"/>
-            <local:ListBoxContentVM NavigationType="nasa" SecondLine="Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. " FirstLine="NASA"/>
+            <local:ListBoxContentVM x:Uid="UseMyOwnImage" NavigationType="library"/>
+            <local:ListBoxContentVM x:Uid="Bing" NavigationType="bing"/>
+            <local:ListBoxContentVM x:Uid="NASA" NavigationType="nasa"/>
         </local:ListBoxContentVMCollection>
         <Storyboard RepeatBehavior="Forever" x:Name="maximize">
             <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="rectangle">
@@ -80,9 +80,9 @@
             </Path>
         </Grid>
         <TextBlock x:Name="textBlock" Height="80" Margin="146,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" Width="364">
-        	<Run Text="LOCKVIEW "/>
+        	<Run x:Uid="LockViewCapital"/>
         	<LineBreak/>
-        	<Run FontSize="24" Text="PC, CONSOLE AND TABLET"/>
+        	<Run FontSize="24" x:Uid="PCConsoleAndTablet"/>
         </TextBlock>
         <Grid x:Name="ImagePreviewTool" Margin="862,152,40,90" d:LayoutOverrides="LeftPosition, RightPosition">
             <Grid x:Name="boundingBox" Margin="0,136,0,0">
@@ -115,62 +115,58 @@
                 </Rectangle>
             </Grid>
             <StackPanel Background="{StaticResource AccentBrush}" Height="103" VerticalAlignment="Top" d:LayoutOverrides="LeftPosition, RightPosition">
-                <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Swipe around!" FontSize="24" Margin="10,10,10,5"/>
+                <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" x:Uid="SwipeAround" FontSize="24" Margin="10,10,10,5"/>
                 <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10">
                     <TextBlock.Foreground>
                         <SolidColorBrush Color="{StaticResource LighterGray}"/>
                     </TextBlock.Foreground>
-                	<Run Text="Laptops: Scroll using your mouse wheel."/>
-                	<LineBreak/>
-                	<Run Text="Tablets: Scroll using your fingers."/>
+                	<Run x:Uid="SwipeAroundContent"/>
                 </TextBlock>
             </StackPanel>
         </Grid>
         <Grid x:Name="notification" Margin="449,152,0,90" d:LayoutOverrides="TopPosition, BottomPosition" HorizontalAlignment="Left" Width="380">
             <StackPanel Margin="0" Background="{StaticResource AccentBrush}" Height="103" VerticalAlignment="Top">
-                <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="Fine-tuning Image" FontSize="24" Margin="10,10,10,5"/>
-                <TextBlock x:Name="textBlock1_Copy1" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" Text="Follow the guide to sure the image fit your screen best.">
+                <TextBlock x:Name="textBlock3" TextWrapping="Wrap" x:Uid="FineTuning" FontSize="24" Margin="10,10,10,5"/>
+                <TextBlock x:Name="textBlock1_Copy1" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" x:Uid="FineTuningContent">
                     <TextBlock.Foreground>
                         <SolidColorBrush Color="{StaticResource LighterGray}"/>
                     </TextBlock.Foreground>
                 </TextBlock>
             </StackPanel>
             <StackPanel Margin="0,129,0,2" d:LayoutOverrides="TopPosition, BottomPosition">
-                <TextBlock x:Name="textBlock2" Margin="0,4,0,5" TextWrapping="Wrap" FontSize="21.333" d:LayoutOverrides="Height, LeftPosition, RightPosition" Text="ENTER YOUR RESOLUTION" Foreground="{StaticResource LightAccentBrush}"/>
-                <TextBlock x:Name="croppingGuideText_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="0,0,0,10" Text="You resolution refers to the native resolution of your screen. If unsure, right click on the desktop and select display properties." TextAlignment="Justify">
+                <TextBlock x:Name="textBlock2" Margin="0,4,0,5" TextWrapping="Wrap" FontSize="21.333" d:LayoutOverrides="Height, LeftPosition, RightPosition" x:Uid="Resolution" Foreground="{StaticResource LightAccentBrush}"/>
+                <TextBlock x:Name="croppingGuideText_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="0,0,0,10" x:Uid="ResolutionContent" TextAlignment="Justify">
                     <TextBlock.Foreground>
                         <SolidColorBrush Color="#FFB4B4B4"/>
                     </TextBlock.Foreground>
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width" Margin="0,20,0,0">
-                    <TextBlock x:Name="textBlock2_Copy1" TextWrapping="Wrap" FontSize="18.667" Text="Height" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                    <TextBlock x:Name="textBlock2_Copy1" TextWrapping="Wrap" FontSize="18.667" x:Uid="Height" VerticalAlignment="Top" Margin="0,5,0,0"/>
                     <TextBox TextChanged="resoluionHeight_TextChanged" x:Name="resoluionHeight" TextWrapping="Wrap" Text="1080" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="20,0,0,0" VerticalAlignment="Top"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width" Margin="0,20,0,0">
-                    <TextBlock x:Name="textBlock2_Copy" TextWrapping="Wrap" FontSize="18.667" Text="Width " VerticalAlignment="Top" Margin="0,5,0,0"/>
-                    <TextBox TextChanged="resolutionWidth_TextChanged" x:Name="resolutionWidth" TextWrapping="Wrap" Text="1920" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="27,0,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock2_Copy" TextWrapping="Wrap" FontSize="18.667" x:Uid="Width" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                    <TextBox TextChanged="resolutionWidth_TextChanged" x:Name="resolutionWidth" TextWrapping="Wrap" Text="1920" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="20,0,0,0" VerticalAlignment="Top"/>
                 </StackPanel>
-                <TextBlock x:Name="textBlock2_Copy2" Margin="0,30,0,0" TextWrapping="Wrap" FontSize="21.333" Text="REPICK OR REFRESH IMAGE" Foreground="{StaticResource LightAccentBrush}"/>
-                <Button x:Name="repickImage" Click="repickImage_Click" Content="repick image" VerticalAlignment="Stretch" Margin="-2,10,0,0" FontFamily="Global User Interface" />
+                <TextBlock x:Name="textBlock2_Copy2" Margin="0,30,0,0" TextWrapping="Wrap" FontSize="21.333" x:Uid="RepickOrRefreshImage" Foreground="{StaticResource LightAccentBrush}"/>
+                <Button x:Name="repickImage" Click="repickImage_Click" x:Uid="RepickImageButton" VerticalAlignment="Stretch" Margin="-2,10,0,0" FontFamily="Global User Interface" />
             </StackPanel>
         </Grid>
         <Grid Margin="40,152,0,90" d:LayoutOverrides="TopPosition, BottomPosition" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid" HorizontalAlignment="Left">
             <Grid Width="380" HorizontalAlignment="Left">
                 <StackPanel Margin="2,0" Background="{StaticResource AccentBrush}" Height="103" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
-                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Image Source Setup" FontSize="24" Margin="10,10,10,5"/>
+                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" x:Uid="ImageSourceSetup" FontSize="24" Margin="10,10,10,5"/>
                     <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{StaticResource LighterGray}"/>
                         </TextBlock.Foreground>
-                		<Run Text="Where do you want us to pull the images?"/>
-                		<LineBreak/>
-                		<Run Text="Select a source from below."/>
+                		<Run x:Uid="ImageSourceSetupContent" />
                     </TextBlock>
                 </StackPanel>
                 <ListBox SelectionChanged="listBox_SelectionChanged" ItemsSource="{StaticResource categories}" x:Name="listBox" Background="{x:Null}" FontFamily="Global User Interface" ItemTemplate="{StaticResource ListBoxDataTemplate}" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,123,0,-2" Style="{StaticResource ListBoxStyle}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" BorderThickness="0" />
             </Grid>
         </Grid>
         <Image HorizontalAlignment="Left" Height="139" Margin="8,4,0,0" VerticalAlignment="Top" Width="139" Source="Assets/LockViewInApp.png"/>
-        <Button Click="nextButton_Click" x:Name="nextButton" Content="Next" Margin="48,0,0,38" VerticalAlignment="Bottom" />
+        <Button Click="nextButton_Click" x:Name="nextButton" x:Uid="NextButton" Margin="48,0,0,38" VerticalAlignment="Bottom" />
     </Grid>
 </Page>

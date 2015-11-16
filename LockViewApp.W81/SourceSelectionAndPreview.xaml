@@ -46,17 +46,17 @@
             </Path>
         </Grid>
         <TextBlock x:Name="textBlock" Height="80" Margin="146,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" Width="364" d:IsLocked="True">
-			<Run Text="LOCKVIEW "/>
+			<Run x:Uid="LockViewCapital"/>
 			<LineBreak/>
-			<Run FontSize="24" Text="PC, CONSOLE AND TABLET"/>
+			<Run FontSize="24" x:Uid="PCConsoleAndTablet"/>
         </TextBlock>
         <Image HorizontalAlignment="Left" Height="139" Margin="8,4,0,0" VerticalAlignment="Top" Width="139" Source="Assets/LockViewInApp.png" d:IsLocked="True"/>
 
         <Grid Margin="40,152,0,90" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid" HorizontalAlignment="Left" d:LayoutOverrides="TopPosition, BottomPosition">
             <Grid Width="380" HorizontalAlignment="Left">
                 <StackPanel Margin="2,0" Background="{StaticResource AccentBrush}" Height="103" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
-                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Interest Setup" FontSize="24" Margin="10,10,10,5"/>
-                    <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" Text="What would you like to see on your lock screen? Select some from below.">
+                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" x:Uid="InterestSetup" FontSize="24" Margin="10,10,10,5"/>
+                    <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" x:Uid="InterestSetupContent">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{StaticResource LighterGray}"/>
                         </TextBlock.Foreground>
@@ -68,8 +68,8 @@
         <Grid Margin="453,152,0,90" Width="{Binding ActualWidth, ElementName=SettingViewer}" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" x:Name="ImageSourceSelectionMainGrid_Copy" d:LayoutOverrides="TopPosition, BottomPosition" HorizontalAlignment="Left">
             <Grid Width="380" HorizontalAlignment="Left" Margin="-1,0,0,0">
                 <StackPanel Margin="2,0" Background="{StaticResource AccentBrush}" Height="103" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top">
-                    <TextBlock x:Name="DeailedSetupBox" TextWrapping="Wrap" Text="Setup" FontSize="24" Margin="10,10,10,5"/>
-                    <TextBlock x:Name="DetailedSetupText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" Text="Here're some specific questions regarding your interest in ">
+                    <TextBlock x:Name="DeailedSetupBox" TextWrapping="Wrap" x:Uid="SetupSettings" FontSize="24" Margin="10,10,10,5"/>
+                    <TextBlock x:Name="DetailedSetupText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" x:Uid="SetupSettingsContent">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{StaticResource LighterGray}"/>
                         </TextBlock.Foreground>
@@ -90,11 +90,7 @@
                                     <CompositeTransform ScaleX="1" ScaleY="1"/>
                                 </Grid.RenderTransform>
                                 <TextBlock TextWrapping="NoWrap" x:Name="timePreviewGrid" Margin="0,0,0,27" Text="22:10" FontSize="42.667" d:LayoutOverrides="Height, TopPosition, BottomPosition"/>
-                                <TextBlock TextWrapping="NoWrap" x:Name="datePreview" VerticalAlignment="Bottom" FontSize="26.667">
-                                	<Run Text="Wednesday, "/>
-                                	<Run Text="O"/>
-                                	<Run Text="ctober 21"/>
-                                </TextBlock>
+                                <TextBlock TextWrapping="NoWrap" x:Name="datePreview" VerticalAlignment="Bottom" FontSize="26.667" x:Uid="DateTimeString"/>
                             </Grid>
                             <StackPanel PointerReleased="previewItemStackPanel_PointerReleased" x:Name="previewItemStackPanel" Margin="23,23,23,120" RenderTransformOrigin="0,0">
                                 <StackPanel.RenderTransform>
@@ -126,15 +122,15 @@
                 </Rectangle>
             </Grid>
             <StackPanel Background="{StaticResource AccentBrush}" Height="103" VerticalAlignment="Top" d:LayoutOverrides="LeftPosition, RightPosition">
-                <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" Text="Preview" FontSize="24" Margin="10,10,10,5"/>
-                <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" Text="This shows how things may look like on your lock screen. Click on texts to adjust style.">
+                <TextBlock x:Name="croppingGuide" TextWrapping="Wrap" x:Uid="Preview" FontSize="24" Margin="10,10,10,5"/>
+                <TextBlock x:Name="croppingGuideText" TextWrapping="Wrap" FontSize="18.667" Margin="10,4,10,10" x:Uid="PreviewContent">
                     <TextBlock.Foreground>
                         <SolidColorBrush Color="{StaticResource LighterGray}"/>
                     </TextBlock.Foreground>
                 </TextBlock>
             </StackPanel>
         </Grid>
-        <Button Click="nextButton_Click" x:Name="nextButton" Content="Next" Margin="48,0,0,38" VerticalAlignment="Bottom" />
+        <Button Click="nextButton_Click" x:Name="nextButton" x:Uid="NextButton" Margin="48,0,0,38" VerticalAlignment="Bottom" />
 
     </Grid>
 </Page>

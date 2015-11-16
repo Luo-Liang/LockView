@@ -117,7 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="String1" xml:space="preserve">
-    <value>hello</value>
+  <data name="Bing.FirstLine" xml:space="preserve">
+    <value>BING</value>
+  </data>
+  <data name="Bing.SecondLine" xml:space="preserve">
+    <value>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</value>
+  </data>
+  <data name="DateTimeString.Text" xml:space="preserve">
+    <value>Wednesday, October 21</value>
+  </data>
+  <data name="FineTuning.Text" xml:space="preserve">
+    <value>Fine Tuning Image</value>
+  </data>
+  <data name="FineTuningContent.Text" xml:space="preserve">
+    <value>Follow the guide to make sure the images fit your screen best.</value>
+  </data>
+  <data name="Height.Text" xml:space="preserve">
+    <value>Height </value>
+  </data>
+  <data name="ImageSourceSetup.Text" xml:space="preserve">
+    <value>Image Source Setup</value>
+  </data>
+  <data name="ImageSourceSetupContent.Text" xml:space="preserve">
+    <value>Where do you want us to pull the images? Select a source from below.</value>
+  </data>
+  <data name="InterestSetup.Text" xml:space="preserve">
+    <value>Interest Setup</value>
+  </data>
+  <data name="InterestSetupContent.Text" xml:space="preserve">
+    <value>What would you like to see on your lock screen? Select some from below.</value>
+  </data>
+  <data name="LockViewCapital.Text" xml:space="preserve">
+    <value>LOCKVIEW</value>
+  </data>
+  <data name="NASA.FirstLine" xml:space="preserve">
+    <value>NASA</value>
+  </data>
+  <data name="NASA.SecondLine" xml:space="preserve">
+    <value>Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday.</value>
+  </data>
+  <data name="NextButton.Content" xml:space="preserve">
+    <value>next</value>
+  </data>
+  <data name="PCConsoleAndTablet.Text" xml:space="preserve">
+    <value>PC CONSOLE AND TABLET</value>
+  </data>
+  <data name="Preview.Text" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="PreviewContent.Text" xml:space="preserve">
+    <value>This shows how things may look like on your lock screen. Click on texts to adjust style.</value>
+  </data>
+  <data name="RepickImageButton.Content" xml:space="preserve">
+    <value>repick image</value>
+  </data>
+  <data name="RepickOrRefreshImage.Text" xml:space="preserve">
+    <value>REPICK OR REFRESH IMAGE</value>
+  </data>
+  <data name="Resolution.Text" xml:space="preserve">
+    <value>ENTER YOUR RESOLUTION</value>
+  </data>
+  <data name="ResolutionContent.Text" xml:space="preserve">
+    <value>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties.</value>
+  </data>
+  <data name="ServiceUnavailable" xml:space="preserve">
+    <value>Server not available</value>
+  </data>
+  <data name="ServiceUnavailableContent" xml:space="preserve">
+    <value>The source you selected doesn't appear responsive now. Try another source.</value>
+  </data>
+  <data name="SetupSettings.Text" xml:space="preserve">
+    <value>Specific Settings</value>
+  </data>
+  <data name="SetupSettingsContent.Text" xml:space="preserve">
+    <value>Here're some specific questions regarding your selected interest.</value>
+  </data>
+  <data name="SwipeAround.Text" xml:space="preserve">
+    <value>Swipe Around!</value>
+  </data>
+  <data name="SwipeAroundContent.Text" xml:space="preserve">
+    <value>Use your mouse wheel or drag with your fingers to select a best view.</value>
+  </data>
+  <data name="UseMyOwnImage.FirstLine" xml:space="preserve">
+    <value>USE MY OWN IMAGE</value>
+  </data>
+  <data name="UseMyOwnImage.SecondLine" xml:space="preserve">
+    <value>Choose this if you would like to use the same image as your lock screen over time.</value>
+  </data>
+  <data name="Width.Text" xml:space="preserve">
+    <value>Width </value>
   </data>
 </root>

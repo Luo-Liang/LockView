@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -119,8 +120,6 @@ namespace LockViewApp.W81
                 return;
             }
             //imageCropper.Source = null;
-            croppingGuide.Text = "Pick a best view";
-            croppingGuideText.Text = "When you've decided where to get your picture, you can crop the picture to fit your screen. Move around and pick a best view!";
             var context = selectedItem as ListBoxContentVM;
             originalMap = new WriteableBitmap(1, 1);
             int height, width;
@@ -182,8 +181,8 @@ namespace LockViewApp.W81
             }
             catch
             {
-                croppingGuide.Text = "Server not available";
-                croppingGuideText.Text = "The source you selected doesn't appear responsive now. Try another source.";
+                croppingGuide.Text = ResourceLoader.LockViewLoader.GetString("ServiceUnavailable");
+                croppingGuideText.Text = ResourceLoader.LockViewLoader.GetString("ServiceUnavailableContent");
             }
             finally
             {
