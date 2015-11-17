@@ -6,125 +6,361 @@
     </header>
     <body>
       <group id="Resources">
+        <trans-unit id="Resources\WordOfWisdom\Text" translate="yes" xml:space="preserve">
+          <source>What is the thing you've been trying to tell yourself? Maybe to calm down?</source>
+          <target state="new">What is the thing you've been trying to tell yourself? Maybe to calm down?</target>
+        </trans-unit>
+        <trans-unit id="Resources\Word" translate="yes" xml:space="preserve">
+          <source>Word</source>
+          <target state="new">Word</target>
+        </trans-unit>
+        <trans-unit id="Resources\Wisdom\SecondLine" translate="yes" xml:space="preserve">
+          <source>One static motto that inspires of what all you do.</source>
+          <target state="new">One static motto that inspires of what all you do.</target>
+        </trans-unit>
+        <trans-unit id="Resources\Wisdom\FirstLine" translate="yes" xml:space="preserve">
+          <source>WORDS OF WISDOM</source>
+          <target state="new">WORDS OF WISDOM</target>
+        </trans-unit>
         <trans-unit id="Resources\Width\Text" translate="yes" xml:space="preserve">
           <source>Width </source>
-          <target state="new">Width </target>
+          <target state="translated">宽度</target>
+        </trans-unit>
+        <trans-unit id="Resources\WhereAreYou\Text" translate="yes" xml:space="preserve">
+          <source>Where are you?</source>
+          <target state="new">Where are you?</target>
+        </trans-unit>
+        <trans-unit id="Resources\Weather\FirstLine" translate="yes" xml:space="preserve">
+          <source>WEATHER</source>
+          <target state="new">WEATHER</target>
+        </trans-unit>
+        <trans-unit id="Resources\Weather\SecondLine" translate="yes" xml:space="preserve">
+          <source>Never get caught in a rain. Use this options to display semi realtime weather information right on your lock screen.</source>
+          <target state="new">Never get caught in a rain. Use this options to display semi realtime weather information right on your lock screen.</target>
+        </trans-unit>
+        <trans-unit id="Resources\WhereAreYouContent\Text" translate="yes" xml:space="preserve">
+          <source>Get latest weather information, any time, anywhere.</source>
+          <target state="new">Get latest weather information, any time, anywhere.</target>
         </trans-unit>
         <trans-unit id="Resources\UseMyOwnImage\SecondLine" translate="yes" xml:space="preserve">
           <source>Choose this if you would like to use the same image as your lock screen over time.</source>
-          <target state="new">Choose this if you would like to use the same image as your lock screen over time.</target>
+          <target state="translated">若您希望使用同一张图片作为锁屏界面，请选择此项。</target>
         </trans-unit>
         <trans-unit id="Resources\UseMyOwnImage\FirstLine" translate="yes" xml:space="preserve">
           <source>USE MY OWN IMAGE</source>
-          <target state="new">USE MY OWN IMAGE</target>
+          <target state="translated">使用本机图片</target>
+        </trans-unit>
+        <trans-unit id="Resources\UseMyLocation\Content" translate="yes" xml:space="preserve">
+          <source>Use my Location</source>
+          <target state="new">Use my Location</target>
+        </trans-unit>
+        <trans-unit id="Resources\UseAllCulture\Content" translate="yes" xml:space="preserve">
+          <source>Use all</source>
+          <target state="new">Use all</target>
+        </trans-unit>
+        <trans-unit id="Resources\UseMyCulture\Content" translate="yes" xml:space="preserve">
+          <source>Use my culture</source>
+          <target state="new">Use my culture</target>
+        </trans-unit>
+        <trans-unit id="Resources\UseImperial\Content" translate="yes" xml:space="preserve">
+          <source>Use imperial units</source>
+          <target state="new">Use imperial units</target>
+        </trans-unit>
+        <trans-unit id="Resources\UseMetric\Content" translate="yes" xml:space="preserve">
+          <source>Use metric units</source>
+          <target state="new">Use metric units</target>
+        </trans-unit>
+        <trans-unit id="Resources\TranslationLanguage\Text" translate="yes" xml:space="preserve">
+          <source>Translation Language</source>
+          <target state="new">Translation Language</target>
+        </trans-unit>
+        <trans-unit id="Resources\TitleBackground\Text" translate="yes" xml:space="preserve">
+          <source>Title Background</source>
+          <target state="new">Title Background</target>
+        </trans-unit>
+        <trans-unit id="Resources\Title\Text" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <target state="new">Title</target>
+        </trans-unit>
+        <trans-unit id="Resources\TitleFontsize\Text" translate="yes" xml:space="preserve">
+          <source>Title Font Size</source>
+          <target state="new">Title Font Size</target>
+        </trans-unit>
+        <trans-unit id="Resources\TitleForeground\Text" translate="yes" xml:space="preserve">
+          <source>Title Foreground</source>
+          <target state="new">Title Foreground</target>
+        </trans-unit>
+        <trans-unit id="Resources\TranslationLanguageContent\Text" translate="yes" xml:space="preserve">
+          <source>For the word/phrase you will be learning, in what language should we translate it into?</source>
+          <target state="new">For the word/phrase you will be learning, in what language should we translate it into?</target>
         </trans-unit>
         <trans-unit id="Resources\SwipeAroundContent\Text" translate="yes" xml:space="preserve">
           <source>Use your mouse wheel or drag with your fingers to select a best view.</source>
-          <target state="new">Use your mouse wheel or drag with your fingers to select a best view.</target>
+          <target state="needs-review-translation">使用鼠标滚轮或拖动手指来选择最佳视图。</target>
         </trans-unit>
         <trans-unit id="Resources\SwipeAround\Text" translate="yes" xml:space="preserve">
           <source>Swipe Around!</source>
-          <target state="new">Swipe Around!</target>
+          <target state="translated">四处看看!</target>
+        </trans-unit>
+        <trans-unit id="Resources\ShowMe\Content" translate="yes" xml:space="preserve">
+          <source>show me</source>
+          <target state="new">show me</target>
+        </trans-unit>
+        <trans-unit id="Resources\SuggestedSource\Text" translate="yes" xml:space="preserve">
+          <source>Suggested Source</source>
+          <target state="new">Suggested Source</target>
+        </trans-unit>
+        <trans-unit id="Resources\SpecificTopic\Text" translate="yes" xml:space="preserve">
+          <source>Tell us about a specific topic. We'll gather all news about it for you.</source>
+          <target state="new">Tell us about a specific topic. We'll gather all news about it for you.</target>
+        </trans-unit>
+        <trans-unit id="Resources\SpecificInterest\FirstLine" translate="yes" xml:space="preserve">
+          <source>SPECIFIC INTEREST</source>
+          <target state="new">SPECIFIC INTEREST</target>
+        </trans-unit>
+        <trans-unit id="Resources\SpecificInterest\SecondLine" translate="yes" xml:space="preserve">
+          <source>Use a specific interest. Give us a topic, and we'll gather all news around it!</source>
+          <target state="new">Use a specific interest. Give us a topic, and we'll gather all news around it!</target>
+        </trans-unit>
+        <trans-unit id="Resources\SpecificTopicContent\Text" translate="yes" xml:space="preserve">
+          <source>Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk.</source>
+          <target state="new">Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk.</target>
+        </trans-unit>
+        <trans-unit id="Resources\SuggestedSourceContent\Text" translate="yes" xml:space="preserve">
+          <source>A list of available sources based on your filtering conditions.</source>
+          <target state="new">A list of available sources based on your filtering conditions.</target>
         </trans-unit>
         <trans-unit id="Resources\SetupSettingsContent\Text" translate="yes" xml:space="preserve">
           <source>Here're some specific questions regarding your selected interest.</source>
-          <target state="new">Here're some specific questions regarding your selected interest.</target>
+          <target state="translated">您需要为您选择的兴趣提供更多信息。</target>
         </trans-unit>
         <trans-unit id="Resources\SetupSettings\Text" translate="yes" xml:space="preserve">
           <source>Specific Settings</source>
-          <target state="new">Specific Settings</target>
+          <target state="translated">详细设置</target>
         </trans-unit>
         <trans-unit id="Resources\ServiceUnavailableContent" translate="yes" xml:space="preserve">
           <source>The source you selected doesn't appear responsive now. Try another source.</source>
-          <target state="new">The source you selected doesn't appear responsive now. Try another source.</target>
+          <target state="translated">您选择的源暂时无响应。请尝试另一个源。</target>
         </trans-unit>
         <trans-unit id="Resources\ServiceUnavailable" translate="yes" xml:space="preserve">
           <source>Server not available</source>
-          <target state="new">Server not available</target>
+          <target state="needs-review-translation">服务器不可用</target>
+        </trans-unit>
+        <trans-unit id="Resources\SelectInterestCheckBox\Content" translate="yes" xml:space="preserve">
+          <source>Select this interest</source>
+          <target state="new">Select this interest</target>
+        </trans-unit>
+        <trans-unit id="Resources\Sentence" translate="yes" xml:space="preserve">
+          <source>Sentence</source>
+          <target state="new">Sentence</target>
         </trans-unit>
         <trans-unit id="Resources\ResolutionContent\Text" translate="yes" xml:space="preserve">
           <source>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties.</source>
-          <target state="new">Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties.</target>
+          <target state="translated">分辨率指屏幕的自然分辨率。如果您不确定，在桌面上右击并选择显示属性进行查看。</target>
         </trans-unit>
         <trans-unit id="Resources\Resolution\Text" translate="yes" xml:space="preserve">
           <source>ENTER YOUR RESOLUTION</source>
-          <target state="new">ENTER YOUR RESOLUTION</target>
+          <target state="needs-review-translation">输入您的分辨率</target>
         </trans-unit>
         <trans-unit id="Resources\RepickOrRefreshImage\Text" translate="yes" xml:space="preserve">
           <source>REPICK OR REFRESH IMAGE</source>
-          <target state="new">REPICK OR REFRESH IMAGE</target>
+          <target state="translated">重新选择或刷新</target>
         </trans-unit>
         <trans-unit id="Resources\RepickImageButton\Content" translate="yes" xml:space="preserve">
           <source>repick image</source>
-          <target state="new">repick image</target>
+          <target state="translated">重新选择</target>
+        </trans-unit>
+        <trans-unit id="Resources\PreviewThis\Text" translate="yes" xml:space="preserve">
+          <source>Preview this content</source>
+          <target state="new">Preview this content</target>
+        </trans-unit>
+        <trans-unit id="Resources\PreviewThisContent\Text" translate="yes" xml:space="preserve">
+          <source>Request this interest and the image will be shown on the right.</source>
+          <target state="new">Request this interest and the image will be shown on the right.</target>
         </trans-unit>
         <trans-unit id="Resources\PreviewContent\Text" translate="yes" xml:space="preserve">
           <source>This shows how things may look like on your lock screen. Click on texts to adjust style.</source>
-          <target state="new">This shows how things may look like on your lock screen. Click on texts to adjust style.</target>
+          <target state="translated">该预览是您看到的示意。单击文字即可调整样式。</target>
         </trans-unit>
         <trans-unit id="Resources\Preview\Text" translate="yes" xml:space="preserve">
           <source>Preview</source>
-          <target state="new">Preview</target>
+          <target state="translated">预览</target>
         </trans-unit>
         <trans-unit id="Resources\PCConsoleAndTablet\Text" translate="yes" xml:space="preserve">
           <source>PC CONSOLE AND TABLET</source>
-          <target state="new">PC CONSOLE AND TABLET</target>
+          <target state="translated">适用于PC、主机和平板电脑</target>
+        </trans-unit>
+        <trans-unit id="Resources\Okay\Content" translate="yes" xml:space="preserve">
+          <source>okay</source>
+          <target state="new">okay</target>
         </trans-unit>
         <trans-unit id="Resources\NextButton\Content" translate="yes" xml:space="preserve">
           <source>next</source>
-          <target state="new">next</target>
+          <target state="needs-review-translation">下一步</target>
+        </trans-unit>
+        <trans-unit id="Resources\News\FirstLine" translate="yes" xml:space="preserve">
+          <source>NEWS</source>
+          <target state="new">NEWS</target>
+        </trans-unit>
+        <trans-unit id="Resources\News\SecondLine" translate="yes" xml:space="preserve">
+          <source>Love news? Never miss a beat from your favourite news source and category!</source>
+          <target state="new">Love news? Never miss a beat from your favourite news source and category!</target>
         </trans-unit>
         <trans-unit id="Resources\NASA\SecondLine" translate="yes" xml:space="preserve">
           <source>Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday.</source>
-          <target state="new">Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday.</target>
+          <target state="translated">没有什么比宇宙母亲更漂亮。让NASA宇航图片每天给您惊喜。</target>
         </trans-unit>
         <trans-unit id="Resources\NASA\FirstLine" translate="yes" xml:space="preserve">
           <source>NASA</source>
-          <target state="new">NASA</target>
+          <target state="translated">美国航空航天局</target>
+        </trans-unit>
+        <trans-unit id="Resources\Metrics\Text" translate="yes" xml:space="preserve">
+          <source>Metrics</source>
+          <target state="new">Metrics</target>
+        </trans-unit>
+        <trans-unit id="Resources\MetricsContent\Text" translate="yes" xml:space="preserve">
+          <source>Sometimes it is just so hard to speak the other language.</source>
+          <target state="new">Sometimes it is just so hard to speak the other language.</target>
         </trans-unit>
         <trans-unit id="Resources\LockViewCapital\Text" translate="yes" xml:space="preserve">
           <source>LOCKVIEW PREVIEW</source>
-          <target state="new">LOCKVIEW PREVIEW</target>
+          <target state="translated">锁屏视野 预览版</target>
+        </trans-unit>
+        <trans-unit id="Resources\Localization\Text" translate="yes" xml:space="preserve">
+          <source>Localization</source>
+          <target state="new">Localization</target>
+        </trans-unit>
+        <trans-unit id="Resources\LocalizationContent\Text" translate="yes" xml:space="preserve">
+          <source>Use sources that resemble my culture only.</source>
+          <target state="new">Use sources that resemble my culture only.</target>
+        </trans-unit>
+        <trans-unit id="Resources\Language\Text" translate="yes" xml:space="preserve">
+          <source>Language</source>
+          <target state="new">Language</target>
+        </trans-unit>
+        <trans-unit id="Resources\LanguageContent\Text" translate="yes" xml:space="preserve">
+          <source>What language would you like to learn this time?</source>
+          <target state="new">What language would you like to learn this time?</target>
+        </trans-unit>
+        <trans-unit id="Resources\LanguageType\Text" translate="yes" xml:space="preserve">
+          <source>Language Type</source>
+          <target state="new">Language Type</target>
+        </trans-unit>
+        <trans-unit id="Resources\LanguageSource\Text" translate="yes" xml:space="preserve">
+          <source>Which source would you like to use?</source>
+          <target state="new">Which source would you like to use?</target>
+        </trans-unit>
+        <trans-unit id="Resources\LanguageLearning\FirstLine" translate="yes" xml:space="preserve">
+          <source>LANGUAGE LEARNING</source>
+          <target state="new">LANGUAGE LEARNING</target>
+        </trans-unit>
+        <trans-unit id="Resources\LanguageLearning\SecondLine" translate="yes" xml:space="preserve">
+          <source>Turn your phone to the ultimate tool to pick up a foreign language.</source>
+          <target state="new">Turn your phone to the ultimate tool to pick up a foreign language.</target>
+        </trans-unit>
+        <trans-unit id="Resources\LanguageSourceContent\Text" translate="yes" xml:space="preserve">
+          <source>Depending on your region, some sources will not be available.</source>
+          <target state="new">Depending on your region, some sources will not be available.</target>
+        </trans-unit>
+        <trans-unit id="Resources\LanguageTypeContent\Text" translate="yes" xml:space="preserve">
+          <source>Would you like to learn words, or phrases and sentences?</source>
+          <target state="new">Would you like to learn words, or phrases and sentences?</target>
         </trans-unit>
         <trans-unit id="Resources\InterestSetupContent\Text" translate="yes" xml:space="preserve">
           <source>What would you like to see on your lock screen? Select some from below.</source>
-          <target state="new">What would you like to see on your lock screen? Select some from below.</target>
+          <target state="translated">您需要在锁屏界面上看到什么?在列表中选择若干项。</target>
         </trans-unit>
         <trans-unit id="Resources\InterestSetup\Text" translate="yes" xml:space="preserve">
           <source>Interest Setup</source>
-          <target state="new">Interest Setup</target>
+          <target state="translated">兴趣设置</target>
         </trans-unit>
         <trans-unit id="Resources\ImageSourceSetupContent\Text" translate="yes" xml:space="preserve">
           <source>Where do you want us to pull the images? Select a source from below.</source>
-          <target state="new">Where do you want us to pull the images? Select a source from below.</target>
+          <target state="translated">您要我们从哪提取图像?请从下面选择一个源。</target>
         </trans-unit>
         <trans-unit id="Resources\ImageSourceSetup\Text" translate="yes" xml:space="preserve">
           <source>Image Source Setup</source>
-          <target state="new">Image Source Setup</target>
+          <target state="translated">图片源</target>
         </trans-unit>
         <trans-unit id="Resources\Height\Text" translate="yes" xml:space="preserve">
           <source>Height </source>
-          <target state="new">Height </target>
+          <target state="translated">高度 </target>
+        </trans-unit>
+        <trans-unit id="Resources\GeoLocation\Text" translate="yes" xml:space="preserve">
+          <source>Reverse geocoding powered by Nominatim.</source>
+          <target state="new">Reverse geocoding powered by Nominatim.</target>
+        </trans-unit>
+        <trans-unit id="Resources\FootNote\Text" translate="yes" xml:space="preserve">
+          <source>Footnote</source>
+          <target state="new">Footnote</target>
         </trans-unit>
         <trans-unit id="Resources\FineTuningContent\Text" translate="yes" xml:space="preserve">
           <source>Follow the guide to make sure the images fit your screen best.</source>
-          <target state="new">Follow the guide to make sure the images fit your screen best.</target>
+          <target state="translated">调整图片使其最适合您的屏幕。</target>
         </trans-unit>
         <trans-unit id="Resources\FineTuning\Text" translate="yes" xml:space="preserve">
           <source>Fine Tuning Image</source>
-          <target state="new">Fine Tuning Image</target>
+          <target state="translated">精细调节</target>
+        </trans-unit>
+        <trans-unit id="Resources\FinalTweaks\Text" translate="yes" xml:space="preserve">
+          <source>Final Tweaks</source>
+          <target state="new">Final Tweaks</target>
+        </trans-unit>
+        <trans-unit id="Resources\FinalTweaksContent\Text" translate="yes" xml:space="preserve">
+          <source>Here're some minor tweaks, including your balance, and Do-Not-Disturb settings.</source>
+          <target state="new">Here're some minor tweaks, including your balance, and Do-Not-Disturb settings.</target>
+        </trans-unit>
+        <trans-unit id="Resources\English" translate="yes" xml:space="preserve">
+          <source>English</source>
+          <target state="new">English</target>
         </trans-unit>
         <trans-unit id="Resources\DateTimeString\Text" translate="yes" xml:space="preserve">
           <source>Wednesday, October 21</source>
-          <target state="new">Wednesday, October 21</target>
+          <target state="translated">星期三, 十月二十一日</target>
+        </trans-unit>
+        <trans-unit id="Resources\ContentBackground\Text" translate="yes" xml:space="preserve">
+          <source>Content Background</source>
+          <target state="new">Content Background</target>
+        </trans-unit>
+        <trans-unit id="Resources\Content\Text" translate="yes" xml:space="preserve">
+          <source>Content</source>
+          <target state="new">Content</target>
+        </trans-unit>
+        <trans-unit id="Resources\ContentFontsize\Text" translate="yes" xml:space="preserve">
+          <source>Content Font Size</source>
+          <target state="new">Content Font Size</target>
+        </trans-unit>
+        <trans-unit id="Resources\ContentForeground\Text" translate="yes" xml:space="preserve">
+          <source>Content Foreground</source>
+          <target state="new">Content Foreground</target>
+        </trans-unit>
+        <trans-unit id="Resources\CreateAStyle\Text" translate="yes" xml:space="preserve">
+          <source>Create a Style</source>
+          <target state="new">Create a Style</target>
+        </trans-unit>
+        <trans-unit id="Resources\CreateAStyleContent\Text" translate="yes" xml:space="preserve">
+          <source>Here's a list of settings that you can use to tune the style of texts.</source>
+          <target state="new">Here's a list of settings that you can use to tune the style of texts.</target>
+        </trans-unit>
+        <trans-unit id="Resources\Chinese" translate="yes" xml:space="preserve">
+          <source>Chinese</source>
+          <target state="new">Chinese</target>
+        </trans-unit>
+        <trans-unit id="Resources\CategorySelection\Text" translate="yes" xml:space="preserve">
+          <source>What category interests you?</source>
+          <target state="new">What category interests you?</target>
+        </trans-unit>
+        <trans-unit id="Resources\CategorySelectionContent\Text" translate="yes" xml:space="preserve">
+          <source>First, pick a category below, then you can decided which is your favorite source.</source>
+          <target state="new">First, pick a category below, then you can decided which is your favorite source.</target>
         </trans-unit>
         <trans-unit id="Resources\Bing\SecondLine" translate="yes" xml:space="preserve">
           <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
-          <target state="new">Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</target>
+          <target state="translated">使用必应每日精选图片。如果您选择此选项，您同意所有的权利都属于各自的所有者的图像。</target>
         </trans-unit>
         <trans-unit id="Resources\Bing\FirstLine" translate="yes" xml:space="preserve">
           <source>BING</source>
-          <target state="new">BING</target>
+          <target state="translated">必应</target>
         </trans-unit>
       </group>
     </body>

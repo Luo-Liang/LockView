@@ -123,14 +123,56 @@
   <data name="Bing.SecondLine" xml:space="preserve">
     <value>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</value>
   </data>
+  <data name="CategorySelection.Text" xml:space="preserve">
+    <value>What category interests you?</value>
+  </data>
+  <data name="CategorySelectionContent.Text" xml:space="preserve">
+    <value>First, pick a category below, then you can decided which is your favorite source.</value>
+  </data>
+  <data name="Chinese" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="Content.Text" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="ContentBackground.Text" xml:space="preserve">
+    <value>Content Background</value>
+  </data>
+  <data name="ContentFontsize.Text" xml:space="preserve">
+    <value>Content Font Size</value>
+  </data>
+  <data name="ContentForeground.Text" xml:space="preserve">
+    <value>Content Foreground</value>
+  </data>
+  <data name="CreateAStyle.Text" xml:space="preserve">
+    <value>Create a Style</value>
+  </data>
+  <data name="CreateAStyleContent.Text" xml:space="preserve">
+    <value>Here's a list of settings that you can use to tune the style of texts.</value>
+  </data>
   <data name="DateTimeString.Text" xml:space="preserve">
     <value>Wednesday, October 21</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="FinalTweaks.Text" xml:space="preserve">
+    <value>Final Tweaks</value>
+  </data>
+  <data name="FinalTweaksContent.Text" xml:space="preserve">
+    <value>Here're some minor tweaks, including your balance, and Do-Not-Disturb settings.</value>
   </data>
   <data name="FineTuning.Text" xml:space="preserve">
     <value>Fine Tuning Image</value>
   </data>
   <data name="FineTuningContent.Text" xml:space="preserve">
     <value>Follow the guide to make sure the images fit your screen best.</value>
+  </data>
+  <data name="FootNote.Text" xml:space="preserve">
+    <value>Footnote</value>
+  </data>
+  <data name="GeoLocation.Text" xml:space="preserve">
+    <value>Reverse geocoding powered by Nominatim.</value>
   </data>
   <data name="Height.Text" xml:space="preserve">
     <value>Height </value>
@@ -147,8 +189,44 @@
   <data name="InterestSetupContent.Text" xml:space="preserve">
     <value>What would you like to see on your lock screen? Select some from below.</value>
   </data>
+  <data name="Language.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="LanguageContent.Text" xml:space="preserve">
+    <value>What language would you like to learn this time?</value>
+  </data>
+  <data name="LanguageLearning.FirstLine" xml:space="preserve">
+    <value>LANGUAGE LEARNING</value>
+  </data>
+  <data name="LanguageLearning.SecondLine" xml:space="preserve">
+    <value>Turn your phone to the ultimate tool to pick up a foreign language.</value>
+  </data>
+  <data name="LanguageSource.Text" xml:space="preserve">
+    <value>Which source would you like to use?</value>
+  </data>
+  <data name="LanguageSourceContent.Text" xml:space="preserve">
+    <value>Depending on your region, some sources will not be available.</value>
+  </data>
+  <data name="LanguageType.Text" xml:space="preserve">
+    <value>Language Type</value>
+  </data>
+  <data name="LanguageTypeContent.Text" xml:space="preserve">
+    <value>Would you like to learn words, or phrases and sentences?</value>
+  </data>
+  <data name="Localization.Text" xml:space="preserve">
+    <value>Localization</value>
+  </data>
+  <data name="LocalizationContent.Text" xml:space="preserve">
+    <value>Use sources that resemble my culture only.</value>
+  </data>
   <data name="LockViewCapital.Text" xml:space="preserve">
     <value>LOCKVIEW PREVIEW</value>
+  </data>
+  <data name="Metrics.Text" xml:space="preserve">
+    <value>Metrics</value>
+  </data>
+  <data name="MetricsContent.Text" xml:space="preserve">
+    <value>Sometimes it is just so hard to speak the other language.</value>
   </data>
   <data name="NASA.FirstLine" xml:space="preserve">
     <value>NASA</value>
@@ -156,8 +234,17 @@
   <data name="NASA.SecondLine" xml:space="preserve">
     <value>Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday.</value>
   </data>
+  <data name="News.FirstLine" xml:space="preserve">
+    <value>NEWS</value>
+  </data>
+  <data name="News.SecondLine" xml:space="preserve">
+    <value>Love news? Never miss a beat from your favourite news source and category!</value>
+  </data>
   <data name="NextButton.Content" xml:space="preserve">
     <value>next</value>
+  </data>
+  <data name="Okay.Content" xml:space="preserve">
+    <value>okay</value>
   </data>
   <data name="PCConsoleAndTablet.Text" xml:space="preserve">
     <value>PC CONSOLE AND TABLET</value>
@@ -167,6 +254,12 @@
   </data>
   <data name="PreviewContent.Text" xml:space="preserve">
     <value>This shows how things may look like on your lock screen. Click on texts to adjust style.</value>
+  </data>
+  <data name="PreviewThis.Text" xml:space="preserve">
+    <value>Preview this content</value>
+  </data>
+  <data name="PreviewThisContent.Text" xml:space="preserve">
+    <value>Request this interest and the image will be shown on the right.</value>
   </data>
   <data name="RepickImageButton.Content" xml:space="preserve">
     <value>repick image</value>
@@ -180,6 +273,12 @@
   <data name="ResolutionContent.Text" xml:space="preserve">
     <value>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties.</value>
   </data>
+  <data name="SelectInterestCheckBox.Content" xml:space="preserve">
+    <value>Select this interest</value>
+  </data>
+  <data name="Sentence" xml:space="preserve">
+    <value>Sentence</value>
+  </data>
   <data name="ServiceUnavailable" xml:space="preserve">
     <value>Server not available</value>
   </data>
@@ -192,11 +291,65 @@
   <data name="SetupSettingsContent.Text" xml:space="preserve">
     <value>Here're some specific questions regarding your selected interest.</value>
   </data>
+  <data name="ShowMe.Content" xml:space="preserve">
+    <value>show me</value>
+  </data>
+  <data name="SpecificInterest.FirstLine" xml:space="preserve">
+    <value>SPECIFIC INTEREST</value>
+  </data>
+  <data name="SpecificInterest.SecondLine" xml:space="preserve">
+    <value>Use a specific interest. Give us a topic, and we'll gather all news around it!</value>
+  </data>
+  <data name="SpecificTopic.Text" xml:space="preserve">
+    <value>Tell us about a specific topic. We'll gather all news about it for you.</value>
+  </data>
+  <data name="SpecificTopicContent.Text" xml:space="preserve">
+    <value>Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk.</value>
+  </data>
+  <data name="SuggestedSource.Text" xml:space="preserve">
+    <value>Suggested Source</value>
+  </data>
+  <data name="SuggestedSourceContent.Text" xml:space="preserve">
+    <value>A list of available sources based on your filtering conditions.</value>
+  </data>
   <data name="SwipeAround.Text" xml:space="preserve">
     <value>Swipe Around!</value>
   </data>
   <data name="SwipeAroundContent.Text" xml:space="preserve">
     <value>Use your mouse wheel or drag with your fingers to select a best view.</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TitleBackground.Text" xml:space="preserve">
+    <value>Title Background</value>
+  </data>
+  <data name="TitleFontsize.Text" xml:space="preserve">
+    <value>Title Font Size</value>
+  </data>
+  <data name="TitleForeground.Text" xml:space="preserve">
+    <value>Title Foreground</value>
+  </data>
+  <data name="TranslationLanguage.Text" xml:space="preserve">
+    <value>Translation Language</value>
+  </data>
+  <data name="TranslationLanguageContent.Text" xml:space="preserve">
+    <value>For the word/phrase you will be learning, in what language should we translate it into?</value>
+  </data>
+  <data name="UseAllCulture.Content" xml:space="preserve">
+    <value>Use all</value>
+  </data>
+  <data name="UseImperial.Content" xml:space="preserve">
+    <value>Use imperial units</value>
+  </data>
+  <data name="UseMetric.Content" xml:space="preserve">
+    <value>Use metric units</value>
+  </data>
+  <data name="UseMyCulture.Content" xml:space="preserve">
+    <value>Use my culture</value>
+  </data>
+  <data name="UseMyLocation.Content" xml:space="preserve">
+    <value>Use my Location</value>
   </data>
   <data name="UseMyOwnImage.FirstLine" xml:space="preserve">
     <value>USE MY OWN IMAGE</value>
@@ -204,7 +357,31 @@
   <data name="UseMyOwnImage.SecondLine" xml:space="preserve">
     <value>Choose this if you would like to use the same image as your lock screen over time.</value>
   </data>
+  <data name="Weather.FirstLine" xml:space="preserve">
+    <value>WEATHER</value>
+  </data>
+  <data name="Weather.SecondLine" xml:space="preserve">
+    <value>Never get caught in a rain. Use this options to display semi realtime weather information right on your lock screen.</value>
+  </data>
+  <data name="WhereAreYou.Text" xml:space="preserve">
+    <value>Where are you?</value>
+  </data>
+  <data name="WhereAreYouContent.Text" xml:space="preserve">
+    <value>Get latest weather information, any time, anywhere.</value>
+  </data>
   <data name="Width.Text" xml:space="preserve">
     <value>Width </value>
+  </data>
+  <data name="Wisdom.FirstLine" xml:space="preserve">
+    <value>WORDS OF WISDOM</value>
+  </data>
+  <data name="Wisdom.SecondLine" xml:space="preserve">
+    <value>One static motto that inspires of what all you do.</value>
+  </data>
+  <data name="Word" xml:space="preserve">
+    <value>Word</value>
+  </data>
+  <data name="WordOfWisdom.Text" xml:space="preserve">
+    <value>What is the thing you've been trying to tell yourself? Maybe to calm down?</value>
   </data>
 </root>

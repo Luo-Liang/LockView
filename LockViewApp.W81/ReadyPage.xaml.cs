@@ -28,6 +28,7 @@ namespace LockViewApp.W81
         public ReadyPage()
         {
             this.InitializeComponent();
+            updateUsability();
             UpdateBalanceInfo();
         }
 

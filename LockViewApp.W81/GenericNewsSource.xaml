@@ -15,11 +15,11 @@
             <ProgressBar x:Name="busyBar" Height="6" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed"/>
 
             <StackPanel  Orientation="Vertical" d:LayoutOverrides="Height" VerticalAlignment="Top">
-                <CheckBox Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" x:Name="checkBox" Content="Select this interest" Height="36" VerticalAlignment="Stretch" FontFamily="Global User Interface" FontSize="21.333" Foreground="White" IsChecked="False"/>
+                <CheckBox Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" x:Name="checkBox" x:Uid="SelectInterestCheckBox" Height="36" VerticalAlignment="Stretch" FontFamily="Global User Interface" FontSize="21.333" Foreground="White" IsChecked="False"/>
                 <TextBlock FontWeight="Light" Margin="3,10,0,0" TextWrapping="Wrap" FontSize="18.667">
-					<Run Text="Which source would you like to use?"/>
+					<Run x:Uid="LanguageSource"/>
 					<LineBreak/>
-					<Run Foreground="Gray" Text="Depending on your region, some sources will not be available."/>
+					<Run Foreground="Gray" x:Uid="LanguageSourceContent"/>
                 </TextBlock>
                 <ComboBox IsEnabled="{Binding IsChecked, ElementName=checkBox}" SelectionChanged="sourceName_SelectionChanged" x:Name="sourceName" Margin="2,10,2,0" Foreground="White" Background="{x:Null}" Style="{StaticResource ComboBoxStyle}" FontFamily="Global User Interface">
                     <ComboBox.ItemTemplate>
@@ -30,9 +30,9 @@
                 </ComboBox>
                 <Grid x:Name="nonCustomized" Height="109" Margin="2,15,0,0">
                     <TextBlock FontWeight="Light" x:Name="textBlock" Margin="1,0,0,41" TextWrapping="Wrap" FontSize="18.667" d:LayoutOverrides="Height, TopPosition, BottomPosition">
-						<Run Text="What category interests you?"/>
+						<Run x:Uid="CategorySelection"/>
 						<LineBreak/>
-						<Run Foreground="Gray" Text="First, pick a category below, then you can decided which is your favorite source."/>
+						<Run Foreground="Gray" x:Uid="CategorySelectionContent"/>
                     </TextBlock>
                     <ComboBox IsEnabled="{Binding IsChecked, ElementName=checkBox}" x:Name="categoryName" Margin="0,0,2,0" Foreground="White" Background="{x:Null}" Style="{StaticResource ComboBoxStyle}" FontFamily="Global User Interface" VerticalAlignment="Bottom">
                         <ComboBox.ItemTemplate>
@@ -51,20 +51,20 @@
                     <TextBox x:Name="rssField" TextChanged="rssField_TextChanged" Margin="0,50,0,0" VerticalAlignment="Top" Background="{x:Null}"/>
                 </Grid>
                 <TextBlock FontWeight="Light" Margin="3,15,3,0" TextWrapping="Wrap" FontSize="18.667">
-					<Run Text="Localization"/>
+					<Run x:Uid="Localization"/>
 					<LineBreak/>
-					<Run Foreground="Gray" Text="Use sources that resemble my culture only."/>
+					<Run Foreground="Gray" x:Uid="LocalizationContent"/>
                 </TextBlock>
                 <StackPanel HorizontalAlignment="Left" Margin="3,10,0,0">
-                    <RadioButton IsEnabled="False"  GroupName="metric" x:Name="useImperial" Content="Use all" VerticalAlignment="Top" d:LayoutOverrides="TopPosition, BottomPosition" FontFamily="Global User Interface"/>
-                    <RadioButton IsEnabled="False" GroupName="metric" IsChecked="True" x:Name="useMetric" Content="Use my culture" VerticalAlignment="Bottom" Margin="0,10,0,0" FontFamily="Global User Interface"/>
+                    <RadioButton IsEnabled="False"  GroupName="metric" x:Name="useImperial" x:Uid="UseAllCulture" VerticalAlignment="Top" d:LayoutOverrides="TopPosition, BottomPosition" FontFamily="Global User Interface"/>
+                    <RadioButton IsEnabled="False" GroupName="metric" IsChecked="True" x:Name="useMetric" x:Uid="UseMyCulture" VerticalAlignment="Bottom" Margin="0,10,0,0" FontFamily="Global User Interface"/>
                 </StackPanel>
                 <TextBlock FontWeight="Light" x:Name="textBlock_Copy" Margin="3,15,3,0" TextWrapping="Wrap" FontSize="18.667">
-					<Run Text="Preview this content"/>
+					<Run x:Uid="PreviewThis"/>
 					<LineBreak/>
-					<Run Foreground="Gray" Text="Request this interest and the image will be shown on the right."/>
+					<Run Foreground="Gray" x:Uid="PreviewThisContent"/>
                 </TextBlock>
-                <Button Click="button_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" Content="Show Me" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch"/>
+                <Button Click="button_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" x:Uid="ShowMe" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch"/>
 
             </StackPanel>
 

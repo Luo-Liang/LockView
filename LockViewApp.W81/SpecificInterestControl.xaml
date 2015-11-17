@@ -14,19 +14,19 @@
         <ProgressBar x:Name="busyBar" Height="6" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed"/>
 
         <StackPanel  Orientation="Vertical" d:LayoutOverrides="Height">
-            <CheckBox Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" x:Name="checkBox" Content="Select this interest" Height="36" VerticalAlignment="Stretch" FontFamily="Global User Interface" FontSize="21.333" Foreground="White" IsChecked="False"/>
+            <CheckBox Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" x:Name="checkBox" x:Uid="SelectInterestCheckBox" Height="36" VerticalAlignment="Stretch" FontFamily="Global User Interface" FontSize="21.333" Foreground="White" IsChecked="False"/>
             <TextBlock FontWeight="Light" x:Name="textBlock" Margin="3,10,0,0" TextWrapping="Wrap" FontSize="18.667" FontFamily="Segoe UI Light">
-    			<Run Text="Tell us about a specific topic. We'll gather all news about it for you."/>
+    			<Run x:Uid="SpecificTopic"/>
     			<LineBreak/>
-    			<Run Foreground="Gray" Text="Type in a specific topic. e.g. Apple, UW, Google, President, Seahawk."/>
+    			<Run Foreground="Gray" x:Uid="SpecificTopicContent"/>
             </TextBlock>
             <TextBox IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="textBox" Margin="3,10,2,0" TextWrapping="Wrap" Text="" FontFamily="Global User Interface" FontSize="18.667" BorderBrush="White" SelectionHighlightColor="{StaticResource AccentBrush}" Background="{x:Null}" Foreground="White"/>
             <TextBlock FontWeight="Light" FontFamily="Segoe UI Light" x:Name="textBlock_Copy" Margin="3,20,3,0" TextWrapping="Wrap" FontSize="18.667">
-            	<Run Text="Preview this content."/>
+            	<Run x:Uid="PreviewThis"/>
             	<LineBreak/>
-            	<Run Foreground="Gray" Text="Request this interest and the image will be shown on the right."/>
+            	<Run Foreground="Gray" x:Uid="PreviewThisContent"/>
             </TextBlock>
-            <Button Click="button_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" Content="Show Me" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch"/>
+            <Button Click="button_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" x:Uid="ShowMe"  HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch"/>
 
         </StackPanel>
 

@@ -7,13 +7,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:clr="using:System"
-    mc:Ignorable="d" Height="716">
+    mc:Ignorable="d" Height="Auto">
 
     <Grid>
 
         <StackPanel Height="103" Background="{StaticResource AccentBrush}" Margin="0,0,22,0" VerticalAlignment="Top">
-            <TextBlock x:Name="textBlock1" Text="Create a Style" TextWrapping="Wrap" Margin="10,10,10,5" FontSize="24"/>
-            <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" Margin="10,4,10,10" FontSize="18.667" Text="Here's a list of settings that you can use to tune the style of texts. ">
+            <TextBlock x:Name="textBlock1" x:Uid="CreateAStyle" TextWrapping="Wrap" Margin="10,10,10,5" FontSize="24"/>
+            <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" Margin="10,4,10,10" FontSize="18.667" x:Uid="CreateAStyleContent">
                 <TextBlock.Foreground>
                     <SolidColorBrush Color="{StaticResource LighterGray}"/>
                 </TextBlock.Foreground>
@@ -25,56 +25,46 @@
                 <StackPanel.Resources>
                     <DataTemplate x:Key="colorTemplateFullInteger">
                         <StackPanel Margin="0,10,0,10" Orientation="Horizontal">
-                            <TextBlock Foreground="White" FontSize="18.333" Margin="0,0,0,0" Text="{Binding}"/>
+                            <TextBlock Foreground="DarkGray" FontSize="18.333" Margin="0,0,0,0" Text="{Binding}"/>
                         </StackPanel>
                     </DataTemplate>
                     <DataTemplate x:Key="colorTemplateFull">
                         <StackPanel Margin="10" Orientation="Horizontal">
-                            <Rectangle Height="20" Width="20" StrokeThickness="0">
+                            <Rectangle Height="20" Width="20" StrokeThickness="1" Stroke="DarkGray">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="{Binding Color}"/>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock FontSize="18.333" Margin="15,0,0,0" Text="{Binding ColorName, Converter={StaticResource str2LocStrConn}}" FontFamily="Global User Interface">
-                                <TextBlock.Foreground>
-                                    <SolidColorBrush Color="{Binding Color}"/>
-                                </TextBlock.Foreground>
-                            </TextBlock>
+                            <TextBlock FontSize="18.333" Margin="15,0,0,0" Text="{Binding ColorName, Converter={StaticResource str2LocStrConn}}" FontFamily="Global User Interface" Foreground="DarkGray"/>
                         </StackPanel>
                     </DataTemplate>
                     <localWp:IntegerCollection x:Key="intCollection"/>
                 </StackPanel.Resources>
                 <StackPanel Orientation="Vertical" Margin="10,20,0,0">
-                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="Title Foreground"/>
+                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" x:Uid="TitleForeground"/>
                     <ComboBox  ItemsSource="{StaticResource colorCollection}" SelectedItem="{Binding ForegroundTitle, Converter={StaticResource str2ClrConn},Mode=TwoWay}" ItemTemplate="{StaticResource colorTemplateFull}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10,20,0,0">
-                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667">
-						<Run Text="Title "/>
-						<Run Text="Background"/>
-                    </TextBlock>
+                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" x:Uid="TitleBackground"/>
                     <ComboBox ItemsSource="{StaticResource colorCollection}" SelectedItem="{Binding BackgroundTitle, Converter={StaticResource str2ClrConn}, Mode=TwoWay}"  ItemTemplate="{StaticResource colorTemplateFull}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10,20,0,0">
-                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="Title Fontsize"/>
+                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" x:Uid="TitleFontsize"/>
                     <ComboBox ItemsSource="{StaticResource intCollection}" SelectedItem="{Binding TitleFont.FontSize, Mode=TwoWay}"  ItemTemplate="{StaticResource colorTemplateFullInteger}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10,20,0,0">
-                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="Content Foreground"/>
+                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" x:Uid="ContentForeground"/>
                     <ComboBox ItemsSource="{StaticResource colorCollection}" SelectedItem="{Binding ForegroundFirstLine, Converter={StaticResource str2LocStrConn}, Mode=TwoWay}"  ItemTemplate="{StaticResource colorTemplateFull}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10,20,0,0">
-                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Text="Content Background"/>
+                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" x:Uid="ContentBackground"/>
                     <ComboBox ItemsSource="{StaticResource colorCollection}" SelectedItem="{Binding BackgroundFirstLine, Converter={StaticResource str2ClrConn}, Mode=TwoWay}"  ItemTemplate="{StaticResource colorTemplateFull}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10,20,0,0">
-                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667">
-						<Run Text="Content Fontsize"/>
-						<Run Text=""/>
-                    </TextBlock>
+                    <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" x:Uid="ContentFontsize"/>
                     <ComboBox ItemsSource="{StaticResource intCollection}" SelectedItem="{Binding FirstLineFont.FontSize, Mode=TwoWay}" ItemTemplate="{StaticResource colorTemplateFullInteger}" FontFamily="Global User Interface" Margin="0,15,0,0" Background="{x:Null}"/>
                 </StackPanel>
-                <Button Click="saveStyle_Click" x:Name="saveStyle" Content="okay" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="10,20,0,0"/>
+                <Button Click="saveStyle_Click" x:Name="saveStyle" x:Uid="Okay" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="10,20,0,0"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

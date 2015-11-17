@@ -18,11 +18,11 @@
             <ProgressBar x:Name="busyBar" Height="6" Margin="0" VerticalAlignment="Top" IsIndeterminate="True" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed"/>
 
             <StackPanel  Orientation="Vertical" d:LayoutOverrides="Height" VerticalAlignment="Top">
-                <CheckBox Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" x:Name="checkBox" Content="Select this interest" Height="36" VerticalAlignment="Stretch" FontFamily="Global User Interface" FontSize="21.333" Foreground="White" IsChecked="False"/>
+                <CheckBox Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" x:Name="checkBox" x:Uid="SelectInterestCheckBox" Height="36" VerticalAlignment="Stretch" FontFamily="Global User Interface" FontSize="21.333" Foreground="White" IsChecked="False"/>
                 <TextBlock FontWeight="Light" Margin="3,10,0,0" TextWrapping="Wrap" FontSize="18.667">
-            	<Run Text="Language"/>
+            	<Run x:Uid="Language"/>
             	<LineBreak/>
-            	<Run Foreground="Gray" Text="What language would you like to learn this time?"/>
+            	<Run Foreground="Gray" x:Uid="LanguageContent"/>
                 </TextBlock>
                 <ComboBox IsEnabled="{Binding IsChecked, ElementName=checkBox}" SelectionChanged="langugage_SelectionChanged" x:Name="langugage" Margin="2,10,2,0" Foreground="White" Background="{x:Null}" Style="{StaticResource ComboBoxStyle}" FontFamily="Global User Interface">
                     <ComboBox.ItemTemplate>
@@ -32,9 +32,9 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Margin="3,15,0,0">
-            	<Run Text="Translation Language"/>
+            	<Run x:Uid="TranslationLanguage"/>
             	<LineBreak/>
-            	<Run Foreground="Gray" Text="For the word/phrase you will be learning, in what language should we translate it into?"/>
+            	<Run Foreground="Gray" x:Uid="TranslationLanguageContent"/>
                 </TextBlock>
                 <ComboBox IsEnabled="{Binding IsChecked, ElementName=checkBox}" SelectionChanged="translationLanguage_SelectionChanged" x:Name="translationLanguage" Foreground="White" Background="{x:Null}" Style="{StaticResource ComboBoxStyle}" FontFamily="Global User Interface" Margin="2,10,2,0">
                     <ComboBox.ItemTemplate>
@@ -44,9 +44,9 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Margin="3,15,0,0">
-            	<Run Text="Type"/>
+            	<Run x:Uid="LanguageType"/>
             	<LineBreak/>
-            	<Run Foreground="Gray" Text="Would you like to learn words, or phrases and sentences?"/>
+            	<Run Foreground="Gray" x:Uid="LanguageTypeContent"/>
                 </TextBlock>
                 <ComboBox IsEnabled="{Binding IsChecked, ElementName=checkBox}" SelectionChanged="Type_SelectionChanged" x:Name="Type" Foreground="White" Background="{x:Null}" Style="{StaticResource ComboBoxStyle}" FontFamily="Global User Interface" Margin="2,10,2,0">
                     <ComboBox.ItemTemplate>
@@ -56,9 +56,9 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" Margin="3,15,0,0">
-            	<Run Text="Suggested Source"/>
+            	<Run x:Uid="SuggestedSource"/>
             	<LineBreak/>
-            	<Run Foreground="Gray" Text="A list of available sources based on your filtering conditions."/>
+            	<Run Foreground="Gray" x:Uid="SuggestedSourceContent"/>
                 </TextBlock>
                 <ComboBox IsEnabled="{Binding IsChecked, ElementName=checkBox}" x:Name="SuggestedSource" Foreground="White" Background="{x:Null}" Style="{StaticResource ComboBoxStyle}" FontFamily="Global User Interface" Margin="2,10,2,0">
                     <ComboBox.ItemTemplate>
@@ -68,11 +68,11 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <TextBlock FontWeight="Light" Margin="3,15,3,0" TextWrapping="Wrap" FontSize="18.667">
-				<Run Text="Preview this content"/>
+				<Run x:Uid="PreviewThis"/>
 				<LineBreak/>
-				<Run Foreground="Gray" Text="Request this interest and the image will be shown on the right."/>
+				<Run Foreground="Gray" x:Uid="PreviewThisContent"/>
                 </TextBlock>
-                <Button Click="button_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" Content="Show Me" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch"/>
+                <Button Click="button_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" x:Uid="ShowMe" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

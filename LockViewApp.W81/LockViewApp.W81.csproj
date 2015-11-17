@@ -176,7 +176,6 @@
     <None Include="Service References\Application Insights\ConnectedService.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\BadgeLogo-100.png" />
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\BadgeLogo.scale-180.png" />
     <Content Include="Assets\LockViewInApp.png" />

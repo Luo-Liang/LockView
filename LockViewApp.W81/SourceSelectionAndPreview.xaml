@@ -10,16 +10,16 @@
 
     <Page.Resources>
         <WP81:ListBoxContentVMCollection x:Key="categories">
-            <WP81:ListBoxContentVM NavigationType="specificInterest" SecondLine="Use a specific interest. Give us a topic, and we'll gather all news around it!" FirstLine="SPECIFIC INTEREST" />
-            <WP81:ListBoxContentVM NavigationType="weather" SecondLine="Never get caught in a rain. Use this options to display semi realtime weather information right on your lock screen." FirstLine="WEATHER"/>
-            <WP81:ListBoxContentVM NavigationType="news" SecondLine="Love news? Never miss a beat from your favourite news source and category!" FirstLine="NEWS"/>
-            <WP81:ListBoxContentVM NavigationType="language" SecondLine="Turn your phone to the ultimate tool to pick up a foreign language." FirstLine="LANGUAGE LEARNING"/>
-            <WP81:ListBoxContentVM NavigationType="wordofwisdom" SecondLine="One static motto that inspires of what all you do." FirstLine="WORD OF WISDOM"/>
+            <WP81:ListBoxContentVM NavigationType="specificInterest" x:Uid="SpecificInterest" />
+            <WP81:ListBoxContentVM NavigationType="weather" x:Uid="Weather"/>
+            <WP81:ListBoxContentVM NavigationType="news" x:Uid="News"/>
+            <WP81:ListBoxContentVM NavigationType="language" x:Uid="LanguageLearning"/>
+            <WP81:ListBoxContentVM NavigationType="wordofwisdom" x:Uid="Wisdom"/>
         </WP81:ListBoxContentVMCollection>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid Height="308" VerticalAlignment="Top" HorizontalAlignment="Right" Width="817" d:IsLocked="True">
+        <Grid Height="308" VerticalAlignment="Top" HorizontalAlignment="Right" Width="817">
             <Rectangle HorizontalAlignment="Left" Height="116" Margin="183,0,0,0" VerticalAlignment="Top" Width="634" Fill="#FF926FD4"/>
             <Ellipse Margin="361,7,188,33" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
                 <Ellipse.Fill>
@@ -36,10 +36,10 @@
                     <SolidColorBrush Color="{StaticResource DarkAccentColor}"/>
                 </Ellipse.Fill>
             </Ellipse>
-            <Path Data="M155,0 C197.802,1.5E-05 236.552,14.3829 264.602,37.6368 L268.936,41.4062 L272.71,39.7229 C286.169,34.106 300.967,31 316.5,31 C359.216,31 396.371,54.4893 415.422,89.0908 L415.901,90.0138 L418.225,87.3661 C438.805,65.0257 468.492,51 501.5,51 C522.858,51 542.826,56.8723 559.835,67.0699 L562.827,68.962 L563.458,67.9771 C587.09,32.9979 627.109,10 672.5,10 C745.125,10 804,68.8746 804,141.5 C804,214.125 745.125,273 672.5,273 L672,272.988 L672,308 L309,308 L309,252.734 L307.131,252.621 C285.505,250.861 265.613,243.067 249.189,230.948 L248.894,230.719 L247.739,231.472 C221.878,247.505 189.777,257 155,257 C69.3959,257 0,199.469 0,128.5 C0,57.5314 69.3959,1.5E-05 155,0 z" HorizontalAlignment="Left" Stretch="Fill" UseLayoutRounding="False" Width="804" Margin="14,0,-1,0" d:IsLocked="True">
+            <Path Data="M155,0 C197.802,1.5E-05 236.552,14.3829 264.602,37.6368 L268.936,41.4062 L272.71,39.7229 C286.169,34.106 300.967,31 316.5,31 C359.216,31 396.371,54.4893 415.422,89.0908 L415.901,90.0138 L418.225,87.3661 C438.805,65.0257 468.492,51 501.5,51 C522.858,51 542.826,56.8723 559.835,67.0699 L562.827,68.962 L563.458,67.9771 C587.09,32.9979 627.109,10 672.5,10 C745.125,10 804,68.8746 804,141.5 C804,214.125 745.125,273 672.5,273 L672,272.988 L672,308 L309,308 L309,252.734 L307.131,252.621 C285.505,250.861 265.613,243.067 249.189,230.948 L248.894,230.719 L247.739,231.472 C221.878,247.505 189.777,257 155,257 C69.3959,257 0,199.469 0,128.5 C0,57.5314 69.3959,1.5E-05 155,0 z" HorizontalAlignment="Left" Stretch="Fill" UseLayoutRounding="False" Width="804" Margin="14,0,-1,0">
                 <Path.Fill>
                     <LinearGradientBrush EndPoint="0.878,-1.481" StartPoint="0.841,0.386">
-                        <GradientStop Color="#FF1A1A1A" Offset="0"/>
+                        <GradientStop Color="#FF1D1D1D" Offset="0"/>
                         <GradientStop Color="{StaticResource AccentColor}" Offset="1"/>
                     </LinearGradientBrush>
                 </Path.Fill>
