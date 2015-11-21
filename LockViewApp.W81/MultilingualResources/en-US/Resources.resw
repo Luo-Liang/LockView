@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AndroidDevice.Text" xml:space="preserve">
+    <value>Android Devices</value>
+  </data>
+  <data name="AndroidDeviceContent.Text" xml:space="preserve">
+    <value>Coming soon.</value>
+  </data>
+  <data name="Balance.Text" xml:space="preserve">
+    <value>BALANCE</value>
+  </data>
+  <data name="BalanceContent.Text" xml:space="preserve">
+    <value>LockView uses a web service to compose your image. Support this development kindly refilling your account.</value>
+  </data>
   <data name="Bing.FirstLine" xml:space="preserve">
     <value>BING</value>
   </data>
@@ -131,6 +143,9 @@
   </data>
   <data name="Chinese" xml:space="preserve">
     <value>Chinese</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>Coming soon.</value>
   </data>
   <data name="Content.Text" xml:space="preserve">
     <value>Content</value>
@@ -153,8 +168,23 @@
   <data name="DateTimeString.Text" xml:space="preserve">
     <value>Wednesday, October 21</value>
   </data>
+  <data name="DoNotDisturb.Text" xml:space="preserve">
+    <value>DO NOT DISTURB</value>
+  </data>
+  <data name="DoNotDisturbContent.Text" xml:space="preserve">
+    <value>If you do not wish to receive updates late in the night, check this.</value>
+  </data>
+  <data name="EnableDoNotDisturb.Content" xml:space="preserve">
+    <value>Enable Do-Not-Disturb</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="EstimatedDays.Text" xml:space="preserve">
+    <value>estimated days remaining</value>
+  </data>
+  <data name="EstimatedDaysContent.Text" xml:space="preserve">
+    <value>Each time we update your content, you account will encounter a tiny charge. When your balance reaches 0, your update raae will be drastically reduced. When that happens,you will be ntified.</value>
   </data>
   <data name="FinalTweaks.Text" xml:space="preserve">
     <value>Final Tweaks</value>
@@ -168,11 +198,17 @@
   <data name="FineTuningContent.Text" xml:space="preserve">
     <value>Follow the guide to make sure the images fit your screen best.</value>
   </data>
+  <data name="Finish.Content" xml:space="preserve">
+    <value>finish</value>
+  </data>
   <data name="FootNote.Text" xml:space="preserve">
     <value>Footnote</value>
   </data>
   <data name="GeoLocation.Text" xml:space="preserve">
     <value>Reverse geocoding powered by Nominatim.</value>
+  </data>
+  <data name="GetItForPhone.Content" xml:space="preserve">
+    <value>Get it for your phone</value>
   </data>
   <data name="Height.Text" xml:space="preserve">
     <value>Height </value>
@@ -188,6 +224,9 @@
   </data>
   <data name="InterestSetupContent.Text" xml:space="preserve">
     <value>What would you like to see on your lock screen? Select some from below.</value>
+  </data>
+  <data name="IOSDevice.Text" xml:space="preserve">
+    <value>IOS Devices</value>
   </data>
   <data name="Language.Text" xml:space="preserve">
     <value>Language</value>
@@ -222,6 +261,12 @@
   <data name="LockViewCapital.Text" xml:space="preserve">
     <value>LOCKVIEW PREVIEW</value>
   </data>
+  <data name="LockViewMobileApp.Text" xml:space="preserve">
+    <value>LockView for mobile devices</value>
+  </data>
+  <data name="LockViewMobileAppContent.Text" xml:space="preserve">
+    <value>If you wish, you can get LockView for mobile devices.</value>
+  </data>
   <data name="Metrics.Text" xml:space="preserve">
     <value>Metrics</value>
   </data>
@@ -246,8 +291,23 @@
   <data name="Okay.Content" xml:space="preserve">
     <value>okay</value>
   </data>
+  <data name="OtherInterestThings.Text" xml:space="preserve">
+    <value>Other interesting things</value>
+  </data>
+  <data name="OtherInterestThingsContent.Text" xml:space="preserve">
+    <value>You can view version specific content here in this pane.</value>
+  </data>
   <data name="PCConsoleAndTablet.Text" xml:space="preserve">
     <value>PC CONSOLE AND TABLET</value>
+  </data>
+  <data name="Permission.Text" xml:space="preserve">
+    <value>PERMISSION</value>
+  </data>
+  <data name="PermissionContent.Text" xml:space="preserve">
+    <value>We need to request your consent before we can change your lock screen.</value>
+  </data>
+  <data name="PinStory.Content" xml:space="preserve">
+    <value>pin story</value>
   </data>
   <data name="Preview.Text" xml:space="preserve">
     <value>Preview</value>
@@ -272,6 +332,9 @@
   </data>
   <data name="ResolutionContent.Text" xml:space="preserve">
     <value>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties.</value>
+  </data>
+  <data name="SayYes.Content" xml:space="preserve">
+    <value>say yes</value>
   </data>
   <data name="SelectInterestCheckBox.Content" xml:space="preserve">
     <value>Select this interest</value>
@@ -369,8 +432,17 @@
   <data name="WhereAreYouContent.Text" xml:space="preserve">
     <value>Get latest weather information, any time, anywhere.</value>
   </data>
+  <data name="WhyPayDouble.Text" xml:space="preserve">
+    <value>Why pay double? Your lock screen is automatically sync-ed across all your Windows screens.</value>
+  </data>
   <data name="Width.Text" xml:space="preserve">
     <value>Width </value>
+  </data>
+  <data name="WindowsPhone.Text" xml:space="preserve">
+    <value>Windows Phone</value>
+  </data>
+  <data name="WindowsTablet.Text" xml:space="preserve">
+    <value>Windows Tablet</value>
   </data>
   <data name="Wisdom.FirstLine" xml:space="preserve">
     <value>WORDS OF WISDOM</value>

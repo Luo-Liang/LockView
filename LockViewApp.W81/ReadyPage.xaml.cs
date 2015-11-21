@@ -152,6 +152,7 @@ namespace LockViewApp.W81
         private async void sayYes_Click(object sender, RoutedEventArgs e)
         {
             await askConsent();
+            updateUsability();
         }
 
         async Task askConsent()
