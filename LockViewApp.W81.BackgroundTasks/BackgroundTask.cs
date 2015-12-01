@@ -97,6 +97,7 @@ namespace LockViewApp.W81.BackgroundTasks
 
             }
             instance.BackgroundTaskLastRun = DateTime.Now;
+            await instance.SaveState();
             deferral.Complete();
         }
     }

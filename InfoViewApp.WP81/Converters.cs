@@ -276,12 +276,12 @@ namespace InfoViewApp.WP81.Converter
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            throw new NotImplementedException();
+            return (value as ColorNameVM).ColorName;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo language)
         {
-            throw new NotImplementedException();
+            return ConvertBack(value, targetType, parameter, language.ToString());
         }
     }
 }

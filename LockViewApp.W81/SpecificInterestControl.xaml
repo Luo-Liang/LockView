@@ -20,8 +20,8 @@
     			<LineBreak/>
     			<Run Foreground="Gray" x:Uid="SpecificTopicContent"/>
             </TextBlock>
-            <TextBox IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="textBox" Margin="3,10,2,0" TextWrapping="Wrap" Text="" FontFamily="Global User Interface" FontSize="18.667" BorderBrush="White" SelectionHighlightColor="{StaticResource AccentBrush}" Background="{x:Null}" Foreground="White"/>
-            <TextBlock FontWeight="Light" FontFamily="Segoe UI Light" x:Name="textBlock_Copy" Margin="3,20,3,0" TextWrapping="Wrap" FontSize="18.667">
+            <TextBox TextChanged="textBox_TextChanged" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="textBox" Margin="3,10,2,0" TextWrapping="Wrap" Text="" FontFamily="Global User Interface" FontSize="18.667" BorderBrush="White" SelectionHighlightColor="{StaticResource AccentBrush}" Background="{x:Null}" Foreground="White"/>
+            <TextBlock  FontWeight="Light" FontFamily="Segoe UI Light" x:Name="textBlock_Copy" Margin="3,20,3,0" TextWrapping="Wrap" FontSize="18.667">
             	<Run x:Uid="PreviewThis"/>
             	<LineBreak/>
             	<Run Foreground="Gray" x:Uid="PreviewThisContent"/>

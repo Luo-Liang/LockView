@@ -27,6 +27,7 @@ namespace LockViewApp.W81
             this.InitializeComponent();
             sourceName.ItemsSource = (Application.Current.Resources["definedNewsFeedSources"] as FeedSources).Where<FeedSource>(o => o.ApplicableLanguageId == null || o.ApplicableLanguageId.ToLowerInvariant() == LockViewApplicationState.Instance.RequestMetadata.RequestLanguage.ToLowerInvariant());
             sourceName.SelectedIndex = 0;
+            button.IsEnabled = false;
         }
 
         private void sourceName_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,11 +80,13 @@ namespace LockViewApp.W81
         private void checkBox_Checked(object sender, RoutedEventArgs e)
         {
             InvokeSelectionStatusChange(true);
+            button.IsEnabled = true;
         }
 
         private void checkBox_Unchecked(object sender, RoutedEventArgs e)
         {
             InvokeSelectionStatusChange(false);
+            button.IsEnabled = false;
         }
     }
 }
