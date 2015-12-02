@@ -32,6 +32,7 @@ namespace LockViewApp.W81
             this.Loaded += SourceSelectionAndPreview_Loaded;
             this.mockScreen.SizeChanged += ImagePreviewBox_SizeChanged;
             this.createAStyle.OnClick += CreateAStyle_OnClick;
+            nextButton.IsEnabled = false;
         }
 
         private void CreateAStyle_OnClick(object sender, RoutedEventArgs e)
@@ -175,11 +176,13 @@ namespace LockViewApp.W81
         List<InterestRequest> TemporaryInterestStorage = new List<InterestRequest>();
         Dictionary<InterestGathererControl, PreviewItemDisplayControl> requestRelationship = new Dictionary<InterestGathererControl, PreviewItemDisplayControl>();
         Dictionary<string, InterestGathererControl> navigationRelatiobship = new Dictionary<string, InterestGathererControl>();
+        int selectionCount = 0;
         private void Control_SelectionStatusChanged(object sender, InterestSelectionEvent e)
         {
             var preview = new PreviewItemDisplayControl();
             if (e.IsEnabled)
             {
+                selectionCount++;
                 requestRelationship[sender as InterestGathererControl] = preview;
                 previewItemStackPanel.Children.Add(preview);
                 TemporaryContentStorage.Add(new OverlayContextContract());
@@ -187,11 +190,20 @@ namespace LockViewApp.W81
             }
             else
             {
+                selectionCount--;
                 var idx = previewItemStackPanel.Children.IndexOf(requestRelationship[sender as InterestGathererControl]);
                 TemporaryContentStorage.RemoveAt(idx);
                 previewItemStackPanel.Children.Remove(requestRelationship[sender as InterestGathererControl]);
                 requestRelationship.Remove(sender as InterestGathererControl);
                 TemporaryInterestStorage.RemoveAt(idx);
+            }
+            if(selectionCount<=0)
+            {
+                nextButton.IsEnabled = false;
+            }
+            else
+            {
+                nextButton.IsEnabled = true;
             }
         }
 

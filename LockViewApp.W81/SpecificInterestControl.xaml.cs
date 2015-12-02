@@ -24,6 +24,7 @@ namespace LockViewApp.W81
         {
             this.InitializeComponent();
             Gatherer = new GoogleSpecificInterestGatherer();
+            button.IsEnabled = false;
         }
 
         async private void button_Click(object sender, RoutedEventArgs e)
@@ -43,6 +44,12 @@ namespace LockViewApp.W81
         private void checkBox_Unchecked(object sender, RoutedEventArgs e)
         {
             InvokeSelectionStatusChange(false);
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textBox.Text.Length > 0) button.IsEnabled = true;
+            else button.IsEnabled = false;
         }
     }
 }
