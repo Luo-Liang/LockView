@@ -1,5 +1,4 @@
 ﻿using InfoViewApp.WP81;
-using LockViewApp.W81.BackgroundTasks;
 using System;
 using System.Linq;
 using Windows.Web.Http;
@@ -87,7 +86,7 @@ namespace LockViewApp.W81
             await BackgroundExecutionManager.RequestAccessAsync();
 
             // register a new task
-            BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder { Name = taskName, TaskEntryPoint = typeof(BackgroundTask).FullName };
+            BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder { Name = taskName, TaskEntryPoint = typeof(LockViewApp.W81.BackgroundTasks.BackgroundTask ).FullName};
             taskBuilder.SetTrigger(new TimeTrigger(15, false));
             BackgroundTaskRegistration myFirstTask = taskBuilder.Register();
 
@@ -98,7 +97,7 @@ namespace LockViewApp.W81
                 imgReqOverride = new ImageRequestOverride()
                 {
                     ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
-                    Arguments = ""
+                    Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                 };
             }
             else if (instance.SelectedImageSource == InfoViewApp.WP81.ImageSource.NASA)

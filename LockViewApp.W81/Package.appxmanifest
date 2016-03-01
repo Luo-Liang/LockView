@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="63066intelligentsystems.LockView" Publisher="CN=F6788970-F6F7-4B5A-B520-A4EF3E7B1AC4" Version="1.1.0.18" />
+  <Identity Name="63066intelligentsystems.LockView" Publisher="CN=F6788970-F6F7-4B5A-B520-A4EF3E7B1AC4" Version="1.1.0.22" />
   <Properties>
     <DisplayName>LockView</DisplayName>
     <PublisherDisplayName>intelligent systems</PublisherDisplayName>

@@ -1,5 +1,6 @@
 ﻿using InfoViewApp.WP81;
 using InfoViewApp.WP81.Tasks;
+using Microsoft.ApplicationInsights;
 using NotificationsExtensions.ToastContent;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,14 @@ namespace LockViewApp.W81.BackgroundTasks
         {
             var deferral = taskInstance.GetDeferral();
             var instance = LockViewApplicationState.Instance;
+            var dict = new Dictionary<string, string>();
             try
             {
+                TelemetryClient telemetryClient = new TelemetryClient();
                 HttpClient client = new HttpClient();
                 if ((DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8) || !instance.DoNotDisturb)
                 {
+                    dict["in-time"] = "true";
                     foreach (var provider in instance.SelectedProviders)
                     {
                         provider.Client = client;
@@ -32,6 +36,7 @@ namespace LockViewApp.W81.BackgroundTasks
                     var contents = await Task.WhenAll(instance.SelectedProviders.Select(async (o, i) => await o.RequestContent(instance.SelectedInterests[i])));
                     if (instance.SelectedContextContracts.Select((o, i) => !o.Equals(contents[i])).Count(o => o) > 0 || System.Diagnostics.Debugger.IsAttached)
                     {
+                        dict["update-accepted"] = "true";
                         //are we getting the same update?
                         //set flag1 to true -- approve.
                         for (int i = 0; i < instance.SelectedContextContracts.Length; i++)
@@ -45,7 +50,7 @@ namespace LockViewApp.W81.BackgroundTasks
                             imgReqOverride = new ImageRequestOverride()
                             {
                                 ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
-                                Arguments = ""
+                                Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                             };
                         }
                         else if (instance.SelectedImageSource == ImageSource.NASA)
@@ -59,6 +64,7 @@ namespace LockViewApp.W81.BackgroundTasks
                         var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o => o.GetMetaData()));
                         if (instance.UserQuotaInDollars - drainPerReq >= 0 || instance.BackgroundTaskLastRun.DayOfYear < DateTime.Now.DayOfYear)
                         {
+                            dict["update-successful"] = "true";
                             CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
                             ImageCompositionResponse compositionResponse = null;
                             if (imgReqOverride == null)
@@ -75,6 +81,7 @@ namespace LockViewApp.W81.BackgroundTasks
                             if (instance.UserQuotaInDollars != double.MaxValue) //<--- free users don't get deducted.
                                 instance.UserQuotaInDollars -= drainPerReq;
                             //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
+                            instance.BackgroundTaskLastRun = DateTime.Now;
                         }
                         if (instance.UserQuotaInDollars - drainPerReq < 0 && (DateTime.Now.DayOfYear - instance.BackgroundTaskLastRun.DayOfYear) != 0)
                         {
@@ -91,12 +98,17 @@ namespace LockViewApp.W81.BackgroundTasks
                         }
                     }
                 }
+                //gather app insights information.
+                TelemetryClient tc = new TelemetryClient();
+                dict["quota"] = instance.UserQuotaInDollars.ToString();
+                dict["finish-time"] = DateTime.UtcNow.ToString();
+                tc.TrackEvent("background task non-mobile",dict);
             }
             catch (Exception ex)
             {
 
             }
-            instance.BackgroundTaskLastRun = DateTime.Now;
+
             await instance.SaveState();
             deferral.Complete();
         }

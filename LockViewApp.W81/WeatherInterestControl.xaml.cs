@@ -59,14 +59,21 @@ namespace LockViewApp.W81
             Geoposition pos = await geo.GetGeopositionAsync(); // get the raw geoposition data
             double lat = pos.Coordinate.Point.Position.Latitude; // current latitude
             double longt = pos.Coordinate.Point.Position.Longitude; // current 
-            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240");
-            string json = await client.GetStringAsync($"http://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={longt}");
-            JsonObject jObj = null;
-            textBox.Text = gatherer.DisplayName = "DEFAULT LOCATION";
-            if (JsonObject.TryParse(json, out jObj))
+            try
             {
-                var addrObj = jObj["address"].GetObject();
-                textBox.Text = gatherer.DisplayName = addrObj["city"].GetString() + ", " + addrObj["country"].GetString();
+                client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240");
+                string json = await client.GetStringAsync($"http://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={longt}");
+                JsonObject jObj = null;
+                textBox.Text = gatherer.DisplayName = "DEFAULT LOCATION";
+                if (JsonObject.TryParse(json, out jObj))
+                {
+                    var addrObj = jObj["address"].GetObject();
+                    textBox.Text = gatherer.DisplayName = addrObj["city"].GetString() + ", " + addrObj["country"].GetString();
+                }
+            }
+            catch
+            {
+                textBox.Text = gatherer.DisplayName = "DEFAULT LOCATION";
             }
             gatherer.LongitudeAndLatitudeString = $"lat={lat}&lon={longt}";
             busyBar.Visibility = Visibility.Collapsed;
