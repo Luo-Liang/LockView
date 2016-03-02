@@ -135,9 +135,13 @@ namespace LockViewApp.W81
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.NASA;
             }
-            else
+            else if (context.NavigationType == "library")
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.Local;
+            }
+            else
+            {
+                LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.LiveEarth;
             }
             //RedrawCropper();
             try
@@ -151,6 +155,8 @@ namespace LockViewApp.W81
                         uri = new Uri(await BackgroundTaskHelper.GetBingImageFitScreenUrl(client));
                     else if (context.NavigationType == "nasa")
                         uri = new Uri(await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client));
+                    else if (context.NavigationType == "le")
+                        uri = new Uri(await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client));
                     var concatChar = '?';
                     var requestUrl = uri.ToString();
                     if (requestUrl.Contains("?")) concatChar = '&';

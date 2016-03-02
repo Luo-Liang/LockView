@@ -108,6 +108,14 @@ namespace LockViewApp.W81
                     Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                 };
             }
+            else if(instance.SelectedImageSource == InfoViewApp.WP81.ImageSource.LiveEarth)
+            {
+                imgReqOverride = new ImageRequestOverride()
+                {
+                    ImageRequestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client),
+                    Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
+                };
+            }
             CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
             ImageCompositionResponse compositionResponse = null;
             if (imgReqOverride == null)

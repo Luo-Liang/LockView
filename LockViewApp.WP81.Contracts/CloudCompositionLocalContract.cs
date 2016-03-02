@@ -88,7 +88,8 @@ namespace InfoViewApp.WP81
     {
         Local,
         Bing,
-        NASA
+        NASA,
+        LiveEarth
     }
 
     public class Point

@@ -34,7 +34,7 @@ namespace LockViewApp.W81.BackgroundTasks
                         provider.Client = client;
                     }
                     var contents = await Task.WhenAll(instance.SelectedProviders.Select(async (o, i) => await o.RequestContent(instance.SelectedInterests[i])));
-                    if (instance.SelectedContextContracts.Select((o, i) => !o.Equals(contents[i])).Count(o => o) > 0 || System.Diagnostics.Debugger.IsAttached)
+                    if (instance.SelectedContextContracts.Select((o, i) => !o.Equals(contents[i])).Count(o => o) > 0 || System.Diagnostics.Debugger.IsAttached || instance.SelectedImageSource== ImageSource.LiveEarth)
                     {
                         dict["update-accepted"] = "true";
                         //are we getting the same update?
@@ -58,6 +58,14 @@ namespace LockViewApp.W81.BackgroundTasks
                             imgReqOverride = new ImageRequestOverride()
                             {
                                 ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
+                                Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
+                            };
+                        }
+                        else if(instance.SelectedImageSource == ImageSource.LiveEarth)
+                        {
+                            imgReqOverride = new ImageRequestOverride()
+                            {
+                                ImageRequestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client),
                                 Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                             };
                         }

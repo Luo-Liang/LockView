@@ -60,41 +60,28 @@ namespace InfoViewApp.WP81
                 PickInProcess = true;
                 MakeIdle();
             }
-            else if (parameter == "bing")
-            {
-                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Bing;
-                var reqString = string.Format(Locator, lang);
-                HttpClient client = new HttpClient();
-                MakeBusy();
-                try
-                {
-                    var json = await client.GetStringAsync(new Uri(reqString));
-                    var jObj = JsonObject.Parse(json);
-                    var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
-                    imgRequestUrl = imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_'));
-
-                    imgRequestUrl += string.Format("_{0}x{1}.jpg", (int)width, (int)height);
-                    if (imgRequestUrl.StartsWith("http") == false)
-                        imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
-                    var response = await client.GetAsync(new Uri(imgRequestUrl));
-                    WB_CapturedImage = new WriteableBitmap(1, 1);
-                    WB_CapturedImage = WB_CapturedImage.FromStream((await response.Content.ReadAsInputStreamAsync()).AsStreamForRead());
-                    OriginalImage.Source = WB_CapturedImage = LoadScaledImage(WB_CapturedImage);
-                }
-                catch (Exception ex)
-                {
-                    NavigationService.GoBack();
-                }
-                MakeIdle();
-            }
-            else if (parameter == "nasa")
+            else
             {
                 try
                 {
-                    MakeBusy();
-                    LockViewApplicationState.Instance.SelectedImageSource = ImageSource.NASA;
                     HttpClient client = new HttpClient();
+                    MakeBusy();
                     var requestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client);
+                    if (parameter == "nasa")
+                    {
+                        LockViewApplicationState.Instance.SelectedImageSource = ImageSource.NASA;
+                    }
+                    if (parameter == "bing")
+                    {
+                        LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Bing;
+                        requestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client);
+                    }
+                    if (parameter == "le")
+                    {
+                        LockViewApplicationState.Instance.SelectedImageSource = ImageSource.LiveEarth;
+                        requestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client);
+                    }
+
                     var concatChar = '?';
                     if (requestUrl.Contains("?")) concatChar = '&';
                     var requestParameter = $"{requestUrl}{concatChar}resolution={width}x{height}";

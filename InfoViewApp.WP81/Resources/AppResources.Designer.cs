@@ -214,7 +214,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image..
+        ///   Looks up a localized string similar to Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image, and you agree that the sole purpose of the image is limited to wallpaper..
         /// </summary>
         public static string BingText {
             get {
@@ -1254,6 +1254,24 @@ namespace InfoViewApp.WP81.Resources {
         public static string Linen {
             get {
                 return ResourceManager.GetString("Linen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LIVE EARTH.
+        /// </summary>
+        public static string LiveEarth {
+            get {
+                return ResourceManager.GetString("LiveEarth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!.
+        /// </summary>
+        public static string LiveEarthText {
+            get {
+                return ResourceManager.GetString("LiveEarthText", resourceCulture);
             }
         }
         

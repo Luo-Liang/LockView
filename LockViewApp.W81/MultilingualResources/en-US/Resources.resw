@@ -133,7 +133,7 @@
     <value>BING</value>
   </data>
   <data name="Bing.SecondLine" xml:space="preserve">
-    <value>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</value>
+    <value>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image and you only use the image for the entire purpose of lock screen.</value>
   </data>
   <data name="CategorySelection.Text" xml:space="preserve">
     <value>What category interests you?</value>
@@ -455,5 +455,11 @@
   </data>
   <data name="WordOfWisdom.Text" xml:space="preserve">
     <value>What is the thing you've been trying to tell yourself? Maybe to calm down?</value>
+  </data>
+  <data name="LiveEarth.FirstLine" xml:space="preserve">
+    <value>LIVE EARTH</value>
+  </data>
+  <data name="LiveEarth.SecondLine" xml:space="preserve">
+    <value>Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</value>
   </data>
 </root>

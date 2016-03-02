@@ -11,6 +11,7 @@
             <local:ListBoxContentVM x:Uid="UseMyOwnImage" NavigationType="library"/>
             <local:ListBoxContentVM x:Uid="Bing" NavigationType="bing"/>
             <local:ListBoxContentVM x:Uid="NASA" NavigationType="nasa"/>
+            <local:ListBoxContentVM x:Uid="LiveEarth" NavigationType="le"/>
         </local:ListBoxContentVMCollection>
         <Storyboard RepeatBehavior="Forever" x:Name="maximize">
             <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="rectangle">

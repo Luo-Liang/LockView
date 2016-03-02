@@ -144,7 +144,7 @@
     <value>BING</value>
   </data>
   <data name="BingText" xml:space="preserve">
-    <value>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</value>
+    <value>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image, and you agree that the sole purpose of the image is limited to wallpaper.</value>
   </data>
   <data name="GenericNewsTopic" xml:space="preserve">
     <value>GENERIC NEWS TOPIC</value>
@@ -962,5 +962,11 @@
   </data>
   <data name="StockQuoteTitle" xml:space="preserve">
     <value>Which </value>
+  </data>
+  <data name="LiveEarth" xml:space="preserve">
+    <value>LIVE EARTH</value>
+  </data>
+  <data name="LiveEarthText" xml:space="preserve">
+    <value>Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</value>
   </data>
 </root>

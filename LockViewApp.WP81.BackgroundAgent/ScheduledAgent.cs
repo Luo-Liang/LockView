@@ -165,6 +165,12 @@ namespace LockViewApp.WP81.BackgroundAgent
                         ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
                         Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                     };
+                else if (instance.SelectedImageSource == ImageSource.NASA)
+                    imgReqOverride = new ImageRequestOverride()
+                    {
+                        ImageRequestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client),
+                        Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
+                    };
                 //if yes, execute that if (1) the image has changed OR the content has changed.
                 await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
                 instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Toe;
@@ -211,6 +217,12 @@ namespace LockViewApp.WP81.BackgroundAgent
                     imgReqOverride = new ImageRequestOverride()
                     {
                         ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
+                        Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
+                    };
+                else if (instance.SelectedImageSource == ImageSource.LiveEarth)
+                    imgReqOverride = new ImageRequestOverride()
+                    {
+                        ImageRequestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client),
                         Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                     };
                 telemetryProperty["request build ok"] = "Yes";
@@ -273,7 +285,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 provider.Client = client;//<--- use the same client to save memory.
             }
             var contents = await Task.WhenAll(instance.SelectedProviders.Select(async (o, i) => await o.RequestContent(instance.SelectedInterests[i]))); //<--- forcing eval.
-            if (instance.SelectedContextContracts.Select((o, i) => !o.Equals(contents[i])).Count(o => o) > 0)
+            if (instance.SelectedContextContracts.Select((o, i) => !o.Equals(contents[i])).Count(o => o) > 0 || instance.SelectedImageSource == ImageSource.LiveEarth)
             {
                 //are we getting the same update?
                 flag1 = true;

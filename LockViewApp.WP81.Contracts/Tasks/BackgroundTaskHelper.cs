@@ -18,6 +18,7 @@ using Windows.Data.Json;
 using Windows.Storage;
 using Windows.Web.Http;
 
+
 namespace InfoViewApp.WP81.Tasks
 {
     public class BackgroundTaskHelper
@@ -47,6 +48,8 @@ namespace InfoViewApp.WP81.Tasks
             //localRequest.RawImage = Convert.ToBase64String(imgBytes);
             return Newtonsoft.Json.JsonConvert.SerializeObject(localRequest);
         }
+
+
         public static void TrySetLockScreenImage(string fileName, string cultureHint)
         {
 #if WINDOWS_PHONE
@@ -83,7 +86,7 @@ namespace InfoViewApp.WP81.Tasks
                 tile.Update(standardTile);
             }
 #elif WINDOWS_APP
-            if(Windows.UI.StartScreen.SecondaryTile.Exists("CURR_STORY"))
+            if (Windows.UI.StartScreen.SecondaryTile.Exists("CURR_STORY"))
             {
                 ITileSquare150x150Text04 squareContent = TileContentFactory.CreateTileSquare150x150Text04();
                 squareContent.TextBodyWrap.Text = "Sent to a secondary tile from NotificationExtensions!";
@@ -196,6 +199,11 @@ namespace InfoViewApp.WP81.Tasks
 #elif WINDOWS_APP
             throw new NotImplementedException();
 #endif
+        }
+
+        public static async Task<string> GetLiveEarthImageFitScreenUrl(HttpClient client)
+        {
+            return "lockview://fixedwallpapers/Himawari-8";
         }
 
         public static async Task<string> GetBingImageFitScreenUrl(HttpClient client)

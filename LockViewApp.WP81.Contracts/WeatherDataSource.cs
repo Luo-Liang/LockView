@@ -52,7 +52,7 @@ namespace LockViewApp.WP81.Contracts
                 return new InterestContent()
                 {
                     Content = $"{weatherAndTemp}",
-                    Title = $"{titlePrefix} {DateTime.Now.Hour}:00",
+                    Title = $"{titlePrefix} {DateTime.Now.Hour}:{DateTime.Now.Minute / 10}0",
                     Publisher = $"OpenWeatherMap",
                     ExtensionUri = new Uri(uriString, UriKind.Absolute)
                 };

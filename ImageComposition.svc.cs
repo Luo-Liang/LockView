@@ -51,7 +51,7 @@ namespace InfoView
                 entry = getEntryFromRequest(request);
                 cache.TryAdd(key, entry);
             }
-            else if ((DateTime.Now - lastService).Days >= 1)
+            else if ((DateTime.Now - lastService).Minutes >= 10)
             {
                 ServiceCacheEntry<K> notUsed;
                 //it's a hit. But this value might expire. Don't expire the current request, simply get rid of it from the cache -- only if last service is 24 hours ago.
@@ -71,7 +71,7 @@ namespace InfoView
     }
 
     //circumvent API restrictions
-    public class ImageCache : ServiceCache<ImageRequestOverride,MemoryStream>
+    public class ImageCache : ServiceCache<ImageRequestOverride, MemoryStream>
     {
         static Uri DefaultImageUri = new Uri("http://dovecomputers.com/blog/wp-content/uploads/2012/10/Windows-XP-desktop.png");
         ConcurrentDictionary<string, ServiceCacheEntry<MemoryStream>> CacheEntries;
@@ -96,35 +96,39 @@ namespace InfoView
             byte[] rawBytes = null;
             bool Insert = true;
             WriteableBitmap bitmap = null;
-            try
+            //TODO:CLEANUP.
+            if (iro.ImageRequestUrl != "lockview://fixedwallpapers/Himawari-8")
             {
-                WebClient client = new WebClient();
-                rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
-                //create this entry.
-                //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
-                //decoder.Frames[0].Freeze();
-                //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
-                //bmp.BeginInit();
-                //bmp.EndInit();
-                bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
-                bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
-            }
-            catch
-            {
-                var directoryPath = AppDomain.CurrentDomain.BaseDirectory + "\\Assets";
-                int maximum = Directory.GetFiles(directoryPath).Length;
-                var fileName = (DateTime.Now.Second % maximum) + 1;
-                //create this entry.
-                //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
-                //decoder.Frames[0].Freeze();
-                //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
-                //bmp.BeginInit();
-                //bmp.EndInit();
-                bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
-                using (var stream = File.Open($"{directoryPath}\\{fileName}.jpg", FileMode.Open))
-                    bitmap = bitmap.FromStream(stream);
-                Insert = false;
-                //replace those with defaults.
+                try
+                {
+                    WebClient client = new WebClient();
+                    rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
+                    //create this entry.
+                    //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
+                    //decoder.Frames[0].Freeze();
+                    //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
+                    //bmp.BeginInit();
+                    //bmp.EndInit();
+                    bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
+                    bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
+                }
+                catch (Exception ex)
+                {
+                    var directoryPath = AppDomain.CurrentDomain.BaseDirectory + "\\Assets";
+                    int maximum = Directory.GetFiles(directoryPath).Length;
+                    var fileName = (DateTime.Now.Second % maximum) + 1;
+                    //create this entry.
+                    //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
+                    //decoder.Frames[0].Freeze();
+                    //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
+                    //bmp.BeginInit();
+                    //bmp.EndInit();
+                    bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
+                    using (var stream = File.Open($"{directoryPath}\\{fileName}.jpg", FileMode.Open))
+                        bitmap = bitmap.FromStream(stream);
+                    Insert = false;
+                    //replace those with defaults.
+                }
             }
             //bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
             //bitmap = bitmap.FromByteArray(rawBytes);
@@ -134,26 +138,51 @@ namespace InfoView
                 var whString = resolution.Split('x');
                 double height = double.Parse(whString[1]),
                        width = double.Parse(whString[0]);
-                double desiredRatio = height / width;
-                double actualRatio = (double)bitmap.PixelHeight / bitmap.PixelWidth;
-                if (actualRatio <= desiredRatio)
+                if (iro.ImageRequestUrl != "lockview://fixedwallpapers/Himawari-8")
                 {
-                    //scale to croppable settings first.
-                    //in this case, the user can in general select along the x-axis. (width)
-                    double scale = height / bitmap.PixelHeight;
-                    //now scale the height and width as appropriate.
-                    bitmap = bitmap.Resize((int)(bitmap.PixelWidth * scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-                    //place the selection at the center of the image.
-                    //entire height is now selected.
-                    bitmap = bitmap.Crop(new Rect(new System.Windows.Point((int)(bitmap.PixelWidth - width) / 2, 0), new System.Windows.Size((int)width, (int)height)));
+                    double desiredRatio = height / width;
+                    double actualRatio = (double)bitmap.PixelHeight / bitmap.PixelWidth;
+                    if (actualRatio <= desiredRatio)
+                    {
+                        //scale to croppable settings first.
+                        //in this case, the user can in general select along the x-axis. (width)
+                        double scale = height / bitmap.PixelHeight;
+                        //now scale the height and width as appropriate.
+                        bitmap = bitmap.Resize((int)(bitmap.PixelWidth * scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                        //place the selection at the center of the image.
+                        //entire height is now selected.
+                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point((int)(bitmap.PixelWidth - width) / 2, 0), new System.Windows.Size((int)width, (int)height)));
+                    }
+                    else
+                    {
+                        //symmetric
+                        double scale = width / bitmap.PixelWidth;
+                        bitmap = bitmap.Resize((int)width, (int)(bitmap.PixelHeight * scale), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point(0, (int)(bitmap.PixelHeight - height) / 2), new System.Windows.Size((int)width, (int)height)));
+                    }
                 }
                 else
                 {
-                    //symmetric
-                    double scale = width / bitmap.PixelWidth;
-                    bitmap = bitmap.Resize((int)width, (int)(bitmap.PixelHeight * scale), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-                    bitmap = bitmap.Crop(new Rect(new System.Windows.Point(0, (int)(bitmap.PixelHeight - height) / 2), new System.Windows.Size((int)width, (int)height)));
+                    var image = new System.Drawing.Bitmap((int)width, (int)height);
+                    var graphics = Graphics.FromImage(image);
+                    var foregroundLength = (float)(0.7 * Math.Min(width, height));
+                    Bitmap foreground = new Bitmap(Image.FromStream(MISCImgTools.GetLiveEarthImage()), (int)foregroundLength, (int)foregroundLength);
+                    graphics.Clear(System.Drawing.Color.Black);
+                    graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                    graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    graphics.DrawImage(foreground, (float)width / 2 - foregroundLength / 2, (float)height / 2 - foregroundLength / 2);
+                    foreground.Dispose();
+                    graphics.Save();
+                    graphics.Dispose();
+                    MemoryStream imgStream = new MemoryStream();
+                    image.Save(imgStream, ImageFormat.Jpeg);
+                    imgStream.Seek(0, SeekOrigin.Begin);
+                    bitmap = bitmap.FromStream(imgStream);
+                    imgStream.Dispose();
+                    image.Dispose();
                 }
+                //TODO:: CLean up this logic to make it more general
+               
             }
             //bitmap.Unlock();
             JpegBitmapEncoder encoder = new JpegBitmapEncoder();
@@ -169,6 +198,11 @@ namespace InfoView
             entry.ExpirationDate = DateTime.Now.AddDays(1);
             entry.UrlIdentifier = getEntryIdFromRequest(iro);
             entry.Content = decodedStream;
+
+            if (iro.ImageRequestUrl == "lockview://fixedwallpapers/Himawari-8")
+            {
+                entry.ExpirationDate = DateTime.Now.AddMinutes(30);
+            }
             return entry;
         }
         internal override void prepareContentRelease(MemoryStream content)
@@ -261,7 +295,7 @@ namespace InfoView
             memStream.Seek(0, SeekOrigin.Begin);
             var img = Image.FromStream(memStream);
             Graphics g = Graphics.FromImage(img);
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             g.Apply(request.LayoutContract.ToOverlayLayout(),
                 request.ContextContracts.Select(ctx => ctx.ToOverlayContext()).ToArray(),
@@ -284,7 +318,7 @@ namespace InfoView
             response.Image = ImageBytes;
             return response;
         }
-
+        //@TODO: Moveout!
         public byte[] RequestImage(string request)
         {
             var parts = request.Split('?');
@@ -301,6 +335,51 @@ namespace InfoView
         {
             var value = jsonCache.TryFetchAndAdd(request);
             return value;
+        }
+    }
+
+    public class MISCImgTools
+    {
+        static MemoryStream imgStream;
+        static DateTime lastAccessTime;
+        public static MemoryStream GetLiveEarthImage()
+        {
+            if (imgStream != null && (DateTime.Now - lastAccessTime).Minutes < 10) return imgStream;
+            var now = DateTime.UtcNow - TimeSpan.FromMinutes(30);
+            now = now - TimeSpan.FromMinutes(now.Minute % 10);
+            now = now - TimeSpan.FromSeconds(now.Second);
+            var width = 550;
+            var level = "4d";
+            var numBlocks = 4;
+            var time = now.ToString("HHmmss");
+            var year = now.ToString("yyyy");
+            var month = now.ToString("MM");
+            var day = now.ToString("dd");
+            var url = $"http://himawari8-dl.nict.go.jp/himawari8/img/D531106/{level}/{width}/{year}/{month}/{day}/{time}";
+            var image = new System.Drawing.Bitmap(width * numBlocks, width * numBlocks);
+            var graphics = Graphics.FromImage(image);
+            graphics.Clear(System.Drawing.Color.Black);
+            for (int y = 0; y < numBlocks; y++)
+                for (int x = 0; x < numBlocks; x++)
+                {
+                    var currUrl = $"{url}_{x}_{y}.png";
+                    using (var response = WebRequest.Create(currUrl).GetResponse())
+                    {
+                        using (var imgBlock = Image.FromStream(response.GetResponseStream()))
+                        {
+                            graphics.DrawImage(imgBlock, x * width, y * width, width, width);
+                        }
+                    }
+                }
+            graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            graphics.Save();
+            graphics.Dispose();
+            imgStream = new MemoryStream();
+            image.Save(imgStream, ImageFormat.Jpeg);
+            imgStream.Seek(0, SeekOrigin.Begin);
+            lastAccessTime = DateTime.Now;
+            return imgStream;
         }
     }
 }

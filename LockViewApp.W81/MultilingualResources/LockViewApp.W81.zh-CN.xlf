@@ -6,6 +6,14 @@
     </header>
     <body>
       <group id="Resources">
+        <trans-unit id="Resources\LiveEarth\SecondLine" translate="yes" xml:space="preserve">
+          <source>Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</source>
+          <target state="translated">多谢Himawari-8，我们才能看到振奋人心的实时地球影像。 All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. 选择此项时请耐心等待，因为从地球连接到太空似乎需要一些时间。</target>
+        </trans-unit>
+        <trans-unit id="Resources\LiveEarth\FirstLine" translate="yes" xml:space="preserve">
+          <source>LIVE EARTH</source>
+          <target state="translated">实时地球</target>
+        </trans-unit>
         <trans-unit id="Resources\WordOfWisdom\Text" translate="yes" xml:space="preserve">
           <source>What is the thing you've been trying to tell yourself? Maybe to calm down?</source>
           <target state="translated">输入一句箴言。也许，你想告诫自己保持冷静?</target>
@@ -435,9 +443,9 @@
           <target state="translated">首先，在下方选择一个类别，然后再选择你最爱的源。</target>
         </trans-unit>
         <trans-unit id="Resources\Bing\SecondLine" translate="yes" xml:space="preserve">
-          <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
-          <target state="translated">使用必应每日精选图片。如果您选择此选项，您同意所有的权利都属于各自的所有者的图像。</target>
-        </trans-unit>
+          <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image and you only use the image for the entire purpose of lock screen.</source>
+          <target state="needs-review-translation">使用必应每日精选图片。如果您选择此选项，您同意所有的权利都属于各自的所有者的图像。</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
         <trans-unit id="Resources\Bing\FirstLine" translate="yes" xml:space="preserve">
           <source>BING</source>
           <target state="translated">必应</target>

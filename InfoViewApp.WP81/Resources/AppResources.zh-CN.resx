@@ -157,6 +157,7 @@
   </data>
   <data name="BingText" xml:space="preserve">
     <value>选择此项若您希望从必应每天获得一张让人耳目一新的美图。若您选择此项，您同意该图片的唯一用途是墙纸。</value>
+    <comment></comment>
   </data>
   <data name="ImageCropping" xml:space="preserve">
     <value>四处看看,选择最棒的景色!完成后，请按"棒极了!"</value>
@@ -1101,5 +1102,11 @@
   </data>
   <data name="NoUninstallation" xml:space="preserve">
     <value>请勿卸载</value>
+  </data>
+  <data name="LiveEarthText" xml:space="preserve">
+    <value>多谢Himawari-8，我们才能看到振奋人心的实时地球影像。 All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. 选择此项时请耐心等待，因为从地球连接到太空似乎需要一些时间。</value>
+  </data>
+  <data name="LiveEarth" xml:space="preserve">
+    <value>实时地球</value>
   </data>
 </root>

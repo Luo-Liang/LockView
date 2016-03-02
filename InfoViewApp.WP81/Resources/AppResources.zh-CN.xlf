@@ -65,9 +65,9 @@
           <target state="translated">您希望从哪里得到您的锁屏墙纸?您可以从图片库中选择，或者，我们将帮您从必应美图中选择一张。</target>
         </trans-unit>
         <trans-unit id="Resx/BingText" translate="yes" xml:space="preserve">
-          <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
-          <target state="translated">选择此项若您希望从必应每天获得一张让人耳目一新的美图。若您选择此项，您同意该图片的唯一用途是墙纸。</target>
-        </trans-unit>
+          <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image, and you agree that the sole purpose of the image is limited to wallpaper.</source>
+          <target state="needs-review-translation">选择此项若您希望从必应每天获得一张让人耳目一新的美图。若您选择此项，您同意该图片的唯一用途是墙纸。</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
         <trans-unit id="Resx/ImageCropping" translate="yes" xml:space="preserve">
           <source>Swipe around to pick a best view. When done, click 'That's it!'</source>
           <target state="translated">四处看看,选择最棒的景色!完成后，请按"棒极了!"</target>
@@ -1054,6 +1054,14 @@
         <trans-unit id="Resx/StockQuoteTitle" translate="yes" xml:space="preserve">
           <source>Which </source>
           <target state="new">Which </target>
+        </trans-unit>
+        <trans-unit id="Resx/LiveEarthText" translate="yes" xml:space="preserve">
+          <source>Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</source>
+          <target state="translated">多谢Himawari-8，我们才能看到振奋人心的实时地球影像。 All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. 选择此项时请耐心等待，因为从地球连接到太空似乎需要一些时间。</target>
+        </trans-unit>
+        <trans-unit id="Resx/LiveEarth" translate="yes" xml:space="preserve">
+          <source>LIVE EARTH</source>
+          <target state="translated">实时地球</target>
         </trans-unit>
         <trans-unit id="Resx/NoUninstallation" translate="yes" xml:space="preserve">
           <source>DO NOT UNINSTALL</source>
