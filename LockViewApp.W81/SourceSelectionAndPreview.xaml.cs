@@ -220,5 +220,10 @@ namespace LockViewApp.W81
             createAStyle.Visibility = Visibility.Visible;
             ImagePreviewTool.Visibility = Visibility.Collapsed;
         }
+
+        private void previousButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

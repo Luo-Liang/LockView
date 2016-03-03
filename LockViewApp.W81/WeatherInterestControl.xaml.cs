@@ -82,6 +82,7 @@ namespace LockViewApp.W81
 
         private void checkBox_Checked(object sender, RoutedEventArgs e)
         {
+            button.IsEnabled = textBox.Text.Length != 0;
             InvokeSelectionStatusChange(true);
 
         }
@@ -89,7 +90,7 @@ namespace LockViewApp.W81
         private void checkBox_Unchecked(object sender, RoutedEventArgs e)
         {
             InvokeSelectionStatusChange(false);
-
+            button.IsEnabled = false;
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)

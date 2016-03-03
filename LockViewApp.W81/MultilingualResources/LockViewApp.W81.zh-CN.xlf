@@ -6,6 +6,42 @@
     </header>
     <body>
       <group id="Resources">
+        <trans-unit id="Resources\LockView" translate="yes" xml:space="preserve">
+          <source>LockView</source>
+          <target state="translated">锁屏视野</target>
+        </trans-unit>
+        <trans-unit id="Resources\BalanceRunOut" translate="yes" xml:space="preserve">
+          <source>Your balance has run out! Update is limited to once per day. Consider refilling by visiting LockView app.</source>
+          <target state="new">Your balance has run out! Update is limited to once per day. Consider refilling by visiting LockView app.</target>
+        </trans-unit>
+        <trans-unit id="Resources\Enjoy" translate="yes" xml:space="preserve">
+          <source>Thanks! You can now enjoy LockView for free!</source>
+          <target state="translated">谢谢!现在你可以免费使用锁屏视野</target>
+        </trans-unit>
+        <trans-unit id="Resources\UseACode\Content" translate="yes" xml:space="preserve">
+          <source>use a code instead</source>
+          <target state="translated">使用兑换码</target>
+        </trans-unit>
+        <trans-unit id="Resources\Refill\Content" translate="yes" xml:space="preserve">
+          <source>refill</source>
+          <target state="translated">充值</target>
+        </trans-unit>
+        <trans-unit id="Resources\Previous\Content" translate="yes" xml:space="preserve">
+          <source>Start Over</source>
+          <target state="translated">从头开始</target>
+        </trans-unit>
+        <trans-unit id="Resources\InvalidCode" translate="yes" xml:space="preserve">
+          <source>This doesn't look like a valid code. Try again.</source>
+          <target state="translated">你输入的代码看起来不像是有效的。请再试一次。</target>
+        </trans-unit>
+        <trans-unit id="Resources\EnterYourCode\Text" translate="yes" xml:space="preserve">
+          <source>Enter your code</source>
+          <target state="translated">输入兑换码</target>
+        </trans-unit>
+        <trans-unit id="Resources\CodeLooksLike\Text" translate="yes" xml:space="preserve">
+          <source>The code looks like this: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX.</source>
+          <target state="translated">兑换码看起来像这样: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX.</target>
+        </trans-unit>
         <trans-unit id="Resources\LiveEarth\SecondLine" translate="yes" xml:space="preserve">
           <source>Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</source>
           <target state="translated">多谢Himawari-8，我们才能看到振奋人心的实时地球影像。 All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. 选择此项时请耐心等待，因为从地球连接到太空似乎需要一些时间。</target>
@@ -123,9 +159,9 @@
           <target state="translated">四处看看!</target>
         </trans-unit>
         <trans-unit id="Resources\ShowMe\Content" translate="yes" xml:space="preserve">
-          <source>show me</source>
-          <target state="translated">向我显示</target>
-        </trans-unit>
+          <source>preview selection</source>
+          <target state="needs-review-translation">应用此项</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
         <trans-unit id="Resources\SuggestedSource\Text" translate="yes" xml:space="preserve">
           <source>Suggested Source</source>
           <target state="translated">推荐的源</target>
@@ -375,9 +411,9 @@
           <target state="translated">预计使用天数</target>
         </trans-unit>
         <trans-unit id="Resources\EstimatedDaysContent\Text" translate="yes" xml:space="preserve">
-          <source>Each time we update your content, you account will encounter a tiny charge. When your balance reaches 0, your update raae will be drastically reduced. When that happens,you will be ntified.</source>
-          <target state="translated">每次我们更新你的内容时，你的余额将会极少地减小。当你的余额耗尽时，你的更新频率将会大幅减小。当这发生时，我们会通知你。</target>
-        </trans-unit>
+          <source>Each time we update your content, you account will encounter a tiny charge. When your balance reaches 0, your update raae will be drastically reduced. When that happens,you will be notified.</source>
+          <target state="needs-review-translation">每次我们更新你的内容时，你的余额将会极少地减小。当你的余额耗尽时，你的更新频率将会大幅减小。当这发生时，我们会通知你。</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
         <trans-unit id="Resources\FinalTweaksContent\Text" translate="yes" xml:space="preserve">
           <source>Here're some minor tweaks, including your balance, and Do-Not-Disturb settings.</source>
           <target state="translated">这里是一些微笑调整，包括你的余额额和免打扰设置。</target>
@@ -444,8 +480,8 @@
         </trans-unit>
         <trans-unit id="Resources\Bing\SecondLine" translate="yes" xml:space="preserve">
           <source>Refresh your day with a new cover photo from Bing everyday. If you choose this option, you agree that all rights belong to the respective owners of the image and you only use the image for the entire purpose of lock screen.</source>
-          <target state="needs-review-translation">使用必应每日精选图片。如果您选择此选项，您同意所有的权利都属于各自的所有者的图像。</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+          <target state="translated">使用必应每日精选图片。如果您选择此选项，您同意所有的权利都属于各自的所有者的图像。该图像仅可用作墙纸。</target>
+          </trans-unit>
         <trans-unit id="Resources\Bing\FirstLine" translate="yes" xml:space="preserve">
           <source>BING</source>
           <target state="translated">必应</target>

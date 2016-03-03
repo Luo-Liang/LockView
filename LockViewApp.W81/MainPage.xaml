@@ -80,7 +80,7 @@
                 </Path.Fill>
             </Path>
         </Grid>
-        <TextBlock x:Name="textBlock" Height="80" Margin="146,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" Width="364">
+        <TextBlock x:Name="textBlock" Height="80" Margin="146,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" Width="1180">
         	<Run x:Uid="LockViewCapital"/>
         	<LineBreak/>
         	<Run FontSize="24" x:Uid="PCConsoleAndTablet"/>

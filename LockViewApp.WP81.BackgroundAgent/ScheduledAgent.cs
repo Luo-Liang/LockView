@@ -85,6 +85,14 @@ namespace LockViewApp.WP81.BackgroundAgent
                 {
                     await LaunchTask(task);
                 }
+                if (LockViewApplicationState.Instance.UserQuotaInDollars < 0 && (DateTime.Now.DayOfYear - task.LastScheduledTime.DayOfYear) >= 7)
+                {
+                    var toast = new ShellToast();
+                    toast.Title = AppResources.LockView;
+                    toast.Content = AppResources.BalanceRunOut;
+                    toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
+                    toast.Show();
+                }
                 await LockViewApplicationState.Instance.SaveState();
             }
             catch (Exception ex)
@@ -239,7 +247,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             var instance = LockViewApplicationState.Instance;
             var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o => o.GetMetaData()));
 #if !DEBUG
-            if (instance.UserQuotaInDollars - drainPerReq >= 0 || task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear)
+            if (instance.UserQuotaInDollars >= 0 || task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear)
             {
 #endif 
                 telemetryProperty["Update Accepted"] = "Yes";
@@ -265,14 +273,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
 #if !DEBUG
             }
-            if (instance.UserQuotaInDollars - drainPerReq < 0 && (DateTime.Now.DayOfYear - task.LastScheduledTime.DayOfYear)!= 0)
-            {
-                var toast = new ShellToast();
-                toast.Title = AppResources.LockView;
-                toast.Content = AppResources.BalanceRunOut;
-                toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
-                toast.Show();
-            }
+           
 #endif
         }
 

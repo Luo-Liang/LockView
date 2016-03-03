@@ -110,13 +110,13 @@
                             </TextBlock>
                             <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width" Margin="0,15,0,0">
                                 <Button Click="refill_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" Content="refill" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontFamily="Global User Interface" d:LayoutOverrides="HorizontalAlignment"/>
-                                <Button Click="useACode_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="useACode" Content="use a code instead" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontFamily="Global User Interface"/>
+                                <Button Click="useACode_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="useACode" x:Uid="UseACode"  HorizontalAlignment="Left" VerticalAlignment="Stretch" FontFamily="Global User Interface"/>
                             </StackPanel>
                             <StackPanel x:Name="codeEnterStack" Orientation="Vertical" Visibility="Collapsed" d:LayoutOverrides="Width" Margin="0,15,0,0">
                                 <TextBlock FontWeight="Light" TextWrapping="Wrap" FontSize="18.667" d:LayoutOverrides="Width">
-                        			<Run FontWeight="Normal" Foreground="{StaticResource LightAccentBrush}" FontSize="21.333" Text="ENTER YOUR CODE BELOW"/>
+                        			<Run FontWeight="Normal" Foreground="{StaticResource LightAccentBrush}" FontSize="21.333" x:Uid="EnterYourCode"/>
                         			<LineBreak/>
-                        			<Run x:Name="codeStatus" Foreground="Gray" Text="The code looks like this: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX."/>
+                        			<Run x:Name="codeStatus" Foreground="Gray" x:Uid="CodeLooksLike"/>
                                 </TextBlock>
                                 <TextBox KeyUp="codeBox_KeyUp" KeyDown="codeBox_KeyDown"  TextChanged="codeBox_TextChanged" x:Name="codeBox" Height="18" TextWrapping="Wrap" Text="" Foreground="White" Background="{x:Null}" Margin="0,10,0,0" FontFamily="Global User Interface"/>
                             </StackPanel>
@@ -125,7 +125,8 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-        <Button x:Name="nextButton" VerticalAlignment="Bottom" Margin="48,0,0,38" x:Uid="Finish" Click="nextButton_Click" FontFamily="Global User Interface"/>
+        <Button x:Name="previousButton" VerticalAlignment="Bottom" Margin="37,0,0,38" x:Uid="previous" Click="previousButton_Click" FontFamily="Global User Interface"/>
+        <Button x:Name="nextButton" VerticalAlignment="Bottom" Margin="138,0,0,38" x:Uid="Finish" Click="nextButton_Click" FontFamily="Global User Interface"/>
         <Grid x:Name="ImageSourceSelectionMainGrid_Copy" Width="{Binding ActualWidth, ElementName=SettingViewer}" Margin="541,152,0,90" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" d:LayoutOverrides="TopPosition, BottomPosition" HorizontalAlignment="Left">
             <Grid HorizontalAlignment="Left" Width="380">
                 <StackPanel d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top" Margin="2,0" Height="103" Background="{StaticResource AccentBrush}">

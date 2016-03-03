@@ -45,7 +45,7 @@
                 </Path.Fill>
             </Path>
         </Grid>
-        <TextBlock x:Name="textBlock" Height="80" Margin="146,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" Width="364" d:IsLocked="True">
+        <TextBlock x:Name="textBlock" Height="80" Margin="146,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" Width="1180">
 			<Run x:Uid="LockViewCapital"/>
 			<LineBreak/>
 			<Run FontSize="24" x:Uid="PCConsoleAndTablet"/>
@@ -130,7 +130,8 @@
                 </TextBlock>
             </StackPanel>
         </Grid>
-        <Button Click="nextButton_Click" x:Name="nextButton" x:Uid="NextButton" Margin="48,0,0,38" VerticalAlignment="Bottom" />
+        <Button Click="nextButton_Click" x:Name="nextButton" x:Uid="NextButton" Margin="140,0,0,37" VerticalAlignment="Bottom" />
+        <Button x:Name="previousButton" VerticalAlignment="Bottom" Margin="37,0,0,38" x:Uid="previous" Click="previousButton_Click" FontFamily="Global User Interface"/>
 
     </Grid>
 </Page>

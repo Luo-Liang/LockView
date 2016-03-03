@@ -184,7 +184,7 @@
     <value>estimated days remaining</value>
   </data>
   <data name="EstimatedDaysContent.Text" xml:space="preserve">
-    <value>Each time we update your content, you account will encounter a tiny charge. When your balance reaches 0, your update raae will be drastically reduced. When that happens,you will be ntified.</value>
+    <value>Each time we update your content, you account will encounter a tiny charge. When your balance reaches 0, your update raae will be drastically reduced. When that happens,you will be notified.</value>
   </data>
   <data name="FinalTweaks.Text" xml:space="preserve">
     <value>Final Tweaks</value>
@@ -355,7 +355,7 @@
     <value>Here're some specific questions regarding your selected interest.</value>
   </data>
   <data name="ShowMe.Content" xml:space="preserve">
-    <value>show me</value>
+    <value>preview selection</value>
   </data>
   <data name="SpecificInterest.FirstLine" xml:space="preserve">
     <value>SPECIFIC INTEREST</value>
@@ -461,5 +461,32 @@
   </data>
   <data name="LiveEarth.SecondLine" xml:space="preserve">
     <value>Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</value>
+  </data>
+  <data name="CodeLooksLike.Text" xml:space="preserve">
+    <value>The code looks like this: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX.</value>
+  </data>
+  <data name="EnterYourCode.Text" xml:space="preserve">
+    <value>Enter your code</value>
+  </data>
+  <data name="InvalidCode" xml:space="preserve">
+    <value>This doesn't look like a valid code. Try again.</value>
+  </data>
+  <data name="Previous.Content" xml:space="preserve">
+    <value>Start Over</value>
+  </data>
+  <data name="Refill.Content" xml:space="preserve">
+    <value>refill</value>
+  </data>
+  <data name="UseACode.Content" xml:space="preserve">
+    <value>use a code instead</value>
+  </data>
+  <data name="Enjoy" xml:space="preserve">
+    <value>Thanks! You can now enjoy LockView for free!</value>
+  </data>
+  <data name="BalanceRunOut" xml:space="preserve">
+    <value>Your balance has run out! Update is limited to once per day. Consider refilling by visiting LockView app.</value>
+  </data>
+  <data name="LockView" xml:space="preserve">
+    <value>LockView</value>
   </data>
 </root>

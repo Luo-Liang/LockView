@@ -70,7 +70,7 @@ namespace LockViewApp.W81.BackgroundTasks
                             };
                         }
                         var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o => o.GetMetaData()));
-                        if (instance.UserQuotaInDollars - drainPerReq >= 0 || instance.BackgroundTaskLastRun.DayOfYear < DateTime.Now.DayOfYear)
+                        if (instance.UserQuotaInDollars >= 0 || instance.BackgroundTaskLastRun.DayOfYear < DateTime.Now.DayOfYear)
                         {
                             dict["update-successful"] = "true";
                             CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
@@ -91,19 +91,18 @@ namespace LockViewApp.W81.BackgroundTasks
                             //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
                             instance.BackgroundTaskLastRun = DateTime.Now;
                         }
-                        if (instance.UserQuotaInDollars - drainPerReq < 0 && (DateTime.Now.DayOfYear - instance.BackgroundTaskLastRun.DayOfYear) != 0)
-                        {
-                            IToastNotificationContent toastContent = null;
-                            IToastText02 templateContent = ToastContentFactory.CreateToastText02();
-                            templateContent.TextHeading.Text = "LOCKVIEW";
-                            templateContent.TextBodyWrap.Text = "Your balance has run out!";
-                            toastContent = templateContent;
-                            ToastNotification toast = toastContent.CreateNotification();
-
-                            // If you have other applications in your package, you can specify the AppId of
-                            // the app to create a ToastNotifier for that application
-                            ToastNotificationManager.CreateToastNotifier().Show(toast);
-                        }
+                    }
+                    if (instance.UserQuotaInDollars < 0 && (DateTime.Now.DayOfYear - instance.BackgroundTaskLastRun.DayOfYear) >= 7)
+                    {
+                        IToastNotificationContent toastContent = null;
+                        IToastText02 templateContent = ToastContentFactory.CreateToastText02();
+                        templateContent.TextHeading.Text = BackgroundResourceLoader.LockViewLoader.GetString("LockView");
+                        templateContent.TextBodyWrap.Text = BackgroundResourceLoader.LockViewLoader.GetString("BalanceRunout");
+                        toastContent = templateContent;
+                        ToastNotification toast = toastContent.CreateNotification();
+                        // If you have other applications in your package, you can specify the AppId of
+                        // the app to create a ToastNotifier for that application
+                        ToastNotificationManager.CreateToastNotifier().Show(toast);
                     }
                 }
                 //gather app insights information.
@@ -111,6 +110,7 @@ namespace LockViewApp.W81.BackgroundTasks
                 dict["quota"] = instance.UserQuotaInDollars.ToString();
                 dict["finish-time"] = DateTime.UtcNow.ToString();
                 tc.TrackEvent("background task non-mobile",dict);
+                tc.Flush();
             }
             catch (Exception ex)
             {

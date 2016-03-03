@@ -93,6 +93,10 @@ namespace LockViewApp.W81
 
         private async void button_Click(object sender, RoutedEventArgs e)
         {
+            if(Type.SelectedItem == null || translationLanguage.SelectedItem == null || langugage.SelectedItem == null)
+            {
+                return;
+            }
             busyBar.Visibility = Visibility.Visible;
             button.IsEnabled = false;
             this.Gatherer = SuggestedSource.SelectedItem as InterestGatherer;

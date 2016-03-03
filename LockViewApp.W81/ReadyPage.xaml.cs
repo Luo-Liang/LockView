@@ -218,12 +218,14 @@ namespace LockViewApp.W81
                 var isValid = raw % 3642621952 == 0;
                 if (isValid)
                 {
+                    LockViewApplicationState.Instance.UserQuotaInDollars = double.MaxValue;
                     updateUsability();
+                    codeStatus.Text = ResourceLoader.LockViewLoader.GetString("Enjoy");
                 }
             }
             else
             {
-                codeStatus.Text = "This does not seem like a valid code.";
+                codeStatus.Text = ResourceLoader.LockViewLoader.GetString("InvalidCode");
             }
         }
 
@@ -248,6 +250,11 @@ namespace LockViewApp.W81
             {
                 e.Handled = true;//cannot type this key
             }
+        }
+
+        private void previousButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }

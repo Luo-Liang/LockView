@@ -40,7 +40,7 @@
             	<LineBreak/>
             	<Run Foreground="Gray" x:Uid="PreviewThisContent"/>
             </TextBlock>
-            <Button Click="button_Click" IsEnabled="{Binding IsChecked, ElementName=checkBox, Mode=OneWay}" x:Name="button" x:Uid="ShowMe" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch"/>
+            <Button Click="button_Click" x:Name="button" x:Uid="ShowMe" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch"/>
 
         </StackPanel>
 
