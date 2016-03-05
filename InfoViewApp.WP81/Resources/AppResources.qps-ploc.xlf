@@ -298,8 +298,8 @@
           <target state="new">English</target>
         </trans-unit>
         <trans-unit id="Resx/NASAText" translate="yes" xml:space="preserve">
-          <source>Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</source>
-          <target state="new">Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image.</target>
+          <source>Nothing is more beautiful than the mother universe. NASA Images enlight your day. NASA does not endorse LockView.</source>
+          <target state="new">Nothing is more beautiful than the mother universe. NASA Images enlight your day. NASA does not endorse LockView.</target>
         </trans-unit>
         <trans-unit id="Resx/Redeem" translate="yes" xml:space="preserve">
           <source>redeem</source>

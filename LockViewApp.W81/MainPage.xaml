@@ -142,12 +142,12 @@
                     </TextBlock.Foreground>
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width" Margin="0,20,0,0">
-                    <TextBlock x:Name="textBlock2_Copy1" TextWrapping="Wrap" FontSize="18.667" x:Uid="Height" VerticalAlignment="Top" Margin="0,5,0,0"/>
-                    <TextBox TextChanged="resoluionHeight_TextChanged" x:Name="resoluionHeight" TextWrapping="Wrap" Text="1080" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="20,0,0,0" VerticalAlignment="Top"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width" Margin="0,20,0,0">
                     <TextBlock x:Name="textBlock2_Copy" TextWrapping="Wrap" FontSize="18.667" x:Uid="Width" VerticalAlignment="Top" Margin="0,5,0,0"/>
                     <TextBox TextChanged="resolutionWidth_TextChanged" x:Name="resolutionWidth" TextWrapping="Wrap" Text="1920" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="20,0,0,0" VerticalAlignment="Top"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" d:LayoutOverrides="Width" Margin="0,20,0,0">
+                    <TextBlock x:Name="textBlock2_Copy1" TextWrapping="Wrap" FontSize="18.667" x:Uid="Height" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                    <TextBox TextChanged="resoluionHeight_TextChanged" x:Name="resoluionHeight" TextWrapping="Wrap" Text="1080" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="20,0,0,0" VerticalAlignment="Top"/>
                 </StackPanel>
                 <TextBlock x:Name="textBlock2_Copy2" Margin="0,30,0,0" TextWrapping="Wrap" FontSize="21.333" x:Uid="RepickOrRefreshImage" Foreground="{StaticResource LightAccentBrush}"/>
                 <Button x:Name="repickImage" Click="repickImage_Click" x:Uid="RepickImageButton" VerticalAlignment="Stretch" Margin="-2,10,0,0" FontFamily="Global User Interface" />

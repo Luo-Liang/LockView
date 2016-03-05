@@ -47,7 +47,9 @@ namespace LockViewApp.W81
 
         void RedrawCropper()
         {
-            int width = 1920, height = 1080;
+            MetroHelpers.MetroAssist assist = App.gMetroAssistInstance;
+            int width = (int)assist.ScreenResolution.X,
+                height = (int)assist.ScreenResolution.Y;
             int.TryParse(resoluionHeight.Text, out height);
             int.TryParse(resolutionWidth.Text, out width);
             if (width > 1920 * 2 || height > 1200 * 2)
@@ -127,7 +129,7 @@ namespace LockViewApp.W81
             int.TryParse(resolutionWidth.Text, out width);
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight = height;
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth = width;
-            if(context.NavigationType == "bing")
+            if (context.NavigationType == "bing")
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.Bing;
             }

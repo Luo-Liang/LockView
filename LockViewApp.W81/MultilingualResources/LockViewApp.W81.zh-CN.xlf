@@ -12,7 +12,7 @@
         </trans-unit>
         <trans-unit id="Resources\BalanceRunOut" translate="yes" xml:space="preserve">
           <source>Your balance has run out! Update is limited to once per day. Consider refilling by visiting LockView app.</source>
-          <target state="new">Your balance has run out! Update is limited to once per day. Consider refilling by visiting LockView app.</target>
+          <target state="translated">您的余额已耗完!更新频率已缩减至每天一次。考虑为锁屏视野充值。</target>
         </trans-unit>
         <trans-unit id="Resources\Enjoy" translate="yes" xml:space="preserve">
           <source>Thanks! You can now enjoy LockView for free!</source>
@@ -27,8 +27,8 @@
           <target state="translated">充值</target>
         </trans-unit>
         <trans-unit id="Resources\Previous\Content" translate="yes" xml:space="preserve">
-          <source>Start Over</source>
-          <target state="translated">从头开始</target>
+          <source>start over</source>
+          <target state="needs-review-translation">从头开始</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resources\InvalidCode" translate="yes" xml:space="preserve">
           <source>This doesn't look like a valid code. Try again.</source>
@@ -161,7 +161,8 @@
         <trans-unit id="Resources\ShowMe\Content" translate="yes" xml:space="preserve">
           <source>preview selection</source>
           <target state="needs-review-translation">应用此项</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          </trans-unit>
         <trans-unit id="Resources\SuggestedSource\Text" translate="yes" xml:space="preserve">
           <source>Suggested Source</source>
           <target state="translated">推荐的源</target>
@@ -215,8 +216,8 @@
           <target state="translated">句子</target>
         </trans-unit>
         <trans-unit id="Resources\ResolutionContent\Text" translate="yes" xml:space="preserve">
-          <source>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties.</source>
-          <target state="translated">分辨率指屏幕的自然分辨率。如果您不确定，在桌面上右击并选择显示属性进行查看。</target>
+          <source>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties. We made some guesses for you.</source>
+          <target state="needs-review-translation">分辨率指屏幕的自然分辨率。如果您不确定，在桌面上右击并选择显示属性进行查看。我们为您做了一些猜测。</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resources\Resolution\Text" translate="yes" xml:space="preserve">
           <source>ENTER YOUR RESOLUTION</source>
@@ -287,8 +288,8 @@
           <target state="translated">喜欢看新闻?不要漏掉任何一拍世界的脉搏。</target>
         </trans-unit>
         <trans-unit id="Resources\NASA\SecondLine" translate="yes" xml:space="preserve">
-          <source>Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday.</source>
-          <target state="translated">没有什么比宇宙母亲更漂亮。让NASA宇航图片每天给您惊喜。</target>
+          <source>Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday. NASA does not endorse LockView.</source>
+          <target state="needs-review-translation">没有什么比宇宙母亲更漂亮。让NASA宇航图片每天给您惊喜。</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="Resources\NASA\FirstLine" translate="yes" xml:space="preserve">
           <source>NASA</source>
@@ -413,7 +414,8 @@
         <trans-unit id="Resources\EstimatedDaysContent\Text" translate="yes" xml:space="preserve">
           <source>Each time we update your content, you account will encounter a tiny charge. When your balance reaches 0, your update raae will be drastically reduced. When that happens,you will be notified.</source>
           <target state="needs-review-translation">每次我们更新你的内容时，你的余额将会极少地减小。当你的余额耗尽时，你的更新频率将会大幅减小。当这发生时，我们会通知你。</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          </trans-unit>
         <trans-unit id="Resources\FinalTweaksContent\Text" translate="yes" xml:space="preserve">
           <source>Here're some minor tweaks, including your balance, and Do-Not-Disturb settings.</source>
           <target state="translated">这里是一些微笑调整，包括你的余额额和免打扰设置。</target>

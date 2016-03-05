@@ -773,6 +773,7 @@
   </data>
   <data name="NASAText" xml:space="preserve">
     <value>没有什么比宇宙母亲更加美丽。NASA宇航照片从早晨激活您一天的灵感。该照片的版权属于NASA和其他相关人员。</value>
+    <comment></comment>
   </data>
   <data name="Redeem" xml:space="preserve">
     <value>兑换</value>

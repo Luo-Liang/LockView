@@ -277,7 +277,7 @@
     <value>NASA</value>
   </data>
   <data name="NASA.SecondLine" xml:space="preserve">
-    <value>Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday.</value>
+    <value>Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday. NASA does not endorse LockView.</value>
   </data>
   <data name="News.FirstLine" xml:space="preserve">
     <value>NEWS</value>
@@ -331,7 +331,7 @@
     <value>ENTER YOUR RESOLUTION</value>
   </data>
   <data name="ResolutionContent.Text" xml:space="preserve">
-    <value>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties.</value>
+    <value>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties. We made some guesses for you.</value>
   </data>
   <data name="SayYes.Content" xml:space="preserve">
     <value>say yes</value>
@@ -472,7 +472,7 @@
     <value>This doesn't look like a valid code. Try again.</value>
   </data>
   <data name="Previous.Content" xml:space="preserve">
-    <value>Start Over</value>
+    <value>start over</value>
   </data>
   <data name="Refill.Content" xml:space="preserve">
     <value>refill</value>

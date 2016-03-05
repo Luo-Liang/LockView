@@ -87,11 +87,11 @@ namespace LockViewApp.WP81.BackgroundAgent
                 }
                 if (LockViewApplicationState.Instance.UserQuotaInDollars < 0 && (DateTime.Now.DayOfYear - task.LastScheduledTime.DayOfYear) >= 7)
                 {
-                    var toast = new ShellToast();
-                    toast.Title = AppResources.LockView;
-                    toast.Content = AppResources.BalanceRunOut;
-                    toast.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
-                    toast.Show();
+                    var dueTosat = new ShellToast();
+                    dueTosat.Title = AppResources.LockView;
+                    dueTosat.Content = AppResources.BalanceRunOut;
+                    dueTosat.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
+                    dueTosat.Show();
                 }
                 await LockViewApplicationState.Instance.SaveState();
             }
@@ -114,10 +114,10 @@ namespace LockViewApp.WP81.BackgroundAgent
                 NotifyComplete();
             }
 #if DEBUG
-            var toast = new ShellToast();
-            toast.Title = string.Format("{0} {1}", task.LastExitReason.ToString(), LockViewApplicationState.Instance.RequestMetadata.Phase);
-            toast.Content = (DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024).ToString();
-            toast.Show();
+            var memToast = new ShellToast();
+            memToast.Title = string.Format("{0} {1}", task.LastExitReason.ToString(), LockViewApplicationState.Instance.RequestMetadata.Phase);
+            memToast.Content = (DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024).ToString();
+            memToast.Show();
 #endif
 
         }

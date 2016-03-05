@@ -54,9 +54,19 @@ namespace LockViewApp.W81
 
         private async void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {
+
             button.IsEnabled = false;
             busyBar.Visibility = Visibility.Visible;
-            Geoposition pos = await geo.GetGeopositionAsync(); // get the raw geoposition data
+            Geoposition pos = null;
+            try
+            {
+                pos = await geo.GetGeopositionAsync(); // get the raw geoposition data
+            }
+            catch
+            {
+                ((HyperlinkButton)sender).IsEnabled = false;
+                return;
+            }
             double lat = pos.Coordinate.Point.Position.Latitude; // current latitude
             double longt = pos.Coordinate.Point.Position.Longitude; // current 
             try
@@ -78,6 +88,7 @@ namespace LockViewApp.W81
             gatherer.LongitudeAndLatitudeString = $"lat={lat}&lon={longt}";
             busyBar.Visibility = Visibility.Collapsed;
             button.IsEnabled = true;
+
         }
 
         private void checkBox_Checked(object sender, RoutedEventArgs e)

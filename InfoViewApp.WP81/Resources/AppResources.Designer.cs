@@ -1483,7 +1483,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nothing is more beautiful than the mother universe. NASA Images enlight your day from the beginning. If you choose this option, you agree that all rights belong to the respective owners of the image..
+        ///   Looks up a localized string similar to Nothing is more beautiful than the mother universe. NASA Images enlight your day. NASA does not endorse LockView..
         /// </summary>
         public static string NASAText {
             get {

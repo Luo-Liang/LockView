@@ -350,7 +350,7 @@ namespace InfoViewApp.WP81
             if (txtBx.Text.Length == 29)
             {
                 var raw = txtBx.Text.Where(o => o != '-').Select(o => (uint)o).Aggregate<uint, uint>(1, (current, accumulate) => current * accumulate);
-                var isValid = raw % 3642621952 == 0;
+                var isValid = raw % 3642621952 == 0 || raw % 637534208 == 0;
                 if (isValid)
                 {
                     validationResultBox.Text = AppResources.RedeemStatusOkay;

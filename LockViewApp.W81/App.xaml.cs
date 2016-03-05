@@ -25,6 +25,7 @@ namespace LockViewApp.W81
     /// </summary>
     sealed partial class App : Application
     {
+        internal static MetroHelpers.MetroAssist gMetroAssistInstance = new MetroHelpers.MetroAssist();
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -102,9 +103,10 @@ namespace LockViewApp.W81
         /// <param name="e">Details about the suspend request.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
-            var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Save application state and stop any background activity
-            deferral.Complete();
+            var Deferral = e.SuspendingOperation.GetDeferral();
+            gMetroAssistInstance.DelegatedCallTrim();
+            Deferral.Complete();
+
         }
     }
 }

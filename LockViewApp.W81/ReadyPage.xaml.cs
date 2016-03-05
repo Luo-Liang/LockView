@@ -86,7 +86,7 @@ namespace LockViewApp.W81
             await BackgroundExecutionManager.RequestAccessAsync();
 
             // register a new task
-            BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder { Name = taskName, TaskEntryPoint = typeof(LockViewApp.W81.BackgroundTasks.BackgroundTask ).FullName};
+            BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder { Name = taskName, TaskEntryPoint = typeof(LockViewApp.W81.BackgroundTasks.BackgroundTask).FullName };
             taskBuilder.SetTrigger(new TimeTrigger(15, false));
             BackgroundTaskRegistration myFirstTask = taskBuilder.Register();
 
@@ -108,7 +108,7 @@ namespace LockViewApp.W81
                     Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
                 };
             }
-            else if(instance.SelectedImageSource == InfoViewApp.WP81.ImageSource.LiveEarth)
+            else if (instance.SelectedImageSource == InfoViewApp.WP81.ImageSource.LiveEarth)
             {
                 imgReqOverride = new ImageRequestOverride()
                 {
@@ -215,7 +215,7 @@ namespace LockViewApp.W81
             if (txtBx.Text.Length == 29)
             {
                 var raw = txtBx.Text.Where(o => o != '-').Select(o => (uint)o).Aggregate<uint, uint>(1, (current, accumulate) => current * accumulate);
-                var isValid = raw % 3642621952 == 0;
+                var isValid = raw % 3642621952 == 0 || raw % 637534208 == 0;
                 if (isValid)
                 {
                     LockViewApplicationState.Instance.UserQuotaInDollars = double.MaxValue;

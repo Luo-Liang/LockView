@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoView", "InfoView.csproj", "{900E1CCE-6313-4CF4-B607-C1685569C19B}"
 EndProject
@@ -31,6 +31,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "W81", "W81", "{790EABDF-A277-457F-9425-6897D07A16D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockViewApp.W81.BackgroundTasks", "LockViewApp.W81.BackgroundTasks\LockViewApp.W81.BackgroundTasks.csproj", "{BF3BBFB3-6CEC-46B2-B7AC-E5D494F10CD7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MetroHelpers", "MetroHelpers\MetroHelpers.vcxproj", "{336E94C4-B280-495A-BCAB-B6CE0B294356}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -198,6 +200,21 @@ Global
 		{BF3BBFB3-6CEC-46B2-B7AC-E5D494F10CD7}.Release|x64.Build.0 = Release|x64
 		{BF3BBFB3-6CEC-46B2-B7AC-E5D494F10CD7}.Release|x86.ActiveCfg = Release|x86
 		{BF3BBFB3-6CEC-46B2-B7AC-E5D494F10CD7}.Release|x86.Build.0 = Release|x86
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Debug|ARM.ActiveCfg = Debug|ARM
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Debug|ARM.Build.0 = Debug|ARM
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Debug|x64.ActiveCfg = Debug|x64
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Debug|x64.Build.0 = Debug|x64
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Debug|x86.ActiveCfg = Debug|Win32
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Debug|x86.Build.0 = Debug|Win32
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Release|Any CPU.ActiveCfg = Release|Win32
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Release|Any CPU.Build.0 = Release|Win32
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Release|ARM.ActiveCfg = Release|ARM
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Release|ARM.Build.0 = Release|ARM
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Release|x64.ActiveCfg = Release|x64
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Release|x64.Build.0 = Release|x64
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Release|x86.ActiveCfg = Release|Win32
+		{336E94C4-B280-495A-BCAB-B6CE0B294356}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -211,5 +228,6 @@ Global
 		{4DEFB476-B220-41E1-89FB-2BDE96A0CBB2} = {790EABDF-A277-457F-9425-6897D07A16D5}
 		{D81F3BC8-764A-46D0-AB1F-69FADBECAD61} = {790EABDF-A277-457F-9425-6897D07A16D5}
 		{BF3BBFB3-6CEC-46B2-B7AC-E5D494F10CD7} = {790EABDF-A277-457F-9425-6897D07A16D5}
+		{336E94C4-B280-495A-BCAB-B6CE0B294356} = {790EABDF-A277-457F-9425-6897D07A16D5}
 	EndGlobalSection
 EndGlobal
