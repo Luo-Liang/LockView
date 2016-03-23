@@ -42,8 +42,10 @@
             <TextBlock Foreground="{StaticResource PhoneForegroundBrush}" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Publisher}" VerticalAlignment="Top" FontSize="16"/>
         </StackPanel>
         <ProgressBar x:Name="progressRing" VerticalAlignment="Top" Background="{x:Null}" Foreground="{StaticResource AccentBrush}" IsIndeterminate="True" Visibility="Collapsed"/>
-        <RadioButton GroupName="metric" x:Name="useImperial" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.UseImperial}" Margin="11,366,124,324" FontSize="20" FontFamily="Segoe WP Light" d:LayoutOverrides="VerticalAlignment"/>
-        <RadioButton IsChecked="True" GroupName="metric" x:Name="useMetric" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.UseMetric}" Margin="11,0,124,246" FontSize="20" FontFamily="Segoe WP Light" Height="78" VerticalAlignment="Bottom"/>
+        <StackPanel Margin="11,366,124,246" Orientation="Vertical" d:LayoutOverrides="Height">
+            <RadioButton GroupName="metric" x:Name="useImperial" Content="{Binding LocalizedResources.UseImperial, Source={StaticResource ls}}" FontSize="20" FontFamily="Segoe WP Light" d:LayoutOverrides="VerticalAlignment" Height="78"/>
+            <RadioButton IsChecked="True" GroupName="metric" x:Name="useMetric" Content="{Binding LocalizedResources.UseMetric, Source={StaticResource ls}}" FontSize="20" FontFamily="Segoe WP Light" Height="78"/>
+        </StackPanel>
         <HyperlinkButton Click="HyperlinkButton_Click" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.UseMyLocation}" Margin="7,281,163,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Portable User Interface"/>
         <Grid x:Name="busyGrid" Margin="0,0,0,-32" Visibility="Collapsed">
             <Rectangle x:Name="busyMask" StrokeThickness="2" Stroke="{StaticResource AccentBrush}">

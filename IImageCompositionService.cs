@@ -64,6 +64,15 @@ namespace InfoView
         public string ImageRequestUrl { get; set; }
         [DataMember]
         public string Arguments { get; set; }
+        public static ImageRequestOverride Parse(string request)
+        {
+            var splitted = request.Split(new[] { '?' }, StringSplitOptions.RemoveEmptyEntries);
+            return new ImageRequestOverride()
+            {
+                ImageRequestUrl = splitted[0],
+                Arguments = splitted[1]
+            };
+        }
     }
 
     

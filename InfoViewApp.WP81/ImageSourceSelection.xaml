@@ -50,7 +50,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
                         <TextBlock FontSize="24" Foreground="{StaticResource LightAccentBrush}" Text="{Binding FirstLine}"/>
-                        <TextBlock FontFamily="Segoe UI Light" FontWeight="Light" FontSize="21.333" TextWrapping="Wrap"   Text="{Binding SecondLine}"/>
+                        <TextBlock FontFamily="Portable User Interface" FontWeight="Light" FontSize="21.333" TextWrapping="Wrap"   Text="{Binding SecondLine}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

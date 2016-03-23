@@ -153,8 +153,11 @@ namespace InfoViewApp.WP81
             var jpegBytes = response.Image;
             var fileName = string.Format("{0}.jpeg", DateTime.Now.ToBinary());
             if (fileName.StartsWith("-")) fileName = fileName.TrimStart('-');
+            var tc = new TelemetryClient();
+            var property = new Dictionary<string, string>() { { "Hardware Id", BackgroundTaskHelper.GetDeviceId() } };
+            var pkgVer = Package.Current.Id.Version;
             BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
-            BackgroundTaskHelper.TrySetLockScreenImage(fileName, instance.RequestMetadata.RequestLanguage);
+            property["sw"] = BackgroundTaskHelper.TrySetLockScreenImage(fileName, instance.RequestMetadata.RequestLanguage);
             BackgroundTaskHelper.TryUpdateTiles();
             //schedule the background task.
             BackgroundTaskHelper.RegisterOrRenewBackgroundAgent();
@@ -162,9 +165,6 @@ namespace InfoViewApp.WP81
                 SaveBtn.Visibility = Visibility.Collapsed;
             AllSetTitle.Text = AppResources.AllSetTitleText;
             //take a look what people use as their providers.
-            var tc = new TelemetryClient();
-            var property = new Dictionary<string, string>() { { "Hardware Id", BackgroundTaskHelper.GetDeviceId() } };
-            var pkgVer = Package.Current.Id.Version;
             property["ver"] = $"{pkgVer.Major}.{pkgVer.Minor}.{pkgVer.Build}.{pkgVer.Revision}";
             property["quota"] = LockViewApplicationState.Instance.UserQuotaInDollars.ToString();
             property["hid"] = BackgroundTaskHelper.GetDeviceId();

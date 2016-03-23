@@ -87,7 +87,7 @@ namespace InfoView
         internal override ServiceCacheEntry<MemoryStream> getEntryFromRequest(ImageRequestOverride iro)
         {
             Dictionary<string, string> argumentKeyValue = new Dictionary<string, string>();
-            foreach (var item in iro.Arguments.Split('&'))
+            foreach (var item in iro.Arguments.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 var parts = item.Split('=');
                 argumentKeyValue.Add(parts[0], parts.Length == 1 ? "" : parts[1]);
@@ -140,26 +140,7 @@ namespace InfoView
                        width = double.Parse(whString[0]);
                 if (iro.ImageRequestUrl != "lockview://fixedwallpapers/Himawari-8")
                 {
-                    double desiredRatio = height / width;
-                    double actualRatio = (double)bitmap.PixelHeight / bitmap.PixelWidth;
-                    if (actualRatio <= desiredRatio)
-                    {
-                        //scale to croppable settings first.
-                        //in this case, the user can in general select along the x-axis. (width)
-                        double scale = height / bitmap.PixelHeight;
-                        //now scale the height and width as appropriate.
-                        bitmap = bitmap.Resize((int)(bitmap.PixelWidth * scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-                        //place the selection at the center of the image.
-                        //entire height is now selected.
-                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point((int)(bitmap.PixelWidth - width) / 2, 0), new System.Windows.Size((int)width, (int)height)));
-                    }
-                    else
-                    {
-                        //symmetric
-                        double scale = width / bitmap.PixelWidth;
-                        bitmap = bitmap.Resize((int)width, (int)(bitmap.PixelHeight * scale), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
-                        bitmap = bitmap.Crop(new Rect(new System.Windows.Point(0, (int)(bitmap.PixelHeight - height) / 2), new System.Windows.Size((int)width, (int)height)));
-                    }
+                    bitmap = bitmap.ResizeUniformly(height, width);
                 }
                 else
                 {
@@ -182,7 +163,7 @@ namespace InfoView
                     image.Dispose();
                 }
                 //TODO:: CLean up this logic to make it more general
-               
+
             }
             //bitmap.Unlock();
             JpegBitmapEncoder encoder = new JpegBitmapEncoder();
@@ -201,7 +182,7 @@ namespace InfoView
 
             if (iro.ImageRequestUrl == "lockview://fixedwallpapers/Himawari-8")
             {
-                entry.ExpirationDate = DateTime.Now.AddMinutes(30);
+                entry.ExpirationDate = DateTime.Now.AddMinutes(10);
             }
             return entry;
         }
@@ -291,6 +272,17 @@ namespace InfoView
             else
             {
                 memStream = new MemoryStream(request.RawImage);
+                WriteableBitmap bitmap = bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
+                bitmap = bitmap.FromStream(memStream);
+                bitmap = bitmap.ResizeUniformly(request.LayoutContract.TargetHeight, request.LayoutContract.TargetWidth);
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bitmap));
+                MemoryStream decodedStream = new MemoryStream();
+                encoder.Frames[0].Freeze();
+                encoder.Save(decodedStream);
+                memStream.Dispose();
+                memStream = decodedStream;
+                //resize also for custom images.
             }
             memStream.Seek(0, SeekOrigin.Begin);
             var img = Image.FromStream(memStream);
@@ -324,7 +316,7 @@ namespace InfoView
             var parts = request.Split('?');
             var urlPart = parts[0];
             //var argumentPart = parts[1];
-            var stream = imgCache.TryFetchAndAdd(new ImageRequestOverride() { ImageRequestUrl = urlPart, Arguments = parts.Length == 1 ? "" : parts[1] });
+            var stream = imgCache.TryFetchAndAdd(ImageRequestOverride.Parse(request));
             byte[] imageBytes = new byte[stream.Length];
             stream.Seek(0, SeekOrigin.Begin);
             stream.Read(imageBytes, 0, imageBytes.Length);
@@ -338,48 +330,39 @@ namespace InfoView
         }
     }
 
-    public class MISCImgTools
+    static class MISCImgTools
     {
         static MemoryStream imgStream;
         static DateTime lastAccessTime;
         public static MemoryStream GetLiveEarthImage()
         {
             if (imgStream != null && (DateTime.Now - lastAccessTime).Minutes < 10) return imgStream;
-            var now = DateTime.UtcNow - TimeSpan.FromMinutes(30);
-            now = now - TimeSpan.FromMinutes(now.Minute % 10);
-            now = now - TimeSpan.FromSeconds(now.Second);
-            var width = 550;
-            var level = "4d";
-            var numBlocks = 4;
-            var time = now.ToString("HHmmss");
-            var year = now.ToString("yyyy");
-            var month = now.ToString("MM");
-            var day = now.ToString("dd");
-            var url = $"http://himawari8-dl.nict.go.jp/himawari8/img/D531106/{level}/{width}/{year}/{month}/{day}/{time}";
-            var image = new System.Drawing.Bitmap(width * numBlocks, width * numBlocks);
-            var graphics = Graphics.FromImage(image);
-            graphics.Clear(System.Drawing.Color.Black);
-            for (int y = 0; y < numBlocks; y++)
-                for (int x = 0; x < numBlocks; x++)
-                {
-                    var currUrl = $"{url}_{x}_{y}.png";
-                    using (var response = WebRequest.Create(currUrl).GetResponse())
-                    {
-                        using (var imgBlock = Image.FromStream(response.GetResponseStream()))
-                        {
-                            graphics.DrawImage(imgBlock, x * width, y * width, width, width);
-                        }
-                    }
-                }
-            graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            graphics.Save();
-            graphics.Dispose();
-            imgStream = new MemoryStream();
-            image.Save(imgStream, ImageFormat.Jpeg);
-            imgStream.Seek(0, SeekOrigin.Begin);
-            lastAccessTime = DateTime.Now;
-            return imgStream;
+           
+        }
+
+        public static WriteableBitmap ResizeUniformly(this WriteableBitmap bitmap, double height, double width)
+        {
+            double desiredRatio = height / width;
+            double actualRatio = (double)bitmap.PixelHeight / bitmap.PixelWidth;
+            if (actualRatio <= desiredRatio)
+            {
+                //scale to croppable settings first.
+                //in this case, the user can in general select along the x-axis. (width)
+                double scale = height / bitmap.PixelHeight;
+                //now scale the height and width as appropriate.
+                bitmap = bitmap.Resize((int)(bitmap.PixelWidth * scale), (int)height, WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                //place the selection at the center of the image.
+                //entire height is now selected.
+                bitmap = bitmap.Crop(new Rect(new System.Windows.Point((int)(bitmap.PixelWidth - width) / 2, 0), new System.Windows.Size((int)width, (int)height)));
+            }
+            else
+            {
+                //symmetric
+                double scale = width / bitmap.PixelWidth;
+                bitmap = bitmap.Resize((int)width, (int)(bitmap.PixelHeight * scale), WriteableBitmapExtensions.Interpolation.NearestNeighbor);
+                bitmap = bitmap.Crop(new Rect(new System.Windows.Point(0, (int)(bitmap.PixelHeight - height) / 2), new System.Windows.Size((int)width, (int)height)));
+            }
+            return bitmap;
         }
     }
 }

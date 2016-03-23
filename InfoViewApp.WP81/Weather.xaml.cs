@@ -41,6 +41,7 @@ namespace InfoViewApp.WP81
             if(weatherBox.Text.Length != 0)
             {
                 SaveBtn.Visibility = Visibility.Visible;
+                source.CityName = weatherBox.Text;
             }
             source.LongitudeAndLatitudeString = null;
         }

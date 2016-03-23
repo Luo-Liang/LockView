@@ -116,6 +116,9 @@
     <Compile Include="ImageSourceSelection.xaml.cs">
       <DependentUpon>ImageSourceSelection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImageSourceSettingsPage.xaml.cs">
+      <DependentUpon>ImageSourceSettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interest.xaml.cs">
       <DependentUpon>Interest.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
     <Page Include="ImageSourceSelection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ImageSourceSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interest.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -50,17 +50,19 @@ namespace InfoViewApp.WP81.Tasks
         }
 
 
-        public static void TrySetLockScreenImage(string fileName, string cultureHint)
+        public static string TrySetLockScreenImage(string fileName, string cultureHint)
         {
 #if WINDOWS_PHONE
             try
             {
                 LockScreen.SetImageUri(new Uri($"ms-appx:///Transitioning.png", UriKind.Absolute));
                 LockScreen.SetImageUri(new Uri(string.Format("ms-appdata:///local/{0}", fileName), UriKind.Absolute));
+                return "Success";
             }
             catch (Exception ex)
             {
                 LockScreen.SetImageUri(new Uri($"ms-appx:///Outage_{cultureHint}.png", UriKind.Absolute));
+                return $"filePath:ms-appdata:///local/{fileName}, exception message:{ex}";
             }
 #elif WINDOWS_APP
             StorageFile imgFile = ApplicationData.Current.LocalFolder.GetFileAsync(fileName).GetAwaiter().GetResult();

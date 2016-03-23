@@ -46,6 +46,8 @@ namespace InfoViewApp.WP81
             double width, height;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             var parameter = NavigationContext.QueryString["ImgSrc"];
+            var padblack = NavigationContext.QueryString["padblack"];
+            LockViewApplicationState.Instance.SelectedImageSourceParameters = $"padblack={padblack}";
             var lang = LockViewApplicationState.Instance.RequestMetadata.RequestLanguage = CultureInfo.CurrentCulture.ToString();
             if (parameter == "library" && !PickInProcess)
             {

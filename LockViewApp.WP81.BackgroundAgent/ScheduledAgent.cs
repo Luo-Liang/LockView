@@ -185,7 +185,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             else
             {
-                BackgroundTaskHelper.TrySetLockScreenImage(instance.SelectedContextContracts.GenerateImgFileName(), instance.RequestMetadata.RequestLanguage);
+                telemetryProperty["swppr"] = BackgroundTaskHelper.TrySetLockScreenImage(instance.SelectedContextContracts.GenerateImgFileName(), instance.RequestMetadata.RequestLanguage);
                 //update tile if necessary.
                 BackgroundTaskHelper.TryUpdateTiles();
                 instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
@@ -264,7 +264,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 BackgroundTaskHelper.SaveAndClearUsedComposedImage(jpegBytes, fileName);
                 telemetryProperty["File Saved"] = "Yes";
                 if (possibleOverride != null && possibleOverride.Arguments == "lq") return;//don't update on money penny
-                BackgroundTaskHelper.TrySetLockScreenImage(fileName, instance.RequestMetadata.RequestLanguage);
+                telemetryProperty["swppr"] = BackgroundTaskHelper.TrySetLockScreenImage(fileName, instance.RequestMetadata.RequestLanguage);
                 //update tile if necessary.
                 BackgroundTaskHelper.TryUpdateTiles();
                 //drain the user's balance.
@@ -273,7 +273,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
 #if !DEBUG
             }
-           
+
 #endif
         }
 

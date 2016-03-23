@@ -26,6 +26,7 @@ namespace InfoViewApp.WP81
     {
         const string SettingInstance = "Settings.xml";
         public ImageSource SelectedImageSource { get; set; }
+        public string SelectedImageSourceParameters { get; set; }
         public double UserQuotaInDollars { get; set; }
         public LockViewRequestMetadata RequestMetadata { get; set; }
         public static LockViewApplicationState Instance { get; set; }
