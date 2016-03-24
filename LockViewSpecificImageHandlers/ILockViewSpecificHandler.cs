@@ -15,15 +15,32 @@ namespace InfoView.LockViewSpecificImageHandlers
     public interface ILockViewSpecificImageHandler
     {
         MemoryStream RequestImage(string parameters);
+        TimeSpan GetExpirationDuration(string parameters);
     }
 
     public abstract class LockViewSpecificHandlerBase : ILockViewSpecificImageHandler
     {
+        public abstract TimeSpan GetExpirationDuration(string parameters);
+
         public abstract MemoryStream RequestImage(string parameters);
     }
 
     public class LiveEarthImageHandler : LockViewSpecificHandlerBase
     {
+        public override TimeSpan GetExpirationDuration(string parameters)
+        {
+            var argumentKeyValue = new Dictionary<string, string>();
+            foreach (var item in parameters.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                var parts = item.Split('=');
+                argumentKeyValue.Add(parts[0], parts.Length == 1 ? "" : parts[1]);
+            }
+            if (argumentKeyValue.ContainsKey("location") == false) argumentKeyValue["location"] = "western";
+            var geoPreference = argumentKeyValue["location"];
+            if (geoPreference == "neutral") geoPreference = "eastern";
+            return geoPreference == "eastern" ? TimeSpan.FromMinutes(10) : TimeSpan.FromHours(2);
+        }
+
         public override MemoryStream RequestImage(string parameters)
         {
             //already stripped lockview://fixedwallpaper/himawari-8
@@ -37,6 +54,7 @@ namespace InfoView.LockViewSpecificImageHandlers
                 var parts = item.Split('=');
                 argumentKeyValue.Add(parts[0], parts.Length == 1 ? "" : parts[1]);
             }
+            if (argumentKeyValue.ContainsKey("location") == false) argumentKeyValue["location"] = "western";
             var geoPreference = argumentKeyValue["location"];
             if (geoPreference == "neutral") geoPreference = "eastern";
             if (geoPreference == "western")
@@ -46,7 +64,6 @@ namespace InfoView.LockViewSpecificImageHandlers
                 dynamic jArray = JsonConvert.DeserializeObject(docHtml);
                 var imageSource = (jArray as IEnumerable<dynamic>).Select(o => new { Source = $"http://epic.gsfc.nasa.gov/epic-archive/jpg/{o.image}.jpg", Date = DateTime.Parse(o.date.ToString()) }).Aggregate((a, b) => Math.Abs((a.Date - DateTime.Now).TotalSeconds) < Math.Abs((b.Date - DateTime.Now).TotalSeconds) ? a : b).Source;
                 memStream = new MemoryStream(wc.DownloadData(imageSource));
-                memStream.Seek(0, SeekOrigin.Begin);
             }
             else
             {
@@ -82,8 +99,8 @@ namespace InfoView.LockViewSpecificImageHandlers
                 graphics.Dispose();
                 memStream = new MemoryStream();
                 image.Save(memStream, ImageFormat.Jpeg);
-                memStream.Seek(0, SeekOrigin.Begin);
             }
+            memStream.Seek(0, SeekOrigin.Begin);
             return memStream;
         }
     }

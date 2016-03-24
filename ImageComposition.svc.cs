@@ -16,6 +16,7 @@ using System.Collections.Concurrent;
 using System.Net;
 using System.Threading.Tasks;
 using InfoView.DataContract;
+using InfoView.LockViewSpecificImageHandlers;
 
 namespace InfoView
 {
@@ -77,9 +78,17 @@ namespace InfoView
         ConcurrentDictionary<string, ServiceCacheEntry<MemoryStream>> CacheEntries;
         public ImageCache()
         {
+            handlerRegistry = new Dictionary<string, ILockViewSpecificImageHandler>();
+            handlerRegistry["lockview://fixedwallpapers/Himawari-8"] = new LockViewSpecificImageHandlers.LiveEarthImageHandler();
         }
         //public const string ImageLocator = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt={0}";
         const string nasaAPIKey = "mzzFYcsRbS2oVEak5fvY4Znbx6tTsAy200MiQqXF"; //<--- if you see this, it is mangled.
+        static Dictionary<string, ILockViewSpecificImageHandler> handlerRegistry;
+        static ImageCache()
+        {
+            handlerRegistry = new Dictionary<string, ILockViewSpecificImageHandler>();
+
+        }
         internal override string getEntryIdFromRequest(ImageRequestOverride iro)
         {
             return string.Format("{0}&{1}", iro.ImageRequestUrl, iro.Arguments);
@@ -94,10 +103,13 @@ namespace InfoView
             }
             ServiceCacheEntry<MemoryStream> entry = new ServiceCacheEntry<MemoryStream>();
             byte[] rawBytes = null;
-            bool Insert = true;
+            ILockViewSpecificImageHandler lockViewHandler = null;
             WriteableBitmap bitmap = null;
+            //is it a LOCKVIEW protocol packet or HTTP packet?
+            if (iro.ImageRequestUrl.StartsWith("lockview://"))
+                lockViewHandler = handlerRegistry[iro.ImageRequestUrl];
             //TODO:CLEANUP.
-            if (iro.ImageRequestUrl != "lockview://fixedwallpapers/Himawari-8")
+            if (lockViewHandler == null)
             {
                 try
                 {
@@ -126,7 +138,6 @@ namespace InfoView
                     bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
                     using (var stream = File.Open($"{directoryPath}\\{fileName}.jpg", FileMode.Open))
                         bitmap = bitmap.FromStream(stream);
-                    Insert = false;
                     //replace those with defaults.
                 }
             }
@@ -138,29 +149,13 @@ namespace InfoView
                 var whString = resolution.Split('x');
                 double height = double.Parse(whString[1]),
                        width = double.Parse(whString[0]);
-                if (iro.ImageRequestUrl != "lockview://fixedwallpapers/Himawari-8")
+                if (lockViewHandler == null)
                 {
                     bitmap = bitmap.ResizeUniformly(height, width);
                 }
                 else
                 {
-                    var image = new System.Drawing.Bitmap((int)width, (int)height);
-                    var graphics = Graphics.FromImage(image);
-                    var foregroundLength = (float)(0.7 * Math.Min(width, height));
-                    Bitmap foreground = new Bitmap(Image.FromStream(MISCImgTools.GetLiveEarthImage()), (int)foregroundLength, (int)foregroundLength);
-                    graphics.Clear(System.Drawing.Color.Black);
-                    graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                    graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                    graphics.DrawImage(foreground, (float)width / 2 - foregroundLength / 2, (float)height / 2 - foregroundLength / 2);
-                    foreground.Dispose();
-                    graphics.Save();
-                    graphics.Dispose();
-                    MemoryStream imgStream = new MemoryStream();
-                    image.Save(imgStream, ImageFormat.Jpeg);
-                    imgStream.Seek(0, SeekOrigin.Begin);
-                    bitmap = bitmap.FromStream(imgStream);
-                    imgStream.Dispose();
-                    image.Dispose();
+                    bitmap = bitmap.FromStream(lockViewHandler.RequestImage(iro.Arguments));
                 }
                 //TODO:: CLean up this logic to make it more general
 
@@ -180,9 +175,9 @@ namespace InfoView
             entry.UrlIdentifier = getEntryIdFromRequest(iro);
             entry.Content = decodedStream;
 
-            if (iro.ImageRequestUrl == "lockview://fixedwallpapers/Himawari-8")
+            if (lockViewHandler != null)
             {
-                entry.ExpirationDate = DateTime.Now.AddMinutes(10);
+                entry.ExpirationDate = DateTime.Now.Add(lockViewHandler.GetExpirationDuration(iro.Arguments));
             }
             return entry;
         }
@@ -337,7 +332,7 @@ namespace InfoView
         public static MemoryStream GetLiveEarthImage()
         {
             if (imgStream != null && (DateTime.Now - lastAccessTime).Minutes < 10) return imgStream;
-           
+
         }
 
         public static WriteableBitmap ResizeUniformly(this WriteableBitmap bitmap, double height, double width)
