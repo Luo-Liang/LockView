@@ -17,7 +17,7 @@ using Windows.ApplicationModel.Background;
 using Windows.Data.Json;
 using Windows.Storage;
 using Windows.Web.Http;
-
+using InfoViewApp.WP81.Tasks;
 
 namespace InfoViewApp.WP81.Tasks
 {
@@ -218,10 +218,10 @@ namespace InfoViewApp.WP81.Tasks
             var json = await client.GetStringAsync(new Uri(reqString));
             var jObj = JsonObject.Parse(json);
             var imgRequestUrl = jObj.GetNamedArray("images")[0].GetObject().GetNamedString("url");
-#if WINDOWS_PHONE
-            imgRequestUrl = string.Format("{0}_{1}x{2}.jpg", imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_')), instance.PreviewLayoutContract.TargetWidth, instance.PreviewLayoutContract.TargetHeight);
-            //imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
-#endif
+            //#if WINDOWS_PHONE
+            //            imgRequestUrl = string.Format("{0}_{1}x{2}.jpg", imgRequestUrl.Substring(0, imgRequestUrl.LastIndexOf('_')), instance.PreviewLayoutContract.TargetWidth, instance.PreviewLayoutContract.TargetHeight);
+            //            //imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
+            //#endif
             if (imgRequestUrl.StartsWith("http") == false)
                 imgRequestUrl = string.Format("http://www.bing.com{0}", imgRequestUrl);
             return imgRequestUrl;
@@ -268,6 +268,29 @@ namespace InfoViewApp.WP81
             fileName = string.Join(string.Empty, fileName.Select(o => ((int)(o % 10)).ToString()));
             if (fileName.Length > 100) fileName = fileName.Substring(0, 100);
             return $"{fileName}.jpeg";
+        }
+
+        public static async Task<ImageRequestOverride> CreateRequestOverride(this LockViewApplicationState instance)
+        {
+            ImageRequestOverride imgReqOverride = null;
+            if (instance.SelectedImageSource != ImageSource.Local)
+            {
+                imgReqOverride = new ImageRequestOverride();
+                imgReqOverride.Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}&{instance.SelectedImageSourceParameters}";
+                if (instance.SelectedImageSource == ImageSource.Bing)
+                {
+                    imgReqOverride.ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(null);
+                }
+                else if (instance.SelectedImageSource == ImageSource.NASA)
+                {
+                    imgReqOverride.ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(null);
+                }
+                else if (instance.SelectedImageSource == ImageSource.LiveEarth)
+                {
+                    imgReqOverride.ImageRequestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(null);
+                }
+            }
+            return imgReqOverride;
         }
     }
 }

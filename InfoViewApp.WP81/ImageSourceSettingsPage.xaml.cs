@@ -25,10 +25,13 @@ namespace InfoViewApp.WP81
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(CannotGetLocationGrid.Visibility == Visibility.Visible)
+            if (CannotGetLocationGrid.Visibility == Visibility.Visible)
             {
+                var result = new[] { radioButtonWestern, radioButtonEastern, radioButtonNeutral }.Where(o => o.IsChecked.Value).Select(o => o.Content.ToString().ToLowerInvariant()).FirstOrDefault();
                 //user override
-                LockViewApplicationState.Instance.SelectedImageSourceParameters += $"&locatiion={radioButtonEastern.IsChecked.Value.ToString().ToLowerInvariant()}";
+                var padblack = NavigationContext.QueryString["padblack"];
+                LockViewApplicationState.Instance.SelectedImageSourceParameters = $"location={result}&padblack={padblack}";
+                NavigationService.Navigate(new Uri($"/ImageCropping.xaml?ImgSrc={NavigationContext.QueryString["ImgSrc"]}", UriKind.Relative));
             }
         }
 
@@ -39,7 +42,6 @@ namespace InfoViewApp.WP81
                 busyGrid.Visibility = Visibility.Visible;
                 var location = await geolocator.GetGeopositionAsync();
                 var eastern = location.Coordinate.Point.Position.Longitude > 0;
-                LockViewApplicationState.Instance.SelectedImageSourceParameters += $"&location={eastern.ToString().ToLowerInvariant()}";
                 busyGrid.Visibility = Visibility.Collapsed;
                 CannotGetLocationGrid.Visibility = Visibility.Collapsed;
             }

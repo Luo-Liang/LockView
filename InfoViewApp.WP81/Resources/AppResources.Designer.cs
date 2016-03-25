@@ -709,6 +709,15 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Eastern.
+        /// </summary>
+        public static string Eastern {
+            get {
+                return ResourceManager.GetString("Eastern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable Do not disturb during night..
         /// </summary>
         public static string EnableDoNotDisturbDuring {
@@ -1506,6 +1515,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string Navy {
             get {
                 return ResourceManager.GetString("Navy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neutral.
+        /// </summary>
+        public static string Neutral {
+            get {
+                return ResourceManager.GetString("Neutral", resourceCulture);
             }
         }
         
@@ -2419,6 +2437,33 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use my location to personalize my lock screen..
+        /// </summary>
+        public static string WallPaperLocationLocalizationSubtitle {
+            get {
+                return ResourceManager.GetString("WallPaperLocationLocalizationSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecting one of the locations will result in slightly different lock screens. For example, when used with Live Earth, Western residents of the earth are shown DISCOVER images while eastern residents are shown HIMAWARI-8 images. Use the Neutral option to bypass..
+        /// </summary>
+        public static string WallPaperLocationLocalizationText {
+            get {
+                return ResourceManager.GetString("WallPaperLocationLocalizationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to East or West, home is the best. Tell us where you are so we can give you a better matching lock screen..
+        /// </summary>
+        public static string WallPaperLocationLocalizationTitle {
+            get {
+                return ResourceManager.GetString("WallPaperLocationLocalizationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WEATHER.
         /// </summary>
         public static string WeatherInterest {
@@ -2451,6 +2496,15 @@ namespace InfoViewApp.WP81.Resources {
         public static string WeatherSettingPageTitle {
             get {
                 return ResourceManager.GetString("WeatherSettingPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Western.
+        /// </summary>
+        public static string Western {
+            get {
+                return ResourceManager.GetString("Western", resourceCulture);
             }
         }
         

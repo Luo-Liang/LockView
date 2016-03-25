@@ -149,13 +149,14 @@ namespace InfoView
                 var whString = resolution.Split('x');
                 double height = double.Parse(whString[1]),
                        width = double.Parse(whString[0]);
-                if (lockViewHandler == null)
+                if (argumentKeyValue.ContainsKey("padblack") && argumentKeyValue["padblack"]=="true" ||
+                    lockViewHandler.GetType() == typeof(LiveEarthImageHandler)) //backward compat!
                 {
-                    bitmap = bitmap.ResizeUniformly(height, width);
+                    bitmap = bitmap.FromStream(lockViewHandler.RequestImage(iro.Arguments));
                 }
                 else
                 {
-                    bitmap = bitmap.FromStream(lockViewHandler.RequestImage(iro.Arguments));
+                    bitmap = bitmap.ResizeUniformly(height, width);
                 }
                 //TODO:: CLean up this logic to make it more general
 
@@ -327,14 +328,6 @@ namespace InfoView
 
     static class MISCImgTools
     {
-        static MemoryStream imgStream;
-        static DateTime lastAccessTime;
-        public static MemoryStream GetLiveEarthImage()
-        {
-            if (imgStream != null && (DateTime.Now - lastAccessTime).Minutes < 10) return imgStream;
-
-        }
-
         public static WriteableBitmap ResizeUniformly(this WriteableBitmap bitmap, double height, double width)
         {
             double desiredRatio = height / width;

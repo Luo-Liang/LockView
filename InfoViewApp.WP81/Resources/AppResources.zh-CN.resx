@@ -1110,4 +1110,10 @@
   <data name="LiveEarth" xml:space="preserve">
     <value>实时地球</value>
   </data>
+  <data name="Eastern" xml:space="preserve">
+    <value>Eastern</value>
+  </data>
+  <data name="WallPaperLocationLocalizationTitle" xml:space="preserve">
+    <value>俗话说，金窝银窝不如狗窝。告诉我们你的地理位置以便我们为您提供更加个性化的锁屏页面。</value>
+  </data>
 </root>

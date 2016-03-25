@@ -36,28 +36,28 @@
 
         <Grid Grid.RowSpan="2">
             <Grid Margin="0,30,0,0" VerticalAlignment="Top" Background="{StaticResource AccentBrush}" Opacity="0.8">
-                <TextBlock TextWrapping="Wrap" Text="East or West, home is the best. Tell us where you are so we can give you a better matching lock screen." VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="24"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.WallPaperLocationLocalizationTitle}" VerticalAlignment="Stretch" Foreground="White" Margin="20,10,14,10" FontSize="24"/>
             </Grid>
             <Button Click="SaveBtn_Click" x:Name="SaveBtn" Visibility="Visible" Content="{Binding LocalizedResources.Next, Source={StaticResource ls}}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="6,0,0,10" FontFamily="Portable User Interface" Height="72">
                 <Button.Background>
                     <SolidColorBrush Color="{StaticResource AccentColor}"/>
                 </Button.Background>
             </Button>
-            <TextBlock x:Name="textBlock" Height="64" Margin="20,160,0,0" TextWrapping="Wrap" Text="Use my location to personalize my lock screen. " VerticalAlignment="Top" FontSize="24" FontFamily="Portable User Interface">
+            <TextBlock x:Name="textBlock" Height="64" Margin="20,160,0,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.WallPaperLocationLocalizationSubtitle}" VerticalAlignment="Top" FontSize="24" FontFamily="Portable User Interface">
                 <TextBlock.Foreground>
                     <SolidColorBrush Color="{StaticResource AccentColor}"/>
                 </TextBlock.Foreground>
             </TextBlock>
             <Grid  x:Name="CannotGetLocationGrid" Margin="10,229,20,87">
-                <TextBlock x:Name="textBlock1" Margin="12,0,0,223" TextWrapping="Wrap" FontFamily="Portable User Interface" FontSize="21.333" Text="Selecting one of the locations will result in slightly different lock screens. For example, when used with Live Earth, Western residents of the earth are shown DISCOVER images while eastern residents are shown HIMAWARI-8 images. Use the World Traveler option to bypass." d:LayoutOverrides="TopPosition, BottomPosition">
+                <TextBlock x:Name="textBlock1" Margin="12,0,0,223" TextWrapping="Wrap" FontFamily="Portable User Interface" FontSize="21.333" Text="{Binding Source={StaticResource ls},Path=LocalizedResources.WallPaperLocationLocalizationText}" d:LayoutOverrides="TopPosition, BottomPosition">
                     <TextBlock.Foreground>
                         <SolidColorBrush Color="{StaticResource Gray}"/>
                     </TextBlock.Foreground>
                 </TextBlock>
                 <StackPanel Margin="0,200,105,22" Orientation="Vertical" d:LayoutOverrides="Height">
-                    <RadioButton GroupName="hemisphere" x:Name="radioButtonWestern" Content="Western hemisphere" Height="78" VerticalAlignment="Top" FontFamily="Portable User Interface" Width="345" FontSize="20" d:LayoutOverrides="LeftPosition, RightPosition"/>
-                    <RadioButton GroupName="hemisphere" x:Name="radioButtonEastern" Content="Eastern hemisphere" Height="78" VerticalAlignment="Top" FontSize="20" Width="345" d:LayoutOverrides="LeftPosition, RightPosition"/>
-                    <RadioButton IsChecked="True" GroupName="hemisphere" x:Name="radioButtonNeutral" Content="World traveler" Height="78" VerticalAlignment="Top" FontSize="20" Width="345" d:LayoutOverrides="LeftPosition, RightPosition"/>
+                    <RadioButton GroupName="hemisphere" x:Name="radioButtonWestern" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.Western}" Height="78" VerticalAlignment="Top" FontFamily="Portable User Interface" Width="345" FontSize="20" d:LayoutOverrides="LeftPosition, RightPosition"/>
+                    <RadioButton GroupName="hemisphere" x:Name="radioButtonEastern" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.Eastern}" Height="78" VerticalAlignment="Top" FontSize="20" Width="345" d:LayoutOverrides="LeftPosition, RightPosition"/>
+                    <RadioButton IsChecked="True" GroupName="hemisphere" x:Name="radioButtonNeutral" Content="{Binding Source={StaticResource ls},Path=LocalizedResources.Neutral}" Height="78" VerticalAlignment="Top" FontSize="20" Width="345" d:LayoutOverrides="LeftPosition, RightPosition"/>
 
                 </StackPanel>
 

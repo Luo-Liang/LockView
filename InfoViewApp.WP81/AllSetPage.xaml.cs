@@ -142,10 +142,17 @@ namespace InfoViewApp.WP81
             instance.DoNotDisturb = doNotDisturb.IsChecked.Value;
             instance.PreviewFormattingContract.SecondLineFont.FontSize = instance.PreviewFormattingContract.FirstLineFont.FontSize / 2;
             await instance.SaveState();
-            var response = await client.Compose(LockViewApplicationState.Instance.SelectedContextContracts,
-                LockViewApplicationState.Instance.PreviewFormattingContract,
-                LockViewApplicationState.Instance.PreviewLayoutContract,
-                LockViewApplicationState.Instance.RequestMetadata.PersistFileName);
+            ImageCompositionResponse response = null;
+            if (LockViewApplicationState.Instance.SelectedImageSource != ImageSource.Local)
+                response = await client.ComposeLite(LockViewApplicationState.Instance.SelectedContextContracts,
+                    LockViewApplicationState.Instance.PreviewFormattingContract,
+                    LockViewApplicationState.Instance.PreviewLayoutContract,
+                    await LockViewApplicationState.Instance.CreateRequestOverride());
+            else
+                response = await client.Compose(LockViewApplicationState.Instance.SelectedContextContracts,
+                   LockViewApplicationState.Instance.PreviewFormattingContract,
+                   LockViewApplicationState.Instance.PreviewLayoutContract,
+                   LockViewApplicationState.Instance.RequestMetadata.PersistFileName);
             //restore fontSize
             progressRing.Visibility = Visibility.Collapsed;
             SaveBtn.Visibility = Visibility.Visible;

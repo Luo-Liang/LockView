@@ -76,15 +76,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             }
             try
             {
-                if (DeviceStatus.DeviceTotalMemory >> 28 < 1)
-                {
-                    //low ram device.
-                    await LaunchLowRAMTask(task);
-                }
-                else
-                {
-                    await LaunchTask(task);
-                }
+                await LaunchTask(task);
                 if (LockViewApplicationState.Instance.UserQuotaInDollars < 0 && (DateTime.Now.DayOfYear - task.LastScheduledTime.DayOfYear) >= 7)
                 {
                     var dueTosat = new ShellToast();
@@ -138,59 +130,6 @@ namespace LockViewApp.WP81.BackgroundAgent
 
         }
 
-        protected async Task LaunchLowRAMTask(ScheduledTask task)
-        {
-            var instance = LockViewApplicationState.Instance;
-            HttpClient client = new HttpClient();
-            if (instance.RequestMetadata.Phase == LockViewRequestMetadata.TaskPhase.Tick)
-            {
-#if !DEBUG
-                if (DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8)
-#endif
-                {
-                    var flag1 = false;
-                    //can disturb the user
-                    //use this client to send request.
-                    flag1 = await AcquireContentUpdateIfNecessary(client);
-#if !DEBUG
-                    if (flag1 || task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear)
-#endif
-                        instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tack;
-                }
-            }
-            else if (instance.RequestMetadata.Phase == LockViewRequestMetadata.TaskPhase.Tack)
-            {
-                ImageRequestOverride imgReqOverride = null;
-                if (instance.SelectedImageSource == ImageSource.Bing)
-                    imgReqOverride = new ImageRequestOverride()
-                    {
-                        ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
-                        Arguments = "lq"
-                    };
-                else if (instance.SelectedImageSource == ImageSource.NASA)
-                    imgReqOverride = new ImageRequestOverride()
-                    {
-                        ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
-                        Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
-                    };
-                else if (instance.SelectedImageSource == ImageSource.NASA)
-                    imgReqOverride = new ImageRequestOverride()
-                    {
-                        ImageRequestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client),
-                        Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
-                    };
-                //if yes, execute that if (1) the image has changed OR the content has changed.
-                await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
-                instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Toe;
-            }
-            else
-            {
-                telemetryProperty["swppr"] = BackgroundTaskHelper.TrySetLockScreenImage(instance.SelectedContextContracts.GenerateImgFileName(), instance.RequestMetadata.RequestLanguage);
-                //update tile if necessary.
-                BackgroundTaskHelper.TryUpdateTiles();
-                instance.RequestMetadata.Phase = LockViewRequestMetadata.TaskPhase.Tick;
-            }
-        }
         protected async Task LaunchTask(ScheduledTask task)
         {
             //make it very defensive.
@@ -214,25 +153,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             if (flag1 || lastExecution.DayOfYear < DateTime.Now.DayOfYear)
             {
 #endif
-                ImageRequestOverride imgReqOverride = null;
-                if (instance.SelectedImageSource == ImageSource.Bing)
-                    imgReqOverride = new ImageRequestOverride()
-                    {
-                        ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
-                        Arguments = ""
-                    };
-                else if (instance.SelectedImageSource == ImageSource.NASA)
-                    imgReqOverride = new ImageRequestOverride()
-                    {
-                        ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
-                        Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
-                    };
-                else if (instance.SelectedImageSource == ImageSource.LiveEarth)
-                    imgReqOverride = new ImageRequestOverride()
-                    {
-                        ImageRequestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client),
-                        Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
-                    };
+                ImageRequestOverride imgReqOverride = await instance.CreateRequestOverride();
                 telemetryProperty["request build ok"] = "Yes";
                 //if yes, execute that if (1) the image has changed OR the content has changed.
                 await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);

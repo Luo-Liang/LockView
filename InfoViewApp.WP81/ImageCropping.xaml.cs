@@ -46,21 +46,23 @@ namespace InfoViewApp.WP81
             double width, height;
             ResolutionProvider.GetScreenSizeInPixels(out height, out width);
             var parameter = NavigationContext.QueryString["ImgSrc"];
-            var padblack = NavigationContext.QueryString["padblack"];
-            LockViewApplicationState.Instance.SelectedImageSourceParameters = $"padblack={padblack}";
+
             var lang = LockViewApplicationState.Instance.RequestMetadata.RequestLanguage = CultureInfo.CurrentCulture.ToString();
-            if (parameter == "library" && !PickInProcess)
+            if (parameter == "library")
             {
-                LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Local;
-                FileOpenPicker openPicker = new FileOpenPicker();
-                openPicker.ViewMode = PickerViewMode.Thumbnail;
-                openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-                openPicker.FileTypeFilter.Add(".jpg");
-                openPicker.FileTypeFilter.Add(".jpeg");
-                openPicker.FileTypeFilter.Add(".png");
-                openPicker.PickSingleFileAndContinue();
-                PickInProcess = true;
-                MakeIdle();
+                if (!PickInProcess)
+                {
+                    LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Local;
+                    FileOpenPicker openPicker = new FileOpenPicker();
+                    openPicker.ViewMode = PickerViewMode.Thumbnail;
+                    openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+                    openPicker.FileTypeFilter.Add(".jpg");
+                    openPicker.FileTypeFilter.Add(".jpeg");
+                    openPicker.FileTypeFilter.Add(".png");
+                    openPicker.PickSingleFileAndContinue();
+                    PickInProcess = true;
+                    MakeIdle();
+                }
             }
             else
             {
@@ -86,10 +88,10 @@ namespace InfoViewApp.WP81
 
                     var concatChar = '?';
                     if (requestUrl.Contains("?")) concatChar = '&';
-                    var requestParameter = $"{requestUrl}{concatChar}resolution={width}x{height}";
+                    var requestParameter = $"{requestUrl}{concatChar}resolution={width}x{height}&{LockViewApplicationState.Instance.SelectedImageSourceParameters}";
                     var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestParameter));
                     requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
-                    var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/RequestImage"), requestContent);
+                    var response = await client.PostAsync(new Uri("http://localhost:49791/ImageComposition.svc/RequestImage"), requestContent);
                     var responseStr = await response.Content.ReadAsStringAsync();
                     var rawBytes = Newtonsoft.Json.JsonConvert.DeserializeObject<byte[]>(responseStr);
                     WB_CapturedImage = new WriteableBitmap(1, 1);

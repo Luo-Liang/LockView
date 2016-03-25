@@ -62,7 +62,7 @@ namespace InfoView.LockViewSpecificImageHandlers
                 //show EPIC
                 var docHtml = wc.DownloadString($"http://epic.gsfc.nasa.gov/api/images.php?date={DateTime.UtcNow.Subtract(TimeSpan.FromDays(1)).ToString("yyyy-MM-dd")}");
                 dynamic jArray = JsonConvert.DeserializeObject(docHtml);
-                var imageSource = (jArray as IEnumerable<dynamic>).Select(o => new { Source = $"http://epic.gsfc.nasa.gov/epic-archive/jpg/{o.image}.jpg", Date = DateTime.Parse(o.date.ToString()) }).Aggregate((a, b) => Math.Abs((a.Date - DateTime.Now).TotalSeconds) < Math.Abs((b.Date - DateTime.Now).TotalSeconds) ? a : b).Source;
+                var imageSource = (jArray as IEnumerable<dynamic>).Select(o => new { Source = $"http://epic.gsfc.nasa.gov/epic-archive/jpg/{o.image}.jpg", Date = DateTime.Parse(o.date.ToString()) }).Aggregate((a, b) => Math.Abs((a.Date - DateTime.Now).TotalSeconds % 86400) < Math.Abs((b.Date - DateTime.Now).TotalSeconds % 86400) ? a : b).Source;
                 memStream = new MemoryStream(wc.DownloadData(imageSource));
             }
             else
@@ -70,17 +70,17 @@ namespace InfoView.LockViewSpecificImageHandlers
                 var now = DateTime.UtcNow - TimeSpan.FromMinutes(30);
                 now = now - TimeSpan.FromMinutes(now.Minute % 10);
                 now = now - TimeSpan.FromSeconds(now.Second);
-                var width = 550;
+                var _width = 550;
                 var level = "4d";
                 var numBlocks = 4;
                 var time = now.ToString("HHmmss");
                 var year = now.ToString("yyyy");
                 var month = now.ToString("MM");
                 var day = now.ToString("dd");
-                var url = $"http://himawari8-dl.nict.go.jp/himawari8/img/D531106/{level}/{width}/{year}/{month}/{day}/{time}";
-                var image = new System.Drawing.Bitmap(width * numBlocks, width * numBlocks);
-                var graphics = Graphics.FromImage(image);
-                graphics.Clear(System.Drawing.Color.Black);
+                var url = $"http://himawari8-dl.nict.go.jp/himawari8/img/D531106/{level}/{_width}/{year}/{month}/{day}/{time}";
+                var _image = new System.Drawing.Bitmap(_width * numBlocks, _width * numBlocks);
+                var _graphics = Graphics.FromImage(_image);
+                _graphics.Clear(System.Drawing.Color.Black);
                 for (int y = 0; y < numBlocks; y++)
                     for (int x = 0; x < numBlocks; x++)
                     {
@@ -89,19 +89,38 @@ namespace InfoView.LockViewSpecificImageHandlers
                         {
                             using (var imgBlock = Image.FromStream(response.GetResponseStream()))
                             {
-                                graphics.DrawImage(imgBlock, x * width, y * width, width, width);
+                                _graphics.DrawImage(imgBlock, x * _width, y * _width, _width, _width);
                             }
                         }
                     }
-                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                graphics.Save();
-                graphics.Dispose();
+                _graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                _graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                _graphics.Save();
+                _graphics.Dispose();
                 memStream = new MemoryStream();
-                image.Save(memStream, ImageFormat.Jpeg);
+                _image.Save(memStream, ImageFormat.Jpeg);
             }
             memStream.Seek(0, SeekOrigin.Begin);
-            return memStream;
+
+            var resolution = argumentKeyValue["resolution"];
+            var whString = resolution.Split('x');
+            double height = double.Parse(whString[1]),width = double.Parse(whString[0]);
+            var image = new System.Drawing.Bitmap((int)width, (int)height);
+            var graphics = Graphics.FromImage(image);
+            var foregroundLength = (float)(0.7 * Math.Min(width, height));
+            Bitmap foreground = new Bitmap(Image.FromStream(memStream), (int)foregroundLength, (int)foregroundLength);
+            graphics.Clear(System.Drawing.Color.Black);
+            graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            graphics.DrawImage(foreground, (float)width / 2 - foregroundLength / 2, (float)height / 2 - foregroundLength / 2);
+            foreground.Dispose();
+            graphics.Save();
+            graphics.Dispose();
+            MemoryStream imgStream = new MemoryStream();
+            image.Save(imgStream, ImageFormat.Jpeg);
+            imgStream.Seek(0, SeekOrigin.Begin);
+            memStream.Dispose();
+            return imgStream; ;
         }
     }
 }

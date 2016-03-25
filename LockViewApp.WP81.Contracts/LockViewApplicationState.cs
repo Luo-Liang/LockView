@@ -12,6 +12,7 @@ using Windows.Storage.Streams;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
 using LockViewApp.WP81.Contracts;
+using InfoViewApp.WP81;
 
 namespace InfoViewApp.WP81
 {
@@ -130,3 +131,4 @@ namespace InfoViewApp.WP81
         }
     }
 }
+

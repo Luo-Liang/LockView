@@ -333,6 +333,30 @@
           <source>Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</source>
           <target state="new">Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</target>
         </trans-unit>
+        <trans-unit id="Resx/WallPaperLocationLocalizationText" translate="yes" xml:space="preserve">
+          <source>Selecting one of the locations will result in slightly different lock screens. For example, when used with Live Earth, Western residents of the earth are shown DISCOVER images while eastern residents are shown HIMAWARI-8 images. Use the Neutral option to bypass.</source>
+          <target state="new">Selecting one of the locations will result in slightly different lock screens. For example, when used with Live Earth, Western residents of the earth are shown DISCOVER images while eastern residents are shown HIMAWARI-8 images. Use the Neutral option to bypass.</target>
+        </trans-unit>
+        <trans-unit id="Resx/WallPaperLocationLocalizationSubtitle" translate="yes" xml:space="preserve">
+          <source>Use my location to personalize my lock screen.</source>
+          <target state="new">Use my location to personalize my lock screen.</target>
+        </trans-unit>
+        <trans-unit id="Resx/Neutral" translate="yes" xml:space="preserve">
+          <source>Neutral</source>
+          <target state="new">Neutral</target>
+        </trans-unit>
+        <trans-unit id="Resx/Eastern" translate="yes" xml:space="preserve">
+          <source>Eastern</source>
+          <target state="new">Eastern</target>
+        </trans-unit>
+        <trans-unit id="Resx/WallPaperLocationLocalizationTitle" translate="yes" xml:space="preserve">
+          <source>East or West, home is the best. Tell us where you are so we can give you a better matching lock screen.</source>
+          <target state="new">East or West, home is the best. Tell us where you are so we can give you a better matching lock screen.</target>
+        </trans-unit>
+        <trans-unit id="Resx/Western" translate="yes" xml:space="preserve">
+          <source>Western</source>
+          <target state="new">Western</target>
+        </trans-unit>
         <trans-unit id="Resx/LiveEarth" translate="yes" xml:space="preserve">
           <source>LIVE EARTH</source>
           <target state="new">LIVE EARTH</target>

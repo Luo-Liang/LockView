@@ -969,4 +969,22 @@
   <data name="LiveEarthText" xml:space="preserve">
     <value>Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</value>
   </data>
+  <data name="Eastern" xml:space="preserve">
+    <value>Eastern</value>
+  </data>
+  <data name="Neutral" xml:space="preserve">
+    <value>Neutral</value>
+  </data>
+  <data name="WallPaperLocationLocalizationSubtitle" xml:space="preserve">
+    <value>Use my location to personalize my lock screen.</value>
+  </data>
+  <data name="WallPaperLocationLocalizationText" xml:space="preserve">
+    <value>Selecting one of the locations will result in slightly different lock screens. For example, when used with Live Earth, Western residents of the earth are shown DISCOVER images while eastern residents are shown HIMAWARI-8 images. Use the Neutral option to bypass.</value>
+  </data>
+  <data name="WallPaperLocationLocalizationTitle" xml:space="preserve">
+    <value>East or West, home is the best. Tell us where you are so we can give you a better matching lock screen.</value>
+  </data>
+  <data name="Western" xml:space="preserve">
+    <value>Western</value>
+  </data>
 </root>
