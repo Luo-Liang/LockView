@@ -129,6 +129,7 @@ namespace LockViewApp.W81
             int.TryParse(resolutionWidth.Text, out width);
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight = height;
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth = width;
+            LockViewApplicationState.Instance.SelectedImageSourceParameters = "padblack=true";
             if (context.NavigationType == "bing")
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.Bing;
@@ -140,11 +141,14 @@ namespace LockViewApp.W81
             else if (context.NavigationType == "library")
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.Local;
+                LockViewApplicationState.Instance.SelectedImageSourceParameters = "padblack=false";
             }
             else
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.LiveEarth;
             }
+            string location = westernRadio.IsChecked.Value ? "location=western" : "location=eastern";
+            LockViewApplicationState.Instance.SelectedImageSourceParameters += $"&{location}";
             //RedrawCropper();
             try
             {
@@ -162,7 +166,7 @@ namespace LockViewApp.W81
                     var concatChar = '?';
                     var requestUrl = uri.ToString();
                     if (requestUrl.Contains("?")) concatChar = '&';
-                    var requestParameter = $"{requestUrl}{concatChar}resolution={LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth}x{LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight}";
+                    var requestParameter = $"{requestUrl}{concatChar}resolution={LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth}x{LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight}&{LockViewApplicationState.Instance.SelectedImageSourceParameters}";
                     var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestParameter));
                     requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
                     var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/RequestImage"), requestContent);
@@ -261,7 +265,7 @@ namespace LockViewApp.W81
                 int actualWidth = (int)(widthExtent * WB_CapturedImage.PixelWidth);
                 WB_CapturedImage = WB_CapturedImage.Crop(actualWidth, 0, (int)(WB_CapturedImage.PixelHeight / screenRatio), WB_CapturedImage.PixelHeight);
             }
-            StorageFile sf = await ApplicationData.Current.LocalFolder.CreateFileAsync("myfile.jpg", CreationCollisionOption.ReplaceExisting);
+            StorageFile sf = await ApplicationData.Current.LocalFolder.CreateFileAsync("MyBg.jpeg", CreationCollisionOption.ReplaceExisting);
             try
             {
                 using (var stream = await sf.OpenAsync(FileAccessMode.ReadWrite))

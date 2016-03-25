@@ -6,6 +6,14 @@
     </header>
     <body>
       <group id="Resources">
+        <trans-unit id="Resources\WhereAreYouCap\Text" translate="yes" xml:space="preserve">
+          <source>YOUR LOCATION</source>
+          <target state="translated">您的位置</target>
+        </trans-unit>
+        <trans-unit id="Resources\LocationPersonalization\Text" translate="yes" xml:space="preserve">
+          <source>Telling us where you are lets us better provide you with personalized lock screens.</source>
+          <target state="translated">告诉我们您的位置可以让我们更好地提供个性化的锁屏页面</target>
+        </trans-unit>
         <trans-unit id="Resources\LockView" translate="yes" xml:space="preserve">
           <source>LockView</source>
           <target state="translated">锁屏视野</target>
@@ -28,8 +36,8 @@
         </trans-unit>
         <trans-unit id="Resources\Previous\Content" translate="yes" xml:space="preserve">
           <source>start over</source>
-          <target state="needs-review-translation">从头开始</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
-        </trans-unit>
+          <target state="needs-review-translation">从头开始</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
         <trans-unit id="Resources\InvalidCode" translate="yes" xml:space="preserve">
           <source>This doesn't look like a valid code. Try again.</source>
           <target state="translated">你输入的代码看起来不像是有效的。请再试一次。</target>
@@ -217,8 +225,8 @@
         </trans-unit>
         <trans-unit id="Resources\ResolutionContent\Text" translate="yes" xml:space="preserve">
           <source>Your resolution refers to the native resolution of your screen. If you're unsure, right click on the desktop and select display properties. We made some guesses for you.</source>
-          <target state="needs-review-translation">分辨率指屏幕的自然分辨率。如果您不确定，在桌面上右击并选择显示属性进行查看。我们为您做了一些猜测。</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
-        </trans-unit>
+          <target state="needs-review-translation">分辨率指屏幕的自然分辨率。如果您不确定，在桌面上右击并选择显示属性进行查看。我们为您做了一些猜测。</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
         <trans-unit id="Resources\Resolution\Text" translate="yes" xml:space="preserve">
           <source>ENTER YOUR RESOLUTION</source>
           <target state="needs-review-translation">输入您的分辨率</target>
@@ -289,8 +297,8 @@
         </trans-unit>
         <trans-unit id="Resources\NASA\SecondLine" translate="yes" xml:space="preserve">
           <source>Nothing is more beautiful than the mother universe. Let NASA images enlight your everyday. NASA does not endorse LockView.</source>
-          <target state="needs-review-translation">没有什么比宇宙母亲更漂亮。让NASA宇航图片每天给您惊喜。</target><note from="MultilingualUpdate" priority="2" annotates="source">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
-        </trans-unit>
+          <target state="needs-review-translation">没有什么比宇宙母亲更漂亮。让NASA宇航图片每天给您惊喜。</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note></trans-unit>
         <trans-unit id="Resources\NASA\FirstLine" translate="yes" xml:space="preserve">
           <source>NASA</source>
           <target state="translated">美国航空航天局</target>

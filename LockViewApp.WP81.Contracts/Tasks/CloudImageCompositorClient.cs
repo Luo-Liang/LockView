@@ -49,7 +49,7 @@ namespace InfoViewApp.WP81.Tasks
             GC.Collect();
             requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
             //https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}
-            var response = await client.PostAsync(new Uri("http://localhost:49791/ImageComposition.svc/ComposeV2", UriKind.Absolute),
+            var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/ComposeV2", UriKind.Absolute),
                  requestContent);
             var responseStr = await response.Content.ReadAsStringAsync();
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ImageCompositionResponse>(responseStr);
@@ -79,7 +79,7 @@ namespace InfoViewApp.WP81.Tasks
             //http://localhost:49791/ImageComposition.svc/ComposeV2
 
             //http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/ComposeV2"
-            var response = await client.PostAsync(new Uri("http://localhost:49791/ImageComposition.svc/ComposeV2", UriKind.Absolute),
+            var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/ComposeV2", UriKind.Absolute),
                  requestContent);
             var responseStr = await response.Content.ReadAsStringAsync();
             var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ImageCompositionResponse>(responseStr);

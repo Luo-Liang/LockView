@@ -489,4 +489,10 @@
   <data name="LockView" xml:space="preserve">
     <value>LockView</value>
   </data>
+  <data name="LocationPersonalization.Text" xml:space="preserve">
+    <value>Telling us where you are lets us better provide you with personalized lock screens.</value>
+  </data>
+  <data name="WhereAreYouCap.Text" xml:space="preserve">
+    <value>YOUR LOCATION</value>
+  </data>
 </root>

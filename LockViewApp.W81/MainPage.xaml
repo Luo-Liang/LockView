@@ -149,6 +149,10 @@
                     <TextBlock x:Name="textBlock2_Copy1" TextWrapping="Wrap" FontSize="18.667" x:Uid="Height" VerticalAlignment="Top" Margin="0,5,0,0"/>
                     <TextBox TextChanged="resoluionHeight_TextChanged" x:Name="resoluionHeight" TextWrapping="Wrap" Text="1080" Background="{x:Null}" Foreground="White" FontFamily="Global User Interface" Margin="20,0,0,0" VerticalAlignment="Top"/>
                 </StackPanel>
+                <TextBlock Margin="0,30,0,0" FontSize="21.333" Foreground="{StaticResource LightAccentBrush}" x:Uid="WhereAreYouCap"/>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,0" FontSize="18.667" Foreground="#FFB4B4B4" x:Uid="LocationPersonalization"/>
+                <RadioButton Margin="0,20,0,0" x:Name="westernRadio" IsChecked="True" FontSize="18.666" GroupName="hemisphere" Content="Western"/>
+                <RadioButton Margin="0,10,0,0" FontSize="18.666" GroupName="hemisphere" Content="Eastern"/>
                 <TextBlock x:Name="textBlock2_Copy2" Margin="0,30,0,0" TextWrapping="Wrap" FontSize="21.333" x:Uid="RepickOrRefreshImage" Foreground="{StaticResource LightAccentBrush}"/>
                 <Button x:Name="repickImage" Click="repickImage_Click" x:Uid="RepickImageButton" VerticalAlignment="Stretch" Margin="-2,10,0,0" FontFamily="Global User Interface" />
             </StackPanel>

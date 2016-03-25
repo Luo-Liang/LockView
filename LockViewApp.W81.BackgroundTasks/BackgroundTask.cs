@@ -44,31 +44,7 @@ namespace LockViewApp.W81.BackgroundTasks
                             instance.SelectedContextContracts[i].CopyFromInterestContent(contents[i]);
                         }
 
-                        ImageRequestOverride imgReqOverride = null;
-                        if (instance.SelectedImageSource == ImageSource.Bing)
-                        {
-                            imgReqOverride = new ImageRequestOverride()
-                            {
-                                ImageRequestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client),
-                                Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
-                            };
-                        }
-                        else if (instance.SelectedImageSource == ImageSource.NASA)
-                        {
-                            imgReqOverride = new ImageRequestOverride()
-                            {
-                                ImageRequestUrl = await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client),
-                                Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
-                            };
-                        }
-                        else if(instance.SelectedImageSource == ImageSource.LiveEarth)
-                        {
-                            imgReqOverride = new ImageRequestOverride()
-                            {
-                                ImageRequestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client),
-                                Arguments = $"resolution={instance.PreviewLayoutContract.TargetWidth}x{instance.PreviewLayoutContract.TargetHeight}"
-                            };
-                        }
+                        ImageRequestOverride imgReqOverride = await instance.CreateRequestOverride();
                         var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o => o.GetMetaData()));
                         if (instance.UserQuotaInDollars >= 0 || instance.BackgroundTaskLastRun.DayOfYear < DateTime.Now.DayOfYear)
                         {

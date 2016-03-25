@@ -67,6 +67,7 @@ namespace InfoViewApp.WP81.Tasks
 #elif WINDOWS_APP
             StorageFile imgFile = ApplicationData.Current.LocalFolder.GetFileAsync(fileName).GetAwaiter().GetResult();
             Windows.System.UserProfile.LockScreen.SetImageFileAsync(imgFile).GetAwaiter().GetResult();
+            return "Success";
 #endif
         }
 
