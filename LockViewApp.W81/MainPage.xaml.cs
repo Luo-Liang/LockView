@@ -129,7 +129,7 @@ namespace LockViewApp.W81
             int.TryParse(resolutionWidth.Text, out width);
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight = height;
             LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth = width;
-            LockViewApplicationState.Instance.SelectedImageSourceParameters = "padblack=true";
+            LockViewApplicationState.Instance.SelectedImageSourceParameters = "padblack=false";
             if (context.NavigationType == "bing")
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.Bing;
@@ -141,11 +141,11 @@ namespace LockViewApp.W81
             else if (context.NavigationType == "library")
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.Local;
-                LockViewApplicationState.Instance.SelectedImageSourceParameters = "padblack=false";
             }
             else
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.LiveEarth;
+                LockViewApplicationState.Instance.SelectedImageSourceParameters = "padblack=true";
             }
             string location = westernRadio.IsChecked.Value ? "location=western" : "location=eastern";
             LockViewApplicationState.Instance.SelectedImageSourceParameters += $"&{location}";
@@ -169,7 +169,7 @@ namespace LockViewApp.W81
                     var requestParameter = $"{requestUrl}{concatChar}resolution={LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth}x{LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight}&{LockViewApplicationState.Instance.SelectedImageSourceParameters}";
                     var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestParameter));
                     requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
-                    var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/RequestImage"), requestContent);
+                    var response = await client.PostAsync(new Uri("http://localhost:49791/ImageComposition.svc/RequestImage"), requestContent);
                     var responseStr = await response.Content.ReadAsStringAsync();
                     var rawBytes = Newtonsoft.Json.JsonConvert.DeserializeObject<byte[]>(responseStr);
                     originalMap = await originalMap.FromStream(new MemoryStream(rawBytes));

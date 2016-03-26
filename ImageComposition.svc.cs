@@ -149,8 +149,8 @@ namespace InfoView
                 var whString = resolution.Split('x');
                 double height = double.Parse(whString[1]),
                        width = double.Parse(whString[0]);
-                if (argumentKeyValue.ContainsKey("padblack") && argumentKeyValue["padblack"]=="true" ||
-                    lockViewHandler.GetType() == typeof(LiveEarthImageHandler)) //backward compat!
+                if (argumentKeyValue.ContainsKey("padblack") && argumentKeyValue["padblack"]=="true"  ||
+                   (lockViewHandler!=null && lockViewHandler.GetType() == typeof(LiveEarthImageHandler))) //backward compat!
                 {
                     bitmap = bitmap.FromStream(lockViewHandler.RequestImage(iro.Arguments));
                 }

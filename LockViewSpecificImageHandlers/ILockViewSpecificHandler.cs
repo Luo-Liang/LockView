@@ -60,7 +60,7 @@ namespace InfoView.LockViewSpecificImageHandlers
             if (geoPreference == "western")
             {
                 //show EPIC
-                var docHtml = wc.DownloadString($"http://epic.gsfc.nasa.gov/api/images.php?date={DateTime.UtcNow.Subtract(TimeSpan.FromDays(1)).ToString("yyyy-MM-dd")}");
+                var docHtml = wc.DownloadString($"http://epic.gsfc.nasa.gov/api/images.php?date={DateTime.UtcNow.Subtract(TimeSpan.FromDays(2)).ToString("yyyy-MM-dd")}");
                 dynamic jArray = JsonConvert.DeserializeObject(docHtml);
                 var imageSource = (jArray as IEnumerable<dynamic>).Select(o => new { Source = $"http://epic.gsfc.nasa.gov/epic-archive/jpg/{o.image}.jpg", Date = DateTime.Parse(o.date.ToString()) }).Aggregate((a, b) => Math.Abs((a.Date - DateTime.Now).TotalSeconds % 86400) < Math.Abs((b.Date - DateTime.Now).TotalSeconds % 86400) ? a : b).Source;
                 memStream = new MemoryStream(wc.DownloadData(imageSource));
