@@ -1,0 +1,4 @@
+MainPackage=C:\Users\Liang Luo\Documents\GitHubVisualStudio\LockView\LockViewApp.W81\bin\ARM\Release\LockViewApp.W81_1.1.5.36_ARM.appx
+SymbolPackage=C:\Users\Liang Luo\Documents\GitHubVisualStudio\LockView\LockViewApp.W81\AppPackages\LockViewApp.W81_1.1.5.36_Test\LockViewApp.W81_1.1.5.36_ARM.appxsym
+ResourcePack=C:\Users\Liang Luo\Documents\GitHubVisualStudio\LockView\LockViewApp.W81\bin\ARM\Release\LockViewApp.W81_1.1.5.36_language-zh-hans.appx
+ResourcePack=C:\Users\Liang Luo\Documents\GitHubVisualStudio\LockView\LockViewApp.W81\bin\ARM\Release\LockViewApp.W81_1.1.5.36_scale-180.appx

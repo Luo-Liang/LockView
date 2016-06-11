@@ -120,6 +120,8 @@ namespace InfoViewApp.WP81
         public OverlayContextContract[] SelectedContextContracts { get; set; }
         public OverlayFormattingContract PreviewFormattingContract { get; set; }
         public OverlayLayoutContract PreviewLayoutContract { get; set; }
+        public int LastCheduleDOY { get; set; }
+
         public async Task SaveState()
         {
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SettingInstance, CreationCollisionOption.ReplaceExisting);

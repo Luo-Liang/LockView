@@ -34,7 +34,7 @@
                 </Path.Fill>
             </Path>
         </Grid>
-        <TextBlock x:Name="textBlock" d:IsLocked="True" Width="364" VerticalAlignment="Top" TextWrapping="Wrap" Margin="146,31,0,0" Height="80" HorizontalAlignment="Left" FontSize="40" FontWeight="Bold">
+        <TextBlock x:Name="textBlock" d:IsLocked="True" Width="600" VerticalAlignment="Top" TextWrapping="Wrap" Margin="146,31,0,0" Height="90" HorizontalAlignment="Left" FontSize="40" FontWeight="Bold">
 			<Run x:Uid="LockViewCapital"/>
 			<LineBreak/>
 			<Run  x:Uid="PCConsoleAndTablet"/>
@@ -43,8 +43,8 @@
         <Grid x:Name="ImageSourceSelectionMainGrid" d:LayoutOverrides="TopPosition, BottomPosition" Width="482" Margin="40,152,0,90" MaxHeight="{Binding ActualHeight, ElementName=SettingViewer}" HorizontalAlignment="Left">
             <Grid HorizontalAlignment="Left" Width="482">
                 <StackPanel d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Top" Margin="2,0" Height="103" Background="{StaticResource AccentBrush}">
-                    <TextBlock x:Name="textBlock1" x:Uid="FinalTweaks" TextWrapping="Wrap" Margin="10,10,10,5" FontSize="24"/>
-                    <TextBlock x:Name="textBlock1_Copy" TextWrapping="Wrap" Margin="10,4,10,10" FontSize="18.667" x:Uid="FinalTweaks">
+                    <TextBlock x:Name="finalTweakText" x:Uid="FinalTweaks" TextWrapping="Wrap" Margin="10,10,10,5" FontSize="24"/>
+                    <TextBlock x:Name="finalTweakTextSecondLine" TextWrapping="Wrap" Margin="10,4,10,10" FontSize="18.667" x:Uid="FinalTweaks">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{StaticResource LighterGray}"/>
                         </TextBlock.Foreground>

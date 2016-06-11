@@ -34,7 +34,7 @@ namespace LockViewApp.W81.BackgroundTasks
                         provider.Client = client;
                     }
                     var contents = await Task.WhenAll(instance.SelectedProviders.Select(async (o, i) => await o.RequestContent(instance.SelectedInterests[i])));
-                    if (instance.SelectedContextContracts.Select((o, i) => !o.Equals(contents[i])).Count(o => o) > 0 || System.Diagnostics.Debugger.IsAttached || instance.SelectedImageSource== ImageSource.LiveEarth)
+                    if (instance.SelectedContextContracts.Select((o, i) => !o.Equals(contents[i])).Count(o => o) > 0 || System.Diagnostics.Debugger.IsAttached || instance.SelectedImageSource == ImageSource.LiveEarth)
                     {
                         dict["update-accepted"] = "true";
                         //are we getting the same update?
@@ -46,7 +46,7 @@ namespace LockViewApp.W81.BackgroundTasks
 
                         ImageRequestOverride imgReqOverride = await instance.CreateRequestOverride();
                         var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o => o.GetMetaData()));
-                        if (instance.UserQuotaInDollars >= 0 || instance.BackgroundTaskLastRun.DayOfYear < DateTime.Now.DayOfYear)
+                        if (instance.UserQuotaInDollars >= 0 || instance.BackgroundTaskLastRun.DayOfYear - DateTime.Now.DayOfYear != 0)
                         {
                             dict["update-successful"] = "true";
                             CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
@@ -65,10 +65,9 @@ namespace LockViewApp.W81.BackgroundTasks
                             if (instance.UserQuotaInDollars != double.MaxValue) //<--- free users don't get deducted.
                                 instance.UserQuotaInDollars -= drainPerReq;
                             //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
-                            instance.BackgroundTaskLastRun = DateTime.Now;
                         }
                     }
-                    if (instance.UserQuotaInDollars < 0 && (DateTime.Now.DayOfYear - instance.BackgroundTaskLastRun.DayOfYear) >= 7)
+                    if (instance.UserQuotaInDollars < 0.05 && (DateTime.Now.DayOfYear - instance.BackgroundTaskLastRun.DayOfYear) != 0)
                     {
                         IToastNotificationContent toastContent = null;
                         IToastText02 templateContent = ToastContentFactory.CreateToastText02();
@@ -85,14 +84,14 @@ namespace LockViewApp.W81.BackgroundTasks
                 TelemetryClient tc = new TelemetryClient();
                 dict["quota"] = instance.UserQuotaInDollars.ToString();
                 dict["finish-time"] = DateTime.UtcNow.ToString();
-                tc.TrackEvent("background task non-mobile",dict);
+                tc.TrackEvent("background task non-mobile", dict);
                 tc.Flush();
             }
             catch (Exception ex)
             {
 
             }
-
+            instance.BackgroundTaskLastRun = DateTime.Now;
             await instance.SaveState();
             deferral.Complete();
         }

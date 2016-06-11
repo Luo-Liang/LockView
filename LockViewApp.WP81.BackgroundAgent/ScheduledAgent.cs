@@ -77,7 +77,7 @@ namespace LockViewApp.WP81.BackgroundAgent
             try
             {
                 await LaunchTask(task);
-                if (LockViewApplicationState.Instance.UserQuotaInDollars < 0 && (DateTime.Now.DayOfYear - task.LastScheduledTime.DayOfYear) >= 7)
+                if (LockViewApplicationState.Instance.UserQuotaInDollars < 0.05 && (DateTime.Now.DayOfYear - LockViewApplicationState.Instance.LastCheduleDOY) != 0)
                 {
                     var dueTosat = new ShellToast();
                     dueTosat.Title = AppResources.LockView;
@@ -85,6 +85,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                     dueTosat.NavigationUri = new Uri(BackgroundTaskHelper.LowBalanceNavId, UriKind.Relative);
                     dueTosat.Show();
                 }
+                LockViewApplicationState.Instance.LastCheduleDOY = DateTime.Now.DayOfYear;
                 await LockViewApplicationState.Instance.SaveState();
             }
             catch (Exception ex)
@@ -105,12 +106,12 @@ namespace LockViewApp.WP81.BackgroundAgent
                 tc.Flush();
                 NotifyComplete();
             }
-#if DEBUG
-            var memToast = new ShellToast();
-            memToast.Title = string.Format("{0} {1}", task.LastExitReason.ToString(), LockViewApplicationState.Instance.RequestMetadata.Phase);
-            memToast.Content = (DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024).ToString();
-            memToast.Show();
-#endif
+//#if DEBUG
+//            var memToast = new ShellToast();
+//            memToast.Title = string.Format("{0} {1}", task.LastExitReason.ToString(), LockViewApplicationState.Instance.RequestMetadata.Phase);
+//            memToast.Content = (DeviceStatus.ApplicationPeakMemoryUsage / 1024.0 / 1024).ToString();
+//            memToast.Show();
+//#endif
 
         }
 
@@ -132,15 +133,13 @@ namespace LockViewApp.WP81.BackgroundAgent
 
         protected async Task LaunchTask(ScheduledTask task)
         {
+            var lastExecution = LockViewApplicationState.Instance.LastCheduleDOY;
             //make it very defensive.
             //check last run time.
-            var lastExecution = task.LastScheduledTime;
             var instance = LockViewApplicationState.Instance;
             HttpClient client = new HttpClient();
             bool flag1 = false;
-#if !DEBUG
             if ((DateTime.Now.Hour <= 22 && DateTime.Now.Hour >= 8) || !instance.DoNotDisturb)
-#endif
             {
                 //can disturb the user
                 //use this client to send request.
@@ -149,28 +148,22 @@ namespace LockViewApp.WP81.BackgroundAgent
                 telemetryProperty["should update"] = flag1.ToString();
             }
             //does the user have any quota executing that?
-#if !DEBUG
-            if (flag1 || lastExecution.DayOfYear < DateTime.Now.DayOfYear)
+            if (flag1 || lastExecution < DateTime.Now.DayOfYear)
             {
-#endif
                 ImageRequestOverride imgReqOverride = await instance.CreateRequestOverride();
                 telemetryProperty["request build ok"] = "Yes";
                 //if yes, execute that if (1) the image has changed OR the content has changed.
                 await UpdateLockScreenTilesIfPossible(client, task, imgReqOverride);
 
-#if !DEBUG
             }
-#endif
         }
 
         private async Task UpdateLockScreenTilesIfPossible(HttpClient client, ScheduledTask task, ImageRequestOverride possibleOverride)
         {
             var instance = LockViewApplicationState.Instance;
             var drainPerReq = Pricing.CalculateDrainPerRequest(instance.RequestMetadata, instance.SelectedProviders.Select(o => o.GetMetaData()));
-#if !DEBUG
-            if (instance.UserQuotaInDollars >= 0 || task.LastScheduledTime.DayOfYear < DateTime.Now.DayOfYear)
+            if (instance.UserQuotaInDollars >= 0.005 || LockViewApplicationState.Instance.LastCheduleDOY != DateTime.Now.DayOfYear)
             {
-#endif 
                 telemetryProperty["Update Accepted"] = "Yes";
                 CloudImageCompositorClient cloudClient = new CloudImageCompositorClient(client);
                 ImageCompositionResponse compositionResponse = null;
@@ -192,10 +185,7 @@ namespace LockViewApp.WP81.BackgroundAgent
                 if (instance.UserQuotaInDollars != double.MaxValue) //<--- free users don't get deducted.
                     instance.UserQuotaInDollars -= drainPerReq;
                 //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
-#if !DEBUG
             }
-
-#endif
         }
 
         private async Task<bool> AcquireContentUpdateIfNecessary(HttpClient client)

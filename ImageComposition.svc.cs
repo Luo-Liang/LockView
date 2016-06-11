@@ -80,6 +80,8 @@ namespace InfoView
         {
             handlerRegistry = new Dictionary<string, ILockViewSpecificImageHandler>();
             handlerRegistry["lockview://fixedwallpapers/Himawari-8"] = new LockViewSpecificImageHandlers.LiveEarthImageHandler();
+            handlerRegistry["lockview://fixedwallpapers/WATrails"] = new EditorChoiceImageHandler();
+
         }
         //public const string ImageLocator = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt={0}";
         const string nasaAPIKey = "mzzFYcsRbS2oVEak5fvY4Znbx6tTsAy200MiQqXF"; //<--- if you see this, it is mangled.
@@ -104,63 +106,60 @@ namespace InfoView
             ServiceCacheEntry<MemoryStream> entry = new ServiceCacheEntry<MemoryStream>();
             byte[] rawBytes = null;
             ILockViewSpecificImageHandler lockViewHandler = null;
-            WriteableBitmap bitmap = null;
+            WriteableBitmap bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);
             //is it a LOCKVIEW protocol packet or HTTP packet?
             if (iro.ImageRequestUrl.StartsWith("lockview://"))
                 lockViewHandler = handlerRegistry[iro.ImageRequestUrl];
             //TODO:CLEANUP.
+            MemoryStream rawImageStream = null;
             if (lockViewHandler == null)
             {
-                try
-                {
-                    WebClient client = new WebClient();
-                    rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
-                    //create this entry.
-                    //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
-                    //decoder.Frames[0].Freeze();
-                    //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
-                    //bmp.BeginInit();
-                    //bmp.EndInit();
-                    bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
-                    bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
-                }
-                catch (Exception ex)
-                {
-                    var directoryPath = AppDomain.CurrentDomain.BaseDirectory + "\\Assets";
-                    int maximum = Directory.GetFiles(directoryPath).Length;
-                    var fileName = (DateTime.Now.Second % maximum) + 1;
-                    //create this entry.
-                    //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
-                    //decoder.Frames[0].Freeze();
-                    //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
-                    //bmp.BeginInit();
-                    //bmp.EndInit();
-                    bitmap = new WriteableBitmap(1, 1, 72, 72, PixelFormats.Bgr24, BitmapPalettes.WebPalette);//<---anything
-                    using (var stream = File.Open($"{directoryPath}\\{fileName}.jpg", FileMode.Open))
-                        bitmap = bitmap.FromStream(stream);
-                    //replace those with defaults.
-                }
+                WebClient client = new WebClient();
+                rawBytes = client.DownloadData(new Uri(iro.ImageRequestUrl));
+                //create this entry.
+                //var decoder = new JpegBitmapDecoder(new Uri(iro.ImageRequestUrl), BitmapCreateOptions.None, BitmapCacheOption.None);
+                //decoder.Frames[0].Freeze();
+                //var bmp = new BitmapImage(new Uri(iro.ImageRequestUrl, UriKind.Absolute));
+                //bmp.BeginInit();
+                //bmp.EndInit();
+                rawImageStream = new MemoryStream(rawBytes);
+                bitmap = bitmap.FromStream(rawImageStream);
             }
+            else
+            {
+                rawImageStream = lockViewHandler.RequestImage(iro.Arguments);
+                bitmap = bitmap.FromStream(rawImageStream);
+            }
+            rawImageStream.Seek(0, SeekOrigin.Begin);
             //bitmap = bitmap.FromStream(new MemoryStream(rawBytes));
             //bitmap = bitmap.FromByteArray(rawBytes);
-            if (argumentKeyValue.ContainsKey("resolution"))
+            var resolution = argumentKeyValue["resolution"];
+            var whString = resolution.Split('x');
+            double height = double.Parse(whString[1]),
+                   width = double.Parse(whString[0]);
+            if (argumentKeyValue.ContainsKey("padblack") && argumentKeyValue["padblack"] == "true")
             {
-                var resolution = argumentKeyValue["resolution"];
-                var whString = resolution.Split('x');
-                double height = double.Parse(whString[1]),
-                       width = double.Parse(whString[0]);
-                if (argumentKeyValue.ContainsKey("padblack") && argumentKeyValue["padblack"]=="true"  ||
-                   (lockViewHandler!=null && lockViewHandler.GetType() == typeof(LiveEarthImageHandler))) //backward compat!
-                {
-                    bitmap = bitmap.FromStream(lockViewHandler.RequestImage(iro.Arguments));
-                }
-                else
-                {
-                    bitmap = bitmap.ResizeUniformly(height, width);
-                }
-                //TODO:: CLean up this logic to make it more general
-
+                var image = new System.Drawing.Bitmap((int)width, (int)height);
+                var graphics = Graphics.FromImage(image);
+                var foregroundLength = (float)(0.7 * Math.Min(width, height));
+                Bitmap foreground = new Bitmap(Image.FromStream(rawImageStream), (int)foregroundLength, (int)foregroundLength);
+                graphics.Clear(System.Drawing.Color.Black);
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                graphics.DrawImage(foreground, (float)width / 2 - foregroundLength / 2, (float)height / 2 - foregroundLength / 2);
+                foreground.Dispose();
+                graphics.Save();
+                graphics.Dispose();
+                MemoryStream imgStream = new MemoryStream();
+                image.Save(imgStream, ImageFormat.Jpeg);
+                imgStream.Seek(0, SeekOrigin.Begin);
+                bitmap = bitmap.FromStream(imgStream);
             }
+            else
+            {
+                bitmap = bitmap.ResizeUniformly(height, width);
+            }
+            rawImageStream.Dispose();
             //bitmap.Unlock();
             JpegBitmapEncoder encoder = new JpegBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bitmap));

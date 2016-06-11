@@ -76,7 +76,6 @@ namespace InfoViewApp.WP81.Tasks
             var requestContent = new HttpStringContent(reqContent);
             requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
             //https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q={0}
-            //http://localhost:49791/ImageComposition.svc/ComposeV2
 
             //http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/ComposeV2"
             var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/ComposeV2", UriKind.Absolute),

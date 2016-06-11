@@ -21,16 +21,16 @@
           <target state="new">MY APPLICATION</target>
         </trans-unit>
         <trans-unit id="Resx/ByeBye" translate="yes" xml:space="preserve">
-          <source>bye bye</source>
-          <target state="new">bye bye</target>
+          <source>amazingly</source>
+          <target state="new">amazingly</target>
         </trans-unit>
         <trans-unit id="Resx/AppBarMenuItemText" translate="yes" xml:space="preserve">
           <source>Menu Item</source>
           <target state="new">Menu Item</target>
         </trans-unit>
         <trans-unit id="Resx/mundane" translate="yes" xml:space="preserve">
-          <source>mundane</source>
-          <target state="new">mundane</target>
+          <source>new lock screen</source>
+          <target state="new">new lock screen</target>
         </trans-unit>
         <trans-unit id="Resx/ImageSourceSelection" translate="yes" xml:space="preserve">
           <source>Prefer your own image as your lock screen? or, we will get a perfect one for you from Bing.</source>
@@ -330,8 +330,8 @@
           <target state="new">Which </target>
         </trans-unit>
         <trans-unit id="Resx/LiveEarthText" translate="yes" xml:space="preserve">
-          <source>Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</source>
-          <target state="new">Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!</target>
+          <source>Stunning LIVE earth images from the space. Thanks to  Himawari-8 and DISCOVERY. May take a while before the image shows up, as beaming from the earth to the space takes time!</source>
+          <target state="new">Stunning LIVE earth images from the space. Thanks to  Himawari-8 and DISCOVERY. May take a while before the image shows up, as beaming from the earth to the space takes time!</target>
         </trans-unit>
         <trans-unit id="Resx/WallPaperLocationLocalizationText" translate="yes" xml:space="preserve">
           <source>Selecting one of the locations will result in slightly different lock screens. For example, when used with Live Earth, Western residents of the earth are shown DISCOVER images while eastern residents are shown HIMAWARI-8 images. Use the Neutral option to bypass.</source>
@@ -356,6 +356,14 @@
         <trans-unit id="Resx/Western" translate="yes" xml:space="preserve">
           <source>Western</source>
           <target state="new">Western</target>
+        </trans-unit>
+        <trans-unit id="Resx/WATrailsSecondLine" translate="yes" xml:space="preserve">
+          <source>Enjoy wide ranges of Washington Trail Views, or just enjoy gorgeous scenery from everyday life of the Greater Seattle Area.</source>
+          <target state="new">Enjoy wide ranges of Washington Trail Views, or just enjoy gorgeous scenery from everyday life of the Greater Seattle Area.</target>
+        </trans-unit>
+        <trans-unit id="Resx/WATrails" translate="yes" xml:space="preserve">
+          <source>EDITOR'S CHOICE</source>
+          <target state="new">EDITOR'S CHOICE</target>
         </trans-unit>
         <trans-unit id="Resx/LiveEarth" translate="yes" xml:space="preserve">
           <source>LIVE EARTH</source>
@@ -1162,8 +1170,8 @@
           <target state="new">USE MY OWN IMAGE</target>
         </trans-unit>
         <trans-unit id="Resx/lockscreen" translate="yes" xml:space="preserve">
-          <source>lock screen</source>
-          <target state="new">lock screen</target>
+          <source>everyday</source>
+          <target state="new">everyday</target>
         </trans-unit>
       </group>
     </body>

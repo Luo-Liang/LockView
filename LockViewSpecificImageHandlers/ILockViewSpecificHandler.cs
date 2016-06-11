@@ -60,7 +60,7 @@ namespace InfoView.LockViewSpecificImageHandlers
             if (geoPreference == "western")
             {
                 //show EPIC
-                var docHtml = wc.DownloadString($"http://epic.gsfc.nasa.gov/api/images.php?date={DateTime.UtcNow.Subtract(TimeSpan.FromDays(2)).ToString("yyyy-MM-dd")}");
+                var docHtml = wc.DownloadString($"http://epic.gsfc.nasa.gov/api/images.php?date={DateTime.UtcNow.Subtract(TimeSpan.FromDays(5)).ToString("yyyy-MM-dd")}");
                 dynamic jArray = JsonConvert.DeserializeObject(docHtml);
                 var imageSource = (jArray as IEnumerable<dynamic>).Select(o => new { Source = $"http://epic.gsfc.nasa.gov/epic-archive/jpg/{o.image}.jpg", Date = DateTime.Parse(o.date.ToString()) }).Aggregate((a, b) => Math.Abs((a.Date - DateTime.Now).TotalSeconds % 86400) < Math.Abs((b.Date - DateTime.Now).TotalSeconds % 86400) ? a : b).Source;
                 memStream = new MemoryStream(wc.DownloadData(imageSource));
@@ -101,26 +101,32 @@ namespace InfoView.LockViewSpecificImageHandlers
                 _image.Save(memStream, ImageFormat.Jpeg);
             }
             memStream.Seek(0, SeekOrigin.Begin);
+            return memStream;
+        }
+    }
 
-            var resolution = argumentKeyValue["resolution"];
-            var whString = resolution.Split('x');
-            double height = double.Parse(whString[1]),width = double.Parse(whString[0]);
-            var image = new System.Drawing.Bitmap((int)width, (int)height);
-            var graphics = Graphics.FromImage(image);
-            var foregroundLength = (float)(0.7 * Math.Min(width, height));
-            Bitmap foreground = new Bitmap(Image.FromStream(memStream), (int)foregroundLength, (int)foregroundLength);
-            graphics.Clear(System.Drawing.Color.Black);
-            graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            graphics.DrawImage(foreground, (float)width / 2 - foregroundLength / 2, (float)height / 2 - foregroundLength / 2);
-            foreground.Dispose();
-            graphics.Save();
-            graphics.Dispose();
-            MemoryStream imgStream = new MemoryStream();
-            image.Save(imgStream, ImageFormat.Jpeg);
-            imgStream.Seek(0, SeekOrigin.Begin);
-            memStream.Dispose();
-            return imgStream; ;
+    public class EditorChoiceImageHandler : LockViewSpecificHandlerBase
+    {
+        Random random = new Random();
+        public override TimeSpan GetExpirationDuration(string parameters)
+        {
+            return TimeSpan.FromDays(1);
+        }
+
+        public override MemoryStream RequestImage(string parameters)
+        {
+
+            //we need to find some images either from greer.io or my 1drv.
+            //for simplicity's sake let's just grab some.
+            var directoryPath = AppDomain.CurrentDomain.BaseDirectory + "\\Assets";
+            // Directory.Delete(directoryPath, true);
+            var allFiles = Directory.GetFiles(directoryPath);
+            var selectedFile = allFiles[random.Next() % allFiles.Length];
+            MemoryStream resultStream = new MemoryStream();
+            using (var stream = File.Open(selectedFile, FileMode.Open))
+                stream.CopyTo(resultStream);
+            resultStream.Seek(0, SeekOrigin.Begin);
+            return resultStream;
         }
     }
 }

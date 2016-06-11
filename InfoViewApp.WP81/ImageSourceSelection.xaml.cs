@@ -20,7 +20,8 @@ namespace InfoViewApp.WP81
                 new ListBoxContentVM() { FirstLine = AppResources.UseOwnImage, SecondLine = AppResources.UseOwnImageText,NavigationPath = new Uri("/ImageCropping.xaml?ImgSrc=library&padblack=false",UriKind.Relative) },
                 new ListBoxContentVM() {FirstLine = AppResources.Bing,SecondLine = AppResources.BingText,NavigationPath = new Uri("/ImageSourceSettingsPage.xaml?ImgSrc=bing&padblack=false",UriKind.Relative) },
                 new ListBoxContentVM() {FirstLine = AppResources.NASA, SecondLine = AppResources.NASAText,NavigationPath = new Uri("/ImageSourceSettingsPage.xaml?ImgSrc=nasa&padblack=false",UriKind.Relative) },
-                new ListBoxContentVM() {FirstLine = AppResources.LiveEarth, SecondLine = AppResources.LiveEarthText,NavigationPath = new Uri("/ImageSourceSettingsPage.xaml?ImgSrc=le&padblack=true",UriKind.Relative) }
+                new ListBoxContentVM() {FirstLine = AppResources.LiveEarth, SecondLine = AppResources.LiveEarthText,NavigationPath = new Uri("/ImageSourceSettingsPage.xaml?ImgSrc=le&padblack=true",UriKind.Relative) },
+                new ListBoxContentVM() {FirstLine = AppResources.WATrails, SecondLine = AppResources.WATrailsSecondLine,NavigationPath = new Uri("/ImageSourceSettingsPage.xaml?ImgSrc=watrails&padblack=false",UriKind.Relative) }
             });
             categorySelector.ItemsSource = lbVM;
         }

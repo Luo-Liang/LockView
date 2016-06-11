@@ -142,10 +142,14 @@ namespace LockViewApp.W81
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.Local;
             }
-            else
+            else if (context.NavigationType == "le")
             {
                 LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.LiveEarth;
                 LockViewApplicationState.Instance.SelectedImageSourceParameters = "padblack=true";
+            }
+            else
+            {
+                LockViewApplicationState.Instance.SelectedImageSource = InfoViewApp.WP81.ImageSource.WATrails;
             }
             string location = westernRadio.IsChecked.Value ? "location=western" : "location=eastern";
             LockViewApplicationState.Instance.SelectedImageSourceParameters += $"&{location}";
@@ -163,13 +167,17 @@ namespace LockViewApp.W81
                         uri = new Uri(await BackgroundTaskHelper.GetNASAImageFitScreenUrl(client));
                     else if (context.NavigationType == "le")
                         uri = new Uri(await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client));
+                    else if (context.NavigationType == "watrails")
+                        uri = new Uri(await BackgroundTaskHelper.GetWATrailsImageFitScreenUrl(client));
                     var concatChar = '?';
                     var requestUrl = uri.ToString();
                     if (requestUrl.Contains("?")) concatChar = '&';
                     var requestParameter = $"{requestUrl}{concatChar}resolution={LockViewApplicationState.Instance.PreviewLayoutContract.TargetWidth}x{LockViewApplicationState.Instance.PreviewLayoutContract.TargetHeight}&{LockViewApplicationState.Instance.SelectedImageSourceParameters}";
                     var requestContent = new HttpStringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestParameter));
                     requestContent.Headers.ContentType = new Windows.Web.Http.Headers.HttpMediaTypeHeaderValue("application/json");
-                    var response = await client.PostAsync(new Uri("http://localhost:49791/ImageComposition.svc/RequestImage"), requestContent);
+                    //cloudimagecomposition.azurewebsites.net
+                    var response = await client.PostAsync(new Uri("http://cloudimagecomposition.azurewebsites.net/ImageComposition.svc/RequestImage"), requestContent);
+                    //var response = await client.PostAsync(new Uri("http://localhost:49791/ImageComposition.svc/RequestImage"), requestContent);
                     var responseStr = await response.Content.ReadAsStringAsync();
                     var rawBytes = Newtonsoft.Json.JsonConvert.DeserializeObject<byte[]>(responseStr);
                     originalMap = await originalMap.FromStream(new MemoryStream(rawBytes));
@@ -191,7 +199,7 @@ namespace LockViewApp.W81
                 //now resize the actual image.
                 adjustImagePreview(true);
             }
-            catch
+            catch(Exception ex)
             {
                 croppingGuide.Text = ResourceLoader.LockViewLoader.GetString("ServiceUnavailable");
                 croppingGuideText.Text = ResourceLoader.LockViewLoader.GetString("ServiceUnavailableContent");

@@ -78,8 +78,15 @@ namespace InfoViewApp.WP81
             ReverseGeocodeQuery reverseGeocode = new ReverseGeocodeQuery();
             reverseGeocode.GeoCoordinate = new System.Device.Location.GeoCoordinate(location.Coordinate.Point.Position.Latitude, location.Coordinate.Point.Position.Longitude);
             var geoLocation = await reverseGeocode.GetMapLocationsAsync();
-            var addr = geoLocation.First().Information.Address;
-            weatherBox.Text = source.DisplayName = $"{addr.City},{addr.CountryCode}";
+            if (geoLocation.Count != 0)
+            {
+                var addr = geoLocation.First().Information.Address;
+                weatherBox.Text = source.DisplayName = $"{addr.City},{addr.CountryCode}";
+            }
+            else
+            {
+                weatherBox.Text = source.CityName= AppResources.UseMyLocation;
+            }
             busyGrid.Visibility = Visibility.Collapsed;
         }
 

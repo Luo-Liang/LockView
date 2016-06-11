@@ -209,6 +209,11 @@ namespace InfoViewApp.WP81.Tasks
             return "lockview://fixedwallpapers/Himawari-8";
         }
 
+        public static async Task<string> GetWATrailsImageFitScreenUrl(HttpClient client)
+        {
+            return "lockview://fixedwallpapers/WATrails";
+        }
+
         public static async Task<string> GetBingImageFitScreenUrl(HttpClient client)
         {
             if (client == null)
@@ -289,6 +294,10 @@ namespace InfoViewApp.WP81
                 else if (instance.SelectedImageSource == ImageSource.LiveEarth)
                 {
                     imgReqOverride.ImageRequestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(null);
+                }
+                else if(instance.SelectedImageSource == ImageSource.WATrails)
+                {
+                    imgReqOverride.ImageRequestUrl = await BackgroundTaskHelper.GetWATrailsImageFitScreenUrl(null);
                 }
             }
             return imgReqOverride;

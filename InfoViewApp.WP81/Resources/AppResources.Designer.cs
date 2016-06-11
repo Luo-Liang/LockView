@@ -304,7 +304,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to bye bye.
+        ///   Looks up a localized string similar to amazingly.
         /// </summary>
         public static string ByeBye {
             get {
@@ -1276,7 +1276,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stunning LIVE earth images from the space. Thanks to  Himawari-8. All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. May take a while before the image shows up, as beaming from the earth to the space takes time!.
+        ///   Looks up a localized string similar to Stunning LIVE earth images from the space. Thanks to  Himawari-8 and DISCOVERY. May take a while before the image shows up, as beaming from the earth to the space takes time!.
         /// </summary>
         public static string LiveEarthText {
             get {
@@ -1294,7 +1294,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to lock screen.
+        ///   Looks up a localized string similar to everyday.
         /// </summary>
         public static string lockscreen {
             get {
@@ -1456,7 +1456,7 @@ namespace InfoViewApp.WP81.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to mundane.
+        ///   Looks up a localized string similar to new lock screen.
         /// </summary>
         public static string mundane {
             get {
@@ -2460,6 +2460,24 @@ namespace InfoViewApp.WP81.Resources {
         public static string WallPaperLocationLocalizationTitle {
             get {
                 return ResourceManager.GetString("WallPaperLocationLocalizationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EDITOR&apos;S CHOICE.
+        /// </summary>
+        public static string WATrails {
+            get {
+                return ResourceManager.GetString("WATrails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enjoy wide ranges of Washington Trail Views, or just enjoy gorgeous scenery from everyday life of the Greater Seattle Area..
+        /// </summary>
+        public static string WATrailsSecondLine {
+            get {
+                return ResourceManager.GetString("WATrailsSecondLine", resourceCulture);
             }
         }
         

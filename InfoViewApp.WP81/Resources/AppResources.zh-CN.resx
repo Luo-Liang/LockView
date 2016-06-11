@@ -127,9 +127,11 @@
   </data>
   <data name="ByeBye" xml:space="preserve">
     <value>和平凡,</value>
+    <comment></comment>
   </data>
   <data name="mundane" xml:space="preserve">
     <value>锁屏界面</value>
+    <comment></comment>
   </data>
   <data name="JumpIn" xml:space="preserve">
     <value>开始!</value>
@@ -151,6 +153,7 @@
   </data>
   <data name="lockscreen" xml:space="preserve">
     <value>说再见</value>
+    <comment></comment>
   </data>
   <data name="ImageSourceSelection" xml:space="preserve">
     <value>您希望从哪里得到您的锁屏墙纸?您可以从图片库中选择，或者，我们将帮您从必应美图中选择一张。</value>
@@ -1106,6 +1109,7 @@
   </data>
   <data name="LiveEarthText" xml:space="preserve">
     <value>多谢Himawari-8，我们才能看到振奋人心的实时地球影像。 All rights go to http://himawari8.nict.go.jp/himawari8-image.htm. 选择此项时请耐心等待，因为从地球连接到太空似乎需要一些时间。</value>
+    <comment></comment>
   </data>
   <data name="LiveEarth" xml:space="preserve">
     <value>实时地球</value>
@@ -1115,5 +1119,11 @@
   </data>
   <data name="WallPaperLocationLocalizationTitle" xml:space="preserve">
     <value>俗话说，金窝银窝不如狗窝。告诉我们你的地理位置以便我们为您提供更加个性化的锁屏页面。</value>
+  </data>
+  <data name="WATrailsSecondLine" xml:space="preserve">
+    <value>享受华盛顿州震撼山野之色，或沉醉于西雅图地区的日常风情。</value>
+  </data>
+  <data name="WATrails" xml:space="preserve">
+    <value>编辑精选</value>
   </data>
 </root>

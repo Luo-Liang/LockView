@@ -75,16 +75,22 @@ namespace InfoViewApp.WP81
                     {
                         LockViewApplicationState.Instance.SelectedImageSource = ImageSource.NASA;
                     }
-                    if (parameter == "bing")
+                    else if (parameter == "bing")
                     {
                         LockViewApplicationState.Instance.SelectedImageSource = ImageSource.Bing;
                         requestUrl = await BackgroundTaskHelper.GetBingImageFitScreenUrl(client);
                     }
-                    if (parameter == "le")
+                    else if (parameter == "le")
                     {
                         LockViewApplicationState.Instance.SelectedImageSource = ImageSource.LiveEarth;
                         requestUrl = await BackgroundTaskHelper.GetLiveEarthImageFitScreenUrl(client);
                     }
+                    else if(parameter == "watrails")
+                    {
+                        LockViewApplicationState.Instance.SelectedImageSource = ImageSource.WATrails;
+                        requestUrl = await BackgroundTaskHelper.GetWATrailsImageFitScreenUrl(client);
+                    }
+
 
                     var concatChar = '?';
                     if (requestUrl.Contains("?")) concatChar = '&';

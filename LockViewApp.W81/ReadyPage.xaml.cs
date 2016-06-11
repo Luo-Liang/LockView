@@ -106,6 +106,8 @@ namespace LockViewApp.W81
             BackgroundTaskHelper.TryUpdateTiles();
             //drain the user's balance.
             //instance.UserQuotaInDollars = instance.UserQuotaInDollars < 0 ? 0 : instance.UserQuotaInDollars;
+            finalTweakText.Text = ResourceLoader.LockViewLoader.GetString("AllSetText");
+            finalTweakTextSecondLine.Text = ResourceLoader.LockViewLoader.GetString("CloseAppText");
         }
 
         void updateUsability()
